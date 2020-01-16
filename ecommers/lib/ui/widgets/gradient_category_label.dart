@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class GradientCategoryLabel extends StatelessWidget {
-
   final _imageCategoryPadding = EdgeInsets.all(14);
   final _boxShadowOffset = Offset(0, 8);
 
@@ -11,7 +10,10 @@ class GradientCategoryLabel extends StatelessWidget {
   final Color shadowColor;
   final String imagePath;
 
- GradientCategoryLabel({this.backgroundGradient, this.shadowColor, this.imagePath});
+  GradientCategoryLabel(
+      {@required this.backgroundGradient,
+      @required this.shadowColor,
+      @required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +25,15 @@ class GradientCategoryLabel extends StatelessWidget {
         boxShadow: [
           BoxShadow(
               color: shadowColor,
-               blurRadius: Dimens.categoryLabelShadowBlurRadius,            
-               offset: _boxShadowOffset)
+              blurRadius: Dimens.categoryLabelShadowBlurRadius,
+              offset: _boxShadowOffset),
         ],
         gradient: backgroundGradient,
       ),
       child: Padding(
-          padding: _imageCategoryPadding,
-          child: SvgPicture.asset(imagePath)
-          ),
+        padding: _imageCategoryPadding,
+        child: SvgPicture.asset(imagePath),
+      ),
     );
   }
 }
