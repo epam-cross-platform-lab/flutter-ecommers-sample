@@ -1,32 +1,37 @@
+import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class GradientCategoryLabel extends StatelessWidget {
+
+  final _imageCategoryPadding = EdgeInsets.all(14);
+  final _boxShadowOffset = Offset(0, 8);
+
+  final Gradient backgroundGradient;
+  final Color shadowColor;
+  final String imagePath;
+
+ GradientCategoryLabel({this.backgroundGradient, this.shadowColor, this.imagePath});
+
   @override
   Widget build(BuildContext context) {
-    final String assetName = 'assets/clothes.svg';
     return Container(
-      height: 65,
-      width: 65,
+      height: Dimens.categoryLabelSize,
+      width: Dimens.categoryLabelSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-              color: Color(0xffFF6262).withOpacity(0.34),
-               blurRadius: 15.0,
-                
-               offset: Offset(0, 8))
+              color: shadowColor,
+               blurRadius: Dimens.categoryLabelShadowBlurRadius,            
+               offset: _boxShadowOffset)
         ],
-        gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [Color(0xffFFAE4E), Color(0xffFF7676)]),
+        gradient: backgroundGradient,
       ),
       child: Padding(
-          padding: EdgeInsets.all(14),
-          child: SvgPicture.asset(
-            assetName, 
-          )),
+          padding: _imageCategoryPadding,
+          child: SvgPicture.asset(imagePath)
+          ),
     );
   }
 }

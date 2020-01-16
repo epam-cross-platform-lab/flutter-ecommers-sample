@@ -1,5 +1,8 @@
+import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/widgets/gradient_category_label.dart';
 import 'package:flutter/material.dart';
+
+import 'ui/decorations/index.dart';
 
 void main() => runApp(MyApp());
 
@@ -44,12 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
  
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            GradientCategoryLabel(),
-           Image.asset(
-             'assets/clothes.png',
-             color: Colors.black,
-             height: 100.0,
-             width: 100.0,),
+            GradientCategoryLabel(
+              backgroundGradient: Gradients.apparelCategory,
+              shadowColor: Palette.apparelCategoryShadow,
+              imagePath: APPAREL_ICON,
+            ),
+          
             Text(
               '$_counter',
               style: Theme.of(context).textTheme.display1,
