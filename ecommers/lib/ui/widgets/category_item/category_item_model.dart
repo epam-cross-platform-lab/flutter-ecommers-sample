@@ -1,14 +1,16 @@
 import 'package:flutter/cupertino.dart';
 
-class CategoryButtonModel {
+class CategoryItemModel {
   Gradient gradient;
   Color shadowColor;
   String imagePath;
   EdgeInsets imageCategoryPadding;
+  String title;
 
-  CategoryButtonModel(
+  CategoryItemModel(
       {this.gradient,
       this.shadowColor,
       this.imagePath,
-      this.imageCategoryPadding});
+      this.imageCategoryPadding,
+      this.title});
 }

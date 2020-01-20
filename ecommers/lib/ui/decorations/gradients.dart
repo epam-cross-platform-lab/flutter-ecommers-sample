@@ -9,7 +9,7 @@ class Gradients {
   static Gradient get beautyCategory => LinearGradient(
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
-      colors: [Color(0xff76BAFF), Color(0xff4EFFF8)]);
+      colors: [Color(0xff4EFFF8), Color(0xff76BAFF)]);
 
   static Gradient get shoesCategory => LinearGradient(
       begin: Alignment.topCenter,
