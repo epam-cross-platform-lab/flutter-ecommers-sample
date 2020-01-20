@@ -15,12 +15,12 @@ class BaseButtonWidget extends StatelessWidget {
   final Color iconBackgroundColor;
   final Color blurColor;
   final String text;
-  final String assetSVG;
+  final String assetImage;
   final Function onPressedFunction;
 
   BaseButtonWidget(
       {@required this.text,
-      @required this.assetSVG,
+      @required this.assetImage,
       @required this.buttonColor,
       @required this.textColor,
       @required this.blurColor,
@@ -40,7 +40,7 @@ class BaseButtonWidget extends StatelessWidget {
         ],
       ),
       child: CupertinoButton(
-        padding: EdgeInsets.all(_padding),
+        padding: const EdgeInsets.all(_padding),
         borderRadius: BorderRadius.circular(_borderRadius),
         color: buttonColor,
         onPressed: onPressedFunction,
@@ -64,7 +64,7 @@ class BaseButtonWidget extends StatelessWidget {
               height: _circleSize,
               width: _circleSize,
               child: SvgPicture.asset(
-                  assetSVG,
+                  assetImage,
                   height: _iconHeight,
                   color: buttonColor,
                 ),

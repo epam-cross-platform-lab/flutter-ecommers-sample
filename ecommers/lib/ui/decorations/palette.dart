@@ -10,11 +10,11 @@ class Palette {
   static Color get stationaryCategoryShadow => Color(0xff646464).withOpacity(0.34);
   static Color get categoryText => Color(0xff515C6F);
 
-  static Color get primaryButtonBackgroundColor => Color(0xFFFF6969);
-  static Color get primaryButtonTextColor => Colors.white;
-  static Color get primaryButtonBlurColor => Color(0xFFFF6969).withOpacity(0.4);
+  static Color get primaryButtonBackground => Color(0xFFFF6969);
+  static Color get primaryButtonText => Colors.white;
+  static Color get primaryButtonBlur => Color(0xFFFF6969).withOpacity(0.4);
 
-  static Color get secondaryButtonBackgroundColor => Colors.white;
-  static Color get secondaryButtonTextColor => Color(0xFF727C8E);
-  static Color get secondaryButtonBlurColor => Color(0xFF727C8E).withOpacity(0.15);
+  static Color get secondaryButtonBackground => Colors.white;
+  static Color get secondaryButtonText => Color(0xFF727C8E);
+  static Color get secondaryButtonBlur => Color(0xFF727C8E).withOpacity(0.15);
 }
