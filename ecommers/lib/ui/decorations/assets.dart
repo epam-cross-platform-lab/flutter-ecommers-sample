@@ -5,7 +5,3 @@ const String FURNITURE_ICON = 'assets/furniture.svg';
 const String HOME_ICON = 'assets/home.svg';
 const String SHOES_ICON = 'assets/shoes.svg';
 const String STATIONARY_ICON = 'assets/stationary.svg';
-
-
-
-

@@ -27,15 +27,7 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Categories.apparel,
-            Categories.beauty,
-            Categories.shoes,
-            Categories.electronics,
-            Categories.furniture,
-            Categories.home,
-            Categories.stationary
-          ].map((category) => CategoryItem.fromType(category)).toList(),
+          children: <Widget>[],
         ),
       ),
     );
