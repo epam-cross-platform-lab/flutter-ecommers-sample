@@ -10,5 +10,4 @@ class Palette {
   static Color get stationaryCategoryShadow => Color(0xff646464).withOpacity(0.34);
   static Color get transparent => Colors.transparent;
   static Color get categoryText => Color(0xff515C6F);
-
 }
