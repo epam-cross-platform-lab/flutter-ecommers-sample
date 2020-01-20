@@ -7,6 +7,8 @@ class BaseButtonWidget extends StatelessWidget {
   static const double _iconHeight = 12.0;
   static const double _borderRadius = 23.0;
   static const double _padding = 8.0;
+  static const Offset _blurOffset = Offset(0.0, 5.0);
+  static const double _blurRadius = 10.0;
 
   final Color buttonColor;
   final Color textColor;
@@ -31,8 +33,8 @@ class BaseButtonWidget extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            blurRadius: 10.0,
-            offset: new Offset(0.0, 5.0),
+            blurRadius: _blurRadius,
+            offset: _blurOffset,
             color: blurColor,
           ),
         ],
