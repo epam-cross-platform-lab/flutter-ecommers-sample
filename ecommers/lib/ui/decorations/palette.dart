@@ -17,4 +17,6 @@ class Palette {
   static Color get secondaryButtonBackground => Colors.white;
   static Color get secondaryButtonText => Color(0xFF727C8E);
   static Color get secondaryButtonBlur => Color(0xFF727C8E).withOpacity(0.15);
+
+  static Color get imageCardText => Colors.white;
 }

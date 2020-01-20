@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,6 +8,7 @@ class BaseButtonWidget extends StatelessWidget {
   static const double _iconHeight = 12.0;
   static const double _borderRadius = 23.0;
   static const double _padding = 8.0;
+
   static const Offset _blurOffset = Offset(0.0, 5.0);
   static const double _blurRadius = 10.0;
 
@@ -54,6 +56,7 @@ class BaseButtonWidget extends StatelessWidget {
                   text,
                   style: TextStyle(
                     color: textColor,
+                    fontSize: Dimens.buttonTextFontSize,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
