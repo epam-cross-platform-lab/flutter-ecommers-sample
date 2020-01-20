@@ -15,12 +15,12 @@ class BaseButtonWidget extends StatelessWidget {
   final Color iconBackgroundColor;
   final Color blurColor;
   final String text;
-  final String assetImage;
+  final String assetIcon;
   final Function onPressedFunction;
 
   BaseButtonWidget(
       {@required this.text,
-      @required this.assetImage,
+      @required this.assetIcon,
       @required this.buttonColor,
       @required this.textColor,
       @required this.blurColor,
@@ -64,7 +64,7 @@ class BaseButtonWidget extends StatelessWidget {
               height: _circleSize,
               width: _circleSize,
               child: SvgPicture.asset(
-                  assetImage,
+                  assetIcon,
                   height: _iconHeight,
                   color: buttonColor,
                 ),

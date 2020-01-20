@@ -16,10 +16,10 @@ class SecondaryButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseButtonWidget(
         text: text,
-        assetSVG: assetIcon,
-        buttonColor: Palette.secondaryButtonBackgroundColor,
-        textColor: Palette.secondaryButtonTextColor,
+        assetIcon: assetIcon,
+        buttonColor: Palette.secondaryButtonBackground,
+        textColor: Palette.secondaryButtonText,
         onPressedFunction: onPressedFunction,
-        blurColor: Palette.secondaryButtonBlurColor);
+        blurColor: Palette.secondaryButtonBlur);
   }
 }

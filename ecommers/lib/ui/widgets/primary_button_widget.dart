@@ -16,10 +16,10 @@ class PrimaryButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BaseButtonWidget(
         text: text,
-        assetSVG: assetIcon,
-        buttonColor: Palette.primaryButtonBackgroundColor,
-        textColor: Palette.primaryButtonTextColor,
+        assetIcon: assetIcon,
+        buttonColor: Palette.primaryButtonBackground,
+        textColor: Palette.primaryButtonText,
         onPressedFunction: onPressedFunction,
-        blurColor: Palette.primaryButtonBlurColor);
+        blurColor: Palette.primaryButtonBlur);
   }
 }
