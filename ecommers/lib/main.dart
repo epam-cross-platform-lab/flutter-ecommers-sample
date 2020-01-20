@@ -1,3 +1,5 @@
+import 'package:ecommers/common/categories.dart';
+import 'package:ecommers/ui/widgets/category_item/category_item.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
