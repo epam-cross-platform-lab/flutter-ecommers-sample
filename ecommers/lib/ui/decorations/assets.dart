@@ -1,0 +1,1 @@
+const String APPAREL_ICON = 'assets/apparel.svg';

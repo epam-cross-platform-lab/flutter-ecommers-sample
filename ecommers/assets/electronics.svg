@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="59" height="51.264" viewBox="0 0 59 51.264">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.518"/>
+    </linearGradient>
+    <filter id="_004-furniture-and-household" x="0" y="0" width="59" height="51.264" filterUnits="userSpaceOnUse">
+      <feOffset dy="8" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#0062ff" flood-opacity="0.345"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g transform="matrix(1, 0, 0, 1, 0, 0)" filter="url(#_004-furniture-and-household)">
+    <path id="_004-furniture-and-household-2" data-name="004-furniture-and-household" d="M21.7,19.118V16.481H35.907V0H5.093V16.481H19.3v2.637H0V30.271H5.845v2.993h2.4V30.271h24.5v2.993h2.4V30.271H41V19.118Zm-6.907,6.075H11.465v-2.4h3.329Zm14.741,0H26.206v-2.4h3.329Zm0,0" transform="translate(9 1)" fill="url(#linear-gradient)"/>
+  </g>
+</svg>
