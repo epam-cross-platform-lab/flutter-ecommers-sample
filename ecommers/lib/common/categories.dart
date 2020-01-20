@@ -1,5 +1,4 @@
-enum Categories
-{
+enum Categories {
   apparel,
   beauty,
   electronics,

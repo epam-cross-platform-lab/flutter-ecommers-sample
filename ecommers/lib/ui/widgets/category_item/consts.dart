@@ -1,5 +1,4 @@
 import 'package:ecommers/common/categories.dart';
-import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 

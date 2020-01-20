@@ -8,6 +8,5 @@ class Palette {
   static Color get furnitureCategoryShadow => Color(0xffD59F26).withOpacity(0.34);
   static Color get homeCategoryShadow => Color(0xff834162).withOpacity(0.34);
   static Color get stationaryCategoryShadow => Color(0xff646464).withOpacity(0.34);
-  static Color get transparent => Colors.transparent;
   static Color get categoryText => Color(0xff515C6F);
 }
