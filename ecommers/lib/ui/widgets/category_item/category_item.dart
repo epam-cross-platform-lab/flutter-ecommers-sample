@@ -7,14 +7,17 @@ import 'package:flutter_svg/svg.dart';
 class CategoryItem extends StatelessWidget {
   final Gradient labelBackgroundGradient;
   final Color shadowColor;
+  final Color backgroundColor;
   final String imagePath;
   final String title;
 
-  CategoryItem(
-      {@required this.labelBackgroundGradient,
-      @required this.shadowColor,
-      @required this.imagePath,
-      @required this.title});
+  CategoryItem({
+    @required this.shadowColor,
+    @required this.imagePath,
+    @required this.title,
+    this.labelBackgroundGradient,
+    this.backgroundColor,
+  });
 
   factory CategoryItem.fromType(Categories categoryType) {
     var categoryItem = categoryItems[categoryType];
@@ -30,7 +33,7 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Dimens.categoryItemWidth,
+      width: Dimens.categoryItemSize.width,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -54,6 +57,7 @@ class CategoryItem extends StatelessWidget {
       width: Dimens.categoryLabelSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
+        color: backgroundColor,
         boxShadow: [
           BoxShadow(
               color: shadowColor,
