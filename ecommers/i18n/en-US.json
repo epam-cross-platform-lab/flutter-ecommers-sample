@@ -1,4 +1,7 @@
 {
     "ecommers": "ecommers",
-    "titleHomePage": "ecommers Home Page"
+    "titleHomePage": "ecommers Home Page",
+    "homePageTitle": "Home page",
+    "categoriesTitle": "Categories",
+    "seeAllCategoryTitle": "See All"
 }

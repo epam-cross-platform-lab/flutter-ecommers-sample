@@ -1,10 +1,12 @@
 import 'package:ecommers/common/categories.dart';
+import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/category_item/category_item.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesCompactWidget extends StatelessWidget {
   static const _containerHeight = 134.0;
+  final i18n = I18n.delegate;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class CategoriesCompactWidget extends StatelessWidget {
         alignment: Alignment.topLeft,
         children: <Widget>[
           Text(
-            'Categories', //TODO: move out
+            I18n.of(context).categoriesTitle,
             style: Styles.titleText,
           ),
           Align(
@@ -44,7 +46,7 @@ class CategoriesCompactWidget extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
           if (index == itemCount - 1) {
-            return _buildSeeAllCategory();
+            return _buildSeeAllCategory(context);
           }
           return CategoryItem.fromType(Categories.values[index]);
         },
@@ -52,12 +54,12 @@ class CategoriesCompactWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildSeeAllCategory() {
+  Widget _buildSeeAllCategory(BuildContext context) {
     return CategoryItem(
       backgroundColor: Palette.seeAllCategoryBackground,
       shadowColor: Palette.seeAllCategoryShadow,
       imagePath: ARROW_RIGHT_ICON,
-      title: 'See All', //TODO: move out
+      title: I18n.of(context).seeAllCategoryTitle,
     );
   }
 
