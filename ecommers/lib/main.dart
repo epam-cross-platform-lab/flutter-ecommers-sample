@@ -1,21 +1,23 @@
-import 'package:ecommers/common/categories.dart';
-import 'package:ecommers/ui/decorations/assets.dart';
-import 'package:ecommers/ui/widgets/category_item/category_item.dart';
-import 'package:ecommers/ui/widgets/image_card.dart';
-import 'package:ecommers/ui/widgets/index.dart';
+import 'package:ecommers/generated/i18n.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  final i18n = I18n.delegate;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ecomers',
+      title: I18n.of(context).ecommers,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(),
+      localizationsDelegates: [i18n],
+      supportedLocales: i18n.supportedLocales,
+      localeResolutionCallback: i18n.resolution(
+        fallback: Locale("en", "US"),
+      ),
     );
   }
 }
@@ -25,28 +27,12 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ecommers Home Page'),
+        title: Text(I18n.of(context).titleHomePage),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ImageCard(
-              buttonText: 'SEE MORE',
-              description: 'For all your summer clothing needs',
-              imageAsset: GIRL_IMAGE,
-            ),
-            PrimaryButtonWidget(
-              assetIcon: ARROW_RIGHT_ICON,
-              onPressedFunction: () {},
-              text: 'SIGN IN',
-            ),
-            SecondaryButtonWidget(
-              assetIcon: SHARE_ARROW_ICON,
-              onPressedFunction: () {},
-              text: 'SHARE THIS',
-            ),
-          ],
+          children: <Widget>[],
         ),
       ),
     );
