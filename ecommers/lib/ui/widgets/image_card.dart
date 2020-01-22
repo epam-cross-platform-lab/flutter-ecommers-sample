@@ -34,39 +34,35 @@ class ImageCard extends StatelessWidget {
       ),
       child: Stack(
         children: <Widget>[
-          Stack(
-            children: <Widget>[
-              Align(
-                alignment: Alignment.topLeft,
-                child: SizedBox(
-                  width: _textWidth,
-                  child: Text(
-                    description,
-                    maxLines: _textMaxLines,
-                    style: TextStyle(
-                      color: Palette.imageCardText,
-                      fontSize: Dimens.imageCardTextFontSize,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
+          Align(
+            alignment: Alignment.topLeft,
+            child: SizedBox(
+              width: _textWidth,
+              child: Text(
+                description,
+                maxLines: _textMaxLines,
+                style: TextStyle(
+                  color: Palette.imageCardText,
+                  fontSize: Dimens.imageCardTextFontSize,
+                  fontWeight: FontWeight.w300,
                 ),
               ),
-              Align(
-                alignment: Alignment.bottomLeft,
-                child: SizedBox(
-                  height: _buttonSize.height,
-                  width: _buttonSize.width,
-                  child: BaseButtonWidget(
-                      text: buttonText,
-                      assetIcon: ARROW_RIGHT_ICON,
-                      buttonColor: Palette.secondaryButtonBackground,
-                      textColor: Palette.secondaryButtonText,
-                      onPressedFunction: () {},
-                      iconBackgroundColor: Palette.primaryButtonBackground,
-                      blurColor: Palette.secondaryButtonBlur),
-                ),
-              ),
-            ],
+            ),
+          ),
+          Align(
+            alignment: Alignment.bottomLeft,
+            child: SizedBox(
+              height: _buttonSize.height,
+              width: _buttonSize.width,
+              child: BaseButtonWidget(
+                  text: buttonText,
+                  assetIcon: ARROW_RIGHT_ICON,
+                  buttonColor: Palette.secondaryButtonBackground,
+                  textColor: Palette.secondaryButtonText,
+                  onPressedFunction: () {},
+                  iconBackgroundColor: Palette.primaryButtonBackground,
+                  blurColor: Palette.secondaryButtonBlur),
+            ),
           ),
         ],
       ),

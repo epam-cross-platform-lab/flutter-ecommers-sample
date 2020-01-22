@@ -23,4 +23,11 @@ class Palette {
   static Color get secondaryButtonBlur => Color(0xFF727C8E).withOpacity(0.15);
 
   static Color get imageCardText => Colors.white;
+
+  static Color get productItemBackground => Colors.white;
+  static Color get productItemBlur => Color(0xffE7EAF0);
+  static Color get productItemText => Color(0xff515C6F);
+
+  static Color get rateText => Colors.white;
+  static Color get rateBackground => Color(0xFFFF6969);
 }

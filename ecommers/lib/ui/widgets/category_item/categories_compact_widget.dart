@@ -45,9 +45,10 @@ class CategoriesCompactWidget extends StatelessWidget {
         ),
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          if (index == itemCount - 1) {
+          if (index == itemCount - 1 && index != Categories.values.length - 1) {
             return _buildSeeAllCategory(context);
           }
+
           return CategoryItem.fromType(Categories.values[index]);
         },
       ),

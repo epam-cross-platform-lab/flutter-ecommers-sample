@@ -12,4 +12,34 @@ class Styles {
         fontSize: Dimens.titleTextFontSize,
         fontWeight: FontWeight.bold,
       );
+
+  static TextStyle get productItemTitleText => TextStyle(
+        color: Palette.productItemText,
+        fontSize: Dimens.productItemTitleFontSize,
+        fontWeight: FontWeight.w300,
+      );
+
+  static TextStyle get productItemCostText => TextStyle(
+        color: Palette.productItemText,
+        fontSize: Dimens.productItemCostFontSize,
+        fontWeight: FontWeight.bold,    
+      );
+
+  static TextStyle get productItemSmallTitleText => TextStyle(
+        color: Palette.productItemText,
+        fontSize: Dimens.productItemSmallTitleFontSize,
+        fontWeight: FontWeight.w400,
+      );
+
+  static TextStyle get productItemSmallCostText => TextStyle(
+        color: Palette.productItemText,
+        fontSize: Dimens.productItemSmallCostFontSize,
+        fontWeight: FontWeight.w500,
+      );
+
+  static TextStyle get rateText => TextStyle(
+        color: Palette.rateText,
+        fontSize: Dimens.rateFontSize,
+        fontWeight: FontWeight.bold,
+      );
 }
