@@ -37,6 +37,18 @@ class Styles {
         fontWeight: FontWeight.w500,
       );
 
+  static TextStyle get productItemWideTitleText => TextStyle(
+        color: Palette.productItemText,
+        fontSize: Dimens.productItemWideTitleFontSize,
+        fontWeight: FontWeight.w300,
+      );
+
+  static TextStyle get productItemWideCostText => TextStyle(
+        color: Palette.productItemText,
+        fontSize: Dimens.productItemWideCostFontSize,
+        fontWeight: FontWeight.bold,
+      );
+
   static TextStyle get rateText => TextStyle(
         color: Palette.rateText,
         fontSize: Dimens.rateFontSize,
