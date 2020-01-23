@@ -13,16 +13,14 @@ class _ShellPageState extends State<ShellPage> {
   Widget build(BuildContext context) {
     final shellProvider = Provider.of<ShellProvider>(context);
 
-    return Provider<ShellProvider>(
-      create: (context) => ShellProvider(),
-      child: Scaffold(
+    return  Scaffold(
         body: shellProvider.createBody(),
         bottomNavigationBar: BottomNavigationWidget(
           selectedIndex: shellProvider.selectedItemIndex,
           pages: shellProvider.pages,
           onTappedFunction: shellProvider.onTappedItem,
         ),
-      ),
-    );
+      );
+    
   }
 }

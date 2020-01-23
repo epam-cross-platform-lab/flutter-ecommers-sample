@@ -1,9 +1,8 @@
 import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/providers/index.dart';
+import 'package:ecommers/ui/pages/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'providers/index.dart';
-import 'ui/pages/index.dart';
 
 void main() {
   runApp(

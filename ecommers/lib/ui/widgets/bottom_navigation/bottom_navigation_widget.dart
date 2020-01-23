@@ -27,7 +27,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
       currentIndex: widget.selectedIndex,
       selectedLabelStyle: Styles.bottomnNavigationItemTitle,
       unselectedLabelStyle: Styles.bottomnNavigationItemTitle,
-      iconSize: 18,
+      iconSize: Dimens.navigationBottomIconSize,
       showUnselectedLabels: true,  
       onTap: widget.onTappedFunction,
     );
