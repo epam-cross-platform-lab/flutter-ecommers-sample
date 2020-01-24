@@ -23,28 +23,25 @@ class ProductItemNormal extends ProductItemBase {
 
   @override
   Widget buildProductItem() {
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Align(
-          alignment: Alignment.topCenter,
-          child: Image.asset(assetImagePath),
+        Expanded(
+          child: Center(
+            child: Image.asset(assetImagePath),
+          ),
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              title,
-              overflow: TextOverflow.ellipsis,
-              maxLines: Dimens.defaultTextMaxLines,
-              style: Styles.productItemTitleText,
-            ),
-            Text(
-              Formatter.getCost(cost),
-              style: Styles.productItemCostText,
-            ),
-          ],
-        )
+        SizedBox(height: 4.0),
+        Text(
+          title,
+          overflow: TextOverflow.ellipsis,
+          maxLines: Dimens.defaultTextMaxLines,
+          style: Styles.productItemTitleText,
+        ),
+        Text(
+          Formatter.getCost(cost),
+          style: Styles.productItemCostText,
+        ),
       ],
     );
   }
