@@ -1,13 +1,9 @@
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 abstract class ProductItemBase extends StatelessWidget {
   @protected
   static const double padding = 10.0;
-
-  final formatCurrency =
-      NumberFormat.simpleCurrency(); //? consider moving to formatting class
 
   final String assetImagePath;
   final String title;

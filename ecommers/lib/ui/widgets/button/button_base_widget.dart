@@ -6,7 +6,8 @@ import 'package:flutter_svg/svg.dart';
 class ButtonBaseWidget extends StatelessWidget {
   static const double _circleSize = 30.0;
   static const double _iconHeight = 12.0;
-  static const double _padding = 8.0;
+
+  static const EdgeInsets _padding = EdgeInsets.all(8.0);
 
   static const Offset _blurOffset = Offset(0.0, 5.0);
   static const double _blurRadius = 10.0;
@@ -41,7 +42,7 @@ class ButtonBaseWidget extends StatelessWidget {
         ],
       ),
       child: CupertinoButton(
-        padding: const EdgeInsets.all(_padding),
+        padding: _padding,
         borderRadius: BorderRadius.circular(Dimens.buttonBorderRadius),
         color: buttonColor,
         onPressed: onPressedFunction,

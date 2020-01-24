@@ -7,40 +7,40 @@ import 'package:ecommers/ui/widgets/product_item/product_item_normal.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  static const int _latestGridViewAxisCount = 3;
+  static const double _latestGridViewAxisSpacing = 12.0;
+  static const double _latestCarouselViewportFraction = 0.9;
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(I18n.of(context).homePageTitle),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          CategoriesCompactWidget(),
-          SizedBox(height: Dimens.pagePadding),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Dimens.pagePadding,
-            ),
-            child: Text(
-              I18n.of(context).latetstTitle,
-              style: Styles.titleText,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        CategoriesCompactWidget(),
+        SizedBox(height: Dimens.pagePadding),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: Dimens.pagePadding,
           ),
-          SizedBox(height: 9.0),
-          _buildLatestCarousel(),
-          SizedBox(height: 11.0),
-          Expanded(
-            child: _buildLatestGridView(),
+          child: Text(
+            I18n.of(context).latetstTitle,
+            style: Styles.titleText,
           ),
-        ],
-      ),
+        ),
+        SizedBox(height: 9.0),
+        _buildLatestCarousel(),
+        SizedBox(height: 11.0),
+        Expanded(
+          child: _buildLatestGridView(),
+        ),
+      ],
     );
   }
 
   Widget _buildLatestCarousel() {
     return CarouselSlider(
       height: Dimens.imageCardSize.height,
+      viewportFraction: _latestCarouselViewportFraction,
       items: List.generate(
         3,
         (index) {
@@ -57,8 +57,8 @@ class HomePage extends StatelessWidget {
 
   Widget _buildLatestGridView() {
     return GridView.count(
-      crossAxisCount: 3,
-      mainAxisSpacing: 20.0,
+      crossAxisCount: _latestGridViewAxisCount,
+      mainAxisSpacing: _latestGridViewAxisSpacing,
       padding: EdgeInsets.symmetric(horizontal: Dimens.pagePadding),
       children: List.generate(30, (index) {
         return Center(

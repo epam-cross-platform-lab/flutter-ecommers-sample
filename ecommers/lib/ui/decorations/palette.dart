@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Palette {
+  static Color get pageBackground => Color(0xffF5F6F8);
   static Color get titleText => Color(0xff515C6F);
 
   static Color get apparelCategoryShadow => Color(0xffFF6262).withOpacity(0.34);

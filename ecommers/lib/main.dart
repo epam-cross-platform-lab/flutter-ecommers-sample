@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: "ecommers",
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primaryColor: Colors.white,
         ),
         home: ShellPage(),
         localizationsDelegates: [i18n],

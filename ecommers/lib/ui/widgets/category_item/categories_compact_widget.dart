@@ -15,6 +15,9 @@ class CategoriesCompactWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(
         horizontal: Dimens.pagePadding,
       ),
+      decoration: BoxDecoration(
+        gradient: Gradients.categoriesCompact,
+      ),
       child: Stack(
         alignment: Alignment.topLeft,
         children: <Widget>[

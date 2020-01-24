@@ -1,4 +1,5 @@
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
 import 'package:flutter/widgets.dart';
 
@@ -35,11 +36,11 @@ class ProductItemNormal extends ProductItemBase {
             Text(
               title,
               overflow: TextOverflow.ellipsis,
-              maxLines: 1,
+              maxLines: Dimens.defaultTextMaxLines,
               style: Styles.productItemTitleText,
             ),
             Text(
-              formatCurrency.format(cost),
+              Formatter.getCost(cost),
               style: Styles.productItemCostText,
             ),
           ],
