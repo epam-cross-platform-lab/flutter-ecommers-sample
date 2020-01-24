@@ -7,7 +7,7 @@ abstract class ProductItemBase extends StatelessWidget {
   static const double padding = 10.0;
 
   final formatCurrency =
-      NumberFormat.simpleCurrency(); //TODO: move out and create formatter
+      NumberFormat.simpleCurrency(); //? consider moving to formatting class
 
   final String assetImagePath;
   final String title;

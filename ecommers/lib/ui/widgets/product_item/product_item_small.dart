@@ -40,6 +40,8 @@ class ProductItemSmall extends ProductItemBase {
             children: <Widget>[
               Text(
                 title,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
                 style: Styles.productItemSmallTitleText,
               ),
               Text(

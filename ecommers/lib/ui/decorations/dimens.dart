@@ -10,7 +10,9 @@ class Dimens {
   static double get categoryTitleFontSize => 15;
 
   static double get buttonTextFontSize => 12.0;
+  static double get buttonBorderRadius => 23.0;
 
+  static Size get imageCardSize => Size(325.0, 184.0);
   static double get imageCardTextFontSize => 18.0;
 
   static double get pagePadding => 25.0;

@@ -40,6 +40,8 @@ class I18n implements WidgetsLocalizations {
   String get homePageTitle => "Home page";
   /// "Categories"
   String get categoriesTitle => "Categories";
+  /// "Latest"
+  String get latetstTitle => "Latest";
   /// "See All"
   String get seeAllCategoryTitle => "See All";
 }

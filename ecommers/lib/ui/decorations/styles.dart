@@ -22,7 +22,7 @@ class Styles {
   static TextStyle get productItemCostText => TextStyle(
         color: Palette.productItemText,
         fontSize: Dimens.productItemCostFontSize,
-        fontWeight: FontWeight.bold,    
+        fontWeight: FontWeight.bold,
       );
 
   static TextStyle get productItemSmallTitleText => TextStyle(
@@ -53,5 +53,11 @@ class Styles {
         color: Palette.rateText,
         fontSize: Dimens.rateFontSize,
         fontWeight: FontWeight.bold,
+      );
+
+  static TextStyle get imageCardDescriptionText => TextStyle(
+        color: Palette.imageCardText,
+        fontSize: Dimens.imageCardTextFontSize,
+        fontWeight: FontWeight.w300,
       );
 }

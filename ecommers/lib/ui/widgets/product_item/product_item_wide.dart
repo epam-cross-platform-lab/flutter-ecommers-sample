@@ -35,6 +35,7 @@ class ProductItemWide extends ProductItemBase {
           children: <Widget>[
             Text(
               title,
+              maxLines: 1,
               style: Styles.productItemWideTitleText,
             ),
             Stack(

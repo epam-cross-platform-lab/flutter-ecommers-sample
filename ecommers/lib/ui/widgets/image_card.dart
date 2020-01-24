@@ -1,9 +1,8 @@
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/widgets/index.dart';
+import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
 
 class ImageCard extends StatelessWidget {
-  static const Size _cardSize = Size(325.0, 184.0);
   static const Size _buttonSize = Size(120.0, 40.0);
 
   static const double _textWidth = 134.0;
@@ -15,15 +14,21 @@ class ImageCard extends StatelessWidget {
   final String imageAsset;
   final String description;
   final String buttonText;
+  final Function onButtonPressed;
 
-  ImageCard({this.imageAsset, this.description, this.buttonText});
+  ImageCard({
+    this.imageAsset,
+    this.description,
+    this.buttonText,
+    this.onButtonPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      height: _cardSize.height,
-      width: _cardSize.width,
+      height: Dimens.imageCardSize.height,
+      width: Dimens.imageCardSize.width,
       padding: EdgeInsets.all(_containerPadding),
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -41,11 +46,7 @@ class ImageCard extends StatelessWidget {
               child: Text(
                 description,
                 maxLines: _textMaxLines,
-                style: TextStyle(
-                  color: Palette.imageCardText,
-                  fontSize: Dimens.imageCardTextFontSize,
-                  fontWeight: FontWeight.w300,
-                ),
+                style: Styles.imageCardDescriptionText,
               ),
             ),
           ),
@@ -54,12 +55,12 @@ class ImageCard extends StatelessWidget {
             child: SizedBox(
               height: _buttonSize.height,
               width: _buttonSize.width,
-              child: BaseButtonWidget(
+              child: ButtonBaseWidget(
                   text: buttonText,
                   assetIcon: ARROW_RIGHT_ICON,
                   buttonColor: Palette.secondaryButtonBackground,
                   textColor: Palette.secondaryButtonText,
-                  onPressedFunction: () {},
+                  onPressedFunction: onButtonPressed,
                   iconBackgroundColor: Palette.primaryButtonBackground,
                   blurColor: Palette.secondaryButtonBlur),
             ),

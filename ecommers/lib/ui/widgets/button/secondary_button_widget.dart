@@ -1,8 +1,8 @@
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/widgets/index.dart';
+import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
 
-class SecondaryButtonWidget extends BaseButtonWidget {
+class SecondaryButtonWidget extends ButtonBaseWidget {
   final String text;
   final String assetIcon;
   final Function onPressedFunction;

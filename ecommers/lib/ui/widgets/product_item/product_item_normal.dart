@@ -34,6 +34,8 @@ class ProductItemNormal extends ProductItemBase {
           children: <Widget>[
             Text(
               title,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
               style: Styles.productItemTitleText,
             ),
             Text(

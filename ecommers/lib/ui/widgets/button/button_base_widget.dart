@@ -3,10 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class BaseButtonWidget extends StatelessWidget {
+class ButtonBaseWidget extends StatelessWidget {
   static const double _circleSize = 30.0;
   static const double _iconHeight = 12.0;
-  static const double _borderRadius = 23.0;
   static const double _padding = 8.0;
 
   static const Offset _blurOffset = Offset(0.0, 5.0);
@@ -20,7 +19,7 @@ class BaseButtonWidget extends StatelessWidget {
   final String assetIcon;
   final Function onPressedFunction;
 
-  BaseButtonWidget(
+  ButtonBaseWidget(
       {@required this.text,
       @required this.assetIcon,
       @required this.buttonColor,
@@ -43,7 +42,7 @@ class BaseButtonWidget extends StatelessWidget {
       ),
       child: CupertinoButton(
         padding: const EdgeInsets.all(_padding),
-        borderRadius: BorderRadius.circular(_borderRadius),
+        borderRadius: BorderRadius.circular(Dimens.buttonBorderRadius),
         color: buttonColor,
         onPressed: onPressedFunction,
         child: Row(
