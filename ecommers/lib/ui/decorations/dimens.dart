@@ -25,9 +25,9 @@ class Dimens {
   
   static double get titleTextFontSize => 30.0;
 
-  static Size get productItemWideSize => Size(160, 218); 
-  static Size get productItemNormalSize => Size(101, 135); 
-  static Size get productItemSmallSize => Size(185, 59);
+  static Size get productItemWideSize => Size(160.0, 218.0); 
+  static Size get productItemNormalSize => Size(101.0, 135.0); 
+  static Size get productItemSmallSize => Size(185.0, 59.0);
 
   static double get productItemBorderRadius => 10.0;
 
