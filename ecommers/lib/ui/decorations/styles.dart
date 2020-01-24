@@ -60,4 +60,9 @@ class Styles {
         fontSize: Dimens.imageCardTextFontSize,
         fontWeight: FontWeight.w300,
       );
+
+  static TextStyle get bottomnNavigationItemTitle => TextStyle(
+        color: Palette.bottomNavigationItemUnselected,
+        fontSize: Dimens.navigationBottomTitleFontSize,
+      );
 }

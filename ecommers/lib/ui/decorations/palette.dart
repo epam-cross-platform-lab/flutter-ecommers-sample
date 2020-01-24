@@ -12,6 +12,7 @@ class Palette {
   static Color get stationaryCategoryShadow => Color(0xff646464).withOpacity(0.34);
   static Color get seeAllCategoryShadow => Color(0xffE7EAF0).withOpacity(0.34);
   static Color get seeAllCategoryBackground => Color(0xffffffff);
+
   static Color get categoryText => Color(0xff515C6F);
 
   static Color get primaryButtonBackground => Color(0xFFFF6969);
@@ -30,4 +31,7 @@ class Palette {
 
   static Color get rateText => Colors.white;
   static Color get rateBackground => Color(0xFFFF6969);
+
+  static Color get bottomNavigationItemSelected => Color(0xffFF6969);
+  static Color get bottomNavigationItemUnselected => Color(0xff515C6F);
 }

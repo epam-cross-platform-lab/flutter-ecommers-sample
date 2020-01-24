@@ -4,10 +4,14 @@ class Dimens {
   static double get defaultBlurRadius => 15.0;
   static Offset get defaultBlurOffset => Offset(0.0, 8.0);
   
-  static double get categoryLabelSize => 65;
+  static double get categoryLabelSize => 65.0;
   static Size get categoryItemSize =>  Size(74.0, 89.0);
+  static double get categoryTitleFontSize => 15.0;
+  static double get categoryLabelShadowBlurRadius => 10.0;
+  static double get categoryItemWidth => 74.0;
   
-  static double get categoryTitleFontSize => 15;
+  static double get navigationBottomTitleFontSize => 11.0;
+  static double get navigationBottomIconSize => 18.0;
 
   static double get buttonTextFontSize => 12.0;
   static double get buttonBorderRadius => 23.0;
