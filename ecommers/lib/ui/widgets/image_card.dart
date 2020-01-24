@@ -26,42 +26,43 @@ class ImageCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        alignment: Alignment.centerLeft,
-        height: Dimens.imageCardSize.height,
-        width: Dimens.imageCardSize.width,
-        padding: EdgeInsets.all(_containerPadding),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(imageAsset),
-            fit: BoxFit.cover,
-          ),
-          borderRadius: BorderRadius.circular(_borderRadius),
+      alignment: Alignment.centerLeft,
+      height: Dimens.imageCardSize.height,
+      width: Dimens.imageCardSize.width,
+      padding: EdgeInsets.all(_containerPadding),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(imageAsset),
+          fit: BoxFit.cover,
         ),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: SizedBox(
-                width: _textWidth,
-                child: Text(
-                  description,
-                  maxLines: _textMaxLines,
-                  style: Styles.imageCardDescriptionText,
-                ),
+        borderRadius: BorderRadius.circular(_borderRadius),
+      ),
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: SizedBox(
+              width: _textWidth,
+              child: Text(
+                description,
+                maxLines: _textMaxLines,
+                style: Styles.imageCardDescriptionText,
               ),
             ),
-            SizedBox(
-              height: _buttonSize.height,
-              width: _buttonSize.width,
-              child: ButtonBaseWidget(
-                  text: buttonText,
-                  assetIcon: ARROW_RIGHT_ICON,
-                  buttonColor: Palette.secondaryButtonBackground,
-                  textColor: Palette.secondaryButtonText,
-                  onPressedFunction: onButtonPressed,
-                  iconBackgroundColor: Palette.primaryButtonBackground,
-                  blurColor: Palette.secondaryButtonBlur),
-            ),
-          ],
-        ));
+          ),
+          SizedBox(
+            height: _buttonSize.height,
+            width: _buttonSize.width,
+            child: ButtonBaseWidget(
+                text: buttonText,
+                assetIcon: ARROW_RIGHT_ICON,
+                buttonColor: Palette.secondaryButtonBackground,
+                textColor: Palette.secondaryButtonText,
+                onPressedFunction: onButtonPressed,
+                iconBackgroundColor: Palette.primaryButtonBackground,
+                blurColor: Palette.secondaryButtonBlur),
+          ),
+        ],
+      ),
+    );
   }
 }
