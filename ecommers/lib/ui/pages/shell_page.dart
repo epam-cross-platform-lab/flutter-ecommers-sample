@@ -1,4 +1,5 @@
 import 'package:ecommers/providers/index.dart';
+import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/bottom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,14 +14,17 @@ class _ShellPageState extends State<ShellPage> {
   Widget build(BuildContext context) {
     final shellProvider = Provider.of<ShellProvider>(context);
 
-    return  Scaffold(
-        body: shellProvider.createBody(),
-        bottomNavigationBar: BottomNavigationWidget(
-          selectedIndex: shellProvider.selectedItemIndex,
-          pages: shellProvider.pages,
-          onTappedFunction: shellProvider.onTappedItem,
-        ),
-      );
-    
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0.0,
+      ),
+      backgroundColor: Palette.pageBackground,
+      body: shellProvider.createBody(),
+      bottomNavigationBar: BottomNavigationWidget(
+        selectedIndex: shellProvider.selectedItemIndex,
+        pages: shellProvider.pages,
+        onTappedFunction: shellProvider.onTappedItem,
+      ),
+    );
   }
 }

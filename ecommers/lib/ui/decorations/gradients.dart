@@ -22,6 +22,9 @@ class Gradients {
   static Gradient get stationaryCategory =>
       _createGradient(Color(0xff9D9E9F), Color(0xff505862));
 
+  static Gradient get categoriesCompact =>
+      _createGradient(Color(0xffffffff), Color(0xffffff));
+
   static LinearGradient _createGradient(Color beginColor, Color endColor) {
     return LinearGradient(
         begin: Alignment.topCenter,

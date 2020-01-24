@@ -36,6 +36,14 @@ class I18n implements WidgetsLocalizations {
   String get ecommers => "ecommers";
   /// "ecommers Home Page"
   String get titleHomePage => "ecommers Home Page";
+  /// "Home page"
+  String get homePageTitle => "Home page";
+  /// "Categories"
+  String get categoriesTitle => "Categories";
+  /// "Latest"
+  String get latetstTitle => "Latest";
+  /// "See All"
+  String get seeAllCategoryTitle => "See All";
 }
 
 class _I18n_en_US extends I18n {

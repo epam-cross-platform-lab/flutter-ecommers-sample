@@ -1,10 +1,8 @@
 import 'package:ecommers/common/categories.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:flutter/material.dart';
 
 import 'category_item_model.dart';
 
-const boxShadowOffset = Offset(0, 8);
 const double labelBottomMargin = 5;
 
 final categoryItems = {
