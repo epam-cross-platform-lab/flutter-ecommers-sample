@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class Palette {
   static Color get pageBackground => Color(0xffF5F6F8);
   static Color get titleText => Color(0xff515C6F);
+  static Color get primaryText => Color(0xff515C6F);
 
   static Color get apparelCategoryShadow => Color(0xffFF6262).withOpacity(0.34);
   static Color get beautyCategoryShadow => Color(0xff62AAFF).withOpacity(0.35);
@@ -35,4 +36,9 @@ class Palette {
 
   static Color get bottomNavigationItemSelected => Color(0xffFF6969);
   static Color get bottomNavigationItemUnselected => Color(0xff515C6F);
+
+  static Color get orderCircleLabel => Colors.white;
+  static Color get orderCount => Color(0xff727C8E);
+  static Color get orderCost => Color(0xffFF6969);
+  static Color get orderSmallLabel => Color(0xffDBDEE2);
 }

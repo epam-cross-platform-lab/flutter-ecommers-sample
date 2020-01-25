@@ -65,4 +65,24 @@ class Styles {
         color: Palette.bottomNavigationItemUnselected,
         fontSize: Dimens.navigationBottomTitleFontSize,
       );
+
+  static TextStyle get orderPrimaryText => TextStyle(
+      color: Palette.primaryText,
+      fontSize: Dimens.orderTextSize,
+      fontWeight: FontWeight.w500);
+      
+  static TextStyle get orderSecondaryText => TextStyle(
+      color: Palette.primaryText,
+      fontSize: Dimens.orderTextSize,
+      fontWeight: FontWeight.w300);
+
+  static TextStyle get orderCostText => TextStyle(
+      color: Palette.orderCost,
+      fontSize: Dimens.orderTextSize,
+      fontWeight: FontWeight.w500);
+  
+    static TextStyle get orderCountText => TextStyle(
+      color: Palette.orderCount,
+      fontSize: Dimens.orderTextSize,
+      fontWeight: FontWeight.w400);
 }

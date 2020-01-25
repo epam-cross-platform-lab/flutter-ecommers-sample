@@ -41,4 +41,10 @@ class Dimens {
   static double get rateFontSize => 9.0;
   static double get rateContainerBorderRadius => 14.0;
   static Size get rateContainerSize => Size(33.0, 16.0);
+
+  static Size get orderWidgetSize => Size(272.0, 102.0);
+  static Size get orderCircleLabelSize => Size(100.0, 100.0);
+  static double get orderTextSize => 15.0;
+  static double get actionForCountIconSize => 12.0;
+  static Size get actionForCountLabelSize => Size(18.0, 18.0);
 }
