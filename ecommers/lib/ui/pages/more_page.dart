@@ -49,30 +49,34 @@ class MorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: Dimens.pagePadding),
-          child: Text(
-            I18n.of(context).morePage,
-            style: Styles.titleText,
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: Dimens.pagePadding),
+            child: Text(
+              I18n.of(context).morePage,
+              style: Styles.titleText,
+            ),
           ),
-        ),
-        SizedBox(height: 35.0),
-        MenuList(
-          margin: menuListMargin,
-          itemList: topMenuList,
-        ),
-        SizedBox(height: 15.0),
-        MenuList(
-          margin: menuListMargin,
-          itemList: bottomMenuList,
-        ),
-        SizedBox(height: 40.0),
-        _buildLogOutButton(context),
-      ],
+          SizedBox(height: 35.0),
+          MenuList(
+            margin: menuListMargin,
+            itemList: topMenuList,
+          ),
+          SizedBox(height: 15.0),
+          MenuList(
+            margin: menuListMargin,
+            itemList: bottomMenuList,
+          ),
+          SizedBox(height: 40.0),
+          _buildLogOutButton(context),
+          SizedBox(height: 30.0),
+        ],
+      ),
     );
   }
 
