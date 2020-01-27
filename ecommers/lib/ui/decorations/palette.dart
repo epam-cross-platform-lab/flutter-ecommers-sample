@@ -35,4 +35,16 @@ class Palette {
 
   static Color get bottomNavigationItemSelected => Color(0xffFF6969);
   static Color get bottomNavigationItemUnselected => Color(0xff515C6F);
+
+  static Color get menuItemText => Color(0xff515C6F);
+  static Color get menuListBackground => Colors.white;
+  static Color get menuListBlur => Color(0xffE7EAF0);
+
+  static Color get divider => Color(0xff727C8E).withOpacity(0.1);
+
+  static Color get profileText => Color(0xff515C6F);
+  static Color get profileButtonText => Color(0xff727C8E);
+  static Color get profileButtonBorder => Color(0xff727C8E).withOpacity(0.3);
+
+  static Color get logOutButtonText => Color(0xffFF6969);
 }

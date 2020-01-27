@@ -4,5 +4,8 @@
     "homePageTitle": "Home page",
     "categoriesTitle": "Categories",
     "latetstTitle": "Latest",
-    "seeAllCategoryTitle": "See All"
+    "seeAllCategoryTitle": "See All",
+    "editProfile": "EDIT PROFILE",
+    "logOut": "LOG OUT",
+    "morePage": "More"
 }

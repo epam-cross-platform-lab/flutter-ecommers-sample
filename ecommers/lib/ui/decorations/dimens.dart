@@ -41,4 +41,13 @@ class Dimens {
   static double get rateFontSize => 9.0;
   static double get rateContainerBorderRadius => 14.0;
   static Size get rateContainerSize => Size(33.0, 16.0);
+
+  static double get menuItemTextFontSize => 15.0;
+  static double get menuListBorderRadius => 10.0;
+
+  static double get profileNameTextFontSize => 30.0;
+  static double get profileEmailTextFontSize => 15.0;
+  static double get profileButtonTextFontSize => 12.0;
+
+  static double get logOutTextFontSize => 12.0;
 }
