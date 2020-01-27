@@ -4,5 +4,9 @@
     "homePageTitle": "Home page",
     "categoriesTitle": "Categories",
     "latetstTitle": "Latest",
-    "seeAllCategoryTitle": "See All"
+    "seeAllCategoryTitle": "See All",
+    "cartTitle": "Cart",
+    "totalOrder": "TOTAL",
+    "freeDomesticShipping": "Free Domestic Shipping",
+    "checkoutButton": "CHECKOUT"    
 }

@@ -26,9 +26,8 @@ class OrderWidget extends StatefulWidget {
 }
 
 class _OrderWidgetState extends State<OrderWidget> {
-  static const  _removeIcon = Icons.remove;
-  static const  _addIcon = Icons.add;
-  static const _actionCounntIconPadding = EdgeInsets.all(4.0);
+  static const  _countDecrementIcon = Icons.remove;
+  static const  _countIncrementIcon = Icons.add;
   static const _countRowWidth = 71.0;
 
   @override
@@ -67,7 +66,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                 width: _countRowWidth,
                 child: Row(
                   children: <Widget>[
-                    _createIndexButton(_removeIcon, widget.countDecrementFunction),
+                    _createOrderActionButton(_countDecrementIcon, widget.countDecrementFunction),
                     Expanded(
                       child: Align(
                         alignment: Alignment.center,
@@ -77,7 +76,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                         ),
                       ),
                     ),
-                    _createIndexButton(_addIcon, widget.countIncrementFunction),
+                    _createOrderActionButton(_countIncrementIcon, widget.countIncrementFunction),
                   ],
                 ),
               ),
@@ -106,7 +105,7 @@ class _OrderWidgetState extends State<OrderWidget> {
     );
   }
 
-  _createIndexButton(IconData iconData, Function onPressedFunction) {
+  _createOrderActionButton(IconData iconData, Function onPressedFunction) {
     return Container(
       width: Dimens.actionForCountLabelSize.width,
       height: Dimens.actionForCountLabelSize.height,
@@ -116,13 +115,12 @@ class _OrderWidgetState extends State<OrderWidget> {
         child: Center(
           child: Icon(
             iconData,
-            color: Palette.orderCount,
+            color: Palette.cartPageSecondaryText,
             size: Dimens.actionForCountIconSize,
           ),
         ),
-        elevation: 0.0,
+        elevation: 1.0,
         fillColor: Palette.orderSmallLabel,
-        padding: _actionCounntIconPadding,
       ),
     );
   }

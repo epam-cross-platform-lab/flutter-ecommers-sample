@@ -38,7 +38,7 @@ class Palette {
   static Color get bottomNavigationItemUnselected => Color(0xff515C6F);
 
   static Color get orderCircleLabel => Colors.white;
-  static Color get orderCount => Color(0xff727C8E);
+  static Color get cartPageSecondaryText => Color(0xff727C8E);
   static Color get orderCost => Color(0xffFF6969);
   static Color get orderSmallLabel => Color(0xffDBDEE2);
 }

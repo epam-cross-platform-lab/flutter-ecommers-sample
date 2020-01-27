@@ -47,4 +47,8 @@ class Dimens {
   static double get orderTextSize => 15.0;
   static double get actionForCountIconSize => 12.0;
   static Size get actionForCountLabelSize => Size(18.0, 18.0);
+  static double get totalOrderTextSize => 10.0;
+  static double get totalOrderCostTextSize => 20.0;
+  static double get freeDomesticTextSize => 12.0;
+
 }

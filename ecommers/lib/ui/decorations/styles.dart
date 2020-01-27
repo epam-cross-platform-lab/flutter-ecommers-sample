@@ -82,7 +82,22 @@ class Styles {
       fontWeight: FontWeight.w500);
   
     static TextStyle get orderCountText => TextStyle(
-      color: Palette.orderCount,
+      color: Palette.cartPageSecondaryText,
       fontSize: Dimens.orderTextSize,
+      fontWeight: FontWeight.w400);
+
+    static TextStyle get totalOrderText => TextStyle(
+      color: Palette.primaryText,
+      fontSize: Dimens.totalOrderTextSize,
+      fontWeight: FontWeight.w500);
+
+    static TextStyle get totalOrderCostText => TextStyle(
+      color: Palette.primaryText,
+      fontSize: Dimens.totalOrderCostTextSize,
+      fontWeight: FontWeight.w700);
+
+    static TextStyle get freeDomesticText => TextStyle(
+      color: Palette.cartPageSecondaryText,
+      fontSize: Dimens.freeDomesticTextSize,
       fontWeight: FontWeight.w400);
 }
