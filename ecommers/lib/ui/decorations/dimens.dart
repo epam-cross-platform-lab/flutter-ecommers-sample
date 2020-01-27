@@ -25,9 +25,9 @@ class Dimens {
   
   static double get titleTextFontSize => 30.0;
 
-  static Size get productItemWideSize => Size(160, 218); 
-  static Size get productItemNormalSize => Size(101, 135); 
-  static Size get productItemSmallSize => Size(185, 59);
+  static Size get productItemWideSize => Size(160.0, 218.0); 
+  static Size get productItemNormalSize => Size(101.0, 135.0); 
+  static Size get productItemSmallSize => Size(185.0, 59.0);
 
   static double get productItemBorderRadius => 10.0;
 
@@ -51,4 +51,12 @@ class Dimens {
   static double get totalOrderCostTextSize => 20.0;
   static double get freeDomesticTextSize => 12.0;
 
+  static double get menuItemTextFontSize => 15.0;
+  static double get menuListBorderRadius => 10.0;
+
+  static double get profileNameTextFontSize => 30.0;
+  static double get profileEmailTextFontSize => 15.0;
+  static double get profileButtonTextFontSize => 12.0;
+
+  static double get logOutTextFontSize => 12.0;
 }

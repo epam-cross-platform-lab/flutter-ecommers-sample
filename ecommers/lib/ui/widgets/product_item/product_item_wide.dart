@@ -24,35 +24,30 @@ class ProductItemWide extends ProductItemBase {
 
   @override
   Widget buildProductItem() {
-    return Stack(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        Align(
-          alignment: Alignment.topCenter,
-          child: Image.asset(assetImagePath),
+        Expanded(
+          child: Center(
+            child: Image.asset(assetImagePath),
+          ),
         ),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        Text(
+          title,
+          maxLines: Dimens.defaultTextMaxLines,
+          style: Styles.productItemWideTitleText,
+        ),
+        Row(
           children: <Widget>[
-            Text(
-              title,
-              maxLines: Dimens.defaultTextMaxLines,
-              style: Styles.productItemWideTitleText,
+            Expanded(
+              child: Text(
+                Formatter.getCost(cost),
+                style: Styles.productItemWideCostText,
+              ),
             ),
-            Stack(
-              children: <Widget>[
-                Text(
-                  Formatter.getCost(cost),
-                  style: Styles.productItemWideCostText,
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: RateWidget(
-                    rate: rate,
-                  ),
-                ),
-              ],
-            )
+            RateWidget(
+              rate: rate,
+            ),
           ],
         )
       ],

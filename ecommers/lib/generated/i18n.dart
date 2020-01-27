@@ -52,6 +52,12 @@ class I18n implements WidgetsLocalizations {
   String get freeDomesticShipping => "Free Domestic Shipping";
   /// "CHECKOUT"
   String get checkoutButton => "CHECKOUT";
+  /// "EDIT PROFILE"
+  String get editProfile => "EDIT PROFILE";
+  /// "LOG OUT"
+  String get logOut => "LOG OUT";
+  /// "More"
+  String get morePage => "More";
 }
 
 class _I18n_en_US extends I18n {

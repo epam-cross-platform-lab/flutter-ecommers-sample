@@ -37,10 +37,9 @@ class ImageCard extends StatelessWidget {
         ),
         borderRadius: BorderRadius.circular(_borderRadius),
       ),
-      child: Stack(
+      child: Column(
         children: <Widget>[
-          Align(
-            alignment: Alignment.topLeft,
+          Expanded(
             child: SizedBox(
               width: _textWidth,
               child: Text(
@@ -50,20 +49,17 @@ class ImageCard extends StatelessWidget {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: SizedBox(
-              height: _buttonSize.height,
-              width: _buttonSize.width,
-              child: ButtonBaseWidget(
-                  text: buttonText,
-                  assetIcon: ARROW_RIGHT_ICON,
-                  buttonColor: Palette.secondaryButtonBackground,
-                  textColor: Palette.secondaryButtonText,
-                  onPressedFunction: onButtonPressed,
-                  iconBackgroundColor: Palette.primaryButtonBackground,
-                  blurColor: Palette.secondaryButtonBlur),
-            ),
+          SizedBox(
+            height: _buttonSize.height,
+            width: _buttonSize.width,
+            child: ButtonBaseWidget(
+                text: buttonText,
+                assetIcon: ARROW_RIGHT_ICON,
+                buttonColor: Palette.secondaryButtonBackground,
+                textColor: Palette.secondaryButtonText,
+                onPressedFunction: onButtonPressed,
+                iconBackgroundColor: Palette.primaryButtonBackground,
+                blurColor: Palette.secondaryButtonBlur),
           ),
         ],
       ),
