@@ -44,6 +44,12 @@ class I18n implements WidgetsLocalizations {
   String get latetstTitle => "Latest";
   /// "See All"
   String get seeAllCategoryTitle => "See All";
+  /// "EDIT PROFILE"
+  String get editProfile => "EDIT PROFILE";
+  /// "LOG OUT"
+  String get logOut => "LOG OUT";
+  /// "More"
+  String get morePage => "More";
 }
 
 class _I18n_en_US extends I18n {

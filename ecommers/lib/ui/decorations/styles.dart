@@ -65,4 +65,40 @@ class Styles {
         color: Palette.bottomNavigationItemUnselected,
         fontSize: Dimens.navigationBottomTitleFontSize,
       );
+
+  static TextStyle get menuItemText => TextStyle(
+        color: Palette.menuItemText,
+        fontSize: Dimens.menuItemTextFontSize,
+        fontWeight: FontWeight.w400,
+      );
+
+  static TextStyle get menuItemSubText => TextStyle(
+        color: Palette.menuItemText,
+        fontSize: Dimens.menuItemTextFontSize,
+        fontWeight: FontWeight.w300,
+      );
+
+  static TextStyle get profileNameText => TextStyle(
+        color: Palette.profileText,
+        fontSize: Dimens.profileNameTextFontSize,
+        fontWeight: FontWeight.bold,
+      );
+
+  static TextStyle get profileEmailText => TextStyle(
+        color: Palette.profileText,
+        fontSize: Dimens.profileEmailTextFontSize,
+        fontWeight: FontWeight.w500,
+      );
+
+  static TextStyle get profileButtonText => TextStyle(
+        color: Palette.profileButtonText,
+        fontSize: Dimens.profileButtonTextFontSize,
+        fontWeight: FontWeight.bold,
+      );
+
+  static TextStyle get logOutButtonText => TextStyle(
+        color: Palette.logOutButtonText,
+        fontSize: Dimens.logOutTextFontSize,
+        fontWeight: FontWeight.w500
+      );
 }
