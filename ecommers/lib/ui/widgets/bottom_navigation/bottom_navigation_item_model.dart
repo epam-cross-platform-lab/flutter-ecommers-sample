@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BottomNavigationItemModel {
-  Icon icon;
-  String title;
+  final IconData icon;
+  final String title;
 
-  BottomNavigationItemModel({this.icon, this.title});
+  BottomNavigationItemModel({
+    @required this.icon,
+    @required this.title,
+  });
 }

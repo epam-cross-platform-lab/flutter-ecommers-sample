@@ -32,9 +32,12 @@ class _CartPageState extends State<CartPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Text(
-          I18n.of(context).cartTitle,
-          style: Styles.titleText,
+        Padding(
+          padding: EdgeInsets.only(left: 20),
+          child: Text(
+            I18n.of(context).cartTitle,
+            style: Styles.titleText,
+          ),
         ),
         SizedBox(height: 29),
         Expanded(

@@ -64,6 +64,7 @@ class Styles {
   static TextStyle get bottomnNavigationItemTitle => TextStyle(
         color: Palette.bottomNavigationItemUnselected,
         fontSize: Dimens.navigationBottomTitleFontSize,
+        fontWeight: FontWeight.w400
       );
 
   static TextStyle get orderPrimaryText => TextStyle(
@@ -142,5 +143,11 @@ class Styles {
         color: Palette.logOutButtonText,
         fontSize: Dimens.logOutTextFontSize,
         fontWeight: FontWeight.w500,
+      );
+
+    static TextStyle get badgeValueText => TextStyle(
+        color: Palette.badgeValue,
+        fontSize: Dimens.badgeValueFontSize,
+        fontWeight: FontWeight.w700,
       );
 }

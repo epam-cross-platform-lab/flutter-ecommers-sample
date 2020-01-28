@@ -13,7 +13,7 @@ class Dimens {
   static double get categoryItemWidth => 74.0;
 
   static double get navigationBottomTitleFontSize => 11.0;
-  static double get navigationBottomIconSize => 18.0;
+  static double get navigationBottomIconSize => 24.0;
 
   static double get buttonTextFontSize => 12.0;
   static double get buttonBorderRadius => 23.0;
@@ -59,4 +59,9 @@ class Dimens {
   static double get profileButtonTextFontSize => 12.0;
 
   static double get logOutTextFontSize => 12.0;
+
+  static double get badgeBlurRadius => 6.0;
+  static Offset get badgeBlurOffset => Offset(0.0, 4.0);
+  static double get badgeValueFontSize => 10.0;
+  static double get badgeBorderRadius => 7.0;
 }

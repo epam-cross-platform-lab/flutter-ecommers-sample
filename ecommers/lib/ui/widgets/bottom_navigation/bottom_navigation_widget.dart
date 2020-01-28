@@ -1,5 +1,6 @@
 import 'package:ecommers/common/pages.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/widgets/bottom_navigation/buttom_bar_item_icon.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/consts.dart';
 import 'package:flutter/material.dart';
 
@@ -7,11 +8,14 @@ class BottomNavigationWidget extends StatefulWidget {
   final Iterable<Pages> pages;
   final int selectedIndex;
   final Function(int) onTappedFunction;
+  final int orderCount;
 
-  BottomNavigationWidget(
-      {@required this.pages,
-      @required this.selectedIndex,
-      @required this.onTappedFunction});
+  BottomNavigationWidget({
+    @required this.pages,
+    @required this.selectedIndex,
+    @required this.onTappedFunction,
+    this.orderCount = 0,
+  });
 
   @override
   _BottomNavigationWidgetState createState() => _BottomNavigationWidgetState();
@@ -28,7 +32,8 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
       selectedLabelStyle: Styles.bottomnNavigationItemTitle,
       unselectedLabelStyle: Styles.bottomnNavigationItemTitle,
       iconSize: Dimens.navigationBottomIconSize,
-      showUnselectedLabels: true,  
+      showUnselectedLabels: true,
+      type: BottomNavigationBarType.fixed,
       onTap: widget.onTappedFunction,
     );
   }
@@ -37,10 +42,12 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     return widget.pages
         .map(
           (page) => BottomNavigationBarItem(
-            icon: bottomNavigationItems[page].icon,
-            title: Text(
-              bottomNavigationItems[page].title,
+            icon: ButtomBarItemIcon(
+              iconData: bottomNavigationItems[page].icon,
+              hasBadge: page == Pages.cart,
+              badgeValue: page == Pages.cart ? widget.orderCount : 0,
             ),
+            title: Text(bottomNavigationItems[page].title),
           ),
         )
         .toList();

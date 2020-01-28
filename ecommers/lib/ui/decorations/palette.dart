@@ -52,4 +52,8 @@ class Palette {
   static Color get profileButtonBorder => Color(0xff727C8E).withOpacity(0.3);
 
   static Color get logOutButtonText => Color(0xffFF6969);
+
+  static Color get badgeBlur => Color(0xffFF6969).withOpacity(0.4);
+  static Color get badge => Color(0xffFF6969);
+  static Color get badgeValue => Colors.white;
 }
