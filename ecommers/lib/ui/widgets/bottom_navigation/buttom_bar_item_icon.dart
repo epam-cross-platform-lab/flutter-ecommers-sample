@@ -6,7 +6,7 @@ class ButtomBarItemIcon extends StatelessWidget {
   final bool hasBadge;
   final int badgeValue;
 
-  static const _badgeWithIcon = 41.0;
+  static const _badgeWithIconWidth = 41.0;
 
   ButtomBarItemIcon({
     @required this.iconData,
@@ -19,7 +19,7 @@ class ButtomBarItemIcon extends StatelessWidget {
     if (hasBadge && badgeValue != 0) {
       return Container(
         alignment: Alignment.center,
-        width: _badgeWithIcon,
+        width: _badgeWithIconWidth,
         child: Row(
           children: <Widget>[
             Badge(value: badgeValue),

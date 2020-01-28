@@ -37,7 +37,7 @@ class _OrderWidgetState extends State<OrderWidget> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          _createCircleLabel(),
+          _buildCircleLabel(),
           SizedBox(
             width: 20.0,
           ),
@@ -66,7 +66,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                 width: _countRowWidth,
                 child: Row(
                   children: <Widget>[
-                    _createOrderActionButton(_countDecrementIcon, widget.countDecrementFunction),
+                    _buildOrderActionButton(_countDecrementIcon, widget.countDecrementFunction),
                     Expanded(
                       child: Align(
                         alignment: Alignment.center,
@@ -76,7 +76,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                         ),
                       ),
                     ),
-                    _createOrderActionButton(_countIncrementIcon, widget.countIncrementFunction),
+                    _buildOrderActionButton(_countIncrementIcon, widget.countIncrementFunction),
                   ],
                 ),
               ),
@@ -87,7 +87,7 @@ class _OrderWidgetState extends State<OrderWidget> {
     );
   }
 
-  _createCircleLabel() {
+  _buildCircleLabel() {
     return Container(
       alignment: Alignment.center,
       height: Dimens.orderCircleLabelSize.height,
@@ -105,7 +105,7 @@ class _OrderWidgetState extends State<OrderWidget> {
     );
   }
 
-  _createOrderActionButton(IconData iconData, Function onPressedFunction) {
+  _buildOrderActionButton(IconData iconData, Function onPressedFunction) {
     return Container(
       width: Dimens.actionForCountLabelSize.width,
       height: Dimens.actionForCountLabelSize.height,
