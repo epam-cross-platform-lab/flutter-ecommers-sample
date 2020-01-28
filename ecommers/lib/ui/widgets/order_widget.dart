@@ -66,7 +66,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                 width: _countRowWidth,
                 child: Row(
                   children: <Widget>[
-                    _buildOrderActionButton(_countDecrementIcon, widget.countDecrementFunction),
+                    _buildCountActionButton(_countDecrementIcon, widget.countDecrementFunction),
                     Expanded(
                       child: Align(
                         alignment: Alignment.center,
@@ -76,7 +76,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                         ),
                       ),
                     ),
-                    _buildOrderActionButton(_countIncrementIcon, widget.countIncrementFunction),
+                    _buildCountActionButton(_countIncrementIcon, widget.countIncrementFunction),
                   ],
                 ),
               ),
@@ -105,7 +105,7 @@ class _OrderWidgetState extends State<OrderWidget> {
     );
   }
 
-  _buildOrderActionButton(IconData iconData, Function onPressedFunction) {
+  _buildCountActionButton(IconData iconData, Function onPressedFunction) {
     return Container(
       width: Dimens.actionForCountLabelSize.width,
       height: Dimens.actionForCountLabelSize.height,
