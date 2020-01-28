@@ -5,6 +5,10 @@
     "categoriesTitle": "Categories",
     "latetstTitle": "Latest",
     "seeAllCategoryTitle": "See All",
+    "cartTitle": "Cart",
+    "totalOrder": "TOTAL",
+    "freeDomesticShipping": "Free Domestic Shipping",
+    "checkoutButton": "CHECKOUT",
     "editProfile": "EDIT PROFILE",
     "logOut": "LOG OUT",
     "morePage": "More"

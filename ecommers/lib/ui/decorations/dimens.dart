@@ -13,7 +13,7 @@ class Dimens {
   static double get categoryItemWidth => 74.0;
 
   static double get navigationBottomTitleFontSize => 11.0;
-  static double get navigationBottomIconSize => 18.0;
+  static double get navigationBottomIconSize => 24.0;
 
   static double get buttonTextFontSize => 12.0;
   static double get buttonBorderRadius => 23.0;
@@ -42,6 +42,15 @@ class Dimens {
   static double get rateContainerBorderRadius => 14.0;
   static Size get rateContainerSize => Size(33.0, 16.0);
 
+  static Size get orderWidgetSize => Size(272.0, 102.0);
+  static Size get orderCircleLabelSize => Size(100.0, 100.0);
+  static double get orderTextSize => 15.0;
+  static double get actionForCountIconSize => 12.0;
+  static Size get actionForCountLabelSize => Size(18.0, 18.0);
+  static double get totalOrderTextSize => 10.0;
+  static double get totalOrderCostTextSize => 20.0;
+  static double get freeDomesticTextSize => 12.0;
+
   static double get menuItemTextFontSize => 15.0;
   static double get menuListBorderRadius => 10.0;
 
@@ -50,4 +59,9 @@ class Dimens {
   static double get profileButtonTextFontSize => 12.0;
 
   static double get logOutTextFontSize => 12.0;
+
+  static double get badgeBlurRadius => 6.0;
+  static Offset get badgeBlurOffset => Offset(0.0, 4.0);
+  static double get badgeValueFontSize => 10.0;
+  static double get badgeBorderRadius => 7.0;
 }

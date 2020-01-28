@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 
 class PrimaryButtonWidget extends ButtonBaseWidget {
   final String text;
-  final String assetIcon;
   final Function onPressedFunction;
+  final String assetIconPath;
 
   PrimaryButtonWidget({
     @required this.text,
-    @required this.assetIcon,
     @required this.onPressedFunction,
+    this.assetIconPath = ARROW_RIGHT_ICON,
   }) : super(
           text: text,
-          assetIcon: assetIcon,
+          assetIcon: assetIconPath,
           buttonColor: Palette.primaryButtonBackground,
           textColor: Palette.primaryButtonText,
           onPressedFunction: onPressedFunction,

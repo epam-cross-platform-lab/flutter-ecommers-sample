@@ -64,6 +64,49 @@ class Styles {
   static TextStyle get bottomnNavigationItemTitle => TextStyle(
         color: Palette.bottomNavigationItemUnselected,
         fontSize: Dimens.navigationBottomTitleFontSize,
+        fontWeight: FontWeight.w400
+      );
+
+  static TextStyle get orderPrimaryText => TextStyle(
+        color: Palette.primaryText,
+        fontSize: Dimens.orderTextSize,
+        fontWeight: FontWeight.w500,
+      );
+
+  static TextStyle get orderSecondaryText => TextStyle(
+        color: Palette.primaryText,
+        fontSize: Dimens.orderTextSize,
+        fontWeight: FontWeight.w300,
+      );
+
+  static TextStyle get orderCostText => TextStyle(
+        color: Palette.orderCost,
+        fontSize: Dimens.orderTextSize,
+        fontWeight: FontWeight.w500,
+      );
+
+  static TextStyle get orderCountText => TextStyle(
+        color: Palette.cartPageSecondaryText,
+        fontSize: Dimens.orderTextSize,
+        fontWeight: FontWeight.w400,
+      );
+
+  static TextStyle get totalOrderText => TextStyle(
+        color: Palette.primaryText,
+        fontSize: Dimens.totalOrderTextSize,
+        fontWeight: FontWeight.w500,
+      );
+
+  static TextStyle get totalOrderCostText => TextStyle(
+        color: Palette.primaryText,
+        fontSize: Dimens.totalOrderCostTextSize,
+        fontWeight: FontWeight.w700,
+      );
+
+  static TextStyle get freeDomesticText => TextStyle(
+        color: Palette.cartPageSecondaryText,
+        fontSize: Dimens.freeDomesticTextSize,
+        fontWeight: FontWeight.w400,
       );
 
   static TextStyle get menuItemText => TextStyle(
@@ -99,6 +142,12 @@ class Styles {
   static TextStyle get logOutButtonText => TextStyle(
         color: Palette.logOutButtonText,
         fontSize: Dimens.logOutTextFontSize,
-        fontWeight: FontWeight.w500
+        fontWeight: FontWeight.w500,
+      );
+
+    static TextStyle get badgeValueText => TextStyle(
+        color: Palette.badgeValue,
+        fontSize: Dimens.badgeValueFontSize,
+        fontWeight: FontWeight.w700,
       );
 }

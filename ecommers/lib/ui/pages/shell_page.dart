@@ -24,6 +24,7 @@ class _ShellPageState extends State<ShellPage> {
         selectedIndex: shellProvider.selectedItemIndex,
         pages: shellProvider.pages,
         onTappedFunction: shellProvider.onTappedItem,
+        orderCount: 3,
       ),
     );
   }

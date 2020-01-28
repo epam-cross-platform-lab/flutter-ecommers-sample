@@ -44,6 +44,14 @@ class I18n implements WidgetsLocalizations {
   String get latetstTitle => "Latest";
   /// "See All"
   String get seeAllCategoryTitle => "See All";
+  /// "Cart"
+  String get cartTitle => "Cart";
+  /// "TOTAL"
+  String get totalOrder => "TOTAL";
+  /// "Free Domestic Shipping"
+  String get freeDomesticShipping => "Free Domestic Shipping";
+  /// "CHECKOUT"
+  String get checkoutButton => "CHECKOUT";
   /// "EDIT PROFILE"
   String get editProfile => "EDIT PROFILE";
   /// "LOG OUT"
