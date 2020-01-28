@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CategoryItemModel {
-  Gradient gradient;
-  Color shadowColor;
-  String imagePath;
-  String title;
+  final Gradient gradient;
+  final Color shadowColor;
+  final String imagePath;
+  final String title;
 
   CategoryItemModel(
       {this.gradient,

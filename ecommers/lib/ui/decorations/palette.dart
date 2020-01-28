@@ -41,6 +41,7 @@ class Palette {
   static Color get cartPageSecondaryText => Color(0xff727C8E);
   static Color get orderCost => Color(0xffFF6969);
   static Color get orderSmallLabel => Color(0xffDBDEE2);
+  
   static Color get menuItemText => Color(0xff515C6F);
   static Color get menuListBackground => Colors.white;
   static Color get menuListBlur => Color(0xffE7EAF0);

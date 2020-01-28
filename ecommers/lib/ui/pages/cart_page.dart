@@ -29,6 +29,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     _context = context;
+    
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[

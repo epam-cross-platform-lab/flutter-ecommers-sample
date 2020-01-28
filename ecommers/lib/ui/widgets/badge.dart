@@ -25,18 +25,11 @@ class Badge extends StatelessWidget {
               offset: Dimens.badgeBlurOffset),
         ],
       ),
-      constraints: BoxConstraints(
-        minWidth: _badgeSize.width,
-        minHeight: _badgeSize.height,
-      ),
-      child: Padding(
-        padding: EdgeInsets.all(3.0),
-        child: Center(
-          child: Text(
-            value.toString(),
-            style: Styles.badgeValueText,
-            textAlign: TextAlign.center,
-          ),
+      child: Center(
+        child: Text(
+          value.toString(),
+          style: Styles.badgeValueText,
+          textAlign: TextAlign.center,
         ),
       ),
     );
