@@ -53,7 +53,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: Column(
         children: <Widget>[
           _buildProfileCard(context),
@@ -66,6 +67,7 @@ class ProfilePage extends StatelessWidget {
             margin: _listContainerMargin,
             itemList: _bottomMenuList,
           ),
+          SizedBox(height: 20.0),
         ],
       ),
     );
@@ -89,22 +91,28 @@ class ProfilePage extends StatelessWidget {
             ),
           ),
           SizedBox(width: 20.0),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'Jane Doe', //TODO; get from the provider
-                style: Styles.profileNameText,
-              ),
-              Expanded(
-                child: Text(
-                  'janedoe123@email.com', //TODO; get from the provider
-                  style: Styles.profileEmailText,
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'Jane Doe', //TODO; get from the provider
+                  maxLines: Dimens.defaultTextMaxLines,
+                  overflow: TextOverflow.ellipsis,
+                  style: Styles.profileNameText,
                 ),
-              ),
-              _buildEditProfileButton(context),
-            ],
-          )
+                Expanded(
+                  child: Text(
+                    'janedoe123@email.com', //TODO; get from the provider
+                    maxLines: Dimens.defaultTextMaxLines,
+                    overflow: TextOverflow.ellipsis,
+                    style: Styles.profileEmailText,
+                  ),
+                ),
+                _buildEditProfileButton(context),
+              ],
+            ),
+          ),
         ],
       ),
     );
