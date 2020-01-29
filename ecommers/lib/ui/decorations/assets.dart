@@ -31,3 +31,6 @@ const String SHIRT_IMAGE = 'assets/product_shirt.png';
 const String BACKPACK_IMAGE = 'assets/product_backpack.png';
 const String SCARF_IMAGE = 'assets/product_scarf.png';
 const String GREEN_BACKPACK_IMAGE = 'assets/green_backpack.png';
+
+const String MESSAGES_IMAGE = 'assets/messages.svg';
+const String NOTIFICATIONS_IMAGE = 'assets/notifications.svg';

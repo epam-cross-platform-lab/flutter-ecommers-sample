@@ -2,6 +2,7 @@ import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/models/order_model.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:ecommers/ui/widgets/order_widget.dart';
@@ -29,28 +30,30 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     _context = context;
-    
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.only(left: 20),
-          child: Text(
-            I18n.of(context).cartTitle,
-            style: Styles.titleText,
+
+    return PageBase(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(left: 20),
+            child: Text(
+              I18n.of(context).cartTitle,
+              style: Styles.titleText,
+            ),
           ),
-        ),
-        SizedBox(height: 29),
-        Expanded(
-          child: _buildOrderListView(),
-        ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(
-              _horizontalPagePadding, 34, _horizontalPagePadding, 20.0),
-          child: Divider(color: Palette.cartPageSecondaryText),
-        ),
-        _buildTotalOrderInformationWidget(),
-      ],
+          SizedBox(height: 29),
+          Expanded(
+            child: _buildOrderListView(),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                _horizontalPagePadding, 34, _horizontalPagePadding, 20.0),
+            child: Divider(color: Palette.cartPageSecondaryText),
+          ),
+          _buildTotalOrderInformationWidget(),
+        ],
+      ),
     );
   }
 

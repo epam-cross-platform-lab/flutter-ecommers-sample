@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/category_item/categories_compact_widget.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_normal.dart';
@@ -13,27 +14,30 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        CategoriesCompactWidget(),
-        SizedBox(height: Dimens.pagePadding),
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: Dimens.pagePadding,
+    return PageBase(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          CategoriesCompactWidget(),
+          SizedBox(height: Dimens.pagePadding),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: Dimens.pagePadding,
+            ),
+            child: Text(
+              I18n.of(context).latetstTitle,
+              style: Styles.titleText,
+            ),
           ),
-          child: Text(
-            I18n.of(context).latetstTitle,
-            style: Styles.titleText,
+          SizedBox(height: 9.0),
+          _buildLatestCarousel(),
+          SizedBox(height: 11.0),
+          Expanded(
+            child: _buildLatestGridView(),
           ),
-        ),
-        SizedBox(height: 9.0),
-        _buildLatestCarousel(),
-        SizedBox(height: 11.0),
-        Expanded(
-          child: _buildLatestGridView(),
-        ),
-      ],
+        ],
+      ),
+      appBarBackgroundColor: Palette.homeAppBarBackground,
     );
   }
 

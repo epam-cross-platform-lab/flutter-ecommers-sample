@@ -1,5 +1,6 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,9 +50,8 @@ class MorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
+    return PageBase(
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -77,6 +77,7 @@ class MorePage extends StatelessWidget {
           SizedBox(height: 30.0),
         ],
       ),
+      hasVerticalScrolling: true,
     );
   }
 
