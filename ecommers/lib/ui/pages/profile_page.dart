@@ -1,7 +1,6 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';
 import 'package:ecommers/ui/widgets/menu/menu_item_model.dart';
 import 'package:flutter/cupertino.dart';
@@ -54,8 +53,9 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageBase(
-      body: Column(
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
         children: <Widget>[
           _buildProfileCard(context),
           MenuList(
@@ -70,7 +70,6 @@ class ProfilePage extends StatelessWidget {
           SizedBox(height: 20.0),
         ],
       ),
-      hasVerticalScrolling: true,
     );
   }
 

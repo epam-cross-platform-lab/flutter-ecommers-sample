@@ -25,12 +25,11 @@ const String SHIPPING_ICON = 'assets/shipping.svg';
 const String SUGGEST_ICON = 'assets/suggest.svg';
 const String SUPPORT_ICON = 'assets/support.svg';
 const String MENU_ARROW_ICON = 'assets/menu_arrow.svg';
+const String MESSAGES_ICON = 'assets/messages.svg';
+const String NOTIFICATIONS_ICON = 'assets/notifications.svg';
 
 const String GIRL_IMAGE = 'assets/girl_image.png';
 const String SHIRT_IMAGE = 'assets/product_shirt.png';
 const String BACKPACK_IMAGE = 'assets/product_backpack.png';
 const String SCARF_IMAGE = 'assets/product_scarf.png';
 const String GREEN_BACKPACK_IMAGE = 'assets/green_backpack.png';
-
-const String MESSAGES_IMAGE = 'assets/messages.svg';
-const String NOTIFICATIONS_IMAGE = 'assets/notifications.svg';

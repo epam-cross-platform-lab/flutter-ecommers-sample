@@ -17,13 +17,14 @@ class IconWithBadge extends Badge {
             style: Styles.badgeValueText,
             textAlign: TextAlign.center,
           ),
-          position: badgePosition ?? BadgePosition.bottomLeft(bottom: -4, left: -9),
+          position:
+              badgePosition ?? BadgePosition.bottomLeft(bottom: -4, left: -9),
           shape: BadgeShape.square,
           borderRadius: Dimens.badgeBorderRadius,
           elevation: 1.0,
           badgeColor: Palette.badge,
           animationType: BadgeAnimationType.scale,
           showBadge: badgeValue != 0,
-          padding: EdgeInsets.fromLTRB(5, 2, 5,1 ),
+          padding: EdgeInsets.fromLTRB(5, 2, 5, 1),
         );
 }
