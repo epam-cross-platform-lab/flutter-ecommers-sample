@@ -26,13 +26,13 @@ class _ShellPageState extends State<ShellPage> {
         actions: <Widget>[
           _buildAction(
             imageAssetPath: _messagesImagePath,
-            onIconPressedFuction: () {},
-            badgeValue: 5,
+            onIconPressedFuction: () {}, //TODO get from provider
+            badgeValue: 5, //TODO get from provider
           ),
           _buildAction(
             imageAssetPath: _notificationsImagePath,
-            onIconPressedFuction: () {},
-            badgeValue: 6,
+            onIconPressedFuction: () {}, //TODO get from provider
+            badgeValue: 6, //TODO get from provider
           ),
         ],
       ),
@@ -42,7 +42,7 @@ class _ShellPageState extends State<ShellPage> {
         selectedIndex: shellProvider.selectedItemIndex,
         pages: shellProvider.pages,
         onTappedFunction: shellProvider.onTappedItem,
-        orderCount: 8,
+        orderCount: 3, //TODO get from provider
       ),
     );
   }
@@ -54,7 +54,7 @@ class _ShellPageState extends State<ShellPage> {
   }) {
     return IconButton(
       icon: IconWithBadge(
-        badgeValue: badgeValue, //TODO get from provider
+        badgeValue: badgeValue,
         icon: SvgPicture.asset(imageAssetPath),
       ),
       onPressed: onIconPressedFuction,
