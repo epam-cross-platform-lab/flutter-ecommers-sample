@@ -16,21 +16,18 @@ class _ShellPageState extends State<ShellPage> {
   Widget build(BuildContext context) {
     final shellProvider = Provider.of<ShellProvider>(context);
 
-    const String _notificationsImagePath = NOTIFICATIONS_ICON;
-    const String _messagesImagePath = MESSAGES_ICON;
-
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: shellProvider.appBarColor,
         actions: <Widget>[
           _buildAction(
-            imageAssetPath: _messagesImagePath,
+            imageAssetPath: MESSAGES_ICON,
             onIconPressedFuction: () {}, //TODO get from provider
             badgeValue: 5, //TODO get from provider
           ),
           _buildAction(
-            imageAssetPath: _notificationsImagePath,
+            imageAssetPath: NOTIFICATIONS_ICON,
             onIconPressedFuction: () {}, //TODO get from provider
             badgeValue: 6, //TODO get from provider
           ),
