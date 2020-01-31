@@ -6,7 +6,7 @@ class SearchPage extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[Text("Search")],
+        children: <Widget>[ Text('Search')],
       ),
     );
   }

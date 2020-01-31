@@ -1,4 +1,5 @@
-import 'package:ecommers/ui/widgets/badge.dart';
+import 'package:badges/badges.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
 
 class ButtomBarItemIcon extends StatelessWidget {
@@ -16,15 +17,14 @@ class ButtomBarItemIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (hasBadge && badgeValue != 0) {
+    if (hasBadge) {
       return Container(
         alignment: Alignment.center,
         width: _iconWithBadgeWidth,
-        child: Row(
-          children: <Widget>[
-            Badge(value: badgeValue),
-            Icon(iconData),
-          ],
+        child: IconWithBadge(
+          badgePosition: BadgePosition.bottomLeft(bottom: 4, left: -13),
+          icon: Icon(iconData),
+          badgeValue: badgeValue,
         ),
       );
     }
