@@ -58,6 +58,18 @@ class I18n implements WidgetsLocalizations {
   String get logOut => "LOG OUT";
   /// "More"
   String get morePage => "More";
+  /// "Checkout"
+  String get checkoutTitle => "Checkout";
+  /// "PLACE ORDER"
+  String get placeOrderButton => "PLACE ORDER";
+  /// "Add Prome Code"
+  String get addPromoCode => "Add Prome Code";
+  /// "ITEMS"
+  String get items => "ITEMS";
+  /// "PAYMENT METHOD"
+  String get paymentMethod => "PAYMENT METHOD";
+  /// "SHIPPING ADDRESS"
+  String get shippingAddress => "SHIPPING ADDRESS";
 }
 
 class _I18n_en_US extends I18n {

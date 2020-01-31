@@ -11,5 +11,11 @@
     "checkoutButton": "CHECKOUT",
     "editProfile": "EDIT PROFILE",
     "logOut": "LOG OUT",
-    "morePage": "More"
+    "morePage": "More",
+    "checkoutTitle": "Checkout",
+    "placeOrderButton": "PLACE ORDER",
+    "addPromoCode": "Add Prome Code",
+    "items": "ITEMS",
+    "paymentMethod": "PAYMENT METHOD",
+    "shippingAddress": "SHIPPING ADDRESS"
 }

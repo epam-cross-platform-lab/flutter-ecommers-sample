@@ -59,4 +59,6 @@ class Palette {
   static Color get badgeBlur => Color(0xffFF6969).withOpacity(0.4);
   static Color get badge => Color(0xffFF6969);
   static Color get badgeValue => Colors.white;
+
+  static Color get checkoutTotalOrderBackground => Colors.white;
 }
