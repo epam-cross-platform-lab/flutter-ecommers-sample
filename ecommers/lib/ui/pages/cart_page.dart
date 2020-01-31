@@ -1,6 +1,7 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/models/order_model.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
