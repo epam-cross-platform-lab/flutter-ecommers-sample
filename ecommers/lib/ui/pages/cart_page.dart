@@ -48,7 +48,7 @@ class _CartPageState extends State<CartPage> {
         Padding(
           padding:
               EdgeInsets.fromLTRB(Insets.x5, Insets.x8_5, Insets.x5, Insets.x5),
-          child: Divider(color: Palette.cartPageSecondaryText),
+          child: Divider(color: BrandingColors.secondary),
         ),
         _buildTotalOrderInformationWidget(),
       ],
@@ -75,7 +75,7 @@ class _CartPageState extends State<CartPage> {
         return Padding(
           padding: EdgeInsets.fromLTRB(Insets.x0, Insets.x3, Insets.x0, Insets.x8),
           child: Divider(
-            color: Palette.cartPageSecondaryText,
+            color: BrandingColors.secondary,
             indent: _orderDeviderIndent,
           ),
         );

@@ -27,8 +27,8 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: _createBottomNavigationBarItems(),
-      unselectedItemColor: Palette.bottomNavigationItemUnselected,
-      selectedItemColor: Palette.bottomNavigationItemSelected,
+      unselectedItemColor: BrandingColors.primaryText,
+      selectedItemColor: BrandingColors.primary,
       currentIndex: widget.selectedIndex,
       selectedLabelStyle: Styles.bottomnNavigationItemTitle,
       unselectedLabelStyle: Styles.bottomnNavigationItemTitle,

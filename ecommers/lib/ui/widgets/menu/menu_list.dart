@@ -14,13 +14,13 @@ class MenuList extends StatelessWidget {
     return Container(
       margin: margin,
       decoration: BoxDecoration(
-        color: Palette.menuListBackground,
+        color: BrandingColors.background,
         borderRadius: BorderRadius.circular(Dimens.menuListBorderRadius),
         boxShadow: [
           BoxShadow(
             blurRadius: Dimens.defaultBlurRadius,
             offset: Dimens.defaultBlurOffset,
-            color: Palette.menuListBlur,
+            color: BrandingColors.blur,
           )
         ],
       ),
@@ -38,7 +38,7 @@ class MenuList extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) => Divider(
-          color: Palette.divider,
+          color: BrandingColors.secondary.withOpacity(0.1),
           height: 1.0,
           indent: 57.0,
           endIndent: 17.0,

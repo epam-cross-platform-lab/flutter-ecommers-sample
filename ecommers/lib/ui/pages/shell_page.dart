@@ -18,7 +18,7 @@ class _ShellPageState extends State<ShellPage> {
       appBar: AppBar(
         elevation: 0.0,
       ),
-      backgroundColor: Palette.pageBackground,
+      backgroundColor: BrandingColors.pageBackground,
       body: shellProvider.createBody(),
       bottomNavigationBar: BottomNavigationWidget(
         selectedIndex: shellProvider.selectedItemIndex,

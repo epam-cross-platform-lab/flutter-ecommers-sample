@@ -27,12 +27,12 @@ abstract class ProductItemBase extends StatelessWidget {
       height: size.height,
       width: size.width,
       decoration: BoxDecoration(
-        color: Palette.productItemBackground,
+        color: BrandingColors.background,
         borderRadius: BorderRadius.circular(Dimens.productItemBorderRadius),
         boxShadow: [
           BoxShadow(
             blurRadius: Dimens.defaultBlurRadius,
-            color: Palette.productItemBlur,
+            color: BrandingColors.blur,
             offset: Dimens.defaultBlurOffset,
           ),
         ],

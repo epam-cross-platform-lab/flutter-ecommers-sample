@@ -21,7 +21,7 @@ class RateWidget extends StatelessWidget {
       width: containerSize.width,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: Palette.rateBackground,
+        color: BrandingColors.primary,
         borderRadius: BorderRadius.circular(Dimens.rateContainerBorderRadius),
       ),
       child: Center(

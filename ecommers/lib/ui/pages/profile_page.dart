@@ -124,10 +124,10 @@ class ProfilePage extends StatelessWidget {
       height: _profileCardEditButtonHeight,
       child: OutlineButton(
         borderSide: BorderSide(
-          color: Palette.profileButtonBorder,
+          color: BrandingColors.secondary.withOpacity(0.3),
           width: 1.0,
         ),
-        highlightedBorderColor: Palette.profileButtonBorder,
+        highlightedBorderColor: BrandingColors.secondary.withOpacity(0.3),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Dimens.buttonBorderRadius),
         ),

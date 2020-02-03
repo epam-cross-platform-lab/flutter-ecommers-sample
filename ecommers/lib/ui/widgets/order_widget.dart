@@ -95,7 +95,7 @@ class _OrderWidgetState extends State<OrderWidget> {
       width: Dimens.orderCircleLabelSize.width,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Palette.orderCircleLabel,
+        color: BrandingColors.background,
       ),
       child: Center(
         child: Image.asset(
@@ -116,12 +116,12 @@ class _OrderWidgetState extends State<OrderWidget> {
         child: Center(
           child: Icon(
             iconData,
-            color: Palette.cartPageSecondaryText,
+            color: BrandingColors.secondary,
             size: Dimens.actionForCountIconSize,
           ),
         ),
         elevation: 1.0,
-        fillColor: Palette.orderSmallLabel,
+        fillColor: BrandingColors.backgroundIcon,
       ),
     );
   }
