@@ -22,9 +22,7 @@ class HomePage extends StatelessWidget {
         CategoriesCompactWidget(),
         SizedBox(height: Dimens.pagePadding),
         Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: Dimens.pagePadding,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: Insets.x6),
           child: Text(
             I18n.of(context).latetstTitle,
             style: Styles.titleText,

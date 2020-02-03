@@ -10,7 +10,6 @@ class ImageCard extends StatelessWidget {
   static const int _textMaxLines = 3;
 
   static const double _borderRadius = 10.0;
-  static const double _containerPadding = 26.0;
 
   final String imageAsset;
   final String description;
@@ -30,7 +29,7 @@ class ImageCard extends StatelessWidget {
       alignment: Alignment.centerLeft,
       height: Dimens.imageCardSize.height,
       width: Dimens.imageCardSize.width,
-      padding: EdgeInsets.all(_containerPadding),
+      padding: EdgeInsets.all(Insets.x6_5),
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(imageAsset),

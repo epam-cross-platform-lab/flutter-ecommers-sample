@@ -1,4 +1,5 @@
 class Insets {
+  static const x0 = 0.0;
   static const x0_5 = 2.0;
   static const x1 = 4.0;
   static const x1_5 = 6.0;

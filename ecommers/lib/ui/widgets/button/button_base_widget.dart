@@ -1,5 +1,4 @@
 import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,8 +6,6 @@ import 'package:flutter_svg/svg.dart';
 class ButtonBaseWidget extends StatelessWidget {
   static const double _circleSize = 30.0;
   static const double _iconHeight = 12.0;
-
-  static const EdgeInsets _padding = EdgeInsets.all(8.0);
 
   static const Offset _blurOffset = Offset(0.0, 5.0); //TODO
   static const double _blurRadius = 10.0;
@@ -43,7 +40,7 @@ class ButtonBaseWidget extends StatelessWidget {
         ],
       ),
       child: CupertinoButton(
-        padding: _padding,
+        padding: EdgeInsets.all(Insets.x2),
         borderRadius: BorderRadius.circular(Dimens.buttonBorderRadius),
         color: buttonColor,
         onPressed: onPressedFunction,

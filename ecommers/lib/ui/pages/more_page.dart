@@ -46,7 +46,7 @@ class MorePage extends StatelessWidget {
   ];
 
   static const EdgeInsets menuListMargin =
-      EdgeInsets.symmetric(horizontal: 20.0);
+      EdgeInsets.symmetric(horizontal: Insets.x5);
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +57,7 @@ class MorePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: Dimens.pagePadding),
+            padding: EdgeInsets.symmetric(horizontal: Insets.x6),
             child: Text(
               I18n.of(context).morePage,
               style: Styles.titleText,

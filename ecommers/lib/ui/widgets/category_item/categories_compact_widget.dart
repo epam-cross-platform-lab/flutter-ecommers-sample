@@ -14,7 +14,7 @@ class CategoriesCompactWidget extends StatelessWidget {
     return Container(
       height: _containerHeight,
       padding: EdgeInsets.symmetric(
-        horizontal: Dimens.pagePadding,
+        horizontal: Insets.x6,
       ),
       decoration: BoxDecoration(
         gradient: Gradients.categoriesCompact,

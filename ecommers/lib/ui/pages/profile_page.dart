@@ -47,7 +47,7 @@ class ProfilePage extends StatelessWidget {
   ];
 
   static const EdgeInsets _listContainerMargin =
-      EdgeInsets.symmetric(horizontal: 20.0);
+      EdgeInsets.symmetric(horizontal: Insets.x5);
 
   static const double _profileCardHeight = 100.0;
   static const double _profileCardEditButtonHeight = 30.0;
@@ -77,7 +77,7 @@ class ProfilePage extends StatelessWidget {
   Widget _buildProfileCard(BuildContext context) {
     return Container(
       height: _profileCardHeight,
-      margin: EdgeInsets.all(Dimens.pagePadding),
+      margin: EdgeInsets.all(Insets.x6),
       child: Row(
         children: <Widget>[
           Container(

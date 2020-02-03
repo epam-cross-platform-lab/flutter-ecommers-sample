@@ -16,7 +16,6 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   static const _orderDeviderIndent = 120.0;
   static const _checkoutButtonSize = Size(165.0, 46.0);
-  static const _horizontalPagePadding = 20.0;
 
   BuildContext _context;
   final _orders = List.generate(20, (index) {
@@ -27,15 +26,16 @@ class _CartPageState extends State<CartPage> {
         imagePath: GREEN_BACKPACK_IMAGE,
         count: 1);
   });
+  
   @override
   Widget build(BuildContext context) {
     _context = context;
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(left: 20),
+          padding: EdgeInsets.only(left: Insets.x5),
           child: Text(
             I18n.of(context).cartTitle,
             style: Styles.titleText,
@@ -46,8 +46,8 @@ class _CartPageState extends State<CartPage> {
           child: _buildOrderListView(),
         ),
         Padding(
-          padding: EdgeInsets.fromLTRB(
-              _horizontalPagePadding, 34, _horizontalPagePadding, 20.0),
+          padding:
+              EdgeInsets.fromLTRB(Insets.x5, Insets.x8_5, Insets.x5, Insets.x5),
           child: Divider(color: Palette.cartPageSecondaryText),
         ),
         _buildTotalOrderInformationWidget(),
@@ -58,7 +58,7 @@ class _CartPageState extends State<CartPage> {
   Widget _buildOrderListView() {
     return ListView.separated(
       padding:
-          const EdgeInsets.fromLTRB(25.0, 29.0, _horizontalPagePadding, 0.0),
+          const EdgeInsets.fromLTRB(Insets.x6, Insets.x7, Insets.x5, Insets.x0),
       itemCount: 20,
       itemBuilder: (BuildContext context, int index) {
         return OrderWidget(
@@ -73,7 +73,7 @@ class _CartPageState extends State<CartPage> {
       },
       separatorBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: EdgeInsets.fromLTRB(0.0, 12, 0.0, 32.0),
+          padding: EdgeInsets.fromLTRB(Insets.x0, Insets.x3, Insets.x0, Insets.x8),
           child: Divider(
             color: Palette.cartPageSecondaryText,
             indent: _orderDeviderIndent,
@@ -89,7 +89,7 @@ class _CartPageState extends State<CartPage> {
         (totalCost, nextOrder) =>
             (totalCost + nextOrder.count * nextOrder.cost));
     return Container(
-      padding: EdgeInsets.fromLTRB(25.0, 0.0, _horizontalPagePadding, 15.0),
+      padding: EdgeInsets.fromLTRB(Insets.x6, Insets.x0, Insets.x5, Insets.x4),
       width: Dimens.orderWidgetSize.width,
       child: Row(
         mainAxisSize: MainAxisSize.min,

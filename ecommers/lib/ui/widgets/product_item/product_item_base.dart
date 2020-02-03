@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 
 abstract class ProductItemBase extends StatelessWidget {
   @protected
-  static const double padding = 10.0;
-
   final String assetImagePath;
   final String title;
   final double cost;
@@ -23,7 +21,7 @@ abstract class ProductItemBase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(padding),
+      padding: const EdgeInsets.all(Insets.x2_5),
       height: size.height,
       width: size.width,
       decoration: BoxDecoration(
