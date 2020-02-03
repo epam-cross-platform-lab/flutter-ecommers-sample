@@ -9,6 +9,8 @@ class CategoriesCompactWidget extends StatelessWidget {
   static const _containerHeight = 134.0;
   final i18n = I18n.delegate;
 
+  static const categoryItemSize = Size(74.0, 89.0);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +42,7 @@ class CategoriesCompactWidget extends StatelessWidget {
     var spacing = _calculateItemSpacing(context, itemCount);
 
     return SizedBox(
-      height: Dimens.categoryItemSize.height,
+      height: categoryItemSize.height,
       child: ListView.separated(
         itemCount: itemCount,
         separatorBuilder: (BuildContext context, int index) => SizedBox(
@@ -72,7 +74,7 @@ class CategoriesCompactWidget extends StatelessWidget {
     var categoriesListWidth =
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
-    var itemCount = categoriesListWidth ~/ Dimens.categoryItemSize.width;
+    var itemCount = categoriesListWidth ~/ categoryItemSize.width;
 
     itemCount = itemCount > Categories.values.length
         ? Categories.values.length
@@ -86,7 +88,7 @@ class CategoriesCompactWidget extends StatelessWidget {
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
     var calculatedListSpacing =
-        (categoriesListWidth % Dimens.categoryItemSize.width) / (itemCount - 1);
+        (categoriesListWidth % categoryItemSize.width) / (itemCount - 1);
 
     return calculatedListSpacing;
   }

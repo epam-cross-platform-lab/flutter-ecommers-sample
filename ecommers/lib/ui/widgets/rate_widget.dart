@@ -7,6 +7,8 @@ class RateWidget extends StatelessWidget {
   final Size size;
   final double rate;
 
+  static const rateContainerSize = Size(33.0, 16.0); 
+
   const RateWidget({
     @required this.rate,
     this.size,
@@ -14,7 +16,7 @@ class RateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var containerSize = size ?? Dimens.rateContainerSize;
+    var containerSize = size ?? rateContainerSize;
 
     return Container(
       height: containerSize.height,

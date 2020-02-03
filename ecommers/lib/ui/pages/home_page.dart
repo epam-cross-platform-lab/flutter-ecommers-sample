@@ -13,6 +13,8 @@ class HomePage extends StatelessWidget {
   static const int _latestGridViewAxisCount = 3;
   static const double _latestGridViewAxisSpacing = 12.0;
   static const double _latestCarouselViewportFraction = 0.9;
+  static const imageCardSize = Size(325.0, 184.0);
+  static const productItemNormalSize = Size(101.0, 135.0);
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildLatestCarousel() {
     return CarouselSlider(
-      height: Dimens.imageCardSize.height,
+      height: imageCardSize.height,
       viewportFraction: _latestCarouselViewportFraction,
       items: List.generate(
         3,
@@ -83,7 +85,7 @@ class HomePage extends StatelessWidget {
 
     var gridItemHorizontalPadding = (pageWidth -
             2 * Dimens.pagePadding -
-            _latestGridViewAxisCount * Dimens.productItemNormalSize.width) /
+            _latestGridViewAxisCount * productItemNormalSize.width) /
         (2 * _latestGridViewAxisCount);
 
     return Dimens.pagePadding - gridItemHorizontalPadding;

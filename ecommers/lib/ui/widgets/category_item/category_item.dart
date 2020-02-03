@@ -12,6 +12,9 @@ class CategoryItem extends StatelessWidget {
   final String imagePath;
   final String title;
 
+  static const categoryItemSize = Size(74.0, 89.0);
+  static const categoryLabelSize = 65.0;
+
   CategoryItem({
     @required this.shadowColor,
     @required this.imagePath,
@@ -34,7 +37,7 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Dimens.categoryItemSize.width,
+      width: categoryItemSize.width,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -54,8 +57,8 @@ class CategoryItem extends StatelessWidget {
   _buildGradientLabel() {
     return Container(
       alignment: Alignment.center,
-      height: Dimens.categoryLabelSize,
-      width: Dimens.categoryLabelSize,
+      height: categoryLabelSize,
+      width: categoryLabelSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: backgroundColor,

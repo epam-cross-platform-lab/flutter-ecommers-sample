@@ -9,6 +9,8 @@ import 'package:ecommers/ui/widgets/order_widget.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatefulWidget {
+  static const orderWidgetSize = Size(272.0, 102.0);
+
   @override
   _CartPageState createState() => _CartPageState();
 }
@@ -90,7 +92,7 @@ class _CartPageState extends State<CartPage> {
             (totalCost + nextOrder.count * nextOrder.cost));
     return Container(
       padding: EdgeInsets.fromLTRB(Insets.x6, Insets.x0, Insets.x5, Insets.x4),
-      width: Dimens.orderWidgetSize.width,
+      width: CartPage.orderWidgetSize.width,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[

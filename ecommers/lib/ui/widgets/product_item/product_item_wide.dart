@@ -11,6 +11,8 @@ class ProductItemWide extends ProductItemBase {
   final double cost;
   final double rate;
 
+  static const productItemWideSize = Size(160.0, 218.0);
+
   ProductItemWide({
     @required this.assetImagePath,
     @required this.title,
@@ -20,7 +22,7 @@ class ProductItemWide extends ProductItemBase {
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
-          size: Dimens.productItemWideSize,
+          size: productItemWideSize,
         );
 
   @override

@@ -10,6 +10,8 @@ class ProductItemSmall extends ProductItemBase {
   final double cost;
   final double rate;
 
+  static const productItemSmallSize = Size(185.0, 59.0);
+
   ProductItemSmall({
     @required this.assetImagePath,
     @required this.title,
@@ -19,7 +21,7 @@ class ProductItemSmall extends ProductItemBase {
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
-          size: Dimens.productItemSmallSize,
+          size: productItemSmallSize,
         );
 
   @override

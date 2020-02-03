@@ -1,4 +1,3 @@
-import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +10,11 @@ class OrderWidget extends StatefulWidget {
   final int count;
   final Function countIncrementFunction;
   final Function countDecrementFunction;
+
+  static const orderWidgetSize = Size(272.0, 102.0);
+  static const orderCircleLabelSize = Size(100.0, 100.0);
+  static const actionForCountLabelSize = Size(18.0, 18.0);
+  static const actionForCountIconSize = 12.0;
 
   OrderWidget({
     @required this.assetImagePath,
@@ -27,14 +31,15 @@ class OrderWidget extends StatefulWidget {
 }
 
 class _OrderWidgetState extends State<OrderWidget> {
-  static const  _countDecrementIcon = Icons.remove;
-  static const  _countIncrementIcon = Icons.add;
+  static const IconData _countDecrementIcon = Icons.remove;
+  static const IconData  _countIncrementIcon = Icons.add;
   static const _countRowWidth = 71.0;
+  
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Dimens.orderWidgetSize.width,
+      width: OrderWidget.orderWidgetSize.width,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -91,8 +96,8 @@ class _OrderWidgetState extends State<OrderWidget> {
   _buildCircleLabel() {
     return Container(
       alignment: Alignment.center,
-      height: Dimens.orderCircleLabelSize.height,
-      width: Dimens.orderCircleLabelSize.width,
+      height: OrderWidget.orderCircleLabelSize.height,
+      width: OrderWidget.orderCircleLabelSize.width,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: BrandingColors.background,
@@ -108,8 +113,8 @@ class _OrderWidgetState extends State<OrderWidget> {
 
   _buildCountActionButton(IconData iconData, Function onPressedFunction) {
     return Container(
-      width: Dimens.actionForCountLabelSize.width,
-      height: Dimens.actionForCountLabelSize.height,
+      width: OrderWidget.actionForCountLabelSize.width,
+      height: OrderWidget.actionForCountLabelSize.height,
       child: RawMaterialButton(
         onPressed: onPressedFunction,
         shape: CircleBorder(),
@@ -117,7 +122,7 @@ class _OrderWidgetState extends State<OrderWidget> {
           child: Icon(
             iconData,
             color: BrandingColors.secondary,
-            size: Dimens.actionForCountIconSize,
+            size: OrderWidget.actionForCountIconSize,
           ),
         ),
         elevation: 1.0,
