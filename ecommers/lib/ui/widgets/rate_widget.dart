@@ -22,7 +22,7 @@ class RateWidget extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: BrandingColors.primary,
-        borderRadius: BorderRadius.circular(Dimens.rateContainerBorderRadius),
+        borderRadius: BorderRadius.circular(Radiuses.big_1x),
       ),
       child: Center(
         child: Row(

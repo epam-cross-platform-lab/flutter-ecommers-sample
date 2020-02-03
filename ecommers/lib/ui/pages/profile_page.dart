@@ -129,7 +129,7 @@ class ProfilePage extends StatelessWidget {
         ),
         highlightedBorderColor: BrandingColors.secondary.withOpacity(0.3),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Dimens.buttonBorderRadius),
+          borderRadius: BorderRadius.circular(Radiuses.big_2x),
         ),
         child: Text(
           I18n.of(context).editProfile,

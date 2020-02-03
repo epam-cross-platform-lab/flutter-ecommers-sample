@@ -1,4 +1,3 @@
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {

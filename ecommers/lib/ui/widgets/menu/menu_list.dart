@@ -15,10 +15,10 @@ class MenuList extends StatelessWidget {
       margin: margin,
       decoration: BoxDecoration(
         color: BrandingColors.background,
-        borderRadius: BorderRadius.circular(Dimens.menuListBorderRadius),
+        borderRadius: BorderRadius.circular(Radiuses.normal),
         boxShadow: [
           BoxShadow(
-            blurRadius: Dimens.defaultBlurRadius,
+            blurRadius: Radiuses.big_1x,
             offset: Dimens.defaultBlurOffset,
             color: BrandingColors.blur,
           )

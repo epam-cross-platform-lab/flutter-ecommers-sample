@@ -62,7 +62,7 @@ class CategoryItem extends StatelessWidget {
         boxShadow: [
           BoxShadow(
               color: shadowColor,
-              blurRadius: Dimens.defaultBlurRadius,
+              blurRadius: Radiuses.big_1x,
               offset: Dimens.defaultBlurOffset),
         ],
         gradient: labelBackgroundGradient,

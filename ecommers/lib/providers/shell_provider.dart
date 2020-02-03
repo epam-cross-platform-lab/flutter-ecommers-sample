@@ -43,9 +43,9 @@ class ShellProvider with ChangeNotifier {
   Color _getAppBarColor() {
     switch (pages[selectedItemIndex]) {
       case Pages.home:
-        return Palette.homeAppBarBackground;
+        return BrandingColors.background;
       default:
-        return Palette.pageBackground;
+        return BrandingColors.pageBackground;
     }
   }
 }
