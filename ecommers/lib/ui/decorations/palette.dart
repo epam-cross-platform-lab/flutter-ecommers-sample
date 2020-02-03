@@ -6,6 +6,8 @@ class Palette {
   static Color get titleText => Color(0xff515C6F);
   static Color get primaryText => Color(0xff515C6F);
 
+  static Color get homeAppBarBackground => Color(0xffffffff);
+
   static Color get apparelCategoryShadow => Color(0xffFF6262).withOpacity(0.34);
   static Color get beautyCategoryShadow => Color(0xff62AAFF).withOpacity(0.35);
   static Color get shoesCategoryShadow => Color(0xff26D555).withOpacity(0.34);

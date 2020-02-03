@@ -1,7 +1,9 @@
 import 'package:ecommers/providers/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/bottom_navigation_widget.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class ShellPage extends StatefulWidget {
@@ -17,15 +19,42 @@ class _ShellPageState extends State<ShellPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
+        backgroundColor: shellProvider.appBarColor,
+        actions: <Widget>[
+          _buildAction(
+            imageAssetPath: MESSAGES_ICON,
+            onIconPressedFuction: () {}, //TODO get from provider
+            badgeValue: 5, //TODO get from provider
+          ),
+          _buildAction(
+            imageAssetPath: NOTIFICATIONS_ICON,
+            onIconPressedFuction: () {}, //TODO get from provider
+            badgeValue: 6, //TODO get from provider
+          ),
+        ],
       ),
       backgroundColor: BrandingColors.pageBackground,
-      body: shellProvider.createBody(),
+      body: shellProvider.body,
       bottomNavigationBar: BottomNavigationWidget(
         selectedIndex: shellProvider.selectedItemIndex,
         pages: shellProvider.pages,
         onTappedFunction: shellProvider.onTappedItem,
-        orderCount: 3,
+        orderCount: 3, //TODO get from provider
       ),
+    );
+  }
+
+  Widget _buildAction({
+    String imageAssetPath,
+    Function onIconPressedFuction,
+    int badgeValue,
+  }) {
+    return IconButton(
+      icon: IconWithBadge(
+        badgeValue: badgeValue,
+        icon: SvgPicture.asset(imageAssetPath),
+      ),
+      onPressed: onIconPressedFuction,
     );
   }
 }

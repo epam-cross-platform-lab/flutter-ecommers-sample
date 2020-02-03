@@ -15,7 +15,7 @@ class Dimens {
   static double get categoryItemWidth => 74.0;
 
   static double get navigationBottomTitleFontSize => 11.0;
-  static double get navigationBottomIconSize => 24.0;
+  static double get navigationBottomIconSize => 26.0;
 
   static double get buttonTextFontSize => 12.0;
   static double get buttonBorderRadius => 23.0;
