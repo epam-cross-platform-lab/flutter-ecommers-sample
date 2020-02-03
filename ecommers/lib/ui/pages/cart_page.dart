@@ -26,7 +26,7 @@ class _CartPageState extends State<CartPage> {
         imagePath: GREEN_BACKPACK_IMAGE,
         count: 1);
   });
-  
+
   @override
   Widget build(BuildContext context) {
     _context = context;
@@ -38,7 +38,7 @@ class _CartPageState extends State<CartPage> {
           padding: EdgeInsets.only(left: Insets.x5),
           child: Text(
             I18n.of(context).cartTitle,
-            style: Styles.titleText,
+            style: Theme.of(context).textTheme.title,
           ),
         ),
         SizedBox(height: 29),
@@ -73,7 +73,8 @@ class _CartPageState extends State<CartPage> {
       },
       separatorBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: EdgeInsets.fromLTRB(Insets.x0, Insets.x3, Insets.x0, Insets.x8),
+          padding:
+              EdgeInsets.fromLTRB(Insets.x0, Insets.x3, Insets.x0, Insets.x8),
           child: Divider(
             color: BrandingColors.secondary,
             indent: _orderDeviderIndent,
@@ -99,17 +100,26 @@ class _CartPageState extends State<CartPage> {
             children: <Widget>[
               Text(
                 I18n.of(_context).totalOrder,
-                style: Styles.totalOrderText,
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle
+                    .copyWith(fontSize: FontSizes.small_1x),
               ),
               SizedBox(height: 7.0),
               Text(
                 Formatter.getCost(totalOrderCost),
-                style: Styles.totalOrderCostText,
+                style: Theme.of(context)
+                    .textTheme
+                    .title
+                    .copyWith(fontSize: 20.0), //TODO: check 20.0
               ),
               SizedBox(height: 4.0),
               Text(
                 I18n.of(_context).freeDomesticShipping,
-                style: Styles.freeDomesticText,
+                style: Theme.of(context)
+                    .textTheme
+                    .subtitle
+                    .copyWith(fontWeight: FontWeight.w400),
               ),
             ],
           ),

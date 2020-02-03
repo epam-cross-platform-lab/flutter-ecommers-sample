@@ -24,7 +24,7 @@ class CategoriesCompactWidget extends StatelessWidget {
         children: <Widget>[
           Text(
             I18n.of(context).categoriesTitle,
-            style: Styles.titleText,
+            style: Theme.of(context).textTheme.title,
           ),
           Align(
             alignment: Alignment.bottomLeft,

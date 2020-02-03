@@ -30,8 +30,14 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
       unselectedItemColor: BrandingColors.primaryText,
       selectedItemColor: BrandingColors.primary,
       currentIndex: widget.selectedIndex,
-      selectedLabelStyle: Styles.bottomnNavigationItemTitle,
-      unselectedLabelStyle: Styles.bottomnNavigationItemTitle,
+      selectedLabelStyle: Theme.of(context)
+          .textTheme
+          .caption
+          .apply(color: BrandingColors.primaryText),
+      unselectedLabelStyle: Theme.of(context)
+          .textTheme
+          .caption
+          .apply(color: BrandingColors.primaryText),
       iconSize: Dimens.navigationBottomIconSize,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,

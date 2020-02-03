@@ -52,6 +52,7 @@ class _ShellPageState extends State<ShellPage> {
     return IconButton(
       icon: IconWithBadge(
         badgeValue: badgeValue,
+        badgeTextStyle: Theme.of(context).textTheme.overline,
         icon: SvgPicture.asset(imageAssetPath),
       ),
       onPressed: onIconPressedFuction,

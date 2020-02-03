@@ -1,5 +1,4 @@
 import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +22,7 @@ class ProductItemSmall extends ProductItemBase {
         );
 
   @override
-  Widget buildProductItem() {
+  Widget buildProductItem(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
@@ -44,11 +43,14 @@ class ProductItemSmall extends ProductItemBase {
                 title,
                 overflow: TextOverflow.ellipsis,
                 maxLines: Dimens.defaultTextMaxLines,
-                style: Styles.productItemSmallTitleText,
+                style: Theme.of(context)
+                    .textTheme
+                    .body1
+                    .copyWith(fontWeight: FontWeight.w400),
               ),
               Text(
                 Formatter.getCost(cost),
-                style: Styles.productItemSmallCostText,
+                style: Theme.of(context).textTheme.body1,
               ),
             ],
           ),

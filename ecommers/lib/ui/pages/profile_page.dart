@@ -77,7 +77,7 @@ class ProfilePage extends StatelessWidget {
   Widget _buildProfileCard(BuildContext context) {
     return Container(
       height: _profileCardHeight,
-      margin: EdgeInsets.all(Insets.x6),
+      margin: const EdgeInsets.all(Insets.x6),
       child: Row(
         children: <Widget>[
           Container(
@@ -100,14 +100,14 @@ class ProfilePage extends StatelessWidget {
                   'Jane Doe', //TODO; get from the provider
                   maxLines: Dimens.defaultTextMaxLines,
                   overflow: TextOverflow.ellipsis,
-                  style: Styles.profileNameText,
+                  style: Theme.of(context).textTheme.title,
                 ),
                 Expanded(
                   child: Text(
                     'janedoe123@email.com', //TODO; get from the provider
                     maxLines: Dimens.defaultTextMaxLines,
                     overflow: TextOverflow.ellipsis,
-                    style: Styles.profileEmailText,
+                    style: Theme.of(context).textTheme.body1,
                   ),
                 ),
                 _buildEditProfileButton(context),
@@ -133,7 +133,7 @@ class ProfilePage extends StatelessWidget {
         ),
         child: Text(
           I18n.of(context).editProfile,
-          style: Styles.profileButtonText,
+          style: Theme.of(context).textTheme.button,
         ),
         onPressed: () {},
       ),

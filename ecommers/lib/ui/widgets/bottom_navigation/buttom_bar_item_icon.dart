@@ -23,6 +23,7 @@ class ButtomBarItemIcon extends StatelessWidget {
         width: _iconWithBadgeWidth,
         child: IconWithBadge(
           badgePosition: BadgePosition.bottomLeft(bottom: 4, left: -13),
+          badgeTextStyle: Theme.of(context).textTheme.overline,
           icon: Icon(iconData),
           badgeValue: badgeValue,
         ),

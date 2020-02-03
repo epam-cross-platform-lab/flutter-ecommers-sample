@@ -52,11 +52,10 @@ class ButtonBaseWidget extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   text,
-                  style: TextStyle(
-                    color: textColor,
-                    fontSize: Dimens.buttonTextFontSize,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .button
+                      .copyWith(color: textColor),
                 ),
               ),
             ),
@@ -65,10 +64,10 @@ class ButtonBaseWidget extends StatelessWidget {
               height: _circleSize,
               width: _circleSize,
               child: SvgPicture.asset(
-                  assetIcon,
-                  height: _iconHeight,
-                  color: buttonColor,
-                ),
+                assetIcon,
+                height: _iconHeight,
+                color: buttonColor,
+              ),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: iconBackgroundColor ?? textColor,

@@ -1,6 +1,5 @@
 import 'package:ecommers/common/categories.dart';
-import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart'; 
 import 'package:ecommers/ui/widgets/category_item/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -44,7 +43,10 @@ class CategoryItem extends StatelessWidget {
           ),
           Text(
             title,
-            style: Styles.categoryItemTitle,
+            style: Theme.of(context)
+                .textTheme
+                .caption
+                .copyWith(fontSize: FontSizes.normal),
           ),
         ],
       ),
