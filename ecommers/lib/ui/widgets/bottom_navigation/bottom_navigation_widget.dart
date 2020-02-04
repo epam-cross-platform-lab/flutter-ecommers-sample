@@ -1,5 +1,4 @@
 import 'package:ecommers/common/pages.dart';
-import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/buttom_bar_item_icon.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/consts.dart';
@@ -32,7 +31,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
       currentIndex: widget.selectedIndex,
       selectedLabelStyle: Theme.of(context).textTheme.caption,
       unselectedLabelStyle: Theme.of(context).textTheme.caption,
-      iconSize: Dimens.navigationBottomIconSize,
+      iconSize: 26.0,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       onTap: widget.onTappedFunction,

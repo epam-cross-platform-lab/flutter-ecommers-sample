@@ -1,14 +1,11 @@
-import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../decorations/dimens/index.dart';
 
 class ButtonBaseWidget extends StatelessWidget {
   static const double _circleSize = 30.0;
   static const double _iconHeight = 12.0;
-
-  static const Offset _blurOffset = Offset(0.0, 5.0); //TODO
-  static const double _blurRadius = 10.0;
 
   final Color buttonColor;
   final Color textColor;
@@ -33,8 +30,8 @@ class ButtonBaseWidget extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            blurRadius: _blurRadius,
-            offset: _blurOffset,
+            blurRadius: Radiuses.normal,
+            offset: Dimens.smallBlurOffset,
             color: blurColor,
           ),
         ],
