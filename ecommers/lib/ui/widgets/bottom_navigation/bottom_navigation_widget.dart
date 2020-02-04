@@ -39,7 +39,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
     );
   }
 
-  _createBottomNavigationBarItems() {
+  List<BottomNavigationBarItem> _createBottomNavigationBarItems() {
     return widget.pages
         .map(
           (page) => BottomNavigationBarItem(

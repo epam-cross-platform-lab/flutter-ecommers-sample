@@ -33,9 +33,8 @@ class OrderWidget extends StatefulWidget {
 
 class _OrderWidgetState extends State<OrderWidget> {
   static const IconData _countDecrementIcon = Icons.remove;
-  static const IconData  _countIncrementIcon = Icons.add;
+  static const IconData _countIncrementIcon = Icons.add;
   static const _countRowWidth = 71.0;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +98,7 @@ class _OrderWidgetState extends State<OrderWidget> {
     );
   }
 
-  _buildCircleLabel() {
+  Widget _buildCircleLabel() {
     return Container(
       alignment: Alignment.center,
       height: OrderWidget.orderCircleLabelSize.height,
@@ -117,7 +116,8 @@ class _OrderWidgetState extends State<OrderWidget> {
     );
   }
 
-  _buildCountActionButton(IconData iconData, Function onPressedFunction) {
+  Widget _buildCountActionButton(
+      IconData iconData, Function onPressedFunction) {
     return Container(
       width: OrderWidget.actionForCountLabelSize.width,
       height: OrderWidget.actionForCountLabelSize.height,

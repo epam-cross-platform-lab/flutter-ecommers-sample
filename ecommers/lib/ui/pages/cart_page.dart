@@ -20,14 +20,15 @@ class _CartPageState extends State<CartPage> {
   static const _checkoutButtonSize = Size(165.0, 46.0);
 
   BuildContext _context;
-  final _orders = List.generate(20, (index) {
-    return OrderModel(
+  final _orders = List.generate(
+    20,
+    (index) => OrderModel(
         title: 'Bottle Green Backpack',
         description: 'Medium, Green',
         cost: 2.58,
         imagePath: GREEN_BACKPACK_IMAGE,
-        count: 1);
-  });
+        count: 1),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +114,7 @@ class _CartPageState extends State<CartPage> {
                 style: Theme.of(context)
                     .textTheme
                     .title
-                    .copyWith(fontSize: 20.0), //TODO: check 20.0
+                    .copyWith(fontSize: FontSizes.big_2x),
               ),
               SizedBox(height: 4.0),
               Text(
