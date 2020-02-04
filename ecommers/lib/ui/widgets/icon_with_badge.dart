@@ -1,7 +1,7 @@
-import 'package:badges/badges.dart';
-import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
+import 'package:badges/badges.dart';
+import '../decorations/dimens/index.dart';
+import '../decorations/index.dart';
 
 class IconWithBadge extends Badge {
   final int badgeValue;
@@ -29,6 +29,11 @@ class IconWithBadge extends Badge {
           badgeColor: BrandingColors.primary,
           animationType: BadgeAnimationType.scale,
           showBadge: badgeValue != 0,
-          padding: EdgeInsets.fromLTRB(Insets.x1_5, Insets.x0_5, Insets.x1_5, Insets.x0_5),
+          padding: EdgeInsets.fromLTRB(
+            Insets.x1_5,
+            Insets.x0_5,
+            Insets.x1_5,
+            Insets.x0_5,
+          ),
         );
 }
