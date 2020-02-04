@@ -1,7 +1,7 @@
 import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ProductItemNormal extends ProductItemBase {
@@ -25,7 +25,7 @@ class ProductItemNormal extends ProductItemBase {
         );
 
   @override
-  Widget buildProductItem() {
+  Widget buildProductItem(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -39,11 +39,17 @@ class ProductItemNormal extends ProductItemBase {
           title,
           overflow: TextOverflow.ellipsis,
           maxLines: Dimens.defaultTextMaxLines,
-          style: Styles.productItemTitleText,
+          style: Theme.of(context)
+              .textTheme
+              .body2
+              .copyWith(fontSize: FontSizes.small_3x),
         ),
         Text(
           Formatter.getCost(cost),
-          style: Styles.productItemCostText,
+          style: Theme.of(context).textTheme.body2.copyWith(
+                fontSize: FontSizes.small_1x,
+                fontWeight: FontWeight.w700,
+              ),
         ),
       ],
     );

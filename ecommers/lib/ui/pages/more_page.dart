@@ -60,7 +60,7 @@ class MorePage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: Insets.x6),
             child: Text(
               I18n.of(context).morePage,
-              style: Styles.titleText,
+              style: Theme.of(context).textTheme.title,
             ),
           ),
           SizedBox(height: 35.0),
@@ -86,9 +86,12 @@ class MorePage extends StatelessWidget {
       child: CupertinoButton(
         child: Text(
           I18n.of(context).logOut,
-          style: Styles.logOutButtonText,
+          style: Theme.of(context)
+              .textTheme
+              .subtitle
+              .apply(color: BrandingColors.primary),
         ),
-        onPressed: () {},
+        onPressed: () {}, //TODO use proovider
       ),
     );
   }

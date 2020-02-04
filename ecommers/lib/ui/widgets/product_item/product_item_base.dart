@@ -37,9 +37,9 @@ abstract class ProductItemBase extends StatelessWidget {
           ),
         ],
       ),
-      child: buildProductItem(),
+      child: buildProductItem(context),
     );
   }
 
-  Widget buildProductItem();
+  Widget buildProductItem(BuildContext context);
 }

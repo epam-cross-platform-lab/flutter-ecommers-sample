@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:flutter/material.dart';
@@ -52,18 +53,18 @@ class _OrderWidgetState extends State<OrderWidget> {
             children: <Widget>[
               Text(
                 widget.primaryText,
-                style: Styles.orderPrimaryText,
+                style: Theme.of(context).textTheme.body1,
               ),
               Text(
                 widget.secondaryText,
-                style: Styles.orderSecondaryText,
+                style: Theme.of(context).textTheme.body2,
               ),
               SizedBox(
                 height: 16.0,
               ),
               Text(
-                Formatter.getCost(widget.count*widget.cost),
-                style: Styles.orderCostText,
+                Formatter.getCost(widget.count * widget.cost),
+                style: Theme.of(context).textTheme.body1,
               ),
               SizedBox(
                 height: 15.0,
@@ -72,17 +73,22 @@ class _OrderWidgetState extends State<OrderWidget> {
                 width: _countRowWidth,
                 child: Row(
                   children: <Widget>[
-                    _buildCountActionButton(_countDecrementIcon, widget.countDecrementFunction),
+                    _buildCountActionButton(
+                        _countDecrementIcon, widget.countDecrementFunction),
                     Expanded(
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
                           widget.count.toString(),
-                          style: Styles.orderCountText,
+                          style: Theme.of(context)
+                              .textTheme
+                              .caption
+                              .copyWith(fontSize: FontSizes.normal),
                         ),
                       ),
                     ),
-                    _buildCountActionButton(_countIncrementIcon, widget.countIncrementFunction),
+                    _buildCountActionButton(
+                        _countIncrementIcon, widget.countIncrementFunction),
                   ],
                 ),
               ),

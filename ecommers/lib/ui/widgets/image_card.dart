@@ -46,10 +46,11 @@ class ImageCard extends StatelessWidget {
               child: Text(
                 description,
                 maxLines: _textMaxLines,
-                style: Styles.imageCardDescriptionText,
+                style: Theme.of(context).textTheme.display2,
               ),
             ),
           ),
+          
           SizedBox(
             height: _buttonSize.height,
             width: _buttonSize.width,

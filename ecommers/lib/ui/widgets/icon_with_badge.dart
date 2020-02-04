@@ -1,5 +1,4 @@
 import 'package:badges/badges.dart';
-import 'package:ecommers/ui/decorations/dimens/dimens.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +7,18 @@ class IconWithBadge extends Badge {
   final int badgeValue;
   final BadgePosition badgePosition;
   final Widget icon;
+  final TextStyle badgeTextStyle;
+
   IconWithBadge({
     this.badgeValue = 0,
     this.badgePosition,
+    this.badgeTextStyle,
     @required this.icon,
   }) : super(
           child: icon,
           badgeContent: Text(
             badgeValue.toString(),
-            style: Styles.badgeValueText,
+            style: badgeTextStyle,
             textAlign: TextAlign.center,
           ),
           position:

@@ -33,7 +33,7 @@ class RateWidget extends StatelessWidget {
             SvgPicture.asset(RATE_STAR_ICON),
             Text(
               rate.toString(),
-              style: Styles.rateText,
+              style: Theme.of(context).textTheme.overline,
             )
           ],
         ),
