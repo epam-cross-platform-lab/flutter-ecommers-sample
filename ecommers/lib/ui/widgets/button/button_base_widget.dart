@@ -31,13 +31,13 @@ class ButtonBaseWidget extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             blurRadius: Radiuses.normal,
-            offset: Dimens.smallBlurOffset,
+            offset: const Offset(Insets.x0, Insets.x1_5),
             color: blurColor,
           ),
         ],
       ),
       child: CupertinoButton(
-        padding:const EdgeInsets.all(Insets.x2),
+        padding: const EdgeInsets.all(Insets.x2),
         borderRadius: BorderRadius.circular(Radiuses.big_2x),
         color: buttonColor,
         onPressed: onPressedFunction,
