@@ -32,7 +32,7 @@ class ProductItemSmall extends ProductItemBase {
           flex: 3,
           child: Image.asset(assetImagePath),
         ),
-        SizedBox(
+        const SizedBox(
           width: ProductItemBase.padding,
         ),
         Expanded(

@@ -37,7 +37,7 @@ class ButtonBaseWidget extends StatelessWidget {
         ],
       ),
       child: CupertinoButton(
-        padding: EdgeInsets.all(Insets.x2),
+        padding:const EdgeInsets.all(Insets.x2),
         borderRadius: BorderRadius.circular(Radiuses.big_2x),
         color: buttonColor,
         onPressed: onPressedFunction,

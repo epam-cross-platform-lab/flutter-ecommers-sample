@@ -15,7 +15,7 @@ class CategoriesCompactWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: _containerHeight,
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: Insets.x6,
       ),
       decoration: BoxDecoration(

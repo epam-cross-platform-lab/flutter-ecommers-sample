@@ -30,7 +30,7 @@ class ImageCard extends StatelessWidget {
       alignment: Alignment.centerLeft,
       height: imageCardSize.height,
       width: imageCardSize.width,
-      padding: EdgeInsets.all(Insets.x6_5),
+      padding: const EdgeInsets.all(Insets.x6_5),
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(imageAsset),

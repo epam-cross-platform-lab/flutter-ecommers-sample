@@ -63,12 +63,12 @@ class ProfilePage extends StatelessWidget {
             margin: _listContainerMargin,
             itemList: _topMenuList,
           ),
-          SizedBox(height: 15.0),
+          const SizedBox(height: 15.0),
           MenuList(
             margin: _listContainerMargin,
             itemList: _bottomMenuList,
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
         ],
       ),
     );
@@ -91,7 +91,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 20.0),
+          const SizedBox(width: 20.0),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

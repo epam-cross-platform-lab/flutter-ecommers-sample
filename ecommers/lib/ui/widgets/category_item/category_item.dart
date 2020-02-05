@@ -41,7 +41,7 @@ class CategoryItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           _buildGradientLabel(),
-          SizedBox(
+          const SizedBox(
             height: labelBottomMargin,
           ),
           Text(
