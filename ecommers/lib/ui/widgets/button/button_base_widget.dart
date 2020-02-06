@@ -1,16 +1,11 @@
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../decorations/dimens/index.dart';
 
 class ButtonBaseWidget extends StatelessWidget {
   static const double _circleSize = 30.0;
   static const double _iconHeight = 12.0;
-
-  static const EdgeInsets _padding = EdgeInsets.all(8.0);
-
-  static const Offset _blurOffset = Offset(0.0, 5.0);
-  static const double _blurRadius = 10.0;
 
   final Color buttonColor;
   final Color textColor;
@@ -35,15 +30,15 @@ class ButtonBaseWidget extends StatelessWidget {
       decoration: BoxDecoration(
         boxShadow: [
           BoxShadow(
-            blurRadius: _blurRadius,
-            offset: _blurOffset,
+            blurRadius: Radiuses.normal,
+            offset: const Offset(Insets.x0, Insets.x1_5),
             color: blurColor,
           ),
         ],
       ),
       child: CupertinoButton(
-        padding: _padding,
-        borderRadius: BorderRadius.circular(Dimens.buttonBorderRadius),
+        padding: const EdgeInsets.all(Insets.x2),
+        borderRadius: BorderRadius.circular(Radiuses.big_2x),
         color: buttonColor,
         onPressed: onPressedFunction,
         child: Row(
@@ -54,11 +49,10 @@ class ButtonBaseWidget extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   text,
-                  style: TextStyle(
-                    color: textColor,
-                    fontSize: Dimens.buttonTextFontSize,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .button
+                      .copyWith(color: textColor),
                 ),
               ),
             ),
@@ -67,10 +61,10 @@ class ButtonBaseWidget extends StatelessWidget {
               height: _circleSize,
               width: _circleSize,
               child: SvgPicture.asset(
-                  assetIcon,
-                  height: _iconHeight,
-                  color: buttonColor,
-                ),
+                assetIcon,
+                height: _iconHeight,
+                color: buttonColor,
+              ),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: iconBackgroundColor ?? textColor,

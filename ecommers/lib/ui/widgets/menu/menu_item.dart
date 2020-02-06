@@ -29,16 +29,16 @@ class MenuItem extends StatelessWidget {
           Expanded(
             child: Text(
               title ?? '',
-              style: Styles.menuItemText,
+              style: Theme.of(context).textTheme.subtitle1,
             ),
           ),
           Text(
             subTitle ?? '',
-            style: Styles.menuItemSubText,
+            style: Theme.of(context).textTheme.subtitle2,
           ),
-          SizedBox(width: 10.0),
+          const SizedBox(width: 10.0),
           SvgPicture.asset(MENU_ARROW_ICON),
-          SizedBox(width: 15.0),
+          const SizedBox(width: 15.0),
         ],
       ),
     );

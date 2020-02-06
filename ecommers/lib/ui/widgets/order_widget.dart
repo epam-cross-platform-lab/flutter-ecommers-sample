@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,11 @@ class OrderWidget extends StatefulWidget {
   final int count;
   final Function countIncrementFunction;
   final Function countDecrementFunction;
+
+  static const orderWidgetSize = Size(272.0, 102.0);
+  static const orderCircleLabelSize = Size(100.0, 100.0);
+  static const actionForCountLabelSize = Size(18.0, 18.0);
+  static const actionForCountIconSize = 12.0;
 
   OrderWidget({
     @required this.assetImagePath,
@@ -26,19 +32,19 @@ class OrderWidget extends StatefulWidget {
 }
 
 class _OrderWidgetState extends State<OrderWidget> {
-  static const  _countDecrementIcon = Icons.remove;
-  static const  _countIncrementIcon = Icons.add;
+  static const IconData _countDecrementIcon = Icons.remove;
+  static const IconData _countIncrementIcon = Icons.add;
   static const _countRowWidth = 71.0;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Dimens.orderWidgetSize.width,
+      width: OrderWidget.orderWidgetSize.width,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           _buildCircleLabel(),
-          SizedBox(
+          const SizedBox(
             width: 20.0,
           ),
           Column(
@@ -46,37 +52,42 @@ class _OrderWidgetState extends State<OrderWidget> {
             children: <Widget>[
               Text(
                 widget.primaryText,
-                style: Styles.orderPrimaryText,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               Text(
                 widget.secondaryText,
-                style: Styles.orderSecondaryText,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16.0,
               ),
               Text(
-                Formatter.getCost(widget.count*widget.cost),
-                style: Styles.orderCostText,
+                Formatter.getCost(widget.count * widget.cost),
+                style: Theme.of(context).textTheme.bodyText1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
               SizedBox(
                 width: _countRowWidth,
                 child: Row(
                   children: <Widget>[
-                    _buildCountActionButton(_countDecrementIcon, widget.countDecrementFunction),
+                    _buildCountActionButton(
+                        _countDecrementIcon, widget.countDecrementFunction),
                     Expanded(
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
                           widget.count.toString(),
-                          style: Styles.orderCountText,
+                          style: Theme.of(context)
+                              .textTheme
+                              .caption
+                              .copyWith(fontSize: FontSizes.normal),
                         ),
                       ),
                     ),
-                    _buildCountActionButton(_countIncrementIcon, widget.countIncrementFunction),
+                    _buildCountActionButton(
+                        _countIncrementIcon, widget.countIncrementFunction),
                   ],
                 ),
               ),
@@ -87,14 +98,14 @@ class _OrderWidgetState extends State<OrderWidget> {
     );
   }
 
-  _buildCircleLabel() {
+  Widget _buildCircleLabel() {
     return Container(
       alignment: Alignment.center,
-      height: Dimens.orderCircleLabelSize.height,
-      width: Dimens.orderCircleLabelSize.width,
+      height: OrderWidget.orderCircleLabelSize.height,
+      width: OrderWidget.orderCircleLabelSize.width,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: Palette.orderCircleLabel,
+        color: BrandingColors.background,
       ),
       child: Center(
         child: Image.asset(
@@ -105,22 +116,23 @@ class _OrderWidgetState extends State<OrderWidget> {
     );
   }
 
-  _buildCountActionButton(IconData iconData, Function onPressedFunction) {
+  Widget _buildCountActionButton(
+      IconData iconData, Function onPressedFunction) {
     return Container(
-      width: Dimens.actionForCountLabelSize.width,
-      height: Dimens.actionForCountLabelSize.height,
+      width: OrderWidget.actionForCountLabelSize.width,
+      height: OrderWidget.actionForCountLabelSize.height,
       child: RawMaterialButton(
         onPressed: onPressedFunction,
         shape: CircleBorder(),
         child: Center(
           child: Icon(
             iconData,
-            color: Palette.cartPageSecondaryText,
-            size: Dimens.actionForCountIconSize,
+            color: BrandingColors.secondary,
+            size: OrderWidget.actionForCountIconSize,
           ),
         ),
         elevation: 1.0,
-        fillColor: Palette.orderSmallLabel,
+        fillColor: BrandingColors.backgroundIcon,
       ),
     );
   }

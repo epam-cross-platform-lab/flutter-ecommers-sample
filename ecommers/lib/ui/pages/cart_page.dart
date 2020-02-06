@@ -1,6 +1,7 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/models/order_model.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
@@ -8,6 +9,8 @@ import 'package:ecommers/ui/widgets/order_widget.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatefulWidget {
+  static const orderWidgetSize = Size(272.0, 102.0);
+
   @override
   _CartPageState createState() => _CartPageState();
 }
@@ -15,39 +18,40 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   static const _orderDeviderIndent = 120.0;
   static const _checkoutButtonSize = Size(165.0, 46.0);
-  static const _horizontalPagePadding = 20.0;
 
   BuildContext _context;
-  final _orders = List.generate(20, (index) {
-    return OrderModel(
+  final _orders = List.generate(
+    20,
+    (index) => OrderModel(
         title: 'Bottle Green Backpack',
         description: 'Medium, Green',
         cost: 2.58,
         imagePath: GREEN_BACKPACK_IMAGE,
-        count: 1);
-  });
+        count: 1),
+  );
+
   @override
   Widget build(BuildContext context) {
     _context = context;
-    
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(left: 20),
+          padding: const EdgeInsets.only(left: Insets.x5),
           child: Text(
             I18n.of(context).cartTitle,
-            style: Styles.titleText,
+            style: Theme.of(context).textTheme.headline6,
           ),
         ),
-        SizedBox(height: 29),
+        const SizedBox(height: 29),
         Expanded(
           child: _buildOrderListView(),
         ),
         Padding(
-          padding: EdgeInsets.fromLTRB(
-              _horizontalPagePadding, 34, _horizontalPagePadding, 20.0),
-          child: Divider(color: Palette.cartPageSecondaryText),
+          padding: const EdgeInsets.fromLTRB(
+              Insets.x5, Insets.x8_5, Insets.x5, Insets.x5),
+          child: const Divider(color: BrandingColors.secondary),
         ),
         _buildTotalOrderInformationWidget(),
       ],
@@ -57,7 +61,7 @@ class _CartPageState extends State<CartPage> {
   Widget _buildOrderListView() {
     return ListView.separated(
       padding:
-          const EdgeInsets.fromLTRB(25.0, 29.0, _horizontalPagePadding, 0.0),
+          const EdgeInsets.fromLTRB(Insets.x6, Insets.x7, Insets.x5, Insets.x0),
       itemCount: 20,
       itemBuilder: (BuildContext context, int index) {
         return OrderWidget(
@@ -72,9 +76,10 @@ class _CartPageState extends State<CartPage> {
       },
       separatorBuilder: (BuildContext context, int index) {
         return Padding(
-          padding: EdgeInsets.fromLTRB(0.0, 12, 0.0, 32.0),
-          child: Divider(
-            color: Palette.cartPageSecondaryText,
+          padding: const EdgeInsets.fromLTRB(
+              Insets.x0, Insets.x3, Insets.x0, Insets.x8),
+          child: const Divider(
+            color: BrandingColors.secondary,
             indent: _orderDeviderIndent,
           ),
         );
@@ -88,8 +93,9 @@ class _CartPageState extends State<CartPage> {
         (totalCost, nextOrder) =>
             (totalCost + nextOrder.count * nextOrder.cost));
     return Container(
-      padding: EdgeInsets.fromLTRB(25.0, 0.0, _horizontalPagePadding, 15.0),
-      width: Dimens.orderWidgetSize.width,
+      padding:
+          const EdgeInsets.fromLTRB(Insets.x6, Insets.x0, Insets.x5, Insets.x4),
+      width: CartPage.orderWidgetSize.width,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -98,17 +104,26 @@ class _CartPageState extends State<CartPage> {
             children: <Widget>[
               Text(
                 I18n.of(_context).totalOrder,
-                style: Styles.totalOrderText,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline5
+                    .copyWith(fontSize: FontSizes.small_1x),
               ),
-              SizedBox(height: 7.0),
+              const SizedBox(height: 7.0),
               Text(
                 Formatter.getCost(totalOrderCost),
-                style: Styles.totalOrderCostText,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    .copyWith(fontSize: FontSizes.big_2x),
               ),
-              SizedBox(height: 4.0),
+              const SizedBox(height: 4.0),
               Text(
                 I18n.of(_context).freeDomesticShipping,
-                style: Styles.freeDomesticText,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline5
+                    .copyWith(fontWeight: FontWeight.w400),
               ),
             ],
           ),

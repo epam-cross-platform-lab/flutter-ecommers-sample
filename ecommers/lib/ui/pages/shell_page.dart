@@ -33,7 +33,7 @@ class _ShellPageState extends State<ShellPage> {
           ),
         ],
       ),
-      backgroundColor: Palette.pageBackground,
+      backgroundColor: BrandingColors.pageBackground,
       body: shellProvider.body,
       bottomNavigationBar: BottomNavigationWidget(
         selectedIndex: shellProvider.selectedItemIndex,
@@ -52,6 +52,7 @@ class _ShellPageState extends State<ShellPage> {
     return IconButton(
       icon: IconWithBadge(
         badgeValue: badgeValue,
+        badgeTextStyle: Theme.of(context).textTheme.overline,
         icon: SvgPicture.asset(imageAssetPath),
       ),
       onPressed: onIconPressedFuction,

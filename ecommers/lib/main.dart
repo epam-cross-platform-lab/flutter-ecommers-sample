@@ -1,5 +1,6 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/providers/index.dart';
+import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,9 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: "ecommers",
-        theme: ThemeData(
-          primaryColor: Colors.white,
-        ),
+        theme: ThemeProvider.getTheme(),
         home: ShellPage(),
         localizationsDelegates: [i18n],
         supportedLocales: i18n.supportedLocales,
@@ -31,5 +30,3 @@ class MyApp extends StatelessWidget {
             i18n.resolution(fallback: Locale("en", "US")));
   }
 }
-
-

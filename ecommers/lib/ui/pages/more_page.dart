@@ -1,4 +1,5 @@
 import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';
 import 'package:flutter/cupertino.dart';
@@ -45,7 +46,7 @@ class MorePage extends StatelessWidget {
   ];
 
   static const EdgeInsets menuListMargin =
-      EdgeInsets.symmetric(horizontal: 20.0);
+      EdgeInsets.symmetric(horizontal: Insets.x5);
 
   @override
   Widget build(BuildContext context) {
@@ -56,25 +57,25 @@ class MorePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: Dimens.pagePadding),
+            padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
             child: Text(
               I18n.of(context).morePage,
-              style: Styles.titleText,
+              style: Theme.of(context).textTheme.headline6,
             ),
           ),
-          SizedBox(height: 35.0),
+          const SizedBox(height: 35.0),
           MenuList(
             margin: menuListMargin,
             itemList: topMenuList,
           ),
-          SizedBox(height: 15.0),
+          const SizedBox(height: 15.0),
           MenuList(
             margin: menuListMargin,
             itemList: bottomMenuList,
           ),
-          SizedBox(height: 40.0),
+          const SizedBox(height: 40.0),
           _buildLogOutButton(context),
-          SizedBox(height: 30.0),
+          const SizedBox(height: 30.0),
         ],
       ),
     );
@@ -85,9 +86,12 @@ class MorePage extends StatelessWidget {
       child: CupertinoButton(
         child: Text(
           I18n.of(context).logOut,
-          style: Styles.logOutButtonText,
+          style: Theme.of(context)
+              .textTheme
+              .headline5
+              .apply(color: BrandingColors.primary),
         ),
-        onPressed: () {},
+        onPressed: () {}, //TODO use proovider
       ),
     );
   }

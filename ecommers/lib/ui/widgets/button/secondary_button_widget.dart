@@ -14,9 +14,9 @@ class SecondaryButtonWidget extends ButtonBaseWidget {
   }) : super(
           text: text,
           assetIcon: assetIcon,
-          buttonColor: Palette.secondaryButtonBackground,
-          textColor: Palette.secondaryButtonText,
+          buttonColor: BrandingColors.background,
+          textColor: BrandingColors.secondary,
           onPressedFunction: onPressedFunction,
-          blurColor: Palette.secondaryButtonBlur,
+          blurColor: BrandingColors.secondary,
         );
 }

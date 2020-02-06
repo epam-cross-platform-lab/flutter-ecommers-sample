@@ -26,19 +26,19 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       items: _createBottomNavigationBarItems(),
-      unselectedItemColor: Palette.bottomNavigationItemUnselected,
-      selectedItemColor: Palette.bottomNavigationItemSelected,
+      unselectedItemColor: BrandingColors.primaryText,
+      selectedItemColor: BrandingColors.primary,
       currentIndex: widget.selectedIndex,
-      selectedLabelStyle: Styles.bottomnNavigationItemTitle,
-      unselectedLabelStyle: Styles.bottomnNavigationItemTitle,
-      iconSize: Dimens.navigationBottomIconSize,
+      selectedLabelStyle: Theme.of(context).textTheme.caption,
+      unselectedLabelStyle: Theme.of(context).textTheme.caption,
+      iconSize: 26.0,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       onTap: widget.onTappedFunction,
     );
   }
 
-  _createBottomNavigationBarItems() {
+  List<BottomNavigationBarItem> _createBottomNavigationBarItems() {
     return widget.pages
         .map(
           (page) => BottomNavigationBarItem(
