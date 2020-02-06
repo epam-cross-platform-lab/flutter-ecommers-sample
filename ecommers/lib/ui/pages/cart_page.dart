@@ -45,7 +45,7 @@ class _CartPageState extends State<CartPage> {
           Text(
 
             I18n.of(context).cartTitle,
-            style: Theme.of(context).textTheme.title,
+            style: Theme.of(context).textTheme.headline6,
           ),
           SizedBox(height: 29),
           Expanded(
@@ -102,4 +102,5 @@ class _CartPageState extends State<CartPage> {
       },
     );
   }
+
 }

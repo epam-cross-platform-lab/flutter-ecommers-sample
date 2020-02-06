@@ -27,7 +27,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
           child: Text(
             I18n.of(context).latetstTitle,
-            style: Theme.of(context).textTheme.title,
+            style: Theme.of(context).textTheme.headline6,
           ),
         ),
         const SizedBox(height: 9.0),

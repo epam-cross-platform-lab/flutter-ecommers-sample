@@ -37,14 +37,14 @@ class ProductItemWide extends ProductItemBase {
         Text(
           title,
           maxLines: Dimens.defaultTextMaxLines,
-          style: Theme.of(context).textTheme.body2,
+          style: Theme.of(context).textTheme.bodyText2,
         ),
         Row(
           children: <Widget>[
             Expanded(
               child: Text(
                 Formatter.getCost(cost),
-                style: Theme.of(context).textTheme.body2.copyWith(
+                style: Theme.of(context).textTheme.bodyText2.copyWith(
                       fontSize: FontSizes.small_3x,
                       fontWeight: FontWeight.w700,
                     ),

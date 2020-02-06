@@ -100,14 +100,14 @@ class ProfilePage extends StatelessWidget {
                   'Jane Doe', //TODO; get from the provider
                   maxLines: Dimens.defaultTextMaxLines,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.title,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 Expanded(
                   child: Text(
                     'janedoe123@email.com', //TODO; get from the provider
                     maxLines: Dimens.defaultTextMaxLines,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.body1,
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
                 _buildEditProfileButton(context),
