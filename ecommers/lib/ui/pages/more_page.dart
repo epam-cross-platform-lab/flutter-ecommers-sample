@@ -60,7 +60,7 @@ class MorePage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: Insets.x6),
             child: Text(
               I18n.of(context).morePage,
-              style: Theme.of(context).textTheme.title,
+              style: Theme.of(context).textTheme.headline6,
             ),
           ),
           SizedBox(height: 35.0),
@@ -88,7 +88,7 @@ class MorePage extends StatelessWidget {
           I18n.of(context).logOut,
           style: Theme.of(context)
               .textTheme
-              .subtitle
+              .headline5
               .apply(color: BrandingColors.primary),
         ),
         onPressed: () {}, //TODO use proovider

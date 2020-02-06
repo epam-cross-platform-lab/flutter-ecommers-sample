@@ -29,15 +29,12 @@ class MenuItem extends StatelessWidget {
           Expanded(
             child: Text(
               title ?? '',
-              style: Theme.of(context).textTheme.subhead,
+              style: Theme.of(context).textTheme.subtitle1,
             ),
           ),
           Text(
             subTitle ?? '',
-            style: Theme.of(context)
-                .textTheme
-                .subhead
-                .copyWith(fontWeight: FontWeight.w300),
+            style: Theme.of(context).textTheme.subtitle2,
           ),
           SizedBox(width: 10.0),
           SvgPicture.asset(MENU_ARROW_ICON),

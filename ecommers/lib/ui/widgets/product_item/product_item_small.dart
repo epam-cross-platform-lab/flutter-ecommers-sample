@@ -47,12 +47,12 @@ class ProductItemSmall extends ProductItemBase {
                 maxLines: Dimens.defaultTextMaxLines,
                 style: Theme.of(context)
                     .textTheme
-                    .body1
+                    .bodyText1
                     .copyWith(fontWeight: FontWeight.w400),
               ),
               Text(
                 Formatter.getCost(cost),
-                style: Theme.of(context).textTheme.body1,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
           ),

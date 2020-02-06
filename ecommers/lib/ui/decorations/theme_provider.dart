@@ -9,31 +9,32 @@ class ThemeProvider {
       backgroundColor: BrandingColors.background,
       cursorColor: BrandingColors.primary,
       textTheme: TextTheme(
-        title: _TextStyles.title,
-        subtitle: _TextStyles.subtitle,
+        headline6: _TextStyles.headline6,
+        headline5: _TextStyles.headline5,
         button: _TextStyles.button,
         caption: _TextStyles.caption,
-        subhead: _TextStyles.subhead,
-        body1: _TextStyles.body1,
-        body2: _TextStyles.body2,
+        subtitle1: _TextStyles.subtitle1,
+        subtitle2: _TextStyles.subtitle2,
+        bodyText1: _TextStyles.bodyText1,
+        bodyText2: _TextStyles.bodyText2,
         overline: _TextStyles.overline,
-        display1: _TextStyles.display1,
-        display2: _TextStyles.display2,
-        display3: _TextStyles.display3,
-        display4: _TextStyles.display4,
+        headline4: _TextStyles.headline4,
+        headline3: _TextStyles.headline3,
+        headline2: _TextStyles.headline2,
+        headline1: _TextStyles.headline1,
       ),
     );
   }
 }
 
 class _TextStyles {
-  static const title = TextStyle(
+  static const headline6 = TextStyle(
     color: BrandingColors.primaryText,
     fontSize: FontSizes.big_4x,
     fontWeight: FontWeight.w700,
   );
 
-  static const subtitle = TextStyle(
+  static const headline5 = TextStyle(
     color: BrandingColors.primaryText,
     fontSize: FontSizes.small_3x,
     fontWeight: FontWeight.w500,
@@ -51,19 +52,25 @@ class _TextStyles {
     fontWeight: FontWeight.w400,
   );
 
-  static const subhead = TextStyle(
+  static const subtitle1 = TextStyle(
     color: BrandingColors.primaryText,
     fontSize: FontSizes.normal,
     fontWeight: FontWeight.w400,
   );
 
-  static const body1 = TextStyle(
+  static const subtitle2 = TextStyle(
+    color: BrandingColors.primaryText,
+    fontSize: FontSizes.normal,
+    fontWeight: FontWeight.w300,
+  );
+
+  static const bodyText1 = TextStyle(
     color: BrandingColors.primaryText,
     fontSize: FontSizes.normal,
     fontWeight: FontWeight.w500,
   );
 
-  static const body2 = TextStyle(
+  static const bodyText2 = TextStyle(
     color: BrandingColors.primaryText,
     fontSize: FontSizes.normal,
     fontWeight: FontWeight.w300,
@@ -75,25 +82,25 @@ class _TextStyles {
     fontWeight: FontWeight.w500,
   );
 
-  static const display1 = TextStyle(
+  static const headline4 = TextStyle(
     color: BrandingColors.secondaryText,
     fontSize: FontSizes.normal,
     fontWeight: FontWeight.w400,
   );
 
-  static const display2 = TextStyle(
+  static const headline3 = TextStyle(
     color: BrandingColors.secondaryText,
     fontSize: FontSizes.big_1x,
     fontWeight: FontWeight.w300,
   );
 
-  static const display3 = TextStyle(
+  static const headline2 = TextStyle(
     color: BrandingColors.secondaryText,
     fontSize: FontSizes.big_2x,
     fontWeight: FontWeight.w400,
   );
 
-  static const display4 = TextStyle(
+  static const headline1 = TextStyle(
     color: BrandingColors.secondaryText,
     fontSize: FontSizes.big_3x,
     fontWeight: FontWeight.w400,

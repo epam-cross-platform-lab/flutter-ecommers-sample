@@ -41,7 +41,7 @@ class _CartPageState extends State<CartPage> {
           padding: EdgeInsets.only(left: Insets.x5),
           child: Text(
             I18n.of(context).cartTitle,
-            style: Theme.of(context).textTheme.title,
+            style: Theme.of(context).textTheme.headline6,
           ),
         ),
         SizedBox(height: 29),
@@ -105,7 +105,7 @@ class _CartPageState extends State<CartPage> {
                 I18n.of(_context).totalOrder,
                 style: Theme.of(context)
                     .textTheme
-                    .subtitle
+                    .headline5
                     .copyWith(fontSize: FontSizes.small_1x),
               ),
               SizedBox(height: 7.0),
@@ -113,7 +113,7 @@ class _CartPageState extends State<CartPage> {
                 Formatter.getCost(totalOrderCost),
                 style: Theme.of(context)
                     .textTheme
-                    .title
+                    .headline6
                     .copyWith(fontSize: FontSizes.big_2x),
               ),
               SizedBox(height: 4.0),
@@ -121,7 +121,7 @@ class _CartPageState extends State<CartPage> {
                 I18n.of(_context).freeDomesticShipping,
                 style: Theme.of(context)
                     .textTheme
-                    .subtitle
+                    .headline5
                     .copyWith(fontWeight: FontWeight.w400),
               ),
             ],

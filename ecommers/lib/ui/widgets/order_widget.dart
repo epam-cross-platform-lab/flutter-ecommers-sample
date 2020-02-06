@@ -52,18 +52,18 @@ class _OrderWidgetState extends State<OrderWidget> {
             children: <Widget>[
               Text(
                 widget.primaryText,
-                style: Theme.of(context).textTheme.body1,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               Text(
                 widget.secondaryText,
-                style: Theme.of(context).textTheme.body2,
+                style: Theme.of(context).textTheme.bodyText2,
               ),
               SizedBox(
                 height: 16.0,
               ),
               Text(
                 Formatter.getCost(widget.count * widget.cost),
-                style: Theme.of(context).textTheme.body1,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
               SizedBox(
                 height: 15.0,

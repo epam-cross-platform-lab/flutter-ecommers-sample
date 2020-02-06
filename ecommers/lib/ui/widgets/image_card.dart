@@ -46,7 +46,7 @@ class ImageCard extends StatelessWidget {
               child: Text(
                 description,
                 maxLines: _textMaxLines,
-                style: Theme.of(context).textTheme.display2,
+                style: Theme.of(context).textTheme.headline3,
               ),
             ),
           ),
