@@ -1,5 +1,4 @@
 export 'assets.dart';
-export 'dimens.dart';
+export 'branding_colors.dart';
 export 'gradients.dart';
-export 'palette.dart';
-export 'styles.dart';
+export 'theme_provider.dart';

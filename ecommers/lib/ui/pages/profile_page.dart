@@ -1,5 +1,6 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';
 import 'package:ecommers/ui/widgets/menu/menu_item_model.dart';
@@ -46,7 +47,7 @@ class ProfilePage extends StatelessWidget {
   ];
 
   static const EdgeInsets _listContainerMargin =
-      EdgeInsets.symmetric(horizontal: 20.0);
+      EdgeInsets.symmetric(horizontal: Insets.x5);
 
   static const double _profileCardHeight = 100.0;
   static const double _profileCardEditButtonHeight = 30.0;
@@ -62,12 +63,12 @@ class ProfilePage extends StatelessWidget {
             margin: _listContainerMargin,
             itemList: _topMenuList,
           ),
-          SizedBox(height: 15.0),
+          const SizedBox(height: 15.0),
           MenuList(
             margin: _listContainerMargin,
             itemList: _bottomMenuList,
           ),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
         ],
       ),
     );
@@ -76,7 +77,7 @@ class ProfilePage extends StatelessWidget {
   Widget _buildProfileCard(BuildContext context) {
     return Container(
       height: _profileCardHeight,
-      margin: EdgeInsets.all(Dimens.pagePadding),
+      margin: const EdgeInsets.all(Insets.x6),
       child: Row(
         children: <Widget>[
           Container(
@@ -90,7 +91,7 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 20.0),
+          const SizedBox(width: 20.0),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -99,14 +100,14 @@ class ProfilePage extends StatelessWidget {
                   'Jane Doe', //TODO; get from the provider
                   maxLines: Dimens.defaultTextMaxLines,
                   overflow: TextOverflow.ellipsis,
-                  style: Styles.profileNameText,
+                  style: Theme.of(context).textTheme.title,
                 ),
                 Expanded(
                   child: Text(
                     'janedoe123@email.com', //TODO; get from the provider
                     maxLines: Dimens.defaultTextMaxLines,
                     overflow: TextOverflow.ellipsis,
-                    style: Styles.profileEmailText,
+                    style: Theme.of(context).textTheme.body1,
                   ),
                 ),
                 _buildEditProfileButton(context),
@@ -123,16 +124,16 @@ class ProfilePage extends StatelessWidget {
       height: _profileCardEditButtonHeight,
       child: OutlineButton(
         borderSide: BorderSide(
-          color: Palette.profileButtonBorder,
+          color: BrandingColors.secondary.withOpacity(0.3),
           width: 1.0,
         ),
-        highlightedBorderColor: Palette.profileButtonBorder,
+        highlightedBorderColor: BrandingColors.secondary.withOpacity(0.3),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Dimens.buttonBorderRadius),
+          borderRadius: BorderRadius.circular(Radiuses.big_2x),
         ),
         child: Text(
           I18n.of(context).editProfile,
-          style: Styles.profileButtonText,
+          style: Theme.of(context).textTheme.button,
         ),
         onPressed: () {},
       ),

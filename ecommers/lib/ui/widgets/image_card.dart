@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class ImageCard extends StatelessWidget {
   static const int _textMaxLines = 3;
 
   static const double _borderRadius = 10.0;
-  static const double _containerPadding = 26.0;
+  static const imageCardSize = Size(325.0, 184.0);
 
   final String imageAsset;
   final String description;
@@ -27,9 +28,9 @@ class ImageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      height: Dimens.imageCardSize.height,
-      width: Dimens.imageCardSize.width,
-      padding: EdgeInsets.all(_containerPadding),
+      height: imageCardSize.height,
+      width: imageCardSize.width,
+      padding: const EdgeInsets.all(Insets.x6_5),
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(imageAsset),
@@ -45,21 +46,22 @@ class ImageCard extends StatelessWidget {
               child: Text(
                 description,
                 maxLines: _textMaxLines,
-                style: Styles.imageCardDescriptionText,
+                style: Theme.of(context).textTheme.display2,
               ),
             ),
           ),
+          
           SizedBox(
             height: _buttonSize.height,
             width: _buttonSize.width,
             child: ButtonBaseWidget(
                 text: buttonText,
                 assetIcon: ARROW_RIGHT_ICON,
-                buttonColor: Palette.secondaryButtonBackground,
-                textColor: Palette.secondaryButtonText,
+                buttonColor: BrandingColors.background,
+                textColor: BrandingColors.secondary,
                 onPressedFunction: onButtonPressed,
-                iconBackgroundColor: Palette.primaryButtonBackground,
-                blurColor: Palette.secondaryButtonBlur),
+                iconBackgroundColor: BrandingColors.primary,
+                blurColor: BrandingColors.secondary.withOpacity(0.15)),
           ),
         ],
       ),

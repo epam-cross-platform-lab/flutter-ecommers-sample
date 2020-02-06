@@ -33,9 +33,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: Palette.pageBackground,
+        backgroundColor: BrandingColors.pageBackground,
       ),
-      backgroundColor: Palette.pageBackground,
+      backgroundColor: BrandingColors.pageBackground,
       body: Column(
         children: <Widget>[
           Expanded(
@@ -46,7 +46,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 children: <Widget>[
                   Text(
                     I18n.of(context).checkoutTitle,
-                    style: Styles.titleText,
+                    //style: Styles.titleText,
                   ),
                   SizedBox(height: 29),
                   Expanded(
@@ -58,7 +58,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
           TotalOrderWidget(
             cost: totalOrderCost,
-            backgroundColor: Palette.checkoutTotalOrderBackground,
+            backgroundColor: BrandingColors.background,
             onButtonPressedFunction: () {},
             buttonText: I18n.of(context).placeOrderButton,
             padding: EdgeInsets.fromLTRB(25, 15, 20, 15),
@@ -86,7 +86,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         return Padding(
           padding: EdgeInsets.fromLTRB(0.0, 18, 0.0, 20.0),
           child: Divider(
-            color: Palette.cartPageSecondaryText,
+            color: BrandingColors.secondary,
             indent: _orderDeviderIndent,
           ),
         );
@@ -104,18 +104,18 @@ class _CheckoutPageState extends State<CheckoutPage> {
             children: <Widget>[
               Text(
                 I18n.of(context).shippingAddress,
-                style: Styles.orderPrimaryText,
+               // style: Styles.orderPrimaryText,
               ),
               SizedBox(
                 height: 8.0,
               ),
               Text(
                 'John Doe', //TODO from provider
-                style: Styles.orderSecondaryText,
+               // style: Styles.orderSecondaryText,
               ),
               Text(
                 'No 123, Sub Street, Main Street,City Name, Province, Country',
-                style: Styles.orderPrimaryText,
+             //   style: Styles.orderPrimaryText,
               ),
             ],
           ),

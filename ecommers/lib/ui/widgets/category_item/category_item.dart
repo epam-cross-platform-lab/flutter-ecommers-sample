@@ -1,5 +1,5 @@
 import 'package:ecommers/common/categories.dart';
-import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart'; 
 import 'package:ecommers/ui/widgets/category_item/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +10,9 @@ class CategoryItem extends StatelessWidget {
   final Color backgroundColor;
   final String imagePath;
   final String title;
+
+  static const categoryItemSize = Size(74.0, 89.0);
+  static const categoryLabelSize = 65.0;
 
   CategoryItem({
     @required this.shadowColor,
@@ -33,17 +36,20 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Dimens.categoryItemSize.width,
+      width: categoryItemSize.width,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           _buildGradientLabel(),
-          SizedBox(
+          const SizedBox(
             height: labelBottomMargin,
           ),
           Text(
             title,
-            style: Styles.categoryItemTitle,
+            style: Theme.of(context)
+                .textTheme
+                .caption
+                .copyWith(fontSize: FontSizes.normal),
           ),
         ],
       ),
@@ -53,15 +59,15 @@ class CategoryItem extends StatelessWidget {
   _buildGradientLabel() {
     return Container(
       alignment: Alignment.center,
-      height: Dimens.categoryLabelSize,
-      width: Dimens.categoryLabelSize,
+      height: categoryLabelSize,
+      width: categoryLabelSize,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: backgroundColor,
         boxShadow: [
           BoxShadow(
               color: shadowColor,
-              blurRadius: Dimens.defaultBlurRadius,
+              blurRadius: Radiuses.big_1x,
               offset: Dimens.defaultBlurOffset),
         ],
         gradient: labelBackgroundGradient,

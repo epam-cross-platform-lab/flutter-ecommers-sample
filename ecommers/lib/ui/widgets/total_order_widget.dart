@@ -1,5 +1,4 @@
 import 'package:ecommers/generated/i18n.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
@@ -34,17 +33,17 @@ class TotalOrderWidget extends StatelessWidget {
             children: <Widget>[
               Text(
                 I18n.of(context).totalOrder,
-                style: Styles.totalOrderText,
+                //style: Styles.totalOrderText,
               ),
               SizedBox(height: 7.0),
               Text(
                 Formatter.getCost(cost),
-                style: Styles.totalOrderCostText,
+                //style: Styles.totalOrderCostText,
               ),
               SizedBox(height: 4.0),
               Text(
                 I18n.of(context).freeDomesticShipping,
-                style: Styles.freeDomesticText,
+                //style: Styles.freeDomesticText,
               ),
             ],
           ),

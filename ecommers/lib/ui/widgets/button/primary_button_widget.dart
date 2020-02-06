@@ -14,9 +14,9 @@ class PrimaryButtonWidget extends ButtonBaseWidget {
   }) : super(
           text: text,
           assetIcon: assetIconPath,
-          buttonColor: Palette.primaryButtonBackground,
-          textColor: Palette.primaryButtonText,
+          buttonColor: BrandingColors.primary,
+          textColor: BrandingColors.secondaryText,
           onPressedFunction: onPressedFunction,
-          blurColor: Palette.primaryButtonBlur,
+          blurColor: BrandingColors.primary.withOpacity(0.4),
         );
 }

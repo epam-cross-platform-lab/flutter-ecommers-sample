@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +14,13 @@ class MenuList extends StatelessWidget {
     return Container(
       margin: margin,
       decoration: BoxDecoration(
-        color: Palette.menuListBackground,
-        borderRadius: BorderRadius.circular(Dimens.menuListBorderRadius),
+        color: BrandingColors.background,
+        borderRadius: BorderRadius.circular(Radiuses.normal),
         boxShadow: [
           BoxShadow(
-            blurRadius: Dimens.defaultBlurRadius,
+            blurRadius: Radiuses.big_1x,
             offset: Dimens.defaultBlurOffset,
-            color: Palette.menuListBlur,
+            color: BrandingColors.blur,
           )
         ],
       ),
@@ -37,7 +38,7 @@ class MenuList extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) => Divider(
-          color: Palette.divider,
+          color: BrandingColors.secondary.withOpacity(0.1),
           height: 1.0,
           indent: 57.0,
           endIndent: 17.0,

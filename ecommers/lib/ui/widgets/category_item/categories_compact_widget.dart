@@ -1,5 +1,6 @@
 import 'package:ecommers/common/categories.dart';
 import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/category_item/category_item.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +9,14 @@ class CategoriesCompactWidget extends StatelessWidget {
   static const _containerHeight = 134.0;
   final i18n = I18n.delegate;
 
+  static const categoryItemSize = Size(74.0, 89.0);
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: _containerHeight,
-      padding: EdgeInsets.symmetric(
-        horizontal: Dimens.pagePadding,
+      padding: const EdgeInsets.symmetric(
+        horizontal: Insets.x6,
       ),
       decoration: BoxDecoration(
         gradient: Gradients.categoriesCompact,
@@ -23,7 +26,7 @@ class CategoriesCompactWidget extends StatelessWidget {
         children: <Widget>[
           Text(
             I18n.of(context).categoriesTitle,
-            style: Styles.titleText,
+            style: Theme.of(context).textTheme.title,
           ),
           Align(
             alignment: Alignment.bottomLeft,
@@ -39,7 +42,7 @@ class CategoriesCompactWidget extends StatelessWidget {
     var spacing = _calculateItemSpacing(context, itemCount);
 
     return SizedBox(
-      height: Dimens.categoryItemSize.height,
+      height: categoryItemSize.height,
       child: ListView.separated(
         itemCount: itemCount,
         separatorBuilder: (BuildContext context, int index) => SizedBox(
@@ -60,8 +63,8 @@ class CategoriesCompactWidget extends StatelessWidget {
 
   Widget _buildSeeAllCategory(BuildContext context) {
     return CategoryItem(
-      backgroundColor: Palette.seeAllCategoryBackground,
-      shadowColor: Palette.seeAllCategoryShadow,
+      backgroundColor: BrandingColors.background,
+      shadowColor: BrandingColors.blur.withOpacity(0.34),
       imagePath: ARROW_RIGHT_ICON,
       title: I18n.of(context).seeAllCategoryTitle,
     );
@@ -71,7 +74,7 @@ class CategoriesCompactWidget extends StatelessWidget {
     var categoriesListWidth =
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
-    var itemCount = categoriesListWidth ~/ Dimens.categoryItemSize.width;
+    var itemCount = categoriesListWidth ~/ categoryItemSize.width;
 
     itemCount = itemCount > Categories.values.length
         ? Categories.values.length
@@ -85,7 +88,7 @@ class CategoriesCompactWidget extends StatelessWidget {
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
     var calculatedListSpacing =
-        (categoriesListWidth % Dimens.categoryItemSize.width) / (itemCount - 1);
+        (categoriesListWidth % categoryItemSize.width) / (itemCount - 1);
 
     return calculatedListSpacing;
   }
