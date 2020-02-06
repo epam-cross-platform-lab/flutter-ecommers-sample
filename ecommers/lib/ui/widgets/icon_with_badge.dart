@@ -29,7 +29,7 @@ class IconWithBadge extends Badge {
           badgeColor: BrandingColors.primary,
           animationType: BadgeAnimationType.scale,
           showBadge: badgeValue != 0,
-          padding: EdgeInsets.fromLTRB(
+          padding: const EdgeInsets.fromLTRB(
             Insets.x1_5,
             Insets.x0_5,
             Insets.x1_5,

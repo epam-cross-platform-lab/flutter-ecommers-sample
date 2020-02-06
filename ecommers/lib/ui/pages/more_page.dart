@@ -57,25 +57,25 @@ class MorePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: Insets.x6),
+            padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
             child: Text(
               I18n.of(context).morePage,
               style: Theme.of(context).textTheme.headline6,
             ),
           ),
-          SizedBox(height: 35.0),
+          const SizedBox(height: 35.0),
           MenuList(
             margin: menuListMargin,
             itemList: topMenuList,
           ),
-          SizedBox(height: 15.0),
+          const SizedBox(height: 15.0),
           MenuList(
             margin: menuListMargin,
             itemList: bottomMenuList,
           ),
-          SizedBox(height: 40.0),
+          const SizedBox(height: 40.0),
           _buildLogOutButton(context),
-          SizedBox(height: 30.0),
+          const SizedBox(height: 30.0),
         ],
       ),
     );

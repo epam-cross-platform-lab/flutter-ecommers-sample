@@ -38,20 +38,20 @@ class _CartPageState extends State<CartPage> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.only(left: Insets.x5),
+          padding: const EdgeInsets.only(left: Insets.x5),
           child: Text(
             I18n.of(context).cartTitle,
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
-        SizedBox(height: 29),
+        const SizedBox(height: 29),
         Expanded(
           child: _buildOrderListView(),
         ),
         Padding(
-          padding:
-              EdgeInsets.fromLTRB(Insets.x5, Insets.x8_5, Insets.x5, Insets.x5),
-          child: Divider(color: BrandingColors.secondary),
+          padding: const EdgeInsets.fromLTRB(
+              Insets.x5, Insets.x8_5, Insets.x5, Insets.x5),
+          child: const Divider(color: BrandingColors.secondary),
         ),
         _buildTotalOrderInformationWidget(),
       ],
@@ -76,9 +76,9 @@ class _CartPageState extends State<CartPage> {
       },
       separatorBuilder: (BuildContext context, int index) {
         return Padding(
-          padding:
-              EdgeInsets.fromLTRB(Insets.x0, Insets.x3, Insets.x0, Insets.x8),
-          child: Divider(
+          padding: const EdgeInsets.fromLTRB(
+              Insets.x0, Insets.x3, Insets.x0, Insets.x8),
+          child: const Divider(
             color: BrandingColors.secondary,
             indent: _orderDeviderIndent,
           ),
@@ -93,7 +93,8 @@ class _CartPageState extends State<CartPage> {
         (totalCost, nextOrder) =>
             (totalCost + nextOrder.count * nextOrder.cost));
     return Container(
-      padding: EdgeInsets.fromLTRB(Insets.x6, Insets.x0, Insets.x5, Insets.x4),
+      padding:
+          const EdgeInsets.fromLTRB(Insets.x6, Insets.x0, Insets.x5, Insets.x4),
       width: CartPage.orderWidgetSize.width,
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -108,7 +109,7 @@ class _CartPageState extends State<CartPage> {
                     .headline5
                     .copyWith(fontSize: FontSizes.small_1x),
               ),
-              SizedBox(height: 7.0),
+              const SizedBox(height: 7.0),
               Text(
                 Formatter.getCost(totalOrderCost),
                 style: Theme.of(context)
@@ -116,7 +117,7 @@ class _CartPageState extends State<CartPage> {
                     .headline6
                     .copyWith(fontSize: FontSizes.big_2x),
               ),
-              SizedBox(height: 4.0),
+              const SizedBox(height: 4.0),
               Text(
                 I18n.of(_context).freeDomesticShipping,
                 style: Theme.of(context)

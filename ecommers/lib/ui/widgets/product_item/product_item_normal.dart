@@ -34,7 +34,7 @@ class ProductItemNormal extends ProductItemBase {
             child: Image.asset(assetImagePath),
           ),
         ),
-        SizedBox(height: 4.0),
+        const SizedBox(height: 4.0),
         Text(
           title,
           overflow: TextOverflow.ellipsis,

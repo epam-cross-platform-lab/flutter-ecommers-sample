@@ -22,17 +22,17 @@ class HomePage extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         CategoriesCompactWidget(),
-        SizedBox(height: Dimens.pagePadding),
+        const SizedBox(height: Dimens.pagePadding),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: Insets.x6),
+          padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
           child: Text(
             I18n.of(context).latetstTitle,
             style: Theme.of(context).textTheme.headline6,
           ),
         ),
-        SizedBox(height: 9.0),
+        const SizedBox(height: 9.0),
         _buildLatestCarousel(),
-        SizedBox(height: 11.0),
+        const SizedBox(height: 11.0),
         Expanded(
           child: _buildLatestGridView(context),
         ),

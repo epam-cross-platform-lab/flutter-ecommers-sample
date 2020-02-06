@@ -36,9 +36,9 @@ class MenuItem extends StatelessWidget {
             subTitle ?? '',
             style: Theme.of(context).textTheme.subtitle2,
           ),
-          SizedBox(width: 10.0),
+          const SizedBox(width: 10.0),
           SvgPicture.asset(MENU_ARROW_ICON),
-          SizedBox(width: 15.0),
+          const SizedBox(width: 15.0),
         ],
       ),
     );

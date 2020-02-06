@@ -44,7 +44,7 @@ class _OrderWidgetState extends State<OrderWidget> {
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           _buildCircleLabel(),
-          SizedBox(
+          const SizedBox(
             width: 20.0,
           ),
           Column(
@@ -58,14 +58,14 @@ class _OrderWidgetState extends State<OrderWidget> {
                 widget.secondaryText,
                 style: Theme.of(context).textTheme.bodyText2,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16.0,
               ),
               Text(
                 Formatter.getCost(widget.count * widget.cost),
                 style: Theme.of(context).textTheme.bodyText1,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15.0,
               ),
               SizedBox(
