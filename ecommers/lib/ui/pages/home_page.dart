@@ -46,10 +46,9 @@ class HomePage extends StatelessWidget {
       items: List.generate(
         3,
         (index) {
-          return Padding(
-            padding: EdgeInsets.symmetric(horizontal: Insets.x2),
-            child: FractionallySizedBox(
-              heightFactor: 1,
+          return SizedBox.expand(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: Insets.x2),
               child: ImageCard(
                 buttonText: 'CLICK ME',
                 description: 'item: $index SOOOOme looooong description',
