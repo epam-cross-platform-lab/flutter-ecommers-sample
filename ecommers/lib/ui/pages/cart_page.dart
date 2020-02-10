@@ -4,7 +4,7 @@ import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/checkout_page.dart';
-import 'package:ecommers/ui/widgets/index.dart';
+import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatefulWidget {
@@ -38,7 +38,7 @@ class _CartPageState extends State<CartPage> {
             (totalCost + nextOrder.count * nextOrder.cost));
 
     return Padding(
-      padding: EdgeInsets.fromLTRB(25, 0, 20, 15),
+      padding: EdgeInsets.fromLTRB(Insets.x6, Insets.x0, Insets.x5, Insets.x4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -52,7 +52,7 @@ class _CartPageState extends State<CartPage> {
             child: _buildOrderListView(),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(0, 34, 0, 20.0),
+            padding: EdgeInsets.fromLTRB(Insets.x0, Insets.x8_5, Insets.x0, Insets.x5),
             child: Divider(color: BrandingColors.secondary),
           ),
           TotalOrderWidget(
@@ -76,7 +76,7 @@ class _CartPageState extends State<CartPage> {
     return ListView.separated(
 
       padding:
-          const EdgeInsets.fromLTRB(Insets.x6, Insets.x7, Insets.x5, Insets.x0),
+          const EdgeInsets.fromLTRB(Insets.x0, Insets.x0, Insets.x5, Insets.x0),
       itemCount: 20,
       itemBuilder: (BuildContext context, int index) {
         return OrderWidget(

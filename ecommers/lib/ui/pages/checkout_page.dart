@@ -2,8 +2,7 @@ import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/models/order_model.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/widgets/index.dart';
-import 'package:ecommers/ui/widgets/order_widget.dart';
+import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
