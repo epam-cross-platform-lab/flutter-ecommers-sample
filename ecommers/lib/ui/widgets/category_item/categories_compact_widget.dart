@@ -64,7 +64,7 @@ class CategoriesCompactWidget extends StatelessWidget {
   Widget _buildSeeAllCategory(BuildContext context) {
     return CategoryItem(
       backgroundColor: BrandingColors.background,
-      shadowColor: BrandingColors.blur.withOpacity(0.34),
+      shadowColor: BrandingColors.blur,
       imagePath: ARROW_RIGHT_ICON,
       title: I18n.of(context).seeAllCategoryTitle,
     );
