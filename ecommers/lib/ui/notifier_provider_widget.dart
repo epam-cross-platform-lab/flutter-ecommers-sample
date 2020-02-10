@@ -2,13 +2,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class BaseWidget<T extends ChangeNotifier> extends StatefulWidget {
+class NotifierProviderWidget<T extends ChangeNotifier> extends StatefulWidget {
   final Widget Function(BuildContext context, T model, Widget child) builder;
   final T providerModel;
   final Widget child;
   final Function(T) onModelReady;
 
-  BaseWidget({
+  NotifierProviderWidget({
     Key key,
     this.builder,
     this.child,
@@ -16,10 +16,10 @@ class BaseWidget<T extends ChangeNotifier> extends StatefulWidget {
     this.onModelReady,
   }) : super(key: key);
 
-  _BaseWidgetState<T> createState() => _BaseWidgetState<T>();
+  _NotifierProviderWidgetState<T> createState() => _NotifierProviderWidgetState<T>();
 }
 
-class _BaseWidgetState<T extends ChangeNotifier> extends State<BaseWidget<T>> {
+class _NotifierProviderWidgetState<T extends ChangeNotifier> extends State<NotifierProviderWidget<T>> {
   T providerModel;
 
   @override

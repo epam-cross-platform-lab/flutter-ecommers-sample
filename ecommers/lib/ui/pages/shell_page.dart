@@ -1,13 +1,12 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/notifier_provider_widget.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/bottom_navigation_widget.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../base_widget.dart';
 
 class ShellPage extends StatefulWidget {
   @override
@@ -17,7 +16,7 @@ class ShellPage extends StatefulWidget {
 class _ShellPageState extends State<ShellPage> {
   @override
   Widget build(BuildContext context) {
-    return BaseWidget(
+    return NotifierProviderWidget(
       providerModel: ShellProviderModel(),
       builder: (context, model, child) {
         return Scaffold(
