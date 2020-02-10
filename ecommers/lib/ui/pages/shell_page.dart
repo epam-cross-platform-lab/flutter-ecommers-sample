@@ -20,6 +20,7 @@ class _ShellPageState extends State<ShellPage> {
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: shellProvider.appBarColor,
+        brightness: Brightness.light,
         actions: <Widget>[
           _buildAction(
             imageAssetPath: MESSAGES_ICON,

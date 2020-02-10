@@ -7,51 +7,55 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_normal.dart';
 import 'package:flutter/material.dart';
 
-import '../decorations/index.dart';
-
 class HomePage extends StatelessWidget {
   static const int _latestGridViewAxisCount = 3;
   static const double _latestGridViewAxisSpacing = 12.0;
-  static const double _latestCarouselViewportFraction = 0.9;
   static const imageCardSize = Size(325.0, 184.0);
   static const productItemNormalSize = Size(101.0, 135.0);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        CategoriesCompactWidget(),
-        const SizedBox(height: Dimens.pagePadding),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
-          child: Text(
-            I18n.of(context).latetstTitle,
-            style: Theme.of(context).textTheme.headline6,
+    return CustomScrollView(
+      slivers: <Widget>[
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              CategoriesCompactWidget(),
+              const SizedBox(height: Dimens.pagePadding),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
+                child: Text(
+                  I18n.of(context).latetstTitle,
+                  style: Theme.of(context).textTheme.headline6,
+                ),
+              ),
+              SizedBox(height: 10.0),
+              _buildLatestCarousel(context),
+            ],
           ),
         ),
-        const SizedBox(height: 9.0),
-        _buildLatestCarousel(),
-        const SizedBox(height: 11.0),
-        Expanded(
-          child: _buildLatestGridView(context),
-        ),
+        _buildLatestGridView(context),
       ],
     );
   }
 
-  Widget _buildLatestCarousel() {
+  Widget _buildLatestCarousel(BuildContext context) {
     return CarouselSlider(
-      height: imageCardSize.height,
-      viewportFraction: _latestCarouselViewportFraction,
+      viewportFraction: 0.91,
       items: List.generate(
         3,
         (index) {
-          return ImageCard(
-            buttonText: 'Click me',
-            description: 'item: $index SOOOOme looooong description',
-            imageAsset: GIRL_IMAGE,
-            onButtonPressed: () {},
+          return SizedBox.expand(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: Insets.x2),
+              child: ImageCard(
+                buttonText: 'CLICK ME',
+                description: 'item: $index SOOOOme looooong description',
+                imageAsset: GIRL_IMAGE,
+                onButtonPressed: () {},
+              ),
+            ),
           );
         },
       ),
@@ -59,24 +63,30 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildLatestGridView(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: _latestGridViewAxisCount,
-        mainAxisSpacing: _latestGridViewAxisSpacing,
-      ),
+    return SliverPadding(
       padding: EdgeInsets.symmetric(
-          horizontal: _calculateLatestGridViewPadding(context)),
-      itemCount: 550,
-      itemBuilder: (context, index) {
-        return Center(
-          child: ProductItemNormal(
-            assetImagePath: BACKPACK_IMAGE,
-            cost: 15.0,
-            title: 'top back pack',
-            rate: 3.9,
-          ),
-        );
-      },
+        horizontal: _calculateLatestGridViewPadding(context),
+        vertical: Insets.x2_5,
+      ),
+      sliver: SliverGrid(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: _latestGridViewAxisCount,
+          mainAxisSpacing: _latestGridViewAxisSpacing,
+        ),
+        delegate: SliverChildBuilderDelegate(
+          (context, index) {
+            return Center(
+              child: ProductItemNormal(
+                assetImagePath: BACKPACK_IMAGE,
+                cost: 15.0,
+                title: 'top back pack',
+                rate: 3.9,
+              ),
+            );
+          },
+          childCount: 30,
+        ),
+      ),
     );
   }
 
