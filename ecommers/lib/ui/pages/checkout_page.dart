@@ -71,7 +71,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return ListView.separated(
       itemCount: 20,
       itemBuilder: (BuildContext context, int index) {
-        return OrderWidget(
+        return SmallOrderWidget(
           primaryText: _orders[index].title,
           secondaryText: _orders[index].description,
           assetImagePath: _orders[index].imagePath,

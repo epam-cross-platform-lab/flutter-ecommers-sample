@@ -27,6 +27,9 @@ const String SUPPORT_ICON = 'assets/support.svg';
 const String MENU_ARROW_ICON = 'assets/menu_arrow.svg';
 const String MESSAGES_ICON = 'assets/messages.svg';
 const String NOTIFICATIONS_ICON = 'assets/notifications.svg';
+const String ARROW_ICON = 'assets/right_icon.svg';
+const String REMOVE_ICON = 'assets/remove.svg';
+const String ADD_ICON = 'assets/add.svg';
 
 const String GIRL_IMAGE = 'assets/girl_image.png';
 const String SHIRT_IMAGE = 'assets/product_shirt.png';
