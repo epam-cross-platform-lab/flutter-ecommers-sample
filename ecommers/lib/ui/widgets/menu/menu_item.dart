@@ -3,32 +3,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MenuItem extends StatelessWidget {
+  static const double _height = 48.0;
+
   final String svgAssetIconPath;
   final String title;
   final String subTitle;
-  final double height;
 
   MenuItem({
     this.svgAssetIconPath,
     this.title,
     this.subTitle,
-    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: height,
+      height: _height,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          if (svgAssetIconPath != null)
-            SizedBox(
-              width: 57.0,
-              child: SvgPicture.asset(svgAssetIconPath),
-            )
-          else
-            SizedBox(width: 15.0),
+          SizedBox(
+            width: 57.0,
+            child: SvgPicture.asset(svgAssetIconPath),
+          ),
           Expanded(
             child: Text(
               title ?? '',

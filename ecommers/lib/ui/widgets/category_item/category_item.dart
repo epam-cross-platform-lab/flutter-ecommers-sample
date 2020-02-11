@@ -1,4 +1,4 @@
-import 'package:ecommers/ui/decorations/dimens/index.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart'; 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/ui/widgets/category_item/consts.dart';
 import 'package:flutter/material.dart';
@@ -10,9 +10,8 @@ class CategoryItem extends StatelessWidget {
   final Color backgroundColor;
   final String imagePath;
   final String title;
-  final Function onTapFunction;
 
-  static const size = Size(74.0, 89.0);
+  static const categoryItemSize = Size(74.0, 89.0);
   static const categoryLabelSize = 65.0;
 
   CategoryItem({
@@ -21,7 +20,6 @@ class CategoryItem extends StatelessWidget {
     @required this.title,
     this.labelBackgroundGradient,
     this.backgroundColor,
-    this.onTapFunction,
   });
 
   factory CategoryItem.fromType(Categories categoryType) {
@@ -37,26 +35,23 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTapFunction,
-      child: Container(
-        width: size.width,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            _buildGradientLabel(),
-            const SizedBox(
-              height: labelBottomMargin,
-            ),
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .caption
-                  .copyWith(fontSize: FontSizes.normal),
-            ),
-          ],
-        ),
+    return Container(
+      width: categoryItemSize.width,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          _buildGradientLabel(),
+          const SizedBox(
+            height: labelBottomMargin,
+          ),
+          Text(
+            title,
+            style: Theme.of(context)
+                .textTheme
+                .caption
+                .copyWith(fontSize: FontSizes.normal),
+          ),
+        ],
       ),
     );
   }
