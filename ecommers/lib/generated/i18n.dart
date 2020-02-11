@@ -58,6 +58,8 @@ class I18n implements WidgetsLocalizations {
   String get logOut => "LOG OUT";
   /// "More"
   String get morePage => "More";
+  /// "All Categories"
+  String get allCategories => "All Categories";
 }
 
 class _I18n_en_US extends I18n {

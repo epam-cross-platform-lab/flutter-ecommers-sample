@@ -1,4 +1,5 @@
 export 'cart_page.dart';
+export 'categories_page.dart';
 export 'home_page.dart';
 export 'more_page.dart';
 export 'profile_page.dart';

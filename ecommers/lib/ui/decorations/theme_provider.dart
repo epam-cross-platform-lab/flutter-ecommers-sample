@@ -34,8 +34,8 @@ class _TextStyles {
     fontWeight: FontWeight.w700,
   );
 
-  static const headline5 = TextStyle(
-    color: BrandingColors.primaryText,
+  static final headline5 = TextStyle(
+    color: BrandingColors.primaryText.withOpacity(0.5),
     fontSize: FontSizes.small_3x,
     fontWeight: FontWeight.w500,
   );
