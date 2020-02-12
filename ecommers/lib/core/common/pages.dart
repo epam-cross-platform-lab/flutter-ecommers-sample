@@ -4,5 +4,6 @@ enum Pages {
   search,
   cart,
   profile,
-  more
+  more,
+  categories
 }

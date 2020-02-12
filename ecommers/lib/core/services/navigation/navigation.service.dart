@@ -1,5 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NavigationService {
@@ -10,20 +11,29 @@ class NavigationService {
     return navigatorKey.currentState.push(route);
   }
 
+  void goBack() {
+    navigatorKey.currentState.pop();
+  }
+
   Route<dynamic> _generateRoute(Pages page, Object arguments) {
     var resultPage;
-    
+
     switch (page) {
       case Pages.shell:
+        resultPage = ShellPage();
+        break;
+      case Pages.categories:
+        resultPage = CategoriesPage();
+        break;
       default:
-          resultPage = ShellPage();
-          break;
+        resultPage = ShellPage();
+        break;
     }
 
     return _getRoute(resultPage);
   }
 
   Route<dynamic> _getRoute(Widget widget) {
-    return MaterialPageRoute(builder: (_) => widget);
+    return CupertinoPageRoute(builder: (_) => widget);
   }
 }
