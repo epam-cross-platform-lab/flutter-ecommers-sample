@@ -31,7 +31,7 @@ const String ARROW_ICON = 'assets/right_icon.svg';
 const String REMOVE_ICON = 'assets/remove.svg';
 const String ADD_ICON = 'assets/add.svg';
 const String CLOSE_ICON = 'assets/close_icon.svg';
-
+const String SUCCES_ICON = 'assets/succes.svg';
 const String GIRL_IMAGE = 'assets/girl_image.png';
 const String SHIRT_IMAGE = 'assets/product_shirt.png';
 const String BACKPACK_IMAGE = 'assets/product_backpack.png';

@@ -5,6 +5,7 @@ import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/checkout_page.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatefulWidget {
@@ -51,7 +52,7 @@ class _CartPageState extends State<CartPage> {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(Insets.x0, Insets.x8_5, Insets.x0, Insets.x5),
-            child: Divider(color: BrandingColors.secondary.withOpacity(0.15)),
+            child: Divider(color: BrandingColors.secondary),
           ),
           TotalOrderWidget(
             cost: totalOrderCost,
@@ -59,7 +60,7 @@ class _CartPageState extends State<CartPage> {
             onButtonPressedFunction: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => CheckoutPage()),
+                CupertinoPageRoute(builder: (context) => CheckoutPage()),
               );
             },
             buttonText: I18n.of(_context).checkoutButton,
@@ -92,7 +93,7 @@ class _CartPageState extends State<CartPage> {
           padding: const EdgeInsets.fromLTRB(
               Insets.x0, Insets.x3, Insets.x0, Insets.x8),
           child:  Divider(
-            color: BrandingColors.secondary.withOpacity(0.15),
+            color: BrandingColors.secondary.withOpacity(0.4),
             indent: _orderDeviderIndent,
           ),
         );

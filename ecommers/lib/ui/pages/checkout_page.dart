@@ -3,8 +3,11 @@ import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/pages/closeable_page.dart';
+import 'package:ecommers/ui/pages/succes_page.dart';
 import 'package:ecommers/ui/widgets/circle_icon.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -30,14 +33,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
         (totalCost, nextOrder) =>
             (totalCost + nextOrder.count * nextOrder.cost));
 
-    return Scaffold(
-      resizeToAvoidBottomPadding: true,
-      appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: BrandingColors.pageBackground,
-      ),
-      backgroundColor: BrandingColors.pageBackground,
-      body: Column(
+    return CloseablePage(
+      child: Column(
         children: <Widget>[
           Expanded(
             child: Padding(
@@ -105,7 +102,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
           TotalOrderWidget(
             cost: totalOrderCost,
             backgroundColor: BrandingColors.background,
-            onButtonPressedFunction: () {},
+            onButtonPressedFunction: () {
+              Navigator.push(
+                context,
+                CupertinoPageRoute(builder: (context) => SuccesPage()),
+              );
+            },
             buttonText: I18n.of(context).placeOrderButton,
             padding: EdgeInsets.fromLTRB(25, 15, 20, 15),
           ),
