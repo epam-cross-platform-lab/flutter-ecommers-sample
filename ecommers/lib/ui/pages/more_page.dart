@@ -1,3 +1,5 @@
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -91,8 +93,12 @@ class MorePage extends StatelessWidget {
               .headline5
               .apply(color: BrandingColors.primary),
         ),
-        onPressed: () {}, //TODO use proovider
+        onPressed: () async => await logOutPressHandler(), //TODO use proovider
       ),
     );
+  }
+
+  Future logOutPressHandler() async {
+    await navigationService.navigateWithReplacementTo(Pages.authorization);
   }
 }

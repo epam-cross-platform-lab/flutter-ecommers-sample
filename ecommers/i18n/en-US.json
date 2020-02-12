@@ -19,6 +19,13 @@
     "paymentMethod": "PAYMENT METHOD",
     "shippingAddress": "SHIPPING ADDRESS",
     "cardEnding": "Master Card ending",
-    "allCategories": "All Categories"
-
+    "allCategories": "All Categories",
+    "signUp": "Sign Up",
+    "logIn": "Log In",
+    "forgotPassword": "Forgot Password",
+    "email": "EMAIL",
+    "username": "USERNAME",
+    "password": "PASSWORD",
+    "usernameOrEmail": "USERNAME / EMAIL",
+    "forgotPasswordHelpText": "Enter the email address you used to create your account and we will email you a link to reset your password"
 }
