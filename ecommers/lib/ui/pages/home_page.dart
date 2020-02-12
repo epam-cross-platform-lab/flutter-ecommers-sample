@@ -44,15 +44,15 @@ class HomePage extends StatelessWidget {
     return CarouselSlider(
       viewportFraction: 0.91,
       items: List.generate(
-        3,
+        6,
         (index) {
           return SizedBox.expand(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: Insets.x2),
               child: ImageCard(
-                buttonText: 'CLICK ME',
-                description: 'item: $index SOOOOme looooong description',
-                imageAsset: GIRL_IMAGE,
+                buttonText: 'SEE MORE',
+                description: 'For all your summer clothing needs',
+                imageAsset: getCarouselImage(index),
                 onButtonPressed: () {},
               ),
             ),
@@ -60,6 +60,17 @@ class HomePage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  String getCarouselImage(int index) {
+    var modulo = index % 3;
+
+    if (modulo == 0)
+      return GIRL_IMAGE;
+    else if (modulo == 1)
+      return GIRL2_IMAGE;
+    else
+      return GIRL3_IMAGE;
   }
 
   Widget _buildLatestGridView(BuildContext context) {
@@ -77,9 +88,9 @@ class HomePage extends StatelessWidget {
           (context, index) {
             return Center(
               child: ProductItemNormal(
-                assetImagePath: BACKPACK_IMAGE,
+                assetImagePath: _getDressAssetPath(index),
                 cost: 15.0,
-                title: 'top back pack',
+                title: 'best dress ever',
                 rate: 3.9,
               ),
             );
@@ -88,6 +99,17 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _getDressAssetPath(int index) {
+    var modulo = index % 6;
+
+    if (modulo == 0) return DRESS_COTTON_IMAGE;
+    if (modulo == 1) return DRESS_FLORAL2_IMAGE;
+    if (modulo == 2) return DRESS_FLORAL_IMAGE;
+    if (modulo == 3) return DRESS_PATTERN2_IMAGE;
+    if (modulo == 4) return DRESS_PATTERN_IMAGE;
+    if (modulo == 5) return DRESS_COTTON2_IMAGE;
   }
 
   double _calculateLatestGridViewPadding(BuildContext context) {

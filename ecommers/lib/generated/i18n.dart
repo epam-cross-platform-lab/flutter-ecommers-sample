@@ -60,6 +60,22 @@ class I18n implements WidgetsLocalizations {
   String get morePage => "More";
   /// "All Categories"
   String get allCategories => "All Categories";
+  /// "Sign Up"
+  String get signUp => "Sign Up";
+  /// "Log In"
+  String get logIn => "Log In";
+  /// "Forgot Password"
+  String get forgotPassword => "Forgot Password";
+  /// "EMAIL"
+  String get email => "EMAIL";
+  /// "USERNAME"
+  String get username => "USERNAME";
+  /// "PASSWORD"
+  String get password => "PASSWORD";
+  /// "USERNAME / EMAIL"
+  String get usernameOrEmail => "USERNAME / EMAIL";
+  /// "Enter the email address you used to create your account and we will email you a link to reset your password"
+  String get forgotPasswordHelpText => "Enter the email address you used to create your account and we will email you a link to reset your password";
 }
 
 class _I18n_en_US extends I18n {
