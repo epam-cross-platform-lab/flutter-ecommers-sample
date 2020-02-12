@@ -48,7 +48,7 @@ class ButtonBaseWidget extends StatelessWidget {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
-                  text,
+                  text.toUpperCase(),
                   style: Theme.of(context)
                       .textTheme
                       .button

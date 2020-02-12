@@ -1,7 +1,7 @@
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/pages/index.dart';
+import 'package:ecommers/ui/pages/authorization/authorization_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: "ecommers",
-        theme: ThemeProvider.getTheme(),
-        home: ShellPage(),
+        theme: ThemeProvider.getTheme(), 
+        home: AuthorizationPage(),
         navigatorKey: navigationService.navigatorKey,
         localizationsDelegates: [i18n],
         supportedLocales: i18n.supportedLocales,
