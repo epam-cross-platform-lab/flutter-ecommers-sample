@@ -79,12 +79,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     child: _buildOrderListView(),
                   ),
                   _buildDevider(),
-                  TextFormField(
-                    
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Enter a search term'),
-                  ),
                   _buildRowAction(
                     imagePath: SALE_IMAGE,
                     text: Text(
