@@ -47,42 +47,43 @@ class _SmallOrderWidgetState extends State<SmallOrderWidget> {
             ),
           ),
           const SizedBox(width: Insets.x3_5),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                widget.primaryText,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(fontWeight: FontWeight.w700),
-              ),
-              Text(
-                widget.secondaryText,
-                style: Theme.of(context).textTheme.subtitle1,
-              ),
-              const SizedBox(height: Insets.x1),
-              SizedBox(
-                width: 247.0,
-                child: Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: Text(
-                      Formatter.getCost(widget.count * widget.cost),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText1
-                          .copyWith(color: BrandingColors.primary),
-                    )),
-                    Counter(
-                      count: widget.count,
-                      countIncrementFunction: widget.countIncrementFunction,
-                      countDecrementFunction: widget.countDecrementFunction,
-                    ),
-                  ],
+
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  widget.primaryText,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(fontWeight: FontWeight.w700),
                 ),
-              ),
-            ],
+                Text(
+                  widget.secondaryText,
+                  style: Theme.of(context).textTheme.subtitle1,
+                ),
+                const SizedBox(height: Insets.x1),
+                   Row(
+                    children: <Widget>[
+                      Expanded(
+                          child: Text(
+                        Formatter.getCost(widget.count * widget.cost),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText1
+                            .copyWith(color: BrandingColors.primary),
+                      )),
+                      Counter(
+                        count: widget.count,
+                        countIncrementFunction: widget.countIncrementFunction,
+                        countDecrementFunction: widget.countDecrementFunction,
+                      ),
+                    ],
+                  ),
+                
+              ],
+            ),
           ),
         ],
       ),

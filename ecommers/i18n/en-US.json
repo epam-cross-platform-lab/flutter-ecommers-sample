@@ -17,5 +17,6 @@
     "addPromoCode": "Add Prome Code",
     "items": "ITEMS",
     "paymentMethod": "PAYMENT METHOD",
-    "shippingAddress": "SHIPPING ADDRESS"
+    "shippingAddress": "SHIPPING ADDRESS",
+    "cardEnding": "Master Card ending"
 }

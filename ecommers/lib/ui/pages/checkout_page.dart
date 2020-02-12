@@ -1,10 +1,11 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/models/order_model.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/widgets/circle_icon.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CheckoutPage extends StatefulWidget {
   @override
@@ -30,6 +31,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             (totalCost + nextOrder.count * nextOrder.cost));
 
     return Scaffold(
+      resizeToAvoidBottomPadding: true,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: BrandingColors.pageBackground,
@@ -41,15 +43,60 @@ class _CheckoutPageState extends State<CheckoutPage> {
             child: Padding(
               padding: EdgeInsets.fromLTRB(25, 0, 20, 15),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
                     I18n.of(context).checkoutTitle,
-                    //style: Styles.titleText,
+                    style: Theme.of(context).textTheme.headline6,
                   ),
                   SizedBox(height: 29),
+                  Text(
+                    I18n.of(context).shippingAddress,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  const SizedBox(height: Insets.x2),
+                  _buildShippAddress(),
+                  _buildDevider(),
+                  Text(
+                    I18n.of(context).paymentMethod,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  const SizedBox(height: Insets.x2),
+                  _buildRowAction(
+                    imagePath: CREDIT_CARD_IMAGE,
+                    text: Text(
+                      I18n.of(context).cardEnding,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          .copyWith(fontWeight: FontWeight.w700),
+                    ),
+                  ),
+                  _buildDevider(),
+                  Text(
+                    I18n.of(context).items,
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                  const SizedBox(height: Insets.x3_5),
                   Expanded(
                     child: _buildOrderListView(),
+                  ),
+                  _buildDevider(),
+                  TextFormField(
+                    
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Enter a search term'),
+                  ),
+                  _buildRowAction(
+                    imagePath: SALE_IMAGE,
+                    text: Text(
+                      I18n.of(context).addPromoCode,
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyText1
+                          .copyWith(color: BrandingColors.primary),
+                    ),
                   ),
                 ],
               ),
@@ -86,7 +133,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           padding: EdgeInsets.fromLTRB(0.0, 18, 0.0, 20.0),
           child: Divider(
             color: BrandingColors.secondary,
-            indent: _orderDeviderIndent,
+            indent: 83.0,
           ),
         );
       },
@@ -102,33 +149,48 @@ class _CheckoutPageState extends State<CheckoutPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                I18n.of(context).shippingAddress,
-               // style: Styles.orderPrimaryText,
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              Text(
                 'John Doe', //TODO from provider
-               // style: Styles.orderSecondaryText,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontWeight: FontWeight.w700),
               ),
               Text(
                 'No 123, Sub Street, Main Street,City Name, Province, Country',
-             //   style: Styles.orderPrimaryText,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontWeight: FontWeight.w400),
               ),
             ],
           ),
         ),
-        Expanded(
-          child: Align(
-            child: SvgPicture.asset(MENU_ARROW_ICON),
-            alignment: Alignment.centerRight,
-          ),
-        )
+        Spacer(),
+        CircleIcon(),
       ],
     );
   }
-  Widget _buildPaymentMethodWidget(){
-    
+
+  Widget _buildRowAction({String imagePath, Text text}) {
+    return Row(
+      children: <Widget>[
+        Image.asset(
+          imagePath,
+          fit: BoxFit.scaleDown,
+        ),
+        const SizedBox(width: Insets.x3_5),
+        text,
+        Spacer(),
+        CircleIcon(),
+      ],
+    );
+  }
+
+  Widget _buildDevider() {
+    return Divider(
+      color: BrandingColors.secondary.withOpacity(0.15),
+      thickness: 1.0,
+      height: 32.0,
+    );
   }
 }

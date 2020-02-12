@@ -16,7 +16,6 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   static const _orderDeviderIndent = 120.0;
-  static const _checkoutButtonSize = Size(165.0, 46.0);
 
   BuildContext _context;
   final _orders = List.generate(
@@ -43,7 +42,6 @@ class _CartPageState extends State<CartPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Text(
-
             I18n.of(context).cartTitle,
             style: Theme.of(context).textTheme.headline6,
           ),
@@ -53,7 +51,7 @@ class _CartPageState extends State<CartPage> {
           ),
           Padding(
             padding: EdgeInsets.fromLTRB(Insets.x0, Insets.x8_5, Insets.x0, Insets.x5),
-            child: Divider(color: BrandingColors.secondary),
+            child: Divider(color: BrandingColors.secondary.withOpacity(0.15)),
           ),
           TotalOrderWidget(
             cost: totalOrderCost,
@@ -91,11 +89,10 @@ class _CartPageState extends State<CartPage> {
       },
       separatorBuilder: (BuildContext context, int index) {
         return Padding(
-
           padding: const EdgeInsets.fromLTRB(
               Insets.x0, Insets.x3, Insets.x0, Insets.x8),
-          child: const Divider(
-            color: BrandingColors.secondary,
+          child:  Divider(
+            color: BrandingColors.secondary.withOpacity(0.15),
             indent: _orderDeviderIndent,
           ),
         );

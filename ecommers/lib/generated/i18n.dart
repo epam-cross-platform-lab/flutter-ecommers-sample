@@ -70,6 +70,8 @@ class I18n implements WidgetsLocalizations {
   String get paymentMethod => "PAYMENT METHOD";
   /// "SHIPPING ADDRESS"
   String get shippingAddress => "SHIPPING ADDRESS";
+  /// "Master Card ending"
+  String get cardEnding => "Master Card ending";
 }
 
 class _I18n_en_US extends I18n {
