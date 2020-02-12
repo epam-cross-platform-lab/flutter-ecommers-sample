@@ -1,19 +1,12 @@
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
-import 'package:ecommers/providers/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 void main() {
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => ShellProvider()),
-      ],
-      child: MyApp(),
-    ),
-  );
+  DependencyService.registerDependencies();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -24,6 +17,7 @@ class MyApp extends StatelessWidget {
         title: "ecommers",
         theme: ThemeProvider.getTheme(),
         home: ShellPage(),
+        navigatorKey: navigationService.navigatorKey,
         localizationsDelegates: [i18n],
         supportedLocales: i18n.supportedLocales,
         localeResolutionCallback:

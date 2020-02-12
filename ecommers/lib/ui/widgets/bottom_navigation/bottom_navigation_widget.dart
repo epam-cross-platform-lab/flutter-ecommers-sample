@@ -1,4 +1,4 @@
-import 'package:ecommers/common/pages.dart';
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/buttom_bar_item_icon.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/consts.dart';

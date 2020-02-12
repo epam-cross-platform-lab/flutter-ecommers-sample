@@ -1,4 +1,5 @@
-import 'package:ecommers/common/categories.dart';
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -21,17 +22,16 @@ class CategoriesCompactWidget extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: Gradients.categoriesCompact,
       ),
-      child: Stack(
-        alignment: Alignment.topLeft,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            I18n.of(context).categoriesTitle,
-            style: Theme.of(context).textTheme.headline6,
+          Expanded(
+            child: Text(
+              I18n.of(context).categoriesTitle,
+              style: Theme.of(context).textTheme.headline6,
+            ),
           ),
-          Align(
-            alignment: Alignment.bottomLeft,
-            child: _createCategoriesListWidget(context),
-          )
+          _createCategoriesListWidget(context),
         ],
       ),
     );
@@ -67,6 +67,8 @@ class CategoriesCompactWidget extends StatelessWidget {
       shadowColor: BrandingColors.blur,
       imagePath: ARROW_RIGHT_ICON,
       title: I18n.of(context).seeAllCategoryTitle,
+      onTapFunction: () async =>
+          await navigationService.navigateTo(Pages.categories),
     );
   }
 
