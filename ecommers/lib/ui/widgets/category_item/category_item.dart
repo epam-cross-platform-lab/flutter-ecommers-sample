@@ -1,5 +1,5 @@
-import 'package:ecommers/common/categories.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart'; 
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/ui/widgets/category_item/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

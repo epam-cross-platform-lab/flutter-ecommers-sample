@@ -1,4 +1,5 @@
 enum Pages {
+  shell,
   home,
   search,
   cart,

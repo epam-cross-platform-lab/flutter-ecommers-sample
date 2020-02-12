@@ -1,4 +1,4 @@
-import 'package:ecommers/common/categories.dart';
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
