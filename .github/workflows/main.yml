@@ -15,7 +15,9 @@ jobs:
     - uses: subosito/flutter-action@v1
       with:
         channel: 'stable' # or: 'dev' or 'beta'
-    - name: cd to project directory
+    - name: Install dependencies
+      run: flutter pub get
       working-directory: ecommers
-    - run: flutter pub get
-    - run: flutter build apk
+    - name: Build Android app
+      run: flutter build apk
+      working-directory: ecommers
