@@ -12,7 +12,6 @@ class CloseablePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.0,
         backgroundColor: BrandingColors.pageBackground,
         automaticallyImplyLeading: false,
         actions: <Widget>[
