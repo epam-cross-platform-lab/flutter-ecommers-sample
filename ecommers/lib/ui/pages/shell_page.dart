@@ -21,9 +21,7 @@ class _ShellPageState extends State<ShellPage> {
       builder: (context, model, child) {
         return Scaffold(
           appBar: AppBar(
-            elevation: 0.0,
             backgroundColor: _getAppBarColor(model.selectedPage),
-            brightness: Brightness.light,
             actions: <Widget>[
               _buildAction(
                 imageAssetPath: MESSAGES_ICON,

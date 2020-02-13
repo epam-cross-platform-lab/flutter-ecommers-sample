@@ -8,6 +8,10 @@ class ThemeProvider {
       primaryColor: BrandingColors.primary,
       backgroundColor: BrandingColors.background,
       cursorColor: BrandingColors.primary,
+      appBarTheme: AppBarTheme(
+        brightness: Brightness.light,
+        elevation: 0.0,
+      ),
       textTheme: TextTheme(
         headline6: _TextStyles.headline6,
         headline5: _TextStyles.headline5,

@@ -18,7 +18,6 @@ class AuthorizationPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: BrandingColors.pageBackground,
         appBar: AppBar(
-          elevation: 0.0,
           backgroundColor: BrandingColors.pageBackground,
           bottom: TabBar(
             tabs: <Widget>[
