@@ -25,6 +25,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: BrandingColors.background,
       items: _createBottomNavigationBarItems(),
       unselectedItemColor: BrandingColors.primaryText,
       selectedItemColor: BrandingColors.primary,
@@ -32,6 +33,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
       selectedLabelStyle: Theme.of(context).textTheme.caption,
       unselectedLabelStyle: Theme.of(context).textTheme.caption,
       iconSize: 26.0,
+      elevation: 0,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       onTap: widget.onTappedFunction,

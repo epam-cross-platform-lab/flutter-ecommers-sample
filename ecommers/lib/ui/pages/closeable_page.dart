@@ -12,7 +12,6 @@ class CloseablePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: BrandingColors.pageBackground,
         automaticallyImplyLeading: false,
         actions: <Widget>[
           IconButton(
@@ -25,7 +24,6 @@ class CloseablePage extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: BrandingColors.pageBackground,
       body: child,
     );
   }

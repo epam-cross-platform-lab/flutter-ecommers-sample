@@ -19,32 +19,39 @@ class _ShellPageState extends State<ShellPage> {
     return NotifierProviderWidget(
       providerModel: ShellProviderModel(),
       builder: (context, model, child) {
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: _getAppBarColor(model.selectedPage),
-            actions: <Widget>[
-              _buildAction(
-                imageAssetPath: MESSAGES_ICON,
-                onIconPressedFuction: () {}, //TODO get from provider
-                badgeValue: 5, //TODO get from provider
-              ),
-              _buildAction(
-                imageAssetPath: NOTIFICATIONS_ICON,
-                onIconPressedFuction: () {}, //TODO get from provider
-                badgeValue: 6, //TODO get from provider
-              ),
-            ],
-          ),
-          backgroundColor: BrandingColors.pageBackground,
-          body: buildBody(model.selectedPage),
-          bottomNavigationBar: BottomNavigationWidget(
-            selectedIndex: model.selectedItemIndex,
-            pages: model.pages,
-            onTappedFunction: model.onTappedItem,
-            orderCount: 3,
-          ),
+        return OrientationBuilder(
+          builder: (context, orientation) => orientation == Orientation.portrait
+              ? _buildBody(model)
+              : BackgroundedSafeArea(child: _buildBody(model), isBottom: false),
         );
       },
+    );
+  }
+
+  Widget _buildBody(model) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: <Widget>[
+          _buildAction(
+            imageAssetPath: MESSAGES_ICON,
+            onIconPressedFuction: () {}, //TODO get from provider
+            badgeValue: 5, //TODO get from provider
+          ),
+          _buildAction(
+            imageAssetPath: NOTIFICATIONS_ICON,
+            onIconPressedFuction: () {}, //TODO get from provider
+            badgeValue: 6, //TODO get from provider
+          ),
+        ],
+      ),
+      backgroundColor: BrandingColors.pageBackground,
+      body: buildBody(model.selectedPage),
+      bottomNavigationBar: BottomNavigationWidget(
+        selectedIndex: model.selectedItemIndex,
+        pages: model.pages,
+        onTappedFunction: model.onTappedItem,
+        orderCount: 3,
+      ),
     );
   }
 
@@ -78,14 +85,5 @@ class _ShellPageState extends State<ShellPage> {
       ),
       onPressed: onIconPressedFuction,
     );
-  }
-
-  Color _getAppBarColor(Pages pageType) {
-    switch (pageType) {
-      case Pages.home:
-        return BrandingColors.background;
-      default:
-        return BrandingColors.pageBackground;
-    }
   }
 }

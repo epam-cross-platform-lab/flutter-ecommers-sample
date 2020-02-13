@@ -42,35 +42,32 @@ class MenuList extends StatelessWidget {
               )
             ],
           ),
-          child: Column(
-            children: <Widget>[
-              ListView.separated(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: itemList.length,
-                  itemBuilder: (context, index) {
-                    var itemModel = itemList[index];
+          child: ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: itemList.length,
+              padding: const EdgeInsets.all(0.0),
+              itemBuilder: (context, index) {
+                var itemModel = itemList[index];
 
-                    return MenuItem(
-                      title: itemModel.title,
-                      subTitle: itemModel.subTitle,
-                      svgAssetIconPath: itemModel.svgAssetIconPath,
-                      height: itemHeight,
-                    );
-                  },
-                  separatorBuilder: (context, index) {
-                    var menuItem = itemList[index];
+                return MenuItem(
+                  title: itemModel.title,
+                  subTitle: itemModel.subTitle,
+                  svgAssetIconPath: itemModel.svgAssetIconPath,
+                  height: itemHeight,
+                );
+              },
+              separatorBuilder: (context, index) {
+                var menuItem = itemList[index];
 
-                    return Divider(
-                      color: BrandingColors.secondary.withOpacity(0.1),
-                      height: 1.0,
-                      indent: menuItem.svgAssetIconPath == null ? 15.0 : 57.0,
-                      endIndent: 17.0,
-                      thickness: 1,
-                    );
-                  }),
-            ],
-          ),
+                return Divider(
+                  color: BrandingColors.secondary.withOpacity(0.1),
+                  height: 1.0,
+                  indent: menuItem.svgAssetIconPath == null ? 15.0 : 57.0,
+                  endIndent: 17.0,
+                  thickness: 1,
+                );
+              }),
         ),
       ],
     );

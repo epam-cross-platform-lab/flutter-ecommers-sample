@@ -6,10 +6,11 @@ class ThemeProvider {
   static ThemeData getTheme() {
     return ThemeData(
       primaryColor: BrandingColors.primary,
-      backgroundColor: BrandingColors.background,
+      backgroundColor: BrandingColors.pageBackground,
       cursorColor: BrandingColors.primary,
       appBarTheme: AppBarTheme(
         brightness: Brightness.light,
+        color: BrandingColors.pageBackground,
         elevation: 0.0,
       ),
       textTheme: TextTheme(

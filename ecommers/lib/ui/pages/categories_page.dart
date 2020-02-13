@@ -3,6 +3,7 @@ import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/closeable_page.dart';
+import 'package:ecommers/ui/widgets/backgrounded_safe_area.dart';
 import 'package:ecommers/ui/widgets/category_item/category_item.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';
 import 'package:flutter/material.dart';
@@ -67,10 +68,10 @@ class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CloseablePage(
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: Insets.x5),
+      child: BackgroundedSafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          padding: EdgeInsets.fromLTRB(Insets.x5, 0, Insets.x5, Insets.x5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

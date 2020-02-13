@@ -42,7 +42,7 @@ class HomePage extends StatelessWidget {
 
   Widget _buildLatestCarousel(BuildContext context) {
     return CarouselSlider(
-      viewportFraction: 0.91,
+      viewportFraction: 0.92,
       items: List.generate(
         6,
         (index) {
@@ -76,23 +76,24 @@ class HomePage extends StatelessWidget {
   Widget _buildLatestGridView(BuildContext context) {
     return SliverPadding(
       padding: EdgeInsets.symmetric(
-        horizontal: _calculateLatestGridViewPadding(context),
+        horizontal: Dimens.pagePadding,
         vertical: Insets.x2_5,
       ),
       sliver: SliverGrid(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: _latestGridViewAxisCount,
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: ProductItemNormal.sizeN.height,
           mainAxisSpacing: _latestGridViewAxisSpacing,
+          crossAxisSpacing: _latestGridViewAxisSpacing,
+          childAspectRatio:
+              ProductItemNormal.sizeN.width / ProductItemNormal.sizeN.height,
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) {
-            return Center(
-              child: ProductItemNormal(
-                assetImagePath: _getDressAssetPath(index),
-                cost: 15.0,
-                title: 'best dress ever',
-                rate: 3.9,
-              ),
+            return ProductItemNormal(
+              assetImagePath: _getDressAssetPath(index),
+              cost: 15.0,
+              title: 'best dress ever',
+              rate: 3.9,
             );
           },
           childCount: 30,
@@ -110,16 +111,5 @@ class HomePage extends StatelessWidget {
     if (modulo == 3) return DRESS_PATTERN2_IMAGE;
     if (modulo == 4) return DRESS_PATTERN_IMAGE;
     if (modulo == 5) return DRESS_COTTON2_IMAGE;
-  }
-
-  double _calculateLatestGridViewPadding(BuildContext context) {
-    var pageWidth = MediaQuery.of(context).size.width;
-
-    var gridItemHorizontalPadding = (pageWidth -
-            2 * Dimens.pagePadding -
-            _latestGridViewAxisCount * productItemNormalSize.width) /
-        (2 * _latestGridViewAxisCount);
-
-    return Dimens.pagePadding - gridItemHorizontalPadding;
   }
 }
