@@ -16,6 +16,6 @@ jobs:
       with:
         channel: 'stable' # or: 'dev' or 'beta'
     - name: cd to project directory
-      run: cd ecommers
+      working-directory: ecommers
     - run: flutter pub get
     - run: flutter build apk
