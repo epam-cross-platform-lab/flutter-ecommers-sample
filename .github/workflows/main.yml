@@ -13,7 +13,7 @@ jobs:
       with:
         java-version: '12.x'
     - name: Cache Flutter dependencies
-      uses: action/cache@v1.1.2
+      uses: action/cache@v1
       with:
         path: /opt/hostedtoolcache/flutter
         key: ${{ runner.os }}-flutter
