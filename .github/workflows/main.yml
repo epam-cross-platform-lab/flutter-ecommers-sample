@@ -19,5 +19,5 @@ jobs:
       run: flutter pub get
       working-directory: ecommers
     - name: Build Android app
-      run: flutter build apk
+      run: flutter build apk --target-platform android-arm
       working-directory: ecommers
