@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +20,10 @@ class CircleLabel extends StatelessWidget {
         shape: BoxShape.circle,
         color: BrandingColors.background,
       ),
-      child: image,
+      child: Padding(
+        padding: const EdgeInsets.all(Insets.x2),
+        child: image,
+      ),
     );
   }
 }

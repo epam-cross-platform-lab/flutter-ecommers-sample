@@ -110,6 +110,9 @@ class HomePage extends StatelessWidget {
     if (modulo == 3) return DRESS_PATTERN2_IMAGE;
     if (modulo == 4) return DRESS_PATTERN_IMAGE;
     if (modulo == 5) return DRESS_COTTON2_IMAGE;
+    else{
+      return GREEN_BACKPACK_IMAGE;
+    }
   }
 
   double _calculateLatestGridViewPadding(BuildContext context) {

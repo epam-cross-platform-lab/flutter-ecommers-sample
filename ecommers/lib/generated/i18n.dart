@@ -90,6 +90,8 @@ class I18n implements WidgetsLocalizations {
   String get usernameOrEmail => "USERNAME / EMAIL";
   /// "Enter the email address you used to create your account and we will email you a link to reset your password"
   String get forgotPasswordHelpText => "Enter the email address you used to create your account and we will email you a link to reset your password";
+  /// "Your order was placed successfully. For more details, check All My Orders page under Profile tab"
+  String get successMessage => "Your order was placed successfully. For more details, check All My Orders page under Profile tab";
 }
 
 class _I18n_en_US extends I18n {

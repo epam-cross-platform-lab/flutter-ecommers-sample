@@ -1,3 +1,4 @@
+import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/pages/closeable_page.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
@@ -11,47 +12,48 @@ class SuccesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CloseablePage(
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: Column(
-          children: <Widget>[
-            const SizedBox(height: 108.0),
-            CircleLabel(
-              image: SvgPicture.asset(
-                SUCCES_ICON,
-                fit: BoxFit.scaleDown,
+      child: SingleChildScrollView(
+        child: Align(
+          alignment: Alignment.center,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircleLabel(
+                image: SvgPicture.asset(
+                  SUCCESS_ICON,
+                  fit: BoxFit.scaleDown,
+                ),
+                size: circleLabelSize,
               ),
-              size: circleLabelSize,
-            ),
-            const SizedBox(height: 28.0),
-            Text(
-              'John Doe', //TODO from provider
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  .copyWith(fontWeight: FontWeight.w700, fontSize: 30.0),
-            ),
-            const SizedBox(height: 14.0),
-            SizedBox(
-              width: 252.0,
-              child: Text(
-                'Your order was placed successfully. For more details, check All My Orders page under Profile tab',
+              const SizedBox(height: 28.0),
+              Text(
+                'John Doe', //TODO from provider
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText1
-                    .copyWith(fontWeight: FontWeight.w400, fontSize: 15.0),
-                textAlign: TextAlign.center,
+                    .headline6
               ),
-            ),
-            const SizedBox(height: 50.0),
-            SizedBox(
+              const SizedBox(height: 14.0),
+              SizedBox(
+                width: 252.0,
+                child: Text(
+                  I18n.of(context).successMessage,
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1,
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: 50.0),
+              SizedBox(
                 width: 165.0,
                 child: PrimaryButtonWidget(
                   text: 'MY ORDERS',
-                  onPressedFunction: (){},
+                  onPressedFunction: () {},
                 ),
               ),
-          ],
+              const SizedBox(height: 20.0),
+            ],
+          ),
         ),
       ),
     );

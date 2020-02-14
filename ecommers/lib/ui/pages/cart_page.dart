@@ -9,15 +9,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatefulWidget {
-  static const orderWidgetSize = Size(272.0, 102.0);
 
   @override
   _CartPageState createState() => _CartPageState();
 }
 
 class _CartPageState extends State<CartPage> {
-  static const _orderDeviderIndent = 120.0;
+  static const _orderDeviderIndent = 100.0;
+     static String _getDressAssetPath(int index) {
+    var modulo = index % 7;
 
+    if (modulo == 0) return DRESS_COTTON_IMAGE;
+    if (modulo == 1) return DRESS_FLORAL2_IMAGE;
+    if (modulo == 2) return DRESS_FLORAL_IMAGE;
+    if (modulo == 3) return DRESS_PATTERN2_IMAGE;
+    if (modulo == 4) return DRESS_PATTERN_IMAGE;
+    if (modulo == 5) return DRESS_COTTON2_IMAGE;
+    if (modulo == 6) return GREEN_BACKPACK_IMAGE;
+    else{
+      return GREEN_BACKPACK_IMAGE;
+    }
+  }
   BuildContext _context;
   final _orders = List.generate(
     20,
@@ -25,7 +37,7 @@ class _CartPageState extends State<CartPage> {
         title: 'Bottle Green Backpack',
         description: 'Medium, Green',
         cost: 2.58,
-        imagePath: GREEN_BACKPACK_IMAGE,
+        imagePath: _getDressAssetPath(index),
         count: 1),
   );
 
@@ -46,12 +58,12 @@ class _CartPageState extends State<CartPage> {
             I18n.of(context).cartTitle,
             style: Theme.of(context).textTheme.headline6,
           ),
-          SizedBox(height: 29),
+          SizedBox(height: 16),
           Expanded(
             child: _buildOrderListView(),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(Insets.x0, Insets.x8_5, Insets.x0, Insets.x5),
+            padding: EdgeInsets.fromLTRB(Insets.x0, Insets.x4, Insets.x0, Insets.x2),
             child: Divider(color: BrandingColors.secondary),
           ),
           TotalOrderWidget(
@@ -91,7 +103,7 @@ class _CartPageState extends State<CartPage> {
       separatorBuilder: (BuildContext context, int index) {
         return Padding(
           padding: const EdgeInsets.fromLTRB(
-              Insets.x0, Insets.x3, Insets.x0, Insets.x8),
+              Insets.x0, Insets.x3, Insets.x0, Insets.x4),
           child:  Divider(
             color: BrandingColors.secondary.withOpacity(0.4),
             indent: _orderDeviderIndent,

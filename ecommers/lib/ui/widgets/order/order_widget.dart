@@ -14,7 +14,7 @@ class OrderWidget extends StatefulWidget {
   final Function countDecrementFunction;
 
   static const orderWidgetSize = Size(272.0, 102.0);
-  static const orderCircleLabelSize = Size(100.0, 100.0);
+  static const orderCircleLabelSize = Size(80.0, 80.0);
 
   OrderWidget({
     @required this.assetImagePath,
@@ -33,34 +33,35 @@ class OrderWidget extends StatefulWidget {
 class _OrderWidgetState extends State<OrderWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: OrderWidget.orderWidgetSize.width,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          CircleLabel(
-            size: OrderWidget.orderCircleLabelSize,
-            image: Image.asset(
-              widget.assetImagePath,
-              fit: BoxFit.scaleDown,
-            ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        CircleLabel(
+          size: OrderWidget.orderCircleLabelSize,
+          image: Image.asset(
+            widget.assetImagePath,
+            fit: BoxFit.scaleDown,
           ),
-          const SizedBox(
-            width: 20.0,
-          ),
-          Column(
+        ),
+        const SizedBox(
+          width: 20.0,
+        ),
+        Flexible(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
                 widget.primaryText,
+                overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodyText1,
               ),
               Text(
                 widget.secondaryText,
+                overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.bodyText2,
               ),
               const SizedBox(
-                height: 16.0,
+                height: 8.0,
               ),
               Text(
                 Formatter.getCost(widget.count * widget.cost),
@@ -70,7 +71,7 @@ class _OrderWidgetState extends State<OrderWidget> {
                     .copyWith(color: BrandingColors.primary),
               ),
               const SizedBox(
-                height: 15.0,
+                height: 8.0,
               ),
               Counter(
                 count: widget.count,
@@ -79,8 +80,8 @@ class _OrderWidgetState extends State<OrderWidget> {
               )
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
