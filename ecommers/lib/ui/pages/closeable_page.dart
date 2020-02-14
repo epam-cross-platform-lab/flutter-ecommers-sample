@@ -11,6 +11,7 @@ class CloseablePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: BrandingColors.pageBackground,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: <Widget>[

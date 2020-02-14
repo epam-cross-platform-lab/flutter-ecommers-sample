@@ -8,7 +8,6 @@ import 'package:ecommers/ui/widgets/product_item/product_item_normal.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  static const int _latestGridViewAxisCount = 3;
   static const double _latestGridViewAxisSpacing = 12.0;
   static const imageCardSize = Size(325.0, 184.0);
   static const productItemNormalSize = Size(101.0, 135.0);

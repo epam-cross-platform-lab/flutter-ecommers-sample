@@ -19,43 +19,45 @@ class _ShellPageState extends State<ShellPage> {
     return NotifierProviderWidget(
       providerModel: ShellProviderModel(),
       builder: (context, model, child) {
-        return OrientationBuilder(
-          builder: (context, orientation) => orientation == Orientation.portrait
-              ? _buildBody(model)
-              : BackgroundedSafeArea(child: _buildBody(model), isBottom: false),
+        return Scaffold(
+          appBar: AppBar(
+            actions: <Widget>[
+              _buildAction(
+                imageAssetPath: MESSAGES_ICON,
+                onIconPressedFuction: () {}, //TODO get from provider
+                badgeValue: 5, //TODO get from provider
+              ),
+              _buildAction(
+                imageAssetPath: NOTIFICATIONS_ICON,
+                onIconPressedFuction: () {}, //TODO get from provider
+                badgeValue: 6, //TODO get from provider
+              ),
+            ],
+          ),
+          backgroundColor: BrandingColors.pageBackground,
+          body: _buildBody(model.selectedPage),
+          bottomNavigationBar: BottomNavigationWidget(
+            selectedIndex: model.selectedItemIndex,
+            pages: model.pages,
+            onTappedFunction: model.onTappedItem,
+            orderCount: 3,
+          ),
         );
       },
     );
   }
 
-  Widget _buildBody(model) {
-    return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          _buildAction(
-            imageAssetPath: MESSAGES_ICON,
-            onIconPressedFuction: () {}, //TODO get from provider
-            badgeValue: 5, //TODO get from provider
-          ),
-          _buildAction(
-            imageAssetPath: NOTIFICATIONS_ICON,
-            onIconPressedFuction: () {}, //TODO get from provider
-            badgeValue: 6, //TODO get from provider
-          ),
-        ],
-      ),
-      backgroundColor: BrandingColors.pageBackground,
-      body: buildBody(model.selectedPage),
-      bottomNavigationBar: BottomNavigationWidget(
-        selectedIndex: model.selectedItemIndex,
-        pages: model.pages,
-        onTappedFunction: model.onTappedItem,
-        orderCount: 3,
-      ),
+  Widget _buildBody(Pages pageType) {
+    var page = _getBody(pageType);
+
+    return OrientationBuilder(
+      builder: (context, orientation) => orientation == Orientation.portrait
+          ? page
+          : BackgroundedSafeArea(child: page, isBottom: false),
     );
   }
 
-  Widget buildBody(Pages pageType) {
+  Widget _getBody(Pages pageType) {
     switch (pageType) {
       case Pages.home:
         return HomePage();

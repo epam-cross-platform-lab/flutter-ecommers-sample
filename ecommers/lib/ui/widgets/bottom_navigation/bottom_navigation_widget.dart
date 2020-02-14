@@ -33,7 +33,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
       selectedLabelStyle: Theme.of(context).textTheme.caption,
       unselectedLabelStyle: Theme.of(context).textTheme.caption,
       iconSize: 26.0,
-      elevation: 0,
       showUnselectedLabels: true,
       type: BottomNavigationBarType.fixed,
       onTap: widget.onTappedFunction,
