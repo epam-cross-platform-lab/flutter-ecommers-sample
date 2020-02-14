@@ -16,12 +16,7 @@ class CategoriesCompactWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: _containerHeight,
-      padding: const EdgeInsets.symmetric(
-        horizontal: Insets.x6,
-      ),
-      decoration: BoxDecoration(
-        gradient: Gradients.categoriesCompact,
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[

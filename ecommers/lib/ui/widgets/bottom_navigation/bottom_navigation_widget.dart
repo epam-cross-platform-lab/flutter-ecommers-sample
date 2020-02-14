@@ -25,6 +25,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: BrandingColors.background,
       items: _createBottomNavigationBarItems(),
       unselectedItemColor: BrandingColors.primaryText,
       selectedItemColor: BrandingColors.primary,
