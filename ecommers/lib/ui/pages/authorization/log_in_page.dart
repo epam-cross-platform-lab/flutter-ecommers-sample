@@ -9,6 +9,7 @@ import 'package:ecommers/ui/widgets/authorization/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
 
+//TODO: move to provider
 final List<AuthRichTextSpanModel> _bottomText = [
   AuthRichTextSpanModel(
     text: 'Don’t have an account? Swipe right to \n',
