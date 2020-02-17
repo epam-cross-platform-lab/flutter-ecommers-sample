@@ -17,7 +17,7 @@ class ImageCard extends StatelessWidget {
   final String buttonText;
   final Function onButtonPressed;
 
-  ImageCard({
+  const ImageCard({
     this.imageAsset,
     this.description,
     this.buttonText,

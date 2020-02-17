@@ -87,19 +87,20 @@ class _LogInPageState extends State<LogInPage> {
   }
 
   Future logInButtonPressHandler() async {
-    var adminCreds = 'admin';
+    const adminCreds = 'admin';
 
     if (usernameOrEmailController.text == adminCreds &&
-        passwordController.text == adminCreds)
+        passwordController.text == adminCreds) {
       await navigationService.navigateWithReplacementTo(Pages.shell);
-    else
+    } else {
       await showDialog(
         context: context,
-        builder: (_) => AlertDialog(
+        builder: (_) => const AlertDialog(
           elevation: 10.0,
           title: Text('Alert'),
           content: Text('Username or password is incorrect (try: admin/admin)'),
         ),
       );
+    }
   }
 }

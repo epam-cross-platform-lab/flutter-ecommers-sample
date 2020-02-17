@@ -16,7 +16,7 @@ class RateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var containerSize = size ?? rateContainerSize;
+    final containerSize = size ?? rateContainerSize;
 
     return Container(
       height: containerSize.height,

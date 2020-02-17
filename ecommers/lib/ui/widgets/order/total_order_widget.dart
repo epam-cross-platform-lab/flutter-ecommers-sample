@@ -47,7 +47,7 @@ class TotalOrderWidget extends StatelessWidget {
                     .headline6
                     .copyWith(fontSize: FontSizes.big_2x),
               ),
-              SizedBox(height: 4.0),
+              const SizedBox(height: 4.0),
               Text(
                 I18n.of(context).freeDomesticShipping,
                 style: Theme.of(context)

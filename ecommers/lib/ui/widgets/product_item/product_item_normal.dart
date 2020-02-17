@@ -12,7 +12,7 @@ class ProductItemNormal extends ProductItemBase {
 
   static const size = Size(101.0, 135.0);
 
-  ProductItemNormal({
+  const ProductItemNormal({
     @required this.assetImagePath,
     @required this.title,
     @required this.cost,

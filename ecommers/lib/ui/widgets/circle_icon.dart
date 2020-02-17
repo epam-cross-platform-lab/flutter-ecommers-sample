@@ -7,7 +7,7 @@ class CircleIcon extends StatelessWidget {
   static const _defaultIcon = ARROW_ICON;
 
   final String imagePath;
-  CircleIcon({this.imagePath = _defaultIcon});
+  const CircleIcon({this.imagePath = _defaultIcon});
 
   @override
   Widget build(BuildContext context) {

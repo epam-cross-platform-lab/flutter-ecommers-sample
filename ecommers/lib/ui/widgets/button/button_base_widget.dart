@@ -15,7 +15,7 @@ class ButtonBaseWidget extends StatelessWidget {
   final String assetIcon;
   final Function onPressedFunction;
 
-  ButtonBaseWidget(
+  const ButtonBaseWidget(
       {@required this.text,
       @required this.assetIcon,
       @required this.buttonColor,
@@ -61,14 +61,14 @@ class ButtonBaseWidget extends StatelessWidget {
               alignment: Alignment.center,
               height: _circleSize,
               width: _circleSize,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: iconBackgroundColor ?? textColor,
+              ),
               child: SvgPicture.asset(
                 assetIcon,
                 height: _iconHeight,
                 color: buttonColor,
-              ),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: iconBackgroundColor ?? textColor,
               ),
             )
           ],

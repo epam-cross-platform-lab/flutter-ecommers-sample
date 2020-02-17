@@ -43,7 +43,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   static const int _itemCount = 20;
 
   static String _getDressAssetPath(int index) {
-    var modulo = index % 7;
+    final modulo = index % 7;
 
     if (modulo == 0) return DRESS_COTTON_IMAGE;
     if (modulo == 1) return DRESS_FLORAL2_IMAGE;
@@ -51,9 +51,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
     if (modulo == 3) return DRESS_PATTERN2_IMAGE;
     if (modulo == 4) return DRESS_PATTERN_IMAGE;
     if (modulo == 5) return DRESS_COTTON2_IMAGE;
-    if (modulo == 6)
+    if (modulo == 6) {
       return GREEN_BACKPACK_IMAGE;
-    else {
+    } else {
       return GREEN_BACKPACK_IMAGE;
     }
   }
@@ -69,7 +69,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   @override
   Widget build(BuildContext context) {
-    var totalOrderCost = _orders.fold(
+    final double totalOrderCost = _orders.fold(
         0.0,
         (totalCost, nextOrder) =>
             (totalCost + nextOrder.count * nextOrder.cost));
@@ -94,7 +94,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
               onButtonPressedFunction: () async =>
                   await navigationService.navigateTo(Pages.success),
               buttonText: I18n.of(context).placeOrderButton,
-              padding: EdgeInsets.fromLTRB(25, 8, 20, 15),
+              padding: const EdgeInsets.fromLTRB(Insets.x6, Insets.x2, Insets.x5, Insets.x3_5),
             ),
           ),
         ],
@@ -177,7 +177,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   }
 
   Widget _buildOrderListView() {
-    int newItemCount = _orders.length + 2;
+    final int newItemCount = _orders.length + 2;
     return ListView.separated(
       itemCount: newItemCount,
       itemBuilder: (BuildContext context, int index) {
@@ -219,7 +219,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  void decrementCount(order) {
+  void decrementCount(OrderModel order) {
     if (order.count == 1) _orders.remove(order);
 
     setState(() {
@@ -227,7 +227,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     });
   }
 
-  void incrementCount(order) {
+  void incrementCount(OrderModel order) {
     setState(() {
       order.count++;
     });
@@ -258,8 +258,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ],
           ),
         ),
-        Spacer(),
-        CircleIcon(),
+        const Spacer(),
+        const CircleIcon(),
       ],
     );
   }
@@ -273,8 +273,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         const SizedBox(width: Insets.x3_5),
         text,
-        Spacer(),
-        CircleIcon(),
+        const Spacer(),
+        const CircleIcon(),
       ],
     );
   }

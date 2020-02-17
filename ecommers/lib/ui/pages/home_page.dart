@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               _buildLatestCarousel(context),
             ],
           ),
@@ -62,14 +62,15 @@ class HomePage extends StatelessWidget {
   }
 
   String getCarouselImage(int index) {
-    var modulo = index % 3;
+    final modulo = index % 3;
 
-    if (modulo == 0)
+    if (modulo == 0) {
       return GIRL_IMAGE;
-    else if (modulo == 1)
+    } else if (modulo == 1) {
       return GIRL2_IMAGE;
-    else
+    } else {
       return GIRL3_IMAGE;
+    }
   }
 
   Widget _buildLatestGridView(BuildContext context) {
@@ -102,15 +103,16 @@ class HomePage extends StatelessWidget {
   }
 
   String _getDressAssetPath(int index) {
-    var modulo = index % 6;
+    final modulo = index % 6;
 
     if (modulo == 0) return DRESS_COTTON_IMAGE;
     if (modulo == 1) return DRESS_FLORAL2_IMAGE;
     if (modulo == 2) return DRESS_FLORAL_IMAGE;
     if (modulo == 3) return DRESS_PATTERN2_IMAGE;
     if (modulo == 4) return DRESS_PATTERN_IMAGE;
-    if (modulo == 5) return DRESS_COTTON2_IMAGE;
-    else{
+    if (modulo == 5) {
+      return DRESS_COTTON2_IMAGE;
+    } else{
       return GREEN_BACKPACK_IMAGE;
     }
   }

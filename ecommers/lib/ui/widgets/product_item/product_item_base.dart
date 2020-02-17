@@ -12,7 +12,7 @@ abstract class ProductItemBase extends StatelessWidget {
   final double rate;
   final Size productSize;
 
-  ProductItemBase({
+  const ProductItemBase({
     @required this.assetImagePath,
     @required this.title,
     @required this.cost,

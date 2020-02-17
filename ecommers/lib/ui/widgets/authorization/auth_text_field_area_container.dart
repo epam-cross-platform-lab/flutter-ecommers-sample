@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AuthTextFieldAreaContainer extends StatelessWidget {
   final Widget child;
 
-  AuthTextFieldAreaContainer({this.child});
+  const AuthTextFieldAreaContainer({this.child});
 
   @override
   Widget build(BuildContext context) {

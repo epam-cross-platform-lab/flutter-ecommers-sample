@@ -59,12 +59,12 @@ class ProfilePage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _buildProfileCard(context),
-          MenuList(
+          const MenuList(
             margin: _listContainerMargin,
             itemList: _topMenuList,
           ),
           const SizedBox(height: 15.0),
-          MenuList(
+          const MenuList(
             margin: _listContainerMargin,
             itemList: _bottomMenuList,
           ),
@@ -131,11 +131,11 @@ class ProfilePage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Radiuses.big_2x),
         ),
+        onPressed: () {},
         child: Text(
           I18n.of(context).editProfile,
           style: Theme.of(context).textTheme.button,
         ),
-        onPressed: () {},
       ),
     );
   }

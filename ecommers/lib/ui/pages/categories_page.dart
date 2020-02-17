@@ -71,7 +71,8 @@ class CategoriesPage extends StatelessWidget {
       child: BackgroundedSafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          padding: EdgeInsets.fromLTRB(Insets.x5, 0, Insets.x5, Insets.x5),
+          padding:
+              const EdgeInsets.fromLTRB(Insets.x5, 0, Insets.x5, Insets.x5),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -84,12 +85,12 @@ class CategoriesPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   _buildCategories(),
-                  SizedBox(width: Insets.x6),
+                  const SizedBox(width: Insets.x6),
                   Flexible(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        MenuList(
+                        const MenuList(
                           title: 'MEN\'S APPAREL',
                           itemHeight: 44.0,
                           itemList: _topMenuList,
@@ -99,7 +100,7 @@ class CategoriesPage extends StatelessWidget {
                           thickness: 1.0,
                           color: BrandingColors.secondary.withOpacity(0.1),
                         ),
-                        MenuList(
+                        const MenuList(
                           title: 'WOMEN\'S APPAREL',
                           itemHeight: 44.0,
                           itemList: _bottomMenuList,
@@ -121,7 +122,7 @@ class CategoriesPage extends StatelessWidget {
       width: CategoryItem.size.width,
       child: ListView.separated(
         shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: Categories.values.length,
         separatorBuilder: (BuildContext context, int index) => const SizedBox(
           width: Insets.x8,

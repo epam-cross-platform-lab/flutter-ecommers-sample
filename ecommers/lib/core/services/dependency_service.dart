@@ -5,7 +5,7 @@ NavigationService get navigationService => GetIt.I.get<NavigationService>();
 
 class DependencyService {
   static void registerDependencies() {
-    GetIt serviceLocator = GetIt.instance;
+    final GetIt serviceLocator = GetIt.instance;
 
     serviceLocator
         .registerLazySingleton<NavigationService>(() => NavigationService());

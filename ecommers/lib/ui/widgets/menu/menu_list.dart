@@ -9,7 +9,7 @@ class MenuList extends StatelessWidget {
   final EdgeInsets margin;
   final double itemHeight;
 
-  MenuList({
+  const MenuList({
     this.title,
     this.itemList,
     this.margin = const EdgeInsets.all(0.0),
@@ -48,7 +48,7 @@ class MenuList extends StatelessWidget {
               itemCount: itemList.length,
               padding: const EdgeInsets.all(0.0),
               itemBuilder: (context, index) {
-                var itemModel = itemList[index];
+                final itemModel = itemList[index];
 
                 return MenuItem(
                   title: itemModel.title,
@@ -58,7 +58,7 @@ class MenuList extends StatelessWidget {
                 );
               },
               separatorBuilder: (context, index) {
-                var menuItem = itemList[index];
+                final menuItem = itemList[index];
 
                 return Divider(
                   color: BrandingColors.secondary.withOpacity(0.1),

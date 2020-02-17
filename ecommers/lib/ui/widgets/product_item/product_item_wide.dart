@@ -12,7 +12,7 @@ class ProductItemWide extends ProductItemBase {
 
   static const productItemWideSize = Size(160.0, 218.0);
 
-  ProductItemWide({
+  const ProductItemWide({
     @required this.assetImagePath,
     @required this.title,
     @required this.cost,

@@ -11,7 +11,7 @@ class ProductItemSmall extends ProductItemBase {
 
   static const productItemSmallSize = Size(185.0, 59.0);
 
-  ProductItemSmall({
+  const ProductItemSmall({
     @required this.assetImagePath,
     @required this.title,
     @required this.cost,

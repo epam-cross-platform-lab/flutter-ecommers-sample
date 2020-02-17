@@ -8,12 +8,12 @@ class NavigationService {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
   Future<dynamic> navigateTo(Pages page, {Object arguments}) {
-    var route = _generateRoute(page, arguments);
+    final route = _generateRoute(page, arguments);
     return navigatorKey.currentState.push(route);
   }
 
   Future<dynamic> navigateWithReplacementTo(Pages page, {Object arguments}) {
-    var route = _generateRoute(page, arguments);
+    final route = _generateRoute(page, arguments);
     return navigatorKey.currentState.pushReplacement(route);
   }
 
@@ -22,23 +22,23 @@ class NavigationService {
   }
 
   Route<dynamic> _generateRoute(Pages page, Object arguments) {
-    var resultPage;
+    Widget resultPage;
 
     switch (page) {
       case Pages.shell:
         resultPage = ShellPage();
         break;
       case Pages.categories:
-        resultPage = CategoriesPage();
+        resultPage = const CategoriesPage();
         break;
       case Pages.authorization:
-        resultPage = AuthorizationPage();
+        resultPage = const AuthorizationPage();
         break;
       case Pages.checkout:
         resultPage = CheckoutPage();
         break;
       case Pages.success:
-        resultPage = SuccessPage();
+        resultPage = const SuccessPage();
         break;
       default:
         resultPage = ShellPage();

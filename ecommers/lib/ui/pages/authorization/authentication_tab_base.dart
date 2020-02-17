@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class AuthorizationTabBase extends StatelessWidget {
   final List<Widget> children;
 
-  AuthorizationTabBase({this.children});
+  const AuthorizationTabBase({this.children});
 
   @override
   Widget build(BuildContext context) {

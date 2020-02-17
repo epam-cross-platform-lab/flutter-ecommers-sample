@@ -14,13 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: "ecommers",
+        title: 'ecommers',
         theme: ThemeProvider.getTheme(), 
-        home: AuthorizationPage(),
+        home: const AuthorizationPage(),
         navigatorKey: navigationService.navigatorKey,
         localizationsDelegates: [i18n],
         supportedLocales: i18n.supportedLocales,
         localeResolutionCallback:
-            i18n.resolution(fallback: Locale("en", "US")));
+            i18n.resolution(fallback: const Locale('en', 'US')));
   }
 }

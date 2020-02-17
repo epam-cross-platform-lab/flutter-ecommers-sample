@@ -66,12 +66,12 @@ class MorePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 35.0),
-          MenuList(
+          const MenuList(
             margin: menuListMargin,
             itemList: topMenuList,
           ),
           const SizedBox(height: 15.0),
-          MenuList(
+          const MenuList(
             margin: menuListMargin,
             itemList: bottomMenuList,
           ),
@@ -86,14 +86,14 @@ class MorePage extends StatelessWidget {
   Widget _buildLogOutButton(BuildContext context) {
     return Center(
       child: CupertinoButton(
+        onPressed: () async => await logOutPressHandler(),
         child: Text(
           I18n.of(context).logOut,
           style: Theme.of(context)
               .textTheme
               .headline5
               .apply(color: BrandingColors.primary),
-        ),
-        onPressed: () async => await logOutPressHandler(), //TODO use proovider
+        ), //TODO use proovider
       ),
     );
   }

@@ -15,7 +15,7 @@ class OrderWidget extends StatefulWidget {
 
   static const orderCircleImageSize = Size(80.0, 80.0);
 
-  OrderWidget({
+  const OrderWidget({
     @required this.assetImagePath,
     @required this.primaryText,
     @required this.secondaryText,

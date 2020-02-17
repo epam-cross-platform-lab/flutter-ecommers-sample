@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 class CloseablePage extends StatelessWidget {
   final Widget child;
 
-  CloseablePage({this.child});
+  const CloseablePage({this.child});
 
   @override
   Widget build(BuildContext context) {

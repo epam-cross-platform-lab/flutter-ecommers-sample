@@ -35,7 +35,7 @@ final List<AuthRichTextSpanModel> _bottomText = [
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var localization = I18n.of(context);
+    final localization = I18n.of(context);
 
     return AuthorizationTabBase(
       children: <Widget>[

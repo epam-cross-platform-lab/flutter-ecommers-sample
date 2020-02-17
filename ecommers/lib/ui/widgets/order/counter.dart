@@ -8,7 +8,7 @@ class Counter extends StatefulWidget {
   final Function countIncrementFunction;
   final Function countDecrementFunction;
 
-  Counter({
+  const Counter({
     @required this.count,
     @required this.countIncrementFunction,
     @required this.countDecrementFunction,
@@ -60,10 +60,10 @@ class _CounterState extends State<Counter> {
       height: CircleIcon.size.height + Insets.x1,
       alignment: Alignment.center,
       child: RawMaterialButton(
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         onPressed: onTappedFunction,
-        child: CircleIcon(imagePath: imagePath),
         elevation: 1.0,
+        child: CircleIcon(imagePath: imagePath),
       ),
     );
   }

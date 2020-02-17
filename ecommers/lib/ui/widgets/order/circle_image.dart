@@ -6,7 +6,7 @@ class CircleImage extends StatelessWidget {
   final Widget image;
   final Size size;
 
-  CircleImage({
+  const CircleImage({
     @required this.image,
     @required this.size,
   });

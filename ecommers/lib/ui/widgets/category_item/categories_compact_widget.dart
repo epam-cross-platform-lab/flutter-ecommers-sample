@@ -33,8 +33,8 @@ class CategoriesCompactWidget extends StatelessWidget {
   }
 
   Widget _createCategoriesListWidget(BuildContext context) {
-    var itemCount = _calculateItemCount(context);
-    var spacing = _calculateItemSpacing(context, itemCount);
+    final itemCount = _calculateItemCount(context);
+    final spacing = _calculateItemSpacing(context, itemCount);
 
     return SizedBox(
       height: categoryItemSize.height,
@@ -68,7 +68,7 @@ class CategoriesCompactWidget extends StatelessWidget {
   }
 
   int _calculateItemCount(BuildContext context) {
-    var categoriesListWidth =
+    final categoriesListWidth =
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
     var itemCount = categoriesListWidth ~/ categoryItemSize.width;
@@ -81,10 +81,10 @@ class CategoriesCompactWidget extends StatelessWidget {
   }
 
   double _calculateItemSpacing(BuildContext context, int itemCount) {
-    var categoriesListWidth =
+    final categoriesListWidth =
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
-    var calculatedListSpacing =
+    final calculatedListSpacing =
         (categoriesListWidth % categoryItemSize.width) / (itemCount - 1);
 
     return calculatedListSpacing;
