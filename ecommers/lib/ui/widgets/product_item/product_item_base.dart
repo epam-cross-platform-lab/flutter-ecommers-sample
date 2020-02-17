@@ -10,13 +10,13 @@ abstract class ProductItemBase extends StatelessWidget {
   final String title;
   final double cost;
   final double rate;
-  final Size size;
+  final Size productSize;
 
   ProductItemBase({
     @required this.assetImagePath,
     @required this.title,
     @required this.cost,
-    @required this.size,
+    @required this.productSize,
     this.rate,
   });
 
@@ -24,8 +24,8 @@ abstract class ProductItemBase extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10.0),
-      height: size.height,
-      width: size.width,
+      height: productSize.height,
+      width: productSize.width,
       decoration: BoxDecoration(
         color: BrandingColors.background,
         borderRadius: BorderRadius.circular(Radiuses.normal),

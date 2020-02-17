@@ -20,7 +20,7 @@ class ProductItemSmall extends ProductItemBase {
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
-          size: productItemSmallSize,
+          productSize: productItemSmallSize,
         );
 
   @override

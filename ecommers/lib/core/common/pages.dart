@@ -5,5 +5,8 @@ enum Pages {
   cart,
   profile,
   more,
-  categories
+  categories,
+  authorization,
+  checkout,
+  success
 }

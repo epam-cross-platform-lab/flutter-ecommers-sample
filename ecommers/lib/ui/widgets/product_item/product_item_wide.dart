@@ -21,7 +21,7 @@ class ProductItemWide extends ProductItemBase {
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
-          size: productItemWideSize,
+          productSize: productItemWideSize,
         );
 
   @override

@@ -21,9 +21,6 @@ class _ShellPageState extends State<ShellPage> {
       builder: (context, model, child) {
         return Scaffold(
           appBar: AppBar(
-            elevation: 0.0,
-            backgroundColor: _getAppBarColor(model.selectedPage),
-            brightness: Brightness.light,
             actions: <Widget>[
               _buildAction(
                 imageAssetPath: MESSAGES_ICON,
@@ -38,7 +35,9 @@ class _ShellPageState extends State<ShellPage> {
             ],
           ),
           backgroundColor: BrandingColors.pageBackground,
-          body: buildBody(model.selectedPage),
+          body: BackgroundedSafeArea(
+            child: _buildBody(model.selectedPage),
+          ),
           bottomNavigationBar: BottomNavigationWidget(
             selectedIndex: model.selectedItemIndex,
             pages: model.pages,
@@ -50,7 +49,7 @@ class _ShellPageState extends State<ShellPage> {
     );
   }
 
-  Widget buildBody(Pages pageType) {
+  Widget _buildBody(Pages pageType) {
     switch (pageType) {
       case Pages.home:
         return HomePage();
@@ -80,14 +79,5 @@ class _ShellPageState extends State<ShellPage> {
       ),
       onPressed: onIconPressedFuction,
     );
-  }
-
-  Color _getAppBarColor(Pages pageType) {
-    switch (pageType) {
-      case Pages.home:
-        return BrandingColors.background;
-      default:
-        return BrandingColors.pageBackground;
-    }
   }
 }

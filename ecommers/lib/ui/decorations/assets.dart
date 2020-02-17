@@ -27,10 +27,32 @@ const String SUPPORT_ICON = 'assets/support.svg';
 const String MENU_ARROW_ICON = 'assets/menu_arrow.svg';
 const String MESSAGES_ICON = 'assets/messages.svg';
 const String NOTIFICATIONS_ICON = 'assets/notifications.svg';
+const String ARROW_ICON = 'assets/right_icon.svg';
+const String REMOVE_ICON = 'assets/remove.svg';
+const String ADD_ICON = 'assets/add.svg';
 const String CLOSE_ICON = 'assets/close_icon.svg';
+const String SUCCESS_ICON = 'assets/success.svg';
+const String MAIL_ICON = 'assets/mail_icon.svg';
+const String PROFILE_ICON = 'assets/profile_icon.svg';
+const String PASSWORD_ICON = 'assets/password_icon.svg';
+
 
 const String GIRL_IMAGE = 'assets/girl_image.png';
+const String GIRL2_IMAGE = 'assets/girl2_image.png';
+const String GIRL3_IMAGE = 'assets/girl3_image.png';
 const String SHIRT_IMAGE = 'assets/product_shirt.png';
 const String BACKPACK_IMAGE = 'assets/product_backpack.png';
 const String SCARF_IMAGE = 'assets/product_scarf.png';
 const String GREEN_BACKPACK_IMAGE = 'assets/green_backpack.png';
+
+const String CREDIT_CARD_IMAGE = 'assets/credit_card.png';
+const String SALE_IMAGE = 'assets/sale.png';
+
+
+const String DRESS_COTTON_IMAGE = 'assets/dress_image_cotton.png';
+const String DRESS_COTTON2_IMAGE = 'assets/dress_image_cotton2.png';
+const String DRESS_FLORAL_IMAGE = 'assets/dress_image_floral.png';
+const String DRESS_FLORAL2_IMAGE = 'assets/dress_image_floral2.png';
+const String DRESS_PATTERN_IMAGE = 'assets/dress_image_pattern.png';
+const String DRESS_PATTERN2_IMAGE = 'assets/dress_image_pattern2.png';
+

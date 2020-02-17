@@ -35,6 +35,7 @@ class ButtonBaseWidget extends StatelessWidget {
             color: blurColor,
           ),
         ],
+        borderRadius: BorderRadius.circular(Radiuses.big_2x),
       ),
       child: CupertinoButton(
         padding: const EdgeInsets.all(Insets.x2),
@@ -48,7 +49,7 @@ class ButtonBaseWidget extends StatelessWidget {
               child: Align(
                 alignment: Alignment.center,
                 child: Text(
-                  text,
+                  text.toUpperCase(),
                   style: Theme.of(context)
                       .textTheme
                       .button
