@@ -10,7 +10,7 @@ class ProductItemNormal extends ProductItemBase {
   final double cost;
   final double rate;
 
-  static const sizeN = Size(101.0, 135.0);
+  static const size = Size(101.0, 135.0);
 
   ProductItemNormal({
     @required this.assetImagePath,
@@ -21,7 +21,7 @@ class ProductItemNormal extends ProductItemBase {
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
-          size: sizeN,
+          productSize: size,
         );
 
   @override

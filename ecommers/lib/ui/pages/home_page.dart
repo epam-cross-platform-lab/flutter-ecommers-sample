@@ -80,11 +80,11 @@ class HomePage extends StatelessWidget {
       ),
       sliver: SliverGrid(
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: ProductItemNormal.sizeN.height,
+          maxCrossAxisExtent: ProductItemNormal.size.height,
           mainAxisSpacing: _latestGridViewAxisSpacing,
           crossAxisSpacing: _latestGridViewAxisSpacing,
           childAspectRatio:
-              ProductItemNormal.sizeN.width / ProductItemNormal.sizeN.height,
+              ProductItemNormal.size.width / ProductItemNormal.size.height,
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) {

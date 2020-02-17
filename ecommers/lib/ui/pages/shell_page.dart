@@ -35,7 +35,9 @@ class _ShellPageState extends State<ShellPage> {
             ],
           ),
           backgroundColor: BrandingColors.pageBackground,
-          body: _buildBody(model.selectedPage),
+          body: BackgroundedSafeArea(
+            child: _buildBody(model.selectedPage),
+          ),
           bottomNavigationBar: BottomNavigationWidget(
             selectedIndex: model.selectedItemIndex,
             pages: model.pages,
@@ -48,16 +50,6 @@ class _ShellPageState extends State<ShellPage> {
   }
 
   Widget _buildBody(Pages pageType) {
-    var page = _getBody(pageType);
-
-    return OrientationBuilder(
-      builder: (context, orientation) => orientation == Orientation.portrait
-          ? page
-          : BackgroundedSafeArea(child: page, isBottom: false),
-    );
-  }
-
-  Widget _getBody(Pages pageType) {
     switch (pageType) {
       case Pages.home:
         return HomePage();

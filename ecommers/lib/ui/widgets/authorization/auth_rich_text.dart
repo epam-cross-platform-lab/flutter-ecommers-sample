@@ -46,11 +46,23 @@ class _AuthRichTextState extends State<AuthRichText> {
   }
 
   TextSpan _buildTextSpan(AuthRichTextSpanModel textModel) {
+    return textModel.isTappable
+        ? _buildTapableTextSpan(textModel)
+        : _buildDefaultTextSpan(textModel);
+  }
+
+  TextSpan _buildDefaultTextSpan(AuthRichTextSpanModel textModel) {
     return TextSpan(
       text: textModel.text,
-      style: textModel.isTappable
-          ? baseTextStyle.copyWith(color: BrandingColors.primary)
-          : baseTextStyle,
+      style: baseTextStyle,
+      children: <InlineSpan>[],
+    );
+  }
+
+  TextSpan _buildTapableTextSpan(AuthRichTextSpanModel textModel) {
+    return TextSpan(
+      text: textModel.text,
+      style: baseTextStyle.copyWith(color: BrandingColors.primary),
       recognizer: _getRecognizerFor(textModel),
       children: <InlineSpan>[],
     );
