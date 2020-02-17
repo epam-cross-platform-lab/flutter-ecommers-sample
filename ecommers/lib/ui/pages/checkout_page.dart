@@ -6,6 +6,7 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/closeable_page.dart';
 import 'package:ecommers/ui/pages/succes_page.dart';
 import 'package:ecommers/ui/widgets/circle_icon.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -76,10 +77,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
       child: Column(
         children: <Widget>[
           Expanded(
-            child: Padding(
-              padding: EdgeInsets.fromLTRB(
-                  Insets.x6, Insets.x0, Insets.x5, Insets.x4),
-              child: _buildOrderListView(),
+            child: BackgroundedSafeArea(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                    Insets.x6, Insets.x0, Insets.x5, Insets.x4),
+                child: _buildOrderListView(),
+              ),
             ),
           ),
           Visibility(
@@ -171,7 +174,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   }
 
   Widget _buildOrderListView() {
-    const newItemCount = _itemCount + 2;
+    int newItemCount = _orders.length + 2;
     return ListView.separated(
       itemCount: newItemCount,
       itemBuilder: (BuildContext context, int index) {
@@ -189,8 +192,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
           assetImagePath: _orders[index - 1].imagePath,
           cost: _orders[index - 1].cost,
           count: _orders[index - 1].count,
-          countIncrementFunction: () {},
-          countDecrementFunction: () {},
+          countIncrementFunction: () => incrementCount(_orders[index - 1]),
+          countDecrementFunction: () => decrementCount(_orders[index - 1]),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -210,6 +213,20 @@ class _CheckoutPageState extends State<CheckoutPage> {
         );
       },
     );
+  }
+
+  void decrementCount(order) {
+    if (order.count == 1) _orders.remove(order);
+
+    setState(() {
+      order.count--;
+    });
+  }
+
+  void incrementCount(order) {
+    setState(() {
+      order.count++;
+    });
   }
 
   Widget _buildShippAddress() {

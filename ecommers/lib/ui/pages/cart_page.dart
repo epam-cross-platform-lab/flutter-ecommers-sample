@@ -41,6 +41,20 @@ class _CartPageState extends State<CartPage> {
         count: 1),
   );
 
+  void decrementCount(order) {
+    if (order.count == 1) _orders.remove(order);
+
+    setState(() {
+      order.count--;
+    });
+
+  }
+
+  void incrementCount(order) {
+    setState(() {
+      order.count++;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     _context = context;
@@ -88,7 +102,7 @@ class _CartPageState extends State<CartPage> {
 
       padding:
           const EdgeInsets.fromLTRB(Insets.x0, Insets.x0, Insets.x5, Insets.x0),
-      itemCount: 20,
+      itemCount: _orders.length,
       itemBuilder: (BuildContext context, int index) {
         return OrderWidget(
           primaryText: _orders[index].title,
@@ -96,8 +110,8 @@ class _CartPageState extends State<CartPage> {
           assetImagePath: _orders[index].imagePath,
           cost: _orders[index].cost,
           count: _orders[index].count,
-          countIncrementFunction: () {},
-          countDecrementFunction: () {},
+          countIncrementFunction: () => incrementCount(_orders[index]),
+          countDecrementFunction: () => decrementCount(_orders[index]),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
