@@ -152,10 +152,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
           height: 28,
           child: TextField(
             decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Message to seller (optional)',
-                hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
-                    fontWeight: FontWeight.w300, fontStyle: FontStyle.italic)),
+              border: InputBorder.none,
+              hintText: 'Message to seller (optional)',
+              hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+                    fontWeight: FontWeight.w300,
+                    fontStyle: FontStyle.italic,
+                  ),
+            ),
           ),
         ),
         _buildDevider(),
