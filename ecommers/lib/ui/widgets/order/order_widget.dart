@@ -13,8 +13,7 @@ class OrderWidget extends StatefulWidget {
   final Function countIncrementFunction;
   final Function countDecrementFunction;
 
-  static const orderWidgetSize = Size(272.0, 102.0);
-  static const orderCircleLabelSize = Size(80.0, 80.0);
+  static const orderCircleImageSize = Size(80.0, 80.0);
 
   OrderWidget({
     @required this.assetImagePath,
@@ -36,8 +35,8 @@ class _OrderWidgetState extends State<OrderWidget> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        CircleLabel(
-          size: OrderWidget.orderCircleLabelSize,
+        CircleImage(
+          size: OrderWidget.orderCircleImageSize,
           image: Image.asset(
             widget.assetImagePath,
             fit: BoxFit.scaleDown,

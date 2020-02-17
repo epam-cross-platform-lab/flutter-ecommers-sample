@@ -2,11 +2,11 @@ import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 
-class CircleLabel extends StatelessWidget {
+class CircleImage extends StatelessWidget {
   final Widget image;
   final Size size;
 
-  CircleLabel({
+  CircleImage({
     @required this.image,
     @required this.size,
   });

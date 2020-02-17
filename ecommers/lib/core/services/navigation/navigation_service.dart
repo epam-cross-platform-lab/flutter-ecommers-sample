@@ -34,6 +34,12 @@ class NavigationService {
       case Pages.authorization:
         resultPage = AuthorizationPage();
         break;
+      case Pages.checkout:
+        resultPage = CheckoutPage();
+        break;
+      case Pages.success:
+        resultPage = SuccessPage();
+        break;
       default:
         resultPage = ShellPage();
         break;

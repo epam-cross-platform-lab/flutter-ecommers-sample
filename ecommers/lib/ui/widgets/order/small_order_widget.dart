@@ -14,8 +14,7 @@ class SmallOrderWidget extends StatefulWidget {
   final Function countIncrementFunction;
   final Function countDecrementFunction;
 
-  static const orderWidgetSize = Size(330.0, 70.0);
-  static const orderCircleLabelSize = Size(69.0, 69.0);
+  static const orderCircleImageSize = Size(69.0, 69.0);
 
   SmallOrderWidget({
     @required this.assetImagePath,
@@ -34,59 +33,54 @@ class SmallOrderWidget extends StatefulWidget {
 class _SmallOrderWidgetState extends State<SmallOrderWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: SmallOrderWidget.orderWidgetSize.width,
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          CircleLabel(
-            size: SmallOrderWidget.orderCircleLabelSize,
-            image: Image.asset(
-              widget.assetImagePath,
-              fit: BoxFit.scaleDown,
-            ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        CircleImage(
+          size: SmallOrderWidget.orderCircleImageSize,
+          image: Image.asset(
+            widget.assetImagePath,
+            fit: BoxFit.scaleDown,
           ),
-          const SizedBox(width: Insets.x3_5),
-
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  widget.primaryText,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1
-                      .copyWith(fontWeight: FontWeight.w700),
-                ),
-                Text(
-                  widget.secondaryText,
-                  style: Theme.of(context).textTheme.subtitle1,
-                ),
-                const SizedBox(height: Insets.x1),
-                   Row(
-                    children: <Widget>[
-                      Expanded(
-                          child: Text(
-                        Formatter.getCost(widget.count * widget.cost),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyText1
-                            .copyWith(color: BrandingColors.primary),
-                      )),
-                      Counter(
-                        count: widget.count,
-                        countIncrementFunction: widget.countIncrementFunction,
-                        countDecrementFunction: widget.countDecrementFunction,
-                      ),
-                    ],
+        ),
+        const SizedBox(width: Insets.x3_5),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                widget.primaryText,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1
+                    .copyWith(fontWeight: FontWeight.w700),
+              ),
+              Text(
+                widget.secondaryText,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+              const SizedBox(height: Insets.x1),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                      child: Text(
+                    Formatter.getCost(widget.count * widget.cost),
+                    style: Theme.of(context)
+                        .textTheme
+                        .bodyText1
+                        .copyWith(color: BrandingColors.primary),
+                  )),
+                  Counter(
+                    count: widget.count,
+                    countIncrementFunction: widget.countIncrementFunction,
+                    countDecrementFunction: widget.countDecrementFunction,
                   ),
-                
-              ],
-            ),
+                ],
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CircleIcon extends StatelessWidget {
-  static const actionForCountLabelSize = Size(18.0, 18.0);
+  static const size = Size(18.0, 18.0);
   static const _defaultIcon = ARROW_ICON;
 
   final String imagePath;
@@ -12,8 +12,8 @@ class CircleIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: actionForCountLabelSize.width,
-      height: actionForCountLabelSize.height,
+      width: size.width,
+      height: size.height,
       alignment: Alignment.center,
       decoration: BoxDecoration(
         shape: BoxShape.circle,

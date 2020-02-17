@@ -56,8 +56,8 @@ class _CounterState extends State<Counter> {
     Function onTappedFunction,
   ) {
     return Container(
-      width: CircleIcon.actionForCountLabelSize.width + Insets.x1,
-      height: CircleIcon.actionForCountLabelSize.height + Insets.x1,
+      width: CircleIcon.size.width + Insets.x1,
+      height: CircleIcon.size.height + Insets.x1,
       alignment: Alignment.center,
       child: RawMaterialButton(
         shape: CircleBorder(),

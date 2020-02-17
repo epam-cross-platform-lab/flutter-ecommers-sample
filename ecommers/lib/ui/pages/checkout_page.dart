@@ -1,10 +1,11 @@
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/closeable_page.dart';
-import 'package:ecommers/ui/pages/succes_page.dart';
 import 'package:ecommers/ui/widgets/circle_icon.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
@@ -18,7 +19,7 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
-  bool totalOrderVisible = true;
+  bool isTotalOrderVisible = true;
   final keyboardVisibilityNotification = KeyboardVisibilityNotification();
 
   @protected
@@ -27,7 +28,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     keyboardVisibilityNotification.addNewListener(
       onChange: (bool visible) {
         setState(() {
-          totalOrderVisible = !visible;
+          isTotalOrderVisible = !visible;
         });
       },
     );
@@ -86,16 +87,12 @@ class _CheckoutPageState extends State<CheckoutPage> {
             ),
           ),
           Visibility(
-            visible: totalOrderVisible,
+            visible: isTotalOrderVisible,
             child: TotalOrderWidget(
               cost: totalOrderCost,
               backgroundColor: BrandingColors.background,
-              onButtonPressedFunction: () {
-                Navigator.push(
-                  context,
-                  CupertinoPageRoute(builder: (context) => SuccesPage()),
-                );
-              },
+              onButtonPressedFunction: () async =>
+                  await navigationService.navigateTo(Pages.success),
               buttonText: I18n.of(context).placeOrderButton,
               padding: EdgeInsets.fromLTRB(25, 8, 20, 15),
             ),
@@ -119,7 +116,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(height: Insets.x2),
-        _buildShippAddress(),
+        _buildShippingAddress(),
         _buildDevider(),
         Text(
           I18n.of(context).paymentMethod,
@@ -151,12 +148,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _buildDevider(),
-        TextField(
-          decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: 'Message to seller (optional)',
-              hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
-                  fontWeight: FontWeight.w300, fontStyle: FontStyle.italic)),
+        SizedBox(
+          height: 28,
+          child: TextField(
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'Message to seller (optional)',
+                hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+                    fontWeight: FontWeight.w300, fontStyle: FontStyle.italic)),
+          ),
         ),
         _buildDevider(),
         _buildRowAction(
@@ -186,14 +186,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
           return _buildListFooter();
         }
 
+        final currentOrder = _orders[index - 1];
         return SmallOrderWidget(
-          primaryText: _orders[index - 1].title,
-          secondaryText: _orders[index - 1].description,
-          assetImagePath: _orders[index - 1].imagePath,
-          cost: _orders[index - 1].cost,
-          count: _orders[index - 1].count,
-          countIncrementFunction: () => incrementCount(_orders[index - 1]),
-          countDecrementFunction: () => decrementCount(_orders[index - 1]),
+          primaryText: currentOrder.title,
+          secondaryText: currentOrder.description,
+          assetImagePath: currentOrder.imagePath,
+          cost: currentOrder.cost,
+          count: currentOrder.count,
+          countIncrementFunction: () => incrementCount(currentOrder),
+          countDecrementFunction: () => decrementCount(currentOrder),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -229,7 +230,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     });
   }
 
-  Widget _buildShippAddress() {
+  Widget _buildShippingAddress() {
     return Row(
       children: <Widget>[
         Container(
