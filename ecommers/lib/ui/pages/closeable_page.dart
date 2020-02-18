@@ -17,7 +17,7 @@ class CloseablePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: SvgPicture.asset(
-              CLOSE_ICON,
+              Assets.closeIcon,
               color: BrandingColors.primary,
               height: 18.0,
             ),

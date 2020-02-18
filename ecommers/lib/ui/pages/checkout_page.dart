@@ -19,12 +19,14 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
+  final KeyboardVisibilityNotification keyboardVisibilityNotification =
+      KeyboardVisibilityNotification();
   bool isTotalOrderVisible = true;
-  final keyboardVisibilityNotification = KeyboardVisibilityNotification();
 
-  @protected
+  @override
   void initState() {
     super.initState();
+
     keyboardVisibilityNotification.addNewListener(
       onChange: (bool visible) {
         setState(() {
@@ -45,16 +47,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
   static String _getDressAssetPath(int index) {
     final modulo = index % 7;
 
-    if (modulo == 0) return DRESS_COTTON_IMAGE;
-    if (modulo == 1) return DRESS_FLORAL2_IMAGE;
-    if (modulo == 2) return DRESS_FLORAL_IMAGE;
-    if (modulo == 3) return DRESS_PATTERN2_IMAGE;
-    if (modulo == 4) return DRESS_PATTERN_IMAGE;
-    if (modulo == 5) return DRESS_COTTON2_IMAGE;
+    if (modulo == 0) return Assets.dressCottonImage;
+    if (modulo == 1) return Assets.dressFloral2Image;
+    if (modulo == 2) return Assets.dressFloralImage;
+    if (modulo == 3) return Assets.dressPattern2Image;
+    if (modulo == 4) return Assets.dressPatternImage;
+    if (modulo == 5) return Assets.dressCotton2Image;
     if (modulo == 6) {
-      return GREEN_BACKPACK_IMAGE;
+      return Assets.greenBackpackImage;
     } else {
-      return GREEN_BACKPACK_IMAGE;
+      return Assets.greenBackpackImage;
     }
   }
 
@@ -69,10 +71,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   @override
   Widget build(BuildContext context) {
-    final double totalOrderCost = _orders.fold(
-        0.0,
-        (totalCost, nextOrder) =>
-            (totalCost + nextOrder.count * nextOrder.cost));
+    final double totalOrderCost = _orders.fold(0.0,
+        (totalCost, nextOrder) => totalCost + nextOrder.count * nextOrder.cost);
 
     return CloseablePage(
       child: Column(
@@ -80,7 +80,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           Expanded(
             child: BackgroundedSafeArea(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(
+                padding: const EdgeInsets.fromLTRB(
                     Insets.x6, Insets.x0, Insets.x5, Insets.x4),
                 child: _buildOrderListView(),
               ),
@@ -91,10 +91,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
             child: TotalOrderWidget(
               cost: totalOrderCost,
               backgroundColor: BrandingColors.background,
-              onButtonPressedFunction: () async =>
-                  await navigationService.navigateTo(Pages.success),
+              onButtonPressedFunction: () =>
+                  navigationService.navigateTo(Pages.success),
               buttonText: I18n.of(context).placeOrderButton,
-              padding: const EdgeInsets.fromLTRB(Insets.x6, Insets.x2, Insets.x5, Insets.x3_5),
+              padding: const EdgeInsets.fromLTRB(
+                  Insets.x6, Insets.x2, Insets.x5, Insets.x3_5),
             ),
           ),
         ],
@@ -124,7 +125,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         const SizedBox(height: Insets.x2),
         _buildRowAction(
-          imagePath: CREDIT_CARD_IMAGE,
+          imagePath: Assets.creditCardImage,
           text: Text(
             I18n.of(context).cardEnding,
             style: Theme.of(context)
@@ -163,7 +164,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         _buildDevider(),
         _buildRowAction(
-          imagePath: SALE_IMAGE,
+          imagePath: Assets.saleImage,
           text: Text(
             I18n.of(context).addPromoCode,
             style: Theme.of(context)
@@ -208,8 +209,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
           return const SizedBox(height: 0);
         }
         return Padding(
-          padding:
-              EdgeInsets.fromLTRB(Insets.x0, Insets.x3, Insets.x0, Insets.x4),
+          padding: const EdgeInsets.fromLTRB(
+              Insets.x0, Insets.x3, Insets.x0, Insets.x4),
           child: Divider(
             color: BrandingColors.secondary.withOpacity(0.4),
             indent: 83.0,

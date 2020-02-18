@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class TotalOrderWidget extends StatelessWidget {
   final String buttonText;
   final double cost;
-  final Function onButtonPressedFunction;
+  final Function() onButtonPressedFunction;
   final Color backgroundColor;
   final EdgeInsets padding;
 

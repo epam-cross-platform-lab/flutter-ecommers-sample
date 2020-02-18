@@ -16,6 +16,7 @@ class NotifierProviderWidget<T extends ChangeNotifier> extends StatefulWidget {
     this.onModelReady,
   }) : super(key: key);
 
+  @override
   _NotifierProviderWidgetState<T> createState() => _NotifierProviderWidgetState<T>();
 }
 

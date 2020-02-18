@@ -19,7 +19,7 @@ final List<AuthRichTextSpanModel> _bottomText = [
   AuthRichTextSpanModel(
     text: 'Terms of Service',
     isTappable: true,
-    onTap: () async => await navigationService.navigateTo(Pages.shell),
+    onTap: () => navigationService.navigateTo(Pages.shell),
   ),
   AuthRichTextSpanModel(
     text: ' and ',
@@ -28,7 +28,7 @@ final List<AuthRichTextSpanModel> _bottomText = [
   AuthRichTextSpanModel(
     text: 'Privacy Policy',
     isTappable: true,
-    onTap: () async => await navigationService.navigateTo(Pages.categories),
+    onTap: () => navigationService.navigateTo(Pages.categories),
   ),
 ];
 
@@ -39,7 +39,7 @@ class SignUpPage extends StatelessWidget {
 
     return AuthorizationTabBase(
       children: <Widget>[
-        SizedBox(height: Insets.x5),
+        const SizedBox(height: Insets.x5),
         AuthTextFieldAreaContainer(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -47,28 +47,28 @@ class SignUpPage extends StatelessWidget {
               AuthTextField(
                 labelText: localization.email,
                 keyboardType: TextInputType.emailAddress,
-                assetIconPath: MAIL_ICON,
+                assetIconPath: Assets.mailIcon,
               ),
               AuthTextField(
                 labelText: localization.username,
-                assetIconPath: PROFILE_ICON,
+                assetIconPath: Assets.profileIcon,
               ),
               AuthTextField(
                 labelText: localization.password,
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
-                assetIconPath: PASSWORD_ICON,
+                assetIconPath: Assets.passwordIcon,
               ),
             ],
           ),
         ),
-        SizedBox(height: Insets.x3_5),
+        const SizedBox(height: Insets.x3_5),
         PrimaryButtonWidget(
           text: localization.signUp,
-          assetIconPath: ARROW_RIGHT_ICON,
+          assetIconPath: Assets.arrowRightIcon,
           onPressedFunction: () {},
         ),
-        SizedBox(height: Insets.x8_5),
+        const SizedBox(height: Insets.x8_5),
         AuthRichText(textSpanModelList: _bottomText),
       ],
     );

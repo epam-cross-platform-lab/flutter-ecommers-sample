@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
         (index) {
           return SizedBox.expand(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: Insets.x2),
+              padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
               child: ImageCard(
                 buttonText: 'SEE MORE',
                 description: 'For all your summer clothing needs',
@@ -65,11 +65,11 @@ class HomePage extends StatelessWidget {
     final modulo = index % 3;
 
     if (modulo == 0) {
-      return GIRL_IMAGE;
+      return Assets.girlImage;
     } else if (modulo == 1) {
-      return GIRL2_IMAGE;
+      return Assets.girl2Image;
     } else {
-      return GIRL3_IMAGE;
+      return Assets.girl3Image;
     }
   }
 
@@ -105,15 +105,15 @@ class HomePage extends StatelessWidget {
   String _getDressAssetPath(int index) {
     final modulo = index % 6;
 
-    if (modulo == 0) return DRESS_COTTON_IMAGE;
-    if (modulo == 1) return DRESS_FLORAL2_IMAGE;
-    if (modulo == 2) return DRESS_FLORAL_IMAGE;
-    if (modulo == 3) return DRESS_PATTERN2_IMAGE;
-    if (modulo == 4) return DRESS_PATTERN_IMAGE;
+    if (modulo == 0) return Assets.dressCottonImage;
+    if (modulo == 1) return Assets.dressFloral2Image;
+    if (modulo == 2) return Assets.dressFloralImage;
+    if (modulo == 3) return Assets.dressPattern2Image;
+    if (modulo == 4) return Assets.dressPatternImage;
     if (modulo == 5) {
-      return DRESS_COTTON2_IMAGE;
+      return Assets.dressCotton2Image;
     } else{
-      return GREEN_BACKPACK_IMAGE;
+      return Assets.greenBackpackImage;
     }
   }
 }

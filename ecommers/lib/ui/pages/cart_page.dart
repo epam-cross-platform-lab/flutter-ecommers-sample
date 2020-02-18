@@ -20,16 +20,16 @@ class _CartPageState extends State<CartPage> {
   static String _getDressAssetPath(int index) {
     final modulo = index % 7;
 
-    if (modulo == 0) return DRESS_COTTON_IMAGE;
-    if (modulo == 1) return DRESS_FLORAL2_IMAGE;
-    if (modulo == 2) return DRESS_FLORAL_IMAGE;
-    if (modulo == 3) return DRESS_PATTERN2_IMAGE;
-    if (modulo == 4) return DRESS_PATTERN_IMAGE;
-    if (modulo == 5) return DRESS_COTTON2_IMAGE;
+    if (modulo == 0) return Assets.dressCottonImage;
+    if (modulo == 1) return Assets.dressFloral2Image;
+    if (modulo == 2) return Assets.dressFloralImage;
+    if (modulo == 3) return Assets.dressPattern2Image;
+    if (modulo == 4) return Assets.dressPatternImage;
+    if (modulo == 5) return Assets.dressCotton2Image;
     if (modulo == 6) {
-      return GREEN_BACKPACK_IMAGE;
+      return Assets.greenBackpackImage;
     } else {
-      return GREEN_BACKPACK_IMAGE;
+      return Assets.greenBackpackImage;
     }
   }
 
@@ -61,13 +61,12 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     _context = context;
-    final double totalOrderCost = _orders.fold(
-        0.0,
-        (totalCost, nextOrder) =>
-            (totalCost + nextOrder.count * nextOrder.cost));
+    final double totalOrderCost = _orders.fold(0.0,
+        (totalCost, nextOrder) => totalCost + nextOrder.count * nextOrder.cost);
 
     return Padding(
-      padding: const EdgeInsets.fromLTRB(Insets.x6, Insets.x0, Insets.x5, Insets.x4),
+      padding:
+          const EdgeInsets.fromLTRB(Insets.x6, Insets.x0, Insets.x5, Insets.x4),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -79,16 +78,16 @@ class _CartPageState extends State<CartPage> {
           Expanded(
             child: _buildOrderListView(),
           ),
-          Padding(
-            padding:
-                const EdgeInsets.fromLTRB(Insets.x0, Insets.x4, Insets.x0, Insets.x2),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(
+                Insets.x0, Insets.x4, Insets.x0, Insets.x2),
             child: Divider(color: BrandingColors.secondary),
           ),
           TotalOrderWidget(
             cost: totalOrderCost,
             backgroundColor: BrandingColors.pageBackground,
-            onButtonPressedFunction: () async =>
-                  await navigationService.navigateTo(Pages.checkout),
+            onButtonPressedFunction: () =>
+                navigationService.navigateTo(Pages.checkout),
             buttonText: I18n.of(_context).checkoutButton,
           )
         ],

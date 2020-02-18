@@ -5,17 +5,14 @@ import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
 import 'package:flutter/material.dart';
 
 class ProductItemWide extends ProductItemBase {
-  final String assetImagePath;
-  final String title;
-  final double cost;
   final double rate;
 
   static const productItemWideSize = Size(160.0, 218.0);
 
   const ProductItemWide({
-    @required this.assetImagePath,
-    @required this.title,
-    @required this.cost,
+    @required String assetImagePath,
+    @required String title,
+    @required double cost,
     this.rate,
   }) : super(
           assetImagePath: assetImagePath,

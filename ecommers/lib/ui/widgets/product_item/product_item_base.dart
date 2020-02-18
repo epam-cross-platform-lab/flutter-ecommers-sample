@@ -9,7 +9,6 @@ abstract class ProductItemBase extends StatelessWidget {
   final String assetImagePath;
   final String title;
   final double cost;
-  final double rate;
   final Size productSize;
 
   const ProductItemBase({
@@ -17,7 +16,6 @@ abstract class ProductItemBase extends StatelessWidget {
     @required this.title,
     @required this.cost,
     @required this.productSize,
-    this.rate,
   });
 
   @override
@@ -29,7 +27,7 @@ abstract class ProductItemBase extends StatelessWidget {
       decoration: BoxDecoration(
         color: BrandingColors.background,
         borderRadius: BorderRadius.circular(Radiuses.normal),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             blurRadius: Radiuses.big_1x,
             color: BrandingColors.blur,

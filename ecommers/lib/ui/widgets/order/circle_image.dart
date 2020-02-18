@@ -16,7 +16,7 @@ class CircleImage extends StatelessWidget {
       alignment: Alignment.center,
       height: size.height,
       width: size.width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: BrandingColors.background,
       ),

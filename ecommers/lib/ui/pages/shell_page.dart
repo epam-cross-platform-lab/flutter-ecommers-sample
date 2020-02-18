@@ -18,17 +18,17 @@ class _ShellPageState extends State<ShellPage> {
   Widget build(BuildContext context) {
     return NotifierProviderWidget(
       providerModel: ShellProviderModel(),
-      builder: (context, model, child) {
+      builder: (context, ShellProviderModel model, child) {
         return Scaffold(
           appBar: AppBar(
             actions: <Widget>[
               _buildAction(
-                imageAssetPath: MESSAGES_ICON,
+                imageAssetPath: Assets.messagesIcon,
                 onIconPressedFuction: () {}, //TODO get from provider
                 badgeValue: 5, //TODO get from provider
               ),
               _buildAction(
-                imageAssetPath: NOTIFICATIONS_ICON,
+                imageAssetPath: Assets.notificationIcon,
                 onIconPressedFuction: () {}, //TODO get from provider
                 badgeValue: 6, //TODO get from provider
               ),
@@ -68,7 +68,7 @@ class _ShellPageState extends State<ShellPage> {
 
   Widget _buildAction({
     String imageAssetPath,
-    Function onIconPressedFuction,
+    Function() onIconPressedFuction,
     int badgeValue,
   }) {
     return IconButton(

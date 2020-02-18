@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 class ForgotPasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var localization = I18n.of(context);
+    final localization = I18n.of(context);
 
     return AuthorizationTabBase(
       children: <Widget>[
@@ -19,18 +19,18 @@ class ForgotPasswordPage extends StatelessWidget {
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyText2,
         ),
-        SizedBox(height: Insets.x8_5),
+        const SizedBox(height: Insets.x8_5),
         AuthTextFieldAreaContainer(
           child: AuthTextField(
             labelText: localization.email,
             keyboardType: TextInputType.emailAddress,
-            assetIconPath: MAIL_ICON,
+            assetIconPath: Assets.mailIcon,
           ),
         ),
-        SizedBox(height: Insets.x3_5),
+        const SizedBox(height: Insets.x3_5),
         PrimaryButtonWidget(
           text: localization.logIn,
-          assetIconPath: ARROW_RIGHT_ICON,
+          assetIconPath: Assets.arrowRightIcon,
           onPressedFunction: () {}, //TODO: add providers handler to it
         ),
       ],

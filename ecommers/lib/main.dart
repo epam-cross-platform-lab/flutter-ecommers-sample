@@ -10,7 +10,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final i18n = I18n.delegate;
+  final GeneratedLocalizationsDelegate i18n = I18n.delegate;
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

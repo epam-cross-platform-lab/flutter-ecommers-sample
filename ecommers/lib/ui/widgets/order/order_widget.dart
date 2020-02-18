@@ -10,8 +10,8 @@ class OrderWidget extends StatefulWidget {
   final String secondaryText;
   final double cost;
   final int count;
-  final Function countIncrementFunction;
-  final Function countDecrementFunction;
+  final Function() countIncrementFunction;
+  final Function() countDecrementFunction;
 
   static const orderCircleImageSize = Size(80.0, 80.0);
 

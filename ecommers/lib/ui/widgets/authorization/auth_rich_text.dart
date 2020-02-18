@@ -19,7 +19,7 @@ class _AuthRichTextState extends State<AuthRichText> {
 
   @override
   void dispose() {
-    _textTapRecognizerList.forEach((element) => element.dispose());
+    _textTapRecognizerList.forEach(disposeRecognizer);
     super.dispose();
   }
 
@@ -27,6 +27,10 @@ class _AuthRichTextState extends State<AuthRichText> {
   void initState() {
     _textTapRecognizerList = <TapGestureRecognizer>[];
     super.initState();
+  }
+
+  void disposeRecognizer(TapGestureRecognizer recognizer) {
+    recognizer.dispose();
   }
 
   @override
@@ -87,7 +91,7 @@ class _AuthRichTextState extends State<AuthRichText> {
     return _createRecognizer(textModel.onTap);
   }
 
-  TapGestureRecognizer _createRecognizer(Function onTap) {
+  TapGestureRecognizer _createRecognizer(Function() onTap) {
     final recognizer = TapGestureRecognizer()..onTap = onTap;
     _textTapRecognizerList.add(recognizer);
 
@@ -96,7 +100,7 @@ class _AuthRichTextState extends State<AuthRichText> {
 
   Iterable<TextSpan> _buildChildTextSpanList(
       List<AuthRichTextSpanModel> childTextSpanModelList) sync* {
-    for (var item in childTextSpanModelList) {
+    for (final item in childTextSpanModelList) {
       yield _buildTextSpan(item);
     }
   }

@@ -1,5 +1,12 @@
 include: package:lint/analysis_options.yaml
 
+analyzer:
+  exclude:
+    - lib/generated/i18n.dart
+  errors:
+      todo: warning
+
 linter:
   rules:
       prefer_single_quotes: true
+      avoid_classes_with_only_static_members: false
