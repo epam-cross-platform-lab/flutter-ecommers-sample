@@ -4,10 +4,10 @@ import 'package:flutter_svg/svg.dart';
 
 class CircleIcon extends StatelessWidget {
   static const size = Size(18.0, 18.0);
-  static const _defaultIcon = ARROW_ICON;
-
+  
   final String imagePath;
-  CircleIcon({this.imagePath = _defaultIcon});
+
+  const CircleIcon({this.imagePath = Assets.arrowIcon});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class CircleIcon extends StatelessWidget {
       width: size.width,
       height: size.height,
       alignment: Alignment.center,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: BrandingColors.backgroundIcon,
       ),

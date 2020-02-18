@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class TotalOrderWidget extends StatelessWidget {
   final String buttonText;
   final double cost;
-  final Function onButtonPressedFunction;
+  final Function() onButtonPressedFunction;
   final Color backgroundColor;
   final EdgeInsets padding;
 
@@ -47,7 +47,7 @@ class TotalOrderWidget extends StatelessWidget {
                     .headline6
                     .copyWith(fontSize: FontSizes.big_2x),
               ),
-              SizedBox(height: 4.0),
+              const SizedBox(height: 4.0),
               Text(
                 I18n.of(context).freeDomesticShipping,
                 style: Theme.of(context)

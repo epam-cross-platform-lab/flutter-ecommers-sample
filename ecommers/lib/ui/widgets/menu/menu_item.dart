@@ -8,7 +8,7 @@ class MenuItem extends StatelessWidget {
   final String subTitle;
   final double height;
 
-  MenuItem({
+  const MenuItem({
     this.svgAssetIconPath,
     this.title,
     this.subTitle,
@@ -28,7 +28,7 @@ class MenuItem extends StatelessWidget {
               child: SvgPicture.asset(svgAssetIconPath),
             )
           else
-            SizedBox(width: 15.0),
+            const SizedBox(width: 15.0),
           Expanded(
             child: Text(
               title ?? '',
@@ -40,7 +40,7 @@ class MenuItem extends StatelessWidget {
             style: Theme.of(context).textTheme.subtitle2,
           ),
           const SizedBox(width: 10.0),
-          SvgPicture.asset(MENU_ARROW_ICON),
+          SvgPicture.asset(Assets.menuArrowIcon),
           const SizedBox(width: 15.0),
         ],
       ),

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class AuthRichText extends StatefulWidget {
   final List<AuthRichTextSpanModel> textSpanModelList;
 
-  AuthRichText({this.textSpanModelList});
+  const AuthRichText({this.textSpanModelList});
 
   @override
   _AuthRichTextState createState() => _AuthRichTextState();
@@ -19,14 +19,18 @@ class _AuthRichTextState extends State<AuthRichText> {
 
   @override
   void dispose() {
-    _textTapRecognizerList.forEach((element) => element.dispose());
+    _textTapRecognizerList.forEach(disposeRecognizer);
     super.dispose();
   }
 
   @override
   void initState() {
-    _textTapRecognizerList = List<TapGestureRecognizer>();
+    _textTapRecognizerList = <TapGestureRecognizer>[];
     super.initState();
+  }
+
+  void disposeRecognizer(TapGestureRecognizer recognizer) {
+    recognizer.dispose();
   }
 
   @override
@@ -35,67 +39,73 @@ class _AuthRichTextState extends State<AuthRichText> {
           fontSize: FontSizes.small_3x,
         );
 
-    var firstTextSpanModel = widget.textSpanModelList[0];
-    var childTextSpanModelList = widget.textSpanModelList.skip(1).toList();
+    final firstTextSpanModel = widget.textSpanModelList[0];
+    final childTextSpanModelList = widget.textSpanModelList.skip(1).toList();
 
     return RichText(
       textAlign: TextAlign.center,
-      text: _buildTextSpan(firstTextSpanModel)
-        ..children.addAll(_buildChildTextSpanList(childTextSpanModelList)),
+      text: _buildTextSpan(firstTextSpanModel, childTextSpanModelList),
     );
   }
 
-  TextSpan _buildTextSpan(AuthRichTextSpanModel textModel) {
+  TextSpan _buildTextSpan(AuthRichTextSpanModel textModel,
+      [List<AuthRichTextSpanModel> childens]) {
     return textModel.isTappable
-        ? _buildTapableTextSpan(textModel)
-        : _buildDefaultTextSpan(textModel);
+        ? _buildTapableTextSpan(textModel, childens)
+        : _buildDefaultTextSpan(textModel, childens);
   }
 
-  TextSpan _buildDefaultTextSpan(AuthRichTextSpanModel textModel) {
+  TextSpan _buildDefaultTextSpan(AuthRichTextSpanModel textModel,
+      [List<AuthRichTextSpanModel> childens]) {
     return TextSpan(
       text: textModel.text,
       style: baseTextStyle,
-      children: <InlineSpan>[],
+      children: <InlineSpan>[..._buildChildTextSpanList(childens)],
     );
   }
 
-  TextSpan _buildTapableTextSpan(AuthRichTextSpanModel textModel) {
+  TextSpan _buildTapableTextSpan(AuthRichTextSpanModel textModel,
+      [List<AuthRichTextSpanModel> childens]) {
     return TextSpan(
       text: textModel.text,
       style: baseTextStyle.copyWith(color: BrandingColors.primary),
       recognizer: _getRecognizerFor(textModel),
-      children: <InlineSpan>[],
+      children: <InlineSpan>[..._buildChildTextSpanList(childens)],
     );
+  }
+
+  Iterable<TextSpan> _buildChildTextSpanList(
+      List<AuthRichTextSpanModel> childTextSpanModelList) sync* {
+    if (childTextSpanModelList != null) {
+      for (final item in childTextSpanModelList) {
+        yield _buildTextSpan(item);
+      }
+    }
   }
 
   TapGestureRecognizer _getRecognizerFor(AuthRichTextSpanModel textModel) {
     if (!textModel.isTappable) return null;
 
-    if (_textTapRecognizerList.isEmpty)
+    if (_textTapRecognizerList.isEmpty) {
       return _createRecognizer(textModel.onTap);
+    }
 
-    var recogizerIndex = widget.textSpanModelList
+    final recogizerIndex = widget.textSpanModelList
         .where((element) => element.isTappable)
         .toList()
         .indexOf(textModel);
 
-    if (recogizerIndex < _textTapRecognizerList.length && recogizerIndex >= 0)
+    if (recogizerIndex < _textTapRecognizerList.length && recogizerIndex >= 0) {
       return _textTapRecognizerList[recogizerIndex];
+    }
 
     return _createRecognizer(textModel.onTap);
   }
 
-  TapGestureRecognizer _createRecognizer(Function onTap) {
-    var recognizer = TapGestureRecognizer()..onTap = onTap;
+  TapGestureRecognizer _createRecognizer(Function() onTap) {
+    final recognizer = TapGestureRecognizer()..onTap = onTap;
     _textTapRecognizerList.add(recognizer);
 
     return recognizer;
-  }
-
-  Iterable<TextSpan> _buildChildTextSpanList(
-      List<AuthRichTextSpanModel> childTextSpanModelList) sync* {
-    for (var item in childTextSpanModelList) {
-      yield _buildTextSpan(item);
-    }
   }
 }

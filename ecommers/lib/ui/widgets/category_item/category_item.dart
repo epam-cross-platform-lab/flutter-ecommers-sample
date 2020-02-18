@@ -10,12 +10,12 @@ class CategoryItem extends StatelessWidget {
   final Color backgroundColor;
   final String imagePath;
   final String title;
-  final Function onTapFunction;
+  final Function() onTapFunction;
 
   static const size = Size(74.0, 89.0);
   static const categoryLabelSize = 65.0;
 
-  CategoryItem({
+  const CategoryItem({
     @required this.shadowColor,
     @required this.imagePath,
     @required this.title,
@@ -25,7 +25,7 @@ class CategoryItem extends StatelessWidget {
   });
 
   factory CategoryItem.fromType(Categories categoryType) {
-    var categoryItem = categoryItems[categoryType];
+    final categoryItem = categoryItems[categoryType];
 
     return CategoryItem(
       labelBackgroundGradient: categoryItem.gradient,
@@ -61,7 +61,7 @@ class CategoryItem extends StatelessWidget {
     );
   }
 
-  _buildGradientLabel() {
+  Widget _buildGradientLabel() {
     return Container(
       alignment: Alignment.center,
       height: categoryLabelSize,

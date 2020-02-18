@@ -16,7 +16,7 @@ class RateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var containerSize = size ?? rateContainerSize;
+    final containerSize = size ?? rateContainerSize;
 
     return Container(
       height: containerSize.height,
@@ -30,7 +30,7 @@ class RateWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.asset(RATE_STAR_ICON),
+            SvgPicture.asset(Assets.rateStarIcon),
             Text(
               rate.toString(),
               style: Theme.of(context).textTheme.overline,

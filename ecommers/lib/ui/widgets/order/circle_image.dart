@@ -6,7 +6,7 @@ class CircleImage extends StatelessWidget {
   final Widget image;
   final Size size;
 
-  CircleImage({
+  const CircleImage({
     @required this.image,
     @required this.size,
   });
@@ -16,7 +16,7 @@ class CircleImage extends StatelessWidget {
       alignment: Alignment.center,
       height: size.height,
       width: size.width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: BrandingColors.background,
       ),

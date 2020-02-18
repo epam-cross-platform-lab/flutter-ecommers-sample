@@ -10,38 +10,38 @@ import 'package:flutter/material.dart';
 class ProfilePage extends StatelessWidget {
   static const List<MenuItemModel> _topMenuList = [
     MenuItemModel(
-      svgAssetIconPath: ALL_ORDER_ICON,
+      svgAssetIconPath: Assets.allOrderIcon,
       title: 'All My Orders',
     ),
     MenuItemModel(
-      svgAssetIconPath: PENDING_SHIPMENT_ICON,
+      svgAssetIconPath: Assets.pendingShipmentIcon,
       title: 'Pending Shipments',
     ),
     MenuItemModel(
-      svgAssetIconPath: PENDING_PAYMENT_ICON,
+      svgAssetIconPath: Assets.pendingPaymentIcon,
       title: 'Pending Payments',
     ),
     MenuItemModel(
-      svgAssetIconPath: FINISHED_ORDERS_ICON,
+      svgAssetIconPath: Assets.finishedOrdersIcon,
       title: 'Finished Orders',
     ),
   ];
 
   static const List<MenuItemModel> _bottomMenuList = [
     MenuItemModel(
-      svgAssetIconPath: INVITE_FRIENDS_ICON,
+      svgAssetIconPath: Assets.inviteFriendsIcon,
       title: 'Invite Friends',
     ),
     MenuItemModel(
-      svgAssetIconPath: SUPPORT_ICON,
+      svgAssetIconPath: Assets.supportIcon,
       title: 'Customer Support',
     ),
     MenuItemModel(
-      svgAssetIconPath: RATE_APP_ICON,
+      svgAssetIconPath: Assets.rateAppIcon,
       title: 'Rate Our App',
     ),
     MenuItemModel(
-      svgAssetIconPath: SUGGEST_ICON,
+      svgAssetIconPath: Assets.suggestIcon,
       title: 'Make a Suggestion',
     ),
   ];
@@ -59,12 +59,12 @@ class ProfilePage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _buildProfileCard(context),
-          MenuList(
+          const MenuList(
             margin: _listContainerMargin,
             itemList: _topMenuList,
           ),
           const SizedBox(height: 15.0),
-          MenuList(
+          const MenuList(
             margin: _listContainerMargin,
             itemList: _bottomMenuList,
           ),
@@ -83,10 +83,10 @@ class ProfilePage extends StatelessWidget {
           Container(
             height: _profileCardHeight,
             width: _profileCardHeight,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: AssetImage(GIRL_IMAGE),
+                image: AssetImage(Assets.girlImage),
                 fit: BoxFit.cover,
               ),
             ),
@@ -97,14 +97,14 @@ class ProfilePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Jane Doe', //TODO; get from the provider
+                  'Jane Doe', //TODO: get from the provider
                   maxLines: Dimens.defaultTextMaxLines,
                   overflow: TextOverflow.ellipsis,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 Expanded(
                   child: Text(
-                    'janedoe123@email.com', //TODO; get from the provider
+                    'janedoe123@email.com', //TODO: get from the provider
                     maxLines: Dimens.defaultTextMaxLines,
                     overflow: TextOverflow.ellipsis,
                     style: Theme.of(context).textTheme.bodyText1,
@@ -131,11 +131,11 @@ class ProfilePage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Radiuses.big_2x),
         ),
+        onPressed: () {},
         child: Text(
           I18n.of(context).editProfile,
           style: Theme.of(context).textTheme.button,
         ),
-        onPressed: () {},
       ),
     );
   }

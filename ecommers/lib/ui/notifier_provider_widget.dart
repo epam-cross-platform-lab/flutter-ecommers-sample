@@ -8,7 +8,7 @@ class NotifierProviderWidget<T extends ChangeNotifier> extends StatefulWidget {
   final Widget child;
   final Function(T) onModelReady;
 
-  NotifierProviderWidget({
+  const NotifierProviderWidget({
     Key key,
     this.builder,
     this.child,
@@ -16,6 +16,7 @@ class NotifierProviderWidget<T extends ChangeNotifier> extends StatefulWidget {
     this.onModelReady,
   }) : super(key: key);
 
+  @override
   _NotifierProviderWidgetState<T> createState() => _NotifierProviderWidgetState<T>();
 }
 
@@ -38,8 +39,8 @@ class _NotifierProviderWidgetState<T extends ChangeNotifier> extends State<Notif
     return ChangeNotifierProvider<T>(
       create: (context) => providerModel,
       child: Consumer<T>(
-        child: widget.child,
         builder: widget.builder,
+        child: widget.child,
       ),
     );
   }

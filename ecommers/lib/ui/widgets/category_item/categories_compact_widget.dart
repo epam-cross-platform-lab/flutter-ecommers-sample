@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 class CategoriesCompactWidget extends StatelessWidget {
   static const _containerHeight = 134.0;
-  final i18n = I18n.delegate;
 
   static const categoryItemSize = Size(74.0, 89.0);
 
@@ -33,8 +32,8 @@ class CategoriesCompactWidget extends StatelessWidget {
   }
 
   Widget _createCategoriesListWidget(BuildContext context) {
-    var itemCount = _calculateItemCount(context);
-    var spacing = _calculateItemSpacing(context, itemCount);
+    final itemCount = _calculateItemCount(context);
+    final spacing = _calculateItemSpacing(context, itemCount);
 
     return SizedBox(
       height: categoryItemSize.height,
@@ -60,31 +59,32 @@ class CategoriesCompactWidget extends StatelessWidget {
     return CategoryItem(
       backgroundColor: BrandingColors.background,
       shadowColor: BrandingColors.blur,
-      imagePath: ARROW_RIGHT_ICON,
+      imagePath: Assets.arrowRightIcon,
       title: I18n.of(context).seeAllCategoryTitle,
-      onTapFunction: () async =>
-          await navigationService.navigateTo(Pages.categories),
+      onTapFunction: () => navigationService.navigateTo(Pages.categories),
     );
   }
 
   int _calculateItemCount(BuildContext context) {
-    var categoriesListWidth =
+    final categoriesListWidth =
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
     var itemCount = categoriesListWidth ~/ categoryItemSize.width;
 
-    itemCount = itemCount > Categories.values.length
-        ? Categories.values.length
-        : itemCount;
+    if (itemCount > Categories.values.length) {
+      itemCount = Categories.values.length;
+    } else {
+      itemCount = itemCount;
+    }
 
     return itemCount;
   }
 
   double _calculateItemSpacing(BuildContext context, int itemCount) {
-    var categoriesListWidth =
+    final categoriesListWidth =
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
-    var calculatedListSpacing =
+    final calculatedListSpacing =
         (categoriesListWidth % categoryItemSize.width) / (itemCount - 1);
 
     return calculatedListSpacing;

@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 class CloseablePage extends StatelessWidget {
   final Widget child;
 
-  CloseablePage({this.child});
+  const CloseablePage({this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CloseablePage extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: SvgPicture.asset(
-              CLOSE_ICON,
+              Assets.closeIcon,
               color: BrandingColors.primary,
               height: 18.0,
             ),

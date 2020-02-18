@@ -10,7 +10,7 @@ class BottomNavigationWidget extends StatefulWidget {
   final Function(int) onTappedFunction;
   final int orderCount;
 
-  BottomNavigationWidget({
+  const BottomNavigationWidget({
     @required this.pages,
     @required this.selectedIndex,
     @required this.onTappedFunction,

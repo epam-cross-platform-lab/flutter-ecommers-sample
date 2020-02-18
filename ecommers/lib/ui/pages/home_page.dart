@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline6,
                 ),
               ),
-              SizedBox(height: 10.0),
+              const SizedBox(height: 10.0),
               _buildLatestCarousel(context),
             ],
           ),
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
         (index) {
           return SizedBox.expand(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: Insets.x2),
+              padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
               child: ImageCard(
                 buttonText: 'SEE MORE',
                 description: 'For all your summer clothing needs',
@@ -62,14 +62,15 @@ class HomePage extends StatelessWidget {
   }
 
   String getCarouselImage(int index) {
-    var modulo = index % 3;
+    final modulo = index % 3;
 
-    if (modulo == 0)
-      return GIRL_IMAGE;
-    else if (modulo == 1)
-      return GIRL2_IMAGE;
-    else
-      return GIRL3_IMAGE;
+    if (modulo == 0) {
+      return Assets.girlImage;
+    } else if (modulo == 1) {
+      return Assets.girl2Image;
+    } else {
+      return Assets.girl3Image;
+    }
   }
 
   Widget _buildLatestGridView(BuildContext context) {
@@ -102,16 +103,17 @@ class HomePage extends StatelessWidget {
   }
 
   String _getDressAssetPath(int index) {
-    var modulo = index % 6;
+    final modulo = index % 6;
 
-    if (modulo == 0) return DRESS_COTTON_IMAGE;
-    if (modulo == 1) return DRESS_FLORAL2_IMAGE;
-    if (modulo == 2) return DRESS_FLORAL_IMAGE;
-    if (modulo == 3) return DRESS_PATTERN2_IMAGE;
-    if (modulo == 4) return DRESS_PATTERN_IMAGE;
-    if (modulo == 5) return DRESS_COTTON2_IMAGE;
-    else{
-      return GREEN_BACKPACK_IMAGE;
+    if (modulo == 0) return Assets.dressCottonImage;
+    if (modulo == 1) return Assets.dressFloral2Image;
+    if (modulo == 2) return Assets.dressFloralImage;
+    if (modulo == 3) return Assets.dressPattern2Image;
+    if (modulo == 4) return Assets.dressPatternImage;
+    if (modulo == 5) {
+      return Assets.dressCotton2Image;
+    } else{
+      return Assets.greenBackpackImage;
     }
   }
 }

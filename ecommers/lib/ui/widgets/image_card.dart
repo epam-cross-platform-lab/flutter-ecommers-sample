@@ -15,9 +15,9 @@ class ImageCard extends StatelessWidget {
   final String imageAsset;
   final String description;
   final String buttonText;
-  final Function onButtonPressed;
+  final Function() onButtonPressed;
 
-  ImageCard({
+  const ImageCard({
     this.imageAsset,
     this.description,
     this.buttonText,
@@ -56,7 +56,7 @@ class ImageCard extends StatelessWidget {
             width: _buttonSize.width,
             child: ButtonBaseWidget(
                 text: buttonText,
-                assetIcon: ARROW_RIGHT_ICON,
+                assetIcon: Assets.arrowRightIcon,
                 buttonColor: BrandingColors.background,
                 textColor: BrandingColors.secondary,
                 onPressedFunction: onButtonPressed,

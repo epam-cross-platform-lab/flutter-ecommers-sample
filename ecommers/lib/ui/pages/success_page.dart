@@ -22,7 +22,7 @@ class SuccessPage extends StatelessWidget {
             children: <Widget>[
               CircleImage(
                 image: SvgPicture.asset(
-                  SUCCESS_ICON,
+                  Assets.successIcon,
                   fit: BoxFit.scaleDown,
                 ),
                 size: circleImageSize,

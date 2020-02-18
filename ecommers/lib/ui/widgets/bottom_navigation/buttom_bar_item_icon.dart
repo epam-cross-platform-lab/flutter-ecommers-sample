@@ -10,7 +10,7 @@ class ButtomBarItemIcon extends StatelessWidget {
 
   static const _iconWithBadgeWidth = 41.0;
 
-  ButtomBarItemIcon({
+  const ButtomBarItemIcon({
     @required this.iconData,
     this.hasBadge = false,
     this.badgeValue = 0,

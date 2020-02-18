@@ -24,7 +24,7 @@ dependencies:
   carousel_slider: ^1.4.1
   provider: ^4.0.2
   badges: ^1.1.0
-  # lint: ^1.1.1
+  lint: ^1.1.1
   get_it: ^3.1.0
   keyboard_visibility: ^0.5.6
   flutter_launcher_icons: ^0.7.4

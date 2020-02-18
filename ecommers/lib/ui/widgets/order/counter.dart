@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 class Counter extends StatefulWidget {
   final int count;
-  final Function countIncrementFunction;
-  final Function countDecrementFunction;
+  final Function() countIncrementFunction;
+  final Function() countDecrementFunction;
 
-  Counter({
+  const Counter({
     @required this.count,
     @required this.countIncrementFunction,
     @required this.countDecrementFunction,
@@ -27,7 +27,7 @@ class _CounterState extends State<Counter> {
       child: Row(
         children: <Widget>[
           _buildCountActionButton(
-            REMOVE_ICON,
+            Assets.substractIcon,
             widget.countDecrementFunction,
           ),
           Expanded(
@@ -43,7 +43,7 @@ class _CounterState extends State<Counter> {
             ),
           ),
           _buildCountActionButton(
-            ADD_ICON,
+            Assets.addIcon,
             widget.countIncrementFunction,
           ),
         ],
@@ -53,17 +53,17 @@ class _CounterState extends State<Counter> {
 
   Widget _buildCountActionButton(
     String imagePath,
-    Function onTappedFunction,
+    Function() onTappedFunction,
   ) {
     return Container(
       width: CircleIcon.size.width + Insets.x1,
       height: CircleIcon.size.height + Insets.x1,
       alignment: Alignment.center,
       child: RawMaterialButton(
-        shape: CircleBorder(),
+        shape: const CircleBorder(),
         onPressed: onTappedFunction,
-        child: CircleIcon(imagePath: imagePath),
         elevation: 1.0,
+        child: CircleIcon(imagePath: imagePath),
       ),
     );
   }

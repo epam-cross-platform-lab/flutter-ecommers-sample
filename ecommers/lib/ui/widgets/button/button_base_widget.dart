@@ -13,16 +13,17 @@ class ButtonBaseWidget extends StatelessWidget {
   final Color blurColor;
   final String text;
   final String assetIcon;
-  final Function onPressedFunction;
+  final Function() onPressedFunction;
 
-  ButtonBaseWidget(
-      {@required this.text,
-      @required this.assetIcon,
-      @required this.buttonColor,
-      @required this.textColor,
-      @required this.blurColor,
-      this.iconBackgroundColor,
-      @required this.onPressedFunction});
+  const ButtonBaseWidget({
+    @required this.text,
+    @required this.assetIcon,
+    @required this.buttonColor,
+    @required this.textColor,
+    @required this.blurColor,
+    @required this.onPressedFunction,
+    this.iconBackgroundColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,14 +62,14 @@ class ButtonBaseWidget extends StatelessWidget {
               alignment: Alignment.center,
               height: _circleSize,
               width: _circleSize,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: iconBackgroundColor ?? textColor,
+              ),
               child: SvgPicture.asset(
                 assetIcon,
                 height: _iconHeight,
                 color: buttonColor,
-              ),
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: iconBackgroundColor ?? textColor,
               ),
             )
           ],

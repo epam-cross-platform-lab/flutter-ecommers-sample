@@ -10,7 +10,7 @@ class AuthTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final bool obscureText;
 
-  AuthTextField({
+  const AuthTextField({
     this.labelText = '',
     this.assetIconPath = '',
     this.keyboardType = TextInputType.text,

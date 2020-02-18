@@ -18,7 +18,7 @@ final List<AuthRichTextSpanModel> _bottomText = [
   AuthRichTextSpanModel(
     text: 'create a new account.',
     isTappable: true,
-    onTap: () async => await navigationService.navigateTo(Pages.shell),
+    onTap: () => navigationService.navigateTo(Pages.shell),
   ),
 ];
 
@@ -49,11 +49,11 @@ class _LogInPageState extends State<LogInPage> {
 
   @override
   Widget build(BuildContext context) {
-    var localization = I18n.of(context);
+    final localization = I18n.of(context);
 
     return AuthorizationTabBase(
       children: <Widget>[
-        SizedBox(height: Insets.x5),
+        const SizedBox(height: Insets.x5),
         AuthTextFieldAreaContainer(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -62,44 +62,45 @@ class _LogInPageState extends State<LogInPage> {
                 controller: usernameOrEmailController,
                 labelText: localization.usernameOrEmail,
                 keyboardType: TextInputType.emailAddress,
-                assetIconPath: PROFILE_ICON,
+                assetIconPath: Assets.profileIcon,
               ),
               AuthTextField(
                 controller: passwordController,
                 labelText: localization.password,
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
-                assetIconPath: PASSWORD_ICON,
+                assetIconPath: Assets.passwordIcon,
               ),
             ],
           ),
         ),
-        SizedBox(height: Insets.x3_5),
+        const SizedBox(height: Insets.x3_5),
         PrimaryButtonWidget(
           text: localization.logIn,
-          assetIconPath: ARROW_RIGHT_ICON,
-          onPressedFunction: () async => await logInButtonPressHandler(),
+          assetIconPath: Assets.arrowRightIcon,
+          onPressedFunction: () => logInButtonPressHandler(),
         ),
-        SizedBox(height: Insets.x8_5),
+        const SizedBox(height: Insets.x8_5),
         AuthRichText(textSpanModelList: _bottomText),
       ],
     );
   }
 
   Future logInButtonPressHandler() async {
-    var adminCreds = 'admin';
+    const adminCreds = 'admin';
 
     if (usernameOrEmailController.text == adminCreds &&
-        passwordController.text == adminCreds)
+        passwordController.text == adminCreds) {
       await navigationService.navigateWithReplacementTo(Pages.shell);
-    else
+    } else {
       await showDialog(
         context: context,
-        builder: (_) => AlertDialog(
+        builder: (_) => const AlertDialog(
           elevation: 10.0,
           title: Text('Alert'),
           content: Text('Username or password is incorrect (try: admin/admin)'),
         ),
       );
+    }
   }
 }

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AuthTextFieldAreaContainer extends StatelessWidget {
   final Widget child;
 
-  AuthTextFieldAreaContainer({this.child});
+  const AuthTextFieldAreaContainer({this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class AuthTextFieldAreaContainer extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(Radiuses.normal),
         color: BrandingColors.background,
-        boxShadow: <BoxShadow>[
+        boxShadow: const <BoxShadow>[
           BoxShadow(
             offset: Dimens.defaultBlurOffset,
             blurRadius: Radiuses.big_1x,

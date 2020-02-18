@@ -10,39 +10,39 @@ import 'package:flutter/material.dart';
 class MorePage extends StatelessWidget {
   static const List<MenuItemModel> topMenuList = [
     MenuItemModel(
-      svgAssetIconPath: SHIPPING_ICON,
+      svgAssetIconPath: Assets.shippingIcon,
       title: 'Shipping Adress',
     ),
     MenuItemModel(
-      svgAssetIconPath: PAYMENT_ICON,
+      svgAssetIconPath: Assets.paymentIcon,
       title: 'Payment Method',
     ),
     MenuItemModel(
-      svgAssetIconPath: CURRENCY_ICON,
+      svgAssetIconPath: Assets.currencyIcon,
       title: 'Currency',
       subTitle: 'USD',
     ),
     MenuItemModel(
-      svgAssetIconPath: LANGUAGE_ICON,
+      svgAssetIconPath: Assets.languageIcon,
       title: 'Language',
       subTitle: 'ENGLISH',
     ),
   ];
   static const List<MenuItemModel> bottomMenuList = [
     MenuItemModel(
-      svgAssetIconPath: BELL_ICON,
+      svgAssetIconPath: Assets.bellIcon,
       title: 'Notification Settings',
     ),
     MenuItemModel(
-      svgAssetIconPath: SHIELD_ICON,
+      svgAssetIconPath: Assets.shieldIcon,
       title: 'Privacy Policy',
     ),
     MenuItemModel(
-      svgAssetIconPath: DISCUSS_ISSUE_ICON,
+      svgAssetIconPath: Assets.discussIssueIcon,
       title: 'Frequently Asked Questions',
     ),
     MenuItemModel(
-      svgAssetIconPath: CHECK_FORM_ICON,
+      svgAssetIconPath: Assets.checkFormIcon,
       title: 'Legal Information',
     ),
   ];
@@ -66,12 +66,12 @@ class MorePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 35.0),
-          MenuList(
+          const MenuList(
             margin: menuListMargin,
             itemList: topMenuList,
           ),
           const SizedBox(height: 15.0),
-          MenuList(
+          const MenuList(
             margin: menuListMargin,
             itemList: bottomMenuList,
           ),
@@ -86,14 +86,14 @@ class MorePage extends StatelessWidget {
   Widget _buildLogOutButton(BuildContext context) {
     return Center(
       child: CupertinoButton(
+        onPressed: logOutPressHandler,
         child: Text(
           I18n.of(context).logOut,
           style: Theme.of(context)
               .textTheme
               .headline5
               .apply(color: BrandingColors.primary),
-        ),
-        onPressed: () async => await logOutPressHandler(), //TODO use proovider
+        ), //TODO use proovider
       ),
     );
   }

@@ -8,7 +8,7 @@ class ThemeProvider {
       primaryColor: BrandingColors.primary,
       backgroundColor: BrandingColors.pageBackground,
       cursorColor: BrandingColors.primary,
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         brightness: Brightness.light,
         color: BrandingColors.pageBackground,
         elevation: 0.0,
@@ -39,7 +39,7 @@ class _TextStyles {
     fontWeight: FontWeight.w700,
   );
 
-  static final headline5 = TextStyle(
+  static final TextStyle headline5 = TextStyle(
     color: BrandingColors.primaryText.withOpacity(0.5),
     fontSize: FontSizes.small_3x,
     fontWeight: FontWeight.w500,
