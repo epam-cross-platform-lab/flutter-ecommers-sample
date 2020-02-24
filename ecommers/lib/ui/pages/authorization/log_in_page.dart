@@ -1,5 +1,7 @@
+import 'package:chopper/chopper.dart';
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/models/login_model.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -35,7 +37,7 @@ class _LogInPageState extends State<LogInPage> {
   void initState() {
     usernameOrEmailController = TextEditingController();
     passwordController = TextEditingController();
-    
+
     super.initState();
   }
 
@@ -87,10 +89,13 @@ class _LogInPageState extends State<LogInPage> {
   }
 
   Future logInButtonPressHandler() async {
-    const adminCreds = 'admin';
+    final Response<LoginModel> response = await apiService.login({
+      'username': usernameOrEmailController.text,
+      'password': passwordController.text
+    });
 
-    if (usernameOrEmailController.text == adminCreds &&
-        passwordController.text == adminCreds) {
+    if (response.isSuccessful) {
+      membershipService.refresh(response.body);
       await navigationService.navigateWithReplacementTo(Pages.shell);
     } else {
       await showDialog(

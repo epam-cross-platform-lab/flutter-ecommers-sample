@@ -28,6 +28,11 @@ dependencies:
   get_it: ^3.1.0
   keyboard_visibility: ^0.5.6
   flutter_launcher_icons: ^0.7.4
+  http_server: ^0.9.8+3
+  chopper: ^3.0.1+1
+  json_annotation: ^3.0.1
+  flutter_secure_storage: ^3.3.1+1
+  flare_flutter: ^2.0.1
 
 flutter_icons:
   image_path_android: "assets/launch_icon_android.png" #http://www.softicons.com/web-icons/services-flat-icons-by-jozef-krajcovic/e-commerce-icon
@@ -43,6 +48,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  chopper_generator: ^3.0.3
+  json_serializable: ^3.2.3
+  build_runner:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -51,6 +59,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/
+    - assets/data/
   
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
