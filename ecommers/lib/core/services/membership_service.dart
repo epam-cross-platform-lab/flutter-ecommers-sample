@@ -46,7 +46,6 @@ class MembershipService {
   }
 
   Future load() async {
-    await Future.delayed(const Duration(seconds: 3));
     _accessToken = await secureStorage.read(key: _accessTokenKey);
     _refreshToken = await secureStorage.read(key: _refreshTokenKey);
     _expirationDate = DateTime.tryParse(

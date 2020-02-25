@@ -24,7 +24,6 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     LocalServer.setup();
-    membershipService.load();
     super.initState();
   }
 
