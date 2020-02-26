@@ -34,7 +34,7 @@ class MenuList extends StatelessWidget {
           decoration: BoxDecoration(
             color: BrandingColors.background,
             borderRadius: BorderRadius.circular(Radiuses.normal),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 blurRadius: Radiuses.big_1x,
                 offset: Dimens.defaultBlurOffset,
