@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 abstract class ProviderModelBase extends ChangeNotifier {
   final I18n localization;
 
-  bool _isBusy;
+  bool _isBusy = false;
 
   bool get isBusy => _isBusy;
 
