@@ -18,8 +18,9 @@ class AuthorizationPage extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<LogInProviderModel>(
-            create: (BuildContext context) => LogInProviderModel(localization)),
+        ChangeNotifierProvider(
+          create: (_) => LogInProviderModel(context),
+        ),
       ],
       child: BackgroundedSafeArea(
         child: DefaultTabController(

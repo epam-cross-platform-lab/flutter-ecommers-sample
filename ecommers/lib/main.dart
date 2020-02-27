@@ -2,7 +2,6 @@ import 'package:ecommers/core/provider_models/main_provider.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/notifier_provider_widget.dart';
 import 'package:ecommers/ui/pages/authorization/authorization_page.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/progress.dart';
@@ -52,7 +51,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (BuildContext context) =>
-          MainProviderModel(I18n.of(context))..initialize(),
+          MainProviderModel(context)..initialize(),
       child: MaterialApp(
         title: 'ecommers',
         theme: ThemeProvider.getTheme(),

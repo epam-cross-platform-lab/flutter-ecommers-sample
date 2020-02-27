@@ -1,9 +1,9 @@
 import 'package:ecommers/core/provider_models/provider_model_base.dart';
 import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:flutter/material.dart';
 
 class MainProviderModel extends ProviderModelBase {
-  MainProviderModel(I18n localization) : super(localization);
+  MainProviderModel(BuildContext context) : super(context);
 
   Future initialize() async {
     isBusy = true;

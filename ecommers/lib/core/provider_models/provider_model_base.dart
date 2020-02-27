@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 abstract class ProviderModelBase extends ChangeNotifier {
   final I18n localization;
+  final BuildContext context;
 
   bool _isBusy = false;
 
@@ -13,5 +14,5 @@ abstract class ProviderModelBase extends ChangeNotifier {
     notifyListeners();
   }
 
-  ProviderModelBase(this.localization);
+  ProviderModelBase(this.context) : localization = I18n.of(context);
 }

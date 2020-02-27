@@ -92,6 +92,14 @@ class I18n implements WidgetsLocalizations {
   String get forgotPasswordHelpText => "Enter the email address you used to create your account and we will email you a link to reset your password";
   /// "Your order was placed successfully. For more details, check All My Orders page under Profile tab"
   String get successMessage => "Your order was placed successfully. For more details, check All My Orders page under Profile tab";
+  /// "Attention"
+  String get alertTitle => "Attention";
+  /// "Username or password is incorrect (try: admin/admin)"
+  String get alertLoginText => "Username or password is incorrect (try: admin/admin)";
+  /// "Don’t have an account? Swipe right to \n"
+  String get loginBottomTextSpan1 => "Don’t have an account? Swipe right to \n";
+  /// "create a new account."
+  String get loginBottomTextSpan2 => "create a new account.";
 }
 
 class _I18n_en_US extends I18n {
