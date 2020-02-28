@@ -9,5 +9,5 @@ abstract class ApiService extends ChopperService {
   static ApiService create([ChopperClient client]) => _$ApiService(client);
 
   @Post(path: ApiDefines.login)
-  Future<Response<LoginModel>> login(@Body() Map<String, String> login);
+  Future<Response<LoginModel>> login(@Body() Map<String, dynamic> login);
 }

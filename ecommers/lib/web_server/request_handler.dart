@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/user_model.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:http_server/http_server.dart';
 
@@ -23,10 +24,10 @@ class RequestHandler {
     const String validUsername = 'admin';
     const String validPassword = 'admin';
 
-    final requestBody = body.body;
+    final user = UserModel.fromJsonFactory(body.body as Map<String,dynamic>);
 
-    if (requestBody['username'] == validUsername &&
-        requestBody['password'] == validPassword) {
+    if (user.username == validUsername &&
+        user.password == validPassword) {
       body.request.response
         ..headers.contentType = ContentType.json
         ..write(await fileManager.readJson(jsonFile))

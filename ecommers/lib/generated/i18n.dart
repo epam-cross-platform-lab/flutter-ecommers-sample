@@ -100,6 +100,14 @@ class I18n implements WidgetsLocalizations {
   String get loginBottomTextSpan1 => "Don’t have an account? Swipe right to \n";
   /// "create a new account."
   String get loginBottomTextSpan2 => "create a new account.";
+  /// "By creating an account, you agree to our Privacy Policy \n"
+  String get signUpBottomTextSpan1 => "By creating an account, you agree to our Privacy Policy \n";
+  /// "Terms of Service"
+  String get signUpBottomTextSpan2 => "Terms of Service";
+  /// " and "
+  String get signUpBottomTextSpan3 => " and ";
+  /// "Privacy Policy"
+  String get signUpBottomTextSpan4 => "Privacy Policy";
 }
 
 class _I18n_en_US extends I18n {
