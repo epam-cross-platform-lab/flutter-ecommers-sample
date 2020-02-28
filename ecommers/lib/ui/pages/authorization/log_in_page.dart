@@ -9,44 +9,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LogInPage extends StatefulWidget {
-  @override
-  _LogInPageState createState() => _LogInPageState();
-}
-
-class _LogInPageState extends State<LogInPage> {
-  TextEditingController usernameOrEmailController;
-  TextEditingController passwordController;
-
-  @override
-  void initState() {
-    usernameOrEmailController = TextEditingController();
-    passwordController = TextEditingController();
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    usernameOrEmailController.dispose();
-    passwordController.dispose();
-
-    super.dispose();
-  }
-
+class LogInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<LogInProviderModel>(
       builder: (_, LogInProviderModel provider, child) {
-        if (provider.isBusy) {
-          return Stack(
-            children: <Widget>[
-              child,
-              const Progress(),
-            ],
-          );
-        }
-        return child;
+        return Stack(
+          children: <Widget>[
+            child,
+            Visibility(
+              visible: provider.isBusy,
+              child: const Progress(),
+            ),
+          ],
+        );
       },
       child: _buildContent(context),
     );
@@ -63,17 +39,17 @@ class _LogInPageState extends State<LogInPage> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               AuthTextField(
-                controller: usernameOrEmailController,
                 labelText: provider.localization.usernameOrEmail,
                 keyboardType: TextInputType.emailAddress,
                 assetIconPath: Assets.profileIcon,
+                onChanged: (String text) => provider.username = text,
               ),
               AuthTextField(
-                controller: passwordController,
                 labelText: provider.localization.password,
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
                 assetIconPath: Assets.passwordIcon,
+                onChanged: (String text) => provider.password = text,
               ),
             ],
           ),
@@ -82,8 +58,7 @@ class _LogInPageState extends State<LogInPage> {
         PrimaryButtonWidget(
           text: provider.localization.logIn,
           assetIconPath: Assets.arrowRightIcon,
-          onPressedFunction: () => provider.tryLogin(
-              usernameOrEmailController.text, passwordController.text),
+          onPressedFunction: () => provider.tryLogin(),
         ),
         const SizedBox(height: Insets.x8_5),
         AuthRichText(textSpanModelList: provider.bottomText),

@@ -8,13 +8,16 @@ import 'package:ecommers/ui/utils/dialog_manager.dart';
 import 'package:flutter/material.dart';
 
 class LogInProviderModel extends ProviderModelBase {
+  String username;
+  String password;
+
   List<AuthRichTextSpanModel> _bottomText;
 
   List<AuthRichTextSpanModel> get bottomText => _getBottomText();
 
   LogInProviderModel(BuildContext context) : super(context);
 
-  Future tryLogin(String username, String password) async {
+  Future tryLogin() async {
     const String _usernameKey = 'username';
     const String _passwordKey = 'password';
 
