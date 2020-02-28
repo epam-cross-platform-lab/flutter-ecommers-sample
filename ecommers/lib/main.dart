@@ -1,3 +1,4 @@
+import 'package:ecommers/core/provider_models/main_provider.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -6,6 +7,7 @@ import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:ecommers/web_server/local_server.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(MainApp());
@@ -47,32 +49,32 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ChangeNotifierProvider(
+      create: (BuildContext context) =>
+          MainProviderModel(context)..initialize(),
+      child: MaterialApp(
         title: 'ecommers',
         theme: ThemeProvider.getTheme(),
-        home: FutureBuilder(
-          future: membershipService.load(),
-          builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.waiting:
-                return Container(
-                  color: BrandingColors.pageBackground,
-                  child: const Center(
-                    child: Progress()
-                  ),
-                );
-              case ConnectionState.done:
-              default:
-                return membershipService.isNotExpired
-                    ? ShellPage()
-                    : const AuthorizationPage();
+        home: Consumer(
+          builder: (_, MainProviderModel provider, __) {
+            if (provider.isBusy) {
+              return Container(
+                color: BrandingColors.pageBackground,
+                child: const Center(child: Progress()),
+              );
             }
+            return membershipService.isNotExpired
+                ? ShellPage()
+                : const AuthorizationPage();
           },
         ),
         navigatorKey: navigationService.navigatorKey,
         localizationsDelegates: [i18n],
         supportedLocales: i18n.supportedLocales,
-        localeResolutionCallback:
-            i18n.resolution(fallback: const Locale('en', 'US')));
+        localeResolutionCallback: i18n.resolution(
+          fallback: const Locale('en', 'US'),
+        ),
+      ),
+    );
   }
 }

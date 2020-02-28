@@ -9,6 +9,7 @@ class AuthTextField extends StatelessWidget {
   final String assetIconPath;
   final TextInputType keyboardType;
   final bool obscureText;
+  final Function(String) onChanged;
 
   const AuthTextField({
     this.labelText = '',
@@ -16,6 +17,7 @@ class AuthTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.obscureText = false,
     this.controller,
+    this.onChanged,
   });
 
   @override
@@ -24,6 +26,7 @@ class AuthTextField extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText,
+      onChanged: onChanged,
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: Theme.of(context).textTheme.headline5,
