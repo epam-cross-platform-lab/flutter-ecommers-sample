@@ -55,6 +55,6 @@ class SignUpProviderModel extends ProviderModelBase {
     }
 
     await DialogManager.showAlertDialog(
-        context, localization.alertTitle, localization.alertLoginText);
+        context, localization.alertTitle, response.bodyString);
   }
 }

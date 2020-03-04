@@ -50,8 +50,10 @@ class RequestHandler {
 
     final userMap = body.body as Map<String, dynamic>;
     final user = User.fromJsonFactory(userMap);
+    
+    final validationModel = await _userDataAccess.isNewUserValid(user);
 
-    if (await _userDataAccess.isNewUserValid(user)) {
+    if (validationModel.isValid) {
       await _userDataAccess.saveUser(userMap);
 
       body.request.response
@@ -64,6 +66,7 @@ class RequestHandler {
 
     body.request.response
       ..statusCode = HttpStatus.unauthorized
+      ..write(validationModel.error)
       ..close();
   }
 

@@ -30,7 +30,7 @@
     "forgotPasswordHelpText": "Enter the email address you used to create your account and we will email you a link to reset your password",
     "successMessage": "Your order was placed successfully. For more details, check All My Orders page under Profile tab",
     "alertTitle": "Attention",
-    "alertLoginText": "Username or password is incorrect (try: admin/admin)",
+    "alertLoginText": "Username or password is incorrect.",
     "loginBottomTextSpan1": "Don’t have an account? Swipe right to \n",
     "loginBottomTextSpan2": "create a new account.",
     "signUpBottomTextSpan1": "By creating an account, you agree to our Privacy Policy \n",

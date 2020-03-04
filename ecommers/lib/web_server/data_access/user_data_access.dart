@@ -1,3 +1,4 @@
+import 'package:ecommers/web_server/data_access/validation_model.dart';
 import 'package:ecommers/web_server/local_database.dart';
 import 'package:ecommers/web_server/models/user.dart';
 import 'package:ecommers/extensions/string_extension.dart';
@@ -38,17 +39,21 @@ class UserDataAccess {
     return existedUser != null;
   }
 
-  Future<bool> isNewUserValid(User newUser) async {
+  Future<ValidationModel> isNewUserValid(User newUser) async {
+    const fieldsEmptyError = 'Please fill in all fields';
+    const emailExistsError = 'This email already exists';
+    const usernameExists = 'This username already exists';
+
     final users = await allUsers;
 
     if (newUser.email.isNullOrEmpty ||
         newUser.username.isNullOrEmpty ||
         newUser.password.isNullOrEmpty) {
-      return false;
+      return ValidationModel(isValid: false, error: fieldsEmptyError);
     }
 
     if (users == null) {
-      return true;
+      return ValidationModel(isValid: true);
     }
 
     final existedUser = (await allUsers).firstWhere(
@@ -56,6 +61,14 @@ class UserDataAccess {
             user.email == newUser.email || user.username == newUser.username,
         orElse: () => null);
 
-    return existedUser == null;
+    if (existedUser == null) {
+      return ValidationModel(isValid: true);
+    }
+
+    if (existedUser.email == newUser.email) {
+      return ValidationModel(isValid: false, error: emailExistsError);
+    }
+
+    return ValidationModel(isValid: false, error: usernameExists);
   }
 }
