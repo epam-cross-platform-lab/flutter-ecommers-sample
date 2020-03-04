@@ -36,6 +36,8 @@ class Assets {
   static const String mailIcon = 'assets/mail_icon.svg';
   static const String profileIcon = 'assets/profile_icon.svg';
   static const String passwordIcon = 'assets/password_icon.svg';
+  static const String starIcon = 'assets/star_icon.svg';
+  static const String backIcon = 'assets/back_icon.svg';
 
   static const String girlImage = 'assets/girl_image.png';
   static const String girl2Image = 'assets/girl2_image.png';
