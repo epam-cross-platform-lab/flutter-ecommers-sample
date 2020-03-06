@@ -130,7 +130,7 @@ class CategoriesPage extends StatelessWidget {
         ),
         scrollDirection: Axis.vertical,
         itemBuilder: (BuildContext context, int index) {
-          return CategoryItem.fromType(Categories.values[index]);
+          return CategoryItem.fromType(Categories.values[index], (Categories type) => {}); //TODO: deal with this too
         },
       ),
     );

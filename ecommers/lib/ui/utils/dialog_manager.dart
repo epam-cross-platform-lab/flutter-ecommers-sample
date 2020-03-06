@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 
 class DialogManager {
@@ -9,6 +10,18 @@ class DialogManager {
         elevation: 10.0,
         title: Text(title),
         content: Text(contentText),
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(
+              'ok',
+              style: Theme.of(context)
+                  .textTheme
+                  .button
+                  .apply(color: BrandingColors.primary),
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -8,16 +8,11 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class ShellPage extends StatefulWidget {
-  @override
-  _ShellPageState createState() => _ShellPageState();
-}
-
-class _ShellPageState extends State<ShellPage> {
+class ShellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return NotifierProviderWidget(
-      providerModel: ShellProviderModel(),
+      providerModel: ShellProviderModel(context),
       builder: (context, ShellProviderModel model, child) {
         return Scaffold(
           appBar: AppBar(
@@ -26,11 +21,13 @@ class _ShellPageState extends State<ShellPage> {
                 imageAssetPath: Assets.messagesIcon,
                 onIconPressedFuction: () {}, //TODO get from provider
                 badgeValue: 5, //TODO get from provider
+                context: context,
               ),
               _buildAction(
                 imageAssetPath: Assets.notificationIcon,
                 onIconPressedFuction: () {}, //TODO get from provider
                 badgeValue: 6, //TODO get from provider
+                context: context,
               ),
             ],
           ),
@@ -70,6 +67,7 @@ class _ShellPageState extends State<ShellPage> {
     String imageAssetPath,
     Function() onIconPressedFuction,
     int badgeValue,
+    BuildContext context,
   }) {
     return IconButton(
       icon: IconWithBadge(

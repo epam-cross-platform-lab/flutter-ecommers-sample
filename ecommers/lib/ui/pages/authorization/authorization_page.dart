@@ -1,3 +1,5 @@
+import 'package:ecommers/core/provider_models/base_provider_model.dart';
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/provider_models/log_in_provider_model.dart';
 import 'package:ecommers/core/provider_models/sign_up_provider_model.dart';
 import 'package:ecommers/generated/i18n.dart';
@@ -5,6 +7,7 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/forgot_password_page.dart';
 import 'package:ecommers/ui/pages/authorization/log_in_page.dart';
 import 'package:ecommers/ui/pages/authorization/sign_up_page.dart';
+import 'package:ecommers/ui/pages/busy_page.dart';
 import 'package:ecommers/ui/widgets/backgrounded_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -21,32 +24,41 @@ class AuthorizationPage extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => LogInProviderModel(context)),
         ChangeNotifierProvider(create: (_) => SignUpProviderModel(context)),
+        ChangeNotifierProxyProvider2<SignUpProviderModel, LogInProviderModel,
+            BusyProviderModel>(
+          create: (_) => BusyProviderModel(),
+          update: (_, signUpProvider, loginProvider, busyProvider) =>
+              busyProvider
+                ..isBusy = signUpProvider.isBusy || loginProvider.isBusy,
+        ),
       ],
-      child: BackgroundedSafeArea(
-        child: DefaultTabController(
-          length: 3,
-          child: Scaffold(
-            backgroundColor: BrandingColors.pageBackground,
-            appBar: AppBar(
-              bottom: TabBar(
-                tabs: <Widget>[
-                  Tab(text: localization.signUp),
-                  Tab(text: localization.logIn),
-                  Tab(text: localization.forgotPassword),
-                ],
-                indicatorColor: Colors.transparent,
-                labelStyle: tabStyle,
-                labelColor: tabStyle.color,
-                unselectedLabelColor: tabStyle.color.withOpacity(0.2),
-                isScrollable: true,
+      child: BusyPage(
+        child: BackgroundedSafeArea(
+          child: DefaultTabController(
+            length: 3,
+            child: Scaffold(
+              backgroundColor: BrandingColors.pageBackground,
+              appBar: AppBar(
+                bottom: TabBar(
+                  tabs: <Widget>[
+                    Tab(text: localization.signUp),
+                    Tab(text: localization.logIn),
+                    Tab(text: localization.forgotPassword),
+                  ],
+                  indicatorColor: Colors.transparent,
+                  labelStyle: tabStyle,
+                  labelColor: tabStyle.color,
+                  unselectedLabelColor: tabStyle.color.withOpacity(0.2),
+                  isScrollable: true,
+                ),
               ),
-            ),
-            body: TabBarView(
-              children: <Widget>[
-                SignUpPage(),
-                LogInPage(),
-                ForgotPasswordPage(),
-              ],
+              body: TabBarView(
+                children: <Widget>[
+                  SignUpPage(),
+                  LogInPage(),
+                  ForgotPasswordPage(),
+                ],
+              ),
             ),
           ),
         ),

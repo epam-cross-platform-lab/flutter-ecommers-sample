@@ -1,3 +1,4 @@
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/provider_models/sign_up_provider_model.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
@@ -6,30 +7,12 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/widgets/authorization/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
-import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<SignUpProviderModel>(
-      builder: (_, SignUpProviderModel provider, child) {
-        return Stack(
-          children: <Widget>[
-            child,
-            Visibility(
-              visible: provider.isBusy,
-              child: const Progress(),
-            ),
-          ],
-        );
-      },
-      child: _buildContent(context),
-    );
-  }
-
-  Widget _buildContent(BuildContext context) {
     final localization = I18n.of(context);
     final provider = Provider.of<SignUpProviderModel>(context, listen: false);
 
