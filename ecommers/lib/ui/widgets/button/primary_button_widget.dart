@@ -6,13 +6,16 @@ class PrimaryButtonWidget extends ButtonBaseWidget {
   PrimaryButtonWidget({
     @required String text,
     @required Function() onPressedFunction,
+    Color backgroundColor = BrandingColors.primary,
+    Color textColor = BrandingColors.secondaryText,
+    Color blurColor = BrandingColors.primary,
     String assetIconPath = Assets.arrowRightIcon,
   }) : super(
           text: text,
           assetIcon: assetIconPath,
-          buttonColor: BrandingColors.primary,
-          textColor: BrandingColors.secondaryText,
+          buttonColor: backgroundColor,
+          textColor: textColor,
           onPressedFunction: onPressedFunction,
-          blurColor: BrandingColors.primary.withOpacity(0.4),
+          blurColor: blurColor.withOpacity(0.4),
         );
 }

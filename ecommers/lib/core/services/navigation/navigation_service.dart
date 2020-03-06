@@ -1,6 +1,8 @@
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
+import 'package:ecommers/ui/pages/product_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -39,6 +41,11 @@ class NavigationService {
         break;
       case Pages.success:
         resultPage = const SuccessPage();
+        break;
+      case Pages.product:
+        resultPage = ProductPage(
+          productModel: arguments as ProductItemModel,
+        );
         break;
       default:
         resultPage = ShellPage();

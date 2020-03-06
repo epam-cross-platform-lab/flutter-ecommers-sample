@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -90,9 +91,11 @@ class HomePage extends StatelessWidget {
         delegate: SliverChildBuilderDelegate(
           (context, index) {
             return ProductItemNormal(
-              assetImagePath: _getDressAssetPath(index),
-              cost: 15.0,
-              title: 'best dress ever',
+              productModel: ProductItemModel(
+                assetImagePath: _getDressAssetPath(index),
+                cost: 15.0,
+                title: 'best dress ever',
+              ),
               rate: 3.9,
             );
           },
