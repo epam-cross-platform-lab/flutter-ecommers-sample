@@ -100,6 +100,8 @@ class I18n implements WidgetsLocalizations {
   String get loginBottomTextSpan1 => "Don’t have an account? Swipe right to \n";
   /// "create a new account."
   String get loginBottomTextSpan2 => "create a new account.";
+  /// "Search"
+  String get searchTitle => "Search";
 }
 
 class _I18n_en_US extends I18n {
