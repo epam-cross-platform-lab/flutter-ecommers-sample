@@ -4,12 +4,16 @@ import 'package:ecommers/ui/decorations/branding_colors.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/icon_with_badge.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_page/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatelessWidget {
   final ProductItemModel productModel;
+  static const _carouselWidgetHeight = 250.0;
+  static const _carouselImageScale = 0.5;
+  static const _appBarIconButtonHeight = 18.0;
 
   const ProductPage({@required this.productModel});
 
@@ -22,7 +26,7 @@ class ProductPage extends StatelessWidget {
           icon: SvgPicture.asset(
             Assets.backIcon,
             color: BrandingColors.primary,
-            height: 18.0,
+            height: _appBarIconButtonHeight,
           ),
           onPressed: () => navigationService.goBack(),
         ),
@@ -50,8 +54,17 @@ class ProductPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
+            CarouselWidget(
+              assetImagePaths: [
+                productModel.assetImagePath,
+                productModel.assetImagePath,
+                productModel.assetImagePath,
+              ],
+              height: _carouselWidgetHeight,
+              imageScale: _carouselImageScale,
+            ),
             Padding(
               padding: const EdgeInsets.all(Insets.x5),
               child: Align(
