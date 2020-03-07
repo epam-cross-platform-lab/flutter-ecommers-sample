@@ -32,5 +32,8 @@
     "alertTitle": "Attention",
     "alertLoginText": "Username or password is incorrect (try: admin/admin)",
     "loginBottomTextSpan1": "Don’t have an account? Swipe right to \n",
-    "loginBottomTextSpan2": "create a new account."
+    "loginBottomTextSpan2": "create a new account.",
+    "refineResults": "REFINE RESULTS",
+    "clear": "CLEAR",
+    "applyFilters": "APPLY FILTERS"
 }
