@@ -1,6 +1,6 @@
 # ecommers
 
-A new Flutter project.
+For the first run execute terminal command: 'flutter packages pub run build_runner build'
 
 ## Getting Started
 
