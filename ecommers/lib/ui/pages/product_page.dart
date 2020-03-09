@@ -12,7 +12,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ProductPage extends StatelessWidget {
   final ProductItemModel productModel;
   static const _carouselWidgetHeight = 250.0;
-  static const _tabsPagesHeight = 500.0;
+  static const _tabsPagesHeight = 300.0;
   static const _appBarIconButtonHeight = 18.0;
   static const _bottomButtonsSize = Size(165.0, 46.0);
 
@@ -63,17 +63,17 @@ class ProductPage extends StatelessWidget {
                   Container(
                     height: _carouselWidgetHeight,
                     child: CarouselWidget(
-                        assetImagePaths: [
-                          productModel.assetImagePath,
-                          productModel.assetImagePath,
-                          productModel.assetImagePath,
-                        ],
-                      ),
+                      assetImagePaths: [
+                        productModel.assetImagePath,
+                        productModel.assetImagePath,
+                        productModel.assetImagePath,
+                      ],
+                    ),
                   ),
                   Container(
                     height: _tabsPagesHeight,
                     child: const ToggleMenuWidget(),
-                    ),
+                  ),
                 ],
               ),
             ),

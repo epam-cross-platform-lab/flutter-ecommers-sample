@@ -118,6 +118,10 @@ class I18n implements WidgetsLocalizations {
   String get signUpBottomTextSpan4 => "Privacy Policy";
   /// "Reviews"
   String get reviews => "Reviews";
+  /// "SELECT COLOR"
+  String get selectColor => "SELECT COLOR";
+  /// "SELECT SIZE (US)"
+  String get selectSizeUs => "SELECT SIZE (US)";
 }
 
 class _I18n_en_US extends I18n {

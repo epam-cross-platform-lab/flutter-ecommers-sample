@@ -40,6 +40,8 @@
     "signUpBottomTextSpan1": "By creating an account, you agree to our Privacy Policy \n",
     "signUpBottomTextSpan2": "Terms of Service",
     "signUpBottomTextSpan3": " and ",
-    "signUpBottomTextSpan4": "Privacy Policy"
-    "reviews": "Reviews"
+    "signUpBottomTextSpan4": "Privacy Policy",
+    "reviews": "Reviews",
+    "selectColor": "SELECT COLOR",
+    "selectSizeUs": "SELECT SIZE (US)"
 }
