@@ -1,6 +1,4 @@
-import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/core/provider_models/sign_up_provider_model.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -8,34 +6,32 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/widgets/authorization/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
+import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:flutter/material.dart';
-
-// TODO: move to provider
-final List<AuthRichTextSpanModel> _bottomText = [
-  AuthRichTextSpanModel(
-    text: 'By creating an account, you agree to our Privacy Policy \n',
-    isTappable: false,
-  ),
-  AuthRichTextSpanModel(
-    text: 'Terms of Service',
-    isTappable: true,
-    onTap: () => navigationService.navigateTo(Pages.shell),
-  ),
-  AuthRichTextSpanModel(
-    text: ' and ',
-    isTappable: false,
-  ),
-  AuthRichTextSpanModel(
-    text: 'Privacy Policy',
-    isTappable: true,
-    onTap: () => navigationService.navigateTo(Pages.categories),
-  ),
-];
+import 'package:provider/provider.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return Consumer<SignUpProviderModel>(
+      builder: (_, SignUpProviderModel provider, child) {
+        return Stack(
+          children: <Widget>[
+            child,
+            Visibility(
+              visible: provider.isBusy,
+              child: const Progress(),
+            ),
+          ],
+        );
+      },
+      child: _buildContent(context),
+    );
+  }
+
+  Widget _buildContent(BuildContext context) {
     final localization = I18n.of(context);
+    final provider = Provider.of<SignUpProviderModel>(context, listen: false);
 
     return AuthorizationTabBase(
       children: <Widget>[
@@ -48,16 +44,19 @@ class SignUpPage extends StatelessWidget {
                 labelText: localization.email,
                 keyboardType: TextInputType.emailAddress,
                 assetIconPath: Assets.mailIcon,
+                onChanged: (text) => provider.email = text,
               ),
               AuthTextField(
                 labelText: localization.username,
                 assetIconPath: Assets.profileIcon,
+                onChanged: (text) => provider.username = text,
               ),
               AuthTextField(
                 labelText: localization.password,
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
                 assetIconPath: Assets.passwordIcon,
+                onChanged: (text) => provider.password = text,
               ),
             ],
           ),
@@ -66,10 +65,10 @@ class SignUpPage extends StatelessWidget {
         PrimaryButtonWidget(
           text: localization.signUp,
           assetIconPath: Assets.arrowRightIcon,
-          onPressedFunction: () {},
+          onPressedFunction: () => provider.tryAuthorize(),
         ),
         const SizedBox(height: Insets.x8_5),
-        AuthRichText(textSpanModelList: _bottomText),
+        AuthRichText(textSpanModelList: provider.bottomText),
       ],
     );
   }

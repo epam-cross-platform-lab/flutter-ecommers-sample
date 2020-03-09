@@ -1,6 +1,9 @@
-name: build and check Android
+name: Build and push Android
 
-on: [push]
+on:
+  push:
+    branches: 
+      - master
 
 jobs:
   build:
@@ -29,3 +32,12 @@ jobs:
     - name: Build Android app
       run: flutter build apk --target-platform android-arm
       working-directory: ecommers
+    - name: upload artefact to App Center
+      uses: wzieba/AppCenter-Github-Action@v1.0.0
+      with:
+        appName: wzieba/eComm
+        token: ${{secrets.android_appcenter}}
+        working-directory: ecommers
+        group: Testers
+        file: build/app/outputs/apk/release/app-release.apk
+        
