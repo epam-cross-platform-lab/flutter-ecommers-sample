@@ -5,15 +5,10 @@ import 'package:page_view_indicators/page_view_indicators.dart';
 
 class CarouselWidget extends StatelessWidget {
   final List<String> assetImagePaths;
-  final double height;
-  final double imageScale;
+  static const _imageScale = 0.5;
   static final _currentPageNotifier = ValueNotifier<int>(0);
 
-  const CarouselWidget({
-    @required this.assetImagePaths,
-    @required this.height,
-    this.imageScale,
-  });
+  const CarouselWidget({@required this.assetImagePaths});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +18,8 @@ class CarouselWidget extends StatelessWidget {
   Widget _buildBody() {
     return Column(
       children: <Widget>[
-        Stack(
-          children: <Widget>[
-            _buildCircleIndicator(),
-            _buildPageView(),
-          ],
-        ),
+        _buildCircleIndicator(),
+        _buildPageView(),
       ],
     );
   }
@@ -36,7 +27,7 @@ class CarouselWidget extends StatelessWidget {
   Widget _buildCircleIndicator() {
     return Center(
       child: Container(
-        margin: const EdgeInsets.only(top: Insets.x5, bottom: Insets.x5),
+        margin: const EdgeInsets.only(top: Insets.x2),
         child: CirclePageIndicator(
           itemCount: assetImagePaths.length,
           selectedDotColor: BrandingColors.secondary,
@@ -48,8 +39,7 @@ class CarouselWidget extends StatelessWidget {
   }
 
   Widget _buildPageView() {
-    return Container(
-      height: height,
+    return Expanded(
       child: PageView.builder(
           itemCount: assetImagePaths.length,
           controller: PageController(),
@@ -57,7 +47,7 @@ class CarouselWidget extends StatelessWidget {
             return Center(
               child: Image.asset(
                 assetImagePaths[index],
-                scale: imageScale,
+                scale: _imageScale,
               ),
             );
           },

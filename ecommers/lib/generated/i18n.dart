@@ -104,6 +104,12 @@ class I18n implements WidgetsLocalizations {
   String get shareThis => "SHARE THIS";
   /// "ADD TO CART"
   String get addToCart => "ADD TO CART";
+  /// "Product"
+  String get product => "Product";
+  /// "Details"
+  String get details => "Details";
+  /// "Reviews"
+  String get reviews => "Reviews";
 }
 
 class _I18n_en_US extends I18n {

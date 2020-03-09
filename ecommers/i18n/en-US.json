@@ -34,5 +34,8 @@
     "loginBottomTextSpan1": "Don’t have an account? Swipe right to \n",
     "loginBottomTextSpan2": "create a new account.",
     "shareThis": "SHARE THIS",
-    "addToCart": "ADD TO CART"
+    "addToCart": "ADD TO CART",
+    "product": "Product",
+    "details": "Details",
+    "reviews": "Reviews"
 }

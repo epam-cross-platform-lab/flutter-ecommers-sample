@@ -12,8 +12,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ProductPage extends StatelessWidget {
   final ProductItemModel productModel;
   static const _carouselWidgetHeight = 250.0;
-  static const _carouselImageScale = 0.5;
+  static const _tabsPagesHeight = 500.0;
   static const _appBarIconButtonHeight = 18.0;
+  static const _bottomButtonsSize = Size(165.0, 46.0);
 
   const ProductPage({@required this.productModel});
 
@@ -52,25 +53,37 @@ class ProductPage extends StatelessWidget {
       body: Container(
         color: BrandingColors.pageBackground,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            CarouselWidget(
-              assetImagePaths: [
-                productModel.assetImagePath,
-                productModel.assetImagePath,
-                productModel.assetImagePath,
-              ],
-              height: _carouselWidgetHeight,
-              imageScale: _carouselImageScale,
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  Container(
+                    height: _carouselWidgetHeight,
+                    child: CarouselWidget(
+                        assetImagePaths: [
+                          productModel.assetImagePath,
+                          productModel.assetImagePath,
+                          productModel.assetImagePath,
+                        ],
+                      ),
+                  ),
+                  Container(
+                    height: _tabsPagesHeight,
+                    child: const ToggleMenuWidget(),
+                    ),
+                ],
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.all(Insets.x5),
+              padding: const EdgeInsets.only(
+                  bottom: Insets.x5, left: Insets.x5, right: Insets.x5),
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: const BottomWidget(
-                  buttonSize: Size(165.0, 46.0),
+                  buttonSize: _bottomButtonsSize,
                 ),
               ),
             ),
