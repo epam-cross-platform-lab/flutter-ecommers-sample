@@ -14,21 +14,22 @@ class RightMenuSubTitle extends StatelessWidget {
     final modelItem = model.runtimeType;
     switch (modelItem) {
       case RightMenuSubTitleModel:
-        return createSubTitle(context, model as RightMenuSubTitleModel);
+        return createSubTitle(context, model);
         break;
       case RigthMenuPriceModel:
         return createPrice(context, model as RigthMenuPriceModel);
         break;
       case RightMenuColorsModel:
-        final modelType = model as RightMenuColorsModel;
-        return createCircles(modelType.colors);
+        return createCircles(model);
         break;
       default:
         return const Text('');
     }
   }
 
-  Widget createSubTitle(BuildContext context, RightMenuSubTitleModel subTitleModel) {
+  Widget createSubTitle(BuildContext context, RightMenuItemModel model) {
+    final subTitleModel = model as RightMenuSubTitleModel;
+
     return Text(
       subTitleModel.subTitle,
       style: Theme.of(context).textTheme.subtitle1.copyWith(
@@ -37,7 +38,9 @@ class RightMenuSubTitle extends StatelessWidget {
     );
   }
 
-  Widget createPrice(BuildContext context, RigthMenuPriceModel priceModel) {
+  Widget createPrice(BuildContext context, RightMenuItemModel model) {
+    final priceModel = model as RigthMenuPriceModel;
+
     return Text(
       '\$${priceModel.minPrice} - \$${priceModel.maxPrice}',
       style: Theme.of(context).textTheme.subtitle1.copyWith(
@@ -46,7 +49,10 @@ class RightMenuSubTitle extends StatelessWidget {
     );
   }
 
-  Widget createCircles(List<String> colors) {
+  Widget createCircles( RightMenuItemModel model) {
+    final colorsModel = model as RightMenuColorsModel;
+    final colors = colorsModel.colors;
+
     return Stack(
       children: colors
           .map((color) =>
@@ -61,7 +67,7 @@ class RightMenuSubTitle extends StatelessWidget {
       height: Insets.x5,
       margin: EdgeInsets.only(left: Insets.x3 * index),
       decoration: BoxDecoration(
-        color: color.fromHex(),
+        color: color.fromHexToColor(),
         shape: BoxShape.circle,
       ),
     );

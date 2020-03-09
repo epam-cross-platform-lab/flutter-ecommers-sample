@@ -26,7 +26,7 @@ class RightMenuItem extends StatelessWidget {
               style: Theme.of(context).textTheme.subtitle1,
             ),
           ),
-          Container(child: _subTitleWidget(itemModel)),
+          RightMenuSubTitle(model: itemModel),
           const SizedBox(width: Insets.x2_5),
           SvgPicture.asset(Assets.menuArrowIcon),
         ],
@@ -34,10 +34,3 @@ class RightMenuItem extends StatelessWidget {
     );
   }
 }
-
-@override
-Widget _subTitleWidget(RightMenuItemModel model) {
-  return RightMenuSubTitle(model: model);
-}
-
-
