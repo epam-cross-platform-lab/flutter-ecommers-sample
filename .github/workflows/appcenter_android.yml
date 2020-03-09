@@ -1,6 +1,9 @@
 name: Build and push Android
 
-on: [push]
+on:
+  push:
+    branches: 
+      - master
 
 jobs:
   build:
@@ -36,5 +39,5 @@ jobs:
         token: ${{secrets.android_appcenter}}
         working-directory: ecommers
         group: Testers
-        file: /build/app/outputs/apk/release/app-release.apk
+        file: build/app/outputs/apk/release/app-release.apk
         
