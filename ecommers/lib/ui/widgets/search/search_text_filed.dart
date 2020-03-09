@@ -10,19 +10,20 @@ class SearchTextFiled extends StatefulWidget {
 class _SerchState extends State<SearchTextFiled> {
   FocusNode focusNode = FocusNode();
   String hintText = 'Search something';
-  Alignment alignment = Alignment.center;
+  TextAlign textAlignment = TextAlign.center;
   @override
   void initState() {
     super.initState();
     focusNode.addListener(() {
+      setState(() {
       if (focusNode.hasFocus) {
         hintText = '';
-        alignment = Alignment.centerLeft;
+        textAlignment = TextAlign.left;
       } else {
         hintText = 'Search something';
-        alignment = Alignment.center;
+        textAlignment = TextAlign.center;
       }
-      setState(() {});
+      });
     });
   }
 
@@ -35,16 +36,16 @@ class _SerchState extends State<SearchTextFiled> {
           Expanded(
             child: Container(
               height: 40,
-              alignment: alignment,
               decoration: BoxDecoration(
                   color: BrandingColors.blur,
                   borderRadius: const BorderRadius.all(Radius.circular(20))),
               child: TextFormField (
-                textAlign: TextAlign.center,
+                focusNode: focusNode,
+                textAlign: textAlignment,
                 decoration: InputDecoration(
                   border: InputBorder.none,
                   hintText: hintText,
-                  hintStyle: const TextStyle(fontSize: 12),
+                  hintStyle: const TextStyle(fontSize: 14),
                   contentPadding: const EdgeInsets.only(
                       left: 10, right: 10, bottom: 0, top: 5),
                   prefixIcon: Icon(
