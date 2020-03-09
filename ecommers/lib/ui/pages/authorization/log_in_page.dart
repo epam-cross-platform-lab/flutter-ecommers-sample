@@ -1,4 +1,5 @@
 import 'package:ecommers/core/provider_models/log_in_provider_model.dart';
+import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
@@ -29,6 +30,7 @@ class LogInPage extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context) {
+    final localization = I18n.of(context);
     final provider = Provider.of<LogInProviderModel>(context, listen: false);
 
     return AuthorizationTabBase(
@@ -39,13 +41,13 @@ class LogInPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               AuthTextField(
-                labelText: provider.localization.usernameOrEmail,
+                labelText: localization.usernameOrEmail,
                 keyboardType: TextInputType.emailAddress,
                 assetIconPath: Assets.profileIcon,
                 onChanged: (String text) => provider.username = text,
               ),
               AuthTextField(
-                labelText: provider.localization.password,
+                labelText: localization.password,
                 obscureText: true,
                 keyboardType: TextInputType.visiblePassword,
                 assetIconPath: Assets.passwordIcon,
@@ -56,7 +58,7 @@ class LogInPage extends StatelessWidget {
         ),
         const SizedBox(height: Insets.x3_5),
         PrimaryButtonWidget(
-          text: provider.localization.logIn,
+          text: localization.logIn,
           assetIconPath: Assets.arrowRightIcon,
           onPressedFunction: () => provider.tryLogin(),
         ),

@@ -36,7 +36,7 @@ class JsonSerializableConverter extends JsonConverter {
   Response<ResultType> convertResponse<ResultType, Item>(Response response) {
     final jsonRes = super.convertResponse(response);
 
-    return jsonRes.replace<ResultType>(
+    return jsonRes.copyWith<ResultType>(
         body: _decode<Item>(jsonRes.body) as ResultType);
   }
 }
