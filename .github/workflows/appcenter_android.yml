@@ -34,6 +34,7 @@ jobs:
       with:
         appName: wzieba/eComm
         token: ${{secrets.android_appcenter}}
+        working-directory: ecommers
         group: Testers
         file: /build/app/outputs/apk/release/app-release.apk
-        working-directory: ecommers
+        
