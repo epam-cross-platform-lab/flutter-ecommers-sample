@@ -35,9 +35,7 @@ jobs:
     - name: upload artefact to App Center
       uses: wzieba/AppCenter-Github-Action@v1.0.0
       with:
-        appName: wzieba/eComm
-        token: ${{secrets.android_appcenter}}
-        working-directory: ecommers
+        appName: EPAM/Flutter-eCom-Android
+        token: ${{secrets.AM_android_appcenter}}
         group: Testers
-        file: build/app/outputs/apk/release/app-release.apk
-        
+        file: ecommers/build/app/outputs/apk/release/app-release.apk
