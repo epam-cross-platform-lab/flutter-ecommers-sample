@@ -1,0 +1,39 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-java@v1
+      with:
+        java-version: '12.x'
+    - name: Cache Flutter Dependencies
+      uses: actions/cache@v1
+      with:
+        path: /opt/hostedtoolcache/flutter
+        key: ${{ runner.os }}-flutter
+    - uses: subosito/flutter-action@v1
+      with:
+        channel: 'dev' # or: 'dev' or 'beta'
+    - name: Install dependencies
+      run: flutter pub get
+      working-directory: ecommers
+    - name: generate files
+      run: flutter packages pub run build_runner build --delete-conflicting-outputs
+      working-directory: ecommers
+    - name: Build Android app
+      run: flutter build apk --target-platform android-arm
+      working-directory: ecommers
+    - name: upload artefact to App Center
+      uses: wzieba/App-Center-action@v1.0.0
+      with:
+        appName: wzieba/eComm
+        token: ${{secrets.android_appcenter}}
+        group: Testers
+        file: /build/app/outputs/apk/release/app-release.apk
+        working-directory: ecommers
