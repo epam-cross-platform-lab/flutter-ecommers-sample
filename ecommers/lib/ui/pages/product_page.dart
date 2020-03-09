@@ -72,7 +72,9 @@ class ProductPage extends StatelessWidget {
                   ),
                   Container(
                     height: _tabsPagesHeight,
-                    child: const ToggleMenuWidget(),
+                    child: ToggleMenuWidget(
+                      productModel: productModel,
+                    ),
                   ),
                 ],
               ),

@@ -3,11 +3,16 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
+import 'package:ecommers/core/models/index.dart';
 
 import 'index.dart';
 
 class ToggleMenuWidget extends StatelessWidget {
-  const ToggleMenuWidget();
+  final ProductItemModel productModel;
+
+  const ToggleMenuWidget({
+    @required this.productModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +56,15 @@ class ToggleMenuWidget extends StatelessWidget {
               ),
             ),
           ),
-          body: const TabBarView(
-            physics: NeverScrollableScrollPhysics(),
+          body: TabBarView(
+            physics: const NeverScrollableScrollPhysics(),
             children: <Widget>[
-              ProductTabWidget(),
-              DetailsTabWidget(),
-              ReviewsTabWidget(),
+              ProductTabWidget(
+                colors: productModel.colors,
+                sizes: productModel.sizes,
+              ),
+              const DetailsTabWidget(),
+              const ReviewsTabWidget(),
             ],
           ),
         ),

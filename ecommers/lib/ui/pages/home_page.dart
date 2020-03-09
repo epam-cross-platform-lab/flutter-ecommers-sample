@@ -75,6 +75,75 @@ class HomePage extends StatelessWidget {
   }
 
   Widget _buildLatestGridView(BuildContext context) {
+    final colors = [
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFF48FB1,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFFFB74D,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFF64B5F6,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFFFFFFF,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFE0E0E0,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFF000000,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFF81C784,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFFFF176,
+      ),
+    ];
+    final sizes = [
+      ProductSizeModel(
+        isSelected: false,
+        size: '4.5',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '5.0',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '5.5',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '6.0',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '6.5',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '7.0',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '7.5',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '8.0',
+      ),
+    ];
+
     return SliverPadding(
       padding: const EdgeInsets.symmetric(
         horizontal: Dimens.pagePadding,
@@ -92,10 +161,12 @@ class HomePage extends StatelessWidget {
           (context, index) {
             return ProductItemNormal(
               productModel: ProductItemModel(
-                assetImagePath: _getDressAssetPath(index),
-                cost: 15.0,
-                title: 'best dress ever',
-              ),
+                  assetImagePath: _getDressAssetPath(index),
+                  cost: 15.0,
+                  title: 'best dress ever',
+                  colors: colors,
+                  sizes: sizes,
+                  ),
               rate: 3.9,
             );
           },

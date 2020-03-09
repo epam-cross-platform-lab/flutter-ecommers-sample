@@ -42,7 +42,7 @@ class CarouselWidget extends StatelessWidget {
     return Expanded(
       child: PageView.builder(
           itemCount: assetImagePaths.length,
-          controller: PageController(),
+          controller: PageController(initialPage: 0),
           itemBuilder: (BuildContext context, int index) {
             return Center(
               child: Image.asset(
