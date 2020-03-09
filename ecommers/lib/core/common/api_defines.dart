@@ -1,3 +1,4 @@
 class ApiDefines {
-  static const String login = '/auth';
+  static const String login = '/login';
+  static const String auth = '/auth';
 }

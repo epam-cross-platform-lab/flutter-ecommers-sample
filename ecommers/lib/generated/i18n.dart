@@ -94,8 +94,8 @@ class I18n implements WidgetsLocalizations {
   String get successMessage => "Your order was placed successfully. For more details, check All My Orders page under Profile tab";
   /// "Attention"
   String get alertTitle => "Attention";
-  /// "Username or password is incorrect (try: admin/admin)"
-  String get alertLoginText => "Username or password is incorrect (try: admin/admin)";
+  /// "Username or password is incorrect."
+  String get alertLoginText => "Username or password is incorrect.";
   /// "Don’t have an account? Swipe right to \n"
   String get loginBottomTextSpan1 => "Don’t have an account? Swipe right to \n";
   /// "create a new account."
@@ -108,6 +108,14 @@ class I18n implements WidgetsLocalizations {
   String get product => "Product";
   /// "Details"
   String get details => "Details";
+  /// "By creating an account, you agree to our Privacy Policy \n"
+  String get signUpBottomTextSpan1 => "By creating an account, you agree to our Privacy Policy \n";
+  /// "Terms of Service"
+  String get signUpBottomTextSpan2 => "Terms of Service";
+  /// " and "
+  String get signUpBottomTextSpan3 => " and ";
+  /// "Privacy Policy"
+  String get signUpBottomTextSpan4 => "Privacy Policy";
   /// "Reviews"
   String get reviews => "Reviews";
 }
