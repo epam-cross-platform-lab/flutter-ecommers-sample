@@ -161,13 +161,21 @@ class HomePage extends StatelessWidget {
           (context, index) {
             return ProductItemNormal(
               productModel: ProductItemModel(
-                  assetImagePath: _getDressAssetPath(index),
-                  cost: 15.0,
+                assetImagePath: _getDressAssetPath(index),
+                cost: 15.0,
                   rate: 4.9,
-                  title: 'best dress ever',
-                  colors: colors,
-                  sizes: sizes,
-                  ),
+                title: 'best dress ever',
+                productDetailsModel: ProductDetailsModel(
+                  brand: "Lily's Ankle Boots",
+                  sku: '0590458902809',
+                  condition: 'Brand New, With Box',
+                  material: 'Faux Sued, Velvet',
+                  category: 'Women Shoes',
+                  fitting: 'True To Size',
+                ),
+                colors: colors,
+                sizes: sizes,
+              ),
               rate: 3.9,
             );
           },
