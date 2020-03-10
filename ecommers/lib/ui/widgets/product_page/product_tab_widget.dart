@@ -23,7 +23,7 @@ class _ProductTabWidgetState extends State<ProductTabWidget> {
   @override
   Widget build(BuildContext context) {
     const _titleTextStyle = TextStyle(
-      fontSize: Insets.x4,
+      fontSize: FontSizes.normal,
       color: BrandingColors.secondary,
     );
     final _localization = I18n.of(context);
@@ -80,7 +80,7 @@ class _ProductTabWidgetState extends State<ProductTabWidget> {
               child: Text(
                 widget.sizes[i].size,
                 style: TextStyle(
-                  fontSize: Insets.x5,
+                  fontSize: FontSizes.big_2x,
                   color: textSizeColor,
                 ),
               ),
