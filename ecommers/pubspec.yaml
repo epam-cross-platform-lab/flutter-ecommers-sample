@@ -37,6 +37,7 @@ dependencies:
   bubble_tab_indicator: "^0.1.4"
   sembast: ^2.3.0
   path_provider: ^1.6.5
+  flutter_rating_bar: ^3.0.1+1
 
 flutter_icons:
   image_path_android: "assets/launch_icon_android.png" #http://www.softicons.com/web-icons/services-flat-icons-by-jozef-krajcovic/e-commerce-icon

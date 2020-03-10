@@ -3,15 +3,14 @@ import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:flutter/material.dart';
 
-class DetailsTabWidget extends StatelessWidget {
+class DetailsTab extends StatelessWidget {
   final ProductDetailsModel productDetailModel;
 
-  const DetailsTabWidget({@required this.productDetailModel});
+  const DetailsTab({@required this.productDetailModel});
 
   @override
   Widget build(BuildContext context) {
     final _localization = I18n.of(context);
-    const _marginValue = 18.2;
 
     return Column(
       children: [
@@ -59,17 +58,6 @@ class DetailsTabWidget extends StatelessWidget {
             Text(
               valueRight,
               style: Theme.of(context).textTheme.subtitle2,
-            ),
-          ],
-        ),
-      ],
-            ),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                valueRight,
-                style: _valueTextStile,
-              ),
             ),
           ],
         ),
