@@ -1,8 +1,5 @@
-import 'package:chopper/chopper.dart';
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/models/login_model.dart';
-import 'package:ecommers/core/models/user_model.dart';
 import 'package:ecommers/core/provider_models/provider_model_base.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/utils/dialog_manager.dart';
@@ -20,20 +17,17 @@ class LogInProviderModel extends ProviderModelBase {
   Future tryLogin() async {
     isBusy = true;
 
-    final userJson = UserModel(username, null, password).toJson();
-
-    final Response<LoginModel> response = await apiService.login(userJson);
+    final isSuccessful =
+        await authorizationService.tryLogin(username, password);
 
     isBusy = false;
 
-    if (response.isSuccessful) {
-      membershipService.refresh(response.body);
+    if (isSuccessful) {
       await navigationService.navigateWithReplacementTo(Pages.shell);
-      return;
+    } else {
+      await DialogManager.showAlertDialog(
+          context, localization.alertTitle, localization.alertLoginText);
     }
-
-    await DialogManager.showAlertDialog(
-        context, localization.alertTitle, localization.alertLoginText);
   }
 
   List<AuthRichTextSpanModel> _getBottomText() {

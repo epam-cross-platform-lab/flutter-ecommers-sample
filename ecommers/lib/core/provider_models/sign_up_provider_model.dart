@@ -1,8 +1,5 @@
-import 'package:chopper/chopper.dart';
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/models/login_model.dart';
-import 'package:ecommers/core/models/user_model.dart';
 import 'package:ecommers/core/provider_models/provider_model_base.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/ui/utils/dialog_manager.dart';
@@ -43,18 +40,16 @@ class SignUpProviderModel extends ProviderModelBase {
   Future tryAuthorize() async {
     isBusy = true;
 
-    final userJson = UserModel(username, email, password).toJson();
-    final Response<LoginModel> response = await apiService.auth(userJson);
+    final authResponse =
+        await authorizationService.tryAuthorize(username, email, password);
 
     isBusy = false;
 
-    if (response.isSuccessful) {
-      membershipService.refresh(response.body);
+    if (authResponse.isSuccessful) {
       await navigationService.navigateWithReplacementTo(Pages.shell);
-      return;
+    } else {
+      await DialogManager.showAlertDialog(
+          context, localization.alertTitle, authResponse.error);
     }
-
-    await DialogManager.showAlertDialog(
-        context, localization.alertTitle, response.bodyString);
   }
 }
