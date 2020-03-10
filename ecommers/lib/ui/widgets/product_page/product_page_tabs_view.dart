@@ -51,17 +51,20 @@ class ProductPageTabsView extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Insets.x4_5),
+                padding: const EdgeInsets.symmetric(horizontal: Insets.x4_5, vertical: Insets.x5),
                 child: ProductTab(
                   colors: productModel.colors,
                   sizes: productModel.sizes,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Insets.x4_5),
+                padding: const EdgeInsets.symmetric(horizontal: Insets.x4_5, vertical: Insets.x4),
                 child: DetailsTab(productDetailModel: productModel.productDetailsModel),
               ),
-              ReviewsTab(productReviewsModel: productModel.reviews),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Insets.x4_5, vertical: Insets.x4),
+                child: ReviewsTab(productReviewsModel: productModel.reviews),
+              ),
             ],
           ),
         ),

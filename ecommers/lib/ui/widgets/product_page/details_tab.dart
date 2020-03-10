@@ -14,7 +14,6 @@ class DetailsTab extends StatelessWidget {
 
     return Column(
       children: [
-        const SizedBox(height: Insets.x4),
         _createDetailsListWidget(context, _localization.brand, _localization.sku,
             productDetailModel.brand, productDetailModel.sku),
         const SizedBox(height: Insets.x7_5),

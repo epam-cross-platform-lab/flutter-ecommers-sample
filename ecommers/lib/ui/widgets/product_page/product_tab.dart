@@ -31,7 +31,6 @@ class _ProductTabState extends State<ProductTab> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: Insets.x5),
         Text(
           _localization.selectColor,
           style: Theme.of(context).textTheme.subtitle2,
