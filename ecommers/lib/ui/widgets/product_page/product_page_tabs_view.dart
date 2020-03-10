@@ -57,7 +57,10 @@ class ProductPageTabsView extends StatelessWidget {
                   sizes: productModel.sizes,
                 ),
               ),
-              const DetailsTabWidget(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Insets.x4_5),
+                child: DetailsTabWidget(productDetailModel: productModel.productDetailsModel),
+              ),
               const ReviewsTabWidget(),
             ],
           ),
