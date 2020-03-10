@@ -102,6 +102,8 @@ class I18n implements WidgetsLocalizations {
   String get loginBottomTextSpan2 => "create a new account.";
   /// "Search"
   String get searchTitle => "Search";
+  /// "Search Something"
+  String get searchProductHintTilt => "Search Something";
 }
 
 class _I18n_en_US extends I18n {
