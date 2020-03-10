@@ -37,11 +37,11 @@ class DetailsTabWidget extends StatelessWidget {
 
   Widget _createDetailsListWidget(String titleLeft, String titleRight, String valueLeft, String valueRight) {
     const _titleTextStile = TextStyle(
-      fontSize: Insets.x4,
+      fontSize: FontSizes.normal,
       color: BrandingColors.secondary,
     );
     const _valueTextStile = TextStyle(
-      fontSize: Insets.x5,
+      fontSize: FontSizes.big_2x,
       color: BrandingColors.secondary,
     );
 
