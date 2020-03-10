@@ -163,6 +163,7 @@ class HomePage extends StatelessWidget {
               productModel: ProductItemModel(
                   assetImagePath: _getDressAssetPath(index),
                   cost: 15.0,
+                  rate: 4.9,
                   title: 'best dress ever',
                   colors: colors,
                   sizes: sizes,

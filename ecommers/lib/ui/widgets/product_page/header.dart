@@ -60,11 +60,9 @@ class Header extends StatelessWidget {
               animationType: BadgeAnimationType.scale,
               shape: BadgeShape.square,
               borderRadius: Radiuses.small_2x,
-              padding: const EdgeInsets.fromLTRB(
-                Insets.x1_5,
-                Insets.x0_5,
-                Insets.x1_5,
-                Insets.x0_5,
+              padding: const EdgeInsets.symmetric(
+                vertical: Insets.x1_5,
+                horizontal: Insets.x0_5,
               ),
             )
           ],

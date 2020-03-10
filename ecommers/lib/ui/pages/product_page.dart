@@ -11,10 +11,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatelessWidget {
   final ProductItemModel productModel;
-  static const _carouselWidgetHeight = 250.0;
-  static const _tabsPagesHeight = 300.0;
-  static const _appBarIconButtonHeight = 18.0;
-  static const _bottomButtonsSize = Size(165.0, 46.0);
 
   const ProductPage({@required this.productModel});
 
@@ -27,14 +23,14 @@ class ProductPage extends StatelessWidget {
           icon: SvgPicture.asset(
             Assets.backIcon,
             color: BrandingColors.primary,
-            height: _appBarIconButtonHeight,
+            height: Insets.x4_5,
           ),
           onPressed: () => navigationService.goBack(),
         ),
         title: Header(
           title: productModel.title,
           cost: productModel.cost,
-          rate: 4.9,
+          rate: productModel.rate,
         ),
         actions: <Widget>[
           IconButton(
@@ -50,47 +46,39 @@ class ProductPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(
-        color: BrandingColors.pageBackground,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Expanded(
-              child: ListView(
-                children: <Widget>[
-                  Container(
-                    height: _carouselWidgetHeight,
-                    child: CarouselWidget(
-                      assetImagePaths: [
-                        productModel.assetImagePath,
-                        productModel.assetImagePath,
-                        productModel.assetImagePath,
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: _tabsPagesHeight,
-                    child: ToggleMenuWidget(
+      body: Column(
+        children: [
+          const SizedBox(height: Insets.x2_5),
+          Expanded(
+            child: ListView(
+              children: [
+                CarouselWidget(
+                  assetImagePaths: [
+                    productModel.assetImagePath,
+                    productModel.assetImagePath,
+                    productModel.assetImagePath,
+                  ],
+                  currentPageNotifier: ValueNotifier<int>(0),
+                  height: 250,
+                ),
+                SizedBox(
+                    height: 300,
+                    child: ProductPageTabsView(
                       productModel: productModel,
                     ),
                   ),
-                ],
-              ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  bottom: Insets.x5, left: Insets.x5, right: Insets.x5),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: const BottomWidget(
-                  buttonSize: _bottomButtonsSize,
-                ),
-              ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(
+              left: Insets.x5,
+              right: Insets.x5,
+              bottom: Insets.x5,
             ),
-          ],
-        ),
+            child: ProductPageBottomView(buttonSize: Size(165.0, 46.0)),
+          ),
+        ],
       ),
     );
   }

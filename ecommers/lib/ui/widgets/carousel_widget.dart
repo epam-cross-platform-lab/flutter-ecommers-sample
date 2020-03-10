@@ -1,14 +1,16 @@
-import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
 
 class CarouselWidget extends StatelessWidget {
   final List<String> assetImagePaths;
-  static const _imageScale = 0.5;
-  static final _currentPageNotifier = ValueNotifier<int>(0);
+  final ValueNotifier<int> currentPageNotifier;
+  final double height;
 
-  const CarouselWidget({@required this.assetImagePaths});
+  const CarouselWidget(
+      {@required this.assetImagePaths,
+      @required this.currentPageNotifier,
+      this.height});
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +27,17 @@ class CarouselWidget extends StatelessWidget {
   }
 
   Widget _buildCircleIndicator() {
-    return Center(
-      child: Container(
-        margin: const EdgeInsets.only(top: Insets.x2),
-        child: CirclePageIndicator(
-          itemCount: assetImagePaths.length,
-          selectedDotColor: BrandingColors.secondary,
-          dotColor: BrandingColors.backgroundIcon,
-          currentPageNotifier: _currentPageNotifier,
-        ),
-      ),
+    return CirclePageIndicator(
+      itemCount: assetImagePaths.length,
+      selectedDotColor: BrandingColors.secondary,
+      dotColor: BrandingColors.backgroundIcon,
+      currentPageNotifier: currentPageNotifier,
     );
   }
 
   Widget _buildPageView() {
-    return Expanded(
+    return SizedBox(
+      height: height,
       child: PageView.builder(
           itemCount: assetImagePaths.length,
           controller: PageController(initialPage: 0),
@@ -47,12 +45,12 @@ class CarouselWidget extends StatelessWidget {
             return Center(
               child: Image.asset(
                 assetImagePaths[index],
-                scale: _imageScale,
+                scale: 0.5,
               ),
             );
           },
           onPageChanged: (int index) {
-            _currentPageNotifier.value = index;
+            currentPageNotifier.value = index;
           }),
     );
   }

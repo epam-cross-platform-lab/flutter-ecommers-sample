@@ -22,69 +22,46 @@ class ProductTabWidget extends StatefulWidget {
 class _ProductTabWidgetState extends State<ProductTabWidget> {
   @override
   Widget build(BuildContext context) {
+    const _titleTextStyle = TextStyle(
+      fontSize: Insets.x4,
+      color: BrandingColors.secondary,
+    );
     final _localization = I18n.of(context);
-    const _marginValue = 18.2;
-    const _colorsListHeight = 100.0;
-    const _colorHeight = 50.0;
-    const _sizesListHeight = 50.0;
-    const _sizesBoxWidth = 80.0;
-    const _sizesBoxCornerRadius = BorderRadius.all(Radius.circular(15.0));
-    const _verticalSpaceHeight = 20.0;
-    const _colorIconSize = 15.0;
 
-    return Container(
-      margin: const EdgeInsets.only(left: _marginValue, right: _marginValue),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          const SizedBox(
-            height: _verticalSpaceHeight,
-          ),
-          Text(
-            _localization.selectColor,
-            style: const TextStyle(
-              fontSize: Insets.x4,
-              color: BrandingColors.secondary,
-            ),
-          ),
-          Container(
-            height: _colorsListHeight,
-            child: _createColorsList(
-              _marginValue,
-              _colorHeight,
-              _colorIconSize,
-            ),
-          ),
-          Text(
-            _localization.selectSizeUs,
-            style: const TextStyle(
-              fontSize: Insets.x4,
-              color: BrandingColors.secondary,
-            ),
-          ),
-          const SizedBox(
-            height: _verticalSpaceHeight,
-          ),
-          Container(
-            height: _sizesListHeight,
-            child: _createSizesList(_marginValue, _sizesListHeight,
-                _sizesBoxWidth, _sizesBoxCornerRadius),
-          ),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(height: Insets.x5),
+        Text(
+          _localization.selectColor,
+          style: _titleTextStyle,
+        ),
+        SizedBox(
+          height: 100,
+          child: _createColorsList(),
+        ),
+        Text(
+          _localization.selectSizeUs,
+          style: _titleTextStyle,
+        ),
+        const SizedBox(height: Insets.x5),
+        SizedBox(
+          height: 50,
+          child: _createSizesList(),
+        ),
+      ],
     );
   }
 
-  Widget _createSizesList(double marginValue, double sizesListHeight,
-      double sizesBoxWidth, BorderRadiusGeometry sizesBoxCornerRadius) {
-    return ListView.builder(
+  Widget _createSizesList() {
+    return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemCount: widget.sizes.length,
+      separatorBuilder: (context, index) => SizedBox(width: Insets.x4_5),
       itemBuilder: (context, i) {
         final textSizeColor = widget.sizes[i].isSelected
-                ? BrandingColors.primary
-                : BrandingColors.primaryText;
+            ? BrandingColors.primary
+            : BrandingColors.primaryText;
 
         return GestureDetector(
           onTap: () => {
@@ -94,14 +71,10 @@ class _ProductTabWidgetState extends State<ProductTabWidget> {
                 }),
           },
           child: Container(
-            margin: i != 0
-                ? EdgeInsets.only(left: marginValue, right: 0)
-                : const EdgeInsets.only(left: 0, right: 0),
-            height: sizesListHeight,
-            width: sizesBoxWidth,
+            width: 80,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: sizesBoxCornerRadius,
+              borderRadius: BorderRadius.all(Radius.circular(Radiuses.big_1x)),
             ),
             child: Center(
               child: Text(
@@ -118,11 +91,11 @@ class _ProductTabWidgetState extends State<ProductTabWidget> {
     );
   }
 
-  Widget _createColorsList(
-      double marginValue, double _colorHeight, double colorIconSize) {
-    return ListView.builder(
+  Widget _createColorsList() {
+    return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemCount: widget.colors.length,
+      separatorBuilder: (context, index) => SizedBox(width: Insets.x4_5),
       itemBuilder: (context, i) {
         final iconColor = widget.colors[i].isSelected
             ? (Color(widget.colors[i].color) == Colors.white
@@ -138,17 +111,13 @@ class _ProductTabWidgetState extends State<ProductTabWidget> {
                 }),
           },
           child: Container(
-            margin: i != 0
-                ? EdgeInsets.only(left: marginValue, right: 0)
-                : const EdgeInsets.only(left: 0, right: 0),
-            height: _colorHeight,
-            width: _colorHeight,
+            width: 50,
             decoration: BoxDecoration(
               color: Color(widget.colors[i].color),
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  blurRadius: Radiuses.normal,
+                  blurRadius: Radiuses.small_1x,
                   offset: const Offset(Insets.x0, Insets.x0_5),
                   color: Colors.grey,
                 ),
@@ -157,7 +126,7 @@ class _ProductTabWidgetState extends State<ProductTabWidget> {
             child: Center(
               child: SvgPicture.asset(
                 Assets.successIcon,
-                height: colorIconSize,
+                height: Insets.x4,
                 color: iconColor,
               ),
             ),
