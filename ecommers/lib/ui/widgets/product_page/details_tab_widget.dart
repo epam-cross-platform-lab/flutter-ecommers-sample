@@ -1,7 +1,6 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 
 class DetailsTabWidget extends StatelessWidget {
@@ -11,40 +10,28 @@ class DetailsTabWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildBody(context);
-  }
-
-  Widget _buildBody(BuildContext context) {
     final _localization = I18n.of(context);
 
     return Column(
       children: [
         const SizedBox(height: Insets.x4),
-        _createDetailsListWidget(_localization.brand, _localization.sku,
+        _createDetailsListWidget(context, _localization.brand, _localization.sku,
             productDetailModel.brand, productDetailModel.sku),
         const SizedBox(height: Insets.x7_5),
         _createDetailsListWidget(
+          context,
             _localization.condition,
             _localization.material,
             productDetailModel.condition,
             productDetailModel.material),
         const SizedBox(height: Insets.x7_5),
-        _createDetailsListWidget(_localization.category, _localization.fitting,
+        _createDetailsListWidget(context, _localization.category, _localization.fitting,
             productDetailModel.category, productDetailModel.fitting),
       ],
     );
   }
 
-  Widget _createDetailsListWidget(String titleLeft, String titleRight, String valueLeft, String valueRight) {
-    const _titleTextStile = TextStyle(
-      fontSize: FontSizes.normal,
-      color: BrandingColors.secondary,
-    );
-    const _valueTextStile = TextStyle(
-      fontSize: FontSizes.big_2x,
-      color: BrandingColors.secondary,
-    );
-
+  Widget _createDetailsListWidget(BuildContext context, String titleLeft, String titleRight, String valueLeft, String valueRight) {
     return Column(
       children: [
         Row(
@@ -52,11 +39,11 @@ class DetailsTabWidget extends StatelessWidget {
           children: [
             Text(
               titleLeft,
-              style: _titleTextStile,
+              style: Theme.of(context).textTheme.subtitle2,
             ),
             Text(
               titleRight,
-              style: _titleTextStile,
+              style: Theme.of(context).textTheme.subtitle2,
             ),
           ],
         ),
@@ -66,11 +53,11 @@ class DetailsTabWidget extends StatelessWidget {
           children: [
             Text(
               valueLeft,
-              style: _valueTextStile,
+              style: Theme.of(context).textTheme.subtitle2,
             ),
             Text(
               valueRight,
-              style: _valueTextStile,
+              style: Theme.of(context).textTheme.subtitle2,
             ),
           ],
         ),
