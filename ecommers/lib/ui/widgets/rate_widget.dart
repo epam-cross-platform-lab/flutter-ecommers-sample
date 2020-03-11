@@ -30,7 +30,7 @@ class RateWidget extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            SvgPicture.asset(Assets.rateStarIcon),
+            SvgPicture.asset(Assets.starIcon),
             Text(
               rate.toString(),
               style: Theme.of(context).textTheme.overline,
