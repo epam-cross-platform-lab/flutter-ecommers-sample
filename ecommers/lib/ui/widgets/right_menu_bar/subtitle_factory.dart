@@ -17,7 +17,7 @@ class RightMenuSubTitle extends StatelessWidget {
         return createSubTitle(context, model);
         break;
       case RigthMenuPriceModel:
-        return createPrice(context, model as RigthMenuPriceModel);
+        return createPrice(context, model);
         break;
       case RightMenuColorsModel:
         return createCircles(model);
