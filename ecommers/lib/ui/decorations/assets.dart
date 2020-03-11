@@ -8,7 +8,7 @@ class Assets {
   static const String stationaryIcon = 'assets/stationary.svg';
   static const String arrowRightIcon = 'assets/arrow_right.svg';
   static const String shareArrowIcon = 'assets/share_arrow.svg';
-  static const String rateStarIcon = 'assets/rate_star.svg';
+  static const String starIcon = 'assets/rate_star.svg';
   static const String allOrderIcon = 'assets/all_order.svg';
   static const String bellIcon = 'assets/bell.svg';
   static const String checkFormIcon = 'assets/check_form.svg';

@@ -43,7 +43,7 @@ class Header extends StatelessWidget {
               badgeContent: Row(
                 children: <Widget>[
                   SvgPicture.asset(
-                    Assets.rateStarIcon,
+                    Assets.starIcon,
                     fit: BoxFit.scaleDown,
                   ),
                   const SizedBox(width: Insets.x0_5),
