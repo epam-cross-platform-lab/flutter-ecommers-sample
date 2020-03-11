@@ -16,7 +16,7 @@ class I18n implements WidgetsLocalizations {
   static Locale _locale;
   static bool _shouldReload = false;
 
-  static set s(Locale newLocale) {
+  static set locale(Locale newLocale) {
     _shouldReload = true;
     I18n._locale = newLocale;
   }
@@ -132,6 +132,8 @@ class I18n implements WidgetsLocalizations {
   String get selectColor => "SELECT COLOR";
   /// "SELECT SIZE (US)"
   String get selectSizeUs => "SELECT SIZE (US)";
+  /// "RECENTLY VIEWED"
+  String get recentlyViewed => "RECENTLY VIEWED";
 }
 
 class _I18n_en_US extends I18n {
