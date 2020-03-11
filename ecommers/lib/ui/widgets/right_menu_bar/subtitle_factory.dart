@@ -14,20 +14,20 @@ class RightMenuSubTitle extends StatelessWidget {
     final modelItem = model.runtimeType;
     switch (modelItem) {
       case RightMenuSubTitleModel:
-        return createSubTitle(context, model);
+        return createSubTitle(context);
         break;
       case RigthMenuPriceModel:
-        return createPrice(context, model);
+        return createPrice(context);
         break;
       case RightMenuColorsModel:
-        return createCircles(model);
+        return createCircles();
         break;
       default:
         return const Text('');
     }
   }
 
-  Widget createSubTitle(BuildContext context, RightMenuItemModel model) {
+  Widget createSubTitle(BuildContext context) {
     final subTitleModel = model as RightMenuSubTitleModel;
 
     return Text(
@@ -38,7 +38,7 @@ class RightMenuSubTitle extends StatelessWidget {
     );
   }
 
-  Widget createPrice(BuildContext context, RightMenuItemModel model) {
+  Widget createPrice(BuildContext context) {
     final priceModel = model as RigthMenuPriceModel;
 
     return Text(
@@ -49,7 +49,7 @@ class RightMenuSubTitle extends StatelessWidget {
     );
   }
 
-  Widget createCircles( RightMenuItemModel model) {
+  Widget createCircles() {
     final colorsModel = model as RightMenuColorsModel;
     final colors = colorsModel.colors;
 
