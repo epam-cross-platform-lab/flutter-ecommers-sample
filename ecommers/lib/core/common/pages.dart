@@ -8,5 +8,6 @@ enum Pages {
   categories,
   authorization,
   checkout,
-  success
+  success,
+  product
 }

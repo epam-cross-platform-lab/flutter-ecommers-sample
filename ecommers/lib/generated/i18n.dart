@@ -16,7 +16,7 @@ class I18n implements WidgetsLocalizations {
   static Locale _locale;
   static bool _shouldReload = false;
 
-  static set locale(Locale newLocale) {
+  static set s(Locale newLocale) {
     _shouldReload = true;
     I18n._locale = newLocale;
   }
@@ -104,6 +104,20 @@ class I18n implements WidgetsLocalizations {
   String get searchTitle => "Search";
   /// "Search Something"
   String get searchProductHintTilt => "Search Something";
+  /// "REFINE RESULTS"
+  String get refineResults => "REFINE RESULTS";
+  /// "CLEAR"
+  String get clear => "CLEAR";
+  /// "APPLY FILTERS"
+  String get applyFilters => "APPLY FILTERS";
+  /// "SHARE THIS"
+  String get shareThis => "SHARE THIS";
+  /// "ADD TO CART"
+  String get addToCart => "ADD TO CART";
+  /// "Product"
+  String get product => "Product";
+  /// "Details"
+  String get details => "Details";
   /// "By creating an account, you agree to our Privacy Policy \n"
   String get signUpBottomTextSpan1 => "By creating an account, you agree to our Privacy Policy \n";
   /// "Terms of Service"
@@ -112,6 +126,12 @@ class I18n implements WidgetsLocalizations {
   String get signUpBottomTextSpan3 => " and ";
   /// "Privacy Policy"
   String get signUpBottomTextSpan4 => "Privacy Policy";
+  /// "Reviews"
+  String get reviews => "Reviews";
+  /// "SELECT COLOR"
+  String get selectColor => "SELECT COLOR";
+  /// "SELECT SIZE (US)"
+  String get selectSizeUs => "SELECT SIZE (US)";
 }
 
 class _I18n_en_US extends I18n {
