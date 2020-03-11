@@ -1,19 +1,19 @@
-import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
 import 'package:flutter/material.dart';
 
 class ProductItemSmall extends ProductItemBase {
-  final double rate;
-
   static const productItemSmallSize = Size(185.0, 59.0);
 
   const ProductItemSmall({
-    @required ProductItemModel productModel,
-    this.rate,
+    @required String assetImagePath,
+    @required String title,
+    @required double cost,
   }) : super(
-          productModel: productModel,
+          assetImagePath: assetImagePath,
+          cost: cost,
+          title: title,
           productSize: productItemSmallSize,
         );
 
@@ -24,7 +24,7 @@ class ProductItemSmall extends ProductItemBase {
       children: <Widget>[
         Expanded(
           flex: 3,
-          child: Image.asset(productModel.assetImagePath),
+          child: Image.asset(assetImagePath),
         ),
         const SizedBox(
           width: ProductItemBase.padding,
@@ -36,7 +36,7 @@ class ProductItemSmall extends ProductItemBase {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                productModel.title,
+                title,
                 overflow: TextOverflow.ellipsis,
                 maxLines: Dimens.defaultTextMaxLines,
                 style: Theme.of(context)
@@ -45,7 +45,7 @@ class ProductItemSmall extends ProductItemBase {
                     .copyWith(fontWeight: FontWeight.w400),
               ),
               Text(
-                Formatter.getCost(productModel.cost),
+                Formatter.getCost(cost),
                 style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
