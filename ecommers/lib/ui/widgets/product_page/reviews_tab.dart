@@ -70,22 +70,21 @@ class ReviewsTab extends StatelessWidget {
                         Formatter.getTextWithSpecifiedDateFormat(
                             productReviewsModel[i].date, 'dd MMM, yyyy'),
                         textAlign: TextAlign.end,
-                        style: TextStyle(fontSize: FontSizes.normal),
+                        style: Theme.of(context).textTheme.bodyText2,
                       ),
                     ],
                   ),
                   const SizedBox(height: Insets.x1_5),
                   Text(
                     productReviewsModel[i].name,
-                    style: TextStyle(
-                        fontSize: FontSizes.big_1x,
-                        color: BrandingColors.primaryText),
+                    style: Theme.of(context).textTheme.subtitle1,
                   ),
                   const SizedBox(height: Insets.x1_5),
                   Text(
                     productReviewsModel[i].description,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 5,
+                    style: Theme.of(context).textTheme.subtitle2,
                   ),
                   const SizedBox(height: Insets.x1_5),
                   SizedBox(
