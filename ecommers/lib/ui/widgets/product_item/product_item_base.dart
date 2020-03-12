@@ -1,3 +1,5 @@
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,12 @@ abstract class ProductItemBase extends StatelessWidget {
           ),
         ],
       ),
-      child: buildProductItem(context),
+      child: GestureDetector(
+        onTap: () => {
+          navigationService.navigateTo(Pages.product),
+        },
+        child: buildProductItem(context),
+      ),
     );
   }
 

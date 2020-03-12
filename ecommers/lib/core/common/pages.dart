@@ -9,5 +9,6 @@ enum Pages {
   productsGrid,
   authorization,
   checkout,
-  success
+  success,
+  product
 }

@@ -1,6 +1,8 @@
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
+import 'package:ecommers/ui/pages/product_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -43,6 +45,9 @@ class NavigationService {
       case Pages.productsGrid:
         final type = arguments as Categories;
         resultPage = ProductsGridPage(type: type);
+        break;
+      case Pages.product:
+        resultPage = const ProductPage();
         break;
       default:
         resultPage = ShellPage();

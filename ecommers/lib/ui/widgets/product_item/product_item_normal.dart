@@ -5,16 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class ProductItemNormal extends ProductItemBase {
-  final double rate;
-
   static const size = Size(101.0, 135.0);
 
   const ProductItemNormal({
     @required String assetImagePath,
     @required String title,
     @required double cost,
-    this.rate,
-  }) : super(
+    })
+      : super(
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,

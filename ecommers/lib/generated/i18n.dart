@@ -100,6 +100,20 @@ class I18n implements WidgetsLocalizations {
   String get loginBottomTextSpan1 => "Don’t have an account? Swipe right to \n";
   /// "create a new account."
   String get loginBottomTextSpan2 => "create a new account.";
+  /// "REFINE RESULTS"
+  String get refineResults => "REFINE RESULTS";
+  /// "CLEAR"
+  String get clear => "CLEAR";
+  /// "APPLY FILTERS"
+  String get applyFilters => "APPLY FILTERS";
+  /// "SHARE THIS"
+  String get shareThis => "SHARE THIS";
+  /// "ADD TO CART"
+  String get addToCart => "ADD TO CART";
+  /// "Product"
+  String get product => "Product";
+  /// "Details"
+  String get details => "Details";
   /// "By creating an account, you agree to our Privacy Policy \n"
   String get signUpBottomTextSpan1 => "By creating an account, you agree to our Privacy Policy \n";
   /// "Terms of Service"
@@ -118,6 +132,24 @@ class I18n implements WidgetsLocalizations {
   String get productsHighToLowPriceTab => "PRICE HIGH-LOW";
   /// "Search Something"
   String get searchHintText => "Search Something";
+  /// "Reviews"
+  String get reviews => "Reviews";
+  /// "SELECT COLOR"
+  String get selectColor => "SELECT COLOR";
+  /// "SELECT SIZE (US)"
+  String get selectSizeUs => "SELECT SIZE (US)";
+  /// "BRAND"
+  String get brand => "BRAND";
+  /// "SKU"
+  String get sku => "SKU";
+  /// "CONDITION"
+  String get condition => "CONDITION";
+  /// "MATERIAL"
+  String get material => "MATERIAL";
+  /// "CATEGORY"
+  String get category => "CATEGORY";
+  /// "FITTING"
+  String get fitting => "FITTING";
   /// ""
   String get empty => "";
 }

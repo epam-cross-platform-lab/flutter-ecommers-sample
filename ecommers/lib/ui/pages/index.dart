@@ -5,6 +5,7 @@ export 'checkout_page.dart';
 export 'closeable_page.dart';
 export 'home_page.dart';
 export 'more_page.dart';
+export 'product_page.dart';
 export 'products_grid_page.dart';
 export 'profile_page.dart';
 export 'search_page.dart';
