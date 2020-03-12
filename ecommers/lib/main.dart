@@ -7,7 +7,6 @@ import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:ecommers/web_server/local_server.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'core/provider_models/index.dart';
 

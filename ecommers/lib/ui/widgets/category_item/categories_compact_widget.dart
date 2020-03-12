@@ -66,7 +66,7 @@ class CategoriesCompactWidget extends StatelessWidget {
   }
 
   void onCategoryTap(Categories type) {
-    navigationService.navigateTo(Pages.categoryGrid, arguments: type);
+    navigationService.navigateTo(Pages.productsGrid, arguments: type);
   }
 
   Widget _buildSeeAllCategory(BuildContext context) {

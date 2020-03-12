@@ -16,5 +16,5 @@ abstract class ApiService extends ChopperService {
   Future<Response<LoginModel>> auth(@Body() Map<String, dynamic> auth);
 
   @Get(path: ApiDefines.products)
-  Future<Response<List<ProductModel>>> products(@Query() Categories type);
+  Future<Response<List<ProductModel>>> products(@Query('type') Categories type);
 }

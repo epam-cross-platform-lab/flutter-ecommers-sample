@@ -108,6 +108,18 @@ class I18n implements WidgetsLocalizations {
   String get signUpBottomTextSpan3 => " and ";
   /// "Privacy Policy"
   String get signUpBottomTextSpan4 => "Privacy Policy";
+  /// "BEST MATCH"
+  String get productsBestMatchTab => "BEST MATCH";
+  /// "TOP RATED"
+  String get productsTopRatedTab => "TOP RATED";
+  /// "PRICE LOW-HIGH"
+  String get productsLowToHighPriceTab => "PRICE LOW-HIGH";
+  /// "PRICE HIGH-LOW"
+  String get productsHighToLowPriceTab => "PRICE HIGH-LOW";
+  /// "Search Something"
+  String get searchHintText => "Search Something";
+  /// ""
+  String get empty => "";
 }
 
 class _I18n_en_US extends I18n {

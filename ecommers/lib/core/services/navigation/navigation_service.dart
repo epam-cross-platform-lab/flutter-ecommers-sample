@@ -40,9 +40,9 @@ class NavigationService {
       case Pages.success:
         resultPage = const SuccessPage();
         break;
-      case Pages.categoryGrid:
+      case Pages.productsGrid:
         final type = arguments as Categories;
-        resultPage = CategoryGridPage(type: type);
+        resultPage = ProductsGridPage(type: type);
         break;
       default:
         resultPage = ShellPage();

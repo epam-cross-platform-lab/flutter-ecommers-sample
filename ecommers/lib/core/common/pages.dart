@@ -6,7 +6,7 @@ enum Pages {
   profile,
   more,
   categories,
-  categoryGrid,
+  productsGrid,
   authorization,
   checkout,
   success
