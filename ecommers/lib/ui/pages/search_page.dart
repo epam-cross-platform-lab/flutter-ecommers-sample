@@ -1,6 +1,7 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/widgets/recently_viewed_widnget/index.dart';
 import 'package:ecommers/ui/widgets/search/index.dart';
 import 'package:flutter/material.dart';
 
@@ -41,6 +42,12 @@ class SearchPage extends StatelessWidget {
                       color: BrandingColors.primary),
                 ),
               ),
+            ],
+          ),
+          const SizedBox(height: 20),
+          Row(
+            children: <Widget>[
+              RecentlyViewedWindget(),
             ],
           ),
         ],
