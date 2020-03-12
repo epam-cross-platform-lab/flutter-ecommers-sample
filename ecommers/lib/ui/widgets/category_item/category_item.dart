@@ -24,7 +24,10 @@ class CategoryItem extends StatelessWidget {
     this.onTapFunction,
   });
 
-  factory CategoryItem.fromType(Categories categoryType) {
+  factory CategoryItem.fromType(
+    Categories categoryType,
+    Function(Categories) onTap,
+  ) {
     final categoryItem = categoryItems[categoryType];
 
     return CategoryItem(
@@ -32,6 +35,7 @@ class CategoryItem extends StatelessWidget {
       shadowColor: categoryItem.shadowColor,
       imagePath: categoryItem.imagePath,
       title: categoryItem.title,
+      onTapFunction: () => onTap(categoryType),
     );
   }
 

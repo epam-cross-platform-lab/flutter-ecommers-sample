@@ -44,6 +44,11 @@
     "signUpBottomTextSpan2": "Terms of Service",
     "signUpBottomTextSpan3": " and ",
     "signUpBottomTextSpan4": "Privacy Policy",
+    "productsBestMatchTab": "BEST MATCH",
+    "productsTopRatedTab": "TOP RATED",
+    "productsLowToHighPriceTab": "PRICE LOW-HIGH",
+    "productsHighToLowPriceTab": "PRICE HIGH-LOW",
+    "searchHintText": "Search Something",
     "reviews": "Reviews",
     "selectColor": "SELECT COLOR",
     "selectSizeUs": "SELECT SIZE (US)",
@@ -52,5 +57,7 @@
     "condition": "CONDITION",
     "material": "MATERIAL",
     "category": "CATEGORY",
-    "fitting": "FITTING"
+    "fitting": "FITTING",
+    "ok": "ok",
+    "empty": ""
 }
