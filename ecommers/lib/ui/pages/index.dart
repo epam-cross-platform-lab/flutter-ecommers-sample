@@ -1,3 +1,4 @@
+export 'base_page.dart';
 export 'busy_page.dart';
 export 'cart_page.dart';
 export 'categories_page.dart';

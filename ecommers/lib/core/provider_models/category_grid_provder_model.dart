@@ -14,12 +14,14 @@ class ProductsGridProviderModel extends ProviderModelBase {
     notifyListeners();
   }
 
-  ProductsGridProviderModel(BuildContext context) : super(context);
+  ProductsGridProviderModel(BuildContext context, Categories type)
+      : _categoryType = type,
+        super(context);
 
-  Future<List<ProductModel>> getData(Categories type) async {
+  Future<List<ProductModel>> getData() async {
     isBusy = true;
 
-    final productList = await productService.getProductList(type);
+    final productList = await productService.getProductList(_categoryType);
 
     isBusy = false;
 
