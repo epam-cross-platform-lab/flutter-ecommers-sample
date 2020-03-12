@@ -68,7 +68,9 @@ class ReviewsTab extends StatelessWidget {
                       ),
                       Text(
                         Formatter.getTextWithSpecifiedDateFormat(
-                            productReviewsModel[i].date, 'dd MMM, yyyy'),
+                          productReviewsModel[i].date,
+                          'dd MMM, yyyy',
+                        ),
                         textAlign: TextAlign.end,
                         style: Theme.of(context).textTheme.bodyText2,
                       ),
@@ -91,13 +93,15 @@ class ReviewsTab extends StatelessWidget {
                     height: 100,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context, index) => SizedBox(width: Insets.x3_5),
+                      separatorBuilder: (context, index) =>
+                          SizedBox(width: Insets.x3_5),
                       itemCount:
                           productReviewsModel[i].screenshotsPathes.length,
                       itemBuilder: (context, index) {
                         return Image.asset(
-                            productReviewsModel[i].screenshotsPathes[index],
-                            scale: 0.45);
+                          productReviewsModel[i].screenshotsPathes[index],
+                          scale: 0.45,
+                        );
                       },
                     ),
                   ),

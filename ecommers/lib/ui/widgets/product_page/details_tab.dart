@@ -67,13 +67,22 @@ class DetailsTab extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              valueLeft,
-              style: Theme.of(context).textTheme.subtitle2,
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.only(right: Insets.x1),
+                child: Text(
+                  valueLeft,
+                  style: Theme.of(context).textTheme.subtitle2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
             ),
-            Text(
-              valueRight,
-              style: Theme.of(context).textTheme.subtitle2,
+            Flexible(
+                child: Text(
+                  valueRight,
+                  style: Theme.of(context).textTheme.subtitle2,
+                  overflow: TextOverflow.ellipsis,
+                ),
             ),
           ],
         ),
