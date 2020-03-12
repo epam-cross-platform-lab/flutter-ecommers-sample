@@ -11,14 +11,17 @@ class RequestHandler {
   static final UserDataAccess _userDataAccess = UserDataAccess.instance;
 
   void process(HttpRequestBody body) {
-    final uri = body.request.uri.toString();
+    final path = body.request.uri.path.toString();
 
-    switch (uri) {
+    switch (path) {
       case ApiDefines.login:
         _handleLoginRequest(body);
         break;
       case ApiDefines.auth:
         _handleAuthorizationRequest(body);
+        break;
+      case ApiDefines.products:
+        _handleProductsRequest(body);
         break;
       default:
         _handleUnsupportedRequest(body);
@@ -50,7 +53,7 @@ class RequestHandler {
 
     final userMap = body.body as Map<String, dynamic>;
     final user = User.fromJsonFactory(userMap);
-    
+
     final validationModel = await _userDataAccess.isNewUserValid(user);
 
     if (validationModel.isValid) {
@@ -68,6 +71,39 @@ class RequestHandler {
       ..statusCode = HttpStatus.unauthorized
       ..write(validationModel.error)
       ..close();
+  }
+
+  Future _handleProductsRequest(HttpRequestBody body) async {
+    final categoryType =
+        getCategoryType(body.request.uri.queryParameters['type']);
+    final products = await _getProducts(categoryType);
+
+    body.request.response
+      ..headers.contentType = ContentType.json
+      ..write(products)
+      ..close();
+  }
+
+  Categories getCategoryType(String typeString) {
+    return Categories.values.firstWhere((e) => e.toString() == typeString);
+  }
+
+  Future<String> _getProducts(Categories type) async {
+    String jsonFileName = '';
+
+    switch (type) {
+      case Categories.shoes:
+        jsonFileName = 'products_shoes.json';
+        break;
+      case Categories.beauty:
+        jsonFileName = 'products_beauty.json';
+        break;
+      case Categories.apparel:
+      default:
+        jsonFileName = 'products_apparel.json';
+    }
+
+    return fileManager.readJson(jsonFileName);
   }
 
   Future _handleUnsupportedRequest(HttpRequestBody body) async {

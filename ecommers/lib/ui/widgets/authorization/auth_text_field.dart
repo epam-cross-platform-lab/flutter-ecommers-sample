@@ -34,10 +34,10 @@ class AuthTextField extends StatelessWidget {
           assetIconPath,
           fit: BoxFit.scaleDown,
         ),
-        focusedBorder: UnderlineInputBorder(
+        focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),
         ),
         fillColor: Colors.transparent,

@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "image_uri": "assets/product_shirt.png",
+        "title": "Pink",
+        "cost": 5.99,
+        "rate": 1.5
+    },
+    {
+        "id": 2,
+        "image_uri": "assets/product_shirt.png",
+        "title": "Lime",
+        "cost": 54.99,
+        "rate": 4.9
+    }
+]

@@ -37,6 +37,7 @@ class Assets {
   static const String profileIcon = 'assets/profile_icon.svg';
   static const String passwordIcon = 'assets/password_icon.svg';
   static const String backIcon = 'assets/back_icon.svg';
+  static const String filterIcon = 'assets/filter_icon.svg';
 
   static const String girlImage = 'assets/girl_image.png';
   static const String girl2Image = 'assets/girl2_image.png';
@@ -56,11 +57,11 @@ class Assets {
   static const String dressPatternImage = 'assets/dress_image_pattern.png';
   static const String dressPattern2Image = 'assets/dress_image_pattern2.png';
 
+  static const String progressAnimation = 'assets/ecommerce_load.flr';
   static const String review1 = 'assets/review1.png';
   static const String review2 = 'assets/review2.png';
   static const String review3 = 'assets/review3.png';
   static const String review4 = 'assets/review4.png';
   static const String review5 = 'assets/review5.png';
 
-  static const String progressAnimation = 'assets/progress.flr';
 }
