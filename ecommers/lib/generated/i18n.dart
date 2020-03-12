@@ -128,6 +128,18 @@ class I18n implements WidgetsLocalizations {
   String get selectColor => "SELECT COLOR";
   /// "SELECT SIZE (US)"
   String get selectSizeUs => "SELECT SIZE (US)";
+  /// "BRAND"
+  String get brand => "BRAND";
+  /// "SKU"
+  String get sku => "SKU";
+  /// "CONDITION"
+  String get condition => "CONDITION";
+  /// "MATERIAL"
+  String get material => "MATERIAL";
+  /// "CATEGORY"
+  String get category => "CATEGORY";
+  /// "FITTING"
+  String get fitting => "FITTING";
 }
 
 class _I18n_en_US extends I18n {

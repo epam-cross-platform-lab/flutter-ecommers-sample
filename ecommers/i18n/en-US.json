@@ -46,5 +46,11 @@
     "signUpBottomTextSpan4": "Privacy Policy",
     "reviews": "Reviews",
     "selectColor": "SELECT COLOR",
-    "selectSizeUs": "SELECT SIZE (US)"
+    "selectSizeUs": "SELECT SIZE (US)",
+    "brand": "BRAND",
+    "sku": "SKU",
+    "condition": "CONDITION",
+    "material": "MATERIAL",
+    "category": "CATEGORY",
+    "fitting": "FITTING"
 }

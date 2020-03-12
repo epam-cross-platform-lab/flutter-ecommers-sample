@@ -1,5 +1,4 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -9,11 +8,15 @@ abstract class ProductItemBase extends StatelessWidget {
   @protected
   static const double padding = 10.0;
 
-  final ProductItemModel productModel;
+  final String assetImagePath;
+  final String title;
+  final double cost;
   final Size productSize;
 
   const ProductItemBase({
-    @required this.productModel,
+    @required this.assetImagePath,
+    @required this.title,
+    @required this.cost,
     @required this.productSize,
   });
 
@@ -36,7 +39,7 @@ abstract class ProductItemBase extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () => {
-          navigationService.navigateTo(Pages.product, arguments: productModel),
+          navigationService.navigateTo(Pages.product),
         },
         child: buildProductItem(context),
       ),

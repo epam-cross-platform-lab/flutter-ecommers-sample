@@ -34,7 +34,7 @@ class _ProductTabWidgetState extends State<ProductTabWidget> {
         const SizedBox(height: Insets.x5),
         Text(
           _localization.selectColor,
-          style: _titleTextStyle,
+          style: Theme.of(context).textTheme.subtitle2,
         ),
         SizedBox(
           height: 100,
@@ -42,7 +42,7 @@ class _ProductTabWidgetState extends State<ProductTabWidget> {
         ),
         Text(
           _localization.selectSizeUs,
-          style: _titleTextStyle,
+          style: Theme.of(context).textTheme.subtitle2,
         ),
         const SizedBox(height: Insets.x5),
         SizedBox(
