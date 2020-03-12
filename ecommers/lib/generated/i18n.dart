@@ -150,6 +150,8 @@ class I18n implements WidgetsLocalizations {
   String get category => "CATEGORY";
   /// "FITTING"
   String get fitting => "FITTING";
+  /// "ok"
+  String get ok => "ok";
   /// ""
   String get empty => "";
 }

@@ -1,4 +1,5 @@
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -130,9 +131,13 @@ class CategoriesPage extends StatelessWidget {
         ),
         scrollDirection: Axis.vertical,
         itemBuilder: (BuildContext context, int index) {
-          return CategoryItem.fromType(Categories.values[index], (Categories type) => {}); //TODO: deal with this too
+          return CategoryItem.fromType(Categories.values[index], onCategoryTap);
         },
       ),
     );
+  }
+
+  void onCategoryTap(Categories type) {
+    navigationService.navigateTo(Pages.productsGrid, arguments: type);
   }
 }
