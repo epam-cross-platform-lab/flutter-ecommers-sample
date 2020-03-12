@@ -1,5 +1,5 @@
 import 'package:ecommers/core/mixins/busy_notifier.dart';
-import 'package:ecommers/ui/widgets/progress.dart';
+import 'package:ecommers/ui/pages/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,21 +14,7 @@ class BasePage<T extends BusyNotifier> extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => createProvider(context),
-      child: Consumer<T>(
-        builder: (_, provider, child) {
-          return Stack(
-            children: <Widget>[
-              child,
-              Visibility(
-                visible: provider.isBusy,
-                child: Container(
-                  color: Colors.black.withOpacity(0.5),
-                  child: const Progress(),
-                ),
-              )
-            ],
-          );
-        },
+      child: BusyPage<T>(
         child: child,
       ),
     );

@@ -32,7 +32,7 @@ class AuthorizationPage extends StatelessWidget {
                 ..isBusy = signUpProvider.isBusy || loginProvider.isBusy,
         ),
       ],
-      child: BusyPage(
+      child: BusyPage<BusyProviderModel>(
         child: BackgroundedSafeArea(
           child: DefaultTabController(
             length: 3,
