@@ -14,23 +14,40 @@ class DetailsTab extends StatelessWidget {
 
     return Column(
       children: [
-        _createDetailsListWidget(context, _localization.brand, _localization.sku,
-            productDetailModel.brand, productDetailModel.sku),
+        _createDetailsListWidget(
+          context,
+          _localization.brand,
+          _localization.sku,
+          productDetailModel.brand,
+          productDetailModel.sku,
+        ),
         const SizedBox(height: Insets.x7_5),
         _createDetailsListWidget(
           context,
-            _localization.condition,
-            _localization.material,
-            productDetailModel.condition,
-            productDetailModel.material),
+          _localization.condition,
+          _localization.material,
+          productDetailModel.condition,
+          productDetailModel.material,
+        ),
         const SizedBox(height: Insets.x7_5),
-        _createDetailsListWidget(context, _localization.category, _localization.fitting,
-            productDetailModel.category, productDetailModel.fitting),
+        _createDetailsListWidget(
+          context,
+          _localization.category,
+          _localization.fitting,
+          productDetailModel.category,
+          productDetailModel.fitting,
+        ),
       ],
     );
   }
 
-  Widget _createDetailsListWidget(BuildContext context, String titleLeft, String titleRight, String valueLeft, String valueRight) {
+  Widget _createDetailsListWidget(
+    BuildContext context,
+    String titleLeft,
+    String titleRight,
+    String valueLeft,
+    String valueRight,
+  ) {
     return Column(
       children: [
         Row(
