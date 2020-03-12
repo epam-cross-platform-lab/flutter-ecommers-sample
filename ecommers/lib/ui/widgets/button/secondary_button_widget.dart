@@ -3,7 +3,7 @@ import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
 
 class SecondaryButtonWidget extends ButtonBaseWidget {
-  const SecondaryButtonWidget({
+  SecondaryButtonWidget({
     @required String text,
     @required String assetIcon,
     @required Function() onPressedFunction,
@@ -13,6 +13,6 @@ class SecondaryButtonWidget extends ButtonBaseWidget {
           buttonColor: BrandingColors.background,
           textColor: BrandingColors.secondary,
           onPressedFunction: onPressedFunction,
-          blurColor: BrandingColors.secondary,
+          blurColor: BrandingColors.secondary.withOpacity(0.15),
         );
 }

@@ -14,6 +14,7 @@ ApiService get apiService => GetIt.I.get<ApiService>();
 MembershipService get membershipService => GetIt.I.get<MembershipService>();
 RequestHandler get requestHandler => GetIt.I.get<RequestHandler>();
 AuthorizationService get authorizationService => GetIt.I.get<AuthorizationService>();
+ProductService get productService => GetIt.I.get<ProductService>();
 
 class DependencyService {
   static void registerDependencies() {
@@ -24,6 +25,7 @@ class DependencyService {
       ..registerLazySingleton<FileManager>(() => FileManager())
       ..registerLazySingleton<RequestHandler>(() => RequestHandler())
       ..registerLazySingleton<AuthorizationService>(() => AuthorizationService())
+      ..registerLazySingleton<ProductService>(() => ProductService())
       ..registerLazySingleton<MembershipService>(
           () => MembershipService(const FlutterSecureStorage()))
       ..registerHttpClient();

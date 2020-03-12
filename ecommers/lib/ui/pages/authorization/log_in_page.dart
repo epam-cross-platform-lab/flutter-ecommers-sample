@@ -5,7 +5,6 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/widgets/authorization/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
-import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,23 +12,6 @@ import 'package:provider/provider.dart';
 class LogInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Consumer<LogInProviderModel>(
-      builder: (_, LogInProviderModel provider, child) {
-        return Stack(
-          children: <Widget>[
-            child,
-            Visibility(
-              visible: provider.isBusy,
-              child: const Progress(),
-            ),
-          ],
-        );
-      },
-      child: _buildContent(context),
-    );
-  }
-
-  Widget _buildContent(BuildContext context) {
     final localization = I18n.of(context);
     final provider = Provider.of<LogInProviderModel>(context, listen: false);
 

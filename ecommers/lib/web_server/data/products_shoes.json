@@ -1,0 +1,9 @@
+[
+    {
+        "id": 1,
+        "image_uri": "assets/product_shirt.png",
+        "title": "Shoes",
+        "cost": 512.99,
+        "rate": 0.5
+    }
+]

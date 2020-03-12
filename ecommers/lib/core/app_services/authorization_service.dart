@@ -29,7 +29,7 @@ class AuthorizationService {
     }
 
     return AuthResponse(
-        isSuccessful: response.isSuccessful, error: response.bodyString);
+        isSuccessful: response.isSuccessful, error: response.error as String);
   }
 
   Future logOut() async {

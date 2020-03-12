@@ -1,5 +1,6 @@
 import 'package:chopper/chopper.dart';
 import 'package:ecommers/core/common/json_serializable_converter.dart';
+import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/models/login_model.dart';
 import 'package:ecommers/core/services/api_service.dart';
 import 'package:ecommers/web_server/local_server.dart';
@@ -15,6 +16,7 @@ extension GetItExtension on GetIt {
       converter: const JsonSerializableConverter(
         factories: {
           LoginModel: LoginModel.fromJsonFactory,
+          ProductModel: ProductModel.fromJsonFactory,
         },
       ),
     );

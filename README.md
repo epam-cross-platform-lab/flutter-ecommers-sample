@@ -1,4 +1,4 @@
-[![Cloth Shop](https://github.com/epam-cross-platform-lab/flutter-ecommers-sample/blob/dev/design_sources/Screen%20Shot%202020-03-11%20at%202.12.41%20PM.png)](https://github.com/epam-cross-platform-lab/flutter-ecommers-sample)
+[![Cloth Shop](https://github.com/epam-cross-platform-lab/flutter-ecommers-sample/blob/dev/design_sources/poster.jpg)](https://github.com/epam-cross-platform-lab/flutter-ecommers-sample)
 
 # Cloth Shop - Flutter [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/epam-cross-platform-lab/flutter-ecommers-sample) [![GitHub version](https://d25lcipzij17d.cloudfront.net/badge.svg?id=gh&type=6&v=1.0&x2=0)](https://github.com/mkiisoft/FlutterMovieTrends)
 
