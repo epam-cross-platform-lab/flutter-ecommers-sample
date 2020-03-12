@@ -10,9 +10,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatelessWidget {
-  final ProductItemModel productModel;
+  static final ProductItemModel productModel = createProductModel();
 
-  const ProductPage({@required this.productModel});
+  const ProductPage();
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +62,11 @@ class ProductPage extends StatelessWidget {
                   height: 250,
                 ),
                 SizedBox(
-                    height: 300,
-                    child: ProductPageTabsView(
-                      productModel: productModel,
-                    ),
+                  height: 300,
+                  child: ProductPageTabsView(
+                    productModel: productModel,
                   ),
+                ),
               ],
             ),
           ),
@@ -80,6 +80,94 @@ class ProductPage extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  static ProductItemModel createProductModel() {
+    final colors = [
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFF48FB1,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFFFB74D,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFF64B5F6,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFFFFFFF,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFE0E0E0,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFF000000,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFF81C784,
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFFFF176,
+      ),
+    ];
+    final sizes = [
+      ProductSizeModel(
+        isSelected: false,
+        size: '4.5',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '5.0',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '5.5',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '6.0',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '6.5',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '7.0',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '7.5',
+      ),
+      ProductSizeModel(
+        isSelected: false,
+        size: '8.0',
+      ),
+    ];
+
+    return ProductItemModel(
+      assetImagePath: Assets.dressCottonImage,
+      title: 'best dress ever',
+      cost: 15.0,
+      rate: 3.9,
+      productDetailsModel: ProductDetailsModel(
+        brand: "Lily's Ankle Boots",
+        sku: '0590458902809',
+        condition: 'Brand New, With Box',
+        material: 'Faux Sued, Velvet',
+        category: 'Women Shoes',
+        fitting: 'True To Size',
+      ),
+      colors: colors,
+      sizes: sizes,
     );
   }
 }

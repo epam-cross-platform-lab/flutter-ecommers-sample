@@ -49,5 +49,11 @@
     "reviews": "Reviews",
     "selectColor": "SELECT COLOR",
     "selectSizeUs": "SELECT SIZE (US)",
-    "recentlyViewed": "RECENTLY VIEWED"
+    "recentlyViewed": "RECENTLY VIEWED",
+    "brand": "BRAND",
+    "sku": "SKU",
+    "condition": "CONDITION",
+    "material": "MATERIAL",
+    "category": "CATEGORY",
+    "fitting": "FITTING"
 }
