@@ -43,9 +43,7 @@ class NavigationService {
         resultPage = const SuccessPage();
         break;
       case Pages.product:
-        resultPage = ProductPage(
-          productModel: arguments as ProductItemModel,
-        );
+        resultPage = ProductPage();
         break;
       default:
         resultPage = ShellPage();
