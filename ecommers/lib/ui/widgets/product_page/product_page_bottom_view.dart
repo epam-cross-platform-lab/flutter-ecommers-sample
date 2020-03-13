@@ -12,14 +12,14 @@ class ProductPageBottomView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[
+      children: [
         Divider(
           height: Insets.x8,
           color: BrandingColors.secondary.withOpacity(0.6),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
+          children: [
             SizedBox(
               height: buttonSize.height,
               width: buttonSize.width,

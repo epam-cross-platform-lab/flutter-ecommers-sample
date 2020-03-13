@@ -8,6 +8,7 @@ class ProductItemModel {
   final double cost;
   final List<ProductColorModel> colors;
   final List<ProductSizeModel> sizes;
+  final List<ProductReviewsModel> reviews;
 
   ProductItemModel({
     this.assetImagePath,
@@ -17,5 +18,6 @@ class ProductItemModel {
     this.rate,
     this.colors,
     this.sizes,
+    this.reviews
   });
 }

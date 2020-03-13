@@ -13,4 +13,8 @@ class Formatter {
 
     return 'Master Card ending **$visibleSymbols';
   }
+  static String getTextWithSpecifiedDateFormat(DateTime date, String format)
+  {
+    return DateFormat(format).format(date);
+  }
 }

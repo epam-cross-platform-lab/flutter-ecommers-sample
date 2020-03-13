@@ -58,4 +58,10 @@ class Assets {
   static const String dressPattern2Image = 'assets/dress_image_pattern2.png';
 
   static const String progressAnimation = 'assets/ecommerce_load.flr';
+  static const String review1 = 'assets/review1.png';
+  static const String review2 = 'assets/review2.png';
+  static const String review3 = 'assets/review3.png';
+  static const String review4 = 'assets/review4.png';
+  static const String review5 = 'assets/review5.png';
+
 }

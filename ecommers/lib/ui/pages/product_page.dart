@@ -152,6 +152,76 @@ class ProductPage extends StatelessWidget {
         size: '8.0',
       ),
     ];
+    final reviews = [
+      ProductReviewsModel(
+        countOfStars: 4,
+        name: 'Jane Doe',
+        nameAbbreviation: 'JD',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed',
+        date: DateTime.now(),
+        profileImageColor: 0xFFB2EBF2,
+        profileImageTextColor: 0xFF80DEEA,
+        screenshotsPathes: [
+          Assets.review1,
+          Assets.review2,
+          Assets.review3,
+          Assets.review4,
+          Assets.review5,
+        ],
+      ),
+      ProductReviewsModel(
+        countOfStars: 3,
+        name: 'Sam Smith',
+        nameAbbreviation: 'SS',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed',
+        date: DateTime.now(),
+        profileImageColor: 0xFFA5D6A7,
+        profileImageTextColor: 0xFF81C784,
+        screenshotsPathes: [
+          Assets.review1,
+          Assets.review2,
+          Assets.review3,
+          Assets.review4,
+          Assets.review5,
+        ],
+      ),
+      ProductReviewsModel(
+        countOfStars: 4,
+        name: 'Jane Doe',
+        nameAbbreviation: 'JD',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed',
+        date: DateTime.now(),
+        profileImageColor: 0xFFB2EBF2,
+        profileImageTextColor: 0xFF80DEEA,
+        screenshotsPathes: [
+          Assets.review1,
+          Assets.review2,
+          Assets.review3,
+          Assets.review4,
+          Assets.review5,
+        ],
+      ),
+      ProductReviewsModel(
+        countOfStars: 3,
+        name: 'Sam Smith',
+        nameAbbreviation: 'SS',
+        description:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed',
+        date: DateTime.now(),
+        profileImageColor: 0xFFA5D6A7,
+        profileImageTextColor: 0xFF81C784,
+        screenshotsPathes: [
+          Assets.review1,
+          Assets.review2,
+          Assets.review3,
+          Assets.review4,
+          Assets.review5,
+        ],
+      ),
+    ];
 
     return ProductItemModel(
       assetImagePath: Assets.dressCottonImage,
@@ -168,6 +238,7 @@ class ProductPage extends StatelessWidget {
       ),
       colors: colors,
       sizes: sizes,
+      reviews: reviews,
     );
   }
 }

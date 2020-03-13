@@ -5,21 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ProductTabWidget extends StatefulWidget {
+class ProductTab extends StatefulWidget {
   final List<ProductColorModel> colors;
   final List<ProductSizeModel> sizes;
 
-  const ProductTabWidget({
+  const ProductTab({
     Key key,
     @required this.colors,
     @required this.sizes,
   }) : super(key: key);
 
   @override
-  _ProductTabWidgetState createState() => _ProductTabWidgetState();
+  _ProductTabState createState() => _ProductTabState();
 }
 
-class _ProductTabWidgetState extends State<ProductTabWidget> {
+class _ProductTabState extends State<ProductTab> {
   @override
   Widget build(BuildContext context) {
     const _titleTextStyle = TextStyle(
@@ -31,7 +31,6 @@ class _ProductTabWidgetState extends State<ProductTabWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: Insets.x5),
         Text(
           _localization.selectColor,
           style: Theme.of(context).textTheme.subtitle2,
