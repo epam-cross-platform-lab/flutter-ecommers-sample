@@ -5,17 +5,25 @@ import 'package:flutter/material.dart';
 class RecentlyViewedWindget extends StatelessWidget {
   final List<RecentlyViewedItemModel> recentlyViewedList = [
     RecentlyViewedItemModel(
-        assetImagePath: Assets.dressFloralImage, title: 'apple', cost: 22.8)
+      assetImagePath: Assets.backpackImage,
+      title: 'Red Cotton Scarf',
+      cost: 22.8,
+    ),
+    RecentlyViewedItemModel(
+      assetImagePath: Assets.backpackImage,
+      title: 'apple',
+      cost: 22.8,
+    ),
+    RecentlyViewedItemModel(
+      assetImagePath: Assets.backpackImage,
+      title: 'apple',
+      cost: 22.8,
+    )
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 20,
-      child: Row(
-        children: <Widget>[
-          RcentlyViewedList(recentlyViewedItmes: recentlyViewedList,),
-        ],
-      ),
+    return RcentlyViewedList(
+      recentlyViewedItmes: recentlyViewedList,
     );
   }
 }

@@ -1,25 +1,43 @@
 import 'package:ecommers/ui/widgets/recently_viewed_widnget/index.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class RecentlyViewedItem extends StatelessWidget{
-    final RecentlyViewedItemModel recentlyViewedItem;
+class RecentlyViewedItem extends StatelessWidget {
+  final RecentlyViewedItemModel recentlyViewedItem;
 
-  const RecentlyViewedItem({Key key, this.recentlyViewedItem}) : super(key: key);
+  const RecentlyViewedItem({this.recentlyViewedItem});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      width: 180,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(
+          Radius.circular(12.0),
+        ),
+      ),
       child: Row(
         children: <Widget>[
-          Image(
-            image: AssetImage(recentlyViewedItem.assetImagePath),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image(
+              height: 30,
+              image: AssetImage(recentlyViewedItem.assetImagePath),
+            ),
           ),
-          Text(recentlyViewedItem.title),
-          Text('\$${recentlyViewedItem.cost}')
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const SizedBox(height: 10.0),
+                Text(recentlyViewedItem.title),
+                const SizedBox(height: 6.0),
+                Text('\$${recentlyViewedItem.cost}')
+              ],
+            ),
+          ),
         ],
       ),
     );
   }
-  
 }

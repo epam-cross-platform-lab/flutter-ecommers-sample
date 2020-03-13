@@ -1,14 +1,15 @@
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/widgets/recently_viewed_widnget/index.dart';
 import 'package:flutter/cupertino.dart';
 
-class RcentlyViewedList extends StatelessWidget{
+class RcentlyViewedList extends StatelessWidget {
   final List<RecentlyViewedItemModel> recentlyViewedItmes;
 
   const RcentlyViewedList({this.recentlyViewedItmes});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemCount: recentlyViewedItmes.length,
       itemBuilder: (context, index) {
@@ -17,6 +18,7 @@ class RcentlyViewedList extends StatelessWidget{
           recentlyViewedItem: itemModel,
         );
       },
+      separatorBuilder: (context, index) => SizedBox(width: Insets.x3),
     );
   }
 }

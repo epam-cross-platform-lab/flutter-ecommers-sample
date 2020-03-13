@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final localization = I18n.of(context);
     return Padding(
       padding: const EdgeInsets.only(left: 20.0, right: 20.0),
       child: Column(
@@ -15,7 +16,7 @@ class SearchPage extends StatelessWidget {
           Row(
             children: <Widget>[
               Text(
-                I18n.of(context).searchTitle,
+                localization.searchTitle,
                 style: Theme.of(context).textTheme.headline6,
               ),
             ],
@@ -26,7 +27,7 @@ class SearchPage extends StatelessWidget {
           Row(
             children: <Widget>[
               Text(
-                I18n.of(context).recentlyViewed,
+                localization.recentlyViewed,
                 style: Theme.of(context).textTheme.headline5.copyWith(
                       fontSize: FontSizes.small_3x,
                       color: Colors.transparent.withOpacity(0.3),
@@ -36,7 +37,7 @@ class SearchPage extends StatelessWidget {
               InkWell(
                 onTap: () => {}, //TODO: handle click
                 child: Text(
-                  I18n.of(context).clear,
+                  localization.clear,
                   style: Theme.of(context).textTheme.headline5.copyWith(
                       fontSize: FontSizes.small_3x,
                       color: BrandingColors.primary),
@@ -45,11 +46,32 @@ class SearchPage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
+          Container(
+            height: 60,
+            child: RecentlyViewedWindget()),
+          const SizedBox(height: 20),
           Row(
             children: <Widget>[
-              RecentlyViewedWindget(),
+              Text(
+                localization.recentlyViewed,
+                style: Theme.of(context).textTheme.headline5.copyWith(
+                      fontSize: FontSizes.small_3x,
+                      color: Colors.transparent.withOpacity(0.3),
+                    ),
+              ),
+              const Spacer(),
+              InkWell(
+                onTap: () => {}, //TODO: handle click
+                child: Text(
+                  localization.clear,
+                  style: Theme.of(context).textTheme.headline5.copyWith(
+                      fontSize: FontSizes.small_3x,
+                      color: BrandingColors.primary),
+                ),
+              ),
             ],
           ),
+          const SizedBox(height: 20),
         ],
       ),
     );
