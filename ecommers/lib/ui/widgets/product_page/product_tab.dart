@@ -22,10 +22,6 @@ class ProductTab extends StatefulWidget {
 class _ProductTabState extends State<ProductTab> {
   @override
   Widget build(BuildContext context) {
-    const _titleTextStyle = TextStyle(
-      fontSize: FontSizes.normal,
-      color: BrandingColors.secondary,
-    );
     final _localization = I18n.of(context);
 
     return Column(
@@ -65,7 +61,7 @@ class _ProductTabState extends State<ProductTab> {
         return GestureDetector(
           onTap: () => {
             setState(() => {
-                  widget.sizes.forEach((item) => item.isSelected = false),
+                  widget.sizes.forEach(_unselectSizes),
                   widget.sizes[i].isSelected = true,
                 }),
           },
@@ -105,7 +101,7 @@ class _ProductTabState extends State<ProductTab> {
         return GestureDetector(
           onTap: () => {
             setState(() => {
-                  widget.colors.forEach((item) => item.isSelected = false),
+                  widget.colors.forEach(_unselectColors),
                   widget.colors[i].isSelected = true,
                 }),
           },
@@ -133,5 +129,13 @@ class _ProductTabState extends State<ProductTab> {
         );
       },
     );
+  }
+
+  ProductSizeModel _unselectSizes(ProductSizeModel size) {
+    return size..isSelected = false;
+  }
+
+  ProductColorModel _unselectColors(ProductColorModel color) {
+    return color..isSelected = false;
   }
 }

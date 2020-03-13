@@ -224,7 +224,7 @@ class ProductPage extends StatelessWidget {
     ];
 
     return ProductItemModel(
-      assetImagePath: Assets.dressCottonImage,
+      assetImagePath: Assets.boots,
       title: 'best dress ever',
       cost: 15.0,
       rate: 3.9,

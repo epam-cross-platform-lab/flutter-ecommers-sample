@@ -19,7 +19,7 @@ class ReviewsTab extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return ListView.separated(
       scrollDirection: Axis.vertical,
-      separatorBuilder: (context, index) => SizedBox(height: Insets.x7_5),
+      separatorBuilder: (context, index) => const SizedBox(height: Insets.x7_5),
       itemCount: productReviewsModel.length,
       itemBuilder: (context, i) {
         return Row(
