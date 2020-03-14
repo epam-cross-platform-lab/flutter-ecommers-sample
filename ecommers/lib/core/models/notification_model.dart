@@ -8,7 +8,7 @@ class NotificationModel {
   final Color backgroundColor;
   final Color shadowColor;
   final String imgPath;
-  final String day;
+  final DateTime day;
 
   NotificationModel({
     this.orderNumber,

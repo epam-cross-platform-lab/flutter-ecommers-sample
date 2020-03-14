@@ -21,15 +21,25 @@ class NotificationsPage extends StatelessWidget {
   final String formattedThirdDate = formatter.format(thirdDate);
   final String formattedFourthDate = formatter.format(fourthDate);
 
+  static String _getCorrectDateInString(DateTime date) {
+    if (date.day == DateTime.now().day) {
+      return DateFormat.jm().format(date).toString();
+    }
+    if (DateTime.now().month == date.month &&
+        (DateTime.now().day - date.day) >= 1) {
+      return 'Yesterday';
+    } else {
+      return formatter.format(date);
+    }
+  }
+
   List<NotificationModel> get _notifications => [
         NotificationModel(
           backgroundColor: BackgroundForNotifications.orderBackgroundColor,
           shadowColor:
               BackgroundForNotifications.orderBackgroundColor.withOpacity(0.40),
           imgPath: Assets.order,
-          day: DateFormat.jm()
-              .format(DateTime(2020, 10, 20, 09, 20, 00))
-              .toString(),
+          day: DateTime(2020, 03, 14, 09, 20, 00),
           statusText: 'shipped',
           notificationUsualText: 'marked your order',
           orderNumber: '#1982984',
@@ -40,7 +50,7 @@ class NotificationsPage extends StatelessWidget {
           shadowColor: BackgroundForNotifications.locationPinBackgroundColor
               .withOpacity(0.40),
           imgPath: Assets.locationPin,
-          day: 'Yesterday',
+          day: DateTime.utc(2020, 03, 13),
           statusText: 'shipped',
           notificationUsualText: 'marked your order',
           orderNumber: '#1982984',
@@ -50,7 +60,7 @@ class NotificationsPage extends StatelessWidget {
           shadowColor: BackgroundForNotifications.discountBackgroundColor
               .withOpacity(0.40),
           imgPath: Assets.discount,
-          day: formattedThirdDate,
+          day: DateTime.utc(2020, 10, 15),
           statusText: 'shipped',
           notificationUsualText: 'marked your order',
           orderNumber: '#1982984',
@@ -60,7 +70,7 @@ class NotificationsPage extends StatelessWidget {
           shadowColor:
               BackgroundForNotifications.tagBackgroundColor.withOpacity(0.40),
           imgPath: Assets.tagIcon,
-          day: formattedFourthDate,
+          day: DateTime.utc(2020, 09, 20),
           statusText: 'shipped',
           notificationUsualText: 'marked your order',
           orderNumber: '#1982984',
@@ -73,7 +83,11 @@ class NotificationsPage extends StatelessWidget {
       child: BackgroundedSafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(
-              Insets.x6, Insets.x0, Insets.x5, Insets.x4),
+            Insets.x6,
+            Insets.x0,
+            Insets.x5,
+            Insets.x4,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -81,7 +95,7 @@ class NotificationsPage extends StatelessWidget {
                 I18n.of(context).notificationsTitle,
                 style: Theme.of(context).textTheme.headline6,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: Insets.x5),
               Expanded(
                 child: _buildNotificationListView(),
               ),
@@ -94,8 +108,6 @@ class NotificationsPage extends StatelessWidget {
 
   Widget _buildNotificationListView() {
     return ListView.separated(
-      padding:
-          const EdgeInsets.fromLTRB(Insets.x0, Insets.x0, Insets.x0, Insets.x0),
       itemCount: _notifications.length,
       itemBuilder: (BuildContext context, int index) {
         final currentNotification = _notifications[index];
@@ -107,13 +119,17 @@ class NotificationsPage extends StatelessWidget {
           backgroundColor: currentNotification.backgroundColor,
           shadowColor: currentNotification.shadowColor,
           imagePath: currentNotification.imgPath,
-          day: currentNotification.day,
+          day: _getCorrectDateInString(currentNotification.day),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
         return Padding(
           padding: const EdgeInsets.fromLTRB(
-              Insets.x0, Insets.x3, Insets.x0, Insets.x0),
+            Insets.x0,
+            Insets.x3,
+            Insets.x0,
+            Insets.x0,
+          ),
           child: Divider(
             color: BrandingColors.secondary.withOpacity(0.4),
             indent: _notificationDeviderIndent,

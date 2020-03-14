@@ -54,7 +54,7 @@ class NotificationWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          width: 20.0,
+          width: Insets.x5,
         ),
         Flexible(
           child: RichText(
