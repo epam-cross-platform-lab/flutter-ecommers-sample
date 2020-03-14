@@ -152,6 +152,8 @@ class I18n implements WidgetsLocalizations {
   String get fitting => "FITTING";
   /// "ok"
   String get ok => "ok";
+  /// "Notifications"
+  String get notificationsTitle => "Notifications";
   /// ""
   String get empty => "";
 }
