@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
@@ -33,7 +34,8 @@ class ImageCard extends StatelessWidget {
       padding: const EdgeInsets.all(Insets.x6_5),
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(imageAsset),
+          image: CachedNetworkImageProvider(
+              'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/$imageAsset'),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(_borderRadius),
@@ -50,7 +52,6 @@ class ImageCard extends StatelessWidget {
               ),
             ),
           ),
-          
           SizedBox(
             height: _buttonSize.height,
             width: _buttonSize.width,

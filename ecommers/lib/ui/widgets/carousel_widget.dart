@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
 
 class CarouselWidget extends StatelessWidget {
@@ -43,7 +45,12 @@ class CarouselWidget extends StatelessWidget {
           controller: PageController(initialPage: 0),
           itemBuilder: (BuildContext context, int index) {
             return Center(
-              child: Image.asset(assetImagePaths[index]),
+              child: CachedNetworkImage(
+                imageUrl:
+                    'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/${assetImagePaths[index]}',
+                errorWidget: (context, url, error) =>
+                    SvgPicture.asset(Assets.warningIcon),
+              ),
             );
           },
           onPageChanged: (int index) {

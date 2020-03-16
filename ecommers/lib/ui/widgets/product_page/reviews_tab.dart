@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/ui/decorations/branding_colors.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -5,6 +6,7 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ReviewsTab extends StatelessWidget {
   final List<ProductReviewsModel> productReviewsModel;
@@ -93,13 +95,17 @@ class ReviewsTab extends StatelessWidget {
                     height: 100,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      separatorBuilder: (context, index) =>const SizedBox(width: Insets.x3_5),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: Insets.x3_5),
                       itemCount:
                           productReviewsModel[i].screenshotsPathes.length,
                       itemBuilder: (context, index) {
-                        return Image.asset(
-                          productReviewsModel[i].screenshotsPathes[index],
-                          scale: 0.45,
+                        return CachedNetworkImage(
+                          imageUrl:
+                              'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/${productReviewsModel[i].screenshotsPathes[index]}',
+                          errorWidget: (context, url, error) =>
+                              SvgPicture.asset(Assets.warningIcon),
+                          fit: BoxFit.scaleDown,
                         );
                       },
                     ),
