@@ -40,8 +40,7 @@ class _OrderWidgetState extends State<OrderWidget> {
         CircleImage(
           size: OrderWidget.orderCircleImageSize,
           image: CachedNetworkImage(
-            imageUrl:
-                'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/${widget.assetImagePath}',
+            imageUrl: '${Assets.imageBaseUrl}/${widget.assetImagePath}',
             errorWidget: (context, url, error) =>
                 SvgPicture.asset(Assets.warningIcon),
             fit: BoxFit.scaleDown,

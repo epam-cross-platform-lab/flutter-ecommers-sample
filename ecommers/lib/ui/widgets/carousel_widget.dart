@@ -46,8 +46,7 @@ class CarouselWidget extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Center(
               child: CachedNetworkImage(
-                imageUrl:
-                    'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/${assetImagePaths[index]}',
+                imageUrl: '${Assets.imageBaseUrl}/${assetImagePaths[index]}',
                 errorWidget: (context, url, error) =>
                     SvgPicture.asset(Assets.warningIcon),
               ),

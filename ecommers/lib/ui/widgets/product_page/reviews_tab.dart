@@ -102,7 +102,7 @@ class ReviewsTab extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return CachedNetworkImage(
                           imageUrl:
-                              'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/${productReviewsModel[i].screenshotsPathes[index]}',
+                              '${Assets.imageBaseUrl}/${productReviewsModel[i].screenshotsPathes[index]}',
                           errorWidget: (context, url, error) =>
                               SvgPicture.asset(Assets.warningIcon),
                           fit: BoxFit.scaleDown,

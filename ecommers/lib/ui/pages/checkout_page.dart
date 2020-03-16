@@ -271,8 +271,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     return Row(
       children: <Widget>[
         CachedNetworkImage(
-          imageUrl:
-              'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/$imagePath',
+          imageUrl: '${Assets.imageBaseUrl}/$imagePath',
           errorWidget: (context, url, error) =>
               SvgPicture.asset(Assets.warningIcon),
           fit: BoxFit.scaleDown,

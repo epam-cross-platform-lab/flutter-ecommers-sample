@@ -34,8 +34,7 @@ class ProductItemWide extends ProductItemBase {
         Expanded(
           child: Center(
             child: CachedNetworkImage(
-              imageUrl:
-                  'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/$assetImagePath',
+              imageUrl: '${Assets.imageBaseUrl}/$assetImagePath',
               errorWidget: (context, url, error) =>
                   SvgPicture.asset(Assets.warningIcon),
               fit: BoxFit.scaleDown,

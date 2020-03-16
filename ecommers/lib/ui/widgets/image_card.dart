@@ -34,8 +34,8 @@ class ImageCard extends StatelessWidget {
       padding: const EdgeInsets.all(Insets.x6_5),
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: CachedNetworkImageProvider(
-              'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/$imageAsset'),
+          image:
+              CachedNetworkImageProvider('${Assets.imageBaseUrl}/$imageAsset'),
           fit: BoxFit.cover,
         ),
         borderRadius: BorderRadius.circular(_borderRadius),
@@ -56,13 +56,14 @@ class ImageCard extends StatelessWidget {
             height: _buttonSize.height,
             width: _buttonSize.width,
             child: ButtonBaseWidget(
-                text: buttonText,
-                assetIcon: Assets.arrowRightIcon,
-                buttonColor: BrandingColors.background,
-                textColor: BrandingColors.secondary,
-                onPressedFunction: onButtonPressed,
-                iconBackgroundColor: BrandingColors.primary,
-                blurColor: BrandingColors.secondary.withOpacity(0.15)),
+              text: buttonText,
+              assetIcon: Assets.arrowRightIcon,
+              buttonColor: BrandingColors.background,
+              textColor: BrandingColors.secondary,
+              onPressedFunction: onButtonPressed,
+              iconBackgroundColor: BrandingColors.primary,
+              blurColor: BrandingColors.secondary.withOpacity(0.15),
+            ),
           ),
         ],
       ),

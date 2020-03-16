@@ -84,11 +84,11 @@ class ProfilePage extends StatelessWidget {
           Container(
             height: _profileCardHeight,
             width: _profileCardHeight,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
                 image: CachedNetworkImageProvider(
-                    'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/${Assets.girlImage}'),
+                    '${Assets.imageBaseUrl}/${Assets.girlImage}'),
                 fit: BoxFit.cover,
               ),
             ),
