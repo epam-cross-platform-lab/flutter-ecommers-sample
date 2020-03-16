@@ -15,7 +15,7 @@ class NotificationsPage extends StatelessWidget {
 
   static final DateFormat formatter = DateFormat('d MMM');
 
-  static String _formatDate(DateTime date, I18n localizationObject) {
+  String _formatDate(DateTime date, I18n localizationObject) {
     if (date.day == DateTime.now().day) {
       return DateFormat.jm().format(date).toString();
     }
