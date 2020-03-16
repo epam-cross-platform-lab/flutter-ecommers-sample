@@ -16,7 +16,7 @@ class SearchTextField extends StatelessWidget {
     final localization = I18n.of(context);
     return Container(
       height: 35.0,
-      padding: EdgeInsets.symmetric(horizontal: Insets.x4),
+      padding: const EdgeInsets.symmetric(horizontal: Insets.x4),
       decoration: BoxDecoration(
         color: BrandingColors.background,
         borderRadius: BorderRadius.circular(18.0),
@@ -25,7 +25,7 @@ class SearchTextField extends StatelessWidget {
         textInputAction: TextInputAction.search,
         style: inputTextStyle,
         decoration: InputDecoration(
-          icon: Icon(Icons.search), //TODO: get the correct 
+          icon: const Icon(Icons.search), //TODO: get the correct 
           hintText: localization.searchHintText,
           hintStyle: hintStyle,
           focusedBorder: const UnderlineInputBorder(

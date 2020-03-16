@@ -162,6 +162,12 @@ class I18n implements WidgetsLocalizations {
   String get recommended => "RECOMMENDED";
   /// "REFRESH"
   String get refresh => "REFRESH";
+  /// "email is not valid."
+  String get emailError => "email is not valid.";
+  /// "password should have at least 4 characters."
+  String get passwordError => "password should have at least 4 characters.";
+  /// "field should not be empty."
+  String get fieldError => "field should not be empty.";
   /// ""
   String get empty => "";
 }
