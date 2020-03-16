@@ -15,7 +15,7 @@ class NotificationsPage extends StatelessWidget {
 
   static final DateFormat formatter = DateFormat('d MMM');
 
-  static String _getCorrectDateInString(DateTime date, I18n localizationObject) {
+  static String _formatDate(DateTime date, I18n localizationObject) {
     if (date.day == DateTime.now().day) {
       return DateFormat.jm().format(date).toString();
     }
@@ -113,7 +113,7 @@ class NotificationsPage extends StatelessWidget {
           backgroundColor: currentNotification.backgroundColor,
           shadowColor: currentNotification.shadowColor,
           imagePath: currentNotification.imgPath,
-          day: _getCorrectDateInString(currentNotification.day,I18n.of(context)),
+          day: _formatDate(currentNotification.day,I18n.of(context)),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
