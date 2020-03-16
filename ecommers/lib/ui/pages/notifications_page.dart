@@ -15,19 +15,13 @@ class NotificationsPage extends StatelessWidget {
 
   static final DateFormat formatter = DateFormat('d MMM');
 
-  static final DateTime thirdDate = DateTime.utc(2020, 10, 15);
-  static final DateTime fourthDate = DateTime.utc(2020, 09, 20);
-
-  final String formattedThirdDate = formatter.format(thirdDate);
-  final String formattedFourthDate = formatter.format(fourthDate);
-
-  static String _getCorrectDateInString(DateTime date) {
+  static String _getCorrectDateInString(DateTime date, I18n localizationObject) {
     if (date.day == DateTime.now().day) {
       return DateFormat.jm().format(date).toString();
     }
     if (DateTime.now().month == date.month &&
         (DateTime.now().day - date.day) >= 1) {
-      return 'Yesterday';
+      return localizationObject.yesterday;
     } else {
       return formatter.format(date);
     }
@@ -39,7 +33,7 @@ class NotificationsPage extends StatelessWidget {
           shadowColor:
               BackgroundForNotifications.orderBackgroundColor.withOpacity(0.40),
           imgPath: Assets.order,
-          day: DateTime(2020, 03, 14, 09, 20, 00),
+          day: DateTime.now(),
           statusText: 'shipped',
           notificationUsualText: 'marked your order',
           orderNumber: '#1982984',
@@ -119,7 +113,7 @@ class NotificationsPage extends StatelessWidget {
           backgroundColor: currentNotification.backgroundColor,
           shadowColor: currentNotification.shadowColor,
           imagePath: currentNotification.imgPath,
-          day: _getCorrectDateInString(currentNotification.day),
+          day: _getCorrectDateInString(currentNotification.day,I18n.of(context)),
         );
       },
       separatorBuilder: (BuildContext context, int index) {

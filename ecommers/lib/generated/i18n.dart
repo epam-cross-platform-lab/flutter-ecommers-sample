@@ -154,6 +154,8 @@ class I18n implements WidgetsLocalizations {
   String get ok => "ok";
   /// "Notifications"
   String get notificationsTitle => "Notifications";
+  /// "Yesterday"
+  String get yesterday => "Yesterday";
   /// ""
   String get empty => "";
 }
