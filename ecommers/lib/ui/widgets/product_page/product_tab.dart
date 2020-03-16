@@ -52,7 +52,7 @@ class _ProductTabState extends State<ProductTab> {
     return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemCount: widget.sizes.length,
-      separatorBuilder: (context, index) => SizedBox(width: Insets.x4_5),
+      separatorBuilder: (context, index) => const SizedBox(width: Insets.x4_5),
       itemBuilder: (context, i) {
         final textSizeColor = widget.sizes[i].isSelected
             ? BrandingColors.primary
@@ -69,7 +69,8 @@ class _ProductTabState extends State<ProductTab> {
             width: 80,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.all(Radius.circular(Radiuses.big_1x)),
+              borderRadius:
+                  const BorderRadius.all(Radius.circular(Radiuses.big_1x)),
             ),
             child: Center(
               child: Text(
@@ -90,7 +91,7 @@ class _ProductTabState extends State<ProductTab> {
     return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemCount: widget.colors.length,
-      separatorBuilder: (context, index) => SizedBox(width: Insets.x4_5),
+      separatorBuilder: (context, index) => const SizedBox(width: Insets.x4_5),
       itemBuilder: (context, i) {
         final iconColor = widget.colors[i].isSelected
             ? (Color(widget.colors[i].color) == Colors.white

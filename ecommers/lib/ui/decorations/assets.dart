@@ -64,4 +64,6 @@ class Assets {
   static const String review4 = 'assets/review4.png';
   static const String review5 = 'assets/review5.png';
   static const String boots = 'assets/boots.png';
+
+  static const String splashLoader = 'assets/splash_loader.flr';
 }
