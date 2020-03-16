@@ -1,8 +1,9 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/widgets/recently_viewed_widnget/index.dart';
+import 'package:ecommers/ui/widgets/recently_viewed_widget/index.dart';
 import 'package:ecommers/ui/widgets/search/index.dart';
+import 'package:ecommers/ui/widgets/search_recommended_widget/index.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
@@ -48,12 +49,13 @@ class SearchPage extends StatelessWidget {
           const SizedBox(height: 20),
           Container(
             height: 60,
-            child: RecentlyViewedWindget()),
+            child: RecentlyViewedWidget(),
+          ),
           const SizedBox(height: 20),
           Row(
             children: <Widget>[
               Text(
-                localization.recentlyViewed,
+                localization.recommended,
                 style: Theme.of(context).textTheme.headline5.copyWith(
                       fontSize: FontSizes.small_3x,
                       color: Colors.transparent.withOpacity(0.3),
@@ -63,7 +65,7 @@ class SearchPage extends StatelessWidget {
               InkWell(
                 onTap: () => {}, //TODO: handle click
                 child: Text(
-                  localization.clear,
+                  localization.refresh,
                   style: Theme.of(context).textTheme.headline5.copyWith(
                       fontSize: FontSizes.small_3x,
                       color: BrandingColors.primary),
@@ -72,6 +74,10 @@ class SearchPage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
+          Container(
+            height: 70,
+            child: SearchRecommendedWinget(),
+          ),
         ],
       ),
     );

@@ -158,6 +158,10 @@ class I18n implements WidgetsLocalizations {
   String get fitting => "FITTING";
   /// "ok"
   String get ok => "ok";
+  /// "RECOMMENDED"
+  String get recommended => "RECOMMENDED";
+  /// "REFRESH"
+  String get refresh => "REFRESH";
   /// ""
   String get empty => "";
 }

@@ -1,5 +1,5 @@
 import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/widgets/recently_viewed_widnget/index.dart';
+import 'package:ecommers/ui/widgets/recently_viewed_widget/index.dart';
 import 'package:flutter/cupertino.dart';
 
 class RcentlyViewedList extends StatelessWidget {

@@ -1,8 +1,8 @@
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/widgets/recently_viewed_widnget/index.dart';
+import 'package:ecommers/ui/widgets/recently_viewed_widget/index.dart';
 import 'package:flutter/material.dart';
 
-class RecentlyViewedWindget extends StatelessWidget {
+class RecentlyViewedWidget extends StatelessWidget {
   final List<RecentlyViewedItemModel> recentlyViewedList = [
     RecentlyViewedItemModel(
       assetImagePath: Assets.backpackImage,

@@ -1,4 +1,5 @@
-import 'package:ecommers/ui/widgets/recently_viewed_widnget/index.dart';
+import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/widgets/recently_viewed_widget/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -12,6 +13,7 @@ class RecentlyViewedItem extends StatelessWidget {
     return Container(
       width: 180,
       decoration: const BoxDecoration(
+        color: BrandingColors.background,
         borderRadius: BorderRadius.all(
           Radius.circular(12.0),
         ),
@@ -30,9 +32,13 @@ class RecentlyViewedItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 const SizedBox(height: 10.0),
-                Text(recentlyViewedItem.title),
+                Text(
+                  recentlyViewedItem.title,
+                  style: Theme.of(context).textTheme.bodyText1.copyWith(fontWeight: FontWeight.w300),
+                ),
                 const SizedBox(height: 6.0),
-                Text('\$${recentlyViewedItem.cost}')
+                Text('\$${recentlyViewedItem.cost}',
+                    style: Theme.of(context).textTheme.bodyText1)
               ],
             ),
           ),

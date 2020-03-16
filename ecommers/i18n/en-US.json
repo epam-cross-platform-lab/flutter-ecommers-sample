@@ -62,5 +62,8 @@
     "category": "CATEGORY",
     "fitting": "FITTING",
     "ok": "ok",
+    "recommended":"RECOMMENDED",
+    "refresh":"REFRESH",
     "empty": ""
+    
 }
