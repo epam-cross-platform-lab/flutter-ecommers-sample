@@ -10,5 +10,6 @@ enum Pages {
   authorization,
   checkout,
   success,
-  product
+  product,
+  notifications
 }
