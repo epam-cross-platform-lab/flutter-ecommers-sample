@@ -10,19 +10,18 @@ class SearchTextFiled extends StatelessWidget {
       children: <Widget>[
         Expanded(
           child: Container(
-            height: 40,
+            height: 35,
             decoration: BoxDecoration(
                 color: BrandingColors.blur,
                 borderRadius: const BorderRadius.all(Radius.circular(20))),
             child: TextFormField(
-              //focusNode: focusNode,
               textAlign: TextAlign.left,
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: I18n.of(context).searchProductHintTilt,
-                contentPadding: const EdgeInsets.only(
-                    left: 10, right: 10, bottom: 0, top: 7),
-                //prefixText: hintText,
+                hintText: I18n.of(context).searchHintText,
+                hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+                      fontWeight: FontWeight.w300,
+                    ),
                 prefixIcon: Padding(
                   padding: const EdgeInsetsDirectional.only(start: 100, end: 5),
                   child: Icon(
@@ -40,29 +39,4 @@ class SearchTextFiled extends StatelessWidget {
       ],
     );
   }
-
-  // @override
-  // _SerchState createState() => _SerchState();
 }
-
-// class _SerchState extends State<SearchTextFiled> {
-//   FocusNode focusNode = FocusNode();
-//   Text hintText = Text(I18n.of(context).searchProductHintTilt);
-//   TextAlign textAlignment = TextAlign.left;
-
-//   _SerchState();
-//   @override
-//   void initState() {
-//     super.initState();
-//     focusNode.addListener(() {
-//       setState(() {
-//         if (focusNode.hasFocus) {
-//           hintText = const Text('');
-//           textAlignment = TextAlign.left;
-//         } else {
-//           hintText = 'Search something';
-//           textAlignment = TextAlign.left;
-//         }
-//       });
-//     });
-//   }

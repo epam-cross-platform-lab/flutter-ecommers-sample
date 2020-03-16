@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 class RecentlyViewedWidget extends StatelessWidget {
   final List<RecentlyViewedItemModel> recentlyViewedList = [
     RecentlyViewedItemModel(
-      assetImagePath: Assets.backpackImage,
+      assetImagePath: Assets.scarfImage,
       title: 'Red Cotton Scarf',
       cost: 22.8,
     ),
     RecentlyViewedItemModel(
-      assetImagePath: Assets.backpackImage,
-      title: 'apple',
+      assetImagePath: Assets.dressFloralImage,
+      title: 'Floral Dress',
       cost: 22.8,
     ),
     RecentlyViewedItemModel(

@@ -23,7 +23,8 @@ class RecentlyViewedItem extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image(
-              height: 30,
+              height: 40,
+              width: 40,
               image: AssetImage(recentlyViewedItem.assetImagePath),
             ),
           ),
@@ -34,11 +35,19 @@ class RecentlyViewedItem extends StatelessWidget {
                 const SizedBox(height: 10.0),
                 Text(
                   recentlyViewedItem.title,
-                  style: Theme.of(context).textTheme.bodyText1.copyWith(fontWeight: FontWeight.w300),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(height: 6.0),
-                Text('\$${recentlyViewedItem.cost}',
-                    style: Theme.of(context).textTheme.bodyText1)
+                Text(
+                  '\$${recentlyViewedItem.cost}',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(fontWeight: FontWeight.w400),
+                ),
               ],
             ),
           ),

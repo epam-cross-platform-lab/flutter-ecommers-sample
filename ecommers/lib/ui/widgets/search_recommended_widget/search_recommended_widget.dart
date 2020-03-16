@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/search_recommended_widget/index.dart';
 import 'package:flutter/material.dart';
@@ -16,15 +17,17 @@ class SearchRecommendedWinget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-          child: Wrap(
-        spacing: 9.0,
-        runSpacing: 7.0,
-        children: recommendedList.map((item) => createItem(item.titile)).toList(),
+      child: Wrap(
+        spacing: Insets.x2_5,
+        runSpacing: Insets.x2,
+        children: recommendedList
+            .map((item) => createItem(item.titile, context))
+            .toList(),
       ),
     );
   }
 
-  Widget createItem(String searchRecommendedItem) {
+  Widget createItem(String searchRecommendedItem, BuildContext context) {
     return Container(
       height: 30,
       decoration: BoxDecoration(
@@ -34,12 +37,16 @@ class SearchRecommendedWinget extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(
-          searchRecommendedItem,
-          style: const TextStyle(
-            fontSize: 14,
+        padding: const EdgeInsets.all(Insets.x2),
+        child: InkWell(
+          child: Text(
+            searchRecommendedItem,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1
+                .copyWith(fontSize: 13, fontWeight: FontWeight.w400),
           ),
+          onTap: () => {}, //TODO:
         ),
       ),
     );
