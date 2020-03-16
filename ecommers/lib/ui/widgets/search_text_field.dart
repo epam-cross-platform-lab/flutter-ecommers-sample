@@ -25,7 +25,7 @@ class SearchTextField extends StatelessWidget {
         textInputAction: TextInputAction.search,
         style: inputTextStyle,
         decoration: InputDecoration(
-          icon: Icon(Icons.search), //TODO: get the correct 
+          icon: const Icon(Icons.search), //TODO: get the correct 
           hintText: localization.searchHintText,
           hintStyle: hintStyle,
           focusedBorder: const UnderlineInputBorder(

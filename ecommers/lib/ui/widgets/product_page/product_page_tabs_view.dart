@@ -30,7 +30,7 @@ class ProductPageTabsView extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: TabBar(
-                indicator: BubbleTabIndicator(
+                indicator: const BubbleTabIndicator(
                   indicatorHeight: Insets.x8_5,
                   indicatorColor: BrandingColors.background,
                   tabBarIndicatorSize: TabBarIndicatorSize.tab,
