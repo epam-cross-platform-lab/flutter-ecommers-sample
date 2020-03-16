@@ -59,5 +59,8 @@
     "category": "CATEGORY",
     "fitting": "FITTING",
     "ok": "ok",
+    "emailError": "email is not valid.",
+    "passwordError": "password should have at least 4 characters.",
+    "fieldError": "field should not be empty.",
     "empty": ""
 }

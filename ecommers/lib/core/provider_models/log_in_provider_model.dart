@@ -6,7 +6,7 @@ import 'package:ecommers/ui/utils/dialog_manager.dart';
 import 'package:flutter/material.dart';
 
 class LogInProviderModel extends ProviderModelBase {
-  String username;
+  String usernameOrEmail;
   String password;
 
   List<AuthRichTextSpanModel> _bottomText;
@@ -18,7 +18,7 @@ class LogInProviderModel extends ProviderModelBase {
     isBusy = true;
 
     final isSuccessful =
-        await authorizationService.tryLogin(username, password);
+        await authorizationService.tryLogin(usernameOrEmail, password);
 
     isBusy = false;
 

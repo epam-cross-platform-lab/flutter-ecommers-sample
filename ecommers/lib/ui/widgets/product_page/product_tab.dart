@@ -132,11 +132,11 @@ class _ProductTabState extends State<ProductTab> {
     );
   }
 
-  ProductSizeModel _unselectSizes(ProductSizeModel size) {
-    return size..isSelected = false;
+  void _unselectSizes(ProductSizeModel size) {
+    size.isSelected = false;
   }
 
-  ProductColorModel _unselectColors(ProductColorModel color) {
-    return color..isSelected = false;
+  void _unselectColors(ProductColorModel color) {
+    color.isSelected = false;
   }
 }
