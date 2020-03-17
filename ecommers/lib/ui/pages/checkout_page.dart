@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/services/index.dart';
@@ -12,7 +11,6 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -270,12 +268,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget _buildRowAction({String imagePath, Text text}) {
     return Row(
       children: <Widget>[
-        CachedNetworkImage(
-          imageUrl: '${Assets.imageBaseUrl}/$imagePath',
-          errorWidget: (context, url, error) =>
-              SvgPicture.asset(Assets.warningIcon),
-          fit: BoxFit.scaleDown,
-        ),
+        CachedImage(imagePath: imagePath),
         const SizedBox(width: Insets.x3_5),
         text,
         const Spacer(),

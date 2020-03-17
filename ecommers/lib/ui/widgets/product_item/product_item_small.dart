@@ -1,10 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductItemSmall extends ProductItemBase {
   static const productItemSmallSize = Size(185.0, 59.0);
@@ -27,12 +25,7 @@ class ProductItemSmall extends ProductItemBase {
       children: <Widget>[
         Expanded(
           flex: 3,
-          child: CachedNetworkImage(
-            imageUrl: '${Assets.imageBaseUrl}/$assetImagePath',
-            errorWidget: (context, url, error) =>
-                SvgPicture.asset(Assets.warningIcon),
-            fit: BoxFit.scaleDown,
-          ),
+          child: CachedImage(imagePath: assetImagePath),
         ),
         const SizedBox(
           width: ProductItemBase.padding,

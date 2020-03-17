@@ -1,11 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductItemWide extends ProductItemBase {
   final double rate;
@@ -33,12 +30,7 @@ class ProductItemWide extends ProductItemBase {
       children: <Widget>[
         Expanded(
           child: Center(
-            child: CachedNetworkImage(
-              imageUrl: '${Assets.imageBaseUrl}/$assetImagePath',
-              errorWidget: (context, url, error) =>
-                  SvgPicture.asset(Assets.warningIcon),
-              fit: BoxFit.scaleDown,
-            ),
+            child: CachedImage(imagePath: assetImagePath),
           ),
         ),
         Text(

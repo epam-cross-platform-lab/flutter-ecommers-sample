@@ -1,11 +1,10 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/order/counter.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SmallOrderWidget extends StatefulWidget {
   final String assetImagePath;
@@ -40,12 +39,7 @@ class _SmallOrderWidgetState extends State<SmallOrderWidget> {
       children: <Widget>[
         CircleImage(
           size: SmallOrderWidget.orderCircleImageSize,
-          image: CachedNetworkImage(
-            imageUrl: '${Assets.imageBaseUrl}/${widget.assetImagePath}',
-            errorWidget: (context, url, error) =>
-                SvgPicture.asset(Assets.warningIcon),
-            fit: BoxFit.scaleDown,
-          ),
+          image: CachedImage(imagePath: widget.assetImagePath),
         ),
         const SizedBox(width: Insets.x3_5),
         Expanded(

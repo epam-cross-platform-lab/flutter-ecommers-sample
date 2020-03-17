@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/ui/decorations/branding_colors.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -6,7 +5,7 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 
 class ReviewsTab extends StatelessWidget {
   final List<ProductReviewsModel> productReviewsModel;
@@ -100,13 +99,9 @@ class ReviewsTab extends StatelessWidget {
                       itemCount:
                           productReviewsModel[i].screenshotsPathes.length,
                       itemBuilder: (context, index) {
-                        return CachedNetworkImage(
-                          imageUrl:
-                              '${Assets.imageBaseUrl}/${productReviewsModel[i].screenshotsPathes[index]}',
-                          errorWidget: (context, url, error) =>
-                              SvgPicture.asset(Assets.warningIcon),
-                          fit: BoxFit.scaleDown,
-                        );
+                        return CachedImage(
+                            imagePath: productReviewsModel[i]
+                                .screenshotsPathes[index]);
                       },
                     ),
                   ),
