@@ -8,11 +8,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ProductTab extends StatefulWidget {
   final List<ProductColorModel> colors;
   final List<ProductSizeModel> sizes;
+  final Function(List<String>) colorHasChanged;
 
   const ProductTab({
     Key key,
     @required this.colors,
     @required this.sizes,
+    this.colorHasChanged,
   }) : super(key: key);
 
   @override
@@ -104,6 +106,7 @@ class _ProductTabState extends State<ProductTab> {
             setState(() => {
                   widget.colors.forEach(_unselectColors),
                   widget.colors[i].isSelected = true,
+                  widget.colorHasChanged(widget.colors[i].assetsImagePaths),
                 }),
           },
           child: Container(
