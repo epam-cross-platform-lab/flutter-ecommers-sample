@@ -11,6 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LogInPage extends StatelessWidget {
+  final Function() createANewAccountClicked;
+
+  const LogInPage({this.createANewAccountClicked});
+
   @override
   Widget build(BuildContext context) {
     final localization = I18n.of(context);
@@ -33,13 +37,22 @@ class LogInPage extends StatelessWidget {
           },
         ),
         const SizedBox(height: Insets.x8_5),
-        AuthRichText(textSpanModelList: provider.bottomText),
+        GestureDetector(
+          onTap: () => {
+            if (createANewAccountClicked != null)
+              {
+                createANewAccountClicked(),
+              }
+          },
+          child: AuthRichText(
+            textSpanModelList: provider.bottomText,
+          ),
+        ),
       ],
     );
   }
 
-  AuthForm _buildLoginForm(
-      I18n localization, LogInProviderModel provider) {
+  AuthForm _buildLoginForm(I18n localization, LogInProviderModel provider) {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
