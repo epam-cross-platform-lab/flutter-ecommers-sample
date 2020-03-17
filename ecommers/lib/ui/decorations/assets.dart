@@ -1,4 +1,6 @@
 class Assets {
+  static const String imageBaseUrl = 'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources';
+  
   static const String apparelIcon = 'assets/apparel.svg';
   static const String beautyIcon = 'assets/beauty.svg';
   static const String electronicsIcon = 'assets/electronics.svg';
@@ -38,6 +40,7 @@ class Assets {
   static const String passwordIcon = 'assets/password_icon.svg';
   static const String backIcon = 'assets/back_icon.svg';
   static const String filterIcon = 'assets/filter_icon.svg';
+  static const String warningIcon = 'assets/warning_icon.svg';
   static const String locationPin = 'assets/notification_location_pin.svg';
   static const String order = 'assets/notification_order.svg';
   static const String tagIcon = 'assets/notification_tag.svg';
@@ -63,12 +66,14 @@ class Assets {
 
   static const String progressAnimation = 'assets/circle_drop_loader.flr';
 
-  static const String review1 = 'assets/review1.png';
-  static const String review2 = 'assets/review2.png';
-  static const String review3 = 'assets/review3.png';
-  static const String review4 = 'assets/review4.png';
-  static const String review5 = 'assets/review5.png';
-  static const String boots = 'assets/boots.png';
+  static const String roseRedShoes = 'assets/rose_red_shoes.png';
+  static const String redShoes = 'assets/red_shoes.png';
+  static const String pinkShoes = 'assets/pink_shoes.png';
+  static const String goldShoes = 'assets/gold_shoes.png';
+  static const String blackShoes = 'assets/black_shoes.png';
+  static const String silverShoes = 'assets/silver_shoes.png';
+  static const String whiteShoes = 'assets/white_shoes.png';
+  static const String yellowShoes = 'assets/yellow_shoes.png';
 
   static const String splashLoader = 'assets/splash_loader.flr';
 }

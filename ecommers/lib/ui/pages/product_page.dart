@@ -53,11 +53,7 @@ class ProductPage extends StatelessWidget {
             child: ListView(
               children: [
                 CarouselWidget(
-                  assetImagePaths: [
-                    productModel.assetImagePath,
-                    productModel.assetImagePath,
-                    productModel.assetImagePath,
-                  ],
+                  assetImagePaths: productModel.assetsImagePaths,
                   currentPageNotifier: ValueNotifier<int>(0),
                   height: 250,
                 ),
@@ -84,6 +80,16 @@ class ProductPage extends StatelessWidget {
   }
 
   static ProductItemModel createProductModel() {
+    final assetsImagePaths = [
+      Assets.blackShoes,
+      Assets.goldShoes,
+      Assets.pinkShoes,
+      Assets.redShoes,
+      Assets.roseRedShoes,
+      Assets.silverShoes,
+      Assets.whiteShoes,
+      Assets.yellowShoes,
+    ];
     final colors = [
       ProductColorModel(
         isSelected: false,
@@ -163,11 +169,11 @@ class ProductPage extends StatelessWidget {
         profileImageColor: 0xFFB2EBF2,
         profileImageTextColor: 0xFF80DEEA,
         screenshotsPathes: [
-          Assets.review1,
-          Assets.review2,
-          Assets.review3,
-          Assets.review4,
-          Assets.review5,
+          Assets.blackShoes,
+          Assets.goldShoes,
+          Assets.pinkShoes,
+          Assets.redShoes,
+          Assets.roseRedShoes,
         ],
       ),
       ProductReviewsModel(
@@ -180,11 +186,11 @@ class ProductPage extends StatelessWidget {
         profileImageColor: 0xFFA5D6A7,
         profileImageTextColor: 0xFF81C784,
         screenshotsPathes: [
-          Assets.review1,
-          Assets.review2,
-          Assets.review3,
-          Assets.review4,
-          Assets.review5,
+          Assets.blackShoes,
+          Assets.goldShoes,
+          Assets.pinkShoes,
+          Assets.redShoes,
+          Assets.roseRedShoes,
         ],
       ),
       ProductReviewsModel(
@@ -197,11 +203,11 @@ class ProductPage extends StatelessWidget {
         profileImageColor: 0xFFB2EBF2,
         profileImageTextColor: 0xFF80DEEA,
         screenshotsPathes: [
-          Assets.review1,
-          Assets.review2,
-          Assets.review3,
-          Assets.review4,
-          Assets.review5,
+          Assets.blackShoes,
+          Assets.goldShoes,
+          Assets.pinkShoes,
+          Assets.redShoes,
+          Assets.roseRedShoes,
         ],
       ),
       ProductReviewsModel(
@@ -214,17 +220,17 @@ class ProductPage extends StatelessWidget {
         profileImageColor: 0xFFA5D6A7,
         profileImageTextColor: 0xFF81C784,
         screenshotsPathes: [
-          Assets.review1,
-          Assets.review2,
-          Assets.review3,
-          Assets.review4,
-          Assets.review5,
+          Assets.blackShoes,
+          Assets.goldShoes,
+          Assets.pinkShoes,
+          Assets.redShoes,
+          Assets.roseRedShoes,
         ],
       ),
     ];
 
     return ProductItemModel(
-      assetImagePath: Assets.boots,
+      assetsImagePaths: assetsImagePaths,
       title: 'best dress ever',
       cost: 15.0,
       rate: 3.9,
