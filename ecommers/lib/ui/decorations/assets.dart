@@ -41,6 +41,10 @@ class Assets {
   static const String backIcon = 'assets/back_icon.svg';
   static const String filterIcon = 'assets/filter_icon.svg';
   static const String warningIcon = 'assets/warning_icon.svg';
+  static const String locationPin = 'assets/notification_location_pin.svg';
+  static const String order = 'assets/notification_order.svg';
+  static const String tagIcon = 'assets/notification_tag.svg';
+  static const String discount = 'assets/notification_discount.svg';
 
   static const String girlImage = 'assets/girl_image.png';
   static const String girl2Image = 'assets/girl2_image.png';

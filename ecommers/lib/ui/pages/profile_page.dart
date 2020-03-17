@@ -84,7 +84,7 @@ class ProfilePage extends StatelessWidget {
           Container(
             height: _profileCardHeight,
             width: _profileCardHeight,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
                 image: CachedNetworkImageProvider(
