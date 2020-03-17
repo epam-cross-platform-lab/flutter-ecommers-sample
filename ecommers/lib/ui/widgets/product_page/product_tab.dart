@@ -106,7 +106,10 @@ class _ProductTabState extends State<ProductTab> {
             setState(() => {
                   widget.colors.forEach(_unselectColors),
                   widget.colors[i].isSelected = true,
-                  widget.colorHasChanged(widget.colors[i].assetsImagePaths),
+                  if (widget.colorHasChanged != null)
+                    {
+                      widget.colorHasChanged(widget.colors[i].assetsImagePaths),
+                    }
                 }),
           },
           child: Container(

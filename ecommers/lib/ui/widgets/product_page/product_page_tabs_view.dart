@@ -60,7 +60,10 @@ class ProductPageTabsView extends StatelessWidget {
                   colors: productModel.colors,
                   sizes: productModel.sizes,
                   colorHasChanged: (assets) => {
-                    assetsHasChanged(assets),
+                    if (assetsHasChanged != null)
+                      {
+                        assetsHasChanged(assets),
+                      }
                   },
                 ),
               ),
