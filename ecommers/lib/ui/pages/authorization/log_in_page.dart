@@ -19,6 +19,7 @@ class LogInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final localization = I18n.of(context);
     final provider = Provider.of<LogInProviderModel>(context, listen: false);
+    provider.bottomTapCallback = createANewAccountClicked;
 
     final loginForm = _buildLoginForm(localization, provider);
 
@@ -37,16 +38,8 @@ class LogInPage extends StatelessWidget {
           },
         ),
         const SizedBox(height: Insets.x8_5),
-        GestureDetector(
-          onTap: () => {
-            if (createANewAccountClicked != null)
-              {
-                createANewAccountClicked(),
-              }
-          },
-          child: AuthRichText(
-            textSpanModelList: provider.bottomText,
-          ),
+        AuthRichText(
+          textSpanModelList: provider.bottomText,
         ),
       ],
     );

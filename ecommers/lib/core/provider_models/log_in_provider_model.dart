@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 class LogInProviderModel extends ProviderModelBase {
   String usernameOrEmail;
   String password;
+  Function bottomTapCallback;
 
   List<AuthRichTextSpanModel> _bottomText;
   List<AuthRichTextSpanModel> get bottomText => _getBottomText();
@@ -39,6 +40,12 @@ class LogInProviderModel extends ProviderModelBase {
       AuthRichTextSpanModel(
         text: localization.loginBottomTextSpan2,
         isTappable: true,
+        onTap: () => {
+          if (bottomTapCallback != null)
+            {
+              bottomTapCallback(),
+            },
+        },
       ),
     ];
   }
