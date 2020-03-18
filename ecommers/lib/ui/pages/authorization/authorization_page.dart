@@ -24,10 +24,13 @@ class AuthorizationPage extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => LogInProviderModel(context)),
         ChangeNotifierProvider(create: (_) => SignUpProviderModel(context)),
-        ChangeNotifierProxyProvider2<SignUpProviderModel, LogInProviderModel,
-            BusyProviderModel>(
+        ChangeNotifierProvider(
+            create: (_) => ForgotPasswordProviderModel(context)),
+        ChangeNotifierProxyProvider3<SignUpProviderModel, LogInProviderModel,
+            ForgotPasswordProviderModel, BusyProviderModel>(
           create: (_) => BusyProviderModel(),
-          update: (_, signUpProvider, loginProvider, busyProvider) =>
+          update: (_, signUpProvider, loginProvider, forgotPasswordProvider,
+                  busyProvider) =>
               busyProvider
                 ..isBusy = signUpProvider.isBusy || loginProvider.isBusy,
         ),
