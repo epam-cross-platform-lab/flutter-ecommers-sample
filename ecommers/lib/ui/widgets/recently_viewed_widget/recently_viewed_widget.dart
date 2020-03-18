@@ -4,13 +4,13 @@ import 'package:ecommers/ui/widgets/recently_viewed_widget/index.dart';
 import 'package:flutter/material.dart';
 
 class RecentlyViewedWidget extends StatelessWidget {
-  final List<RecentlyViewedItemModel> recentlyViewedList = [
-    RecentlyViewedItemModel(
+  final List<ProductItemSmallModel> recentlyViewedList = [
+    ProductItemSmallModel(
       assetImagePath: Assets.scarfImage,
       title: 'Red Cotton Scarf',
       cost: 22.8,
     ),
-    RecentlyViewedItemModel(
+    ProductItemSmallModel(
       assetImagePath: Assets.greenBackpackImage,
       title: 'Green Backpack ',
       cost: 22.8,
@@ -23,7 +23,7 @@ class RecentlyViewedWidget extends StatelessWidget {
       itemCount: recentlyViewedList.length,
       itemBuilder: (context, index) {
         final itemModel = recentlyViewedList[index];
-        return RecentlyViewedItem(
+        return ProductItemSmall(
           recentlyViewedItem: itemModel,
         );
       },

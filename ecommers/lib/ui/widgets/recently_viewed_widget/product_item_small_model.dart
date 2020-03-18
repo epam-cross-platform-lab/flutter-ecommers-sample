@@ -1,9 +1,9 @@
-class RecentlyViewedItemModel {
+class ProductItemSmallModel {
   final String assetImagePath;
   final String title;
   final double cost;
 
-  RecentlyViewedItemModel({
+  ProductItemSmallModel({
     this.assetImagePath,
     this.title,
     this.cost,

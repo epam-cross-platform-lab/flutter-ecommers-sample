@@ -4,10 +4,10 @@ import 'package:ecommers/ui/widgets/recently_viewed_widget/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class RecentlyViewedItem extends StatelessWidget {
-  final RecentlyViewedItemModel recentlyViewedItem;
+class ProductItemSmall extends StatelessWidget {
+  final ProductItemSmallModel recentlyViewedItem;
 
-  const RecentlyViewedItem({this.recentlyViewedItem});
+  const ProductItemSmall({this.recentlyViewedItem});
 
   @override
   Widget build(BuildContext context) {
