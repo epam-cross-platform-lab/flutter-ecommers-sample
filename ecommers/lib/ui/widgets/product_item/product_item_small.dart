@@ -1,5 +1,6 @@
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class ProductItemSmall extends ProductItemBase {
       children: <Widget>[
         Expanded(
           flex: 3,
-          child: Image.asset(assetImagePath),
+          child: CachedImage(imagePath: assetImagePath),
         ),
         const SizedBox(
           width: ProductItemBase.padding,

@@ -168,6 +168,10 @@ class I18n implements WidgetsLocalizations {
   String get passwordError => "password should have at least 4 characters.";
   /// "field should not be empty."
   String get fieldError => "field should not be empty.";
+  /// "Notifications"
+  String get notificationsTitle => "Notifications";
+  /// "Yesterday"
+  String get yesterday => "Yesterday";
   /// ""
   String get empty => "";
 }

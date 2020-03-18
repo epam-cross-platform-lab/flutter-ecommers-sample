@@ -1,4 +1,5 @@
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
 
@@ -43,7 +44,7 @@ class CarouselWidget extends StatelessWidget {
           controller: PageController(initialPage: 0),
           itemBuilder: (BuildContext context, int index) {
             return Center(
-              child: Image.asset(assetImagePaths[index]),
+              child: CachedImage(imagePath: assetImagePaths[index]),
             );
           },
           onPageChanged: (int index) {

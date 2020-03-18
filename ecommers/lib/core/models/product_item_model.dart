@@ -1,7 +1,7 @@
 import 'package:ecommers/core/models/index.dart';
 
 class ProductItemModel {
-  final String assetImagePath;
+  final List<String> assetsImagePaths;
   final String title;
   final double rate;
   final ProductDetailsModel productDetailsModel;
@@ -11,7 +11,7 @@ class ProductItemModel {
   final List<ProductReviewsModel> reviews;
 
   ProductItemModel({
-    this.assetImagePath,
+    this.assetsImagePaths,
     this.productDetailsModel,
     this.cost,
     this.title,
