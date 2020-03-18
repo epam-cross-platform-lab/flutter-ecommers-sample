@@ -28,25 +28,23 @@ class SearchRecommendedWinget extends StatelessWidget {
   }
 
   Widget createItem(String searchRecommendedItem, BuildContext context) {
-    return Container(
+    return InkWell(  //TODO: paste value to search filed
+          onTap: () => {},
+          child: Container(
       height: 30,
       decoration: BoxDecoration(
         color: BrandingColors.background,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(5.0),
-        ),
+        borderRadius: BorderRadius.circular(Radiuses.small_1x),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(Insets.x2),
-        child: InkWell(
-          child: Text(
+        padding: const EdgeInsets.symmetric(horizontal: Insets.x2_5, vertical: Insets.x2),
+        child:  Text(
             searchRecommendedItem,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                .copyWith(fontSize: 13, fontWeight: FontWeight.w400),
-          ),
-          onTap: () => {}, //TODO:
+            style: Theme.of(context).textTheme.bodyText1.copyWith(
+                  fontSize: FontSizes.small_3x,
+                  fontWeight: FontWeight.w400,
+                ),
+          ), 
         ),
       ),
     );
