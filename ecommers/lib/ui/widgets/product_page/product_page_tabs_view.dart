@@ -10,9 +10,10 @@ import 'index.dart';
 
 class ProductPageTabsView extends StatelessWidget {
   final ProductItemModel productModel;
-
+  final Function(List<String>) assetsHasChanged;
   const ProductPageTabsView({
     @required this.productModel,
+    this.assetsHasChanged,
   });
 
   @override
@@ -58,6 +59,12 @@ class ProductPageTabsView extends StatelessWidget {
                 child: ProductTab(
                   colors: productModel.colors,
                   sizes: productModel.sizes,
+                  colorHasChanged: (assets) => {
+                    if (assetsHasChanged != null)
+                      {
+                        assetsHasChanged(assets),
+                      }
+                  },
                 ),
               ),
               Padding(
