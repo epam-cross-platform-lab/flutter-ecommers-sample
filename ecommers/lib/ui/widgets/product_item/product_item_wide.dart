@@ -30,11 +30,7 @@ class ProductItemWide extends ProductItemBase {
       children: <Widget>[
         Expanded(
           child: Center(
-            child: Image.asset(
-              assetImagePath,
-              colorBlendMode: BlendMode.modulate,
-              color: color,
-            ),
+            child: CachedImage(imagePath: assetImagePath),
           ),
         ),
         Text(

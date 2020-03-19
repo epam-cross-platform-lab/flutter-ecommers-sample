@@ -268,10 +268,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget _buildRowAction({String imagePath, Text text}) {
     return Row(
       children: <Widget>[
-        Image.asset(
-          imagePath,
-          fit: BoxFit.scaleDown,
-        ),
+        CachedImage(imagePath: imagePath),
         const SizedBox(width: Insets.x3_5),
         text,
         const Spacer(),

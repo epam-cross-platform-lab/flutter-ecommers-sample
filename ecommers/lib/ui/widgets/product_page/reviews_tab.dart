@@ -5,6 +5,7 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 
 class ReviewsTab extends StatelessWidget {
   final List<ProductReviewsModel> productReviewsModel;
@@ -19,7 +20,7 @@ class ReviewsTab extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     return ListView.separated(
       scrollDirection: Axis.vertical,
-      separatorBuilder: (context, index) => SizedBox(height: Insets.x7_5),
+      separatorBuilder: (context, index) => const SizedBox(height: Insets.x7_5),
       itemCount: productReviewsModel.length,
       itemBuilder: (context, i) {
         return Row(
@@ -94,14 +95,13 @@ class ReviewsTab extends StatelessWidget {
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
                       separatorBuilder: (context, index) =>
-                          SizedBox(width: Insets.x3_5),
+                          const SizedBox(width: Insets.x3_5),
                       itemCount:
                           productReviewsModel[i].screenshotsPathes.length,
                       itemBuilder: (context, index) {
-                        return Image.asset(
-                          productReviewsModel[i].screenshotsPathes[index],
-                          scale: 0.45,
-                        );
+                        return CachedImage(
+                            imagePath: productReviewsModel[i]
+                                .screenshotsPathes[index]);
                       },
                     ),
                   ),

@@ -6,6 +6,7 @@ import 'package:ecommers/ui/pages/authorization/authorization_page.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:ecommers/web_server/local_server.dart';
+import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'core/provider_models/index.dart';
@@ -64,9 +65,14 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
               );
             case ConnectionState.done:
             default:
-              return membershipService.isNotExpired
-                  ? ShellPage()
-                  : const AuthorizationPage();
+              return SplashScreen.navigate(
+                name: Assets.splashLoader,
+                next: (_) => membershipService.isNotExpired
+                    ? ShellPage()
+                    : const AuthorizationPage(),
+                until: () => Future.delayed(const Duration()),
+                startAnimation: '1',
+              );
           }
         },
       ),

@@ -9,10 +9,26 @@ import 'package:ecommers/ui/widgets/product_page/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ProductPage extends StatelessWidget {
-  static final ProductItemModel productModel = createProductModel();
+class ProductPage extends StatefulWidget {
+  const ProductPage({Key key}) : super(key: key);
 
-  const ProductPage();
+  @override
+  _ProductPageState createState() => _ProductPageState();
+}
+
+class _ProductPageState extends State<ProductPage> {
+  final ProductItemModel productModel = createProductModel();
+  ValueNotifier<int> valueNotifier;
+  PageController pageController;
+  List<String> assetsImagePaths = [];
+
+  @override
+  void initState() {
+    valueNotifier = ValueNotifier<int>(0);
+    pageController = PageController(initialPage: 0, keepPage: false);
+    assetsImagePaths = productModel.colors[0].assetsImagePaths;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,18 +69,22 @@ class ProductPage extends StatelessWidget {
             child: ListView(
               children: [
                 CarouselWidget(
-                  assetImagePaths: [
-                    productModel.assetImagePath,
-                    productModel.assetImagePath,
-                    productModel.assetImagePath,
-                  ],
-                  currentPageNotifier: ValueNotifier<int>(0),
+                  assetImagePaths: assetsImagePaths,
+                  currentPageNotifier: valueNotifier,
+                  currentPageController: pageController,
                   height: 250,
                 ),
                 SizedBox(
                   height: 300,
                   child: ProductPageTabsView(
                     productModel: productModel,
+                    assetsHasChanged: (assets) => {
+                      setState(() => {
+                            valueNotifier.value = 0,
+                            pageController.jumpToPage(0),
+                            assetsImagePaths = assets,
+                          }),
+                    },
                   ),
                 ),
               ],
@@ -86,41 +106,78 @@ class ProductPage extends StatelessWidget {
   static ProductItemModel createProductModel() {
     final colors = [
       ProductColorModel(
-        isSelected: false,
-        color: 0xFFF48FB1,
+        isSelected: true,
+        color: 0xFF000000,
+        assetsImagePaths: [
+          Assets.blackShoes,
+          Assets.blackShoes,
+          Assets.blackShoes,
+        ],
       ),
       ProductColorModel(
         isSelected: false,
-        color: 0xFFFFB74D,
+        color: 0xFFFFF9C4,
+        assetsImagePaths: [
+          Assets.goldShoes,
+          Assets.goldShoes,
+          Assets.goldShoes,
+        ],
       ),
       ProductColorModel(
         isSelected: false,
-        color: 0xFF64B5F6,
+        color: 0xFFFFCDD2,
+        assetsImagePaths: [
+          Assets.pinkShoes,
+          Assets.pinkShoes,
+          Assets.pinkShoes,
+        ],
       ),
       ProductColorModel(
         isSelected: false,
-        color: 0xFFFFFFFF,
+        color: 0xFFE57373,
+        assetsImagePaths: [
+          Assets.redShoes,
+          Assets.redShoes,
+          Assets.redShoes,
+        ],
+      ),
+      ProductColorModel(
+        isSelected: false,
+        color: 0xFFF06292,
+        assetsImagePaths: [
+          Assets.roseRedShoes,
+          Assets.roseRedShoes,
+          Assets.roseRedShoes,
+        ],
       ),
       ProductColorModel(
         isSelected: false,
         color: 0xFFE0E0E0,
+        assetsImagePaths: [
+          Assets.silverShoes,
+          Assets.silverShoes,
+        ],
       ),
       ProductColorModel(
         isSelected: false,
-        color: 0xFF000000,
-      ),
-      ProductColorModel(
-        isSelected: false,
-        color: 0xFF81C784,
+        color: 0xFFFFFFFF,
+        assetsImagePaths: [
+          Assets.whiteShoes,
+          Assets.whiteShoes,
+          Assets.whiteShoes,
+        ],
       ),
       ProductColorModel(
         isSelected: false,
         color: 0xFFFFF176,
+        assetsImagePaths: [
+          Assets.yellowShoes,
+        ],
       ),
     ];
     final sizes = [
       ProductSizeModel(
-        isSelected: false,
+        isSelected: true,
         size: '4.5',
       ),
       ProductSizeModel(
@@ -163,11 +220,11 @@ class ProductPage extends StatelessWidget {
         profileImageColor: 0xFFB2EBF2,
         profileImageTextColor: 0xFF80DEEA,
         screenshotsPathes: [
-          Assets.review1,
-          Assets.review2,
-          Assets.review3,
-          Assets.review4,
-          Assets.review5,
+          Assets.blackShoes,
+          Assets.goldShoes,
+          Assets.pinkShoes,
+          Assets.redShoes,
+          Assets.roseRedShoes,
         ],
       ),
       ProductReviewsModel(
@@ -180,11 +237,11 @@ class ProductPage extends StatelessWidget {
         profileImageColor: 0xFFA5D6A7,
         profileImageTextColor: 0xFF81C784,
         screenshotsPathes: [
-          Assets.review1,
-          Assets.review2,
-          Assets.review3,
-          Assets.review4,
-          Assets.review5,
+          Assets.blackShoes,
+          Assets.goldShoes,
+          Assets.pinkShoes,
+          Assets.redShoes,
+          Assets.roseRedShoes,
         ],
       ),
       ProductReviewsModel(
@@ -197,11 +254,11 @@ class ProductPage extends StatelessWidget {
         profileImageColor: 0xFFB2EBF2,
         profileImageTextColor: 0xFF80DEEA,
         screenshotsPathes: [
-          Assets.review1,
-          Assets.review2,
-          Assets.review3,
-          Assets.review4,
-          Assets.review5,
+          Assets.blackShoes,
+          Assets.goldShoes,
+          Assets.pinkShoes,
+          Assets.redShoes,
+          Assets.roseRedShoes,
         ],
       ),
       ProductReviewsModel(
@@ -214,17 +271,16 @@ class ProductPage extends StatelessWidget {
         profileImageColor: 0xFFA5D6A7,
         profileImageTextColor: 0xFF81C784,
         screenshotsPathes: [
-          Assets.review1,
-          Assets.review2,
-          Assets.review3,
-          Assets.review4,
-          Assets.review5,
+          Assets.blackShoes,
+          Assets.goldShoes,
+          Assets.pinkShoes,
+          Assets.redShoes,
+          Assets.roseRedShoes,
         ],
       ),
     ];
 
     return ProductItemModel(
-      assetImagePath: Assets.dressCottonImage,
       title: 'best dress ever',
       cost: 15.0,
       rate: 3.9,

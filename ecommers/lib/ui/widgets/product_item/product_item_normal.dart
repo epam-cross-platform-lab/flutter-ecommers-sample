@@ -1,5 +1,6 @@
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -11,8 +12,7 @@ class ProductItemNormal extends ProductItemBase {
     @required String assetImagePath,
     @required String title,
     @required double cost,
-    })
-      : super(
+  }) : super(
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
@@ -26,7 +26,7 @@ class ProductItemNormal extends ProductItemBase {
       children: <Widget>[
         Expanded(
           child: Center(
-            child: Image.asset(assetImagePath),
+            child: CachedImage(imagePath: assetImagePath),
           ),
         ),
         const SizedBox(height: 4.0),
