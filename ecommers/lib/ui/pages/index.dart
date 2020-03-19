@@ -12,3 +12,4 @@ export 'profile_page.dart';
 export 'search_page.dart';
 export 'shell_page.dart';
 export 'success_page.dart';
+export 'success_state_page.dart';

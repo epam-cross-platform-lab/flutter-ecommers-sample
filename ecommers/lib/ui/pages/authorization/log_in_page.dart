@@ -33,13 +33,14 @@ class LogInPage extends StatelessWidget {
           },
         ),
         const SizedBox(height: Insets.x8_5),
-        AuthRichText(textSpanModelList: provider.bottomText),
+        AuthRichText(
+          textSpanModelList: provider.bottomText,
+        ),
       ],
     );
   }
 
-  AuthForm _buildLoginForm(
-      I18n localization, LogInProviderModel provider) {
+  AuthForm _buildLoginForm(I18n localization, LogInProviderModel provider) {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
