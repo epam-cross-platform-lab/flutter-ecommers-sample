@@ -7,19 +7,15 @@ import 'package:ecommers/ui/widgets/search_recommended_widget/index.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
-final  double recentlyViewedHeight = 55.0;
-final  double recommendedWiHeight = 55.0;
-
-
+  final double recentlyViewedHeight = 56.0;
+  final double recommendedWiHeight = 55.0;
 
   @override
-
-
   Widget build(BuildContext context) {
     final localization = I18n.of(context);
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal:20.0),
+        padding: const EdgeInsets.symmetric(horizontal: Insets.x5),
         child: Column(
           children: <Widget>[
             Row(

@@ -31,7 +31,6 @@ class SearchRecommendedWinget extends StatelessWidget {
     return InkWell(  //TODO: paste value to search filed
           onTap: () => {},
           child: Container(
-      height: 30,
       decoration: BoxDecoration(
         color: BrandingColors.background,
         borderRadius: BorderRadius.circular(Radiuses.small_1x),

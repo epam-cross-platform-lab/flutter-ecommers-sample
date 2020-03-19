@@ -15,7 +15,7 @@ class SearchTextFiled extends StatelessWidget {
             decoration: BoxDecoration(
               color: BrandingColors.blur,
               borderRadius: const BorderRadius.all(
-                Radius.circular(20),
+                Radius.circular(Radiuses.big_1_5x),
               ),
             ),
             child: TextFormField(

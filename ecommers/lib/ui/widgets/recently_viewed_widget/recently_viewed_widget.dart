@@ -1,5 +1,6 @@
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/widgets/product_item/index.dart';
 import 'package:ecommers/ui/widgets/recently_viewed_widget/index.dart';
 import 'package:flutter/material.dart';
 
@@ -18,13 +19,15 @@ class RecentlyViewedWidget extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-     return ListView.separated(
+    return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemCount: recentlyViewedList.length,
       itemBuilder: (context, index) {
         final itemModel = recentlyViewedList[index];
         return ProductItemSmall(
-          recentlyViewedItem: itemModel,
+          assetImagePath: itemModel.assetImagePath,
+          title: itemModel.title,
+          cost: itemModel.cost,
         );
       },
       separatorBuilder: (context, index) => const SizedBox(width: Insets.x3),
