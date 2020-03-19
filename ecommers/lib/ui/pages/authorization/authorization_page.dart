@@ -43,6 +43,8 @@ class _AuthorizationPageState extends State<AuthorizationPage>
           ),
         ),
         ChangeNotifierProvider(create: (_) => SignUpProviderModel(context)),
+        ChangeNotifierProvider(
+            create: (_) => ForgotPasswordProviderModel(context)),
         ChangeNotifierProxyProvider2<SignUpProviderModel, LogInProviderModel,
             BusyProviderModel>(
           create: (_) => BusyProviderModel(),
