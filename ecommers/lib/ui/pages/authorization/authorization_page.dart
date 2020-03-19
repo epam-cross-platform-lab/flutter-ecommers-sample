@@ -12,8 +12,22 @@ import 'package:ecommers/ui/widgets/backgrounded_safe_area.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AuthorizationPage extends StatelessWidget {
+class AuthorizationPage extends StatefulWidget {
   const AuthorizationPage({Key key}) : super(key: key);
+
+  @override
+  _AuthorizationPageState createState() => _AuthorizationPageState();
+}
+
+class _AuthorizationPageState extends State<AuthorizationPage>
+    with SingleTickerProviderStateMixin {
+  TabController currentTabController;
+  @override
+  void initState() {
+    currentTabController =
+        TabController(initialIndex: 0, length: 3, vsync: this);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +36,12 @@ class AuthorizationPage extends StatelessWidget {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LogInProviderModel(context)),
+        ChangeNotifierProvider(
+          create: (_) => LogInProviderModel(
+            context,
+            bottomTapCallback: _createANewAccountClicked,
+          ),
+        ),
         ChangeNotifierProvider(create: (_) => SignUpProviderModel(context)),
         ChangeNotifierProxyProvider2<SignUpProviderModel, LogInProviderModel,
             BusyProviderModel>(
@@ -40,6 +59,7 @@ class AuthorizationPage extends StatelessWidget {
               backgroundColor: BrandingColors.pageBackground,
               appBar: AppBar(
                 bottom: TabBar(
+                  controller: currentTabController,
                   tabs: <Widget>[
                     Tab(text: localization.signUp),
                     Tab(text: localization.logIn),
@@ -53,6 +73,7 @@ class AuthorizationPage extends StatelessWidget {
                 ),
               ),
               body: TabBarView(
+                controller: currentTabController,
                 children: <Widget>[
                   SignUpPage(),
                   LogInPage(),
@@ -63,6 +84,14 @@ class AuthorizationPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _createANewAccountClicked() {
+    setState(
+      () => {
+        currentTabController.animateTo(0),
+      },
     );
   }
 }
