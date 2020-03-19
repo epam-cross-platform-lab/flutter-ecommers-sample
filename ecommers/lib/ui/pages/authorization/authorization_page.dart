@@ -36,7 +36,12 @@ class _AuthorizationPageState extends State<AuthorizationPage>
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LogInProviderModel(context)),
+        ChangeNotifierProvider(
+          create: (_) => LogInProviderModel(
+            context,
+            bottomTapCallback: _createANewAccountClicked,
+          ),
+        ),
         ChangeNotifierProvider(create: (_) => SignUpProviderModel(context)),
         ChangeNotifierProxyProvider2<SignUpProviderModel, LogInProviderModel,
             BusyProviderModel>(
@@ -71,15 +76,7 @@ class _AuthorizationPageState extends State<AuthorizationPage>
                 controller: currentTabController,
                 children: <Widget>[
                   SignUpPage(),
-                  LogInPage(
-                    createANewAccountClicked: () {
-                      setState(
-                        () => {
-                          currentTabController.animateTo(0),
-                        },
-                      );
-                    },
-                  ),
+                  LogInPage(),
                   ForgotPasswordPage(),
                 ],
               ),
@@ -87,6 +84,14 @@ class _AuthorizationPageState extends State<AuthorizationPage>
           ),
         ),
       ),
+    );
+  }
+
+  void _createANewAccountClicked() {
+    setState(
+      () => {
+        currentTabController.animateTo(0),
+      },
     );
   }
 }

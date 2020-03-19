@@ -11,15 +11,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class LogInPage extends StatelessWidget {
-  final Function() createANewAccountClicked;
-
-  const LogInPage({this.createANewAccountClicked});
-
   @override
   Widget build(BuildContext context) {
     final localization = I18n.of(context);
     final provider = Provider.of<LogInProviderModel>(context, listen: false);
-    provider.bottomTapCallback = createANewAccountClicked;
 
     final loginForm = _buildLoginForm(localization, provider);
 
