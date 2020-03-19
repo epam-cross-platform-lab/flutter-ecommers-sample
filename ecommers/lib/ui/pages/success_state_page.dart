@@ -19,25 +19,33 @@ class SuccessStatePage<T extends SuccessNotifier> extends StatelessWidget {
 
     return Consumer<T>(
       builder: (_, provider, child) {
-        return Visibility(
-          visible: provider.isSuccess,
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: Insets.x1_5, sigmaY: Insets.x1_5),
-            child: Center(
-              child: SizedBox(
-                height: animationSize,
-                width: animationSize,
-                child: FlareActor(
-                  Assets.successAnimation,
-                  alignment: Alignment.center,
-                  animation: animationState,
-                  callback: (arg) => {
-                    provider.isSuccess = false,
-                  },
+        return Stack(
+          children: <Widget>[
+            child,
+            Visibility(
+              visible: provider.isSuccess,
+              child: BackdropFilter(
+                filter: ImageFilter.blur(
+                  sigmaX: Insets.x1_5,
+                  sigmaY: Insets.x1_5,
+                ),
+                child: Center(
+                  child: SizedBox(
+                    height: animationSize,
+                    width: animationSize,
+                    child: FlareActor(
+                      Assets.successAnimation,
+                      alignment: Alignment.center,
+                      animation: animationState,
+                      callback: (arg) => {
+                        provider.isSuccess = false,
+                      },
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
+          ],
         );
       },
       child: child,

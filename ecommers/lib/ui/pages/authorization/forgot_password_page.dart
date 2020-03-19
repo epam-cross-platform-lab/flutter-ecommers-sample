@@ -20,31 +20,28 @@ class ForgotPasswordPage extends StatelessWidget {
     final provider =
         Provider.of<ForgotPasswordProviderModel>(context, listen: false);
 
-    return Stack(
-      children: <Widget>[
-        AuthorizationTabBase(
-          children: <Widget>[
-            Text(
-              localization.forgotPasswordHelpText,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyText2,
-            ),
-            const SizedBox(height: Insets.x8_5),
-            forgotPasswordForm,
-            const SizedBox(height: Insets.x3_5),
-            PrimaryButtonWidget(
-              text: localization.logIn,
-              assetIconPath: Assets.arrowRightIcon,
-              onPressedFunction: () {
-                if (forgotPasswordForm.formKey.currentState.validate()) {
-                  provider.sendPasswordToEmail();
-                }
-              }, //TODO: add providers handler to it
-            ),
-          ],
-        ),
-        const SuccessStatePage<ForgotPasswordProviderModel>(),
-      ],
+    return SuccessStatePage<ForgotPasswordProviderModel>(
+      child: AuthorizationTabBase(
+        children: <Widget>[
+          Text(
+            localization.forgotPasswordHelpText,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+          const SizedBox(height: Insets.x8_5),
+          forgotPasswordForm,
+          const SizedBox(height: Insets.x3_5),
+          PrimaryButtonWidget(
+            text: localization.logIn,
+            assetIconPath: Assets.arrowRightIcon,
+            onPressedFunction: () {
+              if (forgotPasswordForm.formKey.currentState.validate()) {
+                provider.sendPasswordToEmail();
+              }
+            }, //TODO: add providers handler to it
+          ),
+        ],
+      ),
     );
   }
 
