@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/web_server/data_access/user_data_access.dart';
 import 'package:http_server/http_server.dart';
 
@@ -37,7 +36,7 @@ class RequestHandler {
     if (await _userDataAccess.isUserExists(user)) {
       body.request.response
         ..headers.contentType = ContentType.json
-        ..write(await fileManager.readJson(jsonFile))
+        ..write(await FileManager.readJson(jsonFile))
         ..close();
 
       return;
@@ -61,7 +60,7 @@ class RequestHandler {
 
       body.request.response
         ..headers.contentType = ContentType.json
-        ..write(await fileManager.readJson(jsonFile))
+        ..write(await FileManager.readJson(jsonFile))
         ..close();
 
       return;
@@ -103,7 +102,7 @@ class RequestHandler {
         jsonFileName = 'products_apparel.json';
     }
 
-    return fileManager.readJson(jsonFileName);
+    return FileManager.readJson(jsonFileName);
   }
 
   Future _handleUnsupportedRequest(HttpRequestBody body) async {

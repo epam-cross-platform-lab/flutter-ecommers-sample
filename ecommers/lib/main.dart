@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:ecommers/core/provider_models/main_provider.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
@@ -6,19 +9,41 @@ import 'package:ecommers/ui/pages/authorization/authorization_page.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:ecommers/web_server/local_server.dart';
+import 'package:ecommers/web_server/models/product.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import 'core/common/index.dart';
 import 'core/provider_models/index.dart';
 
-void main() {
+List<Product> products;
+
+void main() async {
   runApp(MainApp());
   DependencyService.registerDependencies();
+
+  final productsJson = await FileManager.readJson('products.json');
+
+  products = await compute(_parseProducts, productsJson,
+          debugLabel: 'WTF with compute')
+      .catchError(errorHandler);
+}
+
+void errorHandler(Object e) {
+  print('Error happened $e');
 }
 
 class MainApp extends StatefulWidget {
   @override
   _MainAppState createState() => _MainAppState();
+}
+
+List<Product> _parseProducts(String productsJson) {
+  final productsIterable =
+      (jsonDecode(productsJson) as Iterable).cast<Map<String, dynamic>>();
+
+  return productsIterable.map((e) => Product.fromJson(e)).toList();
 }
 
 class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
@@ -28,6 +53,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     LocalServer.setup();
+    //LocalServer.fetchProducts();
     super.initState();
   }
 
