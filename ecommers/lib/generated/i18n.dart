@@ -100,6 +100,10 @@ class I18n implements WidgetsLocalizations {
   String get loginBottomTextSpan1 => "Don’t have an account? Swipe right to \n";
   /// "create a new account."
   String get loginBottomTextSpan2 => "create a new account.";
+  /// "Search"
+  String get searchTitle => "Search";
+  /// "Search Something"
+  String get searchProductHintTilt => "Search Something";
   /// "REFINE RESULTS"
   String get refineResults => "REFINE RESULTS";
   /// "CLEAR"
@@ -138,6 +142,8 @@ class I18n implements WidgetsLocalizations {
   String get selectColor => "SELECT COLOR";
   /// "SELECT SIZE (US)"
   String get selectSizeUs => "SELECT SIZE (US)";
+  /// "RECENTLY VIEWED"
+  String get recentlyViewed => "RECENTLY VIEWED";
   /// "BRAND"
   String get brand => "BRAND";
   /// "SKU"
@@ -152,6 +158,10 @@ class I18n implements WidgetsLocalizations {
   String get fitting => "FITTING";
   /// "ok"
   String get ok => "ok";
+  /// "RECOMMENDED"
+  String get recommended => "RECOMMENDED";
+  /// "REFRESH"
+  String get refresh => "REFRESH";
   /// "email is not valid."
   String get emailError => "email is not valid.";
   /// "password should have at least 4 characters."
