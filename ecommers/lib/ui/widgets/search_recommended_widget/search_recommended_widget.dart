@@ -16,34 +16,34 @@ class SearchRecommendedWinget extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Wrap(
-        spacing: Insets.x2_5,
-        runSpacing: Insets.x2,
-        children: recommendedList
-            .map((item) => createItem(item.titile, context))
-            .toList(),
-      ),
+    return Wrap(
+      spacing: Insets.x2_5,
+      runSpacing: Insets.x2,
+      children: recommendedList
+          .map((item) => createItem(item.titile, context))
+          .toList(),
     );
   }
 
   Widget createItem(String searchRecommendedItem, BuildContext context) {
-    return InkWell(  //TODO: paste value to search filed
-          onTap: () => {},
-          child: Container(
-      decoration: BoxDecoration(
-        color: BrandingColors.background,
-        borderRadius: BorderRadius.circular(Radiuses.small_1x),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: Insets.x2_5, vertical: Insets.x2),
-        child:  Text(
+    return InkWell(
+      //TODO: paste value to search filed
+      onTap: () => {},
+      child: Container(
+        decoration: BoxDecoration(
+          color: BrandingColors.background,
+          borderRadius: BorderRadius.circular(Radiuses.small_1x),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+              horizontal: Insets.x2_5, vertical: Insets.x2),
+          child: Text(
             searchRecommendedItem,
             style: Theme.of(context).textTheme.bodyText1.copyWith(
                   fontSize: FontSizes.small_3x,
                   fontWeight: FontWeight.w400,
                 ),
-          ), 
+          ),
         ),
       ),
     );

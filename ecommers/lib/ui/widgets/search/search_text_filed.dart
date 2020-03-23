@@ -11,7 +11,7 @@ class SearchTextFiled extends StatelessWidget {
       children: <Widget>[
         Expanded(
           child: Container(
-            height: 35,
+            height: 35.0,
             decoration: BoxDecoration(
               color: BrandingColors.blur,
               borderRadius: const BorderRadius.all(
@@ -27,7 +27,7 @@ class SearchTextFiled extends StatelessWidget {
                       fontWeight: FontWeight.w300,
                     ),
                 prefixIcon: Padding(
-                  padding: const EdgeInsetsDirectional.only(start: 100, end: 5),
+                  padding: const EdgeInsetsDirectional.only(start: Insets.x25, end: Insets.x1),
                   child: Icon(
                     Icons.search,
                     size: FontSizes.normal,

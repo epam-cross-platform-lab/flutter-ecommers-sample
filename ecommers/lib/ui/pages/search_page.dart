@@ -7,8 +7,8 @@ import 'package:ecommers/ui/widgets/search_recommended_widget/index.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
-  final double recentlyViewedHeight = 56.0;
-  final double recommendedWiHeight = 55.0;
+  static const double recentlyViewedHeight = 56.0;
+  static const double recommendedWiHeight = 55.0;
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +79,7 @@ class SearchPage extends StatelessWidget {
             ),
             const SizedBox(height: Insets.x5),
             Container(
-              height: 70,
+              height: 75.0,
               child: SearchRecommendedWinget(),
             ),
           ],
