@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:isolate';
 
 import 'package:ecommers/core/provider_models/main_provider.dart';
 import 'package:ecommers/core/services/index.dart';
@@ -13,25 +14,66 @@ import 'package:ecommers/web_server/models/product.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'core/common/index.dart';
 import 'core/provider_models/index.dart';
 
 List<Product> products;
 
-void main() async {
+Future main() async {
   runApp(MainApp());
   DependencyService.registerDependencies();
 
-  final productsJson = await FileManager.readJson('products.json');
+  // final productsJson = await FileManager.readJson('products.json');
 
-  products = await compute(_parseProducts, productsJson,
-          debugLabel: 'WTF with compute')
-      .catchError(errorHandler);
+  // products = await compute(_parseProducts, productsJson,
+  //         debugLabel: 'WTF with compute')
+  //     .catchError(errorHandler);
+
+  await createIsolate();
 }
 
 void errorHandler(Object e) {
   print('Error happened $e');
+}
+
+Future createIsolate() async {
+  final ReceivePort mainPort = ReceivePort();
+  final Completer<List<Product>> resultProducts = Completer<List<Product>>();
+
+  final isolate = await Isolate.spawn(getProducts, mainPort.sendPort);
+
+  mainPort.listen((dynamic resultData)  async{
+    if (resultData is SendPort) {
+      final isolatedPort = resultData;
+      final productsJson = await FileManager.readJson('products.json');
+
+      isolatedPort.send(productsJson);
+    } else {
+      resultProducts.complete(resultData as List<Product>);
+    }
+  });
+
+  await resultProducts.future;
+  isolate.kill();
+}
+
+Future getProducts(SendPort sendPort) async {
+  final currentPort = ReceivePort();
+  sendPort.send(currentPort.sendPort);
+
+  final String productsString = await currentPort.first as String;
+
+  // final dadad = await rootBundle.load('${FileManager.jsonPath}products.json');
+  // final data = utf8.decode(dadad.buffer.asUint8List());
+  //final data = await FileManager.readJson('products.json');
+  final productsMap =
+      (jsonDecode(productsString) as Iterable).cast<Map<String, dynamic>>();
+
+  final products = productsMap.map((e) => Product.fromJson(e)).toList();
+
+  sendPort.send(products);
 }
 
 class MainApp extends StatefulWidget {
