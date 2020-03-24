@@ -89,27 +89,33 @@ class HomePage extends StatelessWidget {
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) {
-            return ProductItemNormal(
-              assetImagePath: _getDressAssetPath(index),
-              cost: 15.0,
-              title: 'best dress ever',
+            return Hero(
+              tag: _getDressAssetPath(index),
+              child: ProductItemNormal(
+                assetImagePath: _getDressAssetPath(index),
+                cost: 15.0,
+                title: 'best dress ever',
+              ),
             );
           },
-          childCount: 30,
+          childCount: 9,
         ),
       ),
     );
   }
 
   String _getDressAssetPath(int index) {
-    final modulo = index % 6;
+    final modulo = index % 9;
 
     if (modulo == 0) return Assets.dressCottonImage;
     if (modulo == 1) return Assets.dressFloral2Image;
     if (modulo == 2) return Assets.dressFloralImage;
     if (modulo == 3) return Assets.dressPattern2Image;
     if (modulo == 4) return Assets.dressPatternImage;
-    if (modulo == 5) {
+    if (modulo == 5) return Assets.blackShoes;
+    if (modulo == 6) return Assets.goldShoes;
+    if (modulo == 7) return Assets.redShoes;
+    if (modulo == 8) {
       return Assets.dressCotton2Image;
     } else {
       return Assets.greenBackpackImage;

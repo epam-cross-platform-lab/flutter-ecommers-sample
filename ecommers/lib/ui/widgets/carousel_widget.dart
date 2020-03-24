@@ -47,7 +47,7 @@ class CarouselWidget extends StatelessWidget {
           controller: currentPageController,
           itemBuilder: (BuildContext context, int index) {
             return Center(
-              child: CachedImage(imagePath: assetImagePaths[index]),
+              child: HeroImage(imagePath: assetImagePaths[index]),
             );
           },
           onPageChanged: (int index) {
