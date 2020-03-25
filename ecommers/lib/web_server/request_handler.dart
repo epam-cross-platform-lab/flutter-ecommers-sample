@@ -1,10 +1,16 @@
+import 'dart:convert';
 import 'dart:io';
 
-import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/web_server/data_access/user_data_access.dart';
 import 'package:http_server/http_server.dart';
+import '../core/common/index.dart';
+import '../extensions/string_extension.dart';
 
+import 'data_access/user_data_access.dart';
+
+import 'models/product.dart';
 import 'models/user.dart';
+import 'services/authorization_service.dart';
+import 'services/products_provider.dart';
 
 class RequestHandler {
   static final UserDataAccess _userDataAccess = UserDataAccess.instance;
@@ -22,21 +28,25 @@ class RequestHandler {
       case ApiDefines.products:
         _handleProductsRequest(body);
         break;
+      case ApiDefines.productsLatest:
+        _handleCategoriesRequest(body);
+        break;
+      case ApiDefines.categories:
+        _handleCategoriesRequest(body);
+        break;
       default:
         _handleUnsupportedRequest(body);
     }
   }
 
   Future _handleLoginRequest(HttpRequestBody body) async {
-    const String jsonFile = 'login.json';
-
     final userMap = body.body as Map<String, dynamic>;
     final user = User.fromJsonFactory(userMap);
 
     if (await _userDataAccess.isUserExists(user)) {
       body.request.response
         ..headers.contentType = ContentType.json
-        ..write(await FileManager.readJson(jsonFile))
+        ..write(AuthorizationService.signToken(userMap))
         ..close();
 
       return;
@@ -48,8 +58,6 @@ class RequestHandler {
   }
 
   Future _handleAuthorizationRequest(HttpRequestBody body) async {
-    const String jsonFile = 'login.json';
-
     final userMap = body.body as Map<String, dynamic>;
     final user = User.fromJsonFactory(userMap);
 
@@ -60,7 +68,7 @@ class RequestHandler {
 
       body.request.response
         ..headers.contentType = ContentType.json
-        ..write(await FileManager.readJson(jsonFile))
+        ..write(AuthorizationService.signToken(userMap))
         ..close();
 
       return;
@@ -73,36 +81,47 @@ class RequestHandler {
   }
 
   Future _handleProductsRequest(HttpRequestBody body) async {
-    final categoryType =
-        getCategoryType(body.request.uri.queryParameters['type']);
-    final products = await _getProducts(categoryType);
+    const int itemsPortion = 20;
+
+    Iterable<Product> resultProducts = ProductsProvider.products;
+    final queryParameters = body.request.uri.queryParameters;
+
+    final category = queryParameters['category'];
+    final subCategory = queryParameters['subCategory'];
+    final rangeFrom = queryParameters['rangeFrom'];
+    final rangeTo = queryParameters['rangeTo'];
+    final searchQuery = queryParameters['searchQuery'];
+
+    if (category.isNotNullOrEmpty) {
+      resultProducts = resultProducts.where((p) => p.category == category);
+    } else if (subCategory.isNotNullOrEmpty) {
+      resultProducts = resultProducts.where(
+          (p) => p.category == subCategory); //!  p.category to SubCategory
+    } else if (rangeFrom.isNotNullOrEmpty && rangeTo.isNotNullOrEmpty) {
+      resultProducts =
+          resultProducts.skip(int.parse(rangeFrom)).take(int.parse(rangeTo));
+    } else if (searchQuery.isNotNullOrEmpty) {
+      resultProducts =
+          resultProducts.where((p) => p.title.contains(searchQuery));
+    }
+
+    if (resultProducts.length > itemsPortion) {
+      resultProducts = resultProducts.take(itemsPortion);
+    }
 
     body.request.response
       ..headers.contentType = ContentType.json
-      ..write(products)
+      ..write(json.encode(resultProducts))
       ..close();
   }
 
-  Categories getCategoryType(String typeString) {
-    return Categories.values.firstWhere((e) => e.toString() == typeString);
-  }
+  Future _handleCategoriesRequest(HttpRequestBody body) async {
+    final categoriesJson = json.encode(ProductsProvider.categories);
 
-  Future<String> _getProducts(Categories type) async {
-    String jsonFileName = '';
-
-    switch (type) {
-      case Categories.shoes:
-        jsonFileName = 'products_shoes.json';
-        break;
-      case Categories.beauty:
-        jsonFileName = 'products_beauty.json';
-        break;
-      case Categories.apparel:
-      default:
-        jsonFileName = 'products_apparel.json';
-    }
-
-    return FileManager.readJson(jsonFileName);
+    body.request.response
+      ..headers.contentType = ContentType.json
+      ..write(categoriesJson)
+      ..close();
   }
 
   Future _handleUnsupportedRequest(HttpRequestBody body) async {

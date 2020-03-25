@@ -17,6 +17,7 @@ extension GetItExtension on GetIt {
         factories: {
           LoginModel: LoginModel.fromJsonFactory,
           ProductModel: ProductModel.fromJsonFactory,
+          CategoryModel: CategoryModel.fromJsonFactory,
         },
       ),
     );

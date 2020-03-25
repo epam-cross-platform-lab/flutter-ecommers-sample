@@ -17,4 +17,7 @@ abstract class ApiService extends ChopperService {
 
   @Get(path: ApiDefines.products)
   Future<Response<List<ProductModel>>> products(@Query('type') Categories type);
+
+  @Get(path: ApiDefines.categories)
+  Future<Response<List<CategoryModel>>> categories();
 }

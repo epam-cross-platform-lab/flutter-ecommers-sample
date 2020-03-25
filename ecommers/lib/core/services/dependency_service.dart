@@ -1,3 +1,4 @@
+import 'package:ecommers/core/app_services/category_service.dart';
 import 'package:ecommers/core/app_services/index.dart';
 import 'package:ecommers/core/common/file_manager.dart';
 import 'package:ecommers/core/services/api_service.dart';
@@ -15,6 +16,7 @@ MembershipService get membershipService => GetIt.I.get<MembershipService>();
 RequestHandler get requestHandler => GetIt.I.get<RequestHandler>();
 AuthorizationService get authorizationService => GetIt.I.get<AuthorizationService>();
 ProductService get productService => GetIt.I.get<ProductService>();
+CategoryService get categoryService => GetIt.I.get<CategoryService>();
 
 class DependencyService {
   static void registerDependencies() {
@@ -26,6 +28,7 @@ class DependencyService {
       ..registerLazySingleton<RequestHandler>(() => RequestHandler())
       ..registerLazySingleton<AuthorizationService>(() => AuthorizationService())
       ..registerLazySingleton<ProductService>(() => ProductService())
+      ..registerLazySingleton<CategoryService>(() => CategoryService())
       ..registerLazySingleton<MembershipService>(
           () => MembershipService(const FlutterSecureStorage()))
       ..registerHttpClient();

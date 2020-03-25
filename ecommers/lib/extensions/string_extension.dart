@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 extension StringExtension on String {
   bool get isNullOrEmpty => this == null || isEmpty;
+  bool get isNotNullOrEmpty => !isNullOrEmpty;
 
   Color fromHexToColor() {
     final buffer = StringBuffer();
