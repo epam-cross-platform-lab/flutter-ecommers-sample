@@ -1,7 +1,8 @@
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:flutter/material.dart';
 
-class ShellProviderModel with ChangeNotifier {
+class ShellProviderModel extends ProviderModelBase {
   final List<Pages> pages = [
     Pages.home,
     Pages.search,
@@ -11,6 +12,8 @@ class ShellProviderModel with ChangeNotifier {
   ];
 
   int selectedItemIndex = 0;
+
+  ShellProviderModel(BuildContext context) : super(context);
 
   Pages get selectedPage => pages[selectedItemIndex];
 

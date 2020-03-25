@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -86,7 +87,8 @@ class ProfilePage extends StatelessWidget {
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               image: DecorationImage(
-                image: AssetImage(Assets.girlImage),
+                image: CachedNetworkImageProvider(
+                    '${Assets.imageBaseUrl}/${Assets.girlImage}'),
                 fit: BoxFit.cover,
               ),
             ),

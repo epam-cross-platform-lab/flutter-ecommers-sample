@@ -6,19 +6,20 @@ import 'package:ecommers/ui/utils/dialog_manager.dart';
 import 'package:flutter/material.dart';
 
 class LogInProviderModel extends ProviderModelBase {
-  String username;
+  String usernameOrEmail;
   String password;
-
+  Function bottomTapCallback;
   List<AuthRichTextSpanModel> _bottomText;
   List<AuthRichTextSpanModel> get bottomText => _getBottomText();
 
-  LogInProviderModel(BuildContext context) : super(context);
+  LogInProviderModel(BuildContext context, {this.bottomTapCallback})
+      : super(context);
 
   Future tryLogin() async {
     isBusy = true;
 
     final isSuccessful =
-        await authorizationService.tryLogin(username, password);
+        await authorizationService.tryLogin(usernameOrEmail, password);
 
     isBusy = false;
 
@@ -39,6 +40,12 @@ class LogInProviderModel extends ProviderModelBase {
       AuthRichTextSpanModel(
         text: localization.loginBottomTextSpan2,
         isTappable: true,
+        onTap: () => {
+          if (bottomTapCallback != null)
+            {
+              bottomTapCallback(),
+            },
+        },
       ),
     ];
   }

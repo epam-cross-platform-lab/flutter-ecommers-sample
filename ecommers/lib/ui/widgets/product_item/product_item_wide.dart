@@ -6,19 +6,21 @@ import 'package:flutter/material.dart';
 
 class ProductItemWide extends ProductItemBase {
   final double rate;
+  final Color color;
 
-  static const productItemWideSize = Size(160.0, 218.0);
+  static const size = Size(160.0, 218.0);
 
   const ProductItemWide({
     @required String assetImagePath,
     @required String title,
     @required double cost,
+    this.color = Colors.transparent,
     this.rate,
   }) : super(
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
-          productSize: productItemWideSize,
+          productSize: size,
         );
 
   @override
@@ -28,7 +30,7 @@ class ProductItemWide extends ProductItemBase {
       children: <Widget>[
         Expanded(
           child: Center(
-            child: Image.asset(assetImagePath),
+            child: CachedImage(imagePath: assetImagePath),
           ),
         ),
         Text(

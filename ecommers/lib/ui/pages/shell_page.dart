@@ -1,51 +1,51 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/notifier_provider_widget.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/bottom_navigation_widget.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
-class ShellPage extends StatefulWidget {
-  @override
-  _ShellPageState createState() => _ShellPageState();
-}
-
-class _ShellPageState extends State<ShellPage> {
+class ShellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return NotifierProviderWidget(
-      providerModel: ShellProviderModel(),
-      builder: (context, ShellProviderModel model, child) {
-        return Scaffold(
-          appBar: AppBar(
-            actions: <Widget>[
-              _buildAction(
-                imageAssetPath: Assets.messagesIcon,
-                onIconPressedFuction: () {}, //TODO get from provider
-                badgeValue: 5, //TODO get from provider
-              ),
-              _buildAction(
-                imageAssetPath: Assets.notificationIcon,
-                onIconPressedFuction: () {}, //TODO get from provider
-                badgeValue: 6, //TODO get from provider
-              ),
-            ],
-          ),
-          backgroundColor: BrandingColors.pageBackground,
-          body: BackgroundedSafeArea(
-            child: _buildBody(model.selectedPage),
-          ),
-          bottomNavigationBar: BottomNavigationWidget(
-            selectedIndex: model.selectedItemIndex,
-            pages: model.pages,
-            onTappedFunction: model.onTappedItem,
-            orderCount: 3,
-          ),
-        );
-      },
+    return ChangeNotifierProvider(
+      create: (_) => ShellProviderModel(context),
+      child: Consumer<ShellProviderModel>(
+        builder: (context, ShellProviderModel model, child) {
+          return Scaffold(
+            appBar: AppBar(
+              actions: <Widget>[
+                _buildAction(
+                  imageAssetPath: Assets.messagesIcon,
+                  onIconPressedFuction: () {}, //TODO get from provider
+                  badgeValue: 5, //TODO get from provider
+                  context: context,
+                ),
+                _buildAction(
+                  imageAssetPath: Assets.notificationIcon,
+                  onIconPressedFuction: () => navigationService.navigateTo(Pages.notifications), //TODO get from provider
+                  badgeValue: 6, //TODO get from provider
+                  context: context,
+                ),
+              ],
+            ),
+            backgroundColor: BrandingColors.pageBackground,
+            body: BackgroundedSafeArea(
+              child: _buildBody(model.selectedPage),
+            ),
+            bottomNavigationBar: BottomNavigationWidget(
+              selectedIndex: model.selectedItemIndex,
+              pages: model.pages,
+              onTappedFunction: model.onTappedItem,
+              orderCount: 3,
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -70,6 +70,7 @@ class _ShellPageState extends State<ShellPage> {
     String imageAssetPath,
     Function() onIconPressedFuction,
     int badgeValue,
+    BuildContext context,
   }) {
     return IconButton(
       icon: IconWithBadge(

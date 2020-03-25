@@ -6,8 +6,10 @@ import 'package:ecommers/ui/pages/authorization/authorization_page.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:ecommers/web_server/local_server.dart';
+import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
+import 'core/provider_models/index.dart';
 
 void main() {
   runApp(MainApp());
@@ -49,31 +51,36 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) =>
-          MainProviderModel(context)..initialize(),
-      child: MaterialApp(
-        title: 'ecommers',
-        theme: ThemeProvider.getTheme(),
-        home: Consumer(
-          builder: (_, MainProviderModel provider, __) {
-            if (provider.isBusy) {
+    return MaterialApp(
+      title: 'ecommers',
+      theme: ThemeProvider.getTheme(),
+      home: FutureBuilder(
+        future: MainProviderModel(context).initialize(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.active:
               return Container(
                 color: BrandingColors.pageBackground,
                 child: const Center(child: Progress()),
               );
-            }
-            return membershipService.isNotExpired
-                ? ShellPage()
-                : const AuthorizationPage();
-          },
-        ),
-        navigatorKey: navigationService.navigatorKey,
-        localizationsDelegates: [i18n],
-        supportedLocales: i18n.supportedLocales,
-        localeResolutionCallback: i18n.resolution(
-          fallback: const Locale('en', 'US'),
-        ),
+            case ConnectionState.done:
+            default:
+              return SplashScreen.navigate(
+                name: Assets.splashLoader,
+                next: (_) => membershipService.isNotExpired
+                    ? ShellPage()
+                    : const AuthorizationPage(),
+                until: () => Future.delayed(const Duration()),
+                startAnimation: '1',
+              );
+          }
+        },
+      ),
+      navigatorKey: navigationService.navigatorKey,
+      localizationsDelegates: [i18n],
+      supportedLocales: i18n.supportedLocales,
+      localeResolutionCallback: i18n.resolution(
+        fallback: const Locale('en', 'US'),
       ),
     );
   }

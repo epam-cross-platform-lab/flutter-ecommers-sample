@@ -9,6 +9,16 @@ import 'package:flutter/material.dart';
 class CategoriesCompactWidget extends StatelessWidget {
   static const _containerHeight = 134.0;
 
+  static const categoryList = [
+    Categories.apparel,
+    Categories.beauty,
+    Categories.electronics,
+    Categories.furniture,
+    Categories.home,
+    Categories.shoes,
+    Categories.stationary
+  ];
+
   static const categoryItemSize = Size(74.0, 89.0);
 
   @override
@@ -49,10 +59,14 @@ class CategoriesCompactWidget extends StatelessWidget {
             return _buildSeeAllCategory(context);
           }
 
-          return CategoryItem.fromType(Categories.values[index]);
+          return CategoryItem.fromType(categoryList[index], onCategoryTap);
         },
       ),
     );
+  }
+
+  void onCategoryTap(Categories type) {
+    navigationService.navigateTo(Pages.productsGrid, arguments: type);
   }
 
   Widget _buildSeeAllCategory(BuildContext context) {
