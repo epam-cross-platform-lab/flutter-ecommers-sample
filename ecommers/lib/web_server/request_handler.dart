@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:http_server/http_server.dart';
 import '../core/common/index.dart';
@@ -10,10 +11,13 @@ import 'data_access/user_data_access.dart';
 import 'models/product.dart';
 import 'models/user.dart';
 import 'services/authorization_service.dart';
-import 'services/products_provider.dart';
+import 'services/data_provider.dart';
 
 class RequestHandler {
   static final UserDataAccess _userDataAccess = UserDataAccess.instance;
+
+  static String getMethod = 'GET';
+  static String postMethod = 'GET';
 
   void process(HttpRequestBody body) {
     final path = body.request.uri.path.toString();
@@ -33,6 +37,16 @@ class RequestHandler {
         break;
       case ApiDefines.categories:
         _handleCategoriesRequest(body);
+        break;
+      case ApiDefines.searchRecommended:
+        _handleSearchRecommendedReq(body);
+        break;
+      case ApiDefines.searchRecentlyViewed:
+        if (body.request.method == getMethod) {
+          _handleSearchRecentlyViewedReq(body);
+        } else if (body.request.method == postMethod) {
+          _handleSearchRecentlyViewedPostReq(body);
+        }
         break;
       default:
         _handleUnsupportedRequest(body);
@@ -83,7 +97,7 @@ class RequestHandler {
   Future _handleProductsRequest(HttpRequestBody body) async {
     const int itemsPortion = 20;
 
-    Iterable<Product> resultProducts = ProductsProvider.products;
+    Iterable<Product> resultProducts = DataProvider.products;
     final queryParameters = body.request.uri.queryParameters;
 
     final category = queryParameters['category'];
@@ -91,6 +105,7 @@ class RequestHandler {
     final rangeFrom = queryParameters['rangeFrom'];
     final rangeTo = queryParameters['rangeTo'];
     final searchQuery = queryParameters['searchQuery'];
+    final sortType = queryParameters['sortType'];
 
     if (category.isNotNullOrEmpty) {
       resultProducts = resultProducts.where((p) => p.category == category);
@@ -115,8 +130,39 @@ class RequestHandler {
       ..close();
   }
 
+  Future _handleSearchRecommendedReq(HttpRequestBody body) async {
+    const recommendedCount =  5;
+    final random =  Random();
+
+    final resultProducts = DataProvider.products.skip(random.nextInt(5000)).take(recommendedCount);
+    final productsJson = json.encode(resultProducts);
+
+    body.request.response
+      ..headers.contentType = ContentType.json
+      ..write(productsJson)
+      ..close();
+  }
+
+  Future _handleSearchRecentlyViewedReq(HttpRequestBody body) async {
+    // final categoriesJson = json.encode(DataProvider.categories);
+
+    // body.request.response
+    //   ..headers.contentType = ContentType.json
+    //   ..write(categoriesJson)
+    //   ..close();
+  }
+
+  Future _handleSearchRecentlyViewedPostReq(HttpRequestBody body) async {
+    // final categoriesJson = json.encode(DataProvider.categories);
+
+    // body.request.response
+    //   ..headers.contentType = ContentType.json
+    //   ..write(categoriesJson)
+    //   ..close();
+  }
+
   Future _handleCategoriesRequest(HttpRequestBody body) async {
-    final categoriesJson = json.encode(ProductsProvider.categories);
+    final categoriesJson = json.encode(DataProvider.categories);
 
     body.request.response
       ..headers.contentType = ContentType.json

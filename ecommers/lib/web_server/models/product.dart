@@ -7,9 +7,6 @@ part 'product.g.dart';
 
 @JsonSerializable()
 class Product {
-
-  static int count = 0;
-
   @JsonKey(name: 'id')
   final int id;
 
@@ -19,6 +16,9 @@ class Product {
   @JsonKey(name: 'category')
   final String category;
 
+  @JsonKey(name: 'subCategory')
+  final String subCategory;
+
   @JsonKey(name: 'title')
   final String title;
 
@@ -27,6 +27,9 @@ class Product {
 
   @JsonKey(name: 'baseColor')
   final String baseColor;
+
+  @JsonKey(name: 'baseColor')
+  final String catalogAddDate;
 
   @JsonKey(name: 'styleImages')
   final List<String> images;
@@ -55,6 +58,8 @@ class Product {
     this.models,
     this.details,
     this.reviews,
+    this.subCategory,
+    this.catalogAddDate,
   );
 
   static const fromJsonFactory = _$ProductFromJson;
