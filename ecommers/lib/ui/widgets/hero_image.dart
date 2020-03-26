@@ -5,17 +5,22 @@ import 'index.dart';
 class HeroImage extends StatelessWidget {
   final String imagePath;
   final BoxFit boxFit;
+  final int tag;
 
-  const HeroImage ({@required this.imagePath, this.boxFit = BoxFit.scaleDown});
+  const HeroImage({
+    @required this.imagePath,
+    this.tag,
+    this.boxFit = BoxFit.scaleDown,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return  Hero(
-        tag: imagePath,
-        child: CachedImage(
-           imagePath: imagePath,
-           boxFit: boxFit,
-        ),
-      );
+    return Hero(
+      tag : tag ?? imagePath,
+      child: CachedImage(
+        imagePath: imagePath,
+        boxFit: boxFit,
+      ),
+    );
   }
 }

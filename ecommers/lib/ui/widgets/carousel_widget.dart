@@ -1,16 +1,17 @@
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
+import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/material.dart';
 import 'package:page_view_indicators/page_view_indicators.dart';
 
 class CarouselWidget extends StatelessWidget {
-  final List<String> assetImagePaths;
+  final List<CarouselImage> images;
   final ValueNotifier<int> currentPageNotifier;
   final PageController currentPageController;
   final double height;
 
   const CarouselWidget({
-    @required this.assetImagePaths,
+    @required this.images,
     @required this.currentPageNotifier,
     @required this.currentPageController,
     this.height,
@@ -32,7 +33,7 @@ class CarouselWidget extends StatelessWidget {
 
   Widget _buildCircleIndicator() {
     return CirclePageIndicator(
-      itemCount: assetImagePaths.length,
+      itemCount: images.length,
       selectedDotColor: BrandingColors.secondary,
       dotColor: BrandingColors.backgroundIcon,
       currentPageNotifier: currentPageNotifier,
@@ -43,11 +44,14 @@ class CarouselWidget extends StatelessWidget {
     return SizedBox(
       height: height,
       child: PageView.builder(
-          itemCount: assetImagePaths.length,
+          itemCount: images.length,
           controller: currentPageController,
           itemBuilder: (BuildContext context, int index) {
             return Center(
-              child: HeroImage(imagePath: assetImagePaths[index]),
+              child: HeroImage(
+                tag: images[index].id,
+                imagePath: images[index].path,
+              ),
             );
           },
           onPageChanged: (int index) {

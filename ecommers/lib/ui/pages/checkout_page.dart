@@ -42,19 +42,28 @@ class _CheckoutPageState extends State<CheckoutPage> {
     super.dispose();
   }
 
-  static const int _itemCount = 20;
+  static const int _itemCount = 17;
 
   static String _getDressAssetPath(int index) {
-    final modulo = index % 7;
+    final modulo = index % 17;
 
     if (modulo == 0) return Assets.dressCottonImage;
     if (modulo == 1) return Assets.dressFloral2Image;
     if (modulo == 2) return Assets.dressFloralImage;
     if (modulo == 3) return Assets.dressPattern2Image;
     if (modulo == 4) return Assets.dressPatternImage;
-    if (modulo == 5) return Assets.dressCotton2Image;
-    if (modulo == 6) {
-      return Assets.greenBackpackImage;
+    if (modulo == 5) return Assets.blackShoes;
+    if (modulo == 6) return Assets.goldShoes;
+    if (modulo == 7) return Assets.redShoes;
+    if (modulo == 8) return Assets.roseRedShoes;
+    if (modulo == 9) return Assets.silverShoes;
+    if (modulo == 10) return Assets.pinkShoes;
+    if (modulo == 11) return Assets.shirtImage;
+    if (modulo == 12) return Assets.yellowShoes;
+    if (modulo == 13) return Assets.whiteShoes;
+    if (modulo == 14) return Assets.backpackImage;     
+    if (modulo == 15) {
+      return Assets.dressCotton2Image;
     } else {
       return Assets.greenBackpackImage;
     }
@@ -199,6 +208,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           count: currentOrder.count,
           countIncrementFunction: () => incrementCount(currentOrder),
           countDecrementFunction: () => decrementCount(currentOrder),
+          tapOrderFunction:() => navigationService.navigateTo(Pages.product),
         );
       },
       separatorBuilder: (BuildContext context, int index) {

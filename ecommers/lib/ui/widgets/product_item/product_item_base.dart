@@ -12,12 +12,14 @@ abstract class ProductItemBase extends StatelessWidget {
   final String title;
   final double cost;
   final Size productSize;
+  final  int id;
 
   const ProductItemBase({
     @required this.assetImagePath,
     @required this.title,
     @required this.cost,
     @required this.productSize,
+    this.id
   });
 
   @override

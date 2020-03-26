@@ -10,11 +10,13 @@ class RecentlyViewedWidget extends StatelessWidget {
       assetImagePath: Assets.scarfImage,
       title: 'Red Cotton Scarf',
       cost: 22.8,
+      id: 1,
     ),
     ProductItemSmallModel(
-      assetImagePath: Assets.greenBackpackImage,
-      title: 'Green Backpack ',
+      assetImagePath: Assets.blackShoes,
+      title: 'Black shoes ',
       cost: 22.8,
+      id: 0,
     ),
   ];
   @override
@@ -28,6 +30,7 @@ class RecentlyViewedWidget extends StatelessWidget {
           assetImagePath: itemModel.assetImagePath,
           title: itemModel.title,
           cost: itemModel.cost,
+          id: itemModel.id,
         );
       },
       separatorBuilder: (context, index) => const SizedBox(width: Insets.x3),

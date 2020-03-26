@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -13,6 +15,7 @@ class OrderWidget extends StatefulWidget {
   final int count;
   final Function() countIncrementFunction;
   final Function() countDecrementFunction;
+  final Function() tapOrderFunction;
 
   static const orderCircleImageSize = Size(80.0, 80.0);
 
@@ -24,6 +27,7 @@ class OrderWidget extends StatefulWidget {
     @required this.count,
     @required this.countIncrementFunction,
     @required this.countDecrementFunction,
+    this.tapOrderFunction,
   });
 
   @override
@@ -33,52 +37,57 @@ class OrderWidget extends StatefulWidget {
 class _OrderWidgetState extends State<OrderWidget> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        CircleImage(
-          size: OrderWidget.orderCircleImageSize,
-          image: CachedImage(imagePath: widget.assetImagePath),
-        ),
-        const SizedBox(
-          width: 20.0,
-        ),
-        Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                widget.primaryText,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyText1,
-              ),
-              Text(
-                widget.secondaryText,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.bodyText2,
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              Text(
-                Formatter.getCost(widget.count * widget.cost),
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(color: BrandingColors.primary),
-              ),
-              const SizedBox(
-                height: 8.0,
-              ),
-              Counter(
-                count: widget.count,
-                countIncrementFunction: widget.countIncrementFunction,
-                countDecrementFunction: widget.countDecrementFunction,
-              )
-            ],
+    return InkWell(
+      onTap: widget.tapOrderFunction,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          CircleImage(
+            size: OrderWidget.orderCircleImageSize,
+            image: CachedImage(
+              imagePath: widget.assetImagePath,
+            ),
           ),
-        ),
-      ],
+          const SizedBox(
+            width: 20.0,
+          ),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  widget.primaryText,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyText1,
+                ),
+                Text(
+                  widget.secondaryText,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                Text(
+                  Formatter.getCost(widget.count * widget.cost),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(color: BrandingColors.primary),
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                Counter(
+                  count: widget.count,
+                  countIncrementFunction: widget.countIncrementFunction,
+                  countDecrementFunction: widget.countDecrementFunction,
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
