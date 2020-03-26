@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 class ProductItemSmall extends ProductItemBase {
   static const productItemSmallSize = Size(185.0, 59.0);
+   static const String productTypeName ='small';
 
   const ProductItemSmall({
     @required String assetImagePath,
@@ -18,6 +19,7 @@ class ProductItemSmall extends ProductItemBase {
           title: title,
           productSize: productItemSmallSize,
           id: id,
+          productItemTypeName: productTypeName,
         );
 
   @override
@@ -28,7 +30,7 @@ class ProductItemSmall extends ProductItemBase {
         Expanded(
           flex: 3,
           child: HeroImage(
-            tag: id,
+            tag: imageTag,
             imagePath: assetImagePath,
           ),
         ),

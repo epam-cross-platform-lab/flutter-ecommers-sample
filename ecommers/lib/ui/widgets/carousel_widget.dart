@@ -49,7 +49,7 @@ class CarouselWidget extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Center(
               child: HeroImage(
-                tag: images[index].id,
+                tag: images[index].tag,
                 imagePath: images[index].path,
               ),
             );

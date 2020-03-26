@@ -11,7 +11,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatefulWidget {
-  const ProductPage({Key key}) : super(key: key);
+  final String productItemTitle;
+  
+  const ProductPage({
+    Key key,
+    this.productItemTitle,
+  }) : super(key: key);
 
   @override
   _ProductPageState createState() => _ProductPageState();
@@ -70,7 +75,9 @@ class _ProductPageState extends State<ProductPage> {
             child: ListView(
               children: [
                 CarouselWidget(
-                  images: images,
+                  images: images
+                      .map((x) => changeImageTag(x, widget.productItemTitle))
+                      .toList(),
                   currentPageNotifier: valueNotifier,
                   currentPageController: pageController,
                   height: 250,
@@ -112,15 +119,15 @@ class _ProductPageState extends State<ProductPage> {
         images: [
           CarouselImage(
             path: Assets.blackShoes,
-            id: 0,
+            tag: '0',
           ),
           CarouselImage(
             path: Assets.blackShoes,
-            id: 0,
+            tag: '0',
           ),
           CarouselImage(
             path: Assets.blackShoes,
-            id: 0,
+            tag: '0',
           ),
         ],
       ),
@@ -130,15 +137,15 @@ class _ProductPageState extends State<ProductPage> {
         images: [
           CarouselImage(
             path: Assets.goldShoes,
-            id: 1,
+            tag: '1',
           ),
           CarouselImage(
             path: Assets.goldShoes,
-            id: 1,
+            tag: '1',
           ),
           CarouselImage(
             path: Assets.goldShoes,
-            id: 1,
+            tag: '1',
           ),
         ],
       ),
@@ -148,15 +155,15 @@ class _ProductPageState extends State<ProductPage> {
         images: [
           CarouselImage(
             path: Assets.pinkShoes,
-            id: 2,
+            tag: '2',
           ),
           CarouselImage(
             path: Assets.pinkShoes,
-            id: 2,
+            tag: '2',
           ),
           CarouselImage(
             path: Assets.pinkShoes,
-            id: 2,
+            tag: '2',
           ),
         ],
       ),
@@ -166,15 +173,15 @@ class _ProductPageState extends State<ProductPage> {
         images: [
           CarouselImage(
             path: Assets.redShoes,
-            id: 3,
+            tag: '3',
           ),
           CarouselImage(
             path: Assets.redShoes,
-            id: 3,
+            tag: '3',
           ),
           CarouselImage(
             path: Assets.redShoes,
-            id: 3,
+            tag: '3',
           ),
         ],
       ),
@@ -184,15 +191,15 @@ class _ProductPageState extends State<ProductPage> {
         images: [
           CarouselImage(
             path: Assets.roseRedShoes,
-            id: 4,
+            tag: '4',
           ),
           CarouselImage(
             path: Assets.roseRedShoes,
-            id: 4,
+            tag: '4',
           ),
           CarouselImage(
             path: Assets.roseRedShoes,
-            id: 4,
+            tag: '4',
           ),
         ],
       ),
@@ -202,15 +209,15 @@ class _ProductPageState extends State<ProductPage> {
         images: [
           CarouselImage(
             path: Assets.silverShoes,
-            id: 5,
+            tag: '5',
           ),
           CarouselImage(
             path: Assets.silverShoes,
-            id: 5,
+            tag: '5',
           ),
           CarouselImage(
             path: Assets.silverShoes,
-            id: 5,
+            tag: '5',
           ),
         ],
       ),
@@ -220,15 +227,15 @@ class _ProductPageState extends State<ProductPage> {
         images: [
           CarouselImage(
             path: Assets.whiteShoes,
-            id: 6,
+            tag: '6',
           ),
           CarouselImage(
             path: Assets.whiteShoes,
-            id: 6,
+            tag: '6',
           ),
           CarouselImage(
             path: Assets.whiteShoes,
-            id: 6,
+            tag: '6',
           ),
         ],
       ),
@@ -238,7 +245,7 @@ class _ProductPageState extends State<ProductPage> {
         images: [
           CarouselImage(
             path: Assets.yellowShoes,
-            id: 7,
+            tag: '7',
           ),
         ],
       ),
@@ -365,4 +372,11 @@ class _ProductPageState extends State<ProductPage> {
       reviews: reviews,
     );
   }
+}
+
+CarouselImage changeImageTag(CarouselImage image, String productItemTypeName) {
+  return CarouselImage(
+    path: image.path,
+    tag: image.tag + productItemTypeName,
+  );
 }

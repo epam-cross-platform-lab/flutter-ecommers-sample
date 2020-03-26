@@ -5,7 +5,7 @@ import 'index.dart';
 class HeroImage extends StatelessWidget {
   final String imagePath;
   final BoxFit boxFit;
-  final int tag;
+  final String tag;
 
   const HeroImage({
     @required this.imagePath,
