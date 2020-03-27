@@ -8,10 +8,10 @@ import 'package:ecommers/ui/pages/authorization/authorization_page.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:ecommers/web_server/local_server.dart';
-import 'package:ecommers/web_server/models/product.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'core/models/data_models/index.dart';
 import 'core/provider_models/index.dart';
 
 List<Product> products;

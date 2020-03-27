@@ -1,5 +1,6 @@
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -32,7 +33,7 @@ class RateWidget extends StatelessWidget {
           children: <Widget>[
             SvgPicture.asset(Assets.starIcon),
             Text(
-              rate.toString(),
+              Formatter.getRate(rate),
               style: Theme.of(context).textTheme.overline,
             )
           ],

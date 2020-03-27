@@ -20,7 +20,7 @@ class LocalServer {
       shared: true,
     );
 
-    await Future.wait([
+    Future.wait([
       DataProvider.fetchProducts(),
       DataProvider.fetchCategories(),
     ]);

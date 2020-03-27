@@ -4,12 +4,10 @@ class ApiDefines {
   
   static const String products = '/products';
   static const String productsLatest = '/products/latest';
+  static const String productsRecent = '/products/recent';
+  static const String productsRecommended = '/products/recommended';
 
   static const String categories = '/categories';
-
-  static const String search = '/search';
-  static const String searchRecommended = '/search/recommended';
-  static const String searchRecentlyViewed = '/search/recently';
 
   static const String profile = '/profile';
   static const String profileOrders = '/profile/orders';

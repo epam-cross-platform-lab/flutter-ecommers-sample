@@ -41,6 +41,7 @@ dependencies:
   flare_splash_screen: ^3.0.1
   cached_network_image: ^2.0.0
   jaguar_jwt: ^2.1.6
+  enum_to_string: ^1.0.9
 
 flutter_icons:
   image_path_android: "assets/launch_icon_android.png" #http://www.softicons.com/web-icons/services-flat-icons-by-jozef-krajcovic/e-commerce-icon

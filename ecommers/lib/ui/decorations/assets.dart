@@ -1,5 +1,5 @@
 class Assets {
-  static const String imageBaseUrl = 'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources';
+  static const String imageBaseUrl = 'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources'; //TODO: get rid of this field
   
   static const String apparelIcon = 'assets/apparel.svg';
   static const String beautyIcon = 'assets/beauty.svg';

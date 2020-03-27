@@ -3,16 +3,19 @@ import 'dart:convert';
 import 'dart:isolate';
 
 import 'package:ecommers/core/common/index.dart';
-import '../models/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
 
 class DataProvider {
-  static List<Product> products;
-  static List<Category> categories;
+  static Future<List<Product>> products = _resultProducts.future;
+  static Future<List<Category>> categories = _resultCategories.future;
+
+  static final Completer<List<Product>> _resultProducts = Completer<List<Product>>();
+  static final Completer<List<Category>> _resultCategories = Completer<List<Category>>();
+
 
   static Future fetchProducts() async {
     final ReceivePort mainPort = ReceivePort();
     final Completer<SendPort> isolatedPort = Completer<SendPort>();
-    final Completer<List<Product>> resultProducts = Completer<List<Product>>();
 
     final isolate = await Isolate.spawn(_getProducts, mainPort.sendPort);
 
@@ -20,7 +23,7 @@ class DataProvider {
       if (resultData is SendPort) {
         isolatedPort.complete(resultData);
       } else if (resultData is List<Product>) {
-        resultProducts.complete(resultData);
+        _resultProducts.complete(resultData);
       }
     });
 
@@ -28,7 +31,7 @@ class DataProvider {
 
     (await isolatedPort.future).send(productsJson);
 
-    products = await resultProducts.future;
+    await _resultProducts.future;
     isolate.kill();
   }
 
@@ -38,7 +41,7 @@ class DataProvider {
     final categoriesMap =
         (jsonDecode(categoriesJson) as Iterable).cast<Map<String, dynamic>>();
 
-    categories = categoriesMap.map((e) => Category.fromJson(e)).toList();
+    _resultCategories.complete(categoriesMap.map((e) => Category.fromJson(e)).toList());
   }
 
   static Future _getProducts(SendPort sendPort) async {

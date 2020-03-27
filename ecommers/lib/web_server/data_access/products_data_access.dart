@@ -1,5 +1,5 @@
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/web_server/local_database.dart';
-import 'package:ecommers/web_server/models/index.dart';
 
 class ProductsDataAccess {
   static const String recentProductsStoreKey = 'RecentProducts';
@@ -11,21 +11,15 @@ class ProductsDataAccess {
 
   ProductsDataAccess._();
 
-  List<Product> _allRecentProducts;
-
   Future<List<Product>> getAllRecentProducts(String key) async {
-    return _allRecentProducts ??= await _database.getAll(
+    return _database.getAll(
         '$recentProductsStoreKey$key', Product.fromJsonFactory);
   }
 
   Future saveRecentProduct(
     Map<String, dynamic> recentProductMap,
-    String username,
+    String key,
   ) async {
-    _allRecentProducts ??= [];
-    _allRecentProducts.add(Product.fromJsonFactory(recentProductMap));
-
-    await _database.saveMap(
-        '$recentProductsStoreKey$username', recentProductMap);
+    _database.saveMap('$recentProductsStoreKey$key', recentProductMap);
   }
 }

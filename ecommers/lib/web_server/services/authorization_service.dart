@@ -1,6 +1,7 @@
 import 'dart:convert';
 
-import 'package:ecommers/web_server/models/user.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/models/index.dart';
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 
 import '../config.dart';
@@ -17,7 +18,7 @@ class AuthorizationService {
 
     const String secret = Config.jwtSecret;
 
-    return _encodeTokenData (issueJwtHS256(claimSet, secret));
+    return _encodeTokenData(issueJwtHS256(claimSet, secret));
   }
 
   static bool isAuthorized(String authHeader) {
@@ -61,12 +62,9 @@ class AuthorizationService {
   }
 
   static String _encodeTokenData(String token) {
-    final loginModelMap = {
-      'access_token': token,
-      'refresh_token': Config.refreshToken,
-      'expiration_date': Config.expirationDate
-    };
+    final loginModel =
+        LoginModel(token, Config.refreshToken, Config.expirationDate);
 
-    return jsonEncode(loginModelMap);
+    return jsonEncode(loginModel);
   }
 }

@@ -6,15 +6,22 @@ class Formatter {
     
     return currencyFormatter.format(cost);
   }
+
   static String getTextWithNumberCard(String nuberCard){ 
     const visibleCardSymbolCount = 2;
     
     final visibleSymbols = nuberCard.substring(nuberCard.length - visibleCardSymbolCount);
 
-    return 'Master Card ending **$visibleSymbols';
+    return 'Master Card ending **$visibleSymbols'; //TODO: use localization
   }
+
   static String getTextWithSpecifiedDateFormat(DateTime date, String format)
   {
     return DateFormat(format).format(date);
+  }
+
+  static String getRate(double rate)
+  {
+    return rate.toStringAsFixed(1);
   }
 }
