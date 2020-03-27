@@ -156,7 +156,7 @@ class RequestHandler {
 
     body.request.response
       ..headers.contentType = ContentType.json
-      ..write(json.encode(resultProducts))
+      ..write(json.encode(resultProducts.toList()))
       ..close();
   }
 
@@ -167,7 +167,7 @@ class RequestHandler {
 
     final resultProducts = [...await DataProvider.products];
     resultProducts.sort((a, b) => b.catalogAddDate.compareTo(a.catalogAddDate));
-    resultProducts.take(latestProductsCount);
+    resultProducts.take(latestProductsCount).toList();
 
     body.request.response
       ..headers.contentType = ContentType.json
@@ -183,7 +183,7 @@ class RequestHandler {
 
     final resultProducts = (await DataProvider.products)
         .skip(random.nextInt(5000))
-        .take(recommendedCount);
+        .take(recommendedCount).toList();
     final productsJson = json.encode(resultProducts);
 
     body.request.response

@@ -4,7 +4,7 @@ import 'package:ecommers/core/services/dependency_service.dart';
 
 class ProductService {
   Future<List<Product>> getProductList(Categories type) async {
-    final response = await apiService.products(type);
+    final response = await apiService.products(); //TODO: handle this
 
     if (response.isSuccessful) {
       return response.body;
