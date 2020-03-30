@@ -12,19 +12,19 @@ class RightMenuWidget extends StatelessWidget {
   final List<RightMenuItemModel> filterMenuList = [
     RightMenuSubTitleModel(
       title: 'View',
-      subTitle: 'Thumbnails',
+      subTitle: ['Thumbnails', 'Something'],
     ),
     RightMenuSubTitleModel(
       title: 'Category',
-      subTitle: 'Men\'s Apparel',
+      subTitle: ['Men\'s Apparel'],
     ),
     RightMenuSubTitleModel(
       title: 'Condition',
-      subTitle: 'Brand New',
+      subTitle: ['Brand New', 'Old'],
     ),
     RightMenuSubTitleModel(
       title: 'Material',
-      subTitle: 'Cotton',
+      subTitle: ['Cotton', 'Cloth']
     ),
     RightMenuColorsModel(
       title: 'Colour',
@@ -32,11 +32,11 @@ class RightMenuWidget extends StatelessWidget {
     ),
     RightMenuSubTitleModel(
       title: 'Brand',
-      subTitle: 'All Brands',
+      subTitle: ['All Brands','Kanken','Polo']
     ),
     RightMenuSubTitleModel(
       title: 'Size',
-      subTitle: 'Large',
+      subTitle: ['Large', 'Normal'],
     ),
     RigthMenuPriceModel(
       title: 'Price Range',

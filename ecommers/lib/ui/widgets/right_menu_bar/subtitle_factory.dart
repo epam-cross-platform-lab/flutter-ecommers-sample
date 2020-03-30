@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommers/extensions/string_extension.dart';
@@ -29,13 +30,13 @@ class RightMenuSubTitle extends StatelessWidget {
 
   Widget createSubTitle(BuildContext context) {
     final subTitleModel = model as RightMenuSubTitleModel;
-
-    return Text(
-      subTitleModel.subTitle,
-      style: Theme.of(context).textTheme.subtitle1.copyWith(
-            color: Colors.transparent.withOpacity(0.3),
-          ),
-    );
+  return DropDownList(subTitleModel.subTitle);
+    // return Text(
+    //   subTitleModel.subTitle,
+    //   style: Theme.of(context).textTheme.subtitle1.copyWith(
+    //         color: Colors.transparent.withOpacity(0.3),
+    //       ),
+    // );
   }
 
   Widget createPrice(BuildContext context) {

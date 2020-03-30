@@ -21,11 +21,12 @@ class RightMenuItem extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Expanded(
-            child: Text(
-              itemModel.title,
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-          ),
+           child:  
+           Text(
+                itemModel.title,
+                style: Theme.of(context).textTheme.subtitle1,
+              ),
+           ),
           RightMenuSubTitle(model: itemModel),
           const SizedBox(width: Insets.x2_5),
           SvgPicture.asset(Assets.menuArrowIcon),
