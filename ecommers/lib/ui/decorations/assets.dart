@@ -64,7 +64,7 @@ class Assets {
   static const String dressPatternImage = 'assets/dress_image_pattern.png';
   static const String dressPattern2Image = 'assets/dress_image_pattern2.png';
 
-  static const String progressAnimation = 'assets/circle_drop_loader.flr';
+  static const String progressAnimation = 'assets/loader.flr';
   static const String successAnimation = 'assets/success.flr';
 
   static const String roseRedShoes = 'assets/rose_red_shoes.png';

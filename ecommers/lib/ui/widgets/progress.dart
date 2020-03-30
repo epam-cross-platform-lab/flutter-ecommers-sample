@@ -6,7 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Progress extends StatelessWidget {
-  static const double _progressSide = 200.0;
+  static const double _progressSide = 400.0;
   static const String _animationState = 'Loading';
 
   const Progress({Key key}) : super(key: key);
