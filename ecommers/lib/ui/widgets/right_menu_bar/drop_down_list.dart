@@ -10,30 +10,6 @@ class DropDownList extends StatefulWidget {
   State<StatefulWidget> createState() => DropDownState(subTitles);
 }
 
-// class DropDownList extends StatelessWidget{
-//   final List<String> subTitles;
-
-//   const DropDownList(this.subTitles) : super();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return DropdownButton<String>(
-//       items: subTitles
-//         .map((String subTitleItem){
-//               return  DropdownMenuItem<String>(
-//                 value: subTitleItem,
-//                 child: Text(subTitleItem),
-//               );
-//             }).toList(),
-//       onChanged:(),
-//       style: Theme.of(context).textTheme.subtitle1.copyWith(
-//             color: Colors.transparent.withOpacity(0.3),
-//           ),
-//       isDense: false,
-//     );
-//   }
-// }
-
 class DropDownState extends State<DropDownList> {
   final List<String> subTitles;
   List<DropdownMenuItem<String>> _dropdownMenuItems;
@@ -50,12 +26,6 @@ class DropDownState extends State<DropDownList> {
 
   List<DropdownMenuItem<String>> buildDropdownMenuItems(
       List<String> subTitleItem) {
-    //   subTitles.map((String subTitleItem) {
-    //   return DropdownMenuItem<String>(
-    //     value: subTitleItem,
-    //     child: Text(subTitleItem),
-    //   );
-    // }).toList();
     final List<DropdownMenuItem<String>> items = List();
     for (final String subTitleItem in subTitleItem) {
       items.add(
