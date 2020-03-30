@@ -16,9 +16,7 @@ class AuthorizationService {
       issuedAt: DateTime.parse(Config.expirationDate),
     );
 
-    const String secret = Config.jwtSecret;
-
-    return _encodeTokenData(issueJwtHS256(claimSet, secret));
+    return _encodeTokenData(issueJwtHS256(claimSet, Config.jwtSecret));
   }
 
   static bool isAuthorized(String authHeader) {
@@ -40,18 +38,16 @@ class AuthorizationService {
   }
 
   static JwtClaim extractJwtClaimFrom(String token) {
-    const key = Config.jwtSecret;
-
     try {
-      return verifyJwtHS256Signature(token, key);
+      return verifyJwtHS256Signature(token, Config.jwtSecret);
     } on JwtException {
-      print('invalid token');
+      rethrow;
     }
-
-    return null;
   }
 
-  static User getJwtSubject(String token) {
+  static User getJwtSubject(String authorizationHeader) {
+    final token = authorizationHeader.split(' ')[1];
+
     final jwtClaim = extractJwtClaimFrom(token);
 
     if (jwtClaim == null) {

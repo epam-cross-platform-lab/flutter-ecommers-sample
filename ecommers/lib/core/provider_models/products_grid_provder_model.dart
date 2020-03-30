@@ -14,7 +14,7 @@ class ProductsGridProviderModel extends ProviderModelBase {
   Future<List<Product>> getData() async {
     isBusy = true;
 
-    final productList = await productService.getProductList(_categoryType);
+    final productList = await productService.fetchProducts(); //TODO: pass category String
 
     isBusy = false;
 

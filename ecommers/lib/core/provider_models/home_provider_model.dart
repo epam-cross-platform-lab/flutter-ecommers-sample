@@ -5,16 +5,28 @@ import 'package:flutter/material.dart';
 
 class HomeProviderModel extends ProviderModelBase {
   List<Category> categoryList;
+  List<Product> productsLatest;
 
   HomeProviderModel(BuildContext context) : super(context) {
-    fetchCategories();
+    fetchAllData();
   }
 
-  Future fetchCategories() async {
+  Future fetchAllData() async {
     isBusy = true;
 
-    categoryList = await categoryService.getCategoryList();
+    await Future.wait({
+      _fetchCategories(),
+      _fetchLatestProducts(),
+    });
 
     isBusy = false;
+  }
+
+  Future _fetchCategories() async {
+    categoryList = await categoryService.fetchCategoryList();
+  }
+
+  Future _fetchLatestProducts() async {
+    productsLatest = await productService.fetchLatestProducts();
   }
 }

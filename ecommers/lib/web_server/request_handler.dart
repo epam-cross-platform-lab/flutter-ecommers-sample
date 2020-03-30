@@ -23,7 +23,7 @@ class RequestHandler {
       ProductsDataAccess.instance;
 
   static String getMethod = 'GET';
-  static String postMethod = 'GET';
+  static String postMethod = 'POST';
 
   void process(HttpRequestBody body) {
     final path = body.request.uri.path.toString();
@@ -45,11 +45,7 @@ class RequestHandler {
         _handleProductsRecommendedRequest(body);
         break;
       case ApiDefines.productsRecent:
-        if (body.request.method == getMethod) {
-          _handleProductsRecentRequest(body);
-        } else if (body.request.method == postMethod) {
-          _handleProductsRecentPostRequest(body);
-        }
+        _handleProductsRecentRequest(body);
         break;
       case ApiDefines.categories:
         _handleCategoriesRequest(body);
@@ -183,7 +179,9 @@ class RequestHandler {
 
     final resultProducts = (await DataProvider.products)
         .skip(random.nextInt(5000))
-        .take(recommendedCount).toList();
+        .take(recommendedCount)
+        .toList();
+
     final productsJson = json.encode(resultProducts);
 
     body.request.response
@@ -195,8 +193,17 @@ class RequestHandler {
   Future _handleProductsRecentRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
-    final user = AuthorizationService.getJwtSubject(
-        body.request.headers.value(HttpHeaders.authorizationHeader));
+    if (body.request.method == getMethod) {
+      _handleProductsRecentGetRequest(body);
+    } else if (body.request.method == postMethod) {
+      _handleProductsRecentPostRequest(body);
+    }
+  }
+
+  Future _handleProductsRecentGetRequest(HttpRequestBody body) async {
+    final authorizationHeader = body.request.headers[HttpHeaders.authorizationHeader].first;
+    final user = AuthorizationService.getJwtSubject(authorizationHeader);
+
     final recentlyViewedProducts =
         await _productsDataAccess.getAllRecentProducts(user.username);
 
@@ -207,12 +214,10 @@ class RequestHandler {
   }
 
   Future _handleProductsRecentPostRequest(HttpRequestBody body) async {
-    if (isNotAuthorized(body.request)) return;
+    final authorizationHeader = body.request.headers[HttpHeaders.authorizationHeader].first;
+    final user = AuthorizationService.getJwtSubject(authorizationHeader);
 
     final productMap = body.body as Map<String, dynamic>;
-
-    final user = AuthorizationService.getJwtSubject(
-        body.request.headers.value(HttpHeaders.authorizationHeader));
 
     _productsDataAccess.saveRecentProduct(productMap, user.username);
 
