@@ -1,12 +1,10 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/category_item/category_item.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CategoriesCompactWidget extends StatelessWidget {
   static const _containerHeight = 134.0;
@@ -25,8 +23,6 @@ class CategoriesCompactWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProviderModel>(context);
-    print(homeProvider.categoryList?.map((e) => e.title));
     return Container(
       height: _containerHeight,
       padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
