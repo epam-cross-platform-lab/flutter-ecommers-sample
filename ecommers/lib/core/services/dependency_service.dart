@@ -14,7 +14,8 @@ FileManager get fileManager => GetIt.I.get<FileManager>();
 ApiService get apiService => GetIt.I.get<ApiService>();
 MembershipService get membershipService => GetIt.I.get<MembershipService>();
 RequestHandler get requestHandler => GetIt.I.get<RequestHandler>();
-AuthorizationService get authorizationService => GetIt.I.get<AuthorizationService>();
+AuthorizationService get authorizationService =>
+    GetIt.I.get<AuthorizationService>();
 ProductService get productService => GetIt.I.get<ProductService>();
 CacheDataRepository get cacheDataProvider => GetIt.I.get<CacheDataRepository>();
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
@@ -27,12 +28,19 @@ class DependencyService {
       ..registerLazySingleton<NavigationService>(() => NavigationService())
       ..registerLazySingleton<FileManager>(() => FileManager())
       ..registerLazySingleton<RequestHandler>(() => RequestHandler())
-      ..registerLazySingleton<AuthorizationService>(() => AuthorizationService())
+      ..registerLazySingleton<AuthorizationService>(
+          () => AuthorizationService())
       ..registerLazySingleton<ProductService>(() => ProductService())
       ..registerLazySingleton<MembershipService>(
           () => MembershipService(const FlutterSecureStorage()))
       ..registerHttpClient()
       ..registerLazySingleton<CacheDataRepository>(() => CacheDataRepository())
-      ..registerLazySingleton<CacheDatabase>(() => CacheDatabase());
+      ..registerSingletonAsync<CacheDatabase>(
+        () async {
+          final cacheDatabase = CacheDatabase();
+          await cacheDatabase.initializeDatabase();
+          return cacheDatabase;
+        },
+      );
   }
 }

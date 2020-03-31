@@ -6,24 +6,11 @@ import 'package:sembast/sembast_io.dart';
 import 'package:path/path.dart';
 
 class CacheDatabase {
-  Completer<Database> _dbCompleter;
-
-  Future<Database> get _db async {
-    if (_dbCompleter == null) {
-      _dbCompleter = Completer();
-
-      await initializeDatabase();
-    }
-
-    return _dbCompleter.future;
-  }
+  Database database;
 
   Future initializeDatabase() async {
     final DatabaseFactory dbFactory = databaseFactoryIo;
-
-    final database = await dbFactory.openDatabase(await _getDbPath());
-
-    _dbCompleter.complete(database);
+    database = await dbFactory.openDatabase(await _getDbPath());
   }
 
   Future<String> _getDbPath() async {
@@ -39,13 +26,13 @@ class CacheDatabase {
 
   Future saveMap(String key, Map<String, dynamic> map) async {
     final store = intMapStoreFactory.store(key);
-    await store.add(await _db, map);
+    await store.add(database, map);
   }
 
   Future<List<T>> getAll<T>(
       String key, T Function(Map<String, dynamic>) fromMap) async {
     final store = intMapStoreFactory.store(key);
-    final records = await store.find(await _db);
+    final records = await store.find(database);
 
     return records.map((snapshot) {
       return fromMap(snapshot.value);
