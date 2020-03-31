@@ -9,7 +9,6 @@ class ProductItemWide extends ProductItemBase {
   final Color color;
 
   static const size = Size(160.0, 218.0);
-  static const String productTypeName ='wide';
 
   const ProductItemWide({
     @required String assetImagePath,
@@ -24,7 +23,6 @@ class ProductItemWide extends ProductItemBase {
           title: title,
           productSize: size,
           id: id,
-          productItemTypeName: productTypeName,
         );
 
   @override
@@ -35,7 +33,7 @@ class ProductItemWide extends ProductItemBase {
         Expanded(
           child: Center(
             child: HeroImage(
-              tag: imageTag,
+              tag: id,
               imagePath: assetImagePath,
             ),
           ),

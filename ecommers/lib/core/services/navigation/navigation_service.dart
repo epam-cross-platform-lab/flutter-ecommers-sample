@@ -47,8 +47,7 @@ class NavigationService {
         resultPage = ProductsGridPage(type: type);
         break;
       case Pages.product:
-        final String productItemTypeName = arguments as String ?? '';
-        resultPage = ProductPage(productItemTitle: productItemTypeName);
+        resultPage = const ProductPage();
         break;
       case Pages.notifications:
         resultPage = NotificationsPage();

@@ -7,7 +7,6 @@ import 'package:flutter/widgets.dart';
 
 class ProductItemNormal extends ProductItemBase {
   static const size = Size(101.0, 135.0);
-  static const String productTypeName ='normal';
 
   const ProductItemNormal({
     @required String assetImagePath,
@@ -20,7 +19,6 @@ class ProductItemNormal extends ProductItemBase {
           title: title,
           productSize: size,
           id: id,
-          productItemTypeName: productTypeName,
         );
 
   @override
@@ -31,7 +29,7 @@ class ProductItemNormal extends ProductItemBase {
         Expanded(
           child: Center(
             child: HeroImage(
-              tag: imageTag,
+              tag: id,
               imagePath: assetImagePath,
             ),
           ),

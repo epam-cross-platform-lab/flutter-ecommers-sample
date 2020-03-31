@@ -13,17 +13,13 @@ abstract class ProductItemBase extends StatelessWidget {
   final double cost;
   final Size productSize;
   final  int id;
-  final String productItemTypeName;
-
-  String get imageTag=> id.toString() + productItemTypeName;
 
   const ProductItemBase({
     @required this.assetImagePath,
     @required this.title,
     @required this.cost,
     @required this.productSize,
-    this.id,
-    this.productItemTypeName,
+    this.id
   });
 
   @override
@@ -45,7 +41,7 @@ abstract class ProductItemBase extends StatelessWidget {
       ),
       child: GestureDetector(
         onTap: () => {
-          navigationService.navigateTo(Pages.product, arguments: productItemTypeName),
+          navigationService.navigateTo(Pages.product),
         },
         child: buildProductItem(context),
       ),

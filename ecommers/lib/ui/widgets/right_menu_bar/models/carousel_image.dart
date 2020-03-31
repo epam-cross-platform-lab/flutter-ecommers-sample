@@ -1,6 +1,6 @@
 class CarouselImage {
-  final String tag;
+  final int id;
   final String path;
 
-  CarouselImage({this.tag, this.path});
+  CarouselImage({this.id, this.path});
 }
