@@ -11,11 +11,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatefulWidget {
-  final String productItemTypeName;
-
+  final String productItemTitle;
+  
   const ProductPage({
     Key key,
-    this.productItemTypeName,
+    this.productItemTitle,
   }) : super(key: key);
 
   @override
@@ -76,7 +76,7 @@ class _ProductPageState extends State<ProductPage> {
               children: [
                 CarouselWidget(
                   images: images
-                      .map((x) => changeImageTag(x, widget.productItemTypeName))
+                      .map((x) => changeImageTag(x, widget.productItemTitle))
                       .toList(),
                   currentPageNotifier: valueNotifier,
                   currentPageController: pageController,
@@ -86,11 +86,11 @@ class _ProductPageState extends State<ProductPage> {
                   height: 300,
                   child: ProductPageTabsView(
                     productModel: productModel,
-                    imagesHasChanged: (images) => {
+                    imagesHasChanged: (assets) => {
                       setState(() => {
                             valueNotifier.value = 0,
                             pageController.jumpToPage(0),
-                            images = images,
+                            images = assets,
                           }),
                     },
                   ),

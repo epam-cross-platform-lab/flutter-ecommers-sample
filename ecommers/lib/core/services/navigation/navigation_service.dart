@@ -48,7 +48,7 @@ class NavigationService {
         break;
       case Pages.product:
         final String productItemTypeName = arguments as String ?? '';
-        resultPage = ProductPage(productItemTypeName: productItemTypeName);
+        resultPage = ProductPage(productItemTitle: productItemTypeName);
         break;
       case Pages.notifications:
         resultPage = NotificationsPage();

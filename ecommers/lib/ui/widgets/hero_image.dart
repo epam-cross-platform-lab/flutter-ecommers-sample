@@ -16,7 +16,7 @@ class HeroImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag : tag,
+      tag : tag ?? imagePath,
       child: CachedImage(
         imagePath: imagePath,
         boxFit: boxFit,
