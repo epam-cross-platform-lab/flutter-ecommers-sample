@@ -27,48 +27,45 @@ class ImageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String imagePath = '${Assets.imageBaseUrl}/$imageAsset';
-    return Hero(
-      tag: imagePath,
-      child: Container(
-        alignment: Alignment.centerLeft,
-        height: imageCardSize.height,
-        width: imageCardSize.width,
-        padding: const EdgeInsets.all(Insets.x6_5),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: CachedNetworkImageProvider(imagePath),
-            fit: BoxFit.cover,
+    return Container(
+      alignment: Alignment.centerLeft,
+      height: imageCardSize.height,
+      width: imageCardSize.width,
+      padding: const EdgeInsets.all(Insets.x6_5),
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image:
+              CachedNetworkImageProvider('${Assets.imageBaseUrl}/$imageAsset'),
+          fit: BoxFit.cover,
+        ),
+        borderRadius: BorderRadius.circular(_borderRadius),
+      ),
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: SizedBox(
+              width: _textWidth,
+              child: Text(
+                description,
+                maxLines: _textMaxLines,
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            ),
           ),
-          borderRadius: BorderRadius.circular(_borderRadius),
-        ),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: SizedBox(
-                width: _textWidth,
-                child: Text(
-                  description,
-                  maxLines: _textMaxLines,
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-              ),
+          SizedBox(
+            height: _buttonSize.height,
+            width: _buttonSize.width,
+            child: ButtonBaseWidget(
+              text: buttonText,
+              assetIcon: Assets.arrowRightIcon,
+              buttonColor: BrandingColors.background,
+              textColor: BrandingColors.secondary,
+              onPressedFunction: onButtonPressed,
+              iconBackgroundColor: BrandingColors.primary,
+              blurColor: BrandingColors.secondary.withOpacity(0.15),
             ),
-            SizedBox(
-              height: _buttonSize.height,
-              width: _buttonSize.width,
-              child: ButtonBaseWidget(
-                text: buttonText,
-                assetIcon: Assets.arrowRightIcon,
-                buttonColor: BrandingColors.background,
-                textColor: BrandingColors.secondary,
-                onPressedFunction: onButtonPressed,
-                iconBackgroundColor: BrandingColors.primary,
-                blurColor: BrandingColors.secondary.withOpacity(0.15),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

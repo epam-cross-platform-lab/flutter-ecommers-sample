@@ -93,7 +93,7 @@ class HomePage extends StatelessWidget {
               assetImagePath: _getDressAssetPath(index),
               cost: 15.0,
               title: 'best dress ever',
-              id:index,
+              id: index,
             );
           },
           childCount: 40,
