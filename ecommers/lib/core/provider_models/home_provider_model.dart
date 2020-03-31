@@ -4,8 +4,11 @@ import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 class HomeProviderModel extends ProviderModelBase {
-  List<Category> categoryList;
-  List<Product> productsLatest;
+  List<Category> _categoryList;
+  List<Product> _productsLatest;
+
+  List<Category> get categoryList => _categoryList;
+  List<Product> get productsLatest => _productsLatest;
 
   HomeProviderModel(BuildContext context) : super(context) {
     fetchAllData();
@@ -23,10 +26,10 @@ class HomeProviderModel extends ProviderModelBase {
   }
 
   Future _fetchCategories() async {
-    categoryList = await categoryService.fetchCategoryList();
+    _categoryList = await categoryService.fetchCategoryList();
   }
 
   Future _fetchLatestProducts() async {
-    productsLatest = await productService.fetchLatestProducts();
+    _productsLatest = await productService.fetchLatestProducts();
   }
 }

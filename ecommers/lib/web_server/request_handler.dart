@@ -61,8 +61,8 @@ class RequestHandler {
   }
 
   bool isNotAuthorized(HttpRequest request) {
-    if (AuthorizationService.isAuthorized(
-        request.headers.value(HttpHeaders.authorizationHeader))) {
+    if (!AuthorizationService.isAuthorized(
+        request.headers[HttpHeaders.authorizationHeader]?.first)) {
       request.response
         ..statusCode = HttpStatus.forbidden
         ..close();
@@ -201,7 +201,8 @@ class RequestHandler {
   }
 
   Future _handleProductsRecentGetRequest(HttpRequestBody body) async {
-    final authorizationHeader = body.request.headers[HttpHeaders.authorizationHeader].first;
+    final authorizationHeader =
+        body.request.headers[HttpHeaders.authorizationHeader].first;
     final user = AuthorizationService.getJwtSubject(authorizationHeader);
 
     final recentlyViewedProducts =
@@ -214,7 +215,8 @@ class RequestHandler {
   }
 
   Future _handleProductsRecentPostRequest(HttpRequestBody body) async {
-    final authorizationHeader = body.request.headers[HttpHeaders.authorizationHeader].first;
+    final authorizationHeader =
+        body.request.headers[HttpHeaders.authorizationHeader].first;
     final user = AuthorizationService.getJwtSubject(authorizationHeader);
 
     final productMap = body.body as Map<String, dynamic>;
