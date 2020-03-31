@@ -1,4 +1,5 @@
 class OrderModel {
+  final int id;
   final String title;
   final String description;
   final String imagePath;
@@ -6,6 +7,7 @@ class OrderModel {
   int count;
 
   OrderModel({
+    this.id,
     this.description,
     this.cost,
     this.imagePath,
