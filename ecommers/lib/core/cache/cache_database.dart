@@ -31,9 +31,24 @@ class CacheDatabase {
 
   Future<List<T>> getAll<T>(
       String key, T Function(Map<String, dynamic>) fromMap) async {
-    final store = intMapStoreFactory.store(key);
-    final records = await store.find(_database);
-
+    final records = await _getByFilter(key, null);
     return records.map((snapshot) => fromMap(snapshot.value)).toList();
+  }
+
+  Future<List<T>> getByEqualsFilter<T>(
+      String key,
+      T Function(Map<String, dynamic>) fromMap,
+      String filterField,
+      String filterValue) async {
+    final records =
+        await _getByFilter(key, Filter.equals(filterField, filterValue));
+    return records.map((snapshot) => fromMap(snapshot.value)).toList();
+  }
+
+  Future<List<RecordSnapshot<int, Map<String, dynamic>>>> _getByFilter(
+      String key, Filter filter) {
+    final store = intMapStoreFactory.store(key);
+
+    return store.find(_database, finder: Finder(filter: filter));
   }
 }

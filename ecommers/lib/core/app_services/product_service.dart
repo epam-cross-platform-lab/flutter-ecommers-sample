@@ -30,11 +30,4 @@ class ProductService {
 
   Future<List<Product>> fetchLatestProducts() async {
     final response = await apiService.productsLatest();
-
-    if (response.isSuccessful) {
-      return response.body;
-    }
-
-    return null;
-  }
 }
