@@ -12,9 +12,9 @@ class SearchTextFiled extends StatelessWidget {
         Expanded(
           child: Container(
             height: 35.0,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: BrandingColors.blur,
-              borderRadius: const BorderRadius.all(
+              borderRadius: BorderRadius.all(
                 Radius.circular(Radiuses.big_1_5x),
               ),
             ),
