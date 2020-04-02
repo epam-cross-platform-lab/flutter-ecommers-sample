@@ -20,10 +20,7 @@ class LocalServer {
       shared: true,
     );
 
-    Future.wait([
-      DataProvider.fetchProducts(),
-      DataProvider.fetchCategories(),
-    ]);
+    DataProvider.fetchProducts();
 
     _server.transform(HttpBodyHandler()).listen((HttpRequestBody body) async {
       await Future.delayed(const Duration(seconds: 2));

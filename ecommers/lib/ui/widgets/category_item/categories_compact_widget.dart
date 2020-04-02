@@ -1,24 +1,15 @@
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/provider_models/home_provider_model.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/category_item/category_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CategoriesCompactWidget extends StatelessWidget {
   static const _containerHeight = 134.0;
-
-  static const categoryList = [
-    Categories.apparel,
-    Categories.beauty,
-    Categories.electronics,
-    Categories.furniture,
-    Categories.home,
-    Categories.shoes,
-    Categories.stationary
-  ];
-
   static const categoryItemSize = Size(74.0, 89.0);
 
   @override
@@ -42,7 +33,11 @@ class CategoriesCompactWidget extends StatelessWidget {
   }
 
   Widget _createCategoriesListWidget(BuildContext context) {
-    final itemCount = _calculateItemCount(context);
+    final categoryList = Provider.of<HomeProviderModel>(context)?.categoryList;
+
+    if (categoryList == null || categoryList.isEmpty) return const SizedBox();
+
+    final itemCount = _calculateItemCount(context, categoryList.length);
     final spacing = _calculateItemSpacing(context, itemCount);
 
     return SizedBox(
@@ -55,11 +50,11 @@ class CategoriesCompactWidget extends StatelessWidget {
         ),
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          if (index == itemCount - 1 && index != Categories.values.length - 1) {
+          if (index == itemCount - 1 && index != categoryList.length - 1) {
             return _buildSeeAllCategory(context);
           }
 
-          return CategoryItem.fromType(categoryList[index], onCategoryTap);
+          return CategoryItem.fromModel(categoryList[index], onCategoryTap);
         },
       ),
     );
@@ -79,14 +74,14 @@ class CategoriesCompactWidget extends StatelessWidget {
     );
   }
 
-  int _calculateItemCount(BuildContext context) {
+  int _calculateItemCount(BuildContext context, int categoriesCount) {
     final categoriesListWidth =
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
     var itemCount = categoriesListWidth ~/ categoryItemSize.width;
 
-    if (itemCount > Categories.values.length) {
-      itemCount = Categories.values.length;
+    if (itemCount > categoriesCount) {
+      itemCount = categoriesCount;
     } else {
       itemCount = itemCount;
     }

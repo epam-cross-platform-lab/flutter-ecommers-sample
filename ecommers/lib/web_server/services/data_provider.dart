@@ -6,11 +6,13 @@ import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 
 class DataProvider {
+  static const String productsFilename = 'products.json';
+  static const String categoriesFilename = 'categories.json';
+  static const String notesFilename = 'notes.json';
+
   static Future<List<Product>> products = _resultProducts.future;
-  static Future<List<Category>> categories = _resultCategories.future;
 
   static final Completer<List<Product>> _resultProducts = Completer<List<Product>>();
-  static final Completer<List<Category>> _resultCategories = Completer<List<Category>>();
 
 
   static Future fetchProducts() async {
@@ -27,7 +29,7 @@ class DataProvider {
       }
     });
 
-    final productsJson = await FileManager.readJson('products.json');
+    final productsJson = await FileManager.readJson(productsFilename);
 
     (await isolatedPort.future).send(productsJson);
 
@@ -35,13 +37,12 @@ class DataProvider {
     isolate.kill();
   }
 
-  static Future fetchCategories() async {
-    final categoriesJson = await FileManager.readJson('categories.json');
+  static Future<String> fetchCategoriesJson() async {
+    return FileManager.readJson(categoriesFilename);
+  }
 
-    final categoriesMap =
-        (jsonDecode(categoriesJson) as Iterable).cast<Map<String, dynamic>>();
-
-    _resultCategories.complete(categoriesMap.map((e) => Category.fromJson(e)).toList());
+  static Future<String> fetchNotesJson() async {
+    return FileManager.readJson(notesFilename);
   }
 
   static Future _getProducts(SendPort sendPort) async {

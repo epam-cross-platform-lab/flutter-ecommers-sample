@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -18,6 +19,14 @@ class ProductItemNormal extends ProductItemBase {
           title: title,
           productSize: size,
         );
+
+  factory ProductItemNormal.fromModel(Product product) {
+    return ProductItemNormal(
+      assetImagePath: product.images.first,
+      cost: product.price,
+      title: product.title,
+    );  
+  }
 
   @override
   Widget buildProductItem(BuildContext context) {

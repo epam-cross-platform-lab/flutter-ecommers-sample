@@ -50,6 +50,9 @@ class RequestHandler {
       case ApiDefines.categories:
         _handleCategoriesRequest(body);
         break;
+      case ApiDefines.notes:
+        _handleNotesRequest(body);
+        break;
       //TODO: add functionality
       case ApiDefines.profile:
       case ApiDefines.profileOrders:
@@ -161,9 +164,10 @@ class RequestHandler {
 
     const latestProductsCount = 20;
 
-    final resultProducts = [...await DataProvider.products];
+    var resultProducts = [...await DataProvider.products];
     resultProducts.sort((a, b) => b.catalogAddDate.compareTo(a.catalogAddDate));
-    resultProducts.take(latestProductsCount).toList();
+
+    resultProducts = resultProducts.take(latestProductsCount).toList();
 
     body.request.response
       ..headers.contentType = ContentType.json
@@ -231,11 +235,22 @@ class RequestHandler {
   Future _handleCategoriesRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
-    final categoriesJson = json.encode(await DataProvider.categories);
+    final categoriesJson = await DataProvider.fetchCategoriesJson();
 
     body.request.response
       ..headers.contentType = ContentType.json
       ..write(categoriesJson)
+      ..close();
+  }
+
+  Future _handleNotesRequest(HttpRequestBody body) async {
+    if (isNotAuthorized(body.request)) return;
+
+    final notesJson = await DataProvider.fetchNotesJson();
+
+    body.request.response
+      ..headers.contentType = ContentType.json
+      ..write(notesJson)
       ..close();
   }
 

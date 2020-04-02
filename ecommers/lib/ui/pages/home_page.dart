@@ -1,8 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/provider_models/home_provider_model.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/category_item/categories_compact_widget.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_normal.dart';
@@ -16,53 +18,59 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => HomeProviderModel(context),
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverToBoxAdapter(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                CategoriesCompactWidget(),
-                const SizedBox(height: Dimens.pagePadding),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
-                  child: Text(
-                    I18n.of(context).latetstTitle,
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
+    return BasePage(
+      createProvider: (context) => HomeProviderModel(context),
+      child: Consumer<HomeProviderModel>(
+        builder: (context, provider, child) {
+          return CustomScrollView(
+            slivers: <Widget>[
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    CategoriesCompactWidget(),
+                    const SizedBox(height: Dimens.pagePadding),
+                    Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: Insets.x6),
+                      child: Text(
+                        I18n.of(context).latetstTitle,
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                    ),
+                    const SizedBox(height: 10.0),
+                    _buildLatestCarousel(context, provider.notesLatest),
+                  ],
                 ),
-                const SizedBox(height: 10.0),
-                _buildLatestCarousel(context),
-              ],
-            ),
-          ),
-          _buildLatestGridView(context),
-        ],
+              ),
+              _buildLatestGridView(context, provider.productsLatest),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildLatestCarousel(BuildContext context) {
+  Widget _buildLatestCarousel(BuildContext context, List<Note> notes) {
+    if (notes == null) return const SizedBox();
+
     return CarouselSlider(
       viewportFraction: 0.92,
-      items: List.generate(
-        6,
-        (index) {
-          return SizedBox.expand(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
-              child: ImageCard(
-                buttonText: 'SEE MORE',
-                description: 'For all your summer clothing needs',
-                imageAsset: getCarouselImage(index),
-                onButtonPressed: () {},
+      items: notes
+          .map(
+            (e) => SizedBox.expand(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
+                child: ImageCard(
+                  buttonText: e.commandText,
+                  description: e.title,
+                  imageUrl: e.imageUrl,
+                  onButtonPressed: () {}, //TODO: handle Click
+                ),
               ),
             ),
-          );
-        },
-      ),
+          )
+          .toList(),
     );
   }
 
@@ -78,7 +86,9 @@ class HomePage extends StatelessWidget {
     }
   }
 
-  Widget _buildLatestGridView(BuildContext context) {
+  Widget _buildLatestGridView(BuildContext context, List<Product> products) {
+    if (products == null) return const SliverToBoxAdapter();
+
     return SliverPadding(
       padding: const EdgeInsets.symmetric(
         horizontal: Dimens.pagePadding,
@@ -94,30 +104,13 @@ class HomePage extends StatelessWidget {
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) {
-            return ProductItemNormal(
-              assetImagePath: _getDressAssetPath(index),
-              cost: 15.0,
-              title: 'best dress ever',
-            );
+            final product = products[index];
+
+            return ProductItemNormal.fromModel(product);
           },
-          childCount: 30,
+          childCount: products.length,
         ),
       ),
     );
-  }
-
-  String _getDressAssetPath(int index) {
-    final modulo = index % 6;
-
-    if (modulo == 0) return Assets.dressCottonImage;
-    if (modulo == 1) return Assets.dressFloral2Image;
-    if (modulo == 2) return Assets.dressFloralImage;
-    if (modulo == 3) return Assets.dressPattern2Image;
-    if (modulo == 4) return Assets.dressPatternImage;
-    if (modulo == 5) {
-      return Assets.dressCotton2Image;
-    } else {
-      return Assets.greenBackpackImage;
-    }
   }
 }

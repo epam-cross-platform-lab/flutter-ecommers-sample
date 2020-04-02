@@ -1,8 +1,11 @@
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/category_item/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../extensions/string_extension.dart';
 
 class CategoryItem extends StatelessWidget {
   final Gradient labelBackgroundGradient;
@@ -39,6 +42,24 @@ class CategoryItem extends StatelessWidget {
     );
   }
 
+  factory CategoryItem.fromModel(
+      Category category, Function(Categories) onTap) {
+    return CategoryItem(
+      labelBackgroundGradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          category.color1.fromHexToColor(),
+          category.color2.fromHexToColor()
+        ],
+      ),
+      shadowColor: category.shadowColor.fromHexToColor(),
+      imagePath: _getIconPath(category.type),
+      title: category.title,
+      onTapFunction: () => onTap(category.type),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -52,12 +73,15 @@ class CategoryItem extends StatelessWidget {
             const SizedBox(
               height: labelBottomMargin,
             ),
-            Text(
-              title,
-              style: Theme.of(context)
-                  .textTheme
-                  .caption
-                  .copyWith(fontSize: FontSizes.normal),
+            Flexible(
+              child: Text(
+                title,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context)
+                    .textTheme
+                    .caption
+                    .copyWith(fontSize: FontSizes.normal),
+              ),
             ),
           ],
         ),
@@ -88,5 +112,25 @@ class CategoryItem extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  static String _getIconPath(Categories type) {
+    switch (type) {
+      case Categories.apparel:
+        return Assets.apparelIcon;
+      case Categories.beauty:
+        return Assets.beautyIcon;
+      case Categories.electronics:
+        return Assets.electronicsIcon;
+      case Categories.furniture:
+        return Assets.furnitureIcon;
+      case Categories.home:
+        return Assets.homeIcon;
+      case Categories.shoes:
+        return Assets.shoesIcon;
+      case Categories.stationary:
+      default:
+        return Assets.stationaryIcon;
+    }
   }
 }
