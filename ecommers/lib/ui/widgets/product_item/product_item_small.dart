@@ -11,11 +11,13 @@ class ProductItemSmall extends ProductItemBase {
     @required String assetImagePath,
     @required String title,
     @required double cost,
+    int id,
   }) : super(
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
           productSize: productItemSmallSize,
+          id: id,
         );
 
   @override
@@ -25,7 +27,10 @@ class ProductItemSmall extends ProductItemBase {
       children: <Widget>[
         Expanded(
           flex: 3,
-          child: CachedImage(imagePath: assetImagePath),
+          child: HeroImage(
+            tag: id,
+            imagePath: assetImagePath,
+          ),
         ),
         const SizedBox(
           width: ProductItemBase.padding,

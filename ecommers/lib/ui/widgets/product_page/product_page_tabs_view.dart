@@ -2,6 +2,7 @@ import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
+import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/material.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:ecommers/core/models/index.dart';
@@ -10,10 +11,10 @@ import 'index.dart';
 
 class ProductPageTabsView extends StatelessWidget {
   final ProductItemModel productModel;
-  final Function(List<String>) assetsHasChanged;
+  final Function(List<CarouselImage>) imagesHasChanged;
   const ProductPageTabsView({
     @required this.productModel,
-    this.assetsHasChanged,
+    this.imagesHasChanged,
   });
 
   @override
@@ -59,10 +60,10 @@ class ProductPageTabsView extends StatelessWidget {
                 child: ProductTab(
                   colors: productModel.colors,
                   sizes: productModel.sizes,
-                  colorHasChanged: (assets) => {
-                    if (assetsHasChanged != null)
+                  colorHasChanged: (images) => {
+                    if (imagesHasChanged != null)
                       {
-                        assetsHasChanged(assets),
+                        imagesHasChanged(images),
                       }
                   },
                 ),

@@ -69,6 +69,7 @@ class _ProductsGridState extends State<ProductsGrid> {
                           cost: product.cost,
                           rate: product.rate,
                           color: colors[product.id % colors.length],
+                          id: product.id,
                         ))
                     .toList(),
               ),

@@ -7,8 +7,8 @@
         "rate": 3.5
     },
     {
-        "id": 2,
-        "image_uri": "assets/product_shirt.png",
+        "id": 0,
+        "image_uri": "assets/black_shoes.png",
         "title": "V Neck Shirt - Lime",
         "cost": 54.99,
         "rate": 4.9
