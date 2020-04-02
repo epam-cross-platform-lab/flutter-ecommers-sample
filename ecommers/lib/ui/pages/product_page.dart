@@ -6,6 +6,7 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/icon_with_badge.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_page/index.dart';
+import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,13 +21,13 @@ class _ProductPageState extends State<ProductPage> {
   final ProductItemModel productModel = createProductModel();
   ValueNotifier<int> valueNotifier;
   PageController pageController;
-  List<String> assetsImagePaths = [];
+  List<CarouselImage> images = [];
 
   @override
   void initState() {
     valueNotifier = ValueNotifier<int>(0);
     pageController = PageController(initialPage: 0, keepPage: false);
-    assetsImagePaths = productModel.colors[0].assetsImagePaths;
+    images = productModel.colors[0].images;
     super.initState();
   }
 
@@ -69,7 +70,7 @@ class _ProductPageState extends State<ProductPage> {
             child: ListView(
               children: [
                 CarouselWidget(
-                  assetImagePaths: assetsImagePaths,
+                  images: images,
                   currentPageNotifier: valueNotifier,
                   currentPageController: pageController,
                   height: 250,
@@ -78,11 +79,11 @@ class _ProductPageState extends State<ProductPage> {
                   height: 300,
                   child: ProductPageTabsView(
                     productModel: productModel,
-                    assetsHasChanged: (assets) => {
+                    imagesHasChanged: (assets) => {
                       setState(() => {
                             valueNotifier.value = 0,
                             pageController.jumpToPage(0),
-                            assetsImagePaths = assets,
+                            images = assets,
                           }),
                     },
                   ),
@@ -108,70 +109,137 @@ class _ProductPageState extends State<ProductPage> {
       ProductColorModel(
         isSelected: true,
         color: 0xFF000000,
-        assetsImagePaths: [
-          Assets.blackShoes,
-          Assets.blackShoes,
-          Assets.blackShoes,
+        images: [
+          CarouselImage(
+            path: Assets.blackShoes,
+            id: 0,
+          ),
+          CarouselImage(
+            path: Assets.blackShoes,
+            id: 0,
+          ),
+          CarouselImage(
+            path: Assets.blackShoes,
+            id: 0,
+          ),
         ],
       ),
       ProductColorModel(
         isSelected: false,
         color: 0xFFFFF9C4,
-        assetsImagePaths: [
-          Assets.goldShoes,
-          Assets.goldShoes,
-          Assets.goldShoes,
+        images: [
+          CarouselImage(
+            path: Assets.goldShoes,
+            id: 1,
+          ),
+          CarouselImage(
+            path: Assets.goldShoes,
+            id: 1,
+          ),
+          CarouselImage(
+            path: Assets.goldShoes,
+            id: 1,
+          ),
         ],
       ),
       ProductColorModel(
         isSelected: false,
         color: 0xFFFFCDD2,
-        assetsImagePaths: [
-          Assets.pinkShoes,
-          Assets.pinkShoes,
-          Assets.pinkShoes,
+        images: [
+          CarouselImage(
+            path: Assets.pinkShoes,
+            id: 2,
+          ),
+          CarouselImage(
+            path: Assets.pinkShoes,
+            id: 2,
+          ),
+          CarouselImage(
+            path: Assets.pinkShoes,
+            id: 2,
+          ),
         ],
       ),
       ProductColorModel(
         isSelected: false,
         color: 0xFFE57373,
-        assetsImagePaths: [
-          Assets.redShoes,
-          Assets.redShoes,
-          Assets.redShoes,
+        images: [
+          CarouselImage(
+            path: Assets.redShoes,
+            id: 3,
+          ),
+          CarouselImage(
+            path: Assets.redShoes,
+            id: 3,
+          ),
+          CarouselImage(
+            path: Assets.redShoes,
+            id: 3,
+          ),
         ],
       ),
       ProductColorModel(
         isSelected: false,
         color: 0xFFF06292,
-        assetsImagePaths: [
-          Assets.roseRedShoes,
-          Assets.roseRedShoes,
-          Assets.roseRedShoes,
+        images: [
+          CarouselImage(
+            path: Assets.roseRedShoes,
+            id: 4,
+          ),
+          CarouselImage(
+            path: Assets.roseRedShoes,
+            id: 4,
+          ),
+          CarouselImage(
+            path: Assets.roseRedShoes,
+            id: 4,
+          ),
         ],
       ),
       ProductColorModel(
         isSelected: false,
         color: 0xFFE0E0E0,
-        assetsImagePaths: [
-          Assets.silverShoes,
-          Assets.silverShoes,
+        images: [
+          CarouselImage(
+            path: Assets.silverShoes,
+            id: 5,
+          ),
+          CarouselImage(
+            path: Assets.silverShoes,
+            id: 5,
+          ),
+          CarouselImage(
+            path: Assets.silverShoes,
+            id: 5,
+          ),
         ],
       ),
       ProductColorModel(
         isSelected: false,
         color: 0xFFFFFFFF,
-        assetsImagePaths: [
-          Assets.whiteShoes,
-          Assets.whiteShoes,
-          Assets.whiteShoes,
+        images: [
+          CarouselImage(
+            path: Assets.whiteShoes,
+            id: 6,
+          ),
+          CarouselImage(
+            path: Assets.whiteShoes,
+            id: 6,
+          ),
+          CarouselImage(
+            path: Assets.whiteShoes,
+            id: 6,
+          ),
         ],
       ),
       ProductColorModel(
         isSelected: false,
         color: 0xFFFFF176,
-        assetsImagePaths: [
-          Assets.yellowShoes,
+        images: [
+          CarouselImage(
+            path: Assets.yellowShoes,
+            id: 7,
+          ),
         ],
       ),
     ];

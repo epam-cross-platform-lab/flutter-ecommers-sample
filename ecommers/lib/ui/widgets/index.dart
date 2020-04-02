@@ -2,6 +2,7 @@ export 'backgrounded_safe_area.dart';
 export 'cached_image.dart';
 export 'carousel_widget.dart';
 export 'circle_icon.dart';
+export 'hero_image.dart';
 export 'icon_with_badge.dart';
 export 'image_card.dart';
 export 'products_grid.dart';
