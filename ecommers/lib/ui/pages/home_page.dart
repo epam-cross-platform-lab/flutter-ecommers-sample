@@ -1,15 +1,13 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/provider_models/home_provider_model.dart';
-import 'package:ecommers/generated/i18n.dart';
-import 'package:ecommers/ui/decorations/dimens/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/pages/index.dart';
-import 'package:ecommers/ui/widgets/category_item/categories_compact_widget.dart';
-import 'package:ecommers/ui/widgets/index.dart';
-import 'package:ecommers/ui/widgets/product_item/product_item_normal.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../core/models/data_models/index.dart';
+import '../../core/provider_models/index.dart';
+import '../../ui/decorations/dimens/index.dart';
+import '../../ui/pages/index.dart';
+import '../../ui/widgets/category_item/categories_compact_view.dart';
+import '../../ui/widgets/index.dart';
+import '../../ui/widgets/product_item/index.dart';
 
 class HomePage extends StatelessWidget {
   static const double _latestGridViewAxisSpacing = 12.0;
@@ -28,18 +26,9 @@ class HomePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
-                    CategoriesCompactWidget(),
+                    CategoriesCompactView(provider.categoryList),
                     const SizedBox(height: Dimens.pagePadding),
-                    Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: Insets.x6),
-                      child: Text(
-                        I18n.of(context).latetstTitle,
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                    ),
-                    const SizedBox(height: 10.0),
-                    _buildLatestCarousel(context, provider.notesLatest),
+                    NotesCarousel(notes: provider.notesLatest),
                   ],
                 ),
               ),
@@ -49,41 +38,6 @@ class HomePage extends StatelessWidget {
         },
       ),
     );
-  }
-
-  Widget _buildLatestCarousel(BuildContext context, List<Note> notes) {
-    if (notes == null) return const SizedBox();
-
-    return CarouselSlider(
-      viewportFraction: 0.92,
-      items: notes
-          .map(
-            (e) => SizedBox.expand(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
-                child: ImageCard(
-                  buttonText: e.commandText,
-                  description: e.title,
-                  imageUrl: e.imageUrl,
-                  onButtonPressed: () {}, //TODO: handle Click
-                ),
-              ),
-            ),
-          )
-          .toList(),
-    );
-  }
-
-  String getCarouselImage(int index) {
-    final modulo = index % 3;
-
-    if (modulo == 0) {
-      return Assets.girlImage;
-    } else if (modulo == 1) {
-      return Assets.girl2Image;
-    } else {
-      return Assets.girl3Image;
-    }
   }
 
   Widget _buildLatestGridView(BuildContext context, List<Product> products) {
