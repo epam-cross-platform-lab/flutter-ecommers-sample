@@ -13,11 +13,13 @@ class ProductItemNormal extends ProductItemBase {
     @required String assetImagePath,
     @required String title,
     @required double cost,
+    int id,
   }) : super(
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
           productSize: size,
+          id: id,
         );
 
   factory ProductItemNormal.fromModel(Product product) {
@@ -35,7 +37,10 @@ class ProductItemNormal extends ProductItemBase {
       children: <Widget>[
         Expanded(
           child: Center(
-            child: CachedImage(imagePath: assetImagePath),
+            child: HeroImage(
+              tag: id,
+              imagePath: assetImagePath,
+            ),
           ),
         ),
         const SizedBox(height: 4.0),
