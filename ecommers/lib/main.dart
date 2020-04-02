@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:ecommers/core/provider_models/main_provider.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
@@ -9,7 +11,10 @@ import 'package:ecommers/web_server/local_server.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'core/models/data_models/index.dart';
 import 'core/provider_models/index.dart';
+
+List<Product> products;
 
 void main() {
   runApp(MainApp());

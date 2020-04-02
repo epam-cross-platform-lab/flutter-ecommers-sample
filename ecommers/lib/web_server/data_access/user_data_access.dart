@@ -1,6 +1,6 @@
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/web_server/data_access/validation_model.dart';
 import 'package:ecommers/web_server/local_database.dart';
-import 'package:ecommers/web_server/models/user.dart';
 import 'package:ecommers/extensions/string_extension.dart';
 
 class UserDataAccess {

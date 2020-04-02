@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:ecommers/core/services/index.dart';
 import 'package:http_server/http_server.dart';
 
+import 'services/data_provider.dart';
+
 class LocalServer {
   static const int _port = 8090;
   static final String _localHost = InternetAddress.loopbackIPv4.address;
@@ -17,6 +19,11 @@ class LocalServer {
       _port,
       shared: true,
     );
+
+    Future.wait([
+      DataProvider.fetchProducts(),
+      DataProvider.fetchCategories(),
+    ]);
 
     _server.transform(HttpBodyHandler()).listen((HttpRequestBody body) async {
       await Future.delayed(const Duration(seconds: 2));

@@ -8,6 +8,7 @@ import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/products_grid.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
+import 'package:ecommers/web_server/services/product_comparator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

@@ -1,5 +1,6 @@
 export 'base_provider_model.dart';
 export 'forgot_password_provider_model.dart';
+export 'home_provider_model.dart';
 export 'log_in_provider_model.dart';
 export 'main_provider.dart';
 export 'products_grid_provder_model.dart';
