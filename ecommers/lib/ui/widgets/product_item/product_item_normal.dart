@@ -27,6 +27,7 @@ class ProductItemNormal extends ProductItemBase {
       assetImagePath: product.images.first,
       cost: product.price,
       title: product.title,
+      id: product.id,
     );  
   }
 
