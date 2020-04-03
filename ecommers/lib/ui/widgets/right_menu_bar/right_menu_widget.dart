@@ -16,7 +16,7 @@ class RightMenuWidget extends StatelessWidget {
     ),
     RightMenuSubTitleModel(
       title: 'Category',
-      subTitle: ['Men\'s Apparel'],
+      subTitle: ['Men\'s Apparel', 'Women\'s Apparel'],
     ),
     RightMenuSubTitleModel(
       title: 'Condition',
@@ -24,7 +24,7 @@ class RightMenuWidget extends StatelessWidget {
     ),
     RightMenuSubTitleModel(
       title: 'Material',
-      subTitle: ['Cotton', 'Cloth']
+      subTitle: ['Cotton', 'Cloth'],
     ),
     RightMenuColorsModel(
       title: 'Colour',
@@ -32,7 +32,7 @@ class RightMenuWidget extends StatelessWidget {
     ),
     RightMenuSubTitleModel(
       title: 'Brand',
-      subTitle: ['All Brands','Kanken','Polo']
+      subTitle: ['All Brands', 'Kanken', 'Polo'],
     ),
     RightMenuSubTitleModel(
       title: 'Size',

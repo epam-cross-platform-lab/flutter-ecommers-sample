@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class DropDownList extends StatefulWidget {
-  final List<String> subTitles;
+class DropDownColors extends StatefulWidget {
+  final List<String> colors;
 
-  const DropDownList(this.subTitles) : super();
+  const DropDownColors(this.colors) : super();
 
   @override
-  State<StatefulWidget> createState() => DropDownState(subTitles);
+  State<StatefulWidget> createState() => DropDownColorsState(colors);
 }
 
-class DropDownState extends State<DropDownList> {
-  final List<String> subTitles;
+class DropDownColorsState extends State<DropDownColors> {
+  final List<String> colors;
   List<DropdownMenuItem<String>> _dropdownMenuItems;
   String _selectedSubTitle;
 
-  DropDownState(this.subTitles);
+
+  DropDownColorsState(this.colors);
 
   @override
   void initState() {
-    _dropdownMenuItems = buildDropdownMenuItems(subTitles);
+    _dropdownMenuItems = buildDropdownMenuItems(colors);
     _selectedSubTitle = _dropdownMenuItems[0].value;
     super.initState();
   }
@@ -28,11 +29,12 @@ class DropDownState extends State<DropDownList> {
       List<String> subTitleItem) {
     final List<DropdownMenuItem<String>> items = List();
     for (final String subTitleItem in subTitleItem) {
+      
       items.add(
         DropdownMenuItem(
           value: subTitleItem,
           child: SizedBox(
-            child: Text(subTitleItem, textAlign: TextAlign.center),
+            child: Text(subTitleItem, textAlign: TextAlign.left),
           ),
         ),
       );
