@@ -49,8 +49,8 @@ class CategoryItem extends StatelessWidget {
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
         colors: [
-          category.color1.fromHexToColor(),
-          category.color2.fromHexToColor()
+          category.gradientColor1.fromHexToColor(),
+          category.gradientColor2.fromHexToColor()
         ],
       ),
       shadowColor: category.shadowColor.fromHexToColor(),

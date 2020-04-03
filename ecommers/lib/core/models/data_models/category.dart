@@ -8,8 +8,10 @@ class Category {
   final int id;
   final String title;
   final Categories type;
-  final String color1;
-  final String color2;
+  @JsonKey(name: 'color1')
+  final String gradientColor1;
+  @JsonKey(name: 'color2')
+  final String gradientColor2;
   final String shadowColor;
   final List<String> subCategories;
 
@@ -18,8 +20,8 @@ class Category {
     this.title,
     this.subCategories,
     this.type,
-    this.color1,
-    this.color2,
+    this.gradientColor1,
+    this.gradientColor2,
     this.shadowColor,
   );
 
