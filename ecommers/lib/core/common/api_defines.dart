@@ -9,6 +9,8 @@ class ApiDefines {
 
   static const String categories = '/categories';
 
+  static const String notes = '/notes';
+
   static const String profile = '/profile';
   static const String profileOrders = '/profile/orders';
   static const String profilePendingShipment = '/profile/pending/shipment';

@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:ecommers/core/services/index.dart';
 import 'package:http_server/http_server.dart';
 
-import 'services/data_provider.dart';
+import './request_handler.dart';
+import './services/data_provider.dart';
 
 class LocalServer {
   static const int _port = 8090;
@@ -20,14 +20,11 @@ class LocalServer {
       shared: true,
     );
 
-    Future.wait([
-      DataProvider.fetchProducts(),
-      DataProvider.fetchCategories(),
-    ]);
+    DataProvider.fetchProducts();
 
     _server.transform(HttpBodyHandler()).listen((HttpRequestBody body) async {
       await Future.delayed(const Duration(seconds: 2));
-      requestHandler.process(body);
+      RequestHandler.process(body);
     });
   }
 

@@ -41,4 +41,7 @@ abstract class ApiService extends ChopperService {
 
   @Get(path: ApiDefines.categories)
   Future<Response<List<Category>>> categories();
+
+  @Get(path: ApiDefines.notes)
+  Future<Response<List<Note>>> notes();
 }

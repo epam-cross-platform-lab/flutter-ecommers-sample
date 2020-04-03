@@ -5,6 +5,7 @@ export 'circle_icon.dart';
 export 'hero_image.dart';
 export 'icon_with_badge.dart';
 export 'image_card.dart';
+export 'notes_carousel.dart';
 export 'products_grid.dart';
 export 'progress.dart';
 export 'rate_widget.dart';
