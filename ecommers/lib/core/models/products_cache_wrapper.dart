@@ -1,5 +1,5 @@
-import 'package:ecommers/core/models/product_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'data_models/index.dart';
 
 part 'products_cache_wrapper.g.dart';
 
@@ -9,7 +9,7 @@ class ProductsCacheWrapper {
   final String key;
 
   @JsonKey(name: 'products')
-  final List<ProductModel> products;
+  final List<Product> products;
 
   ProductsCacheWrapper(this.key, this.products);
 
