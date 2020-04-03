@@ -47,4 +47,20 @@ class Product {
       _$ProductFromJson(json);
 
   Map<String, dynamic> toJson() => _$ProductToJson(this);
+
+  Map<String, dynamic> toSpecifiedJson() => <String, dynamic>{
+        'id': id,
+        'gender': gender,
+        'category': category,
+        'subCategory': subCategory,
+        'title': title,
+        'price': price,
+        'baseColor': baseColor,
+        'catalogAddDate': catalogAddDate,
+        'styleImages': images,
+        'rate': rate,
+        'models': models.map((model) => model.toJson()),
+        'details': details.toJson(),
+        'reviews': reviews.map((review) => review.toJson()),
+      };
 }

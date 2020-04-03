@@ -7,16 +7,18 @@ part 'products_cache_wrapper.g.dart';
 class ProductsCacheWrapper {
   @JsonKey(name: 'key')
   final String key;
-
+  @JsonKey(name: 'lastUpdatedDate')
+  final DateTime lastUpdatedDate;
   @JsonKey(name: 'products')
   final List<Product> products;
 
-  ProductsCacheWrapper(this.key, this.products);
+  ProductsCacheWrapper(this.key, this.lastUpdatedDate, this.products);
 
   static const fromJson = _$ProductsCacheWrapperFromJson;
 
   Map<String, dynamic> toJson() => <String, dynamic>{
         'key': key,
-        'products': products.map((product) => product.toJson()),
+        'lastUpdatedDate': lastUpdatedDate.toIso8601String(),
+        'products': products.map((product) => product.toSpecifiedJson()),
       };
 }
