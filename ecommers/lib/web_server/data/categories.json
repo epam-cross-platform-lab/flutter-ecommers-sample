@@ -1,0 +1,84 @@
+[
+    {
+        "id": 1,
+        "title": "Apparel",
+        "subCategories": [
+            "Bottomwear",
+            "Innerwear",
+            "Topwear",
+            "Saree",
+            "Loungewear and Nightwear",
+            "Dress",
+            "Apparel Set",
+            "Socks"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Accessories",
+        "subCategories": [
+            "Watches",
+            "Belts",
+            "Wallets",
+            "Jewellery",
+            "Eyewear",
+            "Bags",
+            "Accessories",
+            "Headwear",
+            "Cufflinks",
+            "Socks",
+            "Stoles",
+            "Scarves",
+            "Ties",
+            "Gloves",
+            "Mufflers",
+            "Umbrellas"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Footwear",
+        "subCategories": [
+            "Shoes",
+            "Sandal",
+            "Flip Flops"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Personal Care",
+        "subCategories": [
+            "Nails",
+            "Fragrance",
+            "Lips",
+            "Hair",
+            "Makeup",
+            "Skin Care",
+            "Eyes",
+            "Bath and Body",
+            "Skin",
+            "Perfumes"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Free Items",
+        "subCategories": [
+            "Free Gifts"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Home",
+        "subCategories": [
+            "Home Furnishing"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Sporting Goods",
+        "subCategories": [
+            "Sports Equipment"
+        ]
+    }
+]

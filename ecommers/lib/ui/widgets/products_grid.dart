@@ -1,4 +1,4 @@
-import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProductsGrid extends StatefulWidget {
-  final int Function(ProductModel, ProductModel) compareFunction;
+  final int Function(Product, Product) compareFunction;
 
   const ProductsGrid({this.compareFunction, Key key}) : super(key: key);
 
@@ -17,7 +17,7 @@ class ProductsGrid extends StatefulWidget {
 
 class _ProductsGridState extends State<ProductsGrid> {
   ProductsGridProviderModel _provider;
-  List<ProductModel> _products;
+  List<Product> _products;
 
   @override
   void didChangeDependencies() {
@@ -41,7 +41,7 @@ class _ProductsGridState extends State<ProductsGrid> {
       Colors.pinkAccent
     ];
 
-    final sortedProducts = List<ProductModel>.from(_products ?? []);
+    final sortedProducts = List<Product>.from(_products ?? []);
 
     if (widget.compareFunction != null && sortedProducts.isNotEmpty) {
       sortedProducts.sort(widget.compareFunction);
@@ -64,11 +64,12 @@ class _ProductsGridState extends State<ProductsGrid> {
                     ProductItemNormal.size.height,
                 children: sortedProducts
                     .map((product) => ProductItemWide(
-                          assetImagePath: product.imageUri,
+                          assetImagePath: product.images[0],
                           title: product.title,
-                          cost: product.cost,
+                          cost: product.price,
                           rate: product.rate,
                           color: colors[product.id % colors.length],
+                          id: product.id,
                         ))
                     .toList(),
               ),

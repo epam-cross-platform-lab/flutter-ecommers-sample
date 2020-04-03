@@ -1,5 +1,4 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
@@ -159,6 +158,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           count: currentOrder.count,
           countIncrementFunction: () => cartProvider.addOrEdit(currentOrder),
           countDecrementFunction: () => cartProvider.removeOrEdit(currentOrder),
+          tapOrderFunction:() => navigationService.navigateTo(Pages.product),
         );
       },
       separatorBuilder: (BuildContext context, int index) {

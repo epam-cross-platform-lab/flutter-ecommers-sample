@@ -14,6 +14,7 @@ class ProductItemWide extends ProductItemBase {
     @required String assetImagePath,
     @required String title,
     @required double cost,
+    int id,
     this.color = Colors.transparent,
     this.rate,
   }) : super(
@@ -21,6 +22,7 @@ class ProductItemWide extends ProductItemBase {
           cost: cost,
           title: title,
           productSize: size,
+          id: id,
         );
 
   @override
@@ -30,7 +32,10 @@ class ProductItemWide extends ProductItemBase {
       children: <Widget>[
         Expanded(
           child: Center(
-            child: CachedImage(imagePath: assetImagePath),
+            child: HeroImage(
+              tag: id,
+              imagePath: assetImagePath,
+            ),
           ),
         ),
         Text(

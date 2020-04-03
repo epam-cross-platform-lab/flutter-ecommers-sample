@@ -1,6 +1,7 @@
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class ProductTab extends StatefulWidget {
   final List<ProductColorModel> colors;
   final List<ProductSizeModel> sizes;
-  final Function(List<String>) colorHasChanged;
+  final Function(List<CarouselImage>) colorHasChanged;
 
   const ProductTab({
     Key key,
@@ -108,7 +109,7 @@ class _ProductTabState extends State<ProductTab> {
                   widget.colors[i].isSelected = true,
                   if (widget.colorHasChanged != null)
                     {
-                      widget.colorHasChanged(widget.colors[i].assetsImagePaths),
+                      widget.colorHasChanged(widget.colors[i].images),
                     }
                 }),
           },

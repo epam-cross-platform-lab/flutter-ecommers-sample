@@ -81,5 +81,4 @@ class _CartPageState extends State<CartPage> {
         },
       );
     }
-
 }

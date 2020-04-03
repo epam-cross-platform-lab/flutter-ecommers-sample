@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommers/core/provider_models/home_provider_model.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -6,6 +7,7 @@ import 'package:ecommers/ui/widgets/category_item/categories_compact_widget.dart
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_normal.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   static const double _latestGridViewAxisSpacing = 12.0;
@@ -14,28 +16,31 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverToBoxAdapter(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              CategoriesCompactWidget(),
-              const SizedBox(height: Dimens.pagePadding),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
-                child: Text(
-                  I18n.of(context).latetstTitle,
-                  style: Theme.of(context).textTheme.headline6,
+    return ChangeNotifierProvider(
+      create: (_) => HomeProviderModel(context),
+      child: CustomScrollView(
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                CategoriesCompactWidget(),
+                const SizedBox(height: Dimens.pagePadding),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
+                  child: Text(
+                    I18n.of(context).latetstTitle,
+                    style: Theme.of(context).textTheme.headline6,
+                  ),
                 ),
-              ),
-              const SizedBox(height: 10.0),
-              _buildLatestCarousel(context),
-            ],
+                const SizedBox(height: 10.0),
+                _buildLatestCarousel(context),
+              ],
+            ),
           ),
-        ),
-        _buildLatestGridView(context),
-      ],
+          _buildLatestGridView(context),
+        ],
+      ),
     );
   }
 
@@ -93,23 +98,34 @@ class HomePage extends StatelessWidget {
               assetImagePath: _getDressAssetPath(index),
               cost: 15.0,
               title: 'best dress ever',
+              id: index,
             );
           },
-          childCount: 30,
+          childCount: 40,
         ),
       ),
     );
   }
 
   String _getDressAssetPath(int index) {
-    final modulo = index % 6;
+    final modulo = index % 17;
 
-    if (modulo == 0) return Assets.dressCottonImage;
+    if (modulo == 0) return Assets.blackShoes;
     if (modulo == 1) return Assets.dressFloral2Image;
     if (modulo == 2) return Assets.dressFloralImage;
     if (modulo == 3) return Assets.dressPattern2Image;
     if (modulo == 4) return Assets.dressPatternImage;
-    if (modulo == 5) {
+    if (modulo == 5) return Assets.dressCottonImage;
+    if (modulo == 6) return Assets.goldShoes;
+    if (modulo == 7) return Assets.redShoes;
+    if (modulo == 8) return Assets.roseRedShoes;
+    if (modulo == 9) return Assets.silverShoes;
+    if (modulo == 10) return Assets.pinkShoes;
+    if (modulo == 11) return Assets.shirtImage;
+    if (modulo == 12) return Assets.yellowShoes;
+    if (modulo == 13) return Assets.whiteShoes;
+    if (modulo == 14) return Assets.backpackImage;     
+    if (modulo == 15) {
       return Assets.dressCotton2Image;
     } else {
       return Assets.greenBackpackImage;
