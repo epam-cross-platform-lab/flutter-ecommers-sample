@@ -12,7 +12,6 @@ class CachedImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      //imageUrl: '${Assets.imageBaseUrl}/$imagePath',
       imageUrl: imagePath,
       errorWidget: (context, url, error) =>
           SvgPicture.asset(Assets.warningIcon),

@@ -5,7 +5,8 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/category_item/consts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../extensions/string_extension.dart';
+
+import '../../../extensions/index.dart';
 
 class CategoryItem extends StatelessWidget {
   final Gradient labelBackgroundGradient;
