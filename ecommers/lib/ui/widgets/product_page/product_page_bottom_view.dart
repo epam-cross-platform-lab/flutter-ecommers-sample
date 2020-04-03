@@ -6,8 +6,9 @@ import 'package:flutter/material.dart';
 
 class ProductPageBottomView extends StatelessWidget {
   final Size buttonSize;
+  final Function() addToCartFunction;
 
-  const ProductPageBottomView({@required this.buttonSize});
+  const ProductPageBottomView({@required this.buttonSize, this.addToCartFunction});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class ProductPageBottomView extends StatelessWidget {
               width: buttonSize.width,
               child: PrimaryButtonWidget(
                 text: I18n.of(context).addToCart,
-                onPressedFunction: () => {},
+                onPressedFunction: addToCartFunction,
               ),
             ),
           ],

@@ -1,16 +1,15 @@
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/widgets.dart';
 
 class CartProvider extends ChangeNotifier {
   List<OrderModel> _orders;
 
   List<OrderModel> get orders => _orders;
-  int get oredersCount => _orders.length;
+  int get orederCount => _orders.length;
 
-  void initializeOrderProducts() {
-    //todo get from bd
-    _orders = <OrderModel>[];
-    notifyListeners();
+  CartProvider() {
+    _initializeOrderProducts();
   }
 
   void removeOrEdit(OrderModel order) {
@@ -60,6 +59,16 @@ class CartProvider extends ChangeNotifier {
             totalOrderCost + nextOrder.count * nextOrder.cost);
 
     return totalCost * (100 - salePercent) / 100;
+  }
+
+  void _initializeOrderProducts() {
+    //todo get from bd
+    _orders = <OrderModel>[OrderModel(
+        title: 'Bottle Green Backpack',
+        description: 'Medium, Green',
+        cost: 2.58,
+        imagePath: Assets.greenBackpackImage,
+        count: 1),];
   }
 
   OrderModel _getOrderById(int id) =>

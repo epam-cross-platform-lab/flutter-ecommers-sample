@@ -1,5 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
@@ -12,6 +13,7 @@ import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
+import 'package:provider/provider.dart';
 
 class CheckoutPage extends StatefulWidget {
   @override
@@ -24,55 +26,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
   bool isTotalOrderVisible = true;
 
   @override
-  void initState() {
-    super.initState();
-
-    keyboardVisibilityNotification.addNewListener(
-      onChange: (bool visible) {
-        setState(() {
-          isTotalOrderVisible = !visible;
-        });
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    keyboardVisibilityNotification.dispose();
-    super.dispose();
-  }
-
-  static const int _itemCount = 20;
-
-  static String _getDressAssetPath(int index) {
-    final modulo = index % 7;
-
-    if (modulo == 0) return Assets.dressCottonImage;
-    if (modulo == 1) return Assets.dressFloral2Image;
-    if (modulo == 2) return Assets.dressFloralImage;
-    if (modulo == 3) return Assets.dressPattern2Image;
-    if (modulo == 4) return Assets.dressPatternImage;
-    if (modulo == 5) return Assets.dressCotton2Image;
-    if (modulo == 6) {
-      return Assets.greenBackpackImage;
-    } else {
-      return Assets.greenBackpackImage;
-    }
-  }
-
-  final _orders = List.generate(
-      _itemCount,
-      (index) => OrderModel(
-          title: 'Bottle Green Backpack',
-          description: 'Medium, Green',
-          cost: 2.58,
-          imagePath: _getDressAssetPath(index),
-          count: 1));
-
-  @override
   Widget build(BuildContext context) {
-    final double totalOrderCost = _orders.fold(0.0,
-        (totalCost, nextOrder) => totalCost + nextOrder.count * nextOrder.cost);
+    final cartProvider = Provider.of<CartProvider>(context);
 
     return CloseablePage(
       child: Column(
@@ -82,17 +37,22 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
                     Insets.x6, Insets.x0, Insets.x5, Insets.x4),
-                child: _buildOrderListView(),
+                child: _buildOrderListView(cartProvider),
               ),
             ),
           ),
           Visibility(
             visible: isTotalOrderVisible,
             child: TotalOrderWidget(
-              cost: totalOrderCost,
+              cost: cartProvider.calculateTotalCost(),
               backgroundColor: BrandingColors.background,
-              onButtonPressedFunction: () =>
-                  navigationService.navigateTo(Pages.success),
+              onButtonPressedFunction: () {
+                navigationService.navigateTo(Pages.success);
+                //todo request for place order
+                cartProvider.resetCart();
+              },
+              
+
               buttonText: I18n.of(context).placeOrderButton,
               padding: const EdgeInsets.fromLTRB(
                   Insets.x6, Insets.x2, Insets.x5, Insets.x3_5),
@@ -177,8 +137,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildOrderListView() {
-    final int newItemCount = _orders.length + 2;
+  Widget _buildOrderListView(CartProvider cartProvider) {
+    final int newItemCount = cartProvider.orders.length + 2;
     return ListView.separated(
       itemCount: newItemCount,
       itemBuilder: (BuildContext context, int index) {
@@ -190,15 +150,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
           return _buildListFooter();
         }
 
-        final currentOrder = _orders[index - 1];
+        final currentOrder = cartProvider.orders[index - 1];
         return SmallOrderWidget(
           primaryText: currentOrder.title,
           secondaryText: currentOrder.description,
           assetImagePath: currentOrder.imagePath,
           cost: currentOrder.cost,
           count: currentOrder.count,
-          countIncrementFunction: () => incrementCount(currentOrder),
-          countDecrementFunction: () => decrementCount(currentOrder),
+          countIncrementFunction: () => cartProvider.addOrEdit(currentOrder),
+          countDecrementFunction: () => cartProvider.removeOrEdit(currentOrder),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -218,20 +178,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
         );
       },
     );
-  }
-
-  void decrementCount(OrderModel order) {
-    if (order.count == 1) _orders.remove(order);
-
-    setState(() {
-      order.count--;
-    });
-  }
-
-  void incrementCount(OrderModel order) {
-    setState(() {
-      order.count++;
-    });
   }
 
   Widget _buildShippingAddress() {

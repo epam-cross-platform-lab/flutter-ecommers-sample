@@ -1,4 +1,6 @@
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/branding_colors.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -8,6 +10,7 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_page/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({Key key}) : super(key: key);
@@ -32,6 +35,8 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context);
+
     return Scaffold(
       backgroundColor: BrandingColors.pageBackground,
       appBar: AppBar(
@@ -51,14 +56,14 @@ class _ProductPageState extends State<ProductPage> {
         actions: <Widget>[
           IconButton(
             icon: IconWithBadge(
-              badgeValue: 4,
+              badgeValue: cartProvider.orederCount,
               badgeTextStyle: Theme.of(context).textTheme.overline,
               icon: Icon(
                 Icons.shopping_cart,
                 color: BrandingColors.primaryText,
               ),
             ),
-            onPressed: () {},
+            onPressed: () => navigationService.navigateTo(Pages.cart),
           ),
         ],
       ),
@@ -90,13 +95,18 @@ class _ProductPageState extends State<ProductPage> {
               ],
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(
               left: Insets.x5,
               right: Insets.x5,
               bottom: Insets.x5,
             ),
-            child: ProductPageBottomView(buttonSize: Size(165.0, 46.0)),
+            child: ProductPageBottomView(
+                buttonSize: const Size(165.0, 46.0),
+                addToCartFunction: () {
+                  cartProvider
+                      .addOrEdit(Mapper.convertProductToOrder(productModel));
+                }),
           ),
         ],
       ),

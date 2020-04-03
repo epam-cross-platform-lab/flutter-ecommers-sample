@@ -1,4 +1,5 @@
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/provider_models/cart_provider.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -16,6 +17,8 @@ class ShellPage extends StatelessWidget {
       create: (_) => ShellProviderModel(context),
       child: Consumer<ShellProviderModel>(
         builder: (context, ShellProviderModel model, child) {
+          final cartProvider = Provider.of<CartProvider>(context);
+
           return Scaffold(
             appBar: AppBar(
               actions: <Widget>[
@@ -27,7 +30,8 @@ class ShellPage extends StatelessWidget {
                 ),
                 _buildAction(
                   imageAssetPath: Assets.notificationIcon,
-                  onIconPressedFuction: () => navigationService.navigateTo(Pages.notifications), //TODO get from provider
+                  onIconPressedFuction: () => navigationService
+                      .navigateTo(Pages.notifications), //TODO get from provider
                   badgeValue: 6, //TODO get from provider
                   context: context,
                 ),
@@ -41,7 +45,7 @@ class ShellPage extends StatelessWidget {
               selectedIndex: model.selectedItemIndex,
               pages: model.pages,
               onTappedFunction: model.onTappedItem,
-              orderCount: 3,
+              orderCount: cartProvider.orederCount,
             ),
           );
         },
