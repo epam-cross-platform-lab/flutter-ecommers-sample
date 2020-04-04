@@ -16,14 +16,12 @@ class CircleImage extends StatelessWidget {
       alignment: Alignment.center,
       height: size.height,
       width: size.width,
+      padding: const EdgeInsets.all(Insets.x2),
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
         color: BrandingColors.background,
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(Insets.x2),
-        child: image,
-      ),
+      child: image,
     );
   }
 }
