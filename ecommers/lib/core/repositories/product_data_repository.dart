@@ -15,9 +15,7 @@ class ProductDataRepository {
     SortType sortType,
   }) async {
     final cachedData = await _provideProductsByCategoryFromCache(category);
-    if (cachedData != null &&
-        cachedData.products != null &&
-        cachedData.products.isNotEmpty) {
+    if (cachedData?.products?.isNotEmpty == true) {
       if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
         await cacheDatabase.deleteDataByFilter(
             CacheDefines.products, 'key', category);
@@ -47,9 +45,7 @@ class ProductDataRepository {
 
   Future<List<Product>> getLatestProductList() async {
     final cachedData = await _provideLatestProductsFromCache();
-    if (cachedData != null &&
-        cachedData.products != null &&
-        cachedData.products.isNotEmpty) {
+    if (cachedData?.products?.isNotEmpty == true) {
       if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
         await cacheDatabase.dropData(CacheDefines.latestProducts);
       } else {
