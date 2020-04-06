@@ -5,5 +5,5 @@ enum Categories {
   furniture,
   home,
   shoes,
-  stationary,
+  stationary
 }
