@@ -39,6 +39,7 @@ extension GetItExtension on GetIt {
           LoginModel: LoginModel.fromJsonFactory,
           Product: Product.fromJsonFactory,
           Category: Category.fromJsonFactory,
+          Note: Note.fromJsonFactory,
         },
       ),
     );

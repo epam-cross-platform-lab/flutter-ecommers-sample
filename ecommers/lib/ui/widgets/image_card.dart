@@ -10,16 +10,15 @@ class ImageCard extends StatelessWidget {
   static const double _textWidth = 134.0;
   static const int _textMaxLines = 3;
 
-  static const double _borderRadius = 10.0;
   static const imageCardSize = Size(325.0, 184.0);
 
-  final String imageAsset;
+  final String imageUrl;
   final String description;
   final String buttonText;
   final Function() onButtonPressed;
 
   const ImageCard({
-    this.imageAsset,
+    this.imageUrl,
     this.description,
     this.buttonText,
     this.onButtonPressed,
@@ -34,11 +33,10 @@ class ImageCard extends StatelessWidget {
       padding: const EdgeInsets.all(Insets.x6_5),
       decoration: BoxDecoration(
         image: DecorationImage(
-          image:
-              CachedNetworkImageProvider('${Assets.imageBaseUrl}/$imageAsset'),
+          image: CachedNetworkImageProvider(imageUrl),
           fit: BoxFit.cover,
         ),
-        borderRadius: BorderRadius.circular(_borderRadius),
+        borderRadius: BorderRadius.circular(Radiuses.normal),
       ),
       child: Column(
         children: <Widget>[

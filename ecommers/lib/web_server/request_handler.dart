@@ -2,20 +2,20 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:ecommers/core/common/api_query_params.dart';
-import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/models/sort_type.dart';
-import 'package:ecommers/web_server/data_access/products_data_access.dart';
-import 'package:ecommers/web_server/services/product_comparator.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:http_server/http_server.dart';
+
 import '../core/common/index.dart';
+import '../core/models/data_models/index.dart';
+import '../core/models/sort_type.dart';
 import '../extensions/string_extension.dart';
+import './data_access/products_data_access.dart';
+import './data_access/user_data_access.dart';
+import './services/authorization_service.dart';
+import './services/data_provider.dart';
+import './services/product_comparator.dart';
 
-import 'data_access/user_data_access.dart';
 
-import 'services/authorization_service.dart';
-import 'services/data_provider.dart';
 
 class RequestHandler {
   static final UserDataAccess _userDataAccess = UserDataAccess.instance;
@@ -25,7 +25,7 @@ class RequestHandler {
   static String getMethod = 'GET';
   static String postMethod = 'POST';
 
-  void process(HttpRequestBody body) {
+  static void process(HttpRequestBody body) {
     final path = body.request.uri.path.toString();
 
     switch (path) {
@@ -50,6 +50,9 @@ class RequestHandler {
       case ApiDefines.categories:
         _handleCategoriesRequest(body);
         break;
+      case ApiDefines.notes:
+        _handleNotesRequest(body);
+        break;
       //TODO: add functionality
       case ApiDefines.profile:
       case ApiDefines.profileOrders:
@@ -60,7 +63,7 @@ class RequestHandler {
     }
   }
 
-  bool isNotAuthorized(HttpRequest request) {
+  static bool isNotAuthorized(HttpRequest request) {
     if (!AuthorizationService.isAuthorized(
         request.headers[HttpHeaders.authorizationHeader]?.first)) {
       request.response
@@ -73,7 +76,7 @@ class RequestHandler {
     return false;
   }
 
-  Future _handleLoginRequest(HttpRequestBody body) async {
+  static Future _handleLoginRequest(HttpRequestBody body) async {
     final userMap = body.body as Map<String, dynamic>;
     final user = User.fromJsonFactory(userMap);
 
@@ -91,7 +94,7 @@ class RequestHandler {
       ..close();
   }
 
-  Future _handleAuthorizationRequest(HttpRequestBody body) async {
+  static Future _handleAuthorizationRequest(HttpRequestBody body) async {
     final userMap = body.body as Map<String, dynamic>;
     final user = User.fromJsonFactory(userMap);
 
@@ -114,7 +117,7 @@ class RequestHandler {
       ..close();
   }
 
-  Future _handleProductsRequest(HttpRequestBody body) async {
+  static Future _handleProductsRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
     const int itemsPortion = 20;
@@ -156,14 +159,15 @@ class RequestHandler {
       ..close();
   }
 
-  Future _handleProductLatestRequest(HttpRequestBody body) async {
+  static Future _handleProductLatestRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
     const latestProductsCount = 20;
 
-    final resultProducts = [...await DataProvider.products];
+    var resultProducts = [...await DataProvider.products];
     resultProducts.sort((a, b) => b.catalogAddDate.compareTo(a.catalogAddDate));
-    resultProducts.take(latestProductsCount).toList();
+
+    resultProducts = resultProducts.take(latestProductsCount).toList();
 
     body.request.response
       ..headers.contentType = ContentType.json
@@ -171,7 +175,7 @@ class RequestHandler {
       ..close();
   }
 
-  Future _handleProductsRecommendedRequest(HttpRequestBody body) async {
+  static Future _handleProductsRecommendedRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
     const recommendedCount = 5;
@@ -190,7 +194,7 @@ class RequestHandler {
       ..close();
   }
 
-  Future _handleProductsRecentRequest(HttpRequestBody body) async {
+  static Future _handleProductsRecentRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
     if (body.request.method == getMethod) {
@@ -200,7 +204,7 @@ class RequestHandler {
     }
   }
 
-  Future _handleProductsRecentGetRequest(HttpRequestBody body) async {
+  static Future _handleProductsRecentGetRequest(HttpRequestBody body) async {
     final authorizationHeader =
         body.request.headers[HttpHeaders.authorizationHeader].first;
     final user = AuthorizationService.getJwtSubject(authorizationHeader);
@@ -214,7 +218,7 @@ class RequestHandler {
       ..close();
   }
 
-  Future _handleProductsRecentPostRequest(HttpRequestBody body) async {
+  static Future _handleProductsRecentPostRequest(HttpRequestBody body) async {
     final authorizationHeader =
         body.request.headers[HttpHeaders.authorizationHeader].first;
     final user = AuthorizationService.getJwtSubject(authorizationHeader);
@@ -228,10 +232,10 @@ class RequestHandler {
       ..close();
   }
 
-  Future _handleCategoriesRequest(HttpRequestBody body) async {
+  static Future _handleCategoriesRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
-    final categoriesJson = json.encode(await DataProvider.categories);
+    final categoriesJson = await DataProvider.fetchCategoriesJson();
 
     body.request.response
       ..headers.contentType = ContentType.json
@@ -239,7 +243,18 @@ class RequestHandler {
       ..close();
   }
 
-  Future _handleUnsupportedRequest(HttpRequestBody body) async {
+  static Future _handleNotesRequest(HttpRequestBody body) async {
+    if (isNotAuthorized(body.request)) return;
+
+    final notesJson = await DataProvider.fetchNotesJson();
+
+    body.request.response
+      ..headers.contentType = ContentType.json
+      ..write(notesJson)
+      ..close();
+  }
+
+  static Future _handleUnsupportedRequest(HttpRequestBody body) async {
     const String unsupported = 'Unsupported API';
 
     body.request.response

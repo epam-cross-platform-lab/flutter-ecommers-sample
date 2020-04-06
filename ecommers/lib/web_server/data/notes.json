@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "title": "For all your summer clothing needs",
+        "imageUrl": "https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/assets/girl_image.png",
+        "commandText": "SEE MORE"
+    },
+    {
+        "id": 2,
+        "title": "For all your winter clothing needs",
+        "imageUrl": "https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/assets/girl2_image.png",
+        "commandText": "SEE MORE"
+    },
+    {
+        "id": 3,
+        "title": "For all your autumn clothing needs",
+        "imageUrl": "https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/assets/girl3_image.png",
+        "commandText": "SEE MORE"
+    }
+]
