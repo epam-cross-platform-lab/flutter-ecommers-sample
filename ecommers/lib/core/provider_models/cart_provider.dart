@@ -9,7 +9,7 @@ class CartProvider extends ChangeNotifier {
   List<OrderModel> get orders => _orders;
   int get orderCount => _orders.length;
 
-  void removeOrEdit(OrderModel order) {
+  Future removeOrEdit(OrderModel order) async {
     final editOrder = _getOrderById(order.id);
 
     if (editOrder == null) {
@@ -18,23 +18,23 @@ class CartProvider extends ChangeNotifier {
 
     if (editOrder.count > 1) {
       editOrder.count--;
-      cartRepository.editOrder(order);
+      await cartRepository.editOrder(order);
     } else {
       _orders.remove(editOrder);
-      cartRepository.removeOrder(order);
+      await cartRepository.removeOrder(order);
     }
     notifyListeners();
   }
 
-  void addOrEdit(OrderModel order) {
+  Future addOrEdit(OrderModel order) async{
     final editOrder = _getOrderById(order.id);
 
     if (editOrder == null) {
       _orders.add(order);
-      cartRepository.addOrder(order);
+      await cartRepository.addOrder(order);
     } else {
       editOrder.count++;
-      cartRepository.editOrder(order);
+      await cartRepository.editOrder(order);
     }
     notifyListeners();
   }
@@ -58,16 +58,8 @@ class CartProvider extends ChangeNotifier {
     return totalCost * (100 - salePercent) / 100;
   }
 
-  void initializeOrderProducts() {
-    _orders = <OrderModel>[
-      OrderModel(
-          title: 'Bottle Green Backpack',
-          description: 'Medium, Green',
-          id: 1,
-          cost: 2.58,
-          imagePath: Assets.greenBackpackImage,
-          count: 1),
-    ];
+  Future initializeOrderProducts() async {
+    _orders = await cartRepository.getAllOrders() ?? <OrderModel>[];
     notifyListeners();
   }
 

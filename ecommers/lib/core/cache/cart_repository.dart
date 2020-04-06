@@ -1,26 +1,30 @@
-
-
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/services/index.dart';
 
 class CartRepository {
-  Iterable<OrderModel> getAllOrders() {
-    //todo byuserId get all order
+  Future<List<OrderModel>> getAllOrders() async {
+    return cacheDatabase.getAll(
+        membershipService.id.toString(), OrderModel.fromJson);
   }
 
-  void dropOrders(){
-    //todo byuserId  drop orders
+  Future dropOrders() async {
+    await cacheDatabase.dropData(membershipService.id.toString());
   }
 
-  void editOrder(OrderModel order) {
-
+  Future editOrder(OrderModel order) async {
+     await cacheDatabase.updateByEqualsFilter (
+            membershipService.id.toString(), order.toJson(), 'id', order.id.toString());
   }
 
-  void addOrder(OrderModel order) {
-
+  Future addOrder(OrderModel order) async {
+    await cacheDatabase.saveMap(
+      membershipService.id.toString(),
+      order.toJson(),
+    );
   }
 
-  void removeOrder(OrderModel order) {
-    
+  Future removeOrder(OrderModel order) async {
+      await cacheDatabase.deleteDataByFilter(
+            membershipService.id.toString(), 'id', order.id.toString());
   }
-
 }
