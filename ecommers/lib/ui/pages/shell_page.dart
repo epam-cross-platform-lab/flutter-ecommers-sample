@@ -13,12 +13,12 @@ import 'package:provider/provider.dart';
 class ShellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Provider.of<CartProvider>(context, listen: false).initializeOrderProducts();
     return ChangeNotifierProvider(
       create: (_) => ShellProviderModel(context),
       child: Consumer<ShellProviderModel>(
         builder: (context, ShellProviderModel model, child) {
           final cartProvider = Provider.of<CartProvider>(context);
-
           return Scaffold(
             appBar: AppBar(
               actions: <Widget>[
@@ -45,7 +45,7 @@ class ShellPage extends StatelessWidget {
               selectedIndex: model.selectedItemIndex,
               pages: model.pages,
               onTappedFunction: model.onTappedItem,
-              orderCount: cartProvider.orederCount,
+              orderCount: cartProvider.orderCount,
             ),
           );
         },

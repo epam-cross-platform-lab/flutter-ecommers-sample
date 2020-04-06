@@ -1,5 +1,6 @@
 import 'package:ecommers/core/app_services/category_service.dart';
 import 'package:ecommers/core/app_services/index.dart';
+import 'package:ecommers/core/cache/cart_repository.dart';
 import 'package:ecommers/core/cache/index.dart';
 import 'package:ecommers/core/common/file_manager.dart';
 import 'package:ecommers/core/services/api_service.dart';
@@ -21,6 +22,7 @@ ProductService get productService => GetIt.I.get<ProductService>();
 CategoryService get categoryService => GetIt.I.get<CategoryService>();
 CacheDataRepository get cacheDataProvider => GetIt.I.get<CacheDataRepository>();
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
+CartRepository get cartRepository => GetIt.I.get<CartRepository>();
 
 class DependencyService {
   static void registerDependencies() {
@@ -38,6 +40,7 @@ class DependencyService {
           () => MembershipService(const FlutterSecureStorage()))
       ..registerHttpClient()
       ..registerLazySingleton<CacheDataRepository>(() => CacheDataRepository())
+      ..registerLazySingleton<CartRepository>(() => CartRepository())
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();

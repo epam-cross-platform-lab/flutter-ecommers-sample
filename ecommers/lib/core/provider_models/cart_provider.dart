@@ -1,4 +1,5 @@
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/widgets.dart';
 
@@ -6,11 +7,7 @@ class CartProvider extends ChangeNotifier {
   List<OrderModel> _orders;
 
   List<OrderModel> get orders => _orders;
-  int get orederCount => _orders.length;
-
-  CartProvider() {
-    _initializeOrderProducts();
-  }
+  int get orderCount => _orders.length;
 
   void removeOrEdit(OrderModel order) {
     final editOrder = _getOrderById(order.id);
@@ -21,10 +18,10 @@ class CartProvider extends ChangeNotifier {
 
     if (editOrder.count > 1) {
       editOrder.count--;
-      //todo call edit method
+      cartRepository.editOrder(order);
     } else {
-      //todo remove from bd
       _orders.remove(editOrder);
+      cartRepository.removeOrder(order);
     }
     notifyListeners();
   }
@@ -34,17 +31,17 @@ class CartProvider extends ChangeNotifier {
 
     if (editOrder == null) {
       _orders.add(order);
-      //todo add to bd
+      cartRepository.addOrder(order);
     } else {
       editOrder.count++;
-      //todo call edit method
+      cartRepository.editOrder(order);
     }
     notifyListeners();
   }
 
   void resetCart() {
-    //todo reset cart (bd)
     _orders = <OrderModel>[];
+    cartRepository.dropOrders();
     notifyListeners();
   }
 
@@ -61,14 +58,17 @@ class CartProvider extends ChangeNotifier {
     return totalCost * (100 - salePercent) / 100;
   }
 
-  void _initializeOrderProducts() {
-    //todo get from bd
-    _orders = <OrderModel>[OrderModel(
-        title: 'Bottle Green Backpack',
-        description: 'Medium, Green',
-        cost: 2.58,
-        imagePath: Assets.greenBackpackImage,
-        count: 1),];
+  void initializeOrderProducts() {
+    _orders = <OrderModel>[
+      OrderModel(
+          title: 'Bottle Green Backpack',
+          description: 'Medium, Green',
+          id: 1,
+          cost: 2.58,
+          imagePath: Assets.greenBackpackImage,
+          count: 1),
+    ];
+    notifyListeners();
   }
 
   OrderModel _getOrderById(int id) =>

@@ -56,7 +56,7 @@ class _CartPageState extends State<CartPage> {
       return ListView.separated(
         padding: const EdgeInsets.fromLTRB(
             Insets.x0, Insets.x0, Insets.x5, Insets.x0),
-        itemCount: cartProvider.orederCount,
+        itemCount: cartProvider.orderCount,
         itemBuilder: (BuildContext context, int index) {
           final currentOrder = cartProvider.orders[index];
           return OrderWidget(

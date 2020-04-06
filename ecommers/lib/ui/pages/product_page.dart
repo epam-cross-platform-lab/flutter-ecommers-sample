@@ -57,14 +57,14 @@ class _ProductPageState extends State<ProductPage> {
         actions: <Widget>[
           IconButton(
             icon: IconWithBadge(
-              badgeValue: cartProvider.orederCount,
+              badgeValue: cartProvider.orderCount,
               badgeTextStyle: Theme.of(context).textTheme.overline,
               icon: Icon(
                 Icons.shopping_cart,
                 color: BrandingColors.primaryText,
               ),
             ),
-            onPressed: () => navigationService.navigateTo(Pages.cart),
+            onPressed: () => navigationService.navigateTo(Pages.checkout),
           ),
         ],
       ),
