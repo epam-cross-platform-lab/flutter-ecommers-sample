@@ -34,7 +34,7 @@ class CacheDatabase {
   }
 
   Future updateByEqualsFilter(String key, Map<String, dynamic> map,
-      String filterField, String filterValue) async {
+      String filterField, dynamic filterValue) async {
     await _updateByFilter(key, map, Filter.equals(filterField, filterValue));
   }
 
@@ -48,7 +48,7 @@ class CacheDatabase {
       String key,
       T Function(Map<String, dynamic>) fromMap,
       String filterField,
-      String filterValue) async {
+      dynamic filterValue) async {
     final records =
         await _getByFilter(key, Filter.equals(filterField, filterValue));
     return records.map((snapshot) => fromMap(snapshot.value)).toList();
@@ -60,7 +60,7 @@ class CacheDatabase {
   }
 
   Future deleteDataByFilter(
-      String key, String filterField, String filterValue) async {
+      String key, String filterField, dynamic filterValue) async {
     final store = intMapStoreFactory.store(key);
     await store.delete(_database,
         finder: Finder(filter: Filter.equals(filterField, filterValue)));
