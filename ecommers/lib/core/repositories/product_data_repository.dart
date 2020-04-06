@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/index.dart';
@@ -6,6 +8,8 @@ import 'package:ecommers/core/services/index.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 
 class ProductDataRepository {
+  static const filterField = 'key';
+
   Future<List<Product>> getProductListByCategory({
     String category,
     String subCategory,
@@ -15,12 +19,10 @@ class ProductDataRepository {
     SortType sortType,
   }) async {
     final cachedData = await _provideProductsByCategoryFromCache(category);
-    if (cachedData != null &&
-        cachedData.products != null &&
-        cachedData.products.isNotEmpty) {
+    if (cachedData?.products?.isNotEmpty == true) {
       if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
         await cacheDatabase.deleteDataByFilter(
-            CacheDefines.products, 'key', category);
+            CacheDefines.products, filterField, category);
       } else {
         return cachedData.products
             .where((product) => product.subCategory == subCategory)
@@ -47,9 +49,7 @@ class ProductDataRepository {
 
   Future<List<Product>> getLatestProductList() async {
     final cachedData = await _provideLatestProductsFromCache();
-    if (cachedData != null &&
-        cachedData.products != null &&
-        cachedData.products.isNotEmpty) {
+    if (cachedData?.products?.isNotEmpty == true) {
       if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
         await cacheDatabase.dropData(CacheDefines.latestProducts);
       } else {
@@ -68,7 +68,10 @@ class ProductDataRepository {
   Future<ProductsCacheWrapper> _provideProductsByCategoryFromCache(
       String category) async {
     final productsWrapper = await cacheDatabase.getByEqualsFilter(
-        CacheDefines.products, ProductsCacheWrapper.fromJson, 'key', category);
+        CacheDefines.products,
+        ProductsCacheWrapper.fromJson,
+        filterField,
+        category);
 
     return productsWrapper != null && productsWrapper.isNotEmpty
         ? productsWrapper?.first
@@ -87,18 +90,18 @@ class ProductDataRepository {
   Future _saveProductListForCategoryToCache(
       String category, List<Product> products) async {
     await cacheDatabase.saveMap(
-      CacheDefines.products,
-      ProductsCacheWrapper(category, DateTime.now(), products).toJson(),
-    );
+        CacheDefines.products,
+        json.decode(json.encode(
+                ProductsCacheWrapper(category, DateTime.now(), products)))
+            as Map<String, dynamic>);
   }
 
   Future _saveLatestProductToCache(List<Product> products) async {
     await cacheDatabase.saveMap(
-      CacheDefines.latestProducts,
-      ProductsCacheWrapper(
-              CacheDefines.latestProducts, DateTime.now(), products)
-          .toJson(),
-    );
+        CacheDefines.latestProducts,
+        json.decode(json.encode(ProductsCacheWrapper(
+                CacheDefines.latestProducts, DateTime.now(), products)))
+            as Map<String, dynamic>);
   }
 
   Future<List<Product>> _fetchAllProducts({

@@ -16,9 +16,5 @@ class ProductsCacheWrapper {
 
   static const fromJson = _$ProductsCacheWrapperFromJson;
 
-  Map<String, dynamic> toJson() => <String, dynamic>{
-        'key': key,
-        'lastUpdatedDate': lastUpdatedDate.toIso8601String(),
-        'products': products.map((product) => product.toSpecifiedJson()),
-      };
+  Map<String, dynamic> toJson() => _$ProductsCacheWrapperToJson(this);
 }
