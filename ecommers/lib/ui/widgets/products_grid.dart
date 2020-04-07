@@ -1,35 +1,25 @@
-import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/common/index.dart';
+import 'package:flutter/material.dart';
+
+import 'package:ecommers/core/models/sort_type.dart';
 import 'package:ecommers/core/provider_models/index.dart';
+import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/product_item/index.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ProductsGrid extends StatefulWidget {
-  final int Function(Product, Product) compareFunction;
+class ProductsGrid extends StatelessWidget {
+  final Categories categoryType;
+  final String subCategory;
+  final SortType sortType;
 
-  const ProductsGrid({this.compareFunction, Key key}) : super(key: key);
-
-  @override
-  _ProductsGridState createState() => _ProductsGridState();
-}
-
-class _ProductsGridState extends State<ProductsGrid> {
-  ProductsGridProviderModel _provider;
-  List<Product> _products;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    if (_provider == null) {
-      _provider = Provider.of<ProductsGridProviderModel>(context);
-
-      Future.microtask(() => _provider.getData())
-          .then((value) => _products = value);
-    }
-  }
+  const ProductsGrid({
+    this.sortType,
+    this.categoryType,
+    this.subCategory,
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,39 +31,47 @@ class _ProductsGridState extends State<ProductsGrid> {
       Colors.pinkAccent
     ];
 
-    final sortedProducts = List<Product>.from(_products ?? []);
+    return BasePage<ProductsGridProviderModel>(
+      createProvider: (_) => ProductsGridProviderModel(
+        context,
+        categoryType,
+        subCategory,
+        sortType,
+      ),
+      child: Consumer<ProductsGridProviderModel>(
+        builder: (_, provider, __) {
+          final products = provider.products;
 
-    if (widget.compareFunction != null && sortedProducts.isNotEmpty) {
-      sortedProducts.sort(widget.compareFunction);
-    }
-
-    return Container(
-      color: BrandingColors.pageBackground,
-      child: sortedProducts.isEmpty
-          ? const SizedBox()
-          : Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: Insets.x5,
-                vertical: Insets.x4,
-              ),
-              child: GridView.extent(
-                maxCrossAxisExtent: ProductItemWide.size.height,
-                mainAxisSpacing: Insets.x3,
-                crossAxisSpacing: Insets.x3,
-                childAspectRatio: ProductItemNormal.size.width /
-                    ProductItemNormal.size.height,
-                children: sortedProducts
-                    .map((product) => ProductItemWide(
-                          assetImagePath: product.images[0],
-                          title: product.title,
-                          cost: product.price,
-                          rate: product.rate,
-                          color: colors[product.id % colors.length],
-                          id: product.id,
-                        ))
-                    .toList(),
-              ),
-            ),
+          return Container(
+            color: BrandingColors.pageBackground,
+            child: products == null || products.isEmpty
+                ? const SizedBox()
+                : Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: Insets.x5,
+                      vertical: Insets.x4,
+                    ),
+                    child: GridView.extent(
+                      maxCrossAxisExtent: ProductItemWide.size.height,
+                      mainAxisSpacing: Insets.x3,
+                      crossAxisSpacing: Insets.x3,
+                      childAspectRatio: ProductItemNormal.size.width /
+                          ProductItemNormal.size.height,
+                      children: products
+                          .map((product) => ProductItemWide(
+                                assetImagePath: product.images[0],
+                                title: product.title,
+                                cost: product.price,
+                                rate: product.rate,
+                                color: colors[product.id % colors.length],
+                                id: product.id,
+                              ))
+                          .toList(),
+                    ),
+                  ),
+          );
+        },
+      ),
     );
   }
 }

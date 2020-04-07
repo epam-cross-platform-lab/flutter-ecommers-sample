@@ -1,11 +1,13 @@
+import 'package:enum_to_string/enum_to_string.dart';
+
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/sort_type.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
-import 'package:enum_to_string/enum_to_string.dart';
 
 class ProductService {
   Future<List<Product>> fetchProducts({
-    String category,
+    Categories category,
     String subCategory,
     int rangeFrom,
     int rangeTo,
@@ -13,7 +15,7 @@ class ProductService {
     SortType sortType,
   }) async {
     final response = await apiService.products(
-      category: category,
+      category: EnumToString.parse(category),
       subCategory: subCategory,
       rangeFrom: rangeFrom,
       rangeTo: rangeTo,

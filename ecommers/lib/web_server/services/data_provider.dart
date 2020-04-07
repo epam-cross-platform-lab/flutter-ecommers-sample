@@ -4,6 +4,9 @@ import 'dart:isolate';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/web_server/product_query_params.dart';
+import 'package:ecommers/web_server/services/product_comparator.dart';
+import 'package:ecommers/extensions/index.dart';
 
 class DataProvider {
   static const String productsFilename = 'products.json';
@@ -12,8 +15,8 @@ class DataProvider {
 
   static Future<List<Product>> products = _resultProducts.future;
 
-  static final Completer<List<Product>> _resultProducts = Completer<List<Product>>();
-
+  static final Completer<List<Product>> _resultProducts =
+      Completer<List<Product>>();
 
   static Future fetchProducts() async {
     final ReceivePort mainPort = ReceivePort();
@@ -51,11 +54,58 @@ class DataProvider {
 
     final String productsString = await currentPort.first as String;
 
-    final productsMap =
-        (jsonDecode(productsString) as Iterable).cast<Map<String, dynamic>>();
-
-    final products = productsMap.map((e) => Product.fromJson(e)).toList();
+    final products =
+        json.decodeList<Product>(productsString, Product.fromJsonFactory);
 
     sendPort.send(products);
+  }
+
+  static Future<List<Product>> getFilteredProducts(ProductQueryParams params) async {
+    const int defaultItemsPortion = 20;
+
+    Iterable<Product> queryProducts = [...await products];
+    List<Product> resultProducts;
+
+    final categories = json.decodeList<Category>(
+      await fetchCategoriesJson(),
+      Category.fromJsonFactory,
+    );
+
+    if (params.category != null) {
+      queryProducts = queryProducts
+          .where((p) => _isCategoryMatched(categories, p, params.category));
+    }
+    if (params.subCategory.isNotNullOrEmpty) {
+      queryProducts =
+          queryProducts.where((p) => p.subCategory == params.subCategory);
+    }
+    if (params.rangeFrom != null && params.rangeTo != null) {
+      queryProducts =
+          queryProducts.skip(params.rangeFrom).take(params.rangeFrom);
+    }
+    if (params.searchQuery.isNotNullOrEmpty) {
+      queryProducts =
+          queryProducts.where((p) => p.title.contains(params.searchQuery));
+    }
+
+    resultProducts = queryProducts.toList();
+    if (params.sortType != null) {
+      final compareFunction = ProductComparator.bySortType(params.sortType);
+      resultProducts.sort(compareFunction);
+    }
+
+    if (resultProducts.length > defaultItemsPortion) {
+      resultProducts = resultProducts.take(defaultItemsPortion).toList();
+    }
+
+    return resultProducts;
+  }
+
+  static bool _isCategoryMatched(
+      List<Category> categories, Product product, Categories categoryType) {
+    final categoryTitle =
+        categories.firstWhere((c) => c.type == categoryType).title;
+
+    return product.category == categoryTitle;
   }
 }

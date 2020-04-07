@@ -1,23 +1,32 @@
-import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/provider_models/provider_model_base.dart';
-import 'package:ecommers/core/services/index.dart';
 import 'package:flutter/material.dart';
 
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/models/sort_type.dart';
+import 'package:ecommers/core/provider_models/provider_model_base.dart';
+import 'package:ecommers/core/services/index.dart';
+
 class ProductsGridProviderModel extends ProviderModelBase {
-  final Categories _categoryType;
+  List<Product> _products;
 
-  ProductsGridProviderModel(BuildContext context, Categories type)
-      : _categoryType = type,
-        super(context);
+  List<Product> get products => _products;
 
-  Future<List<Product>> getData() async {
+  ProductsGridProviderModel(
+    BuildContext context,
+    Categories categoryType,
+    String subCategory,
+    SortType sortType,
+  ) : super(context) {
+    getData(categoryType, subCategory, sortType);
+  }
+
+  Future getData(
+      Categories categoryType, String subCategory, SortType sortType) async {
     isBusy = true;
 
-    final productList = await productService.fetchProducts(); //TODO: pass category String
+    _products = await productService.fetchProducts(
+        category: categoryType, subCategory: subCategory, sortType: sortType);
 
     isBusy = false;
-
-    return productList;
   }
 }
