@@ -1,6 +1,5 @@
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/widgets.dart';
 
 class CartProvider extends ChangeNotifier {

@@ -11,6 +11,7 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:provider/provider.dart';
 
@@ -50,8 +51,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 //todo request for place order
                 cartProvider.resetCart();
               },
-              
-
               buttonText: I18n.of(context).placeOrderButton,
               padding: const EdgeInsets.fromLTRB(
                   Insets.x6, Insets.x2, Insets.x5, Insets.x3_5),
@@ -84,7 +83,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         const SizedBox(height: Insets.x2),
         _buildRowAction(
-          imagePath: Assets.creditCardImage,
+          imagePath: Assets.creditCard,
           text: Text(
             I18n.of(context).cardEnding,
             style: Theme.of(context)
@@ -123,7 +122,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         _buildDevider(),
         _buildRowAction(
-          imagePath: Assets.saleImage,
+          imagePath: Assets.sale,
           text: Text(
             I18n.of(context).addPromoCode,
             style: Theme.of(context)
@@ -158,7 +157,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           count: currentOrder.count,
           countIncrementFunction: () => cartProvider.addOrEdit(currentOrder),
           countDecrementFunction: () => cartProvider.removeOrEdit(currentOrder),
-          tapOrderFunction:() => navigationService.navigateTo(Pages.product),
+          tapOrderFunction: () => navigationService.navigateTo(Pages.product),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -214,7 +213,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget _buildRowAction({String imagePath, Text text}) {
     return Row(
       children: <Widget>[
-        CachedImage(imagePath: imagePath),
+        SvgPicture.asset(
+          imagePath,
+        ),
         const SizedBox(width: Insets.x3_5),
         text,
         const Spacer(),

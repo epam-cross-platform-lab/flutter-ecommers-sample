@@ -18,7 +18,6 @@ class ShellPage extends StatelessWidget {
       create: (_) => ShellProviderModel(context),
       child: Consumer<ShellProviderModel>(
         builder: (context, ShellProviderModel model, child) {
-          final cartProvider = Provider.of<CartProvider>(context);
           return Scaffold(
             appBar: AppBar(
               actions: <Widget>[
@@ -45,7 +44,6 @@ class ShellPage extends StatelessWidget {
               selectedIndex: model.selectedItemIndex,
               pages: model.pages,
               onTappedFunction: model.onTappedItem,
-              orderCount: cartProvider.orderCount,
             ),
           );
         },

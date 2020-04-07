@@ -36,7 +36,7 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context);
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
 
     return Scaffold(
       backgroundColor: BrandingColors.pageBackground,
@@ -55,17 +55,22 @@ class _ProductPageState extends State<ProductPage> {
           rate: productModel.rate,
         ),
         actions: <Widget>[
-          IconButton(
-            icon: IconWithBadge(
-              badgeValue: cartProvider.orderCount,
-              badgeTextStyle: Theme.of(context).textTheme.overline,
-              icon: Icon(
-                Icons.shopping_cart,
-                color: BrandingColors.primaryText,
-              ),
-            ),
-            onPressed: () => navigationService.navigateTo(Pages.checkout),
-          ),
+          Selector<CartProvider, int>(
+            builder: (context, data, child) {
+              return IconButton(
+                icon: IconWithBadge(
+                  badgeValue: cartProvider.orderCount,
+                  badgeTextStyle: Theme.of(context).textTheme.overline,
+                  icon: Icon(
+                    Icons.shopping_cart,
+                    color: BrandingColors.primaryText,
+                  ),
+                ),
+                onPressed: () => navigationService.navigateTo(Pages.checkout),
+              );
+            },
+            selector: (buildContext, cartProvider) => cartProvider.orderCount,
+          )
         ],
       ),
       body: Column(
