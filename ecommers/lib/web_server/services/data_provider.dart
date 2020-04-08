@@ -60,7 +60,8 @@ class DataProvider {
     sendPort.send(products);
   }
 
-  static Future<List<Product>> getFilteredProducts(ProductQueryParams params) async {
+  static Future<List<Product>> getFilteredProducts(
+      ProductQueryParams params) async {
     const int defaultItemsPortion = 20;
 
     Iterable<Product> queryProducts = [...await products];
@@ -84,8 +85,9 @@ class DataProvider {
           queryProducts.skip(params.rangeFrom).take(params.rangeFrom);
     }
     if (params.searchQuery.isNotNullOrEmpty) {
-      queryProducts =
-          queryProducts.where((p) => p.title.contains(params.searchQuery));
+      queryProducts = queryProducts.where(
+        (p) => p.title.toLowerCase().contains(params.searchQuery.toLowerCase()),
+      );
     }
 
     resultProducts = queryProducts.toList();

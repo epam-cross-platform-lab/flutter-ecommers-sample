@@ -31,46 +31,55 @@ class ProductsGrid extends StatelessWidget {
       Colors.pinkAccent
     ];
 
-    return BasePage<ProductsGridProviderModel>(
-      createProvider: (_) => ProductsGridProviderModel(
-        context,
-        categoryType,
-        subCategory,
-        sortType,
+    return ChangeNotifierProxyProvider<SearchProviderModel,
+        ProductsGridProviderModel>(
+      create: (_) => ProductsGridProviderModel(
+        context: context,
       ),
-      child: Consumer<ProductsGridProviderModel>(
-        builder: (_, provider, __) {
-          final products = provider.products;
-
-          return Container(
-            color: BrandingColors.pageBackground,
-            child: products == null || products.isEmpty
-                ? const SizedBox()
-                : Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: Insets.x5,
-                      vertical: Insets.x4,
-                    ),
-                    child: GridView.extent(
-                      maxCrossAxisExtent: ProductItemWide.size.height,
-                      mainAxisSpacing: Insets.x3,
-                      crossAxisSpacing: Insets.x3,
-                      childAspectRatio: ProductItemNormal.size.width /
-                          ProductItemNormal.size.height,
-                      children: products
-                          .map((product) => ProductItemWide(
-                                assetImagePath: product.images[0],
-                                title: product.title,
-                                cost: product.price,
-                                rate: product.rate,
-                                color: colors[product.id % colors.length],
-                                id: product.id,
-                              ))
-                          .toList(),
-                    ),
-                  ),
+      update: (_, searchProvider, productsProvider) {
+        return productsProvider
+          ..updateProducts(
+            categoryType,
+            subCategory,
+            searchProvider.searchQuery,
+            sortType,
           );
-        },
+      },
+      child: BusyPage<ProductsGridProviderModel>(
+        child: Consumer<ProductsGridProviderModel>(
+          builder: (_, provider, __) {
+            final products = provider.products;
+
+            return Container(
+              color: BrandingColors.pageBackground,
+              child: products == null || products.isEmpty
+                  ? const SizedBox()
+                  : Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Insets.x5,
+                        vertical: Insets.x4,
+                      ),
+                      child: GridView.extent(
+                        maxCrossAxisExtent: ProductItemWide.size.height,
+                        mainAxisSpacing: Insets.x3,
+                        crossAxisSpacing: Insets.x3,
+                        childAspectRatio: ProductItemNormal.size.width /
+                            ProductItemNormal.size.height,
+                        children: products
+                            .map((product) => ProductItemWide(
+                                  assetImagePath: product.images[0],
+                                  title: product.title,
+                                  cost: product.price,
+                                  rate: product.rate,
+                                  color: colors[product.id % colors.length],
+                                  id: product.id,
+                                ))
+                            .toList(),
+                      ),
+                    ),
+            );
+          },
+        ),
       ),
     );
   }
