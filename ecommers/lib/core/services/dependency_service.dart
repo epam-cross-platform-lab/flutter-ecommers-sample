@@ -1,4 +1,3 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 
 import '../app_services/index.dart';
@@ -7,7 +6,6 @@ import '../common/index.dart';
 import '../services/extensions/get_it_extension.dart';
 import '../services/index.dart';
 import '../services/navigation/navigation_service.dart';
-
 
 NavigationService get navigationService => GetIt.I.get<NavigationService>();
 FileManager get fileManager => GetIt.I.get<FileManager>();
@@ -33,8 +31,7 @@ class DependencyService {
       ..registerLazySingleton<ProductService>(() => ProductService())
       ..registerLazySingleton<CategoryService>(() => CategoryService())
       ..registerLazySingleton<NoteService>(() => NoteService())
-      ..registerLazySingleton<MembershipService>(
-          () => MembershipService(const FlutterSecureStorage()))
+      ..registerLazySingleton<MembershipService>(() => MembershipService())
       ..registerHttpClient()
       ..registerLazySingleton<CacheDataRepository>(() => CacheDataRepository())
       ..registerSingletonAsync<CacheDatabase>(
