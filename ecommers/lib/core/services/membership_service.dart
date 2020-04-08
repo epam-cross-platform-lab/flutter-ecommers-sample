@@ -1,13 +1,12 @@
-import 'package:flutter_secured_storage/flutter_secured_storage.dart';
-
 import 'package:ecommers/core/models/login_model.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class MembershipService {
   static const String _accessTokenKey = 'accessTokenKey';
   static const String _refreshTokenKey = 'refreshTokenKey';
   static const String _expirationDateKey = 'expirationDateKey';
 
-  static const FlutterSecuredStorage secureStorage = FlutterSecuredStorage();
+  final FlutterSecureStorage secureStorage;
 
   String _accessToken;
   String _refreshToken;
@@ -17,6 +16,8 @@ class MembershipService {
   String get refreshToken => _refreshToken;
   bool get isNotExpired =>
       _expirationDate != null && DateTime.now().isBefore(_expirationDate);
+
+  MembershipService(this.secureStorage);
 
   Future refresh(LoginModel loginModel) async {
     _accessToken = loginModel.token;
