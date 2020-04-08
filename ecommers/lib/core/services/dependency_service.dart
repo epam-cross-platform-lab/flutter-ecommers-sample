@@ -20,6 +20,7 @@ ProductService get productService => GetIt.I.get<ProductService>();
 CategoryService get categoryService => GetIt.I.get<CategoryService>();
 NoteService get noteService => GetIt.I.get<NoteService>();
 ProductDataRepository get productDataRepository => GetIt.I.get<ProductDataRepository>();
+CategoryDataRepository get categoryDataRepository => GetIt.I.get<CategoryDataRepository>();
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
 
 class DependencyService {
@@ -38,6 +39,7 @@ class DependencyService {
           () => MembershipService(const FlutterSecureStorage()))
       ..registerHttpClient()
       ..registerLazySingleton<ProductDataRepository>(() => ProductDataRepository())
+      ..registerLazySingleton<CategoryDataRepository>(() => CategoryDataRepository())
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();
