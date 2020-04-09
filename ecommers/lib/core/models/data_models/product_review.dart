@@ -25,12 +25,5 @@ class ProductReview {
   factory ProductReview.fromJson(Map<String, dynamic> json) =>
       _$ProductReviewFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-   <String, dynamic>{
-      'user': user.toJson(),
-      'date': date?.toIso8601String(),
-      'comment': comment,
-      'imageUrls': imageUrls,
-      'rate': rate,
-    };
+  Map<String, dynamic> toJson() => _$ProductReviewToJson(this);
 }

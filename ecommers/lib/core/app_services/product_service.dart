@@ -11,11 +11,9 @@ class ProductService {
     String searchQuery,
     SortType sortType,
   }) async {
-
-    //TODO: Add category and subCategory type to params
-    return productDataRepository.getProductListByCategory(
-      category: 'Apparel',
-      subCategory: 'Topwear',
+    return productDataRepository.getProducts(
+      category: category,
+      subCategory: subCategory,
       rangeFrom: rangeFrom,
       rangeTo: rangeTo,
       searchQuery: searchQuery,
@@ -24,6 +22,6 @@ class ProductService {
   }
 
   Future<List<Product>> fetchLatestProducts() async {
-    return productDataRepository.getLatestProductList();
+    return productDataRepository.getLatestProducts();
   }
 }

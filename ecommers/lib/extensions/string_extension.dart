@@ -5,6 +5,8 @@ extension StringExtension on String {
   bool get isNotNullOrEmpty => this != null && isNotEmpty;
 
   Color fromHexToColor() {
+    if (this == null) return null;
+    
     final buffer = StringBuffer();
     if (length == 6 || length == 7) buffer.write('ff');
     buffer.write(replaceFirst('#', ''));
