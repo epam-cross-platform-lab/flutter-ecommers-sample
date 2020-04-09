@@ -22,7 +22,7 @@ class MembershipService {
 
   Future initialize() async {
     _storage = await SharedPreferences.getInstance();
-    load();
+    _loadData();
   }
 
   void refresh(LoginModel loginModel) {
@@ -47,7 +47,7 @@ class MembershipService {
     _storage.remove(_expirationDateKey);
   }
 
-  void load() {
+  void _loadData() {
     _accessToken = _storage.getString(_accessTokenKey);
     _refreshToken = _storage.getString(_refreshTokenKey);
     _expirationDate =
