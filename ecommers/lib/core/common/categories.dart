@@ -6,4 +6,5 @@ enum Categories {
   home,
   shoes,
   stationary,
+  seeAll
 }
