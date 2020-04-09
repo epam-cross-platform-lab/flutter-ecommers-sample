@@ -39,7 +39,7 @@ class AuthorizationService {
         isSuccessful: response.isSuccessful, error: response.error as String);
   }
 
-  Future logOut() async {
-    await membershipService.clear();
+  void logOut() {
+    membershipService.clear();
   }
 }

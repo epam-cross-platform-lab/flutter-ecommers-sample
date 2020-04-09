@@ -1,18 +1,16 @@
 import 'dart:async';
 
-import 'package:ecommers/core/provider_models/main_provider.dart';
+import 'package:flare_splash_screen/flare_splash_screen.dart';
+import 'package:flutter/material.dart';
+
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/authorization_page.dart';
 import 'package:ecommers/ui/pages/index.dart';
-import 'package:ecommers/ui/widgets/progress.dart';
 import 'package:ecommers/web_server/local_server.dart';
-import 'package:flare_splash_screen/flare_splash_screen.dart';
-import 'package:flutter/material.dart';
 
 import 'core/models/data_models/index.dart';
-import 'core/provider_models/index.dart';
 
 List<Product> products;
 
@@ -59,27 +57,13 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
     return MaterialApp(
       title: 'ecommers',
       theme: ThemeProvider.getTheme(),
-      home: FutureBuilder(
-        future: MainProviderModel(context).initialize(),
-        builder: (context, snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.active:
-              return Container(
-                color: BrandingColors.pageBackground,
-                child: const Center(child: Progress()),
-              );
-            case ConnectionState.done:
-            default:
-              return SplashScreen.navigate(
-                name: Assets.splashLoader,
-                next: (_) => membershipService.isNotExpired
-                    ? ShellPage()
-                    : const AuthorizationPage(),
-                until: () => Future.delayed(const Duration()),
-                startAnimation: '1',
-              );
-          }
-        },
+      home: SplashScreen.navigate(
+        name: Assets.splashLoader,
+        next: (_) => membershipService.isNotExpired
+            ? ShellPage()
+            : const AuthorizationPage(),
+        until: () => Future.delayed(const Duration()),
+        startAnimation: '1',
       ),
       navigatorKey: navigationService.navigatorKey,
       localizationsDelegates: [i18n],

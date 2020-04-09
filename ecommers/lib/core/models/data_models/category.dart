@@ -15,7 +15,7 @@ class Category {
   final String shadowColor;
   final List<String> subCategories;
 
-  Category(
+  Category({
     this.id,
     this.title,
     this.subCategories,
@@ -23,7 +23,7 @@ class Category {
     this.gradientColor1,
     this.gradientColor2,
     this.shadowColor,
-  );
+  });
 
   static const fromJsonFactory = _$CategoryFromJson;
 
