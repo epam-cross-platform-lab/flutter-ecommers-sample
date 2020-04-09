@@ -11,7 +11,6 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:keyboard_visibility/keyboard_visibility.dart';
 
 class CheckoutPage extends StatefulWidget {
   @override
@@ -19,28 +18,7 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
-  final KeyboardVisibilityNotification keyboardVisibilityNotification =
-      KeyboardVisibilityNotification();
   bool isTotalOrderVisible = true;
-
-  @override
-  void initState() {
-    super.initState();
-
-    keyboardVisibilityNotification.addNewListener(
-      onChange: (bool visible) {
-        setState(() {
-          isTotalOrderVisible = !visible;
-        });
-      },
-    );
-  }
-
-  @override
-  void dispose() {
-    keyboardVisibilityNotification.dispose();
-    super.dispose();
-  }
 
   static const int _itemCount = 17;
 
@@ -82,6 +60,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget build(BuildContext context) {
     final double totalOrderCost = _orders.fold(0.0,
         (totalCost, nextOrder) => totalCost + nextOrder.count * nextOrder.cost);
+
+    isTotalOrderVisible = MediaQuery.of(context).viewInsets.bottom == 0.0;
 
     return CloseablePage(
       child: Column(
