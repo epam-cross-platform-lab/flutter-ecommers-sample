@@ -1,3 +1,7 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
@@ -9,16 +13,14 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/products_grid.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
 import 'package:ecommers/web_server/services/product_comparator.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class ProductsGridPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   final Categories type;
+  final String subCategory;
 
-  ProductsGridPage({this.type, Key key}) : super(key: key);
+  ProductsGridPage({this.type, this.subCategory, Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
