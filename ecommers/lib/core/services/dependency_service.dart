@@ -16,6 +16,7 @@ MembershipService get membershipService => GetIt.I.get<MembershipService>();
 AuthorizationService get authorizationService =>
     GetIt.I.get<AuthorizationService>();
 ProductService get productService => GetIt.I.get<ProductService>();
+UniversalAppService get universalAppService => GetIt.I.get<UniversalAppService>();
 CategoryService get categoryService => GetIt.I.get<CategoryService>();
 NoteService get noteService => GetIt.I.get<NoteService>();
 CacheDataRepository get cacheDataProvider => GetIt.I.get<CacheDataRepository>();
@@ -31,6 +32,7 @@ class DependencyService {
       ..registerLazySingleton<AuthorizationService>(
           () => AuthorizationService())
       ..registerLazySingleton<ProductService>(() => ProductService())
+      ..registerLazySingleton<UniversalAppService>(() => UniversalAppService())
       ..registerLazySingleton<CategoryService>(() => CategoryService())
       ..registerLazySingleton<NoteService>(() => NoteService())
       ..registerLazySingleton<MembershipService>(

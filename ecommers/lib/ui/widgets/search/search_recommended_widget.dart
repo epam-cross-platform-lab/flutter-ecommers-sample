@@ -1,8 +1,9 @@
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/widgets/search_recommended_widget/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
+import 'index.dart';
 
 class SearchRecommendedWinget extends StatelessWidget {
   final List<SearchRecommendedItemModel> recommendedList = [

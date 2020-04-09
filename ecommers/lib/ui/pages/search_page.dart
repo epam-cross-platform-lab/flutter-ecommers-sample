@@ -1,9 +1,10 @@
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/recently_viewed_widget/index.dart';
 import 'package:ecommers/ui/widgets/search/index.dart';
-import 'package:ecommers/ui/widgets/search_recommended_widget/index.dart';
 import 'package:flutter/material.dart';
 
 class SearchPage extends StatelessWidget {
@@ -27,7 +28,7 @@ class SearchPage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: Insets.x5),
-            SearchTextFiled(),
+            SearchButton(onPressed:() => navigationService.navigateTo(Pages.productsGrid)),
             const SizedBox(height: Insets.x5),
             Row(
               children: <Widget>[
