@@ -12,7 +12,6 @@ import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:keyboard_visibility/keyboard_visibility.dart';
 import 'package:provider/provider.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -21,13 +20,13 @@ class CheckoutPage extends StatefulWidget {
 }
 
 class _CheckoutPageState extends State<CheckoutPage> {
-  final KeyboardVisibilityNotification keyboardVisibilityNotification =
-      KeyboardVisibilityNotification();
   bool isTotalOrderVisible = true;
 
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
+
+    isTotalOrderVisible = MediaQuery.of(context).viewInsets.bottom == 0.0;
 
     return CloseablePage(
       child: Column(

@@ -1,5 +1,6 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:ecommers/core/models/login_model.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class MembershipService {
   static const String _accessTokenKey = 'accessTokenKey';
@@ -8,7 +9,7 @@ class MembershipService {
   
   int get id => 1;//todo replace to profile
 
-  final FlutterSecureStorage secureStorage;
+  SharedPreferences _storage;
 
   String _accessToken;
   String _refreshToken;
@@ -19,50 +20,45 @@ class MembershipService {
   bool get isNotExpired =>
       _expirationDate != null && DateTime.now().isBefore(_expirationDate);
 
-  MembershipService(this.secureStorage);
+  MembershipService();
 
-  Future refresh(LoginModel loginModel) async {
+  Future initialize() async {
+    _storage = await SharedPreferences.getInstance();
+    _loadData();
+  }
+
+  void refresh(LoginModel loginModel) {
     _accessToken = loginModel.token;
     _refreshToken = loginModel.refreshToken;
     _expirationDate = DateTime.parse(loginModel.expirationDate);
 
-    await _saveToStorage(loginModel);
+    _saveToStorage(loginModel);
   }
 
-  Future clear() async {
+  void clear() {
     _accessToken = null;
     _refreshToken = null;
     _expirationDate = null;
 
-    await _clearStorage();
+   _clearStorage();
   }
 
-  Future _clearStorage() async {
-    await Future.wait(
-      {
-        secureStorage.delete(key: _accessTokenKey),
-        secureStorage.delete(key: _refreshTokenKey),
-        secureStorage.delete(key: _expirationDateKey),
-      },
-    );
+  void _clearStorage() {
+    _storage.remove(_accessTokenKey);
+    _storage.remove(_refreshTokenKey);
+    _storage.remove(_expirationDateKey);
   }
 
-  Future load() async {
-    _accessToken = await secureStorage.read(key: _accessTokenKey);
-    _refreshToken = await secureStorage.read(key: _refreshTokenKey);
-    _expirationDate = DateTime.tryParse(
-        await secureStorage.read(key: _expirationDateKey) ?? '');
+  void _loadData() {
+    _accessToken = _storage.getString(_accessTokenKey);
+    _refreshToken = _storage.getString(_refreshTokenKey);
+    _expirationDate =
+        DateTime.tryParse(_storage.getString(_expirationDateKey) ?? '');
   }
 
-  Future _saveToStorage(LoginModel loginModel) async {
-    await Future.wait(
-      {
-        secureStorage.write(key: _accessTokenKey, value: loginModel.token),
-        secureStorage.write(
-            key: _refreshTokenKey, value: loginModel.refreshToken),
-        secureStorage.write(
-            key: _expirationDateKey, value: loginModel.expirationDate),
-      },
-    );
+  void _saveToStorage(LoginModel loginModel) {
+    _storage.setString(_accessTokenKey, loginModel.token);
+    _storage.setString(_refreshTokenKey, loginModel.refreshToken);
+    _storage.setString(_expirationDateKey, loginModel.expirationDate);
   }
 }

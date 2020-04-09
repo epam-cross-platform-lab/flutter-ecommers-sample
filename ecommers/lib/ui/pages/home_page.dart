@@ -5,7 +5,7 @@ import '../../core/models/data_models/index.dart';
 import '../../core/provider_models/index.dart';
 import '../../ui/decorations/dimens/index.dart';
 import '../../ui/pages/index.dart';
-import '../../ui/widgets/category_item/categories_compact_view.dart';
+import '../../ui/widgets/category/categories_compact_view.dart';
 import '../../ui/widgets/index.dart';
 import '../../ui/widgets/product_item/index.dart';
 
