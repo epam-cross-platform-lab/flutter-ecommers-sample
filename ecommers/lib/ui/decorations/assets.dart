@@ -45,7 +45,9 @@ class Assets {
   static const String order = 'assets/notification_order.svg';
   static const String tagIcon = 'assets/notification_tag.svg';
   static const String discount = 'assets/notification_discount.svg';
+  static const String searchIcon = 'assets/search.svg';
 
+  //TODO: TO remove
   static const String girlImage = 'assets/girl_image.png';
   static const String girl2Image = 'assets/girl2_image.png';
   static const String girl3Image = 'assets/girl3_image.png';
