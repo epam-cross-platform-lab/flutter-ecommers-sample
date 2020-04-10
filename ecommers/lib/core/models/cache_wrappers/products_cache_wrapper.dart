@@ -1,5 +1,5 @@
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'data_models/index.dart';
 
 part 'products_cache_wrapper.g.dart';
 

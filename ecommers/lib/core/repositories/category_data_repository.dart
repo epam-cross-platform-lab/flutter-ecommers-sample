@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/cache_wrappers/categories_cache_wrapper.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 
 class CategoryDataRepository {
