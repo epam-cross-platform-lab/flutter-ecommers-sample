@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/page_arguments.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/common/index.dart';
@@ -6,13 +7,13 @@ import '../../../core/services/index.dart';
 import '../../../generated/i18n.dart';
 import '../../../ui/decorations/dimens/index.dart';
 import '../../../ui/decorations/index.dart';
-import '../../../ui/widgets/category_item/category_item.dart';
+import '../../../ui/widgets/category/category_item.dart';
 
 class CategoriesCompactView extends StatelessWidget {
   static const _containerHeight = 134.0;
   static const categoryItemSize = Size(74.0, 89.0);
 
-  final List<Category> categories; 
+  final List<Category> categories;
 
   const CategoriesCompactView(this.categories);
 
@@ -56,29 +57,45 @@ class CategoriesCompactView extends StatelessWidget {
             return _buildSeeAllCategory(context);
           }
 
-          return CategoryItem.fromModel(categories[index], onCategoryTap);
+          final categoryModel = categories[index];
+
+          return CategoryItem(
+            model: categoryModel,
+            onTapFunction: () => onCategoryTap(categoryModel.type),
+          );
         },
       ),
     );
   }
 
   void onCategoryTap(Categories type) {
-    navigationService.navigateTo(Pages.productsGrid, arguments: type);
+    navigationService.navigateTo(
+      Pages.productsGrid,
+      arguments: PageArguments(arg1: type),
+    );
   }
 
   Widget _buildSeeAllCategory(BuildContext context) {
-    return CategoryItem(
-      backgroundColor: BrandingColors.background,
-      shadowColor: BrandingColors.blur,
-      imagePath: Assets.arrowRightIcon,
+    const whiteColorHex = '#ffffff';
+
+    final seeAllCategoryModel = Category(
       title: I18n.of(context).seeAllCategoryTitle,
-      onTapFunction: () => navigationService.navigateTo(Pages.categories),
+      shadowColor: '#${BrandingColors.blur.value.toRadixString(16)}',
+      type: Categories.seeAll,
+      gradientColor1: whiteColorHex,
+      gradientColor2: whiteColorHex,
+    );
+
+    return CategoryItem(
+      model: seeAllCategoryModel,
+      onTapFunction: () =>
+          navigationService.navigateTo(Pages.categories, arguments: categories),
     );
   }
 
   int _calculateItemCount(BuildContext context) {
     final categoriesCount = categories.length;
-    
+
     final categoriesListWidth =
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 

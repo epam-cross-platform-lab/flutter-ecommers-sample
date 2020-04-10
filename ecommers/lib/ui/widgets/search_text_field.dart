@@ -19,7 +19,7 @@ class SearchTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: Insets.x4),
       decoration: BoxDecoration(
         color: BrandingColors.background,
-        borderRadius: BorderRadius.circular(18.0),
+        borderRadius: BorderRadius.circular(Radiuses.big_1_5x),
       ),
       child: TextField(
         textInputAction: TextInputAction.search,

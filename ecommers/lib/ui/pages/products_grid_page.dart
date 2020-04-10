@@ -16,8 +16,9 @@ class ProductsGridPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   final Categories type;
+  final String subCategory;
 
-  ProductsGridPage({this.type, Key key}) : super(key: key);
+  ProductsGridPage({this.type, this.subCategory, Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

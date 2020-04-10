@@ -11,3 +11,4 @@ export 'products_grid.dart';
 export 'progress.dart';
 export 'rate_widget.dart';
 export 'search_text_field.dart';
+export 'surface_container.dart';
