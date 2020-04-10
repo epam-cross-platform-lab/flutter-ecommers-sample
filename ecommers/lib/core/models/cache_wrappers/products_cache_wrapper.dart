@@ -5,14 +5,16 @@ part 'products_cache_wrapper.g.dart';
 
 @JsonSerializable()
 class ProductsCacheWrapper {
-  @JsonKey(name: 'key')
-  final String key;
+  @JsonKey(name: 'category')
+  final String category;
+  @JsonKey(name: 'subCategory')
+  final String subCategory;
   @JsonKey(name: 'lastUpdatedDate')
   final DateTime lastUpdatedDate;
   @JsonKey(name: 'products')
   final List<Product> products;
 
-  ProductsCacheWrapper(this.key, this.lastUpdatedDate, this.products);
+  ProductsCacheWrapper(this.category, this.subCategory, this.lastUpdatedDate, this.products);
 
   static const fromJson = _$ProductsCacheWrapperFromJson;
 
