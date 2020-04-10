@@ -24,9 +24,12 @@ class ProductDataRepository {
         await cacheDatabase.deleteDataByFilter(
             CacheDefines.products, filterField, category);
       } else {
-        return cachedData.products
-            .where((product) => product.subCategory == subCategory)
-            .toList();
+        final products = cachedData.products
+            .where((product) => product.subCategory == subCategory);
+
+        if (products?.isNotEmpty == true) {
+          return products.toList();
+        }
       }
     }
 
