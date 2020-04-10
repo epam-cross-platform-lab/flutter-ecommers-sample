@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/material.dart' hide BackButton;
 
-import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -29,7 +27,7 @@ class NotePage extends StatelessWidget {
         slivers: [
           SliverAppBar(
             pinned: true,
-            leading: _buildBackButton(),
+            leading: const BackButton(),
             expandedHeight: _toolbarExpandedHeight,
             flexibleSpace: FlexibleSpaceBar(
               title: Container(
@@ -58,17 +56,6 @@ class NotePage extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildBackButton() {
-    return IconButton(
-      icon: SvgPicture.asset(
-        Assets.backIcon,
-        color: BrandingColors.primary,
-        height: Insets.x4_5,
-      ),
-      onPressed: () => navigationService.goBack(),
     );
   }
 }
