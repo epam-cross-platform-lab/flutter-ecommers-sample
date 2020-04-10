@@ -1,20 +1,26 @@
 [
     {
         "id": 1,
-        "title": "For all your summer clothing needs",
-        "imageUrl": "https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/assets/girl_image.png",
-        "commandText": "SEE MORE"
+        "title": "Lorem ipsum",
+        "shortDescription": "For all your summer clothing needs",
+        "imageUrl": "https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/note_page/design_sources/assets/girl1_image.png",
+        "commandText": "SEE MORE",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus a euismod magna. Proin egestas porta congue. Aliquam interdum massa sit amet lectus vehicula lacinia. Phasellus pulvinar tortor tempus, efficitur justo sit amet, molestie metus. Duis et urna eget massa pretium luctus. Cras cursus risus dui, at rhoncus lectus condimentum cursus. Quisque et dolor mollis, blandit massa et, porta tortor. Nam imperdiet suscipit arcu, eu ultrices sem auctor nec. In vehicula odio in metus dignissim, sit amet sagittis dolor bibendum. Maecenas vel mattis justo. \n\nPellentesque id varius risus. Fusce tristique nunc at felis aliquet scelerisque. Praesent congue nibh eget nisi viverra molestie. Vivamus tellus eros, faucibus eget tortor id, iaculis sodales dolor. In hac habitasse platea dictumst. Nam ultrices massa non accumsan tincidunt. In a euismod nibh."
     },
     {
         "id": 2,
-        "title": "For all your winter clothing needs",
-        "imageUrl": "https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/assets/girl2_image.png",
-        "commandText": "SEE MORE"
+        "title": "Vestibulum at nibh",
+        "shortDescription": "For all your winter clothing needs",
+        "imageUrl": "https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/note_page/design_sources/assets/girl2_image.png",
+        "commandText": "SEE MORE",
+        "description": "Vestibulum at nibh vel enim iaculis luctus. Suspendisse porttitor odio sed nulla hendrerit, eu gravida metus pellentesque. Nunc semper quis nulla a posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In congue eleifend nisl eu iaculis. Nunc vehicula feugiat risus, ut sollicitudin massa semper quis. In lobortis auctor ex, eget placerat ante dignissim id. Fusce sed ligula vel massa sollicitudin aliquam. Duis arcu arcu, facilisis in risus eu, lobortis pretium dui. Vivamus suscipit volutpat justo, quis hendrerit massa lobortis nec.\n\nVivamus diam nulla, rutrum dignissim convallis nec, blandit eget quam. Fusce lacus massa, luctus ut massa ac, elementum congue urna. Cras varius ligula et nunc lobortis, sed condimentum est cursus. Integer et augue vitae augue vulputate aliquet nec vitae libero. Aenean neque tortor, congue a faucibus vitae, tempus in nunc. Aliquam pellentesque nunc non mi luctus aliquet. Fusce vel urna et velit aliquam euismod id nec nisl. Mauris a arcu interdum, pharetra ante et, facilisis tortor. Sed vitae lacinia odio. Ut malesuada risus ante, non convallis magna luctus sed. In id porta neque. Suspendisse euismod dui eu ligula semper, at posuere enim vestibulum. Sed nec sapien id libero convallis imperdiet vel non diam."
     },
     {
         "id": 3,
-        "title": "For all your autumn clothing needs",
-        "imageUrl": "https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources/assets/girl3_image.png",
-        "commandText": "SEE MORE"
+        "title": "Praesent urna felis",
+        "shortDescription": "For all your autumn clothing needs",
+        "imageUrl": "https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/note_page/design_sources/assets/girl3_image.png",
+        "commandText": "SEE MORE",
+        "description": "Praesent urna felis, convallis eu ante nec, porta tincidunt mi. Integer quam mi, hendrerit in mollis eu, venenatis a quam. Suspendisse iaculis viverra justo congue efficitur. Etiam et posuere turpis. Nulla in ex at magna condimentum ullamcorper et at felis. Nam eros nisl, luctus quis euismod sit amet, egestas id urna. Vivamus feugiat massa non orci dignissim, vitae interdum est ultrices. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vehicula condimentum libero id faucibus. Suspendisse facilisis tincidunt arcu, vel finibus risus eleifend vitae. Morbi lacinia facilisis eros vitae sagittis. Integer a dapibus neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos."
     }
 ]

@@ -1,10 +1,10 @@
-import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/ui/pages/authorization/index.dart';
-import 'package:ecommers/ui/pages/index.dart';
-import 'package:ecommers/ui/pages/notifications_page.dart';
-import 'package:ecommers/ui/pages/product_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/ui/pages/authorization/index.dart';
+import 'package:ecommers/ui/pages/index.dart';
 
 class NavigationService {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -51,6 +51,10 @@ class NavigationService {
         break;
       case Pages.notifications:
         resultPage = NotificationsPage();
+        break;
+      case Pages.note:
+        final model = arguments as Note;
+        resultPage = NotePage(model: model);
         break;
       default:
         resultPage = ShellPage();

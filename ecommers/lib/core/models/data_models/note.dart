@@ -8,12 +8,16 @@ class Note {
   final String title;
   final String imageUrl;
   final String commandText;
+  final String description;
+  final String shortDescription;
 
   Note(
     this.id,
     this.title,
     this.imageUrl,
     this.commandText,
+    this.description,
+    this.shortDescription,
   );
 
   static const fromJsonFactory = _$NoteFromJson;
