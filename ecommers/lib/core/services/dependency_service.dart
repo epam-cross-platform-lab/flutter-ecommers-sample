@@ -1,3 +1,4 @@
+import 'package:ecommers/core/repositories/index.dart';
 import 'package:get_it/get_it.dart';
 
 import '../app_services/index.dart';
@@ -16,7 +17,7 @@ AuthorizationService get authorizationService =>
 ProductService get productService => GetIt.I.get<ProductService>();
 CategoryService get categoryService => GetIt.I.get<CategoryService>();
 NoteService get noteService => GetIt.I.get<NoteService>();
-CacheDataRepository get cacheDataProvider => GetIt.I.get<CacheDataRepository>();
+ProductDataRepository get productDataRepository => GetIt.I.get<ProductDataRepository>();
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
 
 class DependencyService {
@@ -39,7 +40,7 @@ class DependencyService {
         },
       )
       ..registerHttpClient()
-      ..registerLazySingleton<CacheDataRepository>(() => CacheDataRepository())
+      ..registerLazySingleton<ProductDataRepository>(() => ProductDataRepository())
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();

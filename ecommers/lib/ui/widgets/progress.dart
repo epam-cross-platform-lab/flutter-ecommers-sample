@@ -23,7 +23,7 @@ class Progress extends StatelessWidget {
           color: Colors.black.withOpacity(0.2),
           borderRadius: BorderRadius.circular(Radiuses.normal),
         ),
-        child: SizedBox(
+        child: const SizedBox(
           height: _progressSide,
           width: _progressSide,
           child: CircularProgressIndicator(
