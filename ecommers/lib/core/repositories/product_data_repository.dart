@@ -10,7 +10,7 @@ import 'package:enum_to_string/enum_to_string.dart';
 class ProductDataRepository {
   static const filterField = 'key';
 
-  Future<List<Product>> getProductListByCategory({
+  Future<List<Product>> getProducts({
     String category,
     String subCategory,
     int rangeFrom,
@@ -18,7 +18,7 @@ class ProductDataRepository {
     String searchQuery,
     SortType sortType,
   }) async {
-    final cachedData = await _provideProductsByCategoryFromCache(category);
+    final cachedData = await _provideProductsFromCache(category);
     if (cachedData?.products?.isNotEmpty == true) {
       if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
         await cacheDatabase.deleteDataByFilter(
@@ -39,7 +39,7 @@ class ProductDataRepository {
       sortType: sortType,
     );
     if (remoteProducts != null && remoteProducts.isNotEmpty) {
-      _saveProductListForCategoryToCache(category, remoteProducts);
+      _saveProductsToCache(category, remoteProducts);
     }
 
     return remoteProducts
@@ -47,7 +47,7 @@ class ProductDataRepository {
         .toList();
   }
 
-  Future<List<Product>> getLatestProductList() async {
+  Future<List<Product>> getLatestProducts() async {
     final cachedData = await _provideLatestProductsFromCache();
     if (cachedData?.products?.isNotEmpty == true) {
       if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
@@ -59,13 +59,13 @@ class ProductDataRepository {
 
     final remoteProducts = await _fetchLatestProducts();
     if (remoteProducts != null && remoteProducts.isNotEmpty) {
-      _saveLatestProductToCache(remoteProducts);
+      _saveLatestProductsToCache(remoteProducts);
     }
 
     return remoteProducts;
   }
 
-  Future<ProductsCacheWrapper> _provideProductsByCategoryFromCache(
+  Future<ProductsCacheWrapper> _provideProductsFromCache(
       String category) async {
     final productsWrapper = await cacheDatabase.getByEqualsFilter(
         CacheDefines.products,
@@ -87,8 +87,7 @@ class ProductDataRepository {
         : null;
   }
 
-  Future _saveProductListForCategoryToCache(
-      String category, List<Product> products) async {
+  Future _saveProductsToCache(String category, List<Product> products) async {
     await cacheDatabase.saveMap(
         CacheDefines.products,
         json.decode(json.encode(
@@ -96,7 +95,7 @@ class ProductDataRepository {
             as Map<String, dynamic>);
   }
 
-  Future _saveLatestProductToCache(List<Product> products) async {
+  Future _saveLatestProductsToCache(List<Product> products) async {
     await cacheDatabase.saveMap(
         CacheDefines.latestProducts,
         json.decode(json.encode(ProductsCacheWrapper(
