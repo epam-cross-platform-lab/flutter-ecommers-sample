@@ -19,8 +19,22 @@ class SearchProviderModel extends ProviderModelBase {
 
     await Future.wait({
       _fetchProductsLatest(),
-      _fetchProductsRecomendation()
+      _fetchProductsRecomendation(),
     });
+
+    isBusy = false;
+  }
+
+  void clearProductsLetest() {
+    _productsLatest.clear();
+    notifyListeners();
+  }
+
+  Future refreshProductsRecomendation() async {
+    isBusy = true;
+
+    await _fetchProductsRecomendation();
+    notifyListeners();
 
     isBusy = false;
   }

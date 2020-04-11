@@ -48,8 +48,8 @@ class NavigationService {
       case Pages.productsGrid:
         final productGridArguments = arguments as PageArguments;
         resultPage = ProductsGridPage(
-          type: productGridArguments.arg1 as Categories,
-          subCategory: productGridArguments.arg2 as String,
+          type: productGridArguments?.arg1 as Categories,
+          subCategory: productGridArguments?.arg2 as String,
         );
         break;
       case Pages.product:
