@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:flutter/material.dart';
 
 class SearchTextField extends StatelessWidget {
   const SearchTextField({Key key}) : super(key: key);
@@ -21,20 +25,28 @@ class SearchTextField extends StatelessWidget {
         color: BrandingColors.background,
         borderRadius: BorderRadius.circular(Radiuses.big_1_5x),
       ),
-      child: TextField(
-        textInputAction: TextInputAction.search,
-        style: inputTextStyle,
-        decoration: InputDecoration(
-          icon: const Icon(Icons.search), //TODO: get the correct 
-          hintText: localization.searchHintText,
-          hintStyle: hintStyle,
-          focusedBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
+      child: Builder(
+        builder: (context) => TextField(
+          textInputAction: TextInputAction.search,
+          style: inputTextStyle,
+          onChanged: (value) {
+            final provider =
+                Provider.of<SearchProviderModel>(context, listen: false);
+
+            provider.searchQuery = value;
+          },
+          decoration: InputDecoration(
+            icon: SvgPicture.asset(Assets.searchIcon),
+            hintText: localization.searchHintText,
+            hintStyle: hintStyle,
+            focusedBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent),
+            ),
+            enabledBorder: const UnderlineInputBorder(
+              borderSide: BorderSide(color: Colors.transparent),
+            ),
+            focusColor: inputTextStyle.color,
           ),
-          enabledBorder: const UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.transparent),
-          ),
-          focusColor: inputTextStyle.color,
         ),
       ),
     );
