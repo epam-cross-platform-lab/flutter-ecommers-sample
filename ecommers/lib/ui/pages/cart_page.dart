@@ -65,8 +65,8 @@ class _CartPageState extends State<CartPage> {
             assetImagePath: currentOrder.imagePath,
             cost: currentOrder.cost,
             count: currentOrder.count,
-            countIncrementFunction: () => cartProvider.addOrEdit(currentOrder),
-            countDecrementFunction: () => cartProvider.removeOrEdit(currentOrder),
+            countIncrementFunction: () => cartProvider.add(currentOrder),
+            countDecrementFunction: () => cartProvider.remove(currentOrder),
           );
         },
         separatorBuilder: (BuildContext context, int index) {

@@ -18,7 +18,7 @@ class ButtomBarItemIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final cartProvider = Provider.of<CartProvider>(context, listen: false);
+
     if (hasBadge) {
       return Selector<CartProvider, int>(
         builder: (context, data, child) {
@@ -30,7 +30,7 @@ class ButtomBarItemIcon extends StatelessWidget {
                   BadgePosition.bottomLeft(bottom: Insets.x1, left: -Insets.x4),
               badgeTextStyle: Theme.of(context).textTheme.overline,
               icon: Icon(iconData),
-              badgeValue: cartProvider.orderCount,
+              badgeValue: data,
             ),
           );
         },

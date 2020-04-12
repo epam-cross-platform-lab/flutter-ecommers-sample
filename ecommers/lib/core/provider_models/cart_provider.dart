@@ -6,10 +6,10 @@ class CartProvider extends ChangeNotifier {
   List<OrderModel> _orders;
 
   List<OrderModel> get orders => _orders;
-  int get orderCount => _orders.length;
+  int get orderCount => _orders?.length ?? 0;
 
-  Future removeOrEdit(OrderModel order) async {
-    final editOrder = _getOrderById(order.id);
+  Future remove(OrderModel order) async {
+    final editOrder = _getOrder(order.id);
 
     if (editOrder == null) {
       return;
@@ -25,8 +25,8 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future addOrEdit(OrderModel order) async{
-    final editOrder = _getOrderById(order.id);
+  Future add(OrderModel order) async {
+    final editOrder = _getOrder(order.id);
 
     if (editOrder == null) {
       _orders.add(order);
@@ -62,6 +62,6 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  OrderModel _getOrderById(int id) =>
+  OrderModel _getOrder(int id) =>
       _orders.firstWhere((o) => o.id == id, orElse: () => null);
 }

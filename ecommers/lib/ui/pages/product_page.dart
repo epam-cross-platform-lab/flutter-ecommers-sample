@@ -111,7 +111,7 @@ class _ProductPageState extends State<ProductPage> {
                 buttonSize: const Size(165.0, 46.0),
                 addToCartFunction: () {
                   cartProvider
-                      .addOrEdit(Mapper.convertProductToOrder(productModel));
+                      .add(OrderModel.fromProduct(productModel));
                 }),
           ),
         ],
