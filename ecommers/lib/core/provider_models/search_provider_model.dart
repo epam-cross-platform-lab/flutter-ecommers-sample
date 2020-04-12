@@ -40,11 +40,11 @@ class SearchProviderModel extends ProviderModelBase {
   }
 
   Future _fetchProductsLatest() async {
-    _productsLatest = await productService.fetchRecomendetioProducts();
+    _productsLatest = await productService.fetchLatestProducts();
   }
 
   Future _fetchProductsRecomendation() async {
-    _productsRecomendation = await productService.fetchLatestProducts();
+    _productsRecomendation = await productService.fetchRecomendetioProducts();
 
   }
 }
