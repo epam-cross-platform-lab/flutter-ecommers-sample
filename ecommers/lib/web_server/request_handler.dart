@@ -2,25 +2,22 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
-import 'package:enum_to_string/enum_to_string.dart';
 import 'package:http_server/http_server.dart';
 
 import '../core/common/index.dart';
 import '../core/models/data_models/index.dart';
-import '../core/models/sort_type.dart';
-import '../extensions/string_extension.dart';
 import './data_access/products_data_access.dart';
 import './data_access/user_data_access.dart';
+import './product_query_params.dart';
 import './services/authorization_service.dart';
 import './services/data_provider.dart';
-import './services/product_comparator.dart';
-
-
 
 class RequestHandler {
   static final UserDataAccess _userDataAccess = UserDataAccess.instance;
   static final ProductsDataAccess _productsDataAccess =
       ProductsDataAccess.instance;
+
+  static const int itemsPortion = 20;
 
   static String getMethod = 'GET';
   static String postMethod = 'POST';
@@ -120,54 +117,24 @@ class RequestHandler {
   static Future _handleProductsRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
-    const int itemsPortion = 20;
+    final params =
+        ProductQueryParams.fromQueryParameters(body.request.uri.queryParameters);
 
-    Iterable<Product> resultProducts = await DataProvider.products;
-    final queryParameters = body.request.uri.queryParameters;
-
-    final category = queryParameters[ApiQueryParams.category];
-    final subCategory = queryParameters[ApiQueryParams.subCategory];
-    final rangeFrom = queryParameters[ApiQueryParams.rangeFrom];
-    final rangeTo = queryParameters[ApiQueryParams.rangeTo];
-    final searchQuery = queryParameters[ApiQueryParams.searchQuery];
-    final sortType = queryParameters[ApiQueryParams.sortType];
-
-    if (category.isNotNullOrEmpty) {
-      resultProducts = resultProducts.where((p) => p.category == category);
-    } else if (subCategory.isNotNullOrEmpty) {
-      resultProducts =
-          resultProducts.where((p) => p.subCategory == subCategory);
-    } else if (rangeFrom.isNotNullOrEmpty && rangeTo.isNotNullOrEmpty) {
-      resultProducts =
-          resultProducts.skip(int.parse(rangeFrom)).take(int.parse(rangeTo));
-    } else if (searchQuery.isNotNullOrEmpty) {
-      resultProducts =
-          resultProducts.where((p) => p.title.contains(searchQuery));
-    }
-
-    if (resultProducts.length > itemsPortion) {
-      resultProducts = resultProducts.take(itemsPortion);
-    } else if (sortType.isNotNullOrEmpty) {
-      final compareFunction = ProductComparator.bySortType(
-          EnumToString.fromString(SortType.values, sortType));
-      resultProducts.toList().sort(compareFunction);
-    }
+    final filteredProducts = await DataProvider.getFilteredProducts(params);
 
     body.request.response
       ..headers.contentType = ContentType.json
-      ..write(json.encode(resultProducts.toList()))
+      ..write(json.encode(filteredProducts))
       ..close();
   }
 
   static Future _handleProductLatestRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
-    const latestProductsCount = 20;
-
     var resultProducts = [...await DataProvider.products];
     resultProducts.sort((a, b) => b.catalogAddDate.compareTo(a.catalogAddDate));
 
-    resultProducts = resultProducts.take(latestProductsCount).toList();
+    resultProducts = resultProducts.take(itemsPortion).toList();
 
     body.request.response
       ..headers.contentType = ContentType.json

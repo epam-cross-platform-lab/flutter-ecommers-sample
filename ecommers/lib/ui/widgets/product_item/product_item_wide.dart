@@ -41,6 +41,7 @@ class ProductItemWide extends ProductItemBase {
         Text(
           title,
           maxLines: Dimens.defaultTextMaxLines,
+          overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.bodyText2,
         ),
         Row(
