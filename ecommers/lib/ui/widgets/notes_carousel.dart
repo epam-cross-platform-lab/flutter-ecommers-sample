@@ -2,7 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/common/index.dart';
 import '../../core/models/data_models/index.dart';
+import '../../core/services/index.dart';
 import '../../generated/i18n.dart';
 import '../../ui/decorations/dimens/index.dart';
 import '../../ui/widgets/index.dart';
@@ -42,14 +44,18 @@ class NotesCarousel extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
                 child: ImageCard(
                   buttonText: e.commandText,
-                  description: e.title,
+                  description: e.shortDescription,
                   imageUrl: e.imageUrl,
-                  onButtonPressed: () {}, //TODO: handle Click
+                  onButtonPressed: () => onButtonPressed(e), 
                 ),
               ),
             ),
           )
           .toList(),
     );
+  }
+
+  Future onButtonPressed(Note noteModel) {
+    return navigationService.navigateTo(Pages.note, arguments: noteModel);
   }
 }
