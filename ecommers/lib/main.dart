@@ -9,8 +9,10 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/authorization_page.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/web_server/local_server.dart';
+import 'package:provider/provider.dart';
 
 import 'core/models/data_models/index.dart';
+import 'core/provider_models/index.dart';
 
 List<Product> products;
 
@@ -54,22 +56,25 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'ecommers',
-      theme: ThemeProvider.getTheme(),
-      home: SplashScreen.navigate(
-        name: Assets.splashLoader,
-        next: (_) => membershipService.isNotExpired
-            ? ShellPage()
-            : const AuthorizationPage(),
-        until: () => Future.delayed(const Duration()),
-        startAnimation: '1',
-      ),
-      navigatorKey: navigationService.navigatorKey,
-      localizationsDelegates: [i18n],
-      supportedLocales: i18n.supportedLocales,
-      localeResolutionCallback: i18n.resolution(
-        fallback: const Locale('en', 'US'),
+    return ChangeNotifierProvider(
+      create: (_) => CartProvider(),
+      child: MaterialApp(
+        title: 'ecommers',
+        theme: ThemeProvider.getTheme(),
+        home: SplashScreen.navigate(
+          name: Assets.splashLoader,
+          next: (_) => membershipService.isNotExpired
+              ? ShellPage()
+              : const AuthorizationPage(),
+          until: () => Future.delayed(const Duration()),
+          startAnimation: '1',
+        ),
+        navigatorKey: navigationService.navigatorKey,
+        localizationsDelegates: [i18n],
+        supportedLocales: i18n.supportedLocales,
+        localeResolutionCallback: i18n.resolution(
+          fallback: const Locale('en', 'US'),
+        ),
       ),
     );
   }
