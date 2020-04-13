@@ -32,17 +32,19 @@ class NotePage extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               title: Container(
                 color: Colors.white.withOpacity(0.3),
-                padding: EdgeInsets.symmetric(horizontal: Insets.x2),
+                padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
                 child: Text(
                   model.title,
                   style: titleStyle,
                 ),
               ),
               centerTitle: true,
-              background: CachedImage(
-                imagePath: model.imageUrl,
-                boxFit: BoxFit.cover,
-              ),
+              background: Hero(
+                  tag: model.imageUrl,
+                  child: CachedImage(
+                    imagePath: model.imageUrl,
+                    boxFit: BoxFit.cover,
+                  )),
             ),
           ),
           SliverToBoxAdapter(
