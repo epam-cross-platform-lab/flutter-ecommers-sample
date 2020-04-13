@@ -9,9 +9,7 @@ class NotePage extends StatelessWidget {
   static const double _toolbarExpandedHeight = 250.0;
   final Note model;
 
-  const NotePage({
-    this.model,
-  });
+  const NotePage({this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +47,7 @@ class NotePage extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(Dimens.pagePadding),
+              padding: const EdgeInsets.all(Dimens.pagePadding),
               child: Text(
                 model.description,
                 style: descriptionStyle,

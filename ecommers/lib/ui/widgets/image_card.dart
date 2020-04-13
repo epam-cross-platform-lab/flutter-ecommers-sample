@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
 
 class ImageCard extends StatelessWidget {
@@ -31,10 +32,10 @@ class ImageCard extends StatelessWidget {
           child: Stack(fit: StackFit.expand, children: [
             Positioned.fill(
                 child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: CachedNetworkImage(
-                      imageUrl: imageUrl,
-                      fit: BoxFit.cover,
+                    borderRadius: BorderRadius.circular(Radiuses.normal),
+                    child: CachedImage(
+                      imagePath: imageUrl,
+                      boxFit: BoxFit.cover,
                     ))),
             Positioned(
                 left: Insets.x6_5,
@@ -47,6 +48,7 @@ class ImageCard extends StatelessWidget {
                         width: imageCardSize.width / 3,
                         child: Text(
                           description,
+                          overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.headline3,
                         ),
                       ),
