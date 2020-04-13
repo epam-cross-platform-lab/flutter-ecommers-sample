@@ -1,19 +1,17 @@
-import 'package:ecommers/ui/widgets/search/index.dart';
-import 'package:ecommers/core/provider_models/index.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart' hide BackButton;
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/sort_type.dart';
-import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
-import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/products_grid.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
+import 'package:ecommers/ui/widgets/search/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
 
 class ProductsGridPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
@@ -43,14 +41,7 @@ class ProductsGridPage extends StatelessWidget {
           key: _scaffoldKey,
           endDrawer: RightMenuWidget(),
           appBar: AppBar(
-            leading: IconButton(
-              icon: SvgPicture.asset(
-                Assets.backIcon,
-                color: BrandingColors.primary,
-                height: Insets.x4_5,
-              ),
-              onPressed: () => navigationService.goBack(),
-            ),
+            leading: const BackButton(),
             actions: <Widget>[
               IconButton(
                 icon: SvgPicture.asset(

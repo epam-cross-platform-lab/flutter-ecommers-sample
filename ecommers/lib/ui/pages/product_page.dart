@@ -1,5 +1,6 @@
+import 'package:flutter/material.dart' hide BackButton;
+
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/branding_colors.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -7,8 +8,6 @@ import 'package:ecommers/ui/widgets/icon_with_badge.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_page/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({Key key}) : super(key: key);
@@ -36,14 +35,7 @@ class _ProductPageState extends State<ProductPage> {
     return Scaffold(
       backgroundColor: BrandingColors.pageBackground,
       appBar: AppBar(
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            Assets.backIcon,
-            color: BrandingColors.primary,
-            height: Insets.x4_5,
-          ),
-          onPressed: () => navigationService.goBack(),
-        ),
+        leading: const BackButton(),
         title: Header(
           title: productModel.title,
           cost: productModel.cost,
