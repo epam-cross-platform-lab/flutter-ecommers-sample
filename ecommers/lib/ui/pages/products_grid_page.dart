@@ -3,7 +3,6 @@ import 'package:flutter/material.dart' hide BackButton;
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
-import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/sort_type.dart';
 import 'package:ecommers/generated/i18n.dart';
@@ -11,6 +10,8 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/products_grid.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
+import 'package:ecommers/ui/widgets/search/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
 
 class ProductsGridPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
@@ -32,8 +33,8 @@ class ProductsGridPage extends StatelessWidget {
         .headline5
         .copyWith(fontWeight: FontWeight.w400);
 
-    return ChangeNotifierProvider<SearchProviderModel>.value(
-      value: SearchProviderModel(),
+    return ChangeNotifierProvider<SearchQueryProviderModel>.value(
+      value: SearchQueryProviderModel(),
       child: DefaultTabController(
         length: 4,
         child: Scaffold(

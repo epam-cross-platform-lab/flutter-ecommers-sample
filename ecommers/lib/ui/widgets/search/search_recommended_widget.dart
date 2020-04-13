@@ -1,34 +1,31 @@
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/widgets/search_recommended_widget/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+
 class SearchRecommendedWinget extends StatelessWidget {
-  final List<SearchRecommendedItemModel> recommendedList = [
-    const SearchRecommendedItemModel(titile: 'Denim Jeans'),
-    const SearchRecommendedItemModel(titile: 'Mini Skirt'),
-    const SearchRecommendedItemModel(titile: 'Jacket'),
-    const SearchRecommendedItemModel(titile: 'Accessoires'),
-    const SearchRecommendedItemModel(titile: 'Sports Accessoires'),
-    const SearchRecommendedItemModel(titile: 'Yoga Pants'),
-    const SearchRecommendedItemModel(titile: 'Eye Shadow'),
-  ];
+  final List<Product> recommendedList;
+
+  const SearchRecommendedWinget({Key key, this.recommendedList }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    if(recommendedList == null) return Container();
     return Wrap(
       spacing: Insets.x2_5,
       runSpacing: Insets.x2,
       children: recommendedList
-          .map((item) => createItem(item.titile, context))
+          .map((item) => createItem(item.title, context))
           .toList(),
     );
   }
 
   Widget createItem(String searchRecommendedItem, BuildContext context) {
     return InkWell(
-      //TODO: paste value to search filed
-      onTap: () => {},
+      onTap: () => navigationService.navigateTo(Pages.product),
       child: Container(
         decoration: BoxDecoration(
           color: BrandingColors.background,

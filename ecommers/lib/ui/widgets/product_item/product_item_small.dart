@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -19,7 +20,14 @@ class ProductItemSmall extends ProductItemBase {
           productSize: productItemSmallSize,
           id: id,
         );
-
+  factory ProductItemSmall.fromModel(Product product) {
+    return ProductItemSmall(
+      assetImagePath: product.images.first,
+      cost: product.price,
+      title: product.title,
+      id: product.id,
+    );  
+  }
   @override
   Widget buildProductItem(BuildContext context) {
     return Row(
