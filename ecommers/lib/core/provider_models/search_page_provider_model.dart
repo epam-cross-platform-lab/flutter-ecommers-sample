@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 
 class SearchPageProviderModel extends ProviderModelBase {
   List<Product> _latestProducts;
-  List<Product> _recomendedProducts;
+  List<Product> _recommendedProducts;
 
   List<Product> get latestProducts => _latestProducts;
-  List<Product> get recomendedProducts => _recomendedProducts;
+  List<Product> get recommendedProducts => _recommendedProducts;
 
   SearchPageProviderModel(BuildContext context) : super(context) {
     fetchAllData();
@@ -19,7 +19,7 @@ class SearchPageProviderModel extends ProviderModelBase {
 
     await Future.wait({
       _fetchLatestProducts(),
-      _fetchRecomendedProducts(),
+      _fetchRecommendedProducts(),
     });
 
     isBusy = false;
@@ -30,10 +30,10 @@ class SearchPageProviderModel extends ProviderModelBase {
     notifyListeners();
   }
 
-  Future refreshRecomendedProducts() async {
+  Future refreshRecommendedProducts() async {
     isBusy = true;
 
-    await _fetchRecomendedProducts();
+    await _fetchRecommendedProducts();
     notifyListeners();
 
     isBusy = false;
@@ -43,7 +43,7 @@ class SearchPageProviderModel extends ProviderModelBase {
     _latestProducts = await productService.fetchLatestProducts();
   }
 
-  Future _fetchRecomendedProducts() async {
-    _recomendedProducts = await productService.fetchRecomendedProducts();
+  Future _fetchRecommendedProducts() async {
+    _recommendedProducts = await productService.fetchRecommendedProducts();
   }
 }

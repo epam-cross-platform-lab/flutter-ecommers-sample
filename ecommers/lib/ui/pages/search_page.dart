@@ -76,7 +76,7 @@ class SearchPage extends StatelessWidget {
                       ),
                       const Spacer(),
                       InkWell(
-                        onTap: () => provider.refreshRecomendedProducts(),
+                        onTap: () => provider.refreshRecommendedProducts(),
                         child: Text(
                           localization.refresh,
                           style: Theme.of(context).textTheme.headline5.copyWith(
@@ -89,7 +89,7 @@ class SearchPage extends StatelessWidget {
                   const SizedBox(height: Insets.x5),
                   Container(
                     height: 75.0,
-                    child: SearchRecommendedWinget(recommendedList: provider.recomendedProducts),
+                    child: SearchRecommendedWinget(recommendedList: provider.recommendedProducts),
                   ),
                 ],
               ),
