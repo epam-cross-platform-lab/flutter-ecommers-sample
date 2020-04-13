@@ -50,7 +50,7 @@ class Assets {
   static const String searchIcon = 'assets/search.svg';
 
   //TODO: TO remove
-  static const String girlImage = 'assets/girl_image.png';
+  static const String girlImage = 'assets/girl1_image.png';
   static const String girl2Image = 'assets/girl2_image.png';
   static const String girl3Image = 'assets/girl3_image.png';
   static const String shirtImage = 'assets/product_shirt.png';
