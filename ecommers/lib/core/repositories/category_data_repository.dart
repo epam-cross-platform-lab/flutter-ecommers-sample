@@ -6,11 +6,13 @@ import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 
 class CategoryDataRepository {
+  static const expirationCacheDays = 7;
+
   Future<List<Category>> getCategories() async {
     final cachedData = await _provideCategoriesFromCache();
 
     if (cachedData?.categories?.isNotEmpty == true) {
-      if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
+      if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= expirationCacheDays) {
         await cacheDatabase.dropData(CacheDefines.categories);
       } else {
         return cachedData.categories;

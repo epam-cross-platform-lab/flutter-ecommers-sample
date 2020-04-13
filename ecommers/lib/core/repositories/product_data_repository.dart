@@ -10,6 +10,7 @@ import 'package:enum_to_string/enum_to_string.dart';
 class ProductDataRepository {
   static const categoryFilterField = 'category';
   static const subCategoryFilterField = 'subCategory';
+  static const expirationCacheDays = 1;
 
   Future<List<Product>> getProducts({
     String category,
@@ -21,7 +22,7 @@ class ProductDataRepository {
   }) async {
     final cachedData = await _provideProductsFromCache(category, subCategory);
     if (cachedData?.products?.isNotEmpty == true) {
-      if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
+      if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= expirationCacheDays) {
         await cacheDatabase.deleteDataByFilter(CacheDefines.products, {
           categoryFilterField: category,
           subCategoryFilterField: subCategory
@@ -49,7 +50,7 @@ class ProductDataRepository {
   Future<List<Product>> getLatestProducts() async {
     final cachedData = await _provideLatestProductsFromCache();
     if (cachedData?.products?.isNotEmpty == true) {
-      if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
+      if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= expirationCacheDays) {
         await cacheDatabase.dropData(CacheDefines.latestProducts);
       } else {
         return cachedData.products;
