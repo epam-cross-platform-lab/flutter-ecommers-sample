@@ -28,6 +28,6 @@ class ProductService {
     return productDataRepository.getLatestProducts();
   }
 
-  Future<List<Product>> fetchRecomendetioProducts() async =>
-      universalAppService.getDataFromBackend(apiService.productRecommended);
+  Future<List<Product>> fetchRecomendedProducts() async =>
+      appService.fetchData(apiService.productRecommended);
 }

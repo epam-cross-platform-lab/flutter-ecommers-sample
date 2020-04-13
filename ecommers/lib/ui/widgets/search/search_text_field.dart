@@ -31,7 +31,7 @@ class SearchTextField extends StatelessWidget {
           style: inputTextStyle,
           onChanged: (value) {
             final provider =
-                Provider.of<SearchProvider>(context, listen: false);
+                Provider.of<SearchQueryProviderModel>(context, listen: false);
 
             provider.searchQuery = value;
           },

@@ -3,5 +3,5 @@ import 'package:ecommers/core/services/dependency_service.dart';
 
 class CategoryService {
   Future<List<Category>> fetchCategoryList() async =>
-      universalAppService.getDataFromBackend(apiService.categories);
+      appService.fetchData(apiService.categories);
 }

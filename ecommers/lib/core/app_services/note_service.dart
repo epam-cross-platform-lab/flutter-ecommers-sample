@@ -3,5 +3,5 @@ import 'package:ecommers/core/services/dependency_service.dart';
 
 class NoteService {
   Future<List<Note>> fetchLatestNotes() async =>
-      universalAppService.getDataFromBackend(apiService.notes);
+      appService.fetchData(apiService.notes);
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SearchProvider extends ChangeNotifier {
+class SearchQueryProviderModel extends ChangeNotifier {
   String _searchQuery;
 
   String get searchQuery => _searchQuery;

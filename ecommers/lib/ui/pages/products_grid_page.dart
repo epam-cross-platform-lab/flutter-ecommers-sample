@@ -33,8 +33,8 @@ class ProductsGridPage extends StatelessWidget {
         .headline5
         .copyWith(fontWeight: FontWeight.w400);
 
-    return ChangeNotifierProvider<SearchProvider>.value(
-      value: SearchProvider(),
+    return ChangeNotifierProvider<SearchQueryProviderModel>.value(
+      value: SearchQueryProviderModel(),
       child: DefaultTabController(
         length: 4,
         child: Scaffold(

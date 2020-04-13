@@ -17,8 +17,8 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final localization = I18n.of(context);
     return BasePage(
-      createProvider: (context) => SearchProviderModel(context),
-      child: Consumer<SearchProviderModel>(
+      createProvider: (context) => SearchPageProviderModel(context),
+      child: Consumer<SearchPageProviderModel>(
         builder: (context, provider, child) {
           return SingleChildScrollView(
             child: Padding(
@@ -49,7 +49,7 @@ class SearchPage extends StatelessWidget {
                       ),
                       const Spacer(),
                       InkWell(
-                        onTap: () => provider.clearProductsLetest(), 
+                        onTap: () => provider.clearLetestProducts(), 
                         child: Text(
                           localization.clear,
                           style: Theme.of(context).textTheme.headline5.copyWith(
@@ -62,7 +62,7 @@ class SearchPage extends StatelessWidget {
                   const SizedBox(height: Insets.x5),
                   Container(
                     height: recentlyViewedHeight,
-                    child: RecentlyViewedWidget(recentlyViewedList: provider.productsLatest),
+                    child: RecentlyViewedWidget(recentlyViewedList: provider.latestProducts),
                   ),
                   const SizedBox(height: Insets.x5),
                   Row(
@@ -76,7 +76,7 @@ class SearchPage extends StatelessWidget {
                       ),
                       const Spacer(),
                       InkWell(
-                        onTap: () => provider.refreshProductsRecomendation(),
+                        onTap: () => provider.refreshRecomendedProducts(),
                         child: Text(
                           localization.refresh,
                           style: Theme.of(context).textTheme.headline5.copyWith(
@@ -89,7 +89,7 @@ class SearchPage extends StatelessWidget {
                   const SizedBox(height: Insets.x5),
                   Container(
                     height: 75.0,
-                    child: SearchRecommendedWinget(recommendedList: provider.productsRecomendation),
+                    child: SearchRecommendedWinget(recommendedList: provider.recomendedProducts),
                   ),
                 ],
               ),

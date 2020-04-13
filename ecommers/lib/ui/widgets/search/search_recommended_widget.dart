@@ -25,7 +25,7 @@ class SearchRecommendedWinget extends StatelessWidget {
 
   Widget createItem(String searchRecommendedItem, BuildContext context) {
     return InkWell(
-      onTap: () => navigationService.navigateTo(Pages.productsGrid),
+      onTap: () => navigationService.navigateTo(Pages.product),
       child: Container(
         decoration: BoxDecoration(
           color: BrandingColors.background,

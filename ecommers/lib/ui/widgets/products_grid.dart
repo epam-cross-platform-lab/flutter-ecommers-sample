@@ -31,7 +31,7 @@ class ProductsGrid extends StatelessWidget {
       Colors.pinkAccent
     ];
 
-    return ChangeNotifierProxyProvider<SearchProvider,
+    return ChangeNotifierProxyProvider<SearchQueryProviderModel,
         ProductsGridProviderModel>(
       create: (_) => ProductsGridProviderModel(
         context: context,
