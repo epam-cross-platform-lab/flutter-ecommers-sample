@@ -27,4 +27,7 @@ class ProductService {
   Future<List<Product>> fetchLatestProducts() async {
     return productDataRepository.getLatestProducts();
   }
+
+  Future<List<Product>> fetchRecommendedProducts() async =>
+      appService.fetchData(apiService.productRecommended);
 }
