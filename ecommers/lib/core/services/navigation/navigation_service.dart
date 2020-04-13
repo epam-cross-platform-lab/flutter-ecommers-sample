@@ -69,6 +69,6 @@ class NavigationService {
   }
 
   Route<dynamic> _getRoute(Widget widget) {
-    return MaterialPageRoute(builder: (_) => widget);
+    return CupertinoPageRoute(builder: (_) => widget);
   }
 }
