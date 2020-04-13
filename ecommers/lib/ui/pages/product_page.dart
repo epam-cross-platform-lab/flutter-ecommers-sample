@@ -1,3 +1,4 @@
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart' hide BackButton;
 
 import 'package:ecommers/core/models/index.dart';
@@ -8,6 +9,9 @@ import 'package:ecommers/ui/widgets/icon_with_badge.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_page/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
+import 'package:ecommers/core/services/index.dart';
 
 class ProductPage extends StatefulWidget {
   const ProductPage({Key key}) : super(key: key);
@@ -32,6 +36,8 @@ class _ProductPageState extends State<ProductPage> {
 
   @override
   Widget build(BuildContext context) {
+    final cartProvider = Provider.of<CartProvider>(context, listen: false);
+
     return Scaffold(
       backgroundColor: BrandingColors.pageBackground,
       appBar: AppBar(
@@ -42,17 +48,22 @@ class _ProductPageState extends State<ProductPage> {
           rate: productModel.rate,
         ),
         actions: <Widget>[
-          IconButton(
-            icon: IconWithBadge(
-              badgeValue: 4,
-              badgeTextStyle: Theme.of(context).textTheme.overline,
-              icon: Icon(
-                Icons.shopping_cart,
-                color: BrandingColors.primaryText,
-              ),
-            ),
-            onPressed: () {},
-          ),
+          Selector<CartProvider, int>(
+            builder: (context, data, child) {
+              return IconButton(
+                icon: IconWithBadge(
+                  badgeValue: cartProvider.orderCount,
+                  badgeTextStyle: Theme.of(context).textTheme.overline,
+                  icon: Icon(
+                    Icons.shopping_cart,
+                    color: BrandingColors.primaryText,
+                  ),
+                ),
+                onPressed: () => navigationService.navigateTo(Pages.checkout),
+              );
+            },
+            selector: (buildContext, cartProvider) => cartProvider.orderCount,
+          )
         ],
       ),
       body: Column(
@@ -83,13 +94,18 @@ class _ProductPageState extends State<ProductPage> {
               ],
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(
               left: Insets.x5,
               right: Insets.x5,
               bottom: Insets.x5,
             ),
-            child: ProductPageBottomView(buttonSize: Size(165.0, 46.0)),
+            child: ProductPageBottomView(
+                buttonSize: const Size(165.0, 46.0),
+                addToCartFunction: () {
+                  cartProvider
+                      .add(OrderModel.fromProduct(productModel));
+                }),
           ),
         ],
       ),

@@ -6,6 +6,8 @@ class MembershipService {
   static const String _accessTokenKey = 'accessTokenKey';
   static const String _refreshTokenKey = 'refreshTokenKey';
   static const String _expirationDateKey = 'expirationDateKey';
+  
+  int get id => 1;//todo replace to profile
 
   SharedPreferences _storage;
 

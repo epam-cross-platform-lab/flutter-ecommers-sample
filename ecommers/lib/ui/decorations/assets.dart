@@ -45,6 +45,8 @@ class Assets {
   static const String order = 'assets/notification_order.svg';
   static const String tagIcon = 'assets/notification_tag.svg';
   static const String discount = 'assets/notification_discount.svg';
+  static const String sale = 'assets/sale.svg';
+  static const String creditCard = 'assets/credit_card.svg';
   static const String searchIcon = 'assets/search.svg';
 
   //TODO: TO remove
@@ -55,9 +57,6 @@ class Assets {
   static const String backpackImage = 'assets/product_backpack.png';
   static const String scarfImage = 'assets/product_scarf.png';
   static const String greenBackpackImage = 'assets/green_backpack.png';
-
-  static const String creditCardImage = 'assets/credit_card.png';
-  static const String saleImage = 'assets/sale.png';
 
   static const String dressCottonImage = 'assets/dress_image_cotton.png';
   static const String dressCotton2Image = 'assets/dress_image_cotton2.png';

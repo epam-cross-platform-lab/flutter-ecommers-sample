@@ -1,5 +1,5 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
@@ -11,6 +11,8 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class CheckoutPage extends StatefulWidget {
   @override
@@ -20,46 +22,9 @@ class CheckoutPage extends StatefulWidget {
 class _CheckoutPageState extends State<CheckoutPage> {
   bool isTotalOrderVisible = true;
 
-  static const int _itemCount = 17;
-
-  static String _getDressAssetPath(int index) {
-    final modulo = index % 17;
-
-    if (modulo == 0) return Assets.dressCottonImage;
-    if (modulo == 1) return Assets.dressFloral2Image;
-    if (modulo == 2) return Assets.dressFloralImage;
-    if (modulo == 3) return Assets.dressPattern2Image;
-    if (modulo == 4) return Assets.dressPatternImage;
-    if (modulo == 5) return Assets.blackShoes;
-    if (modulo == 6) return Assets.goldShoes;
-    if (modulo == 7) return Assets.redShoes;
-    if (modulo == 8) return Assets.roseRedShoes;
-    if (modulo == 9) return Assets.silverShoes;
-    if (modulo == 10) return Assets.pinkShoes;
-    if (modulo == 11) return Assets.shirtImage;
-    if (modulo == 12) return Assets.yellowShoes;
-    if (modulo == 13) return Assets.whiteShoes;
-    if (modulo == 14) return Assets.backpackImage;     
-    if (modulo == 15) {
-      return Assets.dressCotton2Image;
-    } else {
-      return Assets.greenBackpackImage;
-    }
-  }
-
-  final _orders = List.generate(
-      _itemCount,
-      (index) => OrderModel(
-          title: 'Bottle Green Backpack',
-          description: 'Medium, Green',
-          cost: 2.58,
-          imagePath: _getDressAssetPath(index),
-          count: 1));
-
   @override
   Widget build(BuildContext context) {
-    final double totalOrderCost = _orders.fold(0.0,
-        (totalCost, nextOrder) => totalCost + nextOrder.count * nextOrder.cost);
+    final cartProvider = Provider.of<CartProvider>(context);
 
     isTotalOrderVisible = MediaQuery.of(context).viewInsets.bottom == 0.0;
 
@@ -71,17 +36,20 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
                     Insets.x6, Insets.x0, Insets.x5, Insets.x4),
-                child: _buildOrderListView(),
+                child: _buildOrderListView(cartProvider),
               ),
             ),
           ),
           Visibility(
             visible: isTotalOrderVisible,
             child: TotalOrderWidget(
-              cost: totalOrderCost,
+              cost: cartProvider.calculateTotalCost(),
               backgroundColor: BrandingColors.background,
-              onButtonPressedFunction: () =>
-                  navigationService.navigateTo(Pages.success),
+              onButtonPressedFunction: () {
+                navigationService.navigateTo(Pages.success);
+                //todo request for place order
+                cartProvider.resetCart();
+              },
               buttonText: I18n.of(context).placeOrderButton,
               padding: const EdgeInsets.fromLTRB(
                   Insets.x6, Insets.x2, Insets.x5, Insets.x3_5),
@@ -114,7 +82,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         const SizedBox(height: Insets.x2),
         _buildRowAction(
-          imagePath: Assets.creditCardImage,
+          imagePath: Assets.creditCard,
           text: Text(
             I18n.of(context).cardEnding,
             style: Theme.of(context)
@@ -153,7 +121,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         _buildDevider(),
         _buildRowAction(
-          imagePath: Assets.saleImage,
+          imagePath: Assets.sale,
           text: Text(
             I18n.of(context).addPromoCode,
             style: Theme.of(context)
@@ -166,8 +134,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildOrderListView() {
-    final int newItemCount = _orders.length + 2;
+  Widget _buildOrderListView(CartProvider cartProvider) {
+    final int newItemCount = cartProvider.orders.length + 2;
     return ListView.separated(
       itemCount: newItemCount,
       itemBuilder: (BuildContext context, int index) {
@@ -179,16 +147,16 @@ class _CheckoutPageState extends State<CheckoutPage> {
           return _buildListFooter();
         }
 
-        final currentOrder = _orders[index - 1];
+        final currentOrder = cartProvider.orders[index - 1];
         return SmallOrderWidget(
           primaryText: currentOrder.title,
           secondaryText: currentOrder.description,
           assetImagePath: currentOrder.imagePath,
           cost: currentOrder.cost,
           count: currentOrder.count,
-          countIncrementFunction: () => incrementCount(currentOrder),
-          countDecrementFunction: () => decrementCount(currentOrder),
-          tapOrderFunction:() => navigationService.navigateTo(Pages.product),
+          countIncrementFunction: () => cartProvider.add(currentOrder),
+          countDecrementFunction: () => cartProvider.remove(currentOrder),
+          tapOrderFunction: () => navigationService.navigateTo(Pages.product),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -208,20 +176,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
         );
       },
     );
-  }
-
-  void decrementCount(OrderModel order) {
-    if (order.count == 1) _orders.remove(order);
-
-    setState(() {
-      order.count--;
-    });
-  }
-
-  void incrementCount(OrderModel order) {
-    setState(() {
-      order.count++;
-    });
   }
 
   Widget _buildShippingAddress() {
@@ -258,7 +212,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
   Widget _buildRowAction({String imagePath, Text text}) {
     return Row(
       children: <Widget>[
-        CachedImage(imagePath: imagePath),
+        SvgPicture.asset(
+          imagePath,
+        ),
         const SizedBox(width: Insets.x3_5),
         text,
         const Spacer(),
