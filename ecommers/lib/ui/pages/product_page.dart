@@ -95,7 +95,7 @@ class _ProductPageState extends State<ProductPage> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               left: Insets.x5,
               right: Insets.x5,
               bottom: Insets.x5,

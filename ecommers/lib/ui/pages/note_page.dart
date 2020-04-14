@@ -37,12 +37,10 @@ class NotePage extends StatelessWidget {
                 ),
               ),
               centerTitle: true,
-              background: Hero(
-                  tag: model.imageUrl,
-                  child: CachedImage(
-                    imagePath: model.imageUrl,
-                    boxFit: BoxFit.cover,
-                  )),
+              background: HeroImage(
+                imagePath: model.imageUrl,
+                boxFit: BoxFit.cover,
+              ),
             ),
           ),
           SliverToBoxAdapter(
