@@ -1,5 +1,5 @@
 class Assets {
-  static const String imageBaseUrl = 'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources';
+  static const String imageBaseUrl = 'https://raw.githubusercontent.com/epam-cross-platform-lab/flutter-ecommers-sample/dev/design_sources'; //TODO: get rid of this field
   
   static const String apparelIcon = 'assets/apparel.svg';
   static const String beautyIcon = 'assets/beauty.svg';
@@ -45,17 +45,18 @@ class Assets {
   static const String order = 'assets/notification_order.svg';
   static const String tagIcon = 'assets/notification_tag.svg';
   static const String discount = 'assets/notification_discount.svg';
+  static const String sale = 'assets/sale.svg';
+  static const String creditCard = 'assets/credit_card.svg';
+  static const String searchIcon = 'assets/search.svg';
 
-  static const String girlImage = 'assets/girl_image.png';
+  //TODO: TO remove
+  static const String girlImage = 'assets/girl1_image.png';
   static const String girl2Image = 'assets/girl2_image.png';
   static const String girl3Image = 'assets/girl3_image.png';
   static const String shirtImage = 'assets/product_shirt.png';
   static const String backpackImage = 'assets/product_backpack.png';
   static const String scarfImage = 'assets/product_scarf.png';
   static const String greenBackpackImage = 'assets/green_backpack.png';
-
-  static const String creditCardImage = 'assets/credit_card.png';
-  static const String saleImage = 'assets/sale.png';
 
   static const String dressCottonImage = 'assets/dress_image_cotton.png';
   static const String dressCotton2Image = 'assets/dress_image_cotton2.png';

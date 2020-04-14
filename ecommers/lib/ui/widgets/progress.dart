@@ -1,39 +1,34 @@
 import 'dart:ui';
 
-import 'package:ecommers/ui/decorations/index.dart';
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../ui/decorations/dimens/index.dart';
+import '../../ui/decorations/index.dart';
+
 class Progress extends StatelessWidget {
-  static const double _progressSide = 400.0;
-  static const String _animationState = 'Loading';
+  static const double _progressSide = 40.0;
+  static const double _containerSide = _progressSide + 30.0;
 
   const Progress({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final progress = _buildProgress();
-
-    if (!kReleaseMode) {
-      return progress;
-    }
-
-    return BackdropFilter(
-      filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-      child: _buildProgress(),
-    );
-  }
-
-  Widget _buildProgress() {
-    return const Center(
-      child: SizedBox(
-        height: _progressSide,
-        width: _progressSide,
-        child: FlareActor(
-          Assets.progressAnimation,
-          alignment: Alignment.center,
-          animation: _animationState,
+    return Center(
+      child: Container(
+        height: _containerSide,
+        width: _containerSide,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.2),
+          borderRadius: BorderRadius.circular(Radiuses.normal),
+        ),
+        child: const SizedBox(
+          height: _progressSide,
+          width: _progressSide,
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(BrandingColors.primary),
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/provider_models/cart_provider.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -12,6 +13,7 @@ import 'package:provider/provider.dart';
 class ShellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Provider.of<CartProvider>(context, listen: false).initializeOrderProducts();
     return ChangeNotifierProvider(
       create: (_) => ShellProviderModel(context),
       child: Consumer<ShellProviderModel>(
@@ -27,7 +29,8 @@ class ShellPage extends StatelessWidget {
                 ),
                 _buildAction(
                   imageAssetPath: Assets.notificationIcon,
-                  onIconPressedFuction: () => navigationService.navigateTo(Pages.notifications), //TODO get from provider
+                  onIconPressedFuction: () => navigationService
+                      .navigateTo(Pages.notifications), //TODO get from provider
                   badgeValue: 6, //TODO get from provider
                   context: context,
                 ),
@@ -35,35 +38,25 @@ class ShellPage extends StatelessWidget {
             ),
             backgroundColor: BrandingColors.pageBackground,
             body: BackgroundedSafeArea(
-              child: _buildBody(model.selectedPage),
+              child: IndexedStack(
+                  index: model.selectedItemIndex,
+                  children: <Widget>[
+                    HomePage(),
+                    SearchPage(),
+                    CartPage(),
+                    ProfilePage(),
+                    MorePage()
+                  ]),
             ),
             bottomNavigationBar: BottomNavigationWidget(
               selectedIndex: model.selectedItemIndex,
               pages: model.pages,
               onTappedFunction: model.onTappedItem,
-              orderCount: 3,
             ),
           );
         },
       ),
     );
-  }
-
-  Widget _buildBody(Pages pageType) {
-    switch (pageType) {
-      case Pages.home:
-        return HomePage();
-      case Pages.search:
-        return SearchPage();
-      case Pages.cart:
-        return CartPage();
-      case Pages.profile:
-        return ProfilePage();
-      case Pages.more:
-        return MorePage();
-      default:
-        return HomePage();
-    }
   }
 
   Widget _buildAction({

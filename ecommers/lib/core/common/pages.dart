@@ -12,5 +12,5 @@ enum Pages {
   success,
   product,
   notifications,
-  rightMenuSecondPage
+  note
 }

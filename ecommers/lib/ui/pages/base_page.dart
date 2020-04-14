@@ -8,7 +8,11 @@ class BasePage<T extends BusyNotifier> extends StatelessWidget {
 
   final T Function(BuildContext) createProvider;
 
-  const BasePage({this.createProvider, this.child, Key key}) : super(key: key);
+  const BasePage({
+    @required this.createProvider,
+    this.child,
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

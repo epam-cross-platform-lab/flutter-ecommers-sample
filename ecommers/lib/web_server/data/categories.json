@@ -1,0 +1,112 @@
+[
+    {
+        "id": 1,
+        "title": "Apparel",
+        "type": "apparel",
+        "color1": "#FFFFAE4E",
+        "color2": "#FFFF7676",
+        "shadowColor": "#57FF6262",
+        "subCategories": [
+            "Bottomwear",
+            "Innerwear",
+            "Topwear",
+            "Saree",
+            "Loungewear and Nightwear",
+            "Dress",
+            "Apparel Set",
+            "Socks"
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Accessories",
+        "type": "stationary",
+        "color1": "#FF9D9E9F",
+        "color2": "#FF505862",
+        "shadowColor": "#57646464",
+        "subCategories": [
+            "Watches",
+            "Belts",
+            "Wallets",
+            "Jewellery",
+            "Eyewear",
+            "Bags",
+            "Accessories",
+            "Headwear",
+            "Cufflinks",
+            "Socks",
+            "Stoles",
+            "Scarves",
+            "Ties",
+            "Gloves",
+            "Mufflers",
+            "Umbrellas"
+        ]
+    },
+    {
+        "id": 3,
+        "title": "Footwear",
+        "type": "shoes",
+        "color1": "#FFB4FF4E",
+        "color2": "#FF2FC145",
+        "shadowColor": "#5726D555",
+        "subCategories": [
+            "Shoes",
+            "Sandal",
+            "Flip Flops"
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Personal Care",
+        "type": "beauty",
+        "color1": "#FF4EFFF8",
+        "color2": "#FF76BAFF",
+        "shadowColor": "#5962AAFF",
+        "subCategories": [
+            "Nails",
+            "Fragrance",
+            "Lips",
+            "Hair",
+            "Makeup",
+            "Skin Care",
+            "Eyes",
+            "Bath and Body",
+            "Skin",
+            "Perfumes"
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Free Items",
+        "type": "electronics",
+        "color1": "#FFD5A3FF",
+        "color2": "#FF77A5F8",
+        "shadowColor": "#577A71E8",
+        "subCategories": [
+            "Free Gifts"
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Home",
+        "type": "home",
+        "color1": "#FFFF74A4",
+        "color2": "#FF9F6EA3",
+        "shadowColor": "#57834162",
+        "subCategories": [
+            "Home Furnishing"
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Sporting Goods",
+        "type": "furniture",
+        "color1": "#FFFFF84E",
+        "color2": "#FFE6B15C",
+        "shadowColor": "#57D59F26",
+        "subCategories": [
+            "Sports Equipment"
+        ]
+    }
+]

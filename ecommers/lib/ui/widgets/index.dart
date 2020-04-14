@@ -1,10 +1,13 @@
+export 'back_button.dart';
 export 'backgrounded_safe_area.dart';
 export 'cached_image.dart';
 export 'carousel_widget.dart';
 export 'circle_icon.dart';
+export 'hero_image.dart';
 export 'icon_with_badge.dart';
 export 'image_card.dart';
+export 'notes_carousel.dart';
 export 'products_grid.dart';
 export 'progress.dart';
 export 'rate_widget.dart';
-export 'search_text_field.dart';
+export 'surface_container.dart';

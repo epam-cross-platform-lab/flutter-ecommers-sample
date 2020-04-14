@@ -1,23 +1,29 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart' hide BackButton;
+import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/core/models/sort_type.dart';
 import 'package:ecommers/generated/i18n.dart';
-import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
-import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/products_grid.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:ecommers/ui/widgets/search/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
 
 class ProductsGridPage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
-  final Categories type;
+  final Categories categoryType;
+  final String subCategory;
 
-  ProductsGridPage({this.type, Key key}) : super(key: key);
+  ProductsGridPage({
+    this.categoryType,
+    this.subCategory,
+    Key key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,23 +33,15 @@ class ProductsGridPage extends StatelessWidget {
         .headline5
         .copyWith(fontWeight: FontWeight.w400);
 
-    return BasePage<ProductsGridProviderModel>(
-      createProvider: (BuildContext context) =>
-          ProductsGridProviderModel(context, type),
+    return ChangeNotifierProvider<SearchQueryProviderModel>.value(
+      value: SearchQueryProviderModel(),
       child: DefaultTabController(
         length: 4,
         child: Scaffold(
           key: _scaffoldKey,
           endDrawer: RightMenuWidget(),
           appBar: AppBar(
-            leading: IconButton(
-              icon: SvgPicture.asset(
-                Assets.backIcon,
-                color: BrandingColors.primary,
-                height: Insets.x4_5,
-              ),
-              onPressed: () => navigationService.goBack(),
-            ),
+            leading: const BackButton(),
             actions: <Widget>[
               IconButton(
                 icon: SvgPicture.asset(
@@ -67,12 +65,27 @@ class ProductsGridPage extends StatelessWidget {
               isScrollable: true,
             ),
           ),
-          body: const TabBarView(
+          body: TabBarView(
             children: [
-              ProductsGrid(),
-              ProductsGrid(compareFunction: ProductComparator.byRate),
-              ProductsGrid(compareFunction: ProductComparator.byCost),
-              ProductsGrid(compareFunction: ProductComparator.byCostDescendant),
+              ProductsGrid(
+                categoryType: categoryType,
+                subCategory: subCategory,
+              ),
+              ProductsGrid(
+                categoryType: categoryType,
+                subCategory: subCategory,
+                sortType: SortType.rate,
+              ),
+              ProductsGrid(
+                categoryType: categoryType,
+                subCategory: subCategory,
+                sortType: SortType.cost,
+              ),
+              ProductsGrid(
+                categoryType: categoryType,
+                subCategory: subCategory,
+                sortType: SortType.costDesc,
+              ),
             ],
           ),
         ),

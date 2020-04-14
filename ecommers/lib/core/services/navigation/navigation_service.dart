@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/pages/notifications_page.dart';
@@ -32,7 +36,7 @@ class NavigationService {
         resultPage = ShellPage();
         break;
       case Pages.categories:
-        resultPage = const CategoriesPage();
+        resultPage = CategoriesPage(categories: arguments as List<Category>);
         break;
       case Pages.authorization:
         resultPage = const AuthorizationPage();
@@ -44,8 +48,11 @@ class NavigationService {
         resultPage = const SuccessPage();
         break;
       case Pages.productsGrid:
-        final type = arguments as Categories;
-        resultPage = ProductsGridPage(type: type);
+        final productGridArguments = arguments as PageArguments;
+        resultPage = ProductsGridPage(
+          categoryType: productGridArguments?.arg1 as Categories,
+          subCategory: productGridArguments?.arg2 as String,
+        );
         break;
       case Pages.product:
         resultPage = const ProductPage();

@@ -8,13 +8,11 @@ class BottomNavigationWidget extends StatefulWidget {
   final Iterable<Pages> pages;
   final int selectedIndex;
   final Function(int) onTappedFunction;
-  final int orderCount;
 
   const BottomNavigationWidget({
     @required this.pages,
     @required this.selectedIndex,
     @required this.onTappedFunction,
-    this.orderCount = 0,
   });
 
   @override
@@ -46,7 +44,6 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
             icon: ButtomBarItemIcon(
               iconData: bottomNavigationItems[page].icon,
               hasBadge: page == Pages.cart,
-              badgeValue: page == Pages.cart ? widget.orderCount : 0,
             ),
             title: Text(bottomNavigationItems[page].title),
           ),
