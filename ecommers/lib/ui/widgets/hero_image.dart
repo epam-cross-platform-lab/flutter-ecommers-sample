@@ -5,7 +5,7 @@ import 'index.dart';
 class HeroImage extends StatelessWidget {
   final String imagePath;
   final BoxFit boxFit;
-  final int tag;
+  final dynamic tag;
 
   const HeroImage({
     @required this.imagePath,
@@ -16,7 +16,7 @@ class HeroImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag : tag,
+      tag: tag ?? imagePath,
       child: CachedImage(
         imagePath: imagePath,
         boxFit: boxFit,

@@ -1,7 +1,6 @@
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'data_models/index.dart';
 part 'order_model.g.dart';
 
 @JsonSerializable()

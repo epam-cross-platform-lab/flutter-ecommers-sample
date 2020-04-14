@@ -26,7 +26,7 @@ class ProductItemSmall extends ProductItemBase {
       cost: product.price,
       title: product.title,
       id: product.id,
-    );  
+    );
   }
   @override
   Widget buildProductItem(BuildContext context) {
@@ -35,10 +35,7 @@ class ProductItemSmall extends ProductItemBase {
       children: <Widget>[
         Expanded(
           flex: 3,
-          child: HeroImage(
-            tag: id,
-            imagePath: assetImagePath,
-          ),
+          child: CachedImage(imagePath: assetImagePath),
         ),
         const SizedBox(
           width: ProductItemBase.padding,

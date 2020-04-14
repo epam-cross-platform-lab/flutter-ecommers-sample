@@ -3,10 +3,10 @@ import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:flutter/widgets.dart';
 
 class CartProvider extends ChangeNotifier {
-  List<OrderModel> _orders;
+  List<OrderModel> _orders = <OrderModel>[];
 
   List<OrderModel> get orders => _orders;
-  int get orderCount => _orders?.length ?? 0;
+  int get orderCount => _orders.length;
 
   Future remove(OrderModel order) async {
     final editOrder = _getOrder(order.id);
