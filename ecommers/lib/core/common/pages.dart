@@ -11,5 +11,6 @@ enum Pages {
   checkout,
   success,
   product,
-  notifications
+  notifications,
+  rightMenuSecondPage
 }

@@ -1,5 +1,6 @@
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
-import 'package:ecommers/ui/widgets/right_menu_bar/subTitle_dropdown_widget/index.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommers/extensions/string_extension.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -30,13 +31,19 @@ class RightMenuSubTitle extends StatelessWidget {
 
   Widget createSubTitle(BuildContext context) {
     final subTitleModel = model as RightMenuSubTitleModel;
-  return DropDownList(subTitleModel.subTitle);
-    // return Text(
-    //   subTitleModel.subTitle,
-    //   style: Theme.of(context).textTheme.subtitle1.copyWith(
-    //         color: Colors.transparent.withOpacity(0.3),
-    //       ),
-    // );
+    return InkWell(
+      onTap: () => {
+        rightMenuNavigationService.navigateTo(Pages.rightMenuSecondPage,
+            arguments: subTitleModel.subTitle),
+      },
+      child: Text(
+        subTitleModel.subTitle[0],
+        style: Theme.of(context).textTheme.subtitle1.copyWith(
+              color: Colors.transparent.withOpacity(0.3),
+            ),
+      ),
+    );
+    // return DropDownList(subTitleModel.subTitle);
   }
 
   Widget createPrice(BuildContext context) {

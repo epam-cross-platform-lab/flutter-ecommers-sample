@@ -7,21 +7,16 @@ import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NavigationService {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+class RightMenuNavigationService {
+  final GlobalKey<NavigatorState> rightMenuNavigatorKey = GlobalKey<NavigatorState>();
 
   Future<dynamic> navigateTo(Pages page, {Object arguments}) {
     final route = _generateRoute(page, arguments);
-    return navigatorKey.currentState.push(route);
-  }
-
-  Future<dynamic> navigateWithReplacementTo(Pages page, {Object arguments}) {
-    final route = _generateRoute(page, arguments);
-    return navigatorKey.currentState.pushReplacement(route);
+    return rightMenuNavigatorKey.currentState.push(route);
   }
 
   void goBack() {
-    navigatorKey.currentState.pop();
+    rightMenuNavigatorKey.currentState.pop();
   }
 
   Route<dynamic> _generateRoute(Pages page, Object arguments) {

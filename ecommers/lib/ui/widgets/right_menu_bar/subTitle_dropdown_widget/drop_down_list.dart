@@ -15,7 +15,8 @@ class DropDownState extends State<DropDownList> {
   final List<String> subTitles;
   List<DropdownMenuItem<String>> _dropdownMenuItems;
   String _selectedSubTitle;
-  
+  final GlobalKey _globalKey = GlobalKey();
+
   DropDownState(this.subTitles);
 
   @override
@@ -40,13 +41,6 @@ class DropDownState extends State<DropDownList> {
     return items;
   }
 
-  // double getUnderlinetWidth() {
-   
-  //   final RenderBox renderBoxRed =
-  //       _textKey.currentContext.findRenderObject() as RenderBox;
-  //   return renderBoxRed.size.width;
-  // }
-
   void onChangeDropdownItem(String selectedSubTitle) {
     setState(() {
       _selectedSubTitle = selectedSubTitle;
@@ -55,15 +49,12 @@ class DropDownState extends State<DropDownList> {
 
   @override
   Widget build(BuildContext context) {
-
-
     return DropdownButton(
       value: _selectedSubTitle,
       items: _dropdownMenuItems,
       selectedItemBuilder: (BuildContext context) {
         return subTitles.map<Widget>((String item) {
           return Container(
-            width: 125,//getUnderlinetWidth(),
             alignment: Alignment.centerRight,
             child: Text(
               _selectedSubTitle,
@@ -77,7 +68,6 @@ class DropDownState extends State<DropDownList> {
           .subtitle1
           .copyWith(color: Colors.transparent.withOpacity(0.3)),
       iconSize: 0,
-      isExpanded: false,
     );
   }
 }

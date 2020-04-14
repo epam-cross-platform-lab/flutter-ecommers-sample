@@ -3,12 +3,14 @@ import 'package:ecommers/core/common/file_manager.dart';
 import 'package:ecommers/core/services/api_service.dart';
 import 'package:ecommers/core/services/membership_service.dart';
 import 'package:ecommers/core/services/navigation/navigation_service.dart';
+import 'package:ecommers/ui/widgets/right_menu_bar/right_menu_navigation/index.dart';
 import 'package:ecommers/web_server/request_handler.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get_it/get_it.dart';
 import 'package:ecommers/core/services/extensions/get_it_extension.dart';
 
 NavigationService get navigationService => GetIt.I.get<NavigationService>();
+RightMenuNavigationService get rightMenuNavigationService => GetIt.I.get<RightMenuNavigationService>();
 FileManager get fileManager => GetIt.I.get<FileManager>();
 ApiService get apiService => GetIt.I.get<ApiService>();
 MembershipService get membershipService => GetIt.I.get<MembershipService>();

@@ -1,5 +1,8 @@
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:ecommers/extensions/string_extension.dart';
+
 
 class DropDownColors extends StatefulWidget {
   final List<String> colors;
@@ -59,6 +62,18 @@ class DropDownColorsState extends State<DropDownColors> {
           ),
       underline: const Text(''),
       iconSize: 0,
+    );
+  }
+
+  Widget circleBuilder(String color, int index) {
+    return Container(
+      width: Insets.x5,
+      height: Insets.x5,
+      margin: EdgeInsets.only(left: Insets.x3 * index),
+      decoration: BoxDecoration(
+        color: color.fromHexToColor(),
+        shape: BoxShape.circle,
+      ),
     );
   }
 }
