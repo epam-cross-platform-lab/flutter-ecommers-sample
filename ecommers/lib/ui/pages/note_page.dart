@@ -9,9 +9,7 @@ class NotePage extends StatelessWidget {
   static const double _toolbarExpandedHeight = 250.0;
   final Note model;
 
-  const NotePage({
-    this.model,
-  });
+  const NotePage({this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +30,14 @@ class NotePage extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               title: Container(
                 color: Colors.white.withOpacity(0.3),
-                padding: EdgeInsets.symmetric(horizontal: Insets.x2),
+                padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
                 child: Text(
                   model.title,
                   style: titleStyle,
                 ),
               ),
               centerTitle: true,
-              background: CachedImage(
+              background: HeroImage(
                 imagePath: model.imageUrl,
                 boxFit: BoxFit.cover,
               ),
@@ -47,7 +45,7 @@ class NotePage extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.all(Dimens.pagePadding),
+              padding: const EdgeInsets.all(Dimens.pagePadding),
               child: Text(
                 model.description,
                 style: descriptionStyle,
