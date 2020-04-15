@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -38,34 +39,24 @@ class _OrderWidgetState extends State<OrderWidget> {
     return InkWell(
       onTap: widget.tapOrderFunction,
       child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
+        children: [
+          const SizedBox(width: Insets.x4),
           CircleImage(
             size: OrderWidget.orderCircleImageSize,
-            image: CachedImage(
-              imagePath: widget.assetImagePath,
-            ),
+            image: CachedImage(imagePath: widget.assetImagePath),
           ),
-          const SizedBox(
-            width: 20.0,
-          ),
+          const SizedBox(width: 20.0),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  widget.primaryText,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyText1,
-                ),
-                Text(
-                  widget.secondaryText,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyText2,
-                ),
-                const SizedBox(
-                  height: 8.0,
-                ),
+                Text(widget.primaryText,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodyText1),
+                Text(widget.secondaryText,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodyText2),
+                const SizedBox(height: 8.0),
                 Text(
                   Formatter.getCost(widget.count * widget.cost),
                   style: Theme.of(context)
@@ -73,17 +64,15 @@ class _OrderWidgetState extends State<OrderWidget> {
                       .bodyText1
                       .copyWith(color: BrandingColors.primary),
                 ),
-                const SizedBox(
-                  height: 8.0,
-                ),
+                const SizedBox(height: 8.0),
                 Counter(
-                  count: widget.count,
-                  countIncrementFunction: widget.countIncrementFunction,
-                  countDecrementFunction: widget.countDecrementFunction,
-                )
+                    count: widget.count,
+                    countIncrementFunction: widget.countIncrementFunction,
+                    countDecrementFunction: widget.countDecrementFunction)
               ],
             ),
           ),
+          const SizedBox(width: Insets.x4),
         ],
       ),
     );
