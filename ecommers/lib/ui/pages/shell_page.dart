@@ -38,7 +38,15 @@ class ShellPage extends StatelessWidget {
             ),
             backgroundColor: BrandingColors.pageBackground,
             body: BackgroundedSafeArea(
-              child: _buildBody(model.selectedPage),
+              child: IndexedStack(
+                  index: model.selectedItemIndex,
+                  children: <Widget>[
+                    HomePage(),
+                    SearchPage(),
+                    CartPage(),
+                    ProfilePage(),
+                    MorePage()
+                  ]),
             ),
             bottomNavigationBar: BottomNavigationWidget(
               selectedIndex: model.selectedItemIndex,
@@ -49,23 +57,6 @@ class ShellPage extends StatelessWidget {
         },
       ),
     );
-  }
-
-  Widget _buildBody(Pages pageType) {
-    switch (pageType) {
-      case Pages.home:
-        return HomePage();
-      case Pages.search:
-        return SearchPage();
-      case Pages.cart:
-        return CartPage();
-      case Pages.profile:
-        return ProfilePage();
-      case Pages.more:
-        return MorePage();
-      default:
-        return HomePage();
-    }
   }
 
   Widget _buildAction({

@@ -12,4 +12,5 @@ export 'product_latest_grid.dart';
 export 'products_grid.dart';
 export 'progress.dart';
 export 'rate_widget.dart';
+export 'slide_menu.dart';
 export 'surface_container.dart';

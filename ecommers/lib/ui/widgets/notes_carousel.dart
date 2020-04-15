@@ -39,14 +39,17 @@ class NotesCarousel extends StatelessWidget {
       viewportFraction: 0.92,
       items: notes
           .map(
-            (e) => SizedBox.expand(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
-                child: ImageCard(
-                  buttonText: e.commandText,
-                  description: e.shortDescription,
-                  imageUrl: e.imageUrl,
-                  onButtonPressed: () => onButtonPressed(e), 
+            (e) => GestureDetector(
+              onTap: () => onButtonPressed(e),
+              child: SizedBox.expand(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: Insets.x2),
+                  child: ImageCard(
+                    buttonText: e.commandText,
+                    description: e.shortDescription,
+                    imageUrl: e.imageUrl,
+                    onButtonPressed: () => onButtonPressed(e),
+                  ),
                 ),
               ),
             ),
@@ -56,6 +59,7 @@ class NotesCarousel extends StatelessWidget {
   }
 
   Future onButtonPressed(Note noteModel) {
+    //TODO:make navigation in provider, navigation should be only in Providers
     return navigationService.navigateTo(Pages.note, arguments: noteModel);
   }
 }
