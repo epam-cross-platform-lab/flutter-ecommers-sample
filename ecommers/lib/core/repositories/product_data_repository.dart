@@ -47,7 +47,7 @@ class ProductDataRepository {
         .toList();
   }
 
-  Future<List<Product>> getLatestProducts() async {
+  Future<List<Product>> getLatestProducts(int from, int to) async {
     final cachedData = await _provideLatestProductsFromCache();
     if (cachedData?.products?.isNotEmpty == true) {
       if (DateTime.now().difference(cachedData.lastUpdatedDate).inDays >= 1) {
@@ -57,7 +57,7 @@ class ProductDataRepository {
       }
     }
 
-    final remoteProducts = await _fetchLatestProducts();
+    final remoteProducts = await _fetchLatestProducts(from, to);
     if (remoteProducts != null && remoteProducts.isNotEmpty) {
       _saveLatestProductsToCache(remoteProducts);
     }
@@ -114,8 +114,8 @@ class ProductDataRepository {
     final response = await apiService.products(
       category: category,
       subCategory: subCategory,
-      rangeFrom: rangeFrom,
-      rangeTo: rangeTo,
+      from: rangeFrom,
+      to: rangeTo,
       searchQuery: searchQuery,
       sortType: EnumToString.parse(sortType),
     );
@@ -127,8 +127,8 @@ class ProductDataRepository {
     return null;
   }
 
-  Future<List<Product>> _fetchLatestProducts() async {
-    final response = await apiService.productsLatest();
+  Future<List<Product>> _fetchLatestProducts(int from, int to) async {
+    final response = await apiService.productsLatest(from, to);
 
     if (response.isSuccessful) {
       return response.body;

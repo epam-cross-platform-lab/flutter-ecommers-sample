@@ -1,9 +1,13 @@
-import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
-class HomeProviderModel extends ProviderModelBase {
+import 'package:ecommers/core/mixins/items_loading_notifier.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
+import 'package:ecommers/core/services/index.dart' as services;
+
+class HomeProviderModel extends ProviderModelBase with ItemsLoadingNotifier {
   List<Category> _categoryList;
   List<Product> _productsLatest;
   List<Note> _notesLatest;
@@ -29,14 +33,27 @@ class HomeProviderModel extends ProviderModelBase {
   }
 
   Future _fetchCategories() async {
-    _categoryList = await categoryService.fetchCategoryList();
+    _categoryList = await services.categoryService.fetchCategoryList();
   }
 
   Future _fetchLatestProducts() async {
-    _productsLatest = await productService.fetchLatestProducts();
+    _productsLatest = await paginator
+        .loadNextPage(services.productService.fetchLatestProducts);
   }
 
   Future _fetchLatestNotes() async {
-    _notesLatest = await noteService.fetchLatestNotes();
+    _notesLatest = await services.noteService.fetchLatestNotes();
+  }
+
+  @override
+  FutureOr<void> loadMoreProducts() async {
+    isitemsLoading = true;
+
+    final products = await paginator
+        .loadNextPage(services.productService.fetchLatestProducts);
+
+    _productsLatest.addAll(products);
+
+    isitemsLoading = false;
   }
 }

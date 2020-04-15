@@ -9,23 +9,23 @@ class ProductService {
   Future<List<Product>> fetchProducts({
     Categories category,
     String subCategory,
-    int rangeFrom,
-    int rangeTo,
+    int from,
+    int to,
     String searchQuery,
     SortType sortType,
   }) async {
     return productDataRepository.getProducts(
       category: EnumToString.parse(category),
       subCategory: subCategory,
-      rangeFrom: rangeFrom,
-      rangeTo: rangeTo,
+      rangeFrom: from,
+      rangeTo: to,
       searchQuery: searchQuery,
       sortType: sortType,
     );
-  }
+    }
 
-  Future<List<Product>> fetchLatestProducts() async {
-    return productDataRepository.getLatestProducts();
+  Future<List<Product>> fetchLatestProducts(int from, int to) async {
+    return productDataRepository.getLatestProducts(from, to);
   }
 
   Future<List<Product>> fetchRecommendedProducts() async =>

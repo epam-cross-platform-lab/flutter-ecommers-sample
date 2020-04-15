@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../core/models/data_models/index.dart';
 import '../../core/provider_models/index.dart';
 import '../../ui/decorations/dimens/index.dart';
 import '../../ui/pages/index.dart';
 import '../../ui/widgets/category/categories_compact_view.dart';
 import '../../ui/widgets/index.dart';
-import '../../ui/widgets/product_item/index.dart';
 
 class HomePage extends StatelessWidget {
-  static const double _latestGridViewAxisSpacing = 12.0;
-  static const imageCardSize = Size(325.0, 184.0);
-  static const productItemNormalSize = Size(101.0, 135.0);
+  final ScrollController _controller =
+      ScrollController(initialScrollOffset: 0.0, keepScrollOffset: true);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +18,7 @@ class HomePage extends StatelessWidget {
       child: Consumer<HomeProviderModel>(
         builder: (context, provider, child) {
           return CustomScrollView(
+            controller: _controller,
             slivers: <Widget>[
               SliverToBoxAdapter(
                 child: Column(
@@ -32,38 +30,12 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              _buildLatestGridView(context, provider.productsLatest),
+              ProductLatestGrid(controller: _controller),
+              child,
             ],
           );
         },
-      ),
-    );
-  }
-
-  Widget _buildLatestGridView(BuildContext context, List<Product> products) {
-    if (products == null) return const SliverToBoxAdapter();
-
-    return SliverPadding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: Dimens.pagePadding,
-        vertical: Insets.x2_5,
-      ),
-      sliver: SliverGrid(
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent: ProductItemNormal.size.height,
-          mainAxisSpacing: _latestGridViewAxisSpacing,
-          crossAxisSpacing: _latestGridViewAxisSpacing,
-          childAspectRatio:
-              ProductItemNormal.size.width / ProductItemNormal.size.height,
-        ),
-        delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            final product = products[index];
-
-            return ProductItemNormal.fromModel(product);
-          },
-          childCount: products.length,
-        ),
+        child: const ItemsLoader<HomeProviderModel>(),
       ),
     );
   }
