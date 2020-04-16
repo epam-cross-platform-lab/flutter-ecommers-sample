@@ -28,7 +28,7 @@ class ItemsLoader<T extends ItemsLoadingNotifier> extends StatelessWidget {
                 child: SizedBox(height: loaderHeight),
               );
       },
-      selector: (_, provider) => provider.isitemsLoading,
+      selector: (_, provider) => provider.isItemsLoading,
     );
   }
 }

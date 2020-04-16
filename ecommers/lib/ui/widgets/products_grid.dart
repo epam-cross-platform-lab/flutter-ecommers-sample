@@ -42,7 +42,7 @@ class _ProductsGridState extends State<ProductsGrid> {
   void scrollListener() {
     if (_loadingProvider == null) return;
 
-    if (!_loadingProvider.isitemsLoading &&
+    if (!_loadingProvider.isItemsLoading &&
         _loadingProvider.hasMoreItems &&
         _controller.offset == _controller.position.maxScrollExtent) {
       _loadingProvider.loadMoreProducts();

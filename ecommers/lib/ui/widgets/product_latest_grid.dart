@@ -31,7 +31,7 @@ class _ProductLatestGridState extends State<ProductLatestGrid> {
   void scrollListener() {
     _loadingProvider ??= Provider.of<HomeProviderModel>(context, listen: false);
 
-    if (!_loadingProvider.isitemsLoading &&
+    if (!_loadingProvider.isItemsLoading &&
         _loadingProvider.hasMoreItems &&
         widget.controller.offset ==
             widget.controller.position.maxScrollExtent) {

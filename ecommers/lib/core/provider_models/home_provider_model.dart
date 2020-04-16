@@ -47,13 +47,13 @@ class HomeProviderModel extends ProviderModelBase with ItemsLoadingNotifier {
 
   @override
   FutureOr<void> loadMoreProducts() async {
-    isitemsLoading = true;
+    isItemsLoading = true;
 
     final products = await paginator
         .loadNextPage(services.productService.fetchLatestProducts);
 
     _productsLatest.addAll(products);
 
-    isitemsLoading = false;
+    isItemsLoading = false;
   }
 }

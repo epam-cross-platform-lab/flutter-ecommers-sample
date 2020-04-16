@@ -44,13 +44,13 @@ class ProductsGridProviderModel extends ProviderModelBase
 
   @override
   Future loadMoreProducts() async {
-    isitemsLoading = true;
+    isItemsLoading = true;
 
     final products = await paginator.loadNextPage(_fetchMoreProducts);
 
     _products.addAll(products);
 
-    isitemsLoading = false;
+    isItemsLoading = false;
   }
 
   Future<List<Product>> _fetchProducts() async {

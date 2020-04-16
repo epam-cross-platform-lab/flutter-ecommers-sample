@@ -10,13 +10,13 @@ mixin ItemsLoadingNotifier on ChangeNotifier {
   final Paginator paginator = services.paginator;
 
   bool _hasDisposed = false;
-  bool _isitemsLoading = false;
+  bool _isItemsLoading = false;
 
-  bool get isitemsLoading => _isitemsLoading;
+  bool get isItemsLoading => _isItemsLoading;
   bool get hasMoreItems => paginator.hasMore;
 
-  set isitemsLoading(bool isitemsLoading) {
-    _isitemsLoading = isitemsLoading;
+  set isItemsLoading(bool isitemsLoading) {
+    _isItemsLoading = isitemsLoading;
 
     if (!_hasDisposed) notifyListeners();
   }
