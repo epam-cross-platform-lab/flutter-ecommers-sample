@@ -29,12 +29,14 @@ NoteService get noteService => GetIt.I.get<NoteService>();
 CategoryDataRepository get categoryDataRepository => GetIt.I.get<CategoryDataRepository>();
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
 CartRepository get cartRepository => GetIt.I.get<CartRepository>();
+Paginator get paginator => GetIt.I.get<Paginator>();
 
 class DependencyService {
   static void registerDependencies() {
     final GetIt serviceLocator = GetIt.instance;
 
     serviceLocator
+      ..registerFactory<Paginator>(() => Paginator())
       ..registerLazySingleton<NavigationService>(() => NavigationService())
       ..registerLazySingleton<FileManager>(() => FileManager())
       ..registerLazySingleton<AuthorizationService>(
