@@ -14,12 +14,8 @@ class CartRepository {
   }
 
   Future editOrder(OrderModel order) async {
-    await cacheDatabase.updateByEqualsFilter(
-      membershipService.id.toString(),
-      order.toJson(),
-      filterField,
-      order.id,
-    );
+    await cacheDatabase.updateByEqualsFilter(membershipService.id.toString(),
+        order.toJson(), {filterField: order.id});
   }
 
   Future addOrder(OrderModel order) async {
@@ -31,9 +27,6 @@ class CartRepository {
 
   Future removeOrder(OrderModel order) async {
     await cacheDatabase.deleteDataByFilter(
-      membershipService.id.toString(),
-      filterField,
-      order.id,
-    );
+        membershipService.id.toString(), {filterField: order.id});
   }
 }
