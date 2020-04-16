@@ -48,21 +48,25 @@ class RightMenuWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Navigator(
-      key: rightMenuNavigationService.rightMenuNavigatorKey,
-      onGenerateRoute: (RouteSettings settings) {
-        WidgetBuilder builder;
-        switch (settings.name) {
-          case 'rightMenuSecondPage':
-            // Assume CollectPersonalInfoPage collects personal info and then
-            // navigates to 'signup/choose_credentials'.
-            builder = (BuildContext _) => const RightMenuSecondPage();
-            break;
-
-          default:
-            throw Exception('Invalid route: ${settings.name}');
-        }
-      },
+    return SafeArea(
+          child: Container(
+        width: 270,
+        child: Navigator(
+          key: rightMenuNavigationService.rightMenuNavigatorKey,
+          initialRoute: '/',
+          onGenerateRoute: (RouteSettings settings) {
+            WidgetBuilder builder;
+            switch (settings.name) {
+              case '/':
+                builder = (BuildContext _) => buildContainer();
+                break;
+              default:
+                throw Exception('Invalid route: ${settings.name}');
+            }
+            return MaterialPageRoute(builder: builder, settings: settings);
+          },
+        ),
+      ),
     );
   }
 

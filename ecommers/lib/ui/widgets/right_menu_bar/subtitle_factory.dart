@@ -33,8 +33,8 @@ class RightMenuSubTitle extends StatelessWidget {
     final subTitleModel = model as RightMenuSubTitleModel;
     return InkWell(
       onTap: () => {
-        rightMenuNavigationService.navigateTo(Pages.rightMenuSecondPage,
-            arguments: subTitleModel.subTitle),
+        // rightMenuNavigationService.navigateTo(Pages.rightMenuSecondPage,
+        //     arguments: subTitleModel.subTitle),
       },
       child: Text(
         subTitleModel.subTitle[0],
@@ -43,7 +43,6 @@ class RightMenuSubTitle extends StatelessWidget {
             ),
       ),
     );
-    // return DropDownList(subTitleModel.subTitle);
   }
 
   Widget createPrice(BuildContext context) {

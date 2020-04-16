@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/page_arguments.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,7 +8,6 @@ import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/pages/notifications_page.dart';
 import 'package:ecommers/ui/pages/product_page.dart';
-import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -59,11 +59,6 @@ class NavigationService {
         break;
       case Pages.notifications:
         resultPage = NotificationsPage();
-        break;
-      case Pages.rightMenuSecondPage:
-        final listFilterParametrs = arguments as List<String>;
-        resultPage =
-            RightMenuSecondPage(listFilterParametrs: listFilterParametrs);
         break;
       default:
         resultPage = ShellPage();
