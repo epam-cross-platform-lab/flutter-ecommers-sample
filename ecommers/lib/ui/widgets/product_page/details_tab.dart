@@ -1,12 +1,16 @@
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/generated/i18n.dart';
-import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:flutter/material.dart';
 
 class DetailsTab extends StatelessWidget {
-  final ProductDetailsModel productDetailModel;
+  final ProductDetails productDetailModel;
+  final String skuId;
 
-  const DetailsTab({@required this.productDetailModel});
+  const DetailsTab({
+    @required this.productDetailModel,
+    @required this.skuId,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,24 +22,24 @@ class DetailsTab extends StatelessWidget {
           context,
           _localization.brand,
           _localization.sku,
-          productDetailModel.brand,
-          productDetailModel.sku,
+          productDetailModel?.brand,
+          skuId,
         ),
         const SizedBox(height: Insets.x7_5),
         _createDetailsListWidget(
           context,
           _localization.condition,
           _localization.material,
-          productDetailModel.condition,
-          productDetailModel.material,
+          productDetailModel?.condition,
+          productDetailModel?.material,
         ),
         const SizedBox(height: Insets.x7_5),
         _createDetailsListWidget(
           context,
           _localization.category,
           _localization.fitting,
-          productDetailModel.category,
-          productDetailModel.fitting,
+          productDetailModel?.category,
+          productDetailModel?.fitting,
         ),
       ],
     );
@@ -54,11 +58,11 @@ class DetailsTab extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              titleLeft,
+              titleLeft ?? '-',
               style: Theme.of(context).textTheme.subtitle2,
             ),
             Text(
-              titleRight,
+              titleRight ?? '-',
               style: Theme.of(context).textTheme.subtitle2,
             ),
           ],
@@ -71,18 +75,18 @@ class DetailsTab extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(right: Insets.x1),
                 child: Text(
-                  valueLeft,
+                  valueLeft ?? '-',
                   style: Theme.of(context).textTheme.subtitle2,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
             ),
             Flexible(
-                child: Text(
-                  valueRight,
-                  style: Theme.of(context).textTheme.subtitle2,
-                  overflow: TextOverflow.ellipsis,
-                ),
+              child: Text(
+                valueRight ?? '-',
+                style: Theme.of(context).textTheme.subtitle2,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),

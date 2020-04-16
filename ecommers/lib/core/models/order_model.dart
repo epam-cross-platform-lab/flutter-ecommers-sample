@@ -1,6 +1,6 @@
-import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/ui/decorations/index.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'data_models/index.dart';
+
 part 'order_model.g.dart';
 
 @JsonSerializable()
@@ -23,12 +23,12 @@ class OrderModel {
 
   static const fromJson = _$OrderModelFromJson;
 
-  factory OrderModel.fromProduct(ProductItemModel product) {
+  factory OrderModel.fromProduct(Product product) {
     return OrderModel(
-      id: 4,
-      imagePath: Assets.blackShoes,
+      id: product.id,
+      imagePath: product.models?.first?.imageUrls?.first,
       title: product.title,
-      cost: product.cost,
+      cost: product.price,
       description: 'Medium, Green 3',
       count: 1,
     ); //todo change mapping after refactoring productPage

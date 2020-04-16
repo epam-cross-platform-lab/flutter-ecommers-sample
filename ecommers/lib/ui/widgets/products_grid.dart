@@ -66,14 +66,8 @@ class ProductsGrid extends StatelessWidget {
                         childAspectRatio: ProductItemNormal.size.width /
                             ProductItemNormal.size.height,
                         children: products
-                            .map((product) => ProductItemWide(
-                                  assetImagePath: product.images[0],
-                                  title: product.title,
-                                  cost: product.price,
-                                  rate: product.rate,
-                                  color: colors[product.id % colors.length],
-                                  id: product.id,
-                                ))
+                            .map((product) => ProductItemWide.fromModel(
+                                product, colors[product.id % colors.length]))
                             .toList(),
                       ),
                     ),

@@ -10,25 +10,14 @@ class ProductItemNormal extends ProductItemBase {
   static const size = Size(101.0, 135.0);
 
   const ProductItemNormal({
-    @required String assetImagePath,
-    @required String title,
-    @required double cost,
-    int id,
+    @required Product product,
   }) : super(
-          assetImagePath: assetImagePath,
-          cost: cost,
-          title: title,
+          product: product,
           productSize: size,
-          id: id,
         );
 
   factory ProductItemNormal.fromModel(Product product) {
-    return ProductItemNormal(
-      assetImagePath: product.images.first,
-      cost: product.price,
-      title: product.title,
-      id: product.id,
-    );  
+    return ProductItemNormal(product: product);
   }
 
   @override
@@ -39,14 +28,14 @@ class ProductItemNormal extends ProductItemBase {
         Expanded(
           child: Center(
             child: HeroImage(
-              tag: id,
-              imagePath: assetImagePath,
+              tag: product.id,
+              imagePath: product.images?.first,
             ),
           ),
         ),
         const SizedBox(height: 4.0),
         Text(
-          title,
+          product.title,
           overflow: TextOverflow.ellipsis,
           maxLines: Dimens.defaultTextMaxLines,
           style: Theme.of(context)
@@ -55,7 +44,7 @@ class ProductItemNormal extends ProductItemBase {
               .copyWith(fontSize: FontSizes.small_3x),
         ),
         Text(
-          Formatter.getCost(cost),
+          Formatter.getCost(product.price),
           style: Theme.of(context).textTheme.bodyText2.copyWith(
                 fontSize: FontSizes.small_1x,
                 fontWeight: FontWeight.w700,

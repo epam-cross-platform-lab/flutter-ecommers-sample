@@ -1,3 +1,5 @@
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -5,17 +7,47 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/material.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
-import 'package:ecommers/core/models/index.dart';
 
 import 'index.dart';
 
-class ProductPageTabsView extends StatelessWidget {
-  final ProductItemModel productModel;
+class ProductPageTabsView extends StatefulWidget {
+  final Product productModel;
   final Function(List<CarouselImage>) imagesHasChanged;
+
   const ProductPageTabsView({
     @required this.productModel,
     this.imagesHasChanged,
   });
+
+  @override
+  _ProductPageTabsViewState createState() => _ProductPageTabsViewState();
+}
+
+class _ProductPageTabsViewState extends State<ProductPageTabsView> {
+  String skuId;
+  List<ProductSizeModel> sizes;
+  List<ProductColorModel> colors;
+
+  @override
+  void initState() {
+    final models = widget.productModel?.models;
+
+    if (models?.isNotEmpty == true) {
+      skuId = models[0]?.skuId?.toString();
+      colors = _getColors(models);
+      sizes = _getSizes(models);
+
+      if (colors?.isNotEmpty == true) {
+        colors[0].isSelected = true;
+      }
+
+      if (sizes?.isNotEmpty == true) {
+        sizes[0].isSelected = true;
+      }
+    }
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +90,15 @@ class ProductPageTabsView extends StatelessWidget {
                   vertical: Insets.x5,
                 ),
                 child: ProductTab(
-                  colors: productModel.colors,
-                  sizes: productModel.sizes,
+                  colors: colors,
+                  sizes: sizes,
                   colorHasChanged: (images) => {
-                    if (imagesHasChanged != null)
+                    if (widget.imagesHasChanged != null)
                       {
-                        imagesHasChanged(images),
+                        widget.imagesHasChanged(images),
                       }
                   },
+                  skuIdHasChanged: (skuIdModel) => _updateSkuId(skuIdModel),
                 ),
               ),
               Padding(
@@ -74,19 +107,48 @@ class ProductPageTabsView extends StatelessWidget {
                   vertical: Insets.x4,
                 ),
                 child: DetailsTab(
-                    productDetailModel: productModel.productDetailsModel),
+                  productDetailModel: widget.productModel?.details,
+                  skuId: skuId,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: Insets.x4_5,
                   vertical: Insets.x4,
                 ),
-                child: ReviewsTab(productReviewsModel: productModel.reviews),
+                child: ReviewsTab(
+                    productReviewsModel: widget.productModel?.reviews),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _updateSkuId(ProductSkuIdModel skuIdModel) {
+    setState(() => {
+          skuId = widget.productModel?.models
+              ?.firstWhere((product) => product.size == skuIdModel.size)
+              ?.skuId
+              ?.toString(),
+        });
+  }
+
+  List<ProductColorModel> _getColors(List<ProductModel> models) {
+    return models
+        ?.map((product) => ProductColorModel(
+            color: 0xFFBBDEFB,
+            images: product.imageUrls
+                ?.map((url) =>
+                    CarouselImage(tag: widget.productModel.id, path: url))
+                ?.toList()))
+        ?.toList();
+  }
+
+  List<ProductSizeModel> _getSizes(List<ProductModel> models) {
+    return models
+        ?.map((product) => ProductSizeModel(size: product.size))
+        ?.toList();
   }
 }
