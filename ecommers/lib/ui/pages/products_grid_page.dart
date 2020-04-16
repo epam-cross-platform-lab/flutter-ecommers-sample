@@ -56,7 +56,7 @@ class ProductsGridPage extends StatelessWidget {
                 Tab(text: localization.productsBestMatchTab),
                 Tab(text: localization.productsTopRatedTab),
                 Tab(text: localization.productsLowToHighPriceTab),
-                Tab(text: localization.productsLowToHighPriceTab),
+                Tab(text: localization.productsHighToLowPriceTab),
               ],
               indicatorColor: Colors.transparent,
               labelStyle: tabStyle,

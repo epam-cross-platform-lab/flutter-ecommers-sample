@@ -9,16 +9,16 @@ class ProductService {
   Future<List<Product>> fetchProducts({
     Categories category,
     String subCategory,
-    int rangeFrom,
-    int rangeTo,
+    int from,
+    int to,
     String searchQuery,
     SortType sortType,
   }) async {
     final response = await apiService.products(
       category: EnumToString.parse(category),
       subCategory: subCategory,
-      rangeFrom: rangeFrom,
-      rangeTo: rangeTo,
+      from: from,
+      to: to,
       searchQuery: searchQuery,
       sortType: EnumToString.parse(sortType),
     );
@@ -30,8 +30,8 @@ class ProductService {
     return null;
   }
 
-  Future<List<Product>> fetchLatestProducts() async {
-    final response = await apiService.productsLatest();
+  Future<List<Product>> fetchLatestProducts(int from, int to) async {
+    final response = await apiService.productsLatest(from, to);
 
     if (response.isSuccessful) {
       return response.body;

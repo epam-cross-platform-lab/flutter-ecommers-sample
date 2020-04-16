@@ -8,20 +8,16 @@ import 'package:flutter/material.dart';
 class ProductItemWide extends ProductItemBase {
   static const size = Size(160.0, 218.0);
 
-  final Color color;
-
   const ProductItemWide({
-    @required Product product,
-    this.color = Colors.transparent,
+    @required Product product
   }) : super(
           product: product,
           productSize: size,
         );
 
-  factory ProductItemWide.fromModel(Product product, Color color) {
+  factory ProductItemWide.fromModel(Product product) {
     return ProductItemWide(
-      product: product,
-      color: color,
+      product: product
     );
   }
 
