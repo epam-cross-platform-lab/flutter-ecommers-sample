@@ -1,6 +1,5 @@
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/generated/i18n.dart';
-import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:flutter/material.dart';
 
 class DetailsTab extends StatelessWidget {
@@ -14,81 +13,77 @@ class DetailsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _localization = I18n.of(context);
+    final detailsValues =
+        _generateDetailsValues(context, productDetailModel, skuId);
 
-    return Column(
-      children: [
-        _createDetailsListWidget(
-          context,
-          _localization.brand,
-          _localization.sku,
-          productDetailModel?.brand,
-          skuId,
-        ),
-        const SizedBox(height: Insets.x7_5),
-        _createDetailsListWidget(
-          context,
-          _localization.condition,
-          _localization.material,
-          productDetailModel?.condition,
-          productDetailModel?.material,
-        ),
-        const SizedBox(height: Insets.x7_5),
-        _createDetailsListWidget(
-          context,
-          _localization.category,
-          _localization.fitting,
-          productDetailModel?.category,
-          productDetailModel?.fitting,
-        ),
-      ],
+    return GridView.builder(
+      itemCount: detailsValues.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, childAspectRatio: 3),
+      itemBuilder: (BuildContext context, int index) {
+        final key = detailsValues.keys.toList()[index];
+        if (index % 2 == 0) {
+          return _createTileWidget(
+              context, key, detailsValues[key], Alignment.topLeft);
+        } else {
+          return _createTileWidget(
+              context, key, detailsValues[key], Alignment.topRight);
+        }
+      },
     );
   }
 
-  Widget _createDetailsListWidget(
-    BuildContext context,
-    String titleLeft,
-    String titleRight,
-    String valueLeft,
-    String valueRight,
-  ) {
+  Map<String, String> _generateDetailsValues(
+      BuildContext context, ProductDetails productDetailModel, String skuId) {
+    final localization = I18n.of(context);
+    final values = <String, String>{};
+
+    if (productDetailModel?.brand?.isNotEmpty == true) {
+      values.putIfAbsent(localization.brand, () => productDetailModel.brand);
+    }
+    if (skuId?.isNotEmpty == true) {
+      values.putIfAbsent(localization.sku, () => skuId);
+    }
+    if (productDetailModel?.condition?.isNotEmpty == true) {
+      values.putIfAbsent(
+          localization.condition, () => productDetailModel.condition);
+    }
+    if (productDetailModel?.material?.isNotEmpty == true) {
+      values.putIfAbsent(
+          localization.material, () => productDetailModel.material);
+    }
+    if (productDetailModel?.category?.isNotEmpty == true) {
+      values.putIfAbsent(
+          localization.category, () => productDetailModel.category);
+    }
+    if (productDetailModel?.fitting?.isNotEmpty == true) {
+      values.putIfAbsent(
+          localization.fitting, () => productDetailModel.fitting);
+    }
+
+    return values;
+  }
+
+  Widget _createTileWidget(BuildContext context, String title, String value,
+      AlignmentGeometry alignment) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              titleLeft ?? '-',
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
-            Text(
-              titleRight ?? '-',
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
-          ],
+        Align(
+          alignment: alignment,
+          child: Text(
+            title,
+            style: Theme.of(context).textTheme.subtitle2,
+          ),
         ),
-        const SizedBox(height: Insets.x1),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Padding(
-                padding: const EdgeInsets.only(right: Insets.x1),
-                child: Text(
-                  valueLeft ?? '-',
-                  style: Theme.of(context).textTheme.subtitle2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
+        Flexible(
+          child: Align(
+            alignment: alignment,
+            child: Text(
+              value,
+              style: Theme.of(context).textTheme.subtitle2,
+              overflow: TextOverflow.ellipsis,
             ),
-            Flexible(
-              child: Text(
-                valueRight ?? '-',
-                style: Theme.of(context).textTheme.subtitle2,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
+          ),
         ),
       ],
     );

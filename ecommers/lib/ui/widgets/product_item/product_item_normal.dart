@@ -16,10 +16,6 @@ class ProductItemNormal extends ProductItemBase {
           productSize: size,
         );
 
-  factory ProductItemNormal.fromModel(Product product) {
-    return ProductItemNormal(product: product);
-  }
-
   @override
   Widget buildProductItem(BuildContext context) {
     return Column(

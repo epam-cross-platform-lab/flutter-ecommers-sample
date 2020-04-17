@@ -23,4 +23,20 @@ class Formatter {
   static String getRate(double value) {
     return value.toStringAsFixed(1);
   }
+
+  static double getRating(int value) {
+    return value + .0;
+  }
+
+  static String getAlias(String firstName, String lastName) {
+    return firstName?.isNotEmpty == true && lastName?.isNotEmpty == true
+        ? '${firstName[0]}${lastName[0]}'
+        : '';
+  }
+
+  static String getUserName(String firstName, String lastName) {
+    return firstName?.isNotEmpty == true && lastName?.isNotEmpty == true
+        ? '$firstName $lastName'
+        : 'No Name';
+  }
 }

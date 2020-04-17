@@ -15,10 +15,6 @@ class ProductItemSmall extends ProductItemBase {
           productSize: productItemSmallSize,
         );
 
-  factory ProductItemSmall.fromModel(Product product) {
-    return ProductItemSmall(product: product);
-  }
-
   @override
   Widget buildProductItem(BuildContext context) {
     return Row(

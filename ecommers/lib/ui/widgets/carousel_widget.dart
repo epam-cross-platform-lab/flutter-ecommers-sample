@@ -23,14 +23,16 @@ class CarouselWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final _localization = I18n.of(context);
 
-    return images?.isNotEmpty == true
-        ? _buildBody()
-        : Center(
-            child: Text(
-              _localization.noAvailableInformation,
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
-          );
+    if (images?.isNotEmpty == true) {
+      return _buildBody();
+    }
+
+    return Center(
+      child: Text(
+        _localization.noAvailableInformation,
+        style: Theme.of(context).textTheme.subtitle1,
+      ),
+    );
   }
 
   Widget _buildBody() {

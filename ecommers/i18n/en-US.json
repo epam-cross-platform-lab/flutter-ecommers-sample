@@ -69,6 +69,6 @@
     "fieldError": "field should not be empty.",
     "notificationsTitle": "Notifications",
     "yesterday": "Yesterday",
-    "empty": "",
-    "noAvailableInformation": "No Available Information"
+    "noAvailableInformation": "No Available Information",
+    "empty": ""
 }

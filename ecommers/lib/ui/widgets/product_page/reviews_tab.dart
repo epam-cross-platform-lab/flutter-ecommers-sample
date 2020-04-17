@@ -22,122 +22,111 @@ class ReviewsTab extends StatelessWidget {
   Widget _buildBody(BuildContext context) {
     final _localization = I18n.of(context);
 
-    return productReviewsModel?.isNotEmpty == true
-        ? ListView.separated(
-            scrollDirection: Axis.vertical,
-            separatorBuilder: (context, index) =>
-                const SizedBox(height: Insets.x7_5),
-            itemCount: productReviewsModel.length,
-            itemBuilder: (context, i) {
-              final review = productReviewsModel[i];
-              return Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    height: 80,
-                    width: 80,
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFFFCDD2),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Text(
-                        _generateAlias(review.user),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: FontSizes.big_4x,
-                          fontWeight: FontWeight.bold,
-                          color: const Color(0xFFFFF9C4),
-                        ),
-                      ),
+    if (productReviewsModel?.isNotEmpty == true) {
+      return ListView.separated(
+        scrollDirection: Axis.vertical,
+        separatorBuilder: (context, index) =>
+            const SizedBox(height: Insets.x7_5),
+        itemCount: productReviewsModel.length,
+        itemBuilder: (context, i) {
+          final review = productReviewsModel[i];
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 80,
+                width: 80,
+                decoration: const BoxDecoration(
+                  color: Color(0xFFFFCDD2),
+                  shape: BoxShape.circle,
+                ),
+                child: Center(
+                  child: Text(
+                    Formatter.getAlias(
+                        review.user?.firstName, review.user?.lastName),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: FontSizes.big_4x,
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFFFFF9C4),
                     ),
                   ),
-                  const SizedBox(width: Insets.x5),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                ),
+              ),
+              const SizedBox(width: Insets.x5),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            RatingBar(
-                              initialRating: review.rate + .0,
-                              minRating: 0,
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,
-                              itemCount: ratesCount,
-                              itemSize: Insets.x5,
-                              ignoreGestures: true,
-                              itemBuilder: (context, _) => Icon(
-                                Icons.star,
-                                color: BrandingColors.primary,
-                              ),
-                              onRatingUpdate: (rating) {},
-                            ),
-                            Text(
-                              Formatter.getTextWithSpecifiedDateFormat(
-                                review.date,
-                                'dd MMM, yyyy',
-                              ),
-                              textAlign: TextAlign.end,
-                              style: Theme.of(context).textTheme.bodyText2,
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: Insets.x1_5),
-                        Text(
-                          _generateUserName(review.user),
-                          style: Theme.of(context).textTheme.subtitle1,
-                        ),
-                        const SizedBox(height: Insets.x1_5),
-                        Text(
-                          review.comment ?? '',
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 5,
-                          style: Theme.of(context).textTheme.subtitle2,
-                        ),
-                        const SizedBox(height: Insets.x1_5),
-                        SizedBox(
-                          height: 100,
-                          child: ListView.separated(
-                            scrollDirection: Axis.horizontal,
-                            separatorBuilder: (context, index) =>
-                                const SizedBox(width: Insets.x3_5),
-                            itemCount: review.imageUrls?.length ?? 0,
-                            itemBuilder: (context, index) {
-                              return review.imageUrls?.isNotEmpty == true
-                                  ? CachedImage(
-                                      imagePath: review.imageUrls[index])
-                                  : null;
-                            },
+                        RatingBar(
+                          initialRating: Formatter.getRating(review.rate),
+                          minRating: 0,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: ratesCount,
+                          itemSize: Insets.x5,
+                          ignoreGestures: true,
+                          itemBuilder: (context, _) => Icon(
+                            Icons.star,
+                            color: BrandingColors.primary,
                           ),
+                          onRatingUpdate: (rating) {},
+                        ),
+                        Text(
+                          Formatter.getTextWithSpecifiedDateFormat(
+                            review.date,
+                            'dd MMM, yyyy',
+                          ),
+                          textAlign: TextAlign.end,
+                          style: Theme.of(context).textTheme.bodyText2,
                         ),
                       ],
                     ),
-                  ),
-                ],
-              );
-            },
-          )
-        : Center(
-            child: Text(
-              _localization.noAvailableInformation,
-              style: Theme.of(context).textTheme.subtitle1,
-            ),
+                    const SizedBox(height: Insets.x1_5),
+                    Text(
+                      Formatter.getUserName(
+                          review.user?.firstName, review.user?.lastName),
+                      style: Theme.of(context).textTheme.subtitle1,
+                    ),
+                    const SizedBox(height: Insets.x1_5),
+                    Text(
+                      review.comment ?? '',
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 5,
+                      style: Theme.of(context).textTheme.subtitle2,
+                    ),
+                    const SizedBox(height: Insets.x1_5),
+                    SizedBox(
+                      height: 100,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        separatorBuilder: (context, index) =>
+                            const SizedBox(width: Insets.x3_5),
+                        itemCount: review.imageUrls?.length ?? 0,
+                        itemBuilder: (context, index) {
+                          return review.imageUrls?.isNotEmpty == true
+                              ? CachedImage(imagePath: review.imageUrls[index])
+                              : null;
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           );
-  }
+        },
+      );
+    }
 
-  String _generateAlias(User user) {
-    return user?.firstName?.isNotEmpty == true &&
-            user?.lastName?.isNotEmpty == true
-        ? '${user.firstName[0]}${user.lastName[0]}'
-        : '';
-  }
-
-  String _generateUserName(User user) {
-    return user?.firstName?.isNotEmpty == true &&
-            user?.lastName?.isNotEmpty == true
-        ? '${user.firstName} ${user.lastName}'
-        : 'No Name';
+    return Center(
+      child: Text(
+        _localization.noAvailableInformation,
+        style: Theme.of(context).textTheme.subtitle1,
+      ),
+    );
   }
 }
