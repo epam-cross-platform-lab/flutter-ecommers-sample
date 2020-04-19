@@ -69,5 +69,9 @@
     "fieldError": "field should not be empty.",
     "notificationsTitle": "Notifications",
     "yesterday": "Yesterday",
-    "empty": ""
+    "empty": "",
+    "delete": "Delete",
+    "notBankCards": "You have no credit cards added",
+    "paymentMethodTitle":"Payment Method",
+    "addCard": "ADD CARD"
 }

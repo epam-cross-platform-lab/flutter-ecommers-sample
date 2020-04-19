@@ -174,6 +174,14 @@ class I18n implements WidgetsLocalizations {
   String get yesterday => "Yesterday";
   /// ""
   String get empty => "";
+  /// "Delete"
+  String get delete => "Delete";
+  /// "You have no credit cards added"
+  String get notBankCards => "You have no credit cards added";
+  /// "Payment Method"
+  String get paymentMethodTitle => "Payment Method";
+  /// "ADD CARD"
+  String get addCard => "ADD CARD";
 }
 
 class _I18n_en_US extends I18n {

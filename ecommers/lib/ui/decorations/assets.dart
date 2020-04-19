@@ -48,6 +48,7 @@ class Assets {
   static const String sale = 'assets/sale.svg';
   static const String creditCard = 'assets/credit_card.svg';
   static const String searchIcon = 'assets/search.svg';
+  static const String bankCard = 'assets/bank_card.svg';
 
   //TODO: TO remove
   static const String girlImage = 'assets/girl1_image.png';

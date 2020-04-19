@@ -7,15 +7,8 @@ class Formatter {
     return currencyFormatter.format(cost);
   }
 
-  static String getTextWithNumberCard(String nuberCard) {
-    const visibleCardSymbolCount = 2;
-
-    final visibleSymbols =
-        nuberCard.substring(nuberCard.length - visibleCardSymbolCount);
-
-    return 'Master Card ending **$visibleSymbols'; //TODO: use localization
-  }
-
+  static String getTextWithNumberCard(String lastFourNumber) =>'************$lastFourNumber';
+  
   static String getTextWithSpecifiedDateFormat(DateTime date, String format) {
     return DateFormat(format).format(date);
   }
