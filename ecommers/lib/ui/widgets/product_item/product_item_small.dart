@@ -1,12 +1,13 @@
+import 'package:flutter/material.dart';
+
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
-import 'package:flutter/material.dart';
 
 class ProductItemSmall extends ProductItemBase {
-  static const productItemSmallSize = Size(185.0, 59.0);
+  static const size = Size(185.0, 59.0);
 
   const ProductItemSmall({
     @required String assetImagePath,
@@ -17,7 +18,7 @@ class ProductItemSmall extends ProductItemBase {
           assetImagePath: assetImagePath,
           cost: cost,
           title: title,
-          productSize: productItemSmallSize,
+          productSize: size,
           id: id,
         );
   factory ProductItemSmall.fromModel(Product product) {

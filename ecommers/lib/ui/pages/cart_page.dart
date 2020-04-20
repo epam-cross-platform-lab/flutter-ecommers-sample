@@ -49,6 +49,7 @@ class _CartPageState extends State<CartPage> {
                 onButtonPressedFunction: () =>
                     navigationService.navigateTo(Pages.checkout),
                 buttonText: I18n.of(context).checkoutButton,
+                isButtonDisabled: _cartProvider.orderCount == 0,
               ))
         ],
       ),
