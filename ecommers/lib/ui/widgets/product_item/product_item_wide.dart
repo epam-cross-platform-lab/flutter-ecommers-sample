@@ -26,7 +26,7 @@ class ProductItemWide extends ProductItemBase {
 
   factory ProductItemWide.fromModel(Product product) {
     return ProductItemWide(
-      assetImagePath: product.images.first,
+      assetImagePath: product.previewImage,
       cost: product.price,
       title: product.title,
       rate: product.rate,

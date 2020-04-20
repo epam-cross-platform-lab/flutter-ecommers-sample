@@ -22,7 +22,7 @@ class ProductItemSmall extends ProductItemBase {
         );
   factory ProductItemSmall.fromModel(Product product) {
     return ProductItemSmall(
-      assetImagePath: product.images.first,
+      assetImagePath: product.previewImage,
       cost: product.price,
       title: product.title,
       id: product.id,
