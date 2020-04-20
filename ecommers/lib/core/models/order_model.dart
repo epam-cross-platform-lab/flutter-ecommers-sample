@@ -26,7 +26,7 @@ class OrderModel {
   factory OrderModel.fromProduct(Product product) {
     return OrderModel(
       id: product.id,
-      imagePath: product.models?.first?.imageUrls?.first,
+      imagePath: product.previewImage,
       title: product.title,
       cost: product.price,
       description: 'Medium, Green 3',

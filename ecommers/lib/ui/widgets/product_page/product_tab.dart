@@ -25,6 +25,8 @@ class ProductTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localization = I18n.of(context);
+    final noInfoTextStyle = Theme.of(context).textTheme.subtitle1;
+
     return ChangeNotifierProvider(
       create: (_) => ProductTabProviderModel(
         colors,
@@ -42,7 +44,7 @@ class ProductTab extends StatelessWidget {
               ),
               SizedBox(
                 height: 100,
-                child: _createColorsList(context, model, localization),
+                child: _createColorsList(noInfoTextStyle, model, localization),
               ),
               Text(
                 localization.selectSizeUs,
@@ -51,7 +53,7 @@ class ProductTab extends StatelessWidget {
               const SizedBox(height: Insets.x5),
               SizedBox(
                 height: 50,
-                child: _createSizesList(context, model, localization),
+                child: _createSizesList(noInfoTextStyle, model, localization),
               ),
             ],
           );
@@ -60,8 +62,8 @@ class ProductTab extends StatelessWidget {
     );
   }
 
-  Widget _createSizesList(
-      BuildContext context, ProductTabProviderModel model, I18n localization) {
+  Widget _createSizesList(TextStyle noInfoTextStyle,
+      ProductTabProviderModel model, I18n localization) {
     if (model.sizes?.isNotEmpty == true) {
       return ListView.separated(
         scrollDirection: Axis.horizontal,
@@ -100,13 +102,13 @@ class ProductTab extends StatelessWidget {
     return Center(
       child: Text(
         localization.noAvailableInformation,
-        style: Theme.of(context).textTheme.subtitle1,
+        style: noInfoTextStyle,
       ),
     );
   }
 
-  Widget _createColorsList(
-      BuildContext context, ProductTabProviderModel model, I18n localization) {
+  Widget _createColorsList(TextStyle noInfoTextStyle,
+      ProductTabProviderModel model, I18n localization) {
     if (model.colors?.isNotEmpty == true) {
       return ListView.separated(
         scrollDirection: Axis.horizontal,
@@ -151,7 +153,7 @@ class ProductTab extends StatelessWidget {
     return Center(
       child: Text(
         localization.noAvailableInformation,
-        style: Theme.of(context).textTheme.subtitle1,
+        style: noInfoTextStyle,
       ),
     );
   }

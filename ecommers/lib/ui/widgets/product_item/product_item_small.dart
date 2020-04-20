@@ -22,7 +22,7 @@ class ProductItemSmall extends ProductItemBase {
       children: <Widget>[
         Expanded(
           flex: 3,
-          child: CachedImage(imagePath: product.images?.first),
+          child: CachedImage(imagePath: product.previewImage),
         ),
         const SizedBox(
           width: ProductItemBase.padding,

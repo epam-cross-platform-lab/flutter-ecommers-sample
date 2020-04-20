@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:ecommers/core/mixins/items_loading_notifier.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 
+const double scrollOffsetDelta = 100.0;
+
 class ItemsLoader<T extends ItemsLoadingNotifier> extends StatelessWidget {
   static const loaderHeight = 60.0;
 

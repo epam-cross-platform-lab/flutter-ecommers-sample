@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/provider_models/home_provider_model.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_item/index.dart';
 
 class ProductLatestGrid extends StatefulWidget {
@@ -33,8 +34,8 @@ class _ProductLatestGridState extends State<ProductLatestGrid> {
 
     if (!_loadingProvider.isItemsLoading &&
         _loadingProvider.hasMoreItems &&
-        widget.controller.offset ==
-            widget.controller.position.maxScrollExtent) {
+        widget.controller.position.maxScrollExtent - widget.controller.offset <=
+            scrollOffsetDelta) {
       _loadingProvider.loadMoreProducts();
     }
   }

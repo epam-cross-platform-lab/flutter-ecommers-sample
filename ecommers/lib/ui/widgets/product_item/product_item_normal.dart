@@ -25,7 +25,7 @@ class ProductItemNormal extends ProductItemBase {
           child: Center(
             child: HeroImage(
               tag: product.id,
-              imagePath: product.images?.first,
+              imagePath: product.previewImage,
             ),
           ),
         ),

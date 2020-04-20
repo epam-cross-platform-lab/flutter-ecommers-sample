@@ -1,11 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'product_color.dart';
+
 part 'product_model.g.dart';
 
 @JsonSerializable()
 class ProductModel {
   final String size;
-  final String color;
+  final ProductColor color;
   final int skuId;
   final List<String> imageUrls;
   final bool isAvailable;

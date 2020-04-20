@@ -51,7 +51,7 @@ class ProductPageTabsProviderModel extends ProviderModelBase {
   List<ProductColorModel> _getColors(List<ProductModel> models) {
     return models
         ?.map((product) => ProductColorModel(
-            color: 0xFFBBDEFB,
+            color: product.color.argb,
             images: product.imageUrls
                 ?.map((url) => CarouselImage(tag: _productModel.id, path: url))
                 ?.toList()))
