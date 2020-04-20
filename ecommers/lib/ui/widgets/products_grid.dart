@@ -44,7 +44,8 @@ class _ProductsGridState extends State<ProductsGrid> {
 
     if (!_loadingProvider.isItemsLoading &&
         _loadingProvider.hasMoreItems &&
-        _controller.offset == _controller.position.maxScrollExtent) {
+        _controller.position.maxScrollExtent - _controller.offset <=
+            scrollOffsetDelta) {
       _loadingProvider.loadMoreProducts();
     }
   }

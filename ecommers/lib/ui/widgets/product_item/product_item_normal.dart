@@ -24,7 +24,7 @@ class ProductItemNormal extends ProductItemBase {
 
   factory ProductItemNormal.fromModel(Product product) {
     return ProductItemNormal(
-      assetImagePath: product.images.first,
+      assetImagePath: product.previewImage,
       cost: product.price,
       title: product.title,
       id: product.id,
