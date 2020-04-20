@@ -12,7 +12,7 @@ class _PaymentMethodTestState extends State<PaymentMethodTest> {
   Token _paymentToken;
   PaymentMethod _paymentMethod;
   String _error;
-  final String _currentSecret = null; //set this yourself, e.g using curl
+  final String _currentSecret = 'tok_mastercard_debit_transferSuccess'; //set this yourself, e.g using curl
   PaymentIntentResult _paymentIntent;
   Source _source;
  final  ScrollController _controller = ScrollController();
@@ -28,7 +28,7 @@ class _PaymentMethodTestState extends State<PaymentMethodTest> {
     super.initState();
 
     StripePayment.setOptions(StripeOptions(
-      publishableKey: 'pk_test_aSaULNS8cJU6Tvo20VAXy6rp',
+      publishableKey: 'pk_test_O4MySLvZlQMSIVMEJPCQjbIv00CnR4Bawc',
       merchantId: 'Test',
       androidPayMode: 'test',
     ));
