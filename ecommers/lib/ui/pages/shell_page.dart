@@ -11,51 +11,51 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class ShellPage extends StatelessWidget {
+  static const route = '/shell';
+
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).initializeOrderProducts();
-    return ChangeNotifierProvider(
-      create: (_) => ShellProviderModel(context),
-      child: Consumer<ShellProviderModel>(
-        builder: (context, ShellProviderModel model, child) {
-          return Scaffold(
-            appBar: AppBar(
-              actions: <Widget>[
-                _buildAction(
-                  imageAssetPath: Assets.messagesIcon,
-                  onIconPressedFuction: () {}, //TODO get from provider
-                  badgeValue: 5, //TODO get from provider
-                  context: context,
-                ),
-                _buildAction(
-                  imageAssetPath: Assets.notificationIcon,
-                  onIconPressedFuction: () => navigationService
-                      .navigateTo(Pages.notifications), //TODO get from provider
-                  badgeValue: 6, //TODO get from provider
-                  context: context,
-                ),
-              ],
-            ),
-            backgroundColor: BrandingColors.pageBackground,
-            body: BackgroundedSafeArea(
-              child: IndexedStack(
-                  index: model.selectedItemIndex,
-                  children: <Widget>[
-                    HomePage(),
-                    SearchPage(),
-                    CartPage(),
-                    ProfilePage(),
-                    MorePage()
-                  ]),
-            ),
-            bottomNavigationBar: BottomNavigationWidget(
-              selectedIndex: model.selectedItemIndex,
-              pages: model.pages,
-              onTappedFunction: model.onTappedItem,
-            ),
-          );
-        },
-      ),
+    
+    return Consumer<ShellProviderModel>(
+      builder: (context, ShellProviderModel model, child) {
+        return Scaffold(
+          appBar: AppBar(
+            actions: <Widget>[
+              _buildAction(
+                imageAssetPath: Assets.messagesIcon,
+                onIconPressedFuction: () {}, //TODO get from provider
+                badgeValue: 5, //TODO get from provider
+                context: context,
+              ),
+              _buildAction(
+                imageAssetPath: Assets.notificationIcon,
+                onIconPressedFuction: () => navigationService
+                    .navigateTo(Pages.notifications), //TODO get from provider
+                badgeValue: 6, //TODO get from provider
+                context: context,
+              ),
+            ],
+          ),
+          backgroundColor: BrandingColors.pageBackground,
+          body: BackgroundedSafeArea(
+            child: IndexedStack(
+                index: model.selectedItemIndex,
+                children: <Widget>[
+                  HomePage(),
+                  SearchPage(),
+                  CartPage(),
+                  ProfilePage(),
+                  MorePage()
+                ]),
+          ),
+          bottomNavigationBar: BottomNavigationWidget(
+            selectedIndex: model.selectedItemIndex,
+            pages: model.pages,
+            onTappedFunction: model.onTappedItem,
+          ),
+        );
+      },
     );
   }
 

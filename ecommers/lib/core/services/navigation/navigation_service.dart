@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/core/models/page_arguments.dart';
@@ -24,12 +26,23 @@ class NavigationService {
     navigatorKey.currentState.pop();
   }
 
+  void goBackToShell({int index = 0}) {
+    navigatorKey.currentState.popUntil((Route<dynamic> route) {
+      return route.settings?.name == ShellPage.route;
+    });
+
+    Provider.of<ShellProviderModel>(navigatorKey.currentContext, listen: false)
+        .onTappedItem(index);
+  }
+
   Route<dynamic> _generateRoute(Pages page, Object arguments) {
     Widget resultPage;
+    RouteSettings settings;
 
     switch (page) {
       case Pages.shell:
         resultPage = ShellPage();
+        settings = RouteSettings(name: ShellPage.route);
         break;
       case Pages.categories:
         resultPage = CategoriesPage(categories: arguments as List<Category>);
@@ -65,10 +78,10 @@ class NavigationService {
         break;
     }
 
-    return _getRoute(resultPage);
+    return _getRoute(resultPage, settings: settings);
   }
 
-  Route<dynamic> _getRoute(Widget widget) {
-    return CupertinoPageRoute(builder: (_) => widget);
+  Route<dynamic> _getRoute(Widget widget, {RouteSettings settings}) {
+    return CupertinoPageRoute(builder: (_) => widget, settings: settings);
   }
 }
