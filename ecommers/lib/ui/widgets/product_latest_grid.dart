@@ -70,7 +70,7 @@ class _ProductLatestGridState extends State<ProductLatestGrid> {
           (context, index) {
             final product = products[index];
 
-            return ProductItemNormal.fromModel(product);
+            return ProductItemNormal(product: product);
           },
           childCount: products.length,
         ),

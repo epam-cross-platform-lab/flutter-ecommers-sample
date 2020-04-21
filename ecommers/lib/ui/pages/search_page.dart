@@ -46,9 +46,8 @@ class SearchPage extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               itemCount: provider.latestProducts.length,
                               itemBuilder: (context, index) {
-                                final itemModel =
-                                    provider.latestProducts[index];
-                                return ProductItemSmall.fromModel(itemModel);
+                                final product = provider.latestProducts[index];
+                                return ProductItemSmall(product: product);
                               },
                               separatorBuilder: (context, index) =>
                                   const SizedBox(width: Insets.x3),

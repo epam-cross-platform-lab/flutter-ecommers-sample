@@ -6,33 +6,13 @@ import 'package:ecommers/ui/widgets/product_item/product_item_base.dart';
 import 'package:flutter/material.dart';
 
 class ProductItemWide extends ProductItemBase {
-  final double rate;
-
   static const size = Size(160.0, 218.0);
 
-  const ProductItemWide({
-    @required String assetImagePath,
-    @required String title,
-    @required double cost,
-    this.rate,
-    int id,
-  }) : super(
-          assetImagePath: assetImagePath,
-          cost: cost,
-          title: title,
+  const ProductItemWide({@required Product product})
+      : super(
+          product: product,
           productSize: size,
-          id: id,
         );
-
-  factory ProductItemWide.fromModel(Product product) {
-    return ProductItemWide(
-      assetImagePath: product.previewImage,
-      cost: product.price,
-      title: product.title,
-      rate: product.rate,
-      id: product.id,
-    );
-  }
 
   @override
   Widget buildProductItem(BuildContext context) {
@@ -42,13 +22,13 @@ class ProductItemWide extends ProductItemBase {
         Expanded(
           child: Center(
             child: HeroImage(
-              tag: id,
-              imagePath: assetImagePath,
+              tag: product.id,
+              imagePath: product.previewImage,
             ),
           ),
         ),
         Text(
-          title,
+          product.title,
           maxLines: Dimens.defaultTextMaxLines,
           overflow: TextOverflow.ellipsis,
           style: Theme.of(context).textTheme.bodyText2,
@@ -57,7 +37,7 @@ class ProductItemWide extends ProductItemBase {
           children: <Widget>[
             Expanded(
               child: Text(
-                Formatter.getCost(cost),
+                Formatter.getCost(product.price),
                 style: Theme.of(context).textTheme.bodyText2.copyWith(
                       fontSize: FontSizes.small_3x,
                       fontWeight: FontWeight.w700,
@@ -65,7 +45,7 @@ class ProductItemWide extends ProductItemBase {
               ),
             ),
             RateWidget(
-              rate: rate,
+              rate: product.rate,
             ),
           ],
         )

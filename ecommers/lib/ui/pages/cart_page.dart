@@ -106,7 +106,7 @@ class _CartPageState extends State<CartPage> {
         alignment: Alignment.center,
         color: BrandingColors.primary,
         child: IconButton(
-            icon: Icon(Icons.delete, color: Colors.white),
+            icon: const Icon(Icons.delete, color: Colors.white),
             onPressed: () => _cartProvider.remove(order, count: order.count)));
   }
 }

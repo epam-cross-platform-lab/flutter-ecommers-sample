@@ -10,25 +10,12 @@ class ProductItemSmall extends ProductItemBase {
   static const size = Size(185.0, 59.0);
 
   const ProductItemSmall({
-    @required String assetImagePath,
-    @required String title,
-    @required double cost,
-    int id,
+    @required Product product,
   }) : super(
-          assetImagePath: assetImagePath,
-          cost: cost,
-          title: title,
+          product: product,
           productSize: size,
-          id: id,
         );
-  factory ProductItemSmall.fromModel(Product product) {
-    return ProductItemSmall(
-      assetImagePath: product.previewImage,
-      cost: product.price,
-      title: product.title,
-      id: product.id,
-    );
-  }
+
   @override
   Widget buildProductItem(BuildContext context) {
     return Row(
@@ -36,7 +23,7 @@ class ProductItemSmall extends ProductItemBase {
       children: <Widget>[
         Expanded(
           flex: 3,
-          child: CachedImage(imagePath: assetImagePath),
+          child: CachedImage(imagePath: product.previewImage),
         ),
         const SizedBox(
           width: ProductItemBase.padding,
@@ -48,7 +35,7 @@ class ProductItemSmall extends ProductItemBase {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                title,
+                product.title,
                 overflow: TextOverflow.ellipsis,
                 maxLines: Dimens.defaultTextMaxLines,
                 style: Theme.of(context)
@@ -57,7 +44,7 @@ class ProductItemSmall extends ProductItemBase {
                     .copyWith(fontWeight: FontWeight.w400),
               ),
               Text(
-                Formatter.getCost(cost),
+                Formatter.getCost(product.price),
                 style: Theme.of(context).textTheme.bodyText1,
               ),
             ],
