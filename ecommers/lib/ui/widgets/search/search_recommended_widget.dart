@@ -18,14 +18,14 @@ class SearchRecommendedWinget extends StatelessWidget {
       spacing: Insets.x2_5,
       runSpacing: Insets.x2,
       children: recommendedList
-          .map((item) => createItem(item.title, context))
+          .map((item) => createItem(item, context))
           .toList(),
     );
   }
 
-  Widget createItem(String searchRecommendedItem, BuildContext context) {
+  Widget createItem(Product product, BuildContext context) {
     return InkWell(
-      onTap: () => navigationService.navigateTo(Pages.product),
+      onTap: () => navigationService.navigateTo(Pages.product, arguments: product),
       child: Container(
         decoration: BoxDecoration(
           color: BrandingColors.background,
@@ -35,7 +35,7 @@ class SearchRecommendedWinget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(
               horizontal: Insets.x2_5, vertical: Insets.x2),
           child: Text(
-            searchRecommendedItem,
+            product.title,
             style: Theme.of(context).textTheme.bodyText1.copyWith(
                   fontSize: FontSizes.small_3x,
                   fontWeight: FontWeight.w400,

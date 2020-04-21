@@ -7,8 +7,8 @@ class ProductColorModel {
   final List<CarouselImage> images;
 
   ProductColorModel({
-    @required this.isSelected,
     @required this.color,
     @required this.images,
+    this.isSelected = false,
   });
 }

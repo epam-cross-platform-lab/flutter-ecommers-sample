@@ -1,3 +1,4 @@
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -5,145 +6,185 @@ import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
-class ProductTab extends StatefulWidget {
+class ProductTab extends StatelessWidget {
   final List<ProductColorModel> colors;
   final List<ProductSizeModel> sizes;
   final Function(List<CarouselImage>) colorHasChanged;
+  final Function(ProductSkuIdModel) skuIdHasChanged;
 
   const ProductTab({
     Key key,
     @required this.colors,
     @required this.sizes,
     this.colorHasChanged,
+    this.skuIdHasChanged,
   }) : super(key: key);
 
   @override
-  _ProductTabState createState() => _ProductTabState();
-}
-
-class _ProductTabState extends State<ProductTab> {
-  @override
   Widget build(BuildContext context) {
-    final _localization = I18n.of(context);
+    final localization = I18n.of(context);
+    final noInfoTextStyle = Theme.of(context).textTheme.subtitle1;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          _localization.selectColor,
-          style: Theme.of(context).textTheme.subtitle2,
-        ),
-        SizedBox(
-          height: 100,
-          child: _createColorsList(),
-        ),
-        Text(
-          _localization.selectSizeUs,
-          style: Theme.of(context).textTheme.subtitle2,
-        ),
-        const SizedBox(height: Insets.x5),
-        SizedBox(
-          height: 50,
-          child: _createSizesList(),
-        ),
-      ],
+    return ChangeNotifierProvider(
+      create: (_) => ProductTabProviderModel(
+        colors,
+        sizes,
+        context: context,
+      ),
+      child: Consumer<ProductTabProviderModel>(
+        builder: (context, ProductTabProviderModel model, child) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                localization.selectColor,
+                style: Theme.of(context).textTheme.subtitle2,
+              ),
+              SizedBox(
+                height: 100,
+                child: _createColorsList(noInfoTextStyle, model, localization),
+              ),
+              Text(
+                localization.selectSizeUs,
+                style: Theme.of(context).textTheme.subtitle2,
+              ),
+              const SizedBox(height: Insets.x5),
+              SizedBox(
+                height: 50,
+                child: _createSizesList(noInfoTextStyle, model, localization),
+              ),
+            ],
+          );
+        },
+      ),
     );
   }
 
-  Widget _createSizesList() {
-    return ListView.separated(
-      scrollDirection: Axis.horizontal,
-      itemCount: widget.sizes.length,
-      separatorBuilder: (context, index) => const SizedBox(width: Insets.x4_5),
-      itemBuilder: (context, i) {
-        final textSizeColor = widget.sizes[i].isSelected
-            ? BrandingColors.primary
-            : BrandingColors.primaryText;
+  Widget _createSizesList(TextStyle noInfoTextStyle,
+      ProductTabProviderModel model, I18n localization) {
+    if (model.sizes?.isNotEmpty == true) {
+      return ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: model.sizes.length,
+        separatorBuilder: (context, index) =>
+            const SizedBox(width: Insets.x4_5),
+        itemBuilder: (context, i) {
+          final textSizeColor = model.sizes[i].isSelected
+              ? BrandingColors.primary
+              : BrandingColors.primaryText;
 
-        return GestureDetector(
-          onTap: () => {
-            setState(() => {
-                  widget.sizes.forEach(_unselectSizes),
-                  widget.sizes[i].isSelected = true,
-                }),
-          },
-          child: Container(
-            width: 80,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius:
-                  const BorderRadius.all(Radius.circular(Radiuses.big_1x)),
-            ),
-            child: Center(
-              child: Text(
-                widget.sizes[i].size,
-                style: TextStyle(
-                  fontSize: FontSizes.big_2x,
-                  color: textSizeColor,
+          return GestureDetector(
+            onTap: () => _selectSize(i, model),
+            child: Container(
+              width: 80,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(Radiuses.big_1x)),
+              ),
+              child: Center(
+                child: Text(
+                  model.sizes[i].size ?? '-',
+                  style: TextStyle(
+                    fontSize: FontSizes.big_2x,
+                    color: textSizeColor,
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      );
+    }
+
+    return Center(
+      child: Text(
+        localization.noAvailableInformation,
+        style: noInfoTextStyle,
+      ),
     );
   }
 
-  Widget _createColorsList() {
-    return ListView.separated(
-      scrollDirection: Axis.horizontal,
-      itemCount: widget.colors.length,
-      separatorBuilder: (context, index) => const SizedBox(width: Insets.x4_5),
-      itemBuilder: (context, i) {
-        final iconColor = widget.colors[i].isSelected
-            ? (Color(widget.colors[i].color) == Colors.white
-                ? Colors.black
-                : Colors.white)
-            : Colors.transparent;
+  Widget _createColorsList(TextStyle noInfoTextStyle,
+      ProductTabProviderModel model, I18n localization) {
+    if (model.colors?.isNotEmpty == true) {
+      return ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: model.colors.length,
+        separatorBuilder: (context, index) =>
+            const SizedBox(width: Insets.x4_5),
+        itemBuilder: (context, i) {
+          final iconColor = model.colors[i].isSelected
+              ? (Color(model.colors[i].color) == Colors.white
+                  ? Colors.black
+                  : Colors.white)
+              : Colors.transparent;
 
-        return GestureDetector(
-          onTap: () => {
-            setState(() => {
-                  widget.colors.forEach(_unselectColors),
-                  widget.colors[i].isSelected = true,
-                  if (widget.colorHasChanged != null)
-                    {
-                      widget.colorHasChanged(widget.colors[i].images),
-                    }
-                }),
-          },
-          child: Container(
-            width: 50,
-            decoration: BoxDecoration(
-              color: Color(widget.colors[i].color),
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                  blurRadius: Radiuses.small_1x,
-                  offset: const Offset(Insets.x0, Insets.x0_5),
-                  color: Colors.grey,
+          return GestureDetector(
+            onTap: () => _selectColor(i, model),
+            child: Container(
+              width: 50,
+              decoration: BoxDecoration(
+                color: Color(model.colors[i].color),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: Radiuses.small_1x,
+                    offset: const Offset(Insets.x0, Insets.x0_5),
+                    color: Colors.grey,
+                  ),
+                ],
+              ),
+              child: Center(
+                child: SvgPicture.asset(
+                  Assets.successIcon,
+                  height: Insets.x4,
+                  color: iconColor,
                 ),
-              ],
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                Assets.successIcon,
-                height: Insets.x4,
-                color: iconColor,
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      );
+    }
+
+    return Center(
+      child: Text(
+        localization.noAvailableInformation,
+        style: noInfoTextStyle,
+      ),
     );
   }
 
-  void _unselectSizes(ProductSizeModel size) {
-    size.isSelected = false;
+  void _selectSize(int index, ProductTabProviderModel model) {
+    model.selectSize(index);
+
+    if (skuIdHasChanged != null) {
+      skuIdHasChanged(
+        ProductSkuIdModel(
+          size: model.sizes[index].size,
+          color: model.colors.firstWhere((color) => color.isSelected)?.color,
+        ),
+      );
+    }
   }
 
-  void _unselectColors(ProductColorModel color) {
-    color.isSelected = false;
+  void _selectColor(int index, ProductTabProviderModel model) {
+    model.selectColor(index);
+
+    if (colorHasChanged != null) {
+      colorHasChanged(model.colors[index].images);
+    }
+
+    if (skuIdHasChanged != null) {
+      skuIdHasChanged(
+        ProductSkuIdModel(
+          size: model.sizes.firstWhere((size) => size.isSelected)?.size,
+          color: model.colors[index].color,
+        ),
+      );
+    }
   }
 }
