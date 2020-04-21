@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-mixin SuccessNotifier on ChangeNotifier {
+mixin SuccessNotifierMixin on ChangeNotifier {
   bool _isSuccess = false;
 
   bool get isSuccess => _isSuccess;

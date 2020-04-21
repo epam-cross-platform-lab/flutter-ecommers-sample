@@ -7,7 +7,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SuccessStatePage<T extends SuccessNotifier> extends StatelessWidget {
+class SuccessStatePage<T extends SuccessNotifierMixin> extends StatelessWidget {
   final Widget child;
 
   const SuccessStatePage({Key key, this.child}) : super(key: key);

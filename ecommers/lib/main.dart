@@ -9,6 +9,7 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/authorization_page.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/web_server/local_server.dart';
+import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
 import 'core/models/data_models/index.dart';
@@ -59,6 +60,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
     return ChangeNotifierProvider(
       create: (_) => CartProvider(),
       child: MaterialApp(
+        key: mainGlobalKey,
         title: 'ecommers',
         theme: ThemeProvider.getTheme(),
         home: SplashScreen.navigate(
@@ -69,7 +71,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
           until: () => Future.delayed(const Duration()),
           startAnimation: '1',
         ),
-        navigatorKey: navigationService.navigatorKey,
+        navigatorKey: Get.key,
         localizationsDelegates: [i18n],
         supportedLocales: i18n.supportedLocales,
         localeResolutionCallback: i18n.resolution(

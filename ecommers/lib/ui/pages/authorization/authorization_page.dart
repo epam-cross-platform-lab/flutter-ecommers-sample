@@ -39,7 +39,7 @@ class _AuthorizationPageState extends State<AuthorizationPage>
         ChangeNotifierProvider(
           create: (_) => LogInProviderModel(
             context,
-            bottomTapCallback: _createANewAccountClicked,
+            bottomTapCallback: () => currentTabController.animateTo(0),
           ),
         ),
         ChangeNotifierProvider(create: (_) => SignUpProviderModel(context)),
@@ -86,14 +86,6 @@ class _AuthorizationPageState extends State<AuthorizationPage>
           ),
         ),
       ),
-    );
-  }
-
-  void _createANewAccountClicked() {
-    setState(
-      () => {
-        currentTabController.animateTo(0),
-      },
     );
   }
 }

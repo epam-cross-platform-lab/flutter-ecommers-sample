@@ -12,7 +12,20 @@ import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ForgotPasswordPage extends StatelessWidget {
+class ForgotPasswordPage extends StatefulWidget {
+  @override
+  _ForgotPasswordPageState createState() => _ForgotPasswordPageState();
+}
+
+class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
+  TextEditingController emailController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final localization = I18n.of(context);
@@ -34,11 +47,8 @@ class ForgotPasswordPage extends StatelessWidget {
           PrimaryButtonWidget(
             text: localization.logIn,
             assetIconPath: Assets.arrowRightIcon,
-            onPressedFunction: () {
-              if (forgotPasswordForm.formKey.currentState.validate()) {
-                provider.sendPasswordToEmail();
-              }
-            }, //TODO: add providers handler to it
+            onPressedFunction: () =>
+                _forgotPasswordRapped(forgotPasswordForm, provider),
           ),
         ],
       ),
@@ -48,12 +58,20 @@ class ForgotPasswordPage extends StatelessWidget {
   AuthForm _buildForgotPasswordForm(I18n localization) {
     return AuthForm(
       child: AuthTextField(
+        controller: emailController,
         labelText: localization.email,
         keyboardType: TextInputType.emailAddress,
-        assetIconPath: Assets.mailIcon,
+        svgIconPath: Assets.mailIcon,
         onValidate: (text) =>
-            Validator.isEmail(text) ? null : localization.emailError,
+            UserValidator.isEmail(text) ? null : localization.emailError,
       ),
     );
+  }
+
+  void _forgotPasswordRapped(
+      AuthForm authForm, ForgotPasswordProviderModel provider) {
+    if (authForm.formKey.currentState.validate()) {
+      provider.resetPassword(emailController.text);
+    }
   }
 }

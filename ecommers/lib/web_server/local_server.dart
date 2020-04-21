@@ -22,7 +22,7 @@ class LocalServer {
       shared: true,
     );
 
-    DataProvider.fetchProducts();
+    //DataProvider.fetchProducts();
 
     _server.transform(HttpBodyHandler()).listen((HttpRequestBody body) async {
       final duration = 0.5 + random.nextDouble();

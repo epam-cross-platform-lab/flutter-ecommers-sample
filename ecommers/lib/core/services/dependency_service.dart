@@ -1,5 +1,5 @@
-
 import 'package:ecommers/core/app_services/category_service.dart';
+import 'package:ecommers/core/app_services/dialog/dialog_service.dart';
 import 'package:ecommers/core/app_services/index.dart';
 import 'package:ecommers/core/cache/index.dart';
 import 'package:ecommers/core/common/file_manager.dart';
@@ -7,6 +7,7 @@ import 'package:ecommers/core/services/api_service.dart';
 import 'package:ecommers/core/services/membership_service.dart';
 import 'package:ecommers/core/services/navigation/navigation_service.dart';
 import 'package:ecommers/core/repositories/index.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 
 import '../app_services/index.dart';
@@ -15,6 +16,8 @@ import '../common/index.dart';
 import '../services/extensions/get_it_extension.dart';
 import '../services/index.dart';
 import '../services/navigation/navigation_service.dart';
+
+final GlobalKey mainGlobalKey = GlobalKey();
 
 NavigationService get navigationService => GetIt.I.get<NavigationService>();
 FileManager get fileManager => GetIt.I.get<FileManager>();
@@ -26,10 +29,12 @@ ProductService get productService => GetIt.I.get<ProductService>();
 AppService get appService => GetIt.I.get<AppService>();
 CategoryService get categoryService => GetIt.I.get<CategoryService>();
 NoteService get noteService => GetIt.I.get<NoteService>();
-CategoryDataRepository get categoryDataRepository => GetIt.I.get<CategoryDataRepository>();
+CategoryDataRepository get categoryDataRepository =>
+    GetIt.I.get<CategoryDataRepository>();
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
 CartRepository get cartRepository => GetIt.I.get<CartRepository>();
 Paginator get paginator => GetIt.I.get<Paginator>();
+DialogService get dialogService => GetIt.I.get<DialogService>();
 
 class DependencyService {
   static void registerDependencies() {
@@ -39,6 +44,7 @@ class DependencyService {
       ..registerFactory<Paginator>(() => Paginator())
       ..registerLazySingleton<NavigationService>(() => NavigationService())
       ..registerLazySingleton<FileManager>(() => FileManager())
+      ..registerLazySingleton<DialogService>(() => DialogService())
       ..registerLazySingleton<AuthorizationService>(
           () => AuthorizationService())
       ..registerLazySingleton<ProductService>(() => ProductService())
@@ -54,7 +60,8 @@ class DependencyService {
       )
       ..registerHttpClient()
       ..registerLazySingleton<CartRepository>(() => CartRepository())
-      ..registerLazySingleton<CategoryDataRepository>(() => CategoryDataRepository())
+      ..registerLazySingleton<CategoryDataRepository>(
+          () => CategoryDataRepository())
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();
