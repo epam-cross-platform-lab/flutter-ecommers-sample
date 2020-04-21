@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../../decorations/dimens/index.dart';
-import '../../decorations/index.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
+import 'package:ecommers/ui/decorations/index.dart';
 
 class ButtonBaseWidget extends StatelessWidget {
   static const double _circleSize = 30.0;
