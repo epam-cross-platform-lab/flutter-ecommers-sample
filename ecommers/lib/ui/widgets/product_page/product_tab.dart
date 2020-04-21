@@ -79,10 +79,10 @@ class ProductTab extends StatelessWidget {
             onTap: () => _selectSize(i, model),
             child: Container(
               width: 80,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius:
-                    const BorderRadius.all(Radius.circular(Radiuses.big_1x)),
+                    BorderRadius.all(Radius.circular(Radiuses.big_1x)),
               ),
               child: Center(
                 child: Text(
@@ -129,10 +129,10 @@ class ProductTab extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Color(model.colors[i].color),
                 shape: BoxShape.circle,
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     blurRadius: Radiuses.small_1x,
-                    offset: const Offset(Insets.x0, Insets.x0_5),
+                    offset: Offset(Insets.x0, Insets.x0_5),
                     color: Colors.grey,
                   ),
                 ],
