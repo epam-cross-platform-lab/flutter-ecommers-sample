@@ -4,7 +4,7 @@ import 'dart:isolate';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/web_server/product_query_params.dart';
+import 'package:ecommers/web_server/query_params/index.dart';
 import 'package:ecommers/web_server/services/product_comparator.dart';
 import 'package:ecommers/extensions/index.dart';
 
@@ -63,9 +63,7 @@ class DataProvider {
   static Future<List<Product>> getFilteredProducts(
       ProductQueryParams params) async {
     const int defaultItemsPortion = 20;
-
-    Iterable<Product> queryProducts = [...await products];
-    List<Product> resultProducts;
+    List<Product> resultProducts = [...await products].toList();
 
     final categories = json.decodeList<Category>(
       await fetchCategoriesJson(),
@@ -73,30 +71,31 @@ class DataProvider {
     );
 
     if (params.category != null) {
-      queryProducts = queryProducts
-          .where((p) => _isCategoryMatched(categories, p, params.category));
+      resultProducts = resultProducts
+          .where((p) => _isCategoryMatched(categories, p, params.category))
+          .toList();
     }
     if (params.subCategory.isNotNullOrEmpty) {
-      queryProducts =
-          queryProducts.where((p) => p.subCategory == params.subCategory);
-    }
-    if (params.rangeFrom != null && params.rangeTo != null) {
-      queryProducts =
-          queryProducts.skip(params.rangeFrom).take(params.rangeFrom);
+      resultProducts = resultProducts
+          .where((p) => p.subCategory == params.subCategory)
+          .toList();
     }
     if (params.searchQuery.isNotNullOrEmpty) {
-      queryProducts = queryProducts.where(
-        (p) => p.title.toLowerCase().contains(params.searchQuery.toLowerCase()),
-      );
+      resultProducts = resultProducts
+          .where((p) =>
+              p.title.toLowerCase().contains(params.searchQuery.toLowerCase()))
+          .toList();
     }
-
-    resultProducts = queryProducts.toList();
     if (params.sortType != null) {
       final compareFunction = ProductComparator.bySortType(params.sortType);
       resultProducts.sort(compareFunction);
     }
-
-    if (resultProducts.length > defaultItemsPortion) {
+    if (params.from != null && params.to != null) {
+      resultProducts = resultProducts
+          .skip(params.from)
+          .take(params.to - params.from)
+          .toList();
+    } else {
       resultProducts = resultProducts.take(defaultItemsPortion).toList();
     }
 

@@ -8,7 +8,7 @@ import '../core/common/index.dart';
 import '../core/models/data_models/index.dart';
 import './data_access/products_data_access.dart';
 import './data_access/user_data_access.dart';
-import './product_query_params.dart';
+import './query_params/index.dart';
 import './services/authorization_service.dart';
 import './services/data_provider.dart';
 
@@ -117,8 +117,8 @@ class RequestHandler {
   static Future _handleProductsRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
-    final params =
-        ProductQueryParams.fromQueryParameters(body.request.uri.queryParameters);
+    final params = ProductQueryParams.fromQueryParameters(
+        body.request.uri.queryParameters);
 
     final filteredProducts = await DataProvider.getFilteredProducts(params);
 
@@ -131,10 +131,20 @@ class RequestHandler {
   static Future _handleProductLatestRequest(HttpRequestBody body) async {
     if (isNotAuthorized(body.request)) return;
 
+    final params = LatestProductQueryParams.fromQueryParameters(
+        body.request.uri.queryParameters);
+
     var resultProducts = [...await DataProvider.products];
     resultProducts.sort((a, b) => b.catalogAddDate.compareTo(a.catalogAddDate));
 
-    resultProducts = resultProducts.take(itemsPortion).toList();
+    if (params.from != null && params.to != null) {
+      resultProducts = resultProducts
+          .skip(params.from)
+          .take(params.to - params.from)
+          .toList();
+    } else {
+      throw ArgumentError('range is null');
+    }
 
     body.request.response
       ..headers.contentType = ContentType.json

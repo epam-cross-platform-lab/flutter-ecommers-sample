@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -6,7 +7,6 @@ import 'package:flutter/material.dart';
 
 class ProductItemWide extends ProductItemBase {
   final double rate;
-  final Color color;
 
   static const size = Size(160.0, 218.0);
 
@@ -14,9 +14,8 @@ class ProductItemWide extends ProductItemBase {
     @required String assetImagePath,
     @required String title,
     @required double cost,
-    int id,
-    this.color = Colors.transparent,
     this.rate,
+    int id,
   }) : super(
           assetImagePath: assetImagePath,
           cost: cost,
@@ -24,6 +23,16 @@ class ProductItemWide extends ProductItemBase {
           productSize: size,
           id: id,
         );
+
+  factory ProductItemWide.fromModel(Product product) {
+    return ProductItemWide(
+      assetImagePath: product.previewImage,
+      cost: product.price,
+      title: product.title,
+      rate: product.rate,
+      id: product.id,
+    );
+  }
 
   @override
   Widget buildProductItem(BuildContext context) {

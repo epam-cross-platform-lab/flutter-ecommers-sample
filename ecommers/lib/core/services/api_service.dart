@@ -21,14 +21,17 @@ abstract class ApiService extends ChopperService {
   Future<Response<List<Product>>> products({
     @Query(ApiQueryParams.category) String category,
     @Query(ApiQueryParams.subCategory) String subCategory,
-    @Query(ApiQueryParams.rangeFrom) int rangeFrom,
-    @Query(ApiQueryParams.rangeTo) int rangeTo,
+    @Query(ApiQueryParams.rangeFrom) int from,
+    @Query(ApiQueryParams.rangeTo) int to,
     @Query(ApiQueryParams.searchQuery) String searchQuery,
     @Query(ApiQueryParams.sortType) String sortType,
   });
 
   @Get(path: ApiDefines.productsLatest)
-  Future<Response<List<Product>>> productsLatest();
+  Future<Response<List<Product>>> productsLatest(
+    @Query(ApiQueryParams.rangeFrom) int from,
+    @Query(ApiQueryParams.rangeTo) int to,
+  );
 
   @Get(path: ApiDefines.productsRecommended)
   Future<Response<List<Product>>> productRecommended();
