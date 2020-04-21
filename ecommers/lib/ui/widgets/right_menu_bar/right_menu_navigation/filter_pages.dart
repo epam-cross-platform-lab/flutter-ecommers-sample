@@ -1,5 +1,5 @@
 enum FilterPages {
-  shell,
+  categories,
   colors,
   price,
 }

@@ -1,6 +1,8 @@
-import 'package:ecommers/core/common/index.dart';
+//import 'dart:js';
+
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
+import 'package:ecommers/ui/widgets/right_menu_bar/right_menu_navigation/filter_pages.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +10,8 @@ class RightMenuNavigationService {
   final GlobalKey<NavigatorState> rightMenuNavigatorKey =
       GlobalKey<NavigatorState>();
 
-  Future<dynamic> navigateTo(Pages page, {Object arguments}) {
-    final route = _generateRoute(page, arguments);
+  Future<dynamic> navigateTo(FilterPages filtersPage, {Object arguments}) {
+    final route = _generateRoute(filtersPage, arguments);
     return rightMenuNavigatorKey.currentState.push(route);
   }
 
@@ -17,13 +19,18 @@ class RightMenuNavigationService {
     rightMenuNavigatorKey.currentState.pop();
   }
 
-  Route<dynamic> _generateRoute(Pages page, Object arguments) {
+  void goBackWithParams(int item) {
+    rightMenuNavigatorKey.currentState.pop(item);
+  }
+
+  Route<dynamic> _generateRoute(FilterPages filtersPage, Object arguments) {
     Widget resultPage;
 
-    switch (page) {
-      case Pages.shell:
-        resultPage = const RightMenuSecondPage();
+    switch (filtersPage) {
+      case FilterPages.categories:
+        resultPage =  RightMenuSecondPage(listFilterParametrs: arguments as List<String>,);
         break;
+        
 
       default:
         resultPage = ShellPage();

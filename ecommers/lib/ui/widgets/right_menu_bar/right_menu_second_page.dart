@@ -7,74 +7,44 @@ import 'package:flutter_svg/svg.dart';
 
 class RightMenuSecondPage extends StatelessWidget {
   final List<String> listFilterParametrs;
+
   const RightMenuSecondPage({this.listFilterParametrs});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: SvgPicture.asset(
-            Assets.backIcon,
-            color: BrandingColors.primary,
-            height: Insets.x4_5,
+    return SafeArea(
+      child: Container(
+        width: 270,
+        child: Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              icon: SvgPicture.asset(
+                Assets.backIcon,
+                color: BrandingColors.primary,
+                height: Insets.x4_5,
+              ),
+              onPressed: () => rightMenuNavigationService.goBack(),
+            ),
           ),
-          onPressed: () => navigationService.goBack(),
+          body: _myListView(context),
         ),
       ),
-      body: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: Insets.x2_5),
-              ),
-              Container(
-                decoration: BoxDecoration(
-                  color: BrandingColors.background,
-                  borderRadius: BorderRadius.circular(Radiuses.normal),
-                  boxShadow: const [
-                    BoxShadow(
-                      blurRadius: Radiuses.big_1x,
-                      offset: Dimens.defaultBlurOffset,
-                      color: BrandingColors.blur,
-                    )
-                  ],
-                ),
-                child: ListView.separated(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: listFilterParametrs.length,
-                    padding: const EdgeInsets.all(0.0),
-                    itemBuilder: (context, index) {
-                      child:
-                      Text(listFilterParametrs[index]);
-                    },
-                    separatorBuilder: (context, index) {
-                      return Divider(
-                        color: BrandingColors.secondary.withOpacity(0.1),
-                        height: 1.0,
-                        endIndent: 17.0,
-                        thickness: 1,
-                      );
-                    }),
-              ),
-            ],
-          )
-          //  ListView.separated(
-          //         separatorBuilder: (context, index) => Divider(
-          //           color: Colors.black,
-          //         ),
-          //         itemCount: listFilterParametrs.length,
-          //         itemBuilder: (context, index) => Padding(
-          //           padding: EdgeInsets.all(8.0),
-          //           child:  MenuList(
-          //                       title: 'MEN\'S APPAREL',
-          //                       itemHeight: 44.0,
-          //                       itemList: listFilterParametrs,
-          //                     ),
-          //         ),
+    );
+  }
+
+  Widget _myListView(BuildContext context) {
+    return ListView.builder(
+      itemCount: listFilterParametrs.length,
+      itemBuilder: (context, index) {
+        return InkWell(
+          onTap: () {
+            rightMenuNavigationService.goBack();
+          },
+          child: ListTile(
+            title: Text(listFilterParametrs[index]),
           ),
+        );
+      },
     );
   }
 }

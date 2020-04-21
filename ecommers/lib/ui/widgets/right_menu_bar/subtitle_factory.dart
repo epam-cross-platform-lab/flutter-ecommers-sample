@@ -1,6 +1,7 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
+import 'package:ecommers/ui/widgets/right_menu_bar/right_menu_navigation/index.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommers/extensions/string_extension.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -31,13 +32,14 @@ class RightMenuSubTitle extends StatelessWidget {
 
   Widget createSubTitle(BuildContext context) {
     final subTitleModel = model as RightMenuSubTitleModel;
+    final selectedItem =0;
     return InkWell(
       onTap: () => {
-        // rightMenuNavigationService.navigateTo(Pages.rightMenuSecondPage,
-        //     arguments: subTitleModel.subTitle),
+          rightMenuNavigationService.navigateTo(FilterPages.categories,
+            arguments: subTitleModel.subTitle),
       },
       child: Text(
-        subTitleModel.subTitle[0],
+        subTitleModel.subTitle[selectedItem],
         style: Theme.of(context).textTheme.subtitle1.copyWith(
               color: Colors.transparent.withOpacity(0.3),
             ),
