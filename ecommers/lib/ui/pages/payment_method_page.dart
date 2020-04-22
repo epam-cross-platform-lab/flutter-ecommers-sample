@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/payment_method_model.dart';
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -8,7 +9,6 @@ import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart' hide BackButton;
 import 'package:provider/provider.dart';
-import 'package:stripe_payment/stripe_payment.dart';
 
 class PaymentMethodPage extends StatefulWidget {
   @override
@@ -45,7 +45,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                   child: IconButton(
                     icon: Icon(Icons.add),
                     color: BrandingColors.primary,
-                    onPressed: () async =>_insertItem(),
+                    onPressed: () async => _insertItem(),
                   ),
                 ),
               ],
@@ -87,23 +87,24 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
   }
 
   Widget _buildItem(
-      PaymentMethod item, Animation<double> animation, int index) {
+      PaymentMethodModel item, Animation<double> animation, int index) {
     return Padding(
       padding: const EdgeInsets.symmetric(
           vertical: Insets.x4, horizontal: Insets.x6),
       child: SizeTransition(
         sizeFactor: animation,
         child: BankCard(
-          lastFourNumber: item.card.last4,
+          lastFourNumber: item.cardNumberLast4,
           deleteFunction: () => _removeItem(index),
+          isSelect: true //item.id == _provider.selectedItem?.id,
         ),
       ),
     );
   }
 
-  void _removeItem(int removeIndex) {
-    final PaymentMethod removedItem =
-        _provider.removePaymentMethod(removeIndex);
+  Future _removeItem(int removeIndex) async {
+    final PaymentMethodModel removedItem =
+        await _provider.removePaymentMethod(removeIndex);
 
     _listKey.currentState.removeItem(
       removeIndex,
@@ -113,7 +114,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
         child: SizeTransition(
           sizeFactor: animation,
           child: BankCard(
-            lastFourNumber: removedItem.card.last4,
+            lastFourNumber: removedItem.cardNumberLast4,
           ),
         ),
       ),

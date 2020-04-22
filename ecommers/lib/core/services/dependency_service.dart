@@ -26,7 +26,9 @@ ProductService get productService => GetIt.I.get<ProductService>();
 AppService get appService => GetIt.I.get<AppService>();
 CategoryService get categoryService => GetIt.I.get<CategoryService>();
 NoteService get noteService => GetIt.I.get<NoteService>();
+PaymentMethodService get paymentMethodService => GetIt.I.get<PaymentMethodService>();
 ProductDataRepository get productDataRepository => GetIt.I.get<ProductDataRepository>();
+PaymentMethodRepository get paymentMethodRepository => GetIt.I.get<PaymentMethodRepository>();
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
 CartRepository get cartRepository => GetIt.I.get<CartRepository>();
 
@@ -42,6 +44,7 @@ class DependencyService {
       ..registerLazySingleton<ProductService>(() => ProductService())
       ..registerLazySingleton<AppService>(() => AppService())
       ..registerLazySingleton<CategoryService>(() => CategoryService())
+      ..registerLazySingleton<PaymentMethodService>(() => PaymentMethodService())
       ..registerLazySingleton<NoteService>(() => NoteService())
       ..registerSingletonAsync<MembershipService>(
         () async {
@@ -53,6 +56,7 @@ class DependencyService {
       ..registerHttpClient()
       ..registerLazySingleton<CartRepository>(() => CartRepository())
       ..registerLazySingleton<ProductDataRepository>(() => ProductDataRepository()) 
+      ..registerLazySingleton<PaymentMethodRepository>(() => PaymentMethodRepository()) 
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();
