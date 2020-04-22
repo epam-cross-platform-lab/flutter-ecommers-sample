@@ -21,12 +21,13 @@ class ProductLatestGrid extends StatefulWidget {
 
 class _ProductLatestGridState extends State<ProductLatestGrid> {
   ItemsLoadingNotifier _loadingProvider;
-
+  
   @override
-  void initState() {
-    widget.controller.addListener(scrollListener);
+  void didUpdateWidget (ProductLatestGrid oldWidget) {
+    super.didUpdateWidget(oldWidget);
 
-    super.initState();
+    oldWidget.controller.removeListener(scrollListener);
+    widget.controller.addListener(scrollListener);
   }
 
   void scrollListener() {
