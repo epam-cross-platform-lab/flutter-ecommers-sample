@@ -28,16 +28,6 @@ class ProductPageProviderModel extends ProviderModelBase {
   }
 
   Future _saveRecentProduct() async {
-    isBusy = true;
-
-    await Future.wait(
-      {
-        productService.trySaveRecentProduct(
-          _productModel.toJson(),
-        )
-      },
-    );
-
-    isBusy = false;
+    await productService.trySaveRecentProduct(_productModel.toJson());
   }
 }

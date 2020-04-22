@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../decorations/dimens/index.dart';
+
+import 'package:ecommers/ui/decorations/dimens/index.dart';
+import 'package:ecommers/ui/decorations/index.dart';
 
 class ButtonBaseWidget extends StatelessWidget {
   static const double _circleSize = 30.0;
@@ -13,6 +15,7 @@ class ButtonBaseWidget extends StatelessWidget {
   final Color blurColor;
   final String text;
   final String assetIcon;
+  final bool isDisabled;
   final Function() onPressedFunction;
 
   const ButtonBaseWidget({
@@ -23,6 +26,7 @@ class ButtonBaseWidget extends StatelessWidget {
     @required this.blurColor,
     @required this.onPressedFunction,
     this.iconBackgroundColor,
+    this.isDisabled = false,
   });
 
   @override
@@ -42,7 +46,8 @@ class ButtonBaseWidget extends StatelessWidget {
         padding: const EdgeInsets.all(Insets.x2),
         borderRadius: BorderRadius.circular(Radiuses.big_2x),
         color: buttonColor,
-        onPressed: onPressedFunction,
+        disabledColor: BrandingColors.primary.withOpacity(0.5),
+        onPressed: isDisabled ? null : onPressedFunction,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

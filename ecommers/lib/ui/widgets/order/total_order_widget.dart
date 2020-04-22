@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
-import 'package:flutter/material.dart';
 
 class TotalOrderWidget extends StatelessWidget {
   final String buttonText;
+  final bool isButtonDisabled;
   final double cost;
   final Function() onButtonPressedFunction;
   final Color backgroundColor;
@@ -18,6 +20,7 @@ class TotalOrderWidget extends StatelessWidget {
     @required this.buttonText,
     @required this.onButtonPressedFunction,
     this.backgroundColor,
+    this.isButtonDisabled = false,
     this.padding,
   });
 
@@ -65,6 +68,7 @@ class TotalOrderWidget extends StatelessWidget {
                 width: _buttonSize.width,
                 child: PrimaryButtonWidget(
                   text: buttonText,
+                  isDisabled: isButtonDisabled,
                   onPressedFunction: onButtonPressedFunction,
                 ),
               ),

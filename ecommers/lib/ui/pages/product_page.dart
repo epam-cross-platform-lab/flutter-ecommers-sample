@@ -47,7 +47,7 @@ class ProductPage extends StatelessWidget {
                       icon: IconWithBadge(
                         badgeValue: cartProvider.orderCount,
                         badgeTextStyle: Theme.of(context).textTheme.overline,
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.shopping_cart,
                           color: BrandingColors.primaryText,
                         ),

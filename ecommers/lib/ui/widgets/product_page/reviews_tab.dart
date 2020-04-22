@@ -57,7 +57,7 @@ class ReviewsTab extends StatelessWidget {
                           itemCount: ratesCount,
                           itemSize: Insets.x5,
                           ignoreGestures: true,
-                          itemBuilder: (context, _) => Icon(
+                          itemBuilder: (context, _) => const Icon(
                             Icons.star,
                             color: BrandingColors.primary,
                           ),
@@ -143,7 +143,7 @@ class ReviewsTab extends StatelessWidget {
         child: Text(
           alias,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: FontSizes.big_4x,
             fontWeight: FontWeight.bold,
             color: BrandingColors.primary,
