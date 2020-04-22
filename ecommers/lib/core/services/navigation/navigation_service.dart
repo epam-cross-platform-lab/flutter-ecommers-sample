@@ -42,7 +42,7 @@ class NavigationService {
     switch (page) {
       case Pages.shell:
         resultPage = ShellPage();
-        settings = RouteSettings(name: ShellPage.route);
+        settings = const RouteSettings(name: ShellPage.route);
         break;
       case Pages.categories:
         resultPage = CategoriesPage(categories: arguments as List<Category>);

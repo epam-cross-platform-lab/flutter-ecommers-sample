@@ -4,10 +4,10 @@ import 'package:ecommers/core/services/index.dart';
 import 'package:flutter/material.dart';
 
 class SearchPageProviderModel extends ProviderModelBase {
-  List<Product> _latestProducts;
+  List<Product> _recentProducts;
   List<Product> _recommendedProducts;
 
-  List<Product> get latestProducts => _latestProducts;
+  List<Product> get recentProducts => _recentProducts;
   List<Product> get recommendedProducts => _recommendedProducts;
 
   SearchPageProviderModel(BuildContext context) : super(context) {
@@ -18,16 +18,25 @@ class SearchPageProviderModel extends ProviderModelBase {
     isBusy = true;
 
     await Future.wait({
-      _fetchLatestProducts(),
+      _fetchRecentProducts(),
       _fetchRecommendedProducts(),
     });
 
     isBusy = false;
   }
 
-  void clearLetestProducts() {
-    _latestProducts.clear();
+  void clearRecentProducts() {
+    productService.recentProductsDelete();
+    _recentProducts.clear();
     notifyListeners();
+  }
+
+  Future updateRecentProducts() async {
+    isBusy = true;
+
+    await _fetchRecentProducts();
+
+    isBusy = false;
   }
 
   Future refreshRecommendedProducts() async {
@@ -39,8 +48,8 @@ class SearchPageProviderModel extends ProviderModelBase {
     isBusy = false;
   }
 
-  Future _fetchLatestProducts() async {
-    _latestProducts = await productService.fetchLatestProducts(0, 20); //TODO: use recent instead;
+  Future _fetchRecentProducts() async {
+    _recentProducts = await productService.fetchRecentProducts();
   }
 
   Future _fetchRecommendedProducts() async {

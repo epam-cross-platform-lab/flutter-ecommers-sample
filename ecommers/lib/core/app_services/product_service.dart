@@ -40,6 +40,15 @@ class ProductService {
     return null;
   }
 
+  Future<List<Product>> fetchRecentProducts() async =>
+      appService.fetchData(apiService.productsRecent);
+
+  Future<bool> recentProductsDelete() async {
+    final response = await apiService.productsRecentDelete();
+
+    return response.isSuccessful;
+  }
+
   Future<List<Product>> fetchRecommendedProducts() async =>
       appService.fetchData(apiService.productRecommended);
 }

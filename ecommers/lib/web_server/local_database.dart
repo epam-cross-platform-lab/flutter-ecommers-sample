@@ -56,4 +56,9 @@ class LocalDatabase {
       return fromMap(snapshot.value);
     }).toList();
   }
+
+  Future deleteAll(String key) async {
+    final store = intMapStoreFactory.store(key);
+    await store.delete(await _db);
+  }
 }

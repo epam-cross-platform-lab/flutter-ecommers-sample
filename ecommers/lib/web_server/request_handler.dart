@@ -21,6 +21,7 @@ class RequestHandler {
 
   static String getMethod = 'GET';
   static String postMethod = 'POST';
+  static String deleteMethod = 'DELETE';
 
   static void process(HttpRequestBody body) {
     final path = body.request.uri.path.toString();
@@ -178,6 +179,8 @@ class RequestHandler {
       _handleProductsRecentGetRequest(body);
     } else if (body.request.method == postMethod) {
       _handleProductsRecentPostRequest(body);
+    } else if (body.request.method == deleteMethod) {
+      _handleProductsRecentDeleteRequest(body);
     }
   }
 
@@ -187,7 +190,9 @@ class RequestHandler {
     final user = AuthorizationService.getJwtSubject(authorizationHeader);
 
     final recentlyViewedProducts =
-        await _productsDataAccess.getAllRecentProducts(user.username);
+        (await _productsDataAccess.getAllRecentProducts(user.username))
+            .reversed
+            .toList();
 
     body.request.response
       ..headers.contentType = ContentType.json
@@ -203,6 +208,19 @@ class RequestHandler {
     final productMap = body.body as Map<String, dynamic>;
 
     _productsDataAccess.saveRecentProduct(productMap, user.username);
+
+    body.request.response
+      ..statusCode = HttpStatus.ok
+      ..close();
+  }
+
+  static Future _handleProductsRecentDeleteRequest(HttpRequestBody body) async {
+    final authorizationHeader =
+        body.request.headers[HttpHeaders.authorizationHeader].first;
+
+    final user = AuthorizationService.getJwtSubject(authorizationHeader);
+
+    _productsDataAccess.deleteRecentProducts(user.username);
 
     body.request.response
       ..statusCode = HttpStatus.ok
