@@ -174,6 +174,8 @@ class I18n implements WidgetsLocalizations {
   String get yesterday => "Yesterday";
   /// ""
   String get empty => "";
+  /// "No Available Information"
+  String get noAvailableInformation => "No Available Information";
 }
 
 class _I18n_en_US extends I18n {

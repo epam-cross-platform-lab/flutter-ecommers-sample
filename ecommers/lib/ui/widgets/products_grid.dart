@@ -108,7 +108,7 @@ class _ProductsGridState extends State<ProductsGrid> {
           (context, index) {
             final product = products[index];
 
-            return ProductItemWide.fromModel(product);
+            return ProductItemWide(product: product);
           },
           childCount: products.length,
         ),

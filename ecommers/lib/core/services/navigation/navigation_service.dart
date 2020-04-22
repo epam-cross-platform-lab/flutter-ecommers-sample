@@ -55,7 +55,7 @@ class NavigationService {
         );
         break;
       case Pages.product:
-        resultPage = const ProductPage();
+        resultPage = ProductPage(productModel: arguments as Product);
         break;
       case Pages.notifications:
         resultPage = NotificationsPage();

@@ -42,4 +42,9 @@ class ProductService {
 
   Future<List<Product>> fetchRecommendedProducts() async =>
       appService.fetchData(apiService.productRecommended);
+
+  Future<bool> trySaveRecentProduct(Map<String, dynamic> product) async {
+    final response = await apiService.productsRecentPost(product);
+    return response.isSuccessful;
+  }
 }
