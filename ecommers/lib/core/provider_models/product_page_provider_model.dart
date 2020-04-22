@@ -1,5 +1,6 @@
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/widgets.dart';
 
@@ -17,10 +18,16 @@ class ProductPageProviderModel extends ProviderModelBase {
           ?.map((url) => CarouselImage(tag: _productModel.id, path: url))
           ?.toList();
     }
+
+    _saveRecentProduct();
   }
 
   void updateImages(List<CarouselImage> assets) {
     images = assets;
     notifyListeners();
+  }
+
+  Future _saveRecentProduct() async {
+    await productService.trySaveRecentProduct(_productModel.toJson());
   }
 }
