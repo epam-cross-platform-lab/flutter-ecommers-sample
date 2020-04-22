@@ -42,7 +42,11 @@ class ProductPageTabsProviderModel extends ProviderModelBase {
 
   void updateSkuId(ProductSkuIdModel skuIdModel) {
     skuId = _productModel?.models
-        ?.firstWhere((product) => product.size == skuIdModel.size)
+        ?.firstWhere(
+            (product) =>
+                product.color?.argb == skuIdModel.color &&
+                product.size == skuIdModel.size,
+            orElse: () => null)
         ?.skuId
         ?.toString();
     notifyListeners();
