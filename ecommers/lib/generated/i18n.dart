@@ -182,6 +182,8 @@ class I18n implements WidgetsLocalizations {
   String get paymentMethodTitle => "Payment Method";
   /// "ADD CARD"
   String get addCard => "ADD CARD";
+  /// "No Available Information"
+  String get noAvailableInformation => "No Available Information";
 }
 
 class _I18n_en_US extends I18n {

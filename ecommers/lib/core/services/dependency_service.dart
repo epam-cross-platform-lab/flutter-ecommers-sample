@@ -27,16 +27,18 @@ AppService get appService => GetIt.I.get<AppService>();
 CategoryService get categoryService => GetIt.I.get<CategoryService>();
 NoteService get noteService => GetIt.I.get<NoteService>();
 PaymentMethodService get paymentMethodService => GetIt.I.get<PaymentMethodService>();
-ProductDataRepository get productDataRepository => GetIt.I.get<ProductDataRepository>();
 PaymentMethodRepository get paymentMethodRepository => GetIt.I.get<PaymentMethodRepository>();
+CategoryDataRepository get categoryDataRepository => GetIt.I.get<CategoryDataRepository>();
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
 CartRepository get cartRepository => GetIt.I.get<CartRepository>();
+Paginator get paginator => GetIt.I.get<Paginator>();
 
 class DependencyService {
   static void registerDependencies() {
     final GetIt serviceLocator = GetIt.instance;
 
     serviceLocator
+      ..registerFactory<Paginator>(() => Paginator())
       ..registerLazySingleton<NavigationService>(() => NavigationService())
       ..registerLazySingleton<FileManager>(() => FileManager())
       ..registerLazySingleton<AuthorizationService>(
@@ -55,8 +57,9 @@ class DependencyService {
       )
       ..registerHttpClient()
       ..registerLazySingleton<CartRepository>(() => CartRepository())
-      ..registerLazySingleton<ProductDataRepository>(() => ProductDataRepository()) 
       ..registerLazySingleton<PaymentMethodRepository>(() => PaymentMethodRepository()) 
+      ..registerLazySingleton<CategoryDataRepository>(() => CategoryDataRepository())
+
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();

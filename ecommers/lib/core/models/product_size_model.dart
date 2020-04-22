@@ -5,7 +5,7 @@ class ProductSizeModel {
   final String size;
 
   ProductSizeModel({
-    @required this.isSelected,
     @required this.size,
+    this.isSelected = false,
   });
 }

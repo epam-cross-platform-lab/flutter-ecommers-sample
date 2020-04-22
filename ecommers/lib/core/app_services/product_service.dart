@@ -9,25 +9,42 @@ class ProductService {
   Future<List<Product>> fetchProducts({
     Categories category,
     String subCategory,
-    int rangeFrom,
-    int rangeTo,
+    int from,
+    int to,
     String searchQuery,
     SortType sortType,
   }) async {
-    return productDataRepository.getProducts(
+    final response = await apiService.products(
       category: EnumToString.parse(category),
       subCategory: subCategory,
-      rangeFrom: rangeFrom,
-      rangeTo: rangeTo,
+      from: from,
+      to: to,
       searchQuery: searchQuery,
-      sortType: sortType,
+      sortType: EnumToString.parse(sortType),
     );
+
+    if (response.isSuccessful) {
+      return response.body;
+    }
+
+    return null;
   }
 
-  Future<List<Product>> fetchLatestProducts() async {
-    return productDataRepository.getLatestProducts();
+  Future<List<Product>> fetchLatestProducts(int from, int to) async {
+    final response = await apiService.productsLatest(from, to);
+
+    if (response.isSuccessful) {
+      return response.body;
+    }
+
+    return null;
   }
 
   Future<List<Product>> fetchRecommendedProducts() async =>
       appService.fetchData(apiService.productRecommended);
+
+  Future<bool> trySaveRecentProduct(Map<String, dynamic> product) async {
+    final response = await apiService.productsRecentPost(product);
+    return response.isSuccessful;
+  }
 }

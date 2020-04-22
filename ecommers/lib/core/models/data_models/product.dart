@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import 'product_color.dart';
 import 'product_details.dart';
 import 'product_model.dart';
 import 'product_review.dart';
@@ -14,8 +15,9 @@ class Product {
   final String subCategory;
   final String title;
   final double price;
-  final String baseColor;
+  final ProductColor baseColor;
   final int catalogAddDate;
+  final String previewImage;
 
   @JsonKey(name: 'styleImages')
   final List<String> images;
@@ -39,6 +41,7 @@ class Product {
     this.reviews,
     this.subCategory,
     this.catalogAddDate,
+    this.previewImage,
   );
 
   static const fromJsonFactory = _$ProductFromJson;

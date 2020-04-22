@@ -73,5 +73,7 @@
     "delete": "Delete",
     "notBankCards": "You have no credit cards added",
     "paymentMethodTitle":"Payment Method",
-    "addCard": "ADD CARD"
+    "addCard": "ADD CARD",
+    "noAvailableInformation": "No Available Information"
+
 }
