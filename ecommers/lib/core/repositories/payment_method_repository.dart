@@ -31,7 +31,8 @@ class PaymentMethodRepository {
   }
 
   Future removePaymentMethod(PaymentMethodWrapper paymentMethodWrapper) async {
-    await cacheDatabase.deleteDataByFilter(CacheDefines.paymentMethods, {
+    await cacheDatabase.deleteDataByFilter(CacheDefines.paymentMethods, 
+    {
       filterFieldForUser: membershipService.id,
       filterFieldForPaymentMethod: paymentMethodWrapper.id,
     });

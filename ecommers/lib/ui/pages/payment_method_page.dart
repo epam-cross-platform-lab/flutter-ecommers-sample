@@ -90,8 +90,8 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
         child: BankCard(
           lastFourNumber: item.cardNumberLast4,
           deleteFunction: () => _removeItem(index),
-          isSelect: item.isPaymentMethodSelected,
-          onTappedFunction: () => _provider.selectItem(item),
+          isSelect: item.isSelected,
+          onTappedFunction: () => _provider.selectPaymentMethod(item),
         ),
       ),
     );

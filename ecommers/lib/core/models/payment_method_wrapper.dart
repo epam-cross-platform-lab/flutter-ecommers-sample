@@ -6,21 +6,22 @@ part 'payment_method_wrapper.g.dart';
 
 @JsonSerializable()
 class PaymentMethodWrapper {
+  final String id;
   final int userId;
   final PaymentMethodModel paymentMethodModel;
-  final String id;
 
-  PaymentMethodWrapper(
-   { this.id, 
+  PaymentMethodWrapper({
+    this.id,
     this.userId,
     this.paymentMethodModel,
   });
 
-  factory PaymentMethodWrapper.fromPaymentMethod(PaymentMethodModel paymentMethod) {
+  factory PaymentMethodWrapper.fromPaymentMethod(
+      PaymentMethodModel paymentMethod) {
     return PaymentMethodWrapper(
+      id: paymentMethod.id,
       userId: membershipService.id,
       paymentMethodModel: paymentMethod,
-      id: paymentMethod.id,
     );
   }
 

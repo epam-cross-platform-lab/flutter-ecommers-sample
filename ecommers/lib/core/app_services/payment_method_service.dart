@@ -4,15 +4,19 @@ import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 
 class PaymentMethodService {
+  static const String testPublishableKey = 'pk_test_O4MySLvZlQMSIVMEJPCQjbIv00CnR4Bawc';
+  static const String testMerchantId = 'Test';
+  static const String testandroidPayMode = 'test';
+
   PaymentMethodService() {
     _initialize();
   }
 
   Future _initialize() async {
     StripePayment.setOptions(StripeOptions(
-      publishableKey: 'pk_test_O4MySLvZlQMSIVMEJPCQjbIv00CnR4Bawc',
-      merchantId: 'Test',
-      androidPayMode: 'test',
+      publishableKey: testPublishableKey,
+      merchantId: testMerchantId,
+      androidPayMode: testandroidPayMode,
     ));
   }
   Future<List<PaymentMethodModel>> getPaymentMethods() async {
@@ -26,28 +30,28 @@ class PaymentMethodService {
       final paymentMethod = await StripePayment.createPaymentMethod(
         PaymentMethodRequest(card: card),
       );
-      final paymnentMethodModel =
+      final paymentMethodModel =
           PaymentMethodModel.fromStripePaymentMethod(paymentMethod);
 
       await paymentMethodRepository.addPaymentMethod(
-        PaymentMethodWrapper.fromPaymentMethod(paymnentMethodModel),
+        PaymentMethodWrapper.fromPaymentMethod(paymentMethodModel),
       );
 
-      return paymnentMethodModel;
+      return paymentMethodModel;
     } catch (ex) {
       return null;
     }
   }
 
-  Future removePaymentMethod(PaymentMethodModel paymnentMethodModel) async {
+  Future removePaymentMethod(PaymentMethodModel paymentMethodModel) async {
     await paymentMethodRepository.removePaymentMethod(
-      PaymentMethodWrapper.fromPaymentMethod(paymnentMethodModel),
+      PaymentMethodWrapper.fromPaymentMethod(paymentMethodModel),
     );
   }
 
-  Future editPaymentMethod(PaymentMethodModel paymnentMethodModel) async {
+  Future editPaymentMethod(PaymentMethodModel paymentMethodModel) async {
     await paymentMethodRepository.editPaymentMethod(
-      PaymentMethodWrapper.fromPaymentMethod(paymnentMethodModel),
+      PaymentMethodWrapper.fromPaymentMethod(paymentMethodModel),
     );
   }
 }

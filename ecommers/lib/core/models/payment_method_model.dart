@@ -6,12 +6,12 @@ part 'payment_method_model.g.dart';
 @JsonSerializable()
 class PaymentMethodModel {
   final String id;
-  bool isPaymentMethodSelected;
   final String cardCountry;
   final int cardExpMonth;
   final int cardExpYear;
   final String cardNumberLast4;
   final String cardBrand;
+  bool isSelected;
 
   PaymentMethodModel({
     this.id,
@@ -20,13 +20,13 @@ class PaymentMethodModel {
     this.cardExpYear,
     this.cardNumberLast4,
     this.cardBrand,
-    this.isPaymentMethodSelected = false,
+    this.isSelected = false,
   });
 
   factory PaymentMethodModel.fromStripePaymentMethod(PaymentMethod paymentMethod) {
     return PaymentMethodModel(
       id: paymentMethod.id,
-      isPaymentMethodSelected: false,
+      isSelected: false,
       cardBrand: paymentMethod.card.brand,
       cardCountry: paymentMethod.card.country,
       cardExpMonth: paymentMethod.card.expMonth,

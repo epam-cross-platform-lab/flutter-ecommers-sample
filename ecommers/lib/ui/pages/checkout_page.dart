@@ -87,8 +87,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
             return _buildRowAction(
                 imagePath: Assets.creditCard,
                 text: Text(
-                  Formatter.getTextWithNumberCard(provider
-                          ?.selectedPaymentMethod?.cardNumberLast4) ??
+                  Formatter.getTextWithNumberCard(
+                          provider?.selectedPaymentMethod?.cardNumberLast4) ??
                       I18n.of(context).selectCreditCard,
                   style: Theme.of(context)
                       .textTheme

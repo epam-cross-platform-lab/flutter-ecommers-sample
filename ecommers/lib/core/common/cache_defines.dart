@@ -3,4 +3,3 @@ class CacheDefines {
   static const String latestProducts = 'latestProducts';
   static const String paymentMethods = 'paymentMethods';
 }
-
