@@ -184,6 +184,16 @@ class I18n implements WidgetsLocalizations {
   String get addCard => "ADD CARD";
   /// "No Available Information"
   String get noAvailableInformation => "No Available Information";
+  /// "1234-4321-4321-1234"
+  String get creditCardNumberPlaceHolder => "1234-4321-4321-1234";
+  /// "CARD HOLDER NAME"
+  String get namePlaceHolder => "CARD HOLDER NAME";
+  /// "05/23"
+  String get exprDatePlaceHolder => "05/23";
+  /// "CVC"
+  String get cvc => "CVC";
+  /// "ADD CARD DETAILS"
+  String get addCardDetails => "ADD CARD DETAILS";
 }
 
 class _I18n_en_US extends I18n {

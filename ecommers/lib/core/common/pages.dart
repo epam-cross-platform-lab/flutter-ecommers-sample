@@ -13,5 +13,6 @@ enum Pages {
   product,
   notifications,
   note,
-  paymentMethod
+  paymentMethod,
+  addPaymentMethod
 }

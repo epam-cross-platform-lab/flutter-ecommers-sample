@@ -63,6 +63,9 @@ class NavigationService {
       case Pages.paymentMethod:
         resultPage = PaymentMethodPage();
         break;
+      case Pages.addPaymentMethod:
+        resultPage = AddPaymentMethodPage();
+        break;
       default:
         resultPage = ShellPage();
         break;

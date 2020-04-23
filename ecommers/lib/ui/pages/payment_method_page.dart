@@ -1,5 +1,7 @@
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/payment_method_model.dart';
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
+import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -45,7 +47,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
                   child: IconButton(
                     icon: Icon(Icons.add),
                     color: BrandingColors.primary,
-                    onPressed: () async => _insertItem(),
+                    onPressed: () => navigationService.navigateTo(Pages.addPaymentMethod),
                   ),
                 ),
               ],
@@ -96,13 +98,15 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
         child: BankCard(
           lastFourNumber: item.cardNumberLast4,
           deleteFunction: () => _removeItem(index),
-          isSelect: true //item.id == _provider.selectedItem?.id,
+          isSelect: item.isPaymentMethodSelected,
+          onTappedFunction: () => _provider.selectItem(item),
         ),
       ),
     );
   }
 
   Future _removeItem(int removeIndex) async {
+    if (removeIndex >= _provider.paymentMethods.length) return;
     final PaymentMethodModel removedItem =
         await _provider.removePaymentMethod(removeIndex);
 
