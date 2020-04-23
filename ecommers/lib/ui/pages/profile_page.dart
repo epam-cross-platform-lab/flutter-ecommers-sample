@@ -11,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
-  static List<MenuItemModel> _topMenuList = [
+  static final List<MenuItemModel> _topMenuList = [
     MenuItemModel(
       svgAssetIconPath: Assets.allOrderIcon,
       title: 'All My Orders',
@@ -136,6 +136,7 @@ class ProfilePage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Radiuses.big_2x),
         ),
+        onPressed: () {},
         child: Text(
           I18n.of(context).editProfile,
           style: Theme.of(context).textTheme.button,

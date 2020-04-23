@@ -1,5 +1,5 @@
-export 'backgrounded_safe_area.dart';
 export 'back_button.dart';
+export 'backgrounded_safe_area.dart';
 export 'bank_card.dart';
 export 'cached_image.dart';
 export 'carousel_widget.dart';
@@ -10,8 +10,8 @@ export 'icon_with_badge.dart';
 export 'image_card.dart';
 export 'items_loader.dart';
 export 'notes_carousel.dart';
-export 'products_grid.dart';
 export 'product_latest_grid.dart';
+export 'products_grid.dart';
 export 'progress.dart';
 export 'rate_widget.dart';
 export 'slide_menu.dart';
