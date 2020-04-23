@@ -27,6 +27,7 @@ class ReviewsTab extends StatelessWidget {
 
     if (productReviewsModel?.isNotEmpty == true) {
       return ListView.separated(
+        physics: const NeverScrollableScrollPhysics(),
         scrollDirection: Axis.vertical,
         separatorBuilder: (context, index) =>
             const SizedBox(height: Insets.x7_5),
@@ -88,7 +89,9 @@ class ReviewsTab extends StatelessWidget {
                     ),
                     const SizedBox(height: Insets.x1_5),
                     SizedBox(
-                      height: 100,
+                      height: review.imageUrls?.isNotEmpty == true
+                          ? Insets.x12_5
+                          : Insets.x0,
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         separatorBuilder: (context, index) =>
