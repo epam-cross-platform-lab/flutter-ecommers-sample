@@ -55,17 +55,17 @@ class CarouselWidget extends StatelessWidget {
   }
 
   Widget _buildPageView() {
-    return SizedBox(
+    return Container(
       height: height,
       child: PageView.builder(
           itemCount: images.length,
           controller: currentPageController,
           itemBuilder: (BuildContext context, int index) {
-            return Center(
-              child: HeroImage(
-                tag: images[index].tag,
-                imagePath: images[index].path,
-              ),
+            return HeroImage(
+              imagePath: images[index].path,
+              placeholder: images[index].previewImage,
+              tag: images[index].tag,
+              boxFit: BoxFit.contain,
             );
           },
           onPageChanged: (int index) {

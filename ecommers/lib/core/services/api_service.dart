@@ -42,6 +42,9 @@ abstract class ApiService extends ChopperService {
   @Post(path: ApiDefines.productsRecent)
   Future<Response> productsRecentPost(@Body() Map<String, dynamic> product);
 
+  @Delete(path: ApiDefines.productsRecent)
+  Future<Response> productsRecentDelete();
+
   @Get(path: ApiDefines.categories)
   Future<Response<List<Category>>> categories();
 
