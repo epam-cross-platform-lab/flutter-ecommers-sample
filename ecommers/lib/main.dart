@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -56,8 +57,11 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => CartProvider(),
+    return  MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => PaymentMethodProviderModel()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
+      ],
       child: MaterialApp(
         title: 'ecommers',
         theme: ThemeProvider.getTheme(),

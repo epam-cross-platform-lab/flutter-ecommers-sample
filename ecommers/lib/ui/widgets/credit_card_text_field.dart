@@ -9,7 +9,6 @@ class CreditCardTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final TextInputType keyboardType;
-  final bool obscureText;
   final String Function(String) onValidate;
   final Function(String) onChanged;
   final double width;
@@ -19,7 +18,6 @@ class CreditCardTextField extends StatelessWidget {
   const CreditCardTextField({
     this.hintText = '',
     this.keyboardType = TextInputType.text,
-    this.obscureText = false,
     this.controller,
     this.onValidate,
     this.onChanged,
@@ -39,7 +37,6 @@ class CreditCardTextField extends StatelessWidget {
           controller: controller,
           inputFormatters: inputFormatters,
           keyboardType: keyboardType,
-          obscureText: obscureText,
           onChanged: onChanged,
           validator: onValidate,
           maxLength: maxLength,

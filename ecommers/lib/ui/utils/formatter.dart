@@ -7,8 +7,12 @@ class Formatter {
     return currencyFormatter.format(cost);
   }
 
-  static String getTextWithNumberCard(String lastFourNumber) =>'************$lastFourNumber';
-  
+  static String getTextWithNumberCard(String lastFourNumber) {
+    if (lastFourNumber == null || lastFourNumber.isEmpty) return null;
+
+    return '************$lastFourNumber';
+  }
+
   static String getTextWithSpecifiedDateFormat(DateTime date, String format) {
     return DateFormat(format).format(date);
   }

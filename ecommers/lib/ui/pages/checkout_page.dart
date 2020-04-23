@@ -1,11 +1,13 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
+import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/closeable_page.dart';
+import 'package:ecommers/ui/utils/index.dart';
 import 'package:ecommers/ui/widgets/circle_icon.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/order/index.dart';
@@ -21,7 +23,6 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   bool isTotalOrderVisible = true;
-
   @override
   Widget build(BuildContext context) {
     final cartProvider = Provider.of<CartProvider>(context);
@@ -81,15 +82,22 @@ class _CheckoutPageState extends State<CheckoutPage> {
           style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(height: Insets.x2),
-        _buildRowAction(
-          imagePath: Assets.creditCard,
-          text: Text(
-            I18n.of(context).cardEnding,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                .copyWith(fontWeight: FontWeight.w700),
-          ),
+        Consumer<PaymentMethodProviderModel>(
+          builder: (_, provider, __) {
+            return _buildRowAction(
+                imagePath: Assets.creditCard,
+                text: Text(
+                  Formatter.getTextWithNumberCard(provider
+                          ?.selectedPaymentMethod?.cardNumberLast4) ??
+                      I18n.of(context).selectCreditCard,
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(fontWeight: FontWeight.w700),
+                ),
+                action: () =>
+                    navigationService.navigateTo(Pages.paymentMethod));
+          },
         ),
         _buildDevider(),
         Text(
@@ -209,17 +217,20 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildRowAction({String imagePath, Text text}) {
-    return Row(
-      children: <Widget>[
-        SvgPicture.asset(
-          imagePath,
-        ),
-        const SizedBox(width: Insets.x3_5),
-        text,
-        const Spacer(),
-        const CircleIcon(),
-      ],
+  Widget _buildRowAction({String imagePath, Text text, Function() action}) {
+    return InkWell(
+      onTap: action,
+      child: Row(
+        children: <Widget>[
+          SvgPicture.asset(
+            imagePath,
+          ),
+          const SizedBox(width: Insets.x3_5),
+          text,
+          const Spacer(),
+          const CircleIcon(),
+        ],
+      ),
     );
   }
 

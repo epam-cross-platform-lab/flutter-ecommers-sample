@@ -35,6 +35,7 @@ class MenuList extends StatelessWidget {
                 subTitle: itemModel.subTitle,
                 svgAssetIconPath: itemModel.svgAssetIconPath,
                 height: itemHeight,
+                onTap: itemModel.onTappedFunction,
               );
             },
             separatorBuilder: (context, index) {

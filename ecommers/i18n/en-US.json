@@ -79,5 +79,6 @@
     "namePlaceHolder": "CARD HOLDER NAME",
     "exprDatePlaceHolder": "05/23",
     "cvc": "CVC",
-    "addCardDetails": "ADD CARD DETAILS"
+    "addCardDetails": "ADD CARD DETAILS",
+    "selectCreditCard": "Select credit card"
 }

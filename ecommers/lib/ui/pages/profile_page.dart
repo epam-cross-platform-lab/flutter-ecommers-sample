@@ -11,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
-  static const List<MenuItemModel> _topMenuList = [
+  static List<MenuItemModel> _topMenuList = [
     MenuItemModel(
       svgAssetIconPath: Assets.allOrderIcon,
       title: 'All My Orders',
@@ -23,6 +23,7 @@ class ProfilePage extends StatelessWidget {
     MenuItemModel(
       svgAssetIconPath: Assets.pendingPaymentIcon,
       title: 'Pending Payments',
+      onTappedFunction: () => navigationService.navigateTo(Pages.paymentMethod),
     ),
     MenuItemModel(
       svgAssetIconPath: Assets.finishedOrdersIcon,
@@ -62,7 +63,7 @@ class ProfilePage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _buildProfileCard(context),
-          const MenuList(
+           MenuList(
             margin: _listContainerMargin,
             itemList: _topMenuList,
           ),
@@ -135,7 +136,6 @@ class ProfilePage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Radiuses.big_2x),
         ),
-        onPressed: ()=>navigationService.navigateTo(Pages.paymentMethod),
         child: Text(
           I18n.of(context).editProfile,
           style: Theme.of(context).textTheme.button,

@@ -194,6 +194,8 @@ class I18n implements WidgetsLocalizations {
   String get cvc => "CVC";
   /// "ADD CARD DETAILS"
   String get addCardDetails => "ADD CARD DETAILS";
+  /// "Select credit card"
+  String get selectCreditCard => "Select credit card";
 }
 
 class _I18n_en_US extends I18n {
