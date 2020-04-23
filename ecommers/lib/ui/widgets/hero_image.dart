@@ -4,6 +4,7 @@ import 'index.dart';
 
 class HeroImage extends StatelessWidget {
   final String imagePath;
+  final String placeholder;
   final BoxFit boxFit;
   final dynamic tag;
 
@@ -11,6 +12,7 @@ class HeroImage extends StatelessWidget {
     @required this.imagePath,
     this.tag,
     this.boxFit = BoxFit.scaleDown,
+    this.placeholder,
   });
 
   @override
@@ -18,6 +20,7 @@ class HeroImage extends StatelessWidget {
     return Hero(
       tag: tag ?? imagePath,
       child: CachedImage(
+        placeholder: placeholder,
         imagePath: imagePath,
         boxFit: boxFit,
       ),
