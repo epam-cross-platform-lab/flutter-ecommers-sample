@@ -1,4 +1,4 @@
-import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -44,7 +44,7 @@ class MenuItem extends StatelessWidget {
               style: Theme.of(context).textTheme.subtitle2,
             ),
             const SizedBox(width: 10.0),
-            SvgPicture.asset(Assets.menuArrowIcon),
+            const CircleIcon(),
             const SizedBox(width: 15.0),
           ],
         ),

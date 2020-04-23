@@ -9,7 +9,6 @@ import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/icon_with_badge.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_page/index.dart';
-import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 
@@ -44,17 +43,19 @@ class ProductPage extends StatelessWidget {
                 Selector<CartProvider, int>(
                   builder: (context, data, child) {
                     return IconButton(
-                      icon: IconWithBadge(
-                        badgeValue: cartProvider.orderCount,
-                        badgeTextStyle: Theme.of(context).textTheme.overline,
-                        icon: const Icon(
-                          Icons.shopping_cart,
-                          color: BrandingColors.primaryText,
+                        icon: IconWithBadge(
+                          badgeValue: cartProvider.orderCount,
+                          badgeTextStyle: Theme.of(context).textTheme.overline,
+                          icon: const Icon(
+                            Icons.shopping_cart,
+                            color: BrandingColors.primaryText,
+                          ),
                         ),
-                      ),
-                      onPressed: () =>
-                          navigationService.navigateTo(Pages.checkout),
-                    );
+                        onPressed: () {
+                          const int shellCartIndex = 2;
+                          return navigationService.goBackToShell(
+                              index: shellCartIndex);
+                        });
                   },
                   selector: (buildContext, cartProvider) =>
                       cartProvider.orderCount,
