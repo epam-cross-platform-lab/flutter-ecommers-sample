@@ -17,5 +17,6 @@ class Insets {
   static const x7_5 = 30.0;
   static const x8 = 32.0;
   static const x8_5 = 34.0;
+  static const x12_5 = 50.0;
   static const x25 = 100.0;
 }
