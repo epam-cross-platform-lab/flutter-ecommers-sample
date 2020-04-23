@@ -37,10 +37,19 @@ class ProductPageProviderModel extends ProviderModelBase {
   }
 
   void _initProductImages() {
-    if (_productModel?.models?.isNotEmpty == true) {
-      images = _productModel.models[0].imageUrls
-          ?.map((url) => CarouselImage(tag: _productModel.id, path: url))
-          ?.toList();
+    if (_productModel?.models?.isNotEmpty == true &&
+        _productModel.models[0] != null &&
+        _productModel.models[0].imageUrls?.isNotEmpty == true) {
+      images = [
+        CarouselImage(
+            tag: _productModel.id,
+            path: _productModel.models[0].imageUrls.first,
+            previewImage: _productModel.previewImage),
+        ..._productModel.models[0].imageUrls
+            .skip(1)
+            .map((url) => CarouselImage(tag: _productModel.id, path: url))
+            .toList()
+      ];
     }
   }
 
