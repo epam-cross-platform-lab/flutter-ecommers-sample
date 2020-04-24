@@ -48,7 +48,7 @@ class PaymentMethodProviderModel extends ChangeNotifier {
       notifyListeners();
     }
 
-    navigationService.navigateWithReplacementTo(Pages.paymentMethod);
+    navigationService.goBack();
   }
 
   Future<PaymentMethodModel> removePaymentMethod(int index) async {
