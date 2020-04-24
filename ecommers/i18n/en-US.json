@@ -69,6 +69,16 @@
     "fieldError": "field should not be empty.",
     "notificationsTitle": "Notifications",
     "yesterday": "Yesterday",
+    "empty": "",
+    "delete": "Delete",
+    "notBankCards": "You have no credit cards added",
+    "paymentMethodTitle":"Payment Method",
+    "addCard": "ADD CARD",
     "noAvailableInformation": "No Available Information",
-    "empty": ""
+    "creditCardNumberPlaceHolder": "1234-4321-4321-1234",
+    "namePlaceHolder": "CARD HOLDER NAME",
+    "exprDatePlaceHolder": "05/23",
+    "cvc": "CVC",
+    "addCardDetails": "ADD CARD DETAILS",
+    "selectCreditCard": "Select credit card"
 }

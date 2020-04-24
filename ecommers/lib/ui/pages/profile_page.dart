@@ -1,4 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -9,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
-  static const List<MenuItemModel> _topMenuList = [
+  static final List<MenuItemModel> _topMenuList = [
     MenuItemModel(
       svgAssetIconPath: Assets.allOrderIcon,
       title: 'All My Orders',
@@ -21,6 +23,7 @@ class ProfilePage extends StatelessWidget {
     MenuItemModel(
       svgAssetIconPath: Assets.pendingPaymentIcon,
       title: 'Pending Payments',
+      onTappedFunction: () => navigationService.navigateTo(Pages.paymentMethod),
     ),
     MenuItemModel(
       svgAssetIconPath: Assets.finishedOrdersIcon,
@@ -60,7 +63,7 @@ class ProfilePage extends StatelessWidget {
       child: Column(
         children: <Widget>[
           _buildProfileCard(context),
-          const MenuList(
+           MenuList(
             margin: _listContainerMargin,
             itemList: _topMenuList,
           ),

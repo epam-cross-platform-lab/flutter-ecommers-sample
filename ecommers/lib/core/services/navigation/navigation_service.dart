@@ -73,6 +73,12 @@ class NavigationService {
         final model = arguments as Note;
         resultPage = NotePage(model: model);
         break;
+      case Pages.paymentMethod:
+        resultPage = PaymentMethodPage();
+        break;
+      case Pages.addPaymentMethod:
+        resultPage = AddPaymentMethodPage();
+        break;
       default:
         resultPage = ShellPage();
         break;

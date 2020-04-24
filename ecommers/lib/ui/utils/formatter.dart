@@ -7,13 +7,10 @@ class Formatter {
     return currencyFormatter.format(cost);
   }
 
-  static String getTextWithNumberCard(String nuberCard) {
-    const visibleCardSymbolCount = 2;
+  static String getTextWithNumberCard(String lastFourNumber) {
+    if (lastFourNumber == null || lastFourNumber.isEmpty) return null;
 
-    final visibleSymbols =
-        nuberCard.substring(nuberCard.length - visibleCardSymbolCount);
-
-    return 'Master Card ending **$visibleSymbols'; //TODO: use localization
+    return '************$lastFourNumber';
   }
 
   static String getTextWithSpecifiedDateFormat(DateTime date, String format) {
