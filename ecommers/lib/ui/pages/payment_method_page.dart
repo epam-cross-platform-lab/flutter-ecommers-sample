@@ -17,10 +17,11 @@ class PaymentMethodPage extends StatefulWidget {
 }
 
 class _PaymentMethodPageState extends State<PaymentMethodPage> {
-  final GlobalKey<AnimatedListState> _listKey = GlobalKey();
+   GlobalKey<AnimatedListState> _listKey; 
   PaymentMethodProviderModel _provider;
   @override
   Widget build(BuildContext context) {
+    _listKey = GlobalKey();
     final localization = I18n.of(context);
         _provider = Provider.of<PaymentMethodProviderModel>(context);
         return Scaffold(
