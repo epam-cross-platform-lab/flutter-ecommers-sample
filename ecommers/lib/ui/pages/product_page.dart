@@ -1,5 +1,6 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart' hide BackButton;
@@ -67,90 +68,116 @@ class ProductPage extends StatelessWidget {
             ),
             body: DefaultTabController(
               length: 3,
-              child: NestedScrollView(
-                headerSliverBuilder: (context, value) {
-                  return [
-                    SliverAppBar(
-                      pinned: true,
-                      expandedHeight: 320,
-                      leading: const SizedBox(height: 0),
-                      flexibleSpace: FlexibleSpaceBar(
-                        background: CarouselWidget(
-                          images: model.images,
-                          currentPageNotifier: valueNotifier,
-                          currentPageController: pageController,
-                          height: 250,
-                        ),
-                      ),
-                      bottom: PreferredSize(
-                        preferredSize: const Size(0, Insets.x0),
-                        child: Container(
-                          color: BrandingColors.pageBackground,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: Insets.x12_5),
-                            child: TabBar(
-                              indicator: const BubbleTabIndicator(
-                                indicatorHeight: Insets.x8_5,
-                                indicatorColor: BrandingColors.background,
-                                tabBarIndicatorSize: TabBarIndicatorSize.tab,
+              child: Stack(
+                children: <Widget>[
+                  NestedScrollView(
+                    headerSliverBuilder: (context, value) {
+                      return [
+                        SliverAppBar(
+                          pinned: true,
+                          expandedHeight: 320,
+                          leading: const SizedBox(height: 0),
+                          flexibleSpace: FlexibleSpaceBar(
+                            background: CarouselWidget(
+                              images: model.images,
+                              currentPageNotifier: valueNotifier,
+                              currentPageController: pageController,
+                              height: 250,
+                            ),
+                          ),
+                          bottom: PreferredSize(
+                            preferredSize: const Size(0, Insets.x0),
+                            child: Container(
+                              color: BrandingColors.pageBackground,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: Insets.x12_5),
+                                child: TabBar(
+                                  indicator: const BubbleTabIndicator(
+                                    indicatorHeight: Insets.x8_5,
+                                    indicatorColor: BrandingColors.background,
+                                    tabBarIndicatorSize:
+                                        TabBarIndicatorSize.tab,
+                                  ),
+                                  labelStyle: tabBarStyle,
+                                  labelColor: BrandingColors.primary,
+                                  unselectedLabelColor:
+                                      BrandingColors.primaryText,
+                                  isScrollable: false,
+                                  tabs: [
+                                    Tab(text: localization.product),
+                                    Tab(text: localization.details),
+                                    Tab(text: localization.reviews),
+                                  ],
+                                ),
                               ),
-                              labelStyle: tabBarStyle,
-                              labelColor: BrandingColors.primary,
-                              unselectedLabelColor: BrandingColors.primaryText,
-                              isScrollable: false,
-                              tabs: [
-                                Tab(text: localization.product),
-                                Tab(text: localization.details),
-                                Tab(text: localization.reviews),
-                              ],
                             ),
                           ),
                         ),
+                      ];
+                    },
+                    body: TabBarView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: Insets.x4_5,
+                            right: Insets.x4_5,
+                            top: Insets.x4,
+                          ),
+                          child: ProductTab(
+                            colors: model.colors,
+                            sizes: model.sizes,
+                            colorHasChanged: (images) => {
+                              model.updateImages(images),
+                              valueNotifier.value = 0,
+                              pageController.jumpToPage(0),
+                            },
+                            skuIdHasChanged: (skuIdModel) =>
+                                model.updateSkuId(skuIdModel),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: Insets.x4_5,
+                            right: Insets.x4_5,
+                            top: Insets.x4,
+                          ),
+                          child: DetailsTab(
+                            productDetailModel: productModel?.details,
+                            skuId: model.skuId,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                            left: Insets.x4_5,
+                            right: Insets.x4_5,
+                            top: Insets.x4,
+                          ),
+                          child: ReviewsTab(
+                              productReviewsModel: productModel?.reviews),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      color: Colors.white.withOpacity(0.7),
+                      child: Padding(
+                        padding: const EdgeInsets.all(Insets.x5),
+                        child: ProductPageBottomView(
+                            buttonSize: const Size(165.0, 46.0),
+                            addToCartFunction: () {
+                              cartProvider
+                                  .add(OrderModel.fromProduct(productModel));
+                            }),
                       ),
                     ),
-                  ];
-                },
-                body: TabBarView(
-                  physics: const NeverScrollableScrollPhysics(),
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Insets.x4_5,
-                        vertical: Insets.x4,
-                      ),
-                      child: ProductTab(
-                        colors: model.colors,
-                        sizes: model.sizes,
-                        colorHasChanged: (images) => {
-                          model.updateImages(images),
-                          valueNotifier.value = 0,
-                          pageController.jumpToPage(0),
-                        },
-                        skuIdHasChanged: (skuIdModel) =>
-                            model.updateSkuId(skuIdModel),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Insets.x4_5,
-                        vertical: Insets.x4,
-                      ),
-                      child: DetailsTab(
-                        productDetailModel: productModel?.details,
-                        skuId: model.skuId,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: Insets.x4_5,
-                        vertical: Insets.x4,
-                      ),
-                      child: ReviewsTab(
-                          productReviewsModel: productModel?.reviews),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           );
