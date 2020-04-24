@@ -187,33 +187,36 @@ class _CheckoutPageState extends State<CheckoutPage> {
   }
 
   Widget _buildShippingAddress() {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: 136,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'John Doe', //TODO from provider
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(fontWeight: FontWeight.w700),
-              ),
-              Text(
-                'No 123, Sub Street, Main Street,City Name, Province, Country',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyText1
-                    .copyWith(fontWeight: FontWeight.w400),
-              ),
-            ],
+    return InkWell(
+      onTap: () => navigationService.navigateTo(Pages.shippingAddress),
+      child: Row(
+        children: <Widget>[
+          Container(
+            width: 136,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  'John Doe', //TODO from provider
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(fontWeight: FontWeight.w700),
+                ),
+                Text(
+                  'No 123, Sub Street, Main Street,City Name, Province, Country',
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyText1
+                      .copyWith(fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
           ),
-        ),
-        const Spacer(),
-        const CircleIcon(),
-      ],
+          const Spacer(),
+          const CircleIcon(),
+        ],
+      ),
     );
   }
 

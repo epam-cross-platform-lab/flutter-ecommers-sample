@@ -8,21 +8,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MorePage extends StatelessWidget {
-  static const List<MenuItemModel> topMenuList = [
+  static final List<MenuItemModel> topMenuList = [
     MenuItemModel(
       svgAssetIconPath: Assets.shippingIcon,
       title: 'Shipping Adress',
+      onTappedFunction: () =>
+          navigationService.navigateTo(Pages.shippingAddress),
     ),
-    MenuItemModel(
+    const MenuItemModel(
       svgAssetIconPath: Assets.paymentIcon,
       title: 'Payment Method',
     ),
-    MenuItemModel(
+    const MenuItemModel(
       svgAssetIconPath: Assets.currencyIcon,
       title: 'Currency',
       subTitle: 'USD',
     ),
-    MenuItemModel(
+    const MenuItemModel(
       svgAssetIconPath: Assets.languageIcon,
       title: 'Language',
       subTitle: 'ENGLISH',
@@ -66,7 +68,7 @@ class MorePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 35.0),
-          const MenuList(
+          MenuList(
             margin: menuListMargin,
             itemList: topMenuList,
           ),
@@ -99,7 +101,7 @@ class MorePage extends StatelessWidget {
   }
 
   Future logOutPressHandler() async {
-    authorizationService.logOut(); 
+    authorizationService.logOut();
     await navigationService.navigateWithReplacementTo(Pages.authorization);
   }
 }

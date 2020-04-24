@@ -79,6 +79,12 @@ class NavigationService {
       case Pages.addPaymentMethod:
         resultPage = AddPaymentMethodPage();
         break;
+      case Pages.shippingAddress:
+        resultPage = ShippingAddress();
+        break;
+      case Pages.addShippingAddress:
+        resultPage = AddShippingAddress();
+        break;
       default:
         resultPage = ShellPage();
         break;
