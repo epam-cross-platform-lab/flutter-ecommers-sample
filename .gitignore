@@ -77,3 +77,7 @@
 *.g.dart
 *.chopper.dart
 *.lock
+
+ecommers/ios/build/XCBuildData/
+
+ecommers/ios/Flutter/.last_build_id

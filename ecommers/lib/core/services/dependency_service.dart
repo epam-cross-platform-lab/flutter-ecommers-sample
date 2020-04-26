@@ -7,6 +7,7 @@ import 'package:ecommers/core/services/api_service.dart';
 import 'package:ecommers/core/services/membership_service.dart';
 import 'package:ecommers/core/services/navigation/navigation_service.dart';
 import 'package:ecommers/core/repositories/index.dart';
+import 'package:ecommers/data/repository/firebase_repository.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
 
@@ -31,31 +32,32 @@ CategoryService get categoryService => GetIt.I.get<CategoryService>();
 NoteService get noteService => GetIt.I.get<NoteService>();
 CategoryDataRepository get categoryDataRepository =>
     GetIt.I.get<CategoryDataRepository>();
-PaymentMethodService get paymentMethodService => GetIt.I.get<PaymentMethodService>();
-PaymentMethodRepository get paymentMethodRepository => GetIt.I.get<PaymentMethodRepository>();
-CategoryDataRepository get categoryDataRepository => GetIt.I.get<CategoryDataRepository>();
+PaymentMethodService get paymentMethodService =>
+    GetIt.I.get<PaymentMethodService>();
+PaymentMethodRepository get paymentMethodRepository =>
+    GetIt.I.get<PaymentMethodRepository>();
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
 CartRepository get cartRepository => GetIt.I.get<CartRepository>();
 Paginator get paginator => GetIt.I.get<Paginator>();
 DialogService get dialogService => GetIt.I.get<DialogService>();
+FirebaseAuthRepository get authRepository => GetIt.I.get<FirebaseAuthRepository>();
 
 class DependencyService {
   static void registerDependencies() {
     final GetIt serviceLocator = GetIt.instance;
 
     serviceLocator
-      ..registerFactory<Paginator>(() => Paginator())
-      ..registerLazySingleton<NavigationService>(() => NavigationService())
-      ..registerLazySingleton<FileManager>(() => FileManager())
-      ..registerLazySingleton<DialogService>(() => DialogService())
-      ..registerLazySingleton<AuthorizationService>(
-          () => AuthorizationService())
-      ..registerLazySingleton<ProductService>(() => ProductService())
-      ..registerLazySingleton<AppService>(() => AppService())
-      ..registerLazySingleton<CategoryService>(() => CategoryService())
-      ..registerLazySingleton<PaymentMethodService>(() => PaymentMethodService())
-      ..registerLazySingleton<NoteService>(() => NoteService())
-      ..registerSingletonAsync<MembershipService>(
+      ..registerFactory(() => Paginator())
+      ..registerLazySingleton(() => NavigationService())
+      ..registerLazySingleton(() => FileManager())
+      ..registerLazySingleton(() => DialogService())
+      ..registerLazySingleton(() => AuthorizationService())
+      ..registerLazySingleton(() => ProductService())
+      ..registerLazySingleton(() => AppService())
+      ..registerLazySingleton(() => CategoryService())
+      ..registerLazySingleton(() => PaymentMethodService())
+      ..registerLazySingleton(() => NoteService())
+      ..registerSingletonAsync(
         () async {
           final membershipService = MembershipService();
           await membershipService.initialize();
@@ -63,11 +65,13 @@ class DependencyService {
         },
       )
       ..registerHttpClient()
-      ..registerLazySingleton<CartRepository>(() => CartRepository())
+      ..registerLazySingleton(() => CartRepository())
+      ..registerLazySingleton(() => FirebaseAuthRepository())
+      ..registerLazySingleton(() => CategoryDataRepository())
+      ..registerLazySingleton<PaymentMethodRepository>(
+          () => PaymentMethodRepository())
       ..registerLazySingleton<CategoryDataRepository>(
           () => CategoryDataRepository())
-      ..registerLazySingleton<PaymentMethodRepository>(() => PaymentMethodRepository()) 
-      ..registerLazySingleton<CategoryDataRepository>(() => CategoryDataRepository())
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();

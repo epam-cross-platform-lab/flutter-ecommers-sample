@@ -6,8 +6,8 @@ import 'package:ecommers/data/repository/firebase_repository.dart';
 class AuthorizationService {
   Future<AuthStatus> signInWithEmailAndPassword(
       String email, String password) async {
-    final result = await FirebaseAuthRepository()
-        .signInWithEmailAndPassword(email, password);
+    final result =
+        await authRepository.signInWithEmailAndPassword(email, password);
 
     if (result.status == AuthStatus.success) {
       membershipService.refresh(result.data);
@@ -17,11 +17,11 @@ class AuthorizationService {
   }
 
   Future<bool> updateUserName(String username) {
-    return FirebaseAuthRepository().updateUsername(username);
+    return authRepository.updateUsername(username);
   }
 
   Future<AuthStatus> signInWithPhone(String phone) async {
-    final result = await FirebaseAuthRepository().signInWithPhoneNumber(phone);
+    final result = await authRepository.signInWithPhoneNumber(phone);
     if (result.status == AuthStatus.success) {
       membershipService.refresh(result.data);
     }
@@ -31,8 +31,8 @@ class AuthorizationService {
 
   Future<AuthStatus> createUserWithEmailAndPassword(
       String email, String password) async {
-    final result = await FirebaseAuthRepository()
-        .registerWithEmailAndPassword(email, password);
+    final result =
+        await authRepository.registerWithEmailAndPassword(email, password);
     if (result.status == AuthStatus.success) {
       membershipService.refresh(result.data);
     }
@@ -41,11 +41,11 @@ class AuthorizationService {
   }
 
   Future<bool> restorePassword(String email) async {
-    return FirebaseAuthRepository().restorePassword(email);
+    return authRepository.restorePassword(email);
   }
 
   Future logOut() async {
     membershipService.clear();
-    await FirebaseAuthRepository().logout();
+    await authRepository.logout();
   }
 }
