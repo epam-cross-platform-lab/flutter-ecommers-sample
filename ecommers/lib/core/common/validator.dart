@@ -1,7 +1,7 @@
 class UserValidator {
   static const int _minPasswordLength = 4;
   static const _emailPattern =
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"; 
 
   static bool isEmail(String email) {
     final regexp = RegExp(_emailPattern);

@@ -11,7 +11,7 @@ class SearchButton extends StatelessWidget {
   const SearchButton({Key key, this.onPressed}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return  SizedBox(
+    return SizedBox(
       height: 35,
       child: CupertinoButton(
         padding: const EdgeInsets.all(Insets.x2),
@@ -21,7 +21,7 @@ class SearchButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Icon(
+            const Icon(
               Icons.search,
               size: FontSizes.normal,
               color: BrandingColors.primaryText,
@@ -36,6 +36,6 @@ class SearchButton extends StatelessWidget {
           ],
         ),
       ),
-    );   
+    );
   }
 }

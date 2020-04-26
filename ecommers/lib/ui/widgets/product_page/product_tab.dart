@@ -35,15 +35,14 @@ class ProductTab extends StatelessWidget {
       ),
       child: Consumer<ProductTabProviderModel>(
         builder: (context, ProductTabProviderModel model, child) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          return ListView(
             children: [
               Text(
                 localization.selectColor,
                 style: Theme.of(context).textTheme.subtitle2,
               ),
               SizedBox(
-                height: 100,
+                height: Insets.x25,
                 child: _createColorsList(noInfoTextStyle, model, localization),
               ),
               Text(
@@ -52,7 +51,7 @@ class ProductTab extends StatelessWidget {
               ),
               const SizedBox(height: Insets.x5),
               SizedBox(
-                height: 50,
+                height: Insets.x12_5,
                 child: _createSizesList(noInfoTextStyle, model, localization),
               ),
             ],
@@ -79,10 +78,10 @@ class ProductTab extends StatelessWidget {
             onTap: () => _selectSize(i, model),
             child: Container(
               width: 80,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius:
-                    const BorderRadius.all(Radius.circular(Radiuses.big_1x)),
+                    BorderRadius.all(Radius.circular(Radiuses.big_1x)),
               ),
               child: Center(
                 child: Text(
@@ -125,14 +124,14 @@ class ProductTab extends StatelessWidget {
           return GestureDetector(
             onTap: () => _selectColor(i, model),
             child: Container(
-              width: 50,
+              width: Insets.x12_5,
               decoration: BoxDecoration(
                 color: Color(model.colors[i].color),
                 shape: BoxShape.circle,
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     blurRadius: Radiuses.small_1x,
-                    offset: const Offset(Insets.x0, Insets.x0_5),
+                    offset: Offset(Insets.x0, Insets.x0_5),
                     color: Colors.grey,
                   ),
                 ],

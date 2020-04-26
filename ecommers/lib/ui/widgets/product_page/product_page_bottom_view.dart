@@ -14,10 +14,6 @@ class ProductPageBottomView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Divider(
-          height: Insets.x8,
-          color: BrandingColors.secondary.withOpacity(0.6),
-        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
