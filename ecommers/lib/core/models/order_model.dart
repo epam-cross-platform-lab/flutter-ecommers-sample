@@ -5,33 +5,24 @@ part 'order_model.g.dart';
 
 @JsonSerializable()
 class OrderModel {
-  final int id;
-  final String title;
-  final String description;
-  final String imagePath;
-  final double cost;
+  final Product product;
+  final String characteristics;
   int count;
 
   OrderModel({
-    this.id,
-    this.description,
-    this.cost,
-    this.imagePath,
-    this.title,
-    this.count,
+    this.product,
+    this.characteristics,
+    this.count = 1,
   });
 
   static const fromJson = _$OrderModelFromJson;
 
-  factory OrderModel.fromProduct(Product product) {
+  factory OrderModel.fromProduct({Product product, String size, String color}) {
     return OrderModel(
-      id: product.id,
-      imagePath: product.previewImage,
-      title: product.title,
-      cost: product.price,
-      description: 'Medium, Green 3',
+      product: product,
+      characteristics: '$size, $color',
       count: 1,
-    ); //todo change mapping after refactoring productPage
+    );
   }
 
   Map<String, dynamic> toJson() => _$OrderModelToJson(this);

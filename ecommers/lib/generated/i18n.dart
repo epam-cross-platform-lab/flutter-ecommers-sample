@@ -172,8 +172,6 @@ class I18n implements WidgetsLocalizations {
   String get notificationsTitle => "Notifications";
   /// "Yesterday"
   String get yesterday => "Yesterday";
-  /// ""
-  String get empty => "";
   /// "Delete"
   String get delete => "Delete";
   /// "You have no credit cards added"
@@ -196,6 +194,10 @@ class I18n implements WidgetsLocalizations {
   String get addCardDetails => "ADD CARD DETAILS";
   /// "Select credit card"
   String get selectCreditCard => "Select credit card";
+  /// "Message to seller (optional)"
+  String get messageToSeller => "Message to seller (optional)";
+  /// ""
+  String get empty => "";
 }
 
 class _I18n_en_US extends I18n {

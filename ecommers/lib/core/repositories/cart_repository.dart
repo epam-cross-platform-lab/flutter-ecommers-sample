@@ -1,32 +1,31 @@
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/cache_wrappers/order_model_wrapper.dart';
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/repositories/index.dart';
 import 'package:ecommers/core/services/index.dart';
 
-class CartRepository {
-  static const filterField = 'id';
+class CartRepository extends RepositoryBase<OrderModelWrapper> {
+  static const filterFieldUserId = 'userId';
+  static const filterFieldOrderId = 'id';
+  CartRepository()
+      : super(
+          filterFieldForItem: filterFieldOrderId,
+          filterFieldForUser: filterFieldUserId,
+          repositoryKey: CacheDefines.orders,
+        );
 
   Future<List<OrderModel>> getAllOrders() async {
-    return cacheDatabase.getAll(
-        membershipService.id.toString(), OrderModel.fromJson);
+    final oederWrappers = await cacheDatabase.getByEqualsFilter(
+        repositoryKey,
+        OrderModelWrapper.fromJson,
+        {filterFieldUserId: membershipService.id});
+
+    return oederWrappers.map((e) => e.order).toList();
   }
 
   Future dropOrders() async {
-    await cacheDatabase.dropData(membershipService.id.toString());
+    await cacheDatabase.deleteDataByFilter(repositoryKey, {
+      filterFieldForUser: membershipService.id}); 
   }
 
-  Future editOrder(OrderModel order) async {
-    await cacheDatabase.updateByEqualsFilter(membershipService.id.toString(),
-        order.toJson(), {filterField: order.id});
-  }
-
-  Future addOrder(OrderModel order) async {
-    await cacheDatabase.saveMap(
-      membershipService.id.toString(),
-      order.toJson(),
-    );
-  }
-
-  Future removeOrder(OrderModel order) async {
-    await cacheDatabase.deleteDataByFilter(
-        membershipService.id.toString(), {filterField: order.id});
-  }
 }

@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/cache_wrappers/wrapper.dart';
 import 'package:ecommers/core/models/payment_method_model.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -5,7 +6,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'payment_method_wrapper.g.dart';
 
 @JsonSerializable()
-class PaymentMethodWrapper {
+class PaymentMethodWrapper implements Wrapper{
+  @override
   final String id;
   final int userId;
   final PaymentMethodModel paymentMethodModel;
