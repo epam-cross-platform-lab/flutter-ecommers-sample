@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,7 +11,6 @@ import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/web_server/local_server.dart';
 import 'package:get/get.dart';
-import 'package:provider/provider.dart';
 
 import 'core/common/index.dart';
 import 'core/models/data_models/index.dart';
@@ -19,8 +19,9 @@ import 'core/provider_models/index.dart';
 List<Product> products;
 
 void main() {
-  runApp(MainApp());
   DependencyService.registerDependencies();
+  runZonedGuarded(() => runApp(MainApp()),
+      (ex, stackTrace) => logger.ex(ex, stackTrace: stackTrace));
 }
 
 class MainApp extends StatefulWidget {

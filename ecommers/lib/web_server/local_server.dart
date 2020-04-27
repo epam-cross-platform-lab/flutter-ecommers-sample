@@ -5,7 +5,6 @@ import 'dart:math';
 import 'package:http_server/http_server.dart';
 
 import './request_handler.dart';
-import './services/data_provider.dart';
 
 class LocalServer {
   static const int _port = 8090;

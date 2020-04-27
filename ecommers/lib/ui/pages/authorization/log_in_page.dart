@@ -1,5 +1,5 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/provider_models/log_in_provider_model.dart';
+import 'package:ecommers/core/provider_models/auth/log_in_provider_model.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';

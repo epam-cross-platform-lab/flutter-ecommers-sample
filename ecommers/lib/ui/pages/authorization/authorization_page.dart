@@ -1,7 +1,8 @@
+import 'package:ecommers/core/provider_models/auth/forgot_password_provider_model.dart';
+import 'package:ecommers/core/provider_models/auth/log_in_provider_model.dart';
+import 'package:ecommers/core/provider_models/auth/sign_up_provider_model.dart';
 import 'package:ecommers/core/provider_models/base_provider_model.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/provider_models/log_in_provider_model.dart';
-import 'package:ecommers/core/provider_models/sign_up_provider_model.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/forgot_password_page.dart';

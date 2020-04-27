@@ -41,7 +41,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
               Visibility(
                 visible: _provider.paymentMethods.isNotEmpty,
                 child: IconButton(
-                  icon: Icon(Icons.add),
+                  icon: const Icon(Icons.add),
                   color: BrandingColors.primary,
                   onPressed: () => navigationService.navigateTo(Pages.addPaymentMethod),
                 ),

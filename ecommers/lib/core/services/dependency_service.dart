@@ -8,7 +8,10 @@ import 'package:ecommers/core/services/membership_service.dart';
 import 'package:ecommers/core/services/navigation/navigation_service.dart';
 import 'package:ecommers/core/repositories/index.dart';
 import 'package:ecommers/data/repository/firebase_repository.dart';
+import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/logger.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 import '../app_services/index.dart';
@@ -19,34 +22,36 @@ import '../services/index.dart';
 import '../services/navigation/navigation_service.dart';
 
 final GlobalKey mainGlobalKey = GlobalKey();
+final _ioc = GetIt.I;
 
-NavigationService get navigationService => GetIt.I.get<NavigationService>();
-FileManager get fileManager => GetIt.I.get<FileManager>();
-ApiService get apiService => GetIt.I.get<ApiService>();
-MembershipService get membershipService => GetIt.I.get<MembershipService>();
+NavigationService get navigationService => _ioc.get<NavigationService>();
+FileManager get fileManager => _ioc.get<FileManager>();
+ApiService get apiService => _ioc.get<ApiService>();
+MembershipService get membershipService => _ioc.get<MembershipService>();
 AuthorizationService get authorizationService =>
-    GetIt.I.get<AuthorizationService>();
-ProductService get productService => GetIt.I.get<ProductService>();
-AppService get appService => GetIt.I.get<AppService>();
-CategoryService get categoryService => GetIt.I.get<CategoryService>();
-NoteService get noteService => GetIt.I.get<NoteService>();
+    _ioc.get<AuthorizationService>();
+ProductService get productService => _ioc.get<ProductService>();
+AppService get appService => _ioc.get<AppService>();
+CategoryService get categoryService => _ioc.get<CategoryService>();
+NoteService get noteService => _ioc.get<NoteService>();
 CategoryDataRepository get categoryDataRepository =>
-    GetIt.I.get<CategoryDataRepository>();
+    _ioc.get<CategoryDataRepository>();
 PaymentMethodService get paymentMethodService =>
-    GetIt.I.get<PaymentMethodService>();
+    _ioc.get<PaymentMethodService>();
 PaymentMethodRepository get paymentMethodRepository =>
-    GetIt.I.get<PaymentMethodRepository>();
-CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
-CartRepository get cartRepository => GetIt.I.get<CartRepository>();
-Paginator get paginator => GetIt.I.get<Paginator>();
-DialogService get dialogService => GetIt.I.get<DialogService>();
-FirebaseAuthRepository get authRepository => GetIt.I.get<FirebaseAuthRepository>();
+    _ioc.get<PaymentMethodRepository>();
+CacheDatabase get cacheDatabase => _ioc.get<CacheDatabase>();
+CartRepository get cartRepository => _ioc.get<CartRepository>();
+Paginator get paginator => _ioc.get<Paginator>();
+DialogService get dialogService => _ioc.get<DialogService>();
+FirebaseAuthRepository get authRepository => _ioc.get<FirebaseAuthRepository>();
+Logger get logger => _ioc.get<Logger>();
+I18n get localization => I18n.of(Get.context);
 
 class DependencyService {
   static void registerDependencies() {
-    final GetIt serviceLocator = GetIt.instance;
-
-    serviceLocator
+    _ioc.reset();
+    _ioc
       ..registerFactory(() => Paginator())
       ..registerLazySingleton(() => NavigationService())
       ..registerLazySingleton(() => FileManager())
@@ -54,6 +59,7 @@ class DependencyService {
       ..registerLazySingleton(() => AuthorizationService())
       ..registerLazySingleton(() => ProductService())
       ..registerLazySingleton(() => AppService())
+      ..registerLazySingleton(() => Logger())
       ..registerLazySingleton(() => CategoryService())
       ..registerLazySingleton(() => PaymentMethodService())
       ..registerLazySingleton(() => NoteService())
@@ -70,8 +76,6 @@ class DependencyService {
       ..registerLazySingleton(() => CategoryDataRepository())
       ..registerLazySingleton<PaymentMethodRepository>(
           () => PaymentMethodRepository())
-      ..registerLazySingleton<CategoryDataRepository>(
-          () => CategoryDataRepository())
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();

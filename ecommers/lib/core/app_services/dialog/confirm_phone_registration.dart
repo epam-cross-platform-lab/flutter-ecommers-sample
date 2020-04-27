@@ -1,4 +1,6 @@
 import 'package:ecommers/core/app_services/dialog/dialog_base.dart';
+import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 
 class ConfirmPhoneRegistration extends DialogBase<String> {
@@ -9,7 +11,10 @@ class ConfirmPhoneRegistration extends DialogBase<String> {
     final codeController = TextEditingController();
 
     return showInternally(AlertDialog(
-      title: Text("Enter SMS Code"),
+      title: Text(
+        localization.enter_sms_code_dialogTitle,
+        style: Theme.of(context).textTheme.headline5,
+      ),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -18,10 +23,10 @@ class ConfirmPhoneRegistration extends DialogBase<String> {
       ),
       actions: <Widget>[
         FlatButton(
-          child: const Text("Done"),
           textColor: Colors.white,
-          color: Colors.redAccent,
+          color: BrandingColors.primary,
           onPressed: () => dismissDialog(codeController.text),
+          child: Text(localization.enter_sms_code_dialogPrimary_button),
         )
       ],
     ));

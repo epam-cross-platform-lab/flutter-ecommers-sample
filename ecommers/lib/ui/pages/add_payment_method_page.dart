@@ -22,7 +22,7 @@ class AddPaymentMethodPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding:
-              EdgeInsets.symmetric(vertical: Insets.x4, horizontal: Insets.x6),
+              const EdgeInsets.symmetric(vertical: Insets.x4, horizontal: Insets.x6),
           child: Column(
             children: <Widget>[
               Center(

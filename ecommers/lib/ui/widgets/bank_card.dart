@@ -76,7 +76,7 @@ class BankCard extends StatelessWidget {
   Widget _buildCircleIcon(bool isSelect) {
     if (!isSelect) return SizedBox(width: CircleIcon.size.width);
 
-    return CircleIcon(
+    return const CircleIcon(
       imagePath: Assets.successIcon,
       backgroundColor: BrandingColors.primary,
       iconColor: BrandingColors.secondaryText,

@@ -3,7 +3,7 @@ import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/provider_models/provider_model_base.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/data/repository/firebase_repository.dart';
-import 'package:ecommers/ui/utils/dialog_manager.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 
 class LogInProviderModel extends ProviderModelBase {
@@ -17,46 +17,49 @@ class LogInProviderModel extends ProviderModelBase {
       : super(context);
 
   Future login() async {
+    Crashlytics.instance.crash();
     if (!UserValidator.isPasswordValid(userName)) return;
-
     isBusy = true;
 
     final result = await authorizationService.signInWithEmailAndPassword(
         userName, password);
-    await handleResult(result);
+    await _handleResult(result);
 
     isBusy = false;
   }
 
   Future phoneLogin() async {
+    await dialogService.confirmPhoneRegistration();
+    return;
     if (!UserValidator.isPhoneNumber(userName)) return;
 
     isBusy = true;
 
     final result = await authorizationService.signInWithPhone(userName);
-    await handleResult(result);
+    await _handleResult(result);
 
     isBusy = false;
   }
 
-  Future handleResult(AuthStatus result) async {
+  Future _handleResult(AuthStatus result) async {
     switch (result) {
       case AuthStatus.success:
         await navigationService.navigateWithReplacementTo(Pages.shell);
         break;
       case AuthStatus.timeout:
         dialogService.showDialog(
-            header: 'Timeout exceeded',
-            body: 'Timeout exceeded',
-            confirmText: 'OK');
+            header: localization.enter_sms_code_dialogTitle,
+            body: localization.sms_code_timeout_dialogDescription,
+            confirmText: localization.sms_code_timeout_dialogPrimary_button);
         break;
       case AuthStatus.verificationFailed:
         dialogService.showDialog(
-            header: 'Verification failed',
-            body: 'Check your login or password and try again',
-            confirmText: 'OK');
+            header: localization.verification_dialogTitle,
+            body: localization.verification_dialogDescription,
+            confirmText: localization.verification_dialogPrimary_button);
         break;
-      case AuthStatus.unknown:
+      default:
+        dialogService.somethingWentWrong();
         break;
     }
   }

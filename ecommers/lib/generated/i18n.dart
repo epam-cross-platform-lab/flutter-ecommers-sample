@@ -172,8 +172,6 @@ class I18n implements WidgetsLocalizations {
   String get notificationsTitle => "Notifications";
   /// "Yesterday"
   String get yesterday => "Yesterday";
-  /// ""
-  String get empty => "";
   /// "Delete"
   String get delete => "Delete";
   /// "You have no credit cards added"
@@ -196,6 +194,30 @@ class I18n implements WidgetsLocalizations {
   String get addCardDetails => "ADD CARD DETAILS";
   /// "Select credit card"
   String get selectCreditCard => "Select credit card";
+  /// "Enter SMS Code"
+  String get enter_sms_code_dialogTitle => "Enter SMS Code";
+  /// "Done"
+  String get enter_sms_code_dialogPrimary_button => "Done";
+  /// "Timeout exceeded"
+  String get sms_code_timeout_dialogTitle => "Timeout exceeded";
+  /// "Timeout exceeded"
+  String get sms_code_timeout_dialogDescription => "Timeout exceeded";
+  /// "OK"
+  String get sms_code_timeout_dialogPrimary_button => "OK";
+  /// "Verification failed"
+  String get verification_dialogTitle => "Verification failed";
+  /// "Check your login or password and try again"
+  String get verification_dialogDescription => "Check your login or password and try again";
+  /// "OK"
+  String get verification_dialogPrimary_button => "OK";
+  /// "SOmething went wrong"
+  String get something_went_wrongTitle => "SOmething went wrong";
+  /// "Please try again later"
+  String get something_went_wrongDescription => "Please try again later";
+  /// "OK"
+  String get something_went_wrongPrimary_button => "OK";
+  /// ""
+  String get empty => "";
 }
 
 class _I18n_en_US extends I18n {

@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>741825832218-us3qkb43lv2knebj13h1jelqkqq2k3rg.apps.googleusercontent.com</string>
+	<string>741825832218-sc6oi2p09j5hlqk1ic8bft5m6qu69ik3.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.741825832218-us3qkb43lv2knebj13h1jelqkqq2k3rg</string>
+	<string>com.googleusercontent.apps.741825832218-sc6oi2p09j5hlqk1ic8bft5m6qu69ik3</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBavQ3eug9CKgLX6ywA9REj_L38zoY5T9c</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.test.ecommers</string>
+	<string>com.ecommers.sample</string>
 	<key>PROJECT_ID</key>
 	<string>flutterecommers</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:741825832218:ios:29445790bd1fcc9c9878a3</string>
+	<string>1:741825832218:ios:663991130651e9229878a3</string>
 	<key>DATABASE_URL</key>
 	<string>https://flutterecommers.firebaseio.com</string>
 </dict>

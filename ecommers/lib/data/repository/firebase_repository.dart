@@ -17,8 +17,10 @@ class FirebaseAuthRepository {
 
       return Result.submit(result.toLoginModel(), AuthStatus.success);
     } on PlatformException catch (ex) {
+      logger.ex(ex);
       return Result.submit(null, AuthStatus.verificationFailed);
     } on Exception catch (ex) {
+      logger.ex(ex);
       return Result.submit(null, AuthStatus.unknown);
     }
   }
@@ -30,8 +32,10 @@ class FirebaseAuthRepository {
           .signInWithEmailAndPassword(email: email, password: password);
       return Result.submit(result.toLoginModel(), AuthStatus.success);
     } on PlatformException catch (ex) {
+      logger.ex(ex);
       return Result.submit(null, AuthStatus.verificationFailed);
     } on Exception catch (ex) {
+      logger.ex(ex);
       return Result.submit(null, AuthStatus.unknown);
     }
   }
@@ -67,6 +71,7 @@ class FirebaseAuthRepository {
           await FirebaseAuth.instance.signInWithCredential(credential);
       return Result.submit(model.toLoginModel(), AuthStatus.success);
     } on Exception catch (ex) {
+      logger.ex(ex);
       return Result.submit(null, AuthStatus.success);
     }
   }
@@ -77,8 +82,10 @@ class FirebaseAuthRepository {
       (await FirebaseAuth.instance.currentUser())?.updateProfile(profileInfo);
       return true;
     } on PlatformException catch (ex) {
+      logger.ex(ex);
       return false;
     } on Exception catch (ex) {
+      logger.ex(ex);
       return false;
     }
   }
@@ -88,6 +95,7 @@ class FirebaseAuthRepository {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       return true;
     } on Exception catch (ex) {
+      logger.ex(ex);
       return false;
     }
   }
@@ -97,6 +105,7 @@ class FirebaseAuthRepository {
       await FirebaseAuth.instance.signOut();
       return true;
     } on Exception catch (ex) {
+      logger.ex(ex);
       return false;
     }
   }

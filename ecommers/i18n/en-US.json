@@ -62,17 +62,16 @@
     "category": "CATEGORY",
     "fitting": "FITTING",
     "ok": "ok",
-    "recommended":"RECOMMENDED",
-    "refresh":"REFRESH",
+    "recommended": "RECOMMENDED",
+    "refresh": "REFRESH",
     "emailError": "email is not valid.",
     "passwordError": "password should have at least 4 characters.",
     "fieldError": "field should not be empty.",
     "notificationsTitle": "Notifications",
     "yesterday": "Yesterday",
-    "empty": "",
     "delete": "Delete",
     "notBankCards": "You have no credit cards added",
-    "paymentMethodTitle":"Payment Method",
+    "paymentMethodTitle": "Payment Method",
     "addCard": "ADD CARD",
     "noAvailableInformation": "No Available Information",
     "creditCardNumberPlaceHolder": "1234-4321-4321-1234",
@@ -80,5 +79,25 @@
     "exprDatePlaceHolder": "05/23",
     "cvc": "CVC",
     "addCardDetails": "ADD CARD DETAILS",
-    "selectCreditCard": "Select credit card"
+    "selectCreditCard": "Select credit card",
+    "enter_sms_code_dialog": {
+        "title": "Enter SMS Code",
+        "primary_button": "Done"
+    },
+    "sms_code_timeout_dialog": {
+        "title": "Timeout exceeded",
+        "description": "Timeout exceeded",
+        "primary_button": "OK"
+    },
+    "verification_dialog": {
+        "title": "Verification failed",
+        "description": "Check your login or password and try again",
+        "primary_button": "OK"
+    },
+    "something_went_wrong": {
+        "title": "SOmething went wrong",
+        "description": "Please try again later",
+        "primary_button": "OK"
+    },
+    "empty": ""
 }

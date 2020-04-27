@@ -65,23 +65,18 @@ class SignUpProviderModel extends ProviderModelBase {
         break;
       case AuthStatus.timeout:
         dialogService.showDialog(
-            header: 'Timeout exceeded',
-            body: 'Timeout exceeded',
-            confirmText: 'OK');
+            header: localization.enter_sms_code_dialogTitle,
+            body: localization.sms_code_timeout_dialogDescription,
+            confirmText: localization.sms_code_timeout_dialogPrimary_button);
         break;
       case AuthStatus.verificationFailed:
         dialogService.showDialog(
-            header: 'Verification failed',
-            body: 'Check your login or password and try again',
-            confirmText: 'OK');
-        break;
-      case AuthStatus.unknown:
-        dialogService.showDialog(
-            header: 'Unknown error',
-            body: 'Something go wrong. Please retry later',
-            confirmText: 'OK');
+            header: localization.verification_dialogTitle,
+            body: localization.verification_dialogDescription,
+            confirmText: localization.verification_dialogPrimary_button);
         break;
       default:
+        dialogService.somethingWentWrong();
         break;
     }
   }
