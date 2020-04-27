@@ -13,13 +13,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: print
+      run: echo ls
     - name: setup google services json
       uses: DamianReeves/write-file-action@v1.0
       with:
         path: ${{env.home}}/ecommers/android/app/google-services.json
         contents: |
           echo ${{secrets.android_google_services}}
-        write-mode: append
+        write-mode: overwrite
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
