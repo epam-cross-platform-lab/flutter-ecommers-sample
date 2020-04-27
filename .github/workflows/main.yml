@@ -13,8 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-      #setup google services json
-    - uses: DamianReeves/write-file-action
+    - name: setup google services json
+      uses: DamianReeves/write-file-action
       with:
         path: ${{env.home}}/ecommers/android/app/google-services.json
         contents: |
