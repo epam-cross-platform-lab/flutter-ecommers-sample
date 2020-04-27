@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2.1.0
     - name: setup google services json
-      uses: DamianReeves/write-file-action@v2.1.0
+      uses: DamianReeves/write-file-action@v1.0
       with:
         path: /ecommers/android/app/google-services.json
         contents: |
