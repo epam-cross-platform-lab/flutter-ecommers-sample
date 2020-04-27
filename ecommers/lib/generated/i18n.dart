@@ -196,6 +196,20 @@ class I18n implements WidgetsLocalizations {
   String get addCardDetails => "ADD CARD DETAILS";
   /// "Select credit card"
   String get selectCreditCard => "Select credit card";
+  /// "Adding Shipping Address"
+  String get addingShippingAddress => "Adding Shipping Address";
+  /// "Full Name"
+  String get fullName => "Full Name";
+  /// "Address"
+  String get address => "Address";
+  /// "City"
+  String get city => "City";
+  /// "State/Province/Region"
+  String get stateProvinceRegion => "State/Province/Region";
+  /// "Zip Code (Postal Code)"
+  String get zipCode => "Zip Code (Postal Code)";
+  /// "Country"
+  String get country => "Country";
 }
 
 class _I18n_en_US extends I18n {

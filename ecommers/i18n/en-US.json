@@ -80,5 +80,12 @@
     "exprDatePlaceHolder": "05/23",
     "cvc": "CVC",
     "addCardDetails": "ADD CARD DETAILS",
-    "selectCreditCard": "Select credit card"
+    "selectCreditCard": "Select credit card",
+    "addingShippingAddress": "Adding Shipping Address",
+    "fullName": "Full Name",
+    "address": "Address",
+    "city": "City",
+    "stateProvinceRegion": "State/Province/Region",
+    "zipCode": "Zip Code (Postal Code)",
+    "country": "Country"
 }
