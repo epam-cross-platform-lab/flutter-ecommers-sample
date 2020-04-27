@@ -69,7 +69,6 @@
     "fieldError": "field should not be empty.",
     "notificationsTitle": "Notifications",
     "yesterday": "Yesterday",
-    "empty": "",
     "delete": "Delete",
     "notBankCards": "You have no credit cards added",
     "paymentMethodTitle":"Payment Method",
@@ -80,5 +79,7 @@
     "exprDatePlaceHolder": "05/23",
     "cvc": "CVC",
     "addCardDetails": "ADD CARD DETAILS",
-    "selectCreditCard": "Select credit card"
+    "selectCreditCard": "Select credit card",
+    "messageToSeller" : "Message to seller (optional)",
+    "empty": ""
 }

@@ -109,7 +109,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildListFooter() {
+  Widget _buildListFooter(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -119,7 +119,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: 'Message to seller (optional)',
+              hintText:  I18n.of(context).messageToSeller,
               hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
                     fontWeight: FontWeight.w300,
                     fontStyle: FontStyle.italic,
@@ -152,19 +152,19 @@ class _CheckoutPageState extends State<CheckoutPage> {
         }
 
         if (index == newItemCount - 1) {
-          return _buildListFooter();
+          return _buildListFooter(context);
         }
 
         final currentOrder = cartProvider.orders[index - 1];
         return SmallOrderWidget(
-          primaryText: currentOrder.title,
-          secondaryText: currentOrder.description,
-          assetImagePath: currentOrder.imagePath,
-          cost: currentOrder.cost,
+          primaryText: currentOrder.product.title,
+          secondaryText: currentOrder.characteristics,
+          assetImagePath: currentOrder.product.previewImage,
+          cost: currentOrder.product.price,
           count: currentOrder.count,
           countIncrementFunction: () => cartProvider.add(currentOrder),
           countDecrementFunction: () => cartProvider.remove(currentOrder),
-          tapOrderFunction: () => navigationService.navigateTo(Pages.product),
+          tapOrderFunction: () => navigationService.navigateTo(Pages.product, arguments: currentOrder.product),
         );
       },
       separatorBuilder: (BuildContext context, int index) {

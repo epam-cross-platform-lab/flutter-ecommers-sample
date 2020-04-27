@@ -70,11 +70,12 @@ class _CartPageState extends State<CartPage> {
                 alignment: Alignment.centerLeft),
             menuItems: [_createRemoveWidget(currentOrder)],
             child: OrderWidget(
-              primaryText: currentOrder.title,
-              secondaryText: currentOrder.description,
-              assetImagePath: currentOrder.imagePath,
-              cost: currentOrder.cost,
+              primaryText: currentOrder.product.title,
+              secondaryText: currentOrder.characteristics,
+              assetImagePath: currentOrder.product.previewImage,
+              cost: currentOrder.product.price,
               count: currentOrder.count,
+              tapOrderFunction: () => navigationService.navigateTo(Pages.product, arguments: currentOrder.product),
               countIncrementFunction: () => _cartProvider.add(currentOrder),
               countDecrementFunction: () => _handleRemove(key, currentOrder),
             ));
