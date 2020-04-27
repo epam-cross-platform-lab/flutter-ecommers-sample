@@ -6,6 +6,8 @@ import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/widgets.dart';
 
 class ProductPageProviderModel extends ProviderModelBase {
+  static  const String undefineTagValue = 'undef';
+  
   final Product _productModel;
   dynamic heroImageTag;
 
@@ -44,7 +46,7 @@ class ProductPageProviderModel extends ProviderModelBase {
   void navigateToCart() {
     const int shellCartIndex = 2;
     
-    heroImageTag = 'undef';
+    heroImageTag = undefineTagValue;
     notifyListeners();
     
     navigationService.goBackToShell(index: shellCartIndex);

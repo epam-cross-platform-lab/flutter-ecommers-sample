@@ -64,7 +64,15 @@ class NavigationService {
         );
         break;
       case Pages.product:
-        resultPage = ProductPage(productModel: arguments as Product);
+        if (arguments is Product) {
+          resultPage = ProductPage(productModel: arguments);
+          break;
+        }
+        final productPageArguments = arguments as PageArguments;
+        resultPage = ProductPage(
+          productModel: productPageArguments?.arg1 as Product,
+          withHeroAniamtion: productPageArguments?.arg2 as bool,
+        );
         break;
       case Pages.notifications:
         resultPage = NotificationsPage();

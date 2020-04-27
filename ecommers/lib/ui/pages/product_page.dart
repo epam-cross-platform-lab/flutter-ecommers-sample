@@ -12,11 +12,11 @@ import 'package:ecommers/ui/widgets/icon_with_badge.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/product_page/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/index.dart';
 
 class ProductPage extends StatelessWidget {
   final Product productModel;
-  const ProductPage({@required this.productModel, Key key}) : super(key: key);
+  final bool withHeroAniamtion;
+  const ProductPage({@required this.productModel, this.withHeroAniamtion = true, Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +76,7 @@ class ProductPage extends StatelessWidget {
                           leading: const SizedBox(height: 0),
                           flexibleSpace: FlexibleSpaceBar(
                             background: CarouselWidget(
-                              tag: model.heroImageTag,
+                              tag: withHeroAniamtion ? model.heroImageTag : ProductPageProviderModel.undefineTagValue,
                               images: model.images,
                               currentPageNotifier: valueNotifier,
                               currentPageController: pageController,
