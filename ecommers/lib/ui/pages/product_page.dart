@@ -47,19 +47,16 @@ class ProductPage extends StatelessWidget {
                 Selector<CartProvider, int>(
                   builder: (context, data, child) {
                     return IconButton(
-                        icon: IconWithBadge(
-                          badgeValue: cartProvider.orderCount,
-                          badgeTextStyle: Theme.of(context).textTheme.overline,
-                          icon: const Icon(
-                            Icons.shopping_cart,
-                            color: BrandingColors.primaryText,
-                          ),
+                      icon: IconWithBadge(
+                        badgeValue: cartProvider.orderCount,
+                        badgeTextStyle: Theme.of(context).textTheme.overline,
+                        icon: const Icon(
+                          Icons.shopping_cart,
+                          color: BrandingColors.primaryText,
                         ),
-                        onPressed: () {
-                          const int shellCartIndex = 2;
-                          return navigationService.goBackToShell(
-                              index: shellCartIndex);
-                        });
+                      ),
+                      onPressed: model.navigateToCart,
+                    );
                   },
                   selector: (buildContext, cartProvider) =>
                       cartProvider.orderCount,
@@ -79,6 +76,7 @@ class ProductPage extends StatelessWidget {
                           leading: const SizedBox(height: 0),
                           flexibleSpace: FlexibleSpaceBar(
                             background: CarouselWidget(
+                              tag: model.heroImageTag,
                               images: model.images,
                               currentPageNotifier: valueNotifier,
                               currentPageController: pageController,

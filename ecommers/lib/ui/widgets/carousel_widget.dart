@@ -11,12 +11,14 @@ class CarouselWidget extends StatelessWidget {
   final ValueNotifier<int> currentPageNotifier;
   final PageController currentPageController;
   final double height;
+  final dynamic tag;
 
   const CarouselWidget({
     @required this.images,
     @required this.currentPageNotifier,
     @required this.currentPageController,
     this.height,
+     this.tag,
   });
 
   @override
@@ -55,22 +57,24 @@ class CarouselWidget extends StatelessWidget {
   }
 
   Widget _buildPageView() {
-    return Container(
-      height: height,
-      child: PageView.builder(
-          itemCount: images.length,
-          controller: currentPageController,
-          itemBuilder: (BuildContext context, int index) {
-            return HeroImage(
-              imagePath: images[index].path,
-              placeholder: images[index].previewImage,
-              tag: images[index].tag,
-              boxFit: BoxFit.contain,
-            );
-          },
-          onPageChanged: (int index) {
-            currentPageNotifier.value = index;
-          }),
+    return Hero (
+      tag: tag,
+          child: Container(
+        height: height,
+        child: PageView.builder(
+            itemCount: images.length,
+            controller: currentPageController,
+            itemBuilder: (BuildContext context, int index) {
+              return CachedImage(
+                imagePath: images[index].path,
+                placeholder: images[index].previewImage,
+                boxFit: BoxFit.contain,
+              );
+            },
+            onPageChanged: (int index) {
+              currentPageNotifier.value = index;
+            }),
+      ),
     );
   }
 }
