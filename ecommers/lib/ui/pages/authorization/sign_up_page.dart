@@ -1,5 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/auth/sign_up_provider_model.dart';
+import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -37,7 +38,7 @@ class _SignUpPageState extends State<SignUpPage> {
     final provider = Provider.of<SignUpProviderModel>(context, listen: false);
 
     final authForm = _isPhoneSelected
-        ? _buildPhoneSignUp(localization, provider)
+        ? _buildPhoneSignUp(provider)
         : _buildSignUpForm(localization, provider);
 
     return AuthorizationTabBase(
@@ -53,7 +54,9 @@ class _SignUpPageState extends State<SignUpPage> {
         FlatButton(
           onPressed: () => setState(() => _isPhoneSelected = !_isPhoneSelected),
           child: Text(
-            _isPhoneSelected ? 'or use email ' : 'or use phone number',
+            _isPhoneSelected
+                ? localization.or_use_email
+                : localization.or_use_phone,
             style: Theme.of(context)
                 .textTheme
                 .bodyText1
@@ -66,25 +69,26 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  AuthForm _buildPhoneSignUp(I18n localization, SignUpProviderModel provider) {
+  AuthForm _buildPhoneSignUp(SignUpProviderModel provider) {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           AuthTextField(
-            labelText: localization.email,
+            labelText: localization.your_phone_number,
             keyboardType: TextInputType.phone,
             icon: Icons.phone,
+            prefixText: '+',
             controller: phoneController,
             onValidate: (text) => UserValidator.isPhoneNumber(text)
-                ? null
-                : 'phone number incorrect',
+                ? localization.field_should_not_be_empty
+                : localization.incorrect_phone_number,
             onChanged: (text) => provider.phoneNumber = userNameController.text,
           ),
           AuthTextField(
             labelText: localization.username,
             svgIconPath: Assets.profileIcon,
-            onValidate: (text) => text.isEmpty ? localization.fieldError : null,
+            onValidate: (text) => text.isEmpty ? localization.field_should_not_be_empty : null,
             onChanged: (text) => provider.username = phoneController.text,
           ),
         ],
@@ -110,7 +114,7 @@ class _SignUpPageState extends State<SignUpPage> {
             labelText: localization.username,
             controller: userNameController,
             svgIconPath: Assets.profileIcon,
-            onValidate: (text) => text.isEmpty ? localization.fieldError : null,
+            onValidate: (text) => text.isEmpty ? localization.field_should_not_be_empty : null,
             onChanged: (text) => provider.username = userNameController.text,
           ),
           AuthTextField(

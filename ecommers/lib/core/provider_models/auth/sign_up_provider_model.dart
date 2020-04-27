@@ -49,9 +49,11 @@ class SignUpProviderModel extends ProviderModelBase {
   }
 
   Future autorizeWithPhoneNumber() async {
+    if (!UserValidator.isPhoneNumber(phoneNumber)) return;
+
     isBusy = true;
 
-    final result = await authorizationService.signInWithPhone(phoneNumber);
+    final result = await authorizationService.signInWithPhone('+$phoneNumber');
     _handleResult(result);
 
     isBusy = false;

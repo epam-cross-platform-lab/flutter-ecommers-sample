@@ -1,7 +1,7 @@
 class UserValidator {
   static const int _minPasswordLength = 4;
   static const _emailPattern =
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"; 
+      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
 
   static bool isEmail(String email) {
     final regexp = RegExp(_emailPattern);
@@ -9,12 +9,11 @@ class UserValidator {
     return regexp.hasMatch(email);
   }
 
-  static bool isPhoneNumber(String email) {
-    const _emailPattern = r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$';
+  static bool isPhoneNumber(String phone) {
+    const _phoneNumber = r'^[0-9]{12}$';
+    final regexp = RegExp(_phoneNumber);
 
-    final regexp = RegExp(_emailPattern);
-
-    return regexp.hasMatch(email);
+    return regexp.hasMatch(phone);
   }
 
   static bool isPasswordValid(String password) {

@@ -167,7 +167,7 @@ class I18n implements WidgetsLocalizations {
   /// "password should have at least 4 characters."
   String get passwordError => "password should have at least 4 characters.";
   /// "field should not be empty."
-  String get fieldError => "field should not be empty.";
+  String get field_should_not_be_empty => "field should not be empty.";
   /// "Notifications"
   String get notificationsTitle => "Notifications";
   /// "Yesterday"
@@ -216,6 +216,14 @@ class I18n implements WidgetsLocalizations {
   String get something_went_wrongDescription => "Please try again later";
   /// "OK"
   String get something_went_wrongPrimary_button => "OK";
+  /// "YOUR PHONE NUMBER"
+  String get your_phone_number => "YOUR PHONE NUMBER";
+  /// "or use email"
+  String get or_use_email => "or use email";
+  /// "or use phone number"
+  String get or_use_phone => "or use phone number";
+  /// "incorrect phone number"
+  String get incorrect_phone_number => "incorrect phone number";
   /// ""
   String get empty => "";
 }

@@ -1,6 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/auth/log_in_provider_model.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
@@ -31,12 +31,11 @@ class _LogInPageState extends State<LogInPage> {
 
   @override
   Widget build(BuildContext context) {
-    final localization = I18n.of(context);
     final provider = Provider.of<LogInProviderModel>(context, listen: false);
 
     final loginForm = _isPhoneSelected
-        ? _buildPhoneForm(localization, provider)
-        : _buildEmailForm(localization, provider);
+        ? _buildPhoneForm(provider)
+        : _buildEmailForm(provider);
 
     return AuthorizationTabBase(
       children: <Widget>[
@@ -51,7 +50,9 @@ class _LogInPageState extends State<LogInPage> {
         FlatButton(
           onPressed: () => setState(() => _isPhoneSelected = !_isPhoneSelected),
           child: Text(
-            _isPhoneSelected ? 'or use email ' : 'or use phone number',
+            _isPhoneSelected
+                ? localization.or_use_email
+                : localization.or_use_phone,
             style: Theme.of(context)
                 .textTheme
                 .bodyText1
@@ -64,26 +65,28 @@ class _LogInPageState extends State<LogInPage> {
     );
   }
 
-  AuthForm _buildPhoneForm(I18n localization, LogInProviderModel provider) {
+  AuthForm _buildPhoneForm(LogInProviderModel provider) {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           AuthTextField(
-            labelText: 'YOUR PHONE NUMBER',
+            prefixText: '+',
+            labelText: localization.your_phone_number,
             keyboardType: TextInputType.phone,
             icon: Icons.phone,
             controller: phoneController,
-            onValidate: (text) => text.isEmpty ? localization.fieldError : null,
+            onValidate: (text) =>
+                text.isEmpty ? localization.field_should_not_be_empty : localization.incorrect_phone_number,
             onChanged: (String text) =>
-                provider.userName = phoneController.text,
+                provider.phoneNumber = phoneController.text,
           ),
         ],
       ),
     );
   }
 
-  AuthForm _buildEmailForm(I18n localization, LogInProviderModel provider) {
+  AuthForm _buildEmailForm(LogInProviderModel provider) {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -93,7 +96,9 @@ class _LogInPageState extends State<LogInPage> {
             keyboardType: TextInputType.emailAddress,
             svgIconPath: Assets.profileIcon,
             controller: emailController,
-            onValidate: (text) => text.isEmpty ? localization.fieldError : null,
+            onValidate: (text) => text.isEmpty
+                ? localization.field_should_not_be_empty
+                : null,
             onChanged: (String text) =>
                 provider.userName = emailController.text,
           ),

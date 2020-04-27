@@ -42,20 +42,25 @@ class FirebaseAuthRepository {
 
   Future<Result<LoginModel, AuthStatus>> signInWithPhoneNumber(String phone) {
     final completer = Completer<Result<LoginModel, AuthStatus>>();
-    FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: phone,
-        timeout: const Duration(minutes: 2),
-        verificationCompleted: (AuthCredential cr) {},
-        verificationFailed: (AuthException exception) {
-          return null;
-        },
-        codeSent: (verificationId, [int codeSent]) async {
-          final code = await dialogService.confirmPhoneRegistration();
-          completer.complete(await _applyCode(verificationId, code));
-        },
-        codeAutoRetrievalTimeout: (str) {
-          return null;
-        });
+    try {
+      FirebaseAuth.instance.verifyPhoneNumber(
+          phoneNumber: phone,
+          timeout: const Duration(minutes: 2),
+          verificationCompleted: (AuthCredential cr) {},
+          verificationFailed: (AuthException exception) {
+            completer.complete(Result.submit(null, AuthStatus.verificationFailed));
+          },
+          codeSent: (verificationId, [int codeSent]) async {
+            final code = await dialogService.confirmPhoneRegistration();
+            completer.complete(await _applyCode(verificationId, code));
+          },
+          codeAutoRetrievalTimeout: (str) {
+            return completer
+                .complete(Result.submit(null, AuthStatus.verificationFailed));
+          });
+    } catch (ex) {
+      completer.complete(Result.submit(null, AuthStatus.verificationFailed));
+    }
 
     return completer.future;
   }
@@ -72,7 +77,7 @@ class FirebaseAuthRepository {
       return Result.submit(model.toLoginModel(), AuthStatus.success);
     } on Exception catch (ex) {
       logger.ex(ex);
-      return Result.submit(null, AuthStatus.success);
+      return Result.submit(null, AuthStatus.verificationFailed);
     }
   }
 

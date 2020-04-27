@@ -3,11 +3,11 @@ import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/provider_models/provider_model_base.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/data/repository/firebase_repository.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 
 class LogInProviderModel extends ProviderModelBase {
   String userName;
+  String phoneNumber;
   String password;
   Function bottomTapCallback;
   List<AuthRichTextSpanModel> _bottomText;
@@ -17,7 +17,6 @@ class LogInProviderModel extends ProviderModelBase {
       : super(context);
 
   Future login() async {
-    Crashlytics.instance.crash();
     if (!UserValidator.isPasswordValid(userName)) return;
     isBusy = true;
 
@@ -29,13 +28,11 @@ class LogInProviderModel extends ProviderModelBase {
   }
 
   Future phoneLogin() async {
-    await dialogService.confirmPhoneRegistration();
-    return;
-    if (!UserValidator.isPhoneNumber(userName)) return;
+    if (!UserValidator.isPhoneNumber(phoneNumber)) return;
 
     isBusy = true;
 
-    final result = await authorizationService.signInWithPhone(userName);
+    final result = await authorizationService.signInWithPhone('+$phoneNumber');
     await _handleResult(result);
 
     isBusy = false;

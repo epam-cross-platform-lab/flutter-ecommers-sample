@@ -7,6 +7,7 @@ class AuthTextField extends StatelessWidget {
   final TextEditingController controller;
   final String labelText;
   final String svgIconPath;
+  final String prefixText;
   final IconData icon;
   final TextInputType keyboardType;
   final bool obscureText;
@@ -20,13 +21,13 @@ class AuthTextField extends StatelessWidget {
       this.obscureText = false,
       this.controller,
       this.onValidate,
+      this.prefixText,
       this.onChanged,
       this.icon});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText,
@@ -34,6 +35,7 @@ class AuthTextField extends StatelessWidget {
       validator: onValidate,
       decoration: InputDecoration(
         labelText: labelText,
+        prefixText: prefixText,
         labelStyle: Theme.of(context).textTheme.headline5,
         prefixIcon: _buildIcon(),
         focusedBorder: const UnderlineInputBorder(
