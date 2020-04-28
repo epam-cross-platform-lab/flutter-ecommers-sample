@@ -15,16 +15,17 @@ class AuthTextField extends StatelessWidget {
   final String Function(String) onValidate;
   final Function(String) onChanged;
 
-  const AuthTextField(
-      {this.labelText = '',
-      this.svgIconPath = '',
-      this.keyboardType = TextInputType.text,
-      this.obscureText = false,
-      this.controller,
-      this.onValidate,
-      this.prefixText,
-      this.onChanged,
-      this.icon});
+  const AuthTextField({
+    this.labelText = '',
+    this.svgIconPath = '',
+    this.keyboardType = TextInputType.text,
+    this.obscureText = false,
+    this.controller,
+    this.onValidate,
+    this.prefixText,
+    this.onChanged,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
