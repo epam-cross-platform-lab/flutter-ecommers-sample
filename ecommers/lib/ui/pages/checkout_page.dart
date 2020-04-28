@@ -22,10 +22,17 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   bool isTotalOrderVisible = true;
+
+  CartProvider _cartProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _cartProvider = Provider.of<CartProvider>(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context);
-
     isTotalOrderVisible = MediaQuery.of(context).viewInsets.bottom == 0.0;
 
     return CloseablePage(
@@ -36,19 +43,19 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
                     Insets.x6, Insets.x0, Insets.x5, Insets.x4),
-                child: _buildOrderListView(cartProvider),
+                child: _buildOrderListView(),
               ),
             ),
           ),
           Visibility(
             visible: isTotalOrderVisible,
             child: TotalOrderWidget(
-              cost: cartProvider.calculateTotalCost(),
+              cost: _cartProvider.calculateTotalCost(),
               backgroundColor: BrandingColors.background,
               onButtonPressedFunction: () {
                 navigationService.navigateTo(Pages.success);
                 //todo request for place order
-                cartProvider.resetCart();
+                _cartProvider.resetCart();
               },
               buttonText: localization.placeOrderButton,
               padding: const EdgeInsets.fromLTRB(
@@ -141,8 +148,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildOrderListView(CartProvider cartProvider) {
-    final int newItemCount = cartProvider.orders.length + 2;
+  Widget _buildOrderListView() {
+    final int newItemCount = _cartProvider.orders.length + 2;
     return ListView.separated(
       itemCount: newItemCount,
       itemBuilder: (BuildContext context, int index) {
@@ -154,15 +161,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
           return _buildListFooter();
         }
 
-        final currentOrder = cartProvider.orders[index - 1];
+        final currentOrder = _cartProvider.orders[index - 1];
         return SmallOrderWidget(
           primaryText: currentOrder.title,
           secondaryText: currentOrder.description,
           assetImagePath: currentOrder.imagePath,
           cost: currentOrder.cost,
           count: currentOrder.count,
-          countIncrementFunction: () => cartProvider.add(currentOrder),
-          countDecrementFunction: () => cartProvider.remove(currentOrder),
+          countIncrementFunction: () => _cartProvider.add(currentOrder),
+          countDecrementFunction: () => _cartProvider.remove(currentOrder),
           tapOrderFunction: () => navigationService.navigateTo(Pages.product),
         );
       },

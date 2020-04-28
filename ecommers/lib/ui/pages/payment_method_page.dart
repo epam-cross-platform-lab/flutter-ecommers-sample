@@ -18,10 +18,17 @@ class PaymentMethodPage extends StatefulWidget {
 class _PaymentMethodPageState extends State<PaymentMethodPage> {
   GlobalKey<AnimatedListState> _listKey;
   PaymentMethodProviderModel _provider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _provider = Provider.of<PaymentMethodProviderModel>(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     _listKey = GlobalKey();
-    _provider = Provider.of<PaymentMethodProviderModel>(context);
+
     return Scaffold(
       backgroundColor: BrandingColors.pageBackground,
       appBar: AppBar(

@@ -17,13 +17,16 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   static const _orderDeviderIndent = 100.0;
-
   CartProvider _cartProvider;
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _cartProvider = Provider.of<CartProvider>(context);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding:
           const EdgeInsets.fromLTRB(Insets.x0, Insets.x0, Insets.x0, Insets.x4),
