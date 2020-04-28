@@ -1,13 +1,14 @@
 import 'dart:async';
 
+import 'package:ecommers/core/mixins/index.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommers/core/mixins/items_loading_notifier.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart' as services;
 
-class HomeProviderModel extends ProviderModelBase with ItemsLoadingNotifier {
+class HomeProviderModel extends ChangeNotifier
+    with ItemsLoadingNotifier, BusyNotifier {
   List<Category> _categoryList;
   List<Product> _productsLatest;
   List<Note> _notesLatest;
@@ -16,7 +17,7 @@ class HomeProviderModel extends ProviderModelBase with ItemsLoadingNotifier {
   List<Product> get productsLatest => _productsLatest;
   List<Note> get notesLatest => _notesLatest;
 
-  HomeProviderModel(BuildContext context) : super(context) {
+  HomeProviderModel() {
     fetchAllData();
   }
 

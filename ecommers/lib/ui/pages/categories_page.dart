@@ -20,7 +20,7 @@ class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      createProvider: (_) => CategoriesProviderModel(context, categories),
+      createProvider: (_) => CategoriesProviderModel(categories),
       child: CloseablePage(
         child: BackgroundedSafeArea(
           child: SingleChildScrollView(

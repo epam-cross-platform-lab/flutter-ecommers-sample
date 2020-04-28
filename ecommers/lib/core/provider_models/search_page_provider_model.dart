@@ -1,16 +1,16 @@
+import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/services/index.dart';
 import 'package:flutter/material.dart';
 
-class SearchPageProviderModel extends ProviderModelBase {
+class SearchPageProviderModel extends ChangeNotifier with BusyNotifier {
   List<Product> _recentProducts;
   List<Product> _recommendedProducts;
 
   List<Product> get recentProducts => _recentProducts;
   List<Product> get recommendedProducts => _recommendedProducts;
 
-  SearchPageProviderModel(BuildContext context) : super(context) {
+  SearchPageProviderModel() {
     fetchAllData();
   }
 

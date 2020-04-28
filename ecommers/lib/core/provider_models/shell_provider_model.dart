@@ -1,8 +1,8 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/provider_models/index.dart';
+import 'package:ecommers/core/mixins/index.dart';
 import 'package:flutter/material.dart';
 
-class ShellProviderModel extends ProviderModelBase {
+class ShellProviderModel extends ChangeNotifier with BusyNotifier {
   final List<Pages> pages = [
     Pages.home,
     Pages.search,
@@ -12,8 +12,6 @@ class ShellProviderModel extends ProviderModelBase {
   ];
 
   int selectedItemIndex = 0;
-
-  ShellProviderModel(BuildContext context) : super(context);
 
   Pages get selectedPage => pages[selectedItemIndex];
 

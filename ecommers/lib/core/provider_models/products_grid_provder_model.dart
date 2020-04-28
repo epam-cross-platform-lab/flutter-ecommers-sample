@@ -1,16 +1,14 @@
 import 'package:async/async.dart';
+import 'package:ecommers/core/mixins/index.dart';
 import 'package:flutter/material.dart';
-
-import 'package:ecommers/core/mixins/items_loading_notifier.dart';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/sort_type.dart';
-import 'package:ecommers/core/provider_models/provider_model_base.dart';
 import 'package:ecommers/core/services/index.dart' as services;
 
-class ProductsGridProviderModel extends ProviderModelBase
-    with ItemsLoadingNotifier {
+class ProductsGridProviderModel extends ChangeNotifier
+    with BusyNotifier, ItemsLoadingNotifier {
   final Categories _categoryType;
   final String _subCategory;
   final SortType _sortType;
@@ -22,14 +20,12 @@ class ProductsGridProviderModel extends ProviderModelBase
   List<Product> get products => _products;
 
   ProductsGridProviderModel({
-    @required BuildContext context,
     Categories categoryType,
     String subCategory,
     SortType sortType,
   })  : _categoryType = categoryType,
         _subCategory = subCategory,
-        _sortType = sortType,
-        super(context);
+        _sortType = sortType;
 
   Future updateProducts(String searchQuery) async {
     if (_fetchProductsOperation != null &&

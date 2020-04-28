@@ -28,10 +28,7 @@ class ProductPage extends StatelessWidget {
     final pageController = PageController(initialPage: 0, keepPage: false);
 
     return ChangeNotifierProvider(
-      create: (_) => ProductPageProviderModel(
-        productModel,
-        context: context,
-      ),
+      create: (_) => ProductPageProviderModel(productModel),
       child: Consumer<ProductPageProviderModel>(
         builder: (context, ProductPageProviderModel model, child) {
           return Scaffold(

@@ -14,7 +14,7 @@ class SearchPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final localization = I18n.of(context);
     return BasePage(
-      createProvider: (context) => SearchPageProviderModel(context),
+      createProvider: (context) => SearchPageProviderModel(),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: Insets.x5),

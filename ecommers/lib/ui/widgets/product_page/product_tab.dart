@@ -28,11 +28,7 @@ class ProductTab extends StatelessWidget {
     final noInfoTextStyle = Theme.of(context).textTheme.subtitle1;
 
     return ChangeNotifierProvider(
-      create: (_) => ProductTabProviderModel(
-        colors,
-        sizes,
-        context: context,
-      ),
+      create: (_) => ProductTabProviderModel(colors, sizes),
       child: Consumer<ProductTabProviderModel>(
         builder: (context, ProductTabProviderModel model, child) {
           return ListView(

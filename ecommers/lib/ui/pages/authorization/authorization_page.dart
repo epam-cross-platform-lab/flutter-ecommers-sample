@@ -38,13 +38,11 @@ class _AuthorizationPageState extends State<AuthorizationPage>
       providers: [
         ChangeNotifierProvider(
           create: (_) => LogInProviderModel(
-            context,
             bottomTapCallback: () => currentTabController.animateTo(0),
           ),
         ),
-        ChangeNotifierProvider(create: (_) => SignUpProviderModel(context)),
-        ChangeNotifierProvider(
-            create: (_) => ForgotPasswordProviderModel(context)),
+        ChangeNotifierProvider(create: (_) => SignUpProviderModel()),
+        ChangeNotifierProvider(create: (_) => ForgotPasswordProviderModel()),
         ChangeNotifierProxyProvider3<SignUpProviderModel, LogInProviderModel,
             ForgotPasswordProviderModel, BusyProviderModel>(
           create: (_) => BusyProviderModel(),

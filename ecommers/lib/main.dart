@@ -60,7 +60,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ShellProviderModel(context)),
+        ChangeNotifierProvider(create: (_) => ShellProviderModel()),
         ChangeNotifierProvider(create: (_) => PaymentMethodProviderModel()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
