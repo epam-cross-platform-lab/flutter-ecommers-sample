@@ -2,8 +2,6 @@ import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/data/repository/firebase_repository.dart';
-import 'package:ecommers/shared/dependency_service.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 
 class LogInProviderModel extends ChangeNotifier with BusyNotifier {
@@ -17,7 +15,6 @@ class LogInProviderModel extends ChangeNotifier with BusyNotifier {
   LogInProviderModel({this.bottomTapCallback});
 
   Future login() async {
-    Crashlytics.instance.crash();
     if (!UserValidator.isPasswordValid(userName)) return;
     isBusy = true;
 
