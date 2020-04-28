@@ -1,3 +1,4 @@
+import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -6,11 +7,14 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/shipping_address_text_field.dart';
 import 'package:flutter/material.dart' hide BackButton;
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class AddShippingAddress extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final localization = I18n.of(context); // need add loaclization text
+      final provider =
+        Provider.of<ShippingAddressProviderModel>(context, listen: false);
+    final localization = I18n.of(context); 
     return Scaffold(
       backgroundColor: BrandingColors.pageBackground,
       appBar: AppBar(
@@ -71,6 +75,7 @@ class AddShippingAddress extends StatelessWidget {
               SizedBox(
                 height: 46.0,
                 child: PrimaryButtonWidget(
+                  //onPressedFunction: () async => provider.addShippingAddress(),
                   text: I18n.of(context).addCardDetails,
                 ),
               )

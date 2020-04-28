@@ -83,7 +83,7 @@
     "addingShippingAddress": "Adding Shipping Address",
     "fullName": "Full Name",
     "messageToSeller" : "Message to seller (optional)",
-    "empty": ""
+    "empty": "",
     "address": "Address",
     "city": "City",
     "stateProvinceRegion": "State/Province/Region",

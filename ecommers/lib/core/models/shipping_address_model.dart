@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'shipping_address_model.g.dart';
 
 @JsonSerializable()
-class ShippingAddressModel {
+class ShippingAddressModel  {
   final String id;
   final String fullName;
   final String address;

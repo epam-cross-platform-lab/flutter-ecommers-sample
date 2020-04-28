@@ -7,6 +7,7 @@ import 'package:ecommers/core/services/api_service.dart';
 import 'package:ecommers/core/services/membership_service.dart';
 import 'package:ecommers/core/services/navigation/navigation_service.dart';
 import 'package:ecommers/core/repositories/index.dart';
+import 'package:ecommers/ui/pages/index.dart';
 import 'package:get_it/get_it.dart';
 
 import '../app_services/index.dart';
@@ -32,6 +33,8 @@ CategoryDataRepository get categoryDataRepository => GetIt.I.get<CategoryDataRep
 CacheDatabase get cacheDatabase => GetIt.I.get<CacheDatabase>();
 CartRepository get cartRepository => GetIt.I.get<CartRepository>();
 Paginator get paginator => GetIt.I.get<Paginator>();
+ShippingAddressService get shippingAddressService => GetIt.I.get<ShippingAddressService>();
+ShippingAddressRepository get shippingAddressRepository => GetIt.I.get<ShippingAddressRepository>();
 
 class DependencyService {
   static void registerDependencies() {
@@ -47,6 +50,7 @@ class DependencyService {
       ..registerLazySingleton<AppService>(() => AppService())
       ..registerLazySingleton<CategoryService>(() => CategoryService())
       ..registerLazySingleton<PaymentMethodService>(() => PaymentMethodService())
+      ..registerLazySingleton<ShippingAddressService>(() => ShippingAddressService())
       ..registerLazySingleton<NoteService>(() => NoteService())
       ..registerSingletonAsync<MembershipService>(
         () async {
