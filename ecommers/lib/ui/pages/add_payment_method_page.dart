@@ -2,6 +2,7 @@ import 'package:ecommers/core/provider_models/payment_method_provider_model.dart
 import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/utils/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart' hide BackButton;
@@ -34,9 +35,12 @@ class AddPaymentMethodPage extends StatelessWidget {
               const SizedBox(height: Insets.x4),
               CreditCardTextField(
                 hintText: localization.creditCardNumberPlaceHolder,
-                maxLength: 16,
-                inputFormatters: <TextInputFormatter>[
-                  WhitelistingTextInputFormatter.digitsOnly,
+                maxLength: 19,
+                inputFormatters: [
+                  MaskedTextInputFormatter(
+                    mask: 'xxxx-xxxx-xxxx-xxxx',
+                    separator: '-',
+                  ),
                 ],
                 onChanged: (text) => provider.creditCard.number = text,
                 keyboardType: TextInputType.number,
@@ -54,6 +58,12 @@ class AddPaymentMethodPage extends StatelessWidget {
                   CreditCardTextField(
                     width: 208.0,
                     hintText: localization.exprDatePlaceHolder,
+                    inputFormatters: [
+                      MaskedTextInputFormatter(
+                        mask: 'xx/xx',
+                        separator: '/',
+                      ),
+                    ],
                     onChanged: (text) => provider.expDate = text,
                     maxLength: 5,
                     keyboardType: TextInputType.datetime,
