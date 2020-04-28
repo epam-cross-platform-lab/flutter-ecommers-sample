@@ -1,10 +1,12 @@
+import 'package:ecommers/core/models/index.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 
 part 'payment_method_model.g.dart';
 
 @JsonSerializable()
-class PaymentMethodModel {
+class PaymentMethodModel implements ItemBase {
+  @override
   final String id;
   final String cardCountry;
   final int cardExpMonth;

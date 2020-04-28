@@ -99,7 +99,9 @@ class MorePage extends StatelessWidget {
   }
 
   Future logOutPressHandler() async {
+    await cacheDatabase.dropDataBase();
     authorizationService.logOut(); 
     await navigationService.navigateWithReplacementTo(Pages.authorization);
+    //todo move to provider
   }
 }
