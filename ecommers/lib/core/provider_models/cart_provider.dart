@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/cache_wrappers/order_model_wrapper.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:flutter/widgets.dart';
@@ -9,7 +10,7 @@ class CartProvider extends ChangeNotifier {
   int get orderCount => _orders.length;
 
   Future remove(OrderModel order, {int count = 1}) async {
-    final editOrder = _getOrder(order.id);
+    final editOrder = _getOrder(order.product.id);
 
     if (editOrder == null) {
       return;
@@ -17,23 +18,23 @@ class CartProvider extends ChangeNotifier {
 
     if (editOrder.count > count) {
       editOrder.count = editOrder.count - count;
-      await cartRepository.editOrder(order);
+      await cartRepository.edit(OrderModelWrapper.fromOrderModel(order));
     } else {
       _orders.remove(editOrder);
-      await cartRepository.removeOrder(order);
+      await cartRepository.remove(OrderModelWrapper.fromOrderModel(order));
     }
     notifyListeners();
   }
 
   Future add(OrderModel order) async {
-    final editOrder = _getOrder(order.id);
+    final editOrder = _getOrder(order.product.id);
 
     if (editOrder == null) {
       _orders.add(order);
-      await cartRepository.addOrder(order);
+      await cartRepository.add(OrderModelWrapper.fromOrderModel(order));
     } else {
       editOrder.count++;
-      await cartRepository.editOrder(order);
+      await cartRepository.edit(OrderModelWrapper.fromOrderModel(order));
     }
     notifyListeners();
   }
@@ -52,7 +53,7 @@ class CartProvider extends ChangeNotifier {
     final double totalCost = _orders.fold(
         0.0,
         (totalOrderCost, nextOrder) =>
-            totalOrderCost + nextOrder.count * nextOrder.cost);
+            totalOrderCost + nextOrder.count * nextOrder.product.price);
 
     return totalCost * (100 - salePercent) / 100;
   }
@@ -63,5 +64,5 @@ class CartProvider extends ChangeNotifier {
   }
 
   OrderModel _getOrder(int id) =>
-      _orders.firstWhere((o) => o.id == id, orElse: () => null);
+      _orders.firstWhere((o) => o.product.id == id, orElse: () => null);
 }

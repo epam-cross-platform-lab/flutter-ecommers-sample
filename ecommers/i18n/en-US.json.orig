@@ -80,13 +80,16 @@
     "cvc": "CVC",
     "addCardDetails": "ADD CARD DETAILS",
     "selectCreditCard": "Select credit card",
+<<<<<<< HEAD
     "addingShippingAddress": "Adding Shipping Address",
     "fullName": "Full Name",
-    "messageToSeller" : "Message to seller (optional)",
-    "empty": ""
     "address": "Address",
     "city": "City",
     "stateProvinceRegion": "State/Province/Region",
     "zipCode": "Zip Code (Postal Code)",
     "country": "Country"
+=======
+    "messageToSeller" : "Message to seller (optional)",
+    "empty": ""
+>>>>>>> origin/change_order_model
 }

@@ -1,5 +1,5 @@
+import 'package:ecommers/core/models/cache_wrappers/payment_method_wrapper.dart';
 import 'package:ecommers/core/models/payment_method_model.dart';
-import 'package:ecommers/core/models/payment_method_wrapper.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 
@@ -33,7 +33,7 @@ class PaymentMethodService {
       final paymentMethodModel =
           PaymentMethodModel.fromStripePaymentMethod(paymentMethod);
 
-      await paymentMethodRepository.addPaymentMethod(
+      await paymentMethodRepository.add(
         PaymentMethodWrapper.fromPaymentMethod(paymentMethodModel),
       );
 
@@ -44,13 +44,13 @@ class PaymentMethodService {
   }
 
   Future removePaymentMethod(PaymentMethodModel paymentMethodModel) async {
-    await paymentMethodRepository.removePaymentMethod(
+    await paymentMethodRepository.remove(
       PaymentMethodWrapper.fromPaymentMethod(paymentMethodModel),
     );
   }
 
   Future editPaymentMethod(PaymentMethodModel paymentMethodModel) async {
-    await paymentMethodRepository.editPaymentMethod(
+    await paymentMethodRepository.edit(
       PaymentMethodWrapper.fromPaymentMethod(paymentMethodModel),
     );
   }

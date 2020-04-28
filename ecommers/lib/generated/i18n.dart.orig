@@ -194,10 +194,7 @@ class I18n implements WidgetsLocalizations {
   String get addCardDetails => "ADD CARD DETAILS";
   /// "Select credit card"
   String get selectCreditCard => "Select credit card";
-  /// "Message to seller (optional)"
-  String get messageToSeller => "Message to seller (optional)";
-  /// ""
-  String get empty => "";
+<<<<<<< HEAD
   /// "Adding Shipping Address"
   String get addingShippingAddress => "Adding Shipping Address";
   /// "Full Name"
@@ -212,6 +209,12 @@ class I18n implements WidgetsLocalizations {
   String get zipCode => "Zip Code (Postal Code)";
   /// "Country"
   String get country => "Country";
+=======
+  /// "Message to seller (optional)"
+  String get messageToSeller => "Message to seller (optional)";
+  /// ""
+  String get empty => "";
+>>>>>>> origin/change_order_model
 }
 
 class _I18n_en_US extends I18n {
