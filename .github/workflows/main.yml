@@ -16,7 +16,7 @@ jobs:
     - name: setup google services json
       uses: DamianReeves/write-file-action@v1.0
       with:
-        path: $Env:HOME/ecommers/android/app/google-services.json
+        path: /home/runner/work/flutter-ecommers-sample/flutter-ecommers-sample/ecommers/android/app/google-services.json
         contents: |
           echo ${{secrets.android_google_services}}
         write-mode: overwrite
