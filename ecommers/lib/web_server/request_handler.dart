@@ -23,6 +23,8 @@ class RequestHandler {
   static String postMethod = 'POST';
   static String deleteMethod = 'DELETE';
 
+  static String defaultUserName = 'admin';
+
   static void process(HttpRequestBody body) {
     final path = body.request.uri.path.toString();
 
@@ -62,6 +64,8 @@ class RequestHandler {
   }
 
   static bool isNotAuthorized(HttpRequest request) {
+    //TODO: replace with firebase auth validation;
+    return false;
     if (!AuthorizationService.isAuthorized(
         request.headers[HttpHeaders.authorizationHeader]?.first)) {
       request.response
@@ -185,12 +189,8 @@ class RequestHandler {
   }
 
   static Future _handleProductsRecentGetRequest(HttpRequestBody body) async {
-    final authorizationHeader =
-        body.request.headers[HttpHeaders.authorizationHeader].first;
-    final user = AuthorizationService.getJwtSubject(authorizationHeader);
-
     final recentlyViewedProducts =
-        (await _productsDataAccess.getAllRecentProducts(user.username))
+        (await _productsDataAccess.getAllRecentProducts(defaultUserName))
             .reversed
             .toList();
 
@@ -201,13 +201,9 @@ class RequestHandler {
   }
 
   static Future _handleProductsRecentPostRequest(HttpRequestBody body) async {
-    final authorizationHeader =
-        body.request.headers[HttpHeaders.authorizationHeader].first;
-    final user = AuthorizationService.getJwtSubject(authorizationHeader);
-
     final productMap = body.body as Map<String, dynamic>;
 
-    _productsDataAccess.saveRecentProduct(productMap, user.username);
+    _productsDataAccess.saveRecentProduct(productMap, defaultUserName);
 
     body.request.response
       ..statusCode = HttpStatus.ok
@@ -215,12 +211,7 @@ class RequestHandler {
   }
 
   static Future _handleProductsRecentDeleteRequest(HttpRequestBody body) async {
-    final authorizationHeader =
-        body.request.headers[HttpHeaders.authorizationHeader].first;
-
-    final user = AuthorizationService.getJwtSubject(authorizationHeader);
-
-    _productsDataAccess.deleteRecentProducts(user.username);
+    _productsDataAccess.deleteRecentProducts(defaultUserName);
 
     body.request.response
       ..statusCode = HttpStatus.ok
