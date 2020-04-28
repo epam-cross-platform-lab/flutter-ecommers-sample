@@ -47,13 +47,10 @@ class Logger {
   }
 
   void _logException(dynamic ex, StackTrace stack) {
-    if (!kReleaseMode) {
-      Crashlytics.instance.enableInDevMode = true;
-      Crashlytics.instance.setUserEmail('sadsa');
-      Crashlytics.instance.setUserName('asdasdadas');
-      Crashlytics.instance.setUserIdentifier('sadasdads');
-      Crashlytics.instance.log(ex.toString());
+    if (kReleaseMode) {
       _remoteLogger.recordError(ex, StackTrace.current);
+    } else {
+      e(() => ex.toString());
     }
   }
 }
