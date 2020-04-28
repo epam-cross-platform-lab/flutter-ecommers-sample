@@ -39,7 +39,7 @@
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
 **/google-services.json
-**/google-info.plist
+**/GoogleService-Info.plist
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
