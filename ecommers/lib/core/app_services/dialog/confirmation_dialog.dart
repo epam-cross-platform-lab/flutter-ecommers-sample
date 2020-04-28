@@ -13,7 +13,7 @@ class ConfirmationDialog extends DialogBase<bool> {
     return showInternally(AlertDialog(
       title: Text(
         header,
-        style: Theme.of(context).textTheme.subtitle1,
+        style: Theme.of(context).textTheme.headline5,
       ),
       content: Text(body,
           style: Theme.of(context).textTheme.subtitle1,

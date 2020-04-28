@@ -8,7 +8,7 @@ import 'package:ecommers/core/services/membership_service.dart';
 import 'package:ecommers/core/services/navigation/navigation_service.dart';
 import 'package:ecommers/core/repositories/index.dart';
 import 'package:ecommers/data/repository/firebase_repository.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/shared/logger.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';

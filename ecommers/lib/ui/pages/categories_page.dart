@@ -1,9 +1,9 @@
+import 'package:ecommers/shared/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/pages/base_page.dart';
 import 'package:ecommers/ui/pages/closeable_page.dart';

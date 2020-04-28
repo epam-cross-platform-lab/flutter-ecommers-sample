@@ -224,6 +224,12 @@ class I18n implements WidgetsLocalizations {
   String get or_use_phone => "or use phone number";
   /// "incorrect phone number"
   String get incorrect_phone_number => "incorrect phone number";
+  /// "Password restoration"
+  String get password_restoration_dialogTitle => "Password restoration";
+  /// "Password restore link sent"
+  String get password_restoration_dialogDescription => "Password restore link sent";
+  /// "OK"
+  String get password_restoration_dialogPrimary_button => "OK";
   /// ""
   String get empty => "";
 }

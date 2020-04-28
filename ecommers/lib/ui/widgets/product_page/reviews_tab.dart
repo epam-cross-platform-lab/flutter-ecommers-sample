@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/ui/decorations/branding_colors.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';

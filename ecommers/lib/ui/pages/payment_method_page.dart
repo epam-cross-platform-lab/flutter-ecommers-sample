@@ -2,7 +2,7 @@ import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/payment_method_model.dart';
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/bank_card.dart';

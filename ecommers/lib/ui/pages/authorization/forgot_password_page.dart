@@ -2,11 +2,10 @@ import 'dart:ui';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/auth/forgot_password_provider_model.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/authentication_tab_base.dart';
-import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/authorization/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +19,8 @@ class ForgotPasswordPage extends StatefulWidget {
 class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   TextEditingController emailController = TextEditingController();
 
+  ForgotPasswordProviderModel _provider;
+
   @override
   void dispose() {
     emailController.dispose();
@@ -27,35 +28,40 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final localization = I18n.of(context);
-    final forgotPasswordForm = _buildForgotPasswordForm(localization);
-    final provider =
-        Provider.of<ForgotPasswordProviderModel>(context, listen: false);
+  void initState() {
+    super.initState();
+  }
 
-    return SuccessStatePage<ForgotPasswordProviderModel>(
-      child: AuthorizationTabBase(
-        children: <Widget>[
-          Text(
-            localization.forgotPasswordHelpText,
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.bodyText2,
-          ),
-          const SizedBox(height: Insets.x8_5),
-          forgotPasswordForm,
-          const SizedBox(height: Insets.x3_5),
-          PrimaryButtonWidget(
-            text: localization.logIn,
-            assetIconPath: Assets.arrowRightIcon,
-            onPressedFunction: () =>
-                _forgotPasswordRapped(forgotPasswordForm, provider),
-          ),
-        ],
-      ),
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _provider = Provider.of<ForgotPasswordProviderModel>(context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final forgotPasswordForm = _buildForgotPasswordForm();
+
+    return AuthorizationTabBase(
+      children: <Widget>[
+        Text(
+          localization.forgotPasswordHelpText,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.bodyText2,
+        ),
+        const SizedBox(height: Insets.x8_5),
+        forgotPasswordForm,
+        const SizedBox(height: Insets.x3_5),
+        PrimaryButtonWidget(
+          text: localization.logIn,
+          assetIconPath: Assets.arrowRightIcon,
+          onPressedFunction: () => _forgotPasswordRapped(forgotPasswordForm),
+        ),
+      ],
     );
   }
 
-  AuthForm _buildForgotPasswordForm(I18n localization) {
+  AuthForm _buildForgotPasswordForm() {
     return AuthForm(
       child: AuthTextField(
         controller: emailController,
@@ -68,10 +74,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     );
   }
 
-  void _forgotPasswordRapped(
-      AuthForm authForm, ForgotPasswordProviderModel provider) {
+  void _forgotPasswordRapped(AuthForm authForm) {
     if (authForm.formKey.currentState.validate()) {
-      provider.resetPassword(emailController.text);
+      _provider.resetPassword(emailController.text);
     }
   }
 }

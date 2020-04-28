@@ -100,8 +100,13 @@
         "primary_button": "OK"
     },
     "your_phone_number": "YOUR PHONE NUMBER",
-    "or_use_email":"or use email",
-    "or_use_phone":"or use phone number",
-    "incorrect_phone_number":"incorrect phone number",
+    "or_use_email": "or use email",
+    "or_use_phone": "or use phone number",
+    "incorrect_phone_number": "incorrect phone number",
+    "password_restoration_dialog": {
+        "title": "Password restoration",
+        "description": "Password restore link sent",
+        "primary_button": "OK"
+    },
     "empty": ""
 }

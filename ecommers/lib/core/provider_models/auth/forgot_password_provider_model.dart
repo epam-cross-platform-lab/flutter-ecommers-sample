@@ -8,6 +8,17 @@ class ForgotPasswordProviderModel extends ProviderModelBase
   ForgotPasswordProviderModel(BuildContext context) : super(context);
 
   Future resetPassword(String email) async {
-    isSuccess = await authorizationService.restorePassword(email);
+    isBusy = true;
+    final result = await authorizationService.restorePassword(email);
+    isBusy = false;
+
+    if (result) {
+      dialogService.showDialog(
+          header: localization.password_restoration_dialogTitle,
+          body: localization.password_restoration_dialogDescription,
+          confirmText: localization.password_restoration_dialogPrimary_button);
+    } else {
+      dialogService.somethingWentWrong();
+    }
   }
 }

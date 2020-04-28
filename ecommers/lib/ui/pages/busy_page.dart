@@ -17,7 +17,9 @@ class BusyPage<T extends BusyNotifier> extends StatelessWidget {
             child,
             Visibility(
               visible: provider.isBusy,
-              child: const Progress(),
+              child: Container(
+                  color: Colors.white.withOpacity(0.6),
+                  child: const Progress()),
             )
           ],
         );

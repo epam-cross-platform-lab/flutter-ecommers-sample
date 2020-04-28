@@ -1,7 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/auth/sign_up_provider_model.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
-import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -34,12 +33,11 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    final localization = I18n.of(context);
     final provider = Provider.of<SignUpProviderModel>(context, listen: false);
 
     final authForm = _isPhoneSelected
         ? _buildPhoneSignUp(provider)
-        : _buildSignUpForm(localization, provider);
+        : _buildSignUpForm(provider);
 
     return AuthorizationTabBase(
       children: <Widget>[
@@ -96,7 +94,7 @@ class _SignUpPageState extends State<SignUpPage> {
     );
   }
 
-  AuthForm _buildSignUpForm(I18n localization, SignUpProviderModel provider) {
+  AuthForm _buildSignUpForm(SignUpProviderModel provider) {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
