@@ -63,6 +63,11 @@ class CacheDatabase {
     await store.drop(_database);
   }
 
+  Future dropDataBase() async {
+    final store = StoreRef.main();
+    return store.delete(_database);
+  }
+
   Future deleteDataByFilter(String key, Map<String, dynamic> filter) async {
     final store = intMapStoreFactory.store(key);
 

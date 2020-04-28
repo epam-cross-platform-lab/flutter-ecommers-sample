@@ -101,8 +101,12 @@ class MorePage extends StatelessWidget {
   }
 
   Future logOutPressHandler() async {
-    await cacheDatabase.dropDataBase();
+<<<<<<< HEAD
     authorizationService.logOut();
+=======
+    await cacheDatabase.dropDataBase();
+    authorizationService.logOut(); 
+>>>>>>> origin/change_order_model
     await navigationService.navigateWithReplacementTo(Pages.authorization);
     //todo move to provider
   }

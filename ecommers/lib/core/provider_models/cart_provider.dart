@@ -1,4 +1,3 @@
-import 'package:ecommers/core/models/cache_wrappers/order_model_wrapper.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:flutter/widgets.dart';
@@ -18,10 +17,10 @@ class CartProvider extends ChangeNotifier {
 
     if (editOrder.count > count) {
       editOrder.count = editOrder.count - count;
-      await cartRepository.edit(OrderModelWrapper.fromOrderModel(order));
+      await cartRepository.edit(order);
     } else {
       _orders.remove(editOrder);
-      await cartRepository.remove(OrderModelWrapper.fromOrderModel(order));
+      await cartRepository.remove(order);
     }
     notifyListeners();
   }
@@ -31,10 +30,10 @@ class CartProvider extends ChangeNotifier {
 
     if (editOrder == null) {
       _orders.add(order);
-      await cartRepository.add(OrderModelWrapper.fromOrderModel(order));
+      await cartRepository.add(order);
     } else {
       editOrder.count++;
-      await cartRepository.edit(OrderModelWrapper.fromOrderModel(order));
+      await cartRepository.edit(order);
     }
     notifyListeners();
   }
