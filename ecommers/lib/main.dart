@@ -65,7 +65,6 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
         ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
       child: MaterialApp(
-        key: mainGlobalKey,
         title: 'ecommers',
         theme: ThemeProvider.getTheme(),
         home: SplashScreen.callback(

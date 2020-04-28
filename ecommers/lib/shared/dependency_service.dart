@@ -13,13 +13,11 @@ import 'package:ecommers/data/repository/firebase_repository.dart';
 import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/shared/logger.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
 import 'get_it_extension.dart';
 
-final GlobalKey mainGlobalKey = GlobalKey();
 final _ioc = GetIt.I;
 
 NavigationService get navigationService => _ioc.get<NavigationService>();
