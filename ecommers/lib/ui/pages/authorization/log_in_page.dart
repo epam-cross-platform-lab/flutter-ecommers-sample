@@ -76,8 +76,9 @@ class _LogInPageState extends State<LogInPage> {
             keyboardType: TextInputType.phone,
             icon: Icons.phone,
             controller: phoneController,
-            onValidate: (text) =>
-                text.isEmpty ? localization.field_should_not_be_empty : localization.incorrect_phone_number,
+            onValidate: (text) => UserValidator.isPhoneNumber(text)
+                ? null
+                : localization.incorrect_phone_number,
             onChanged: (String text) =>
                 provider.phoneNumber = phoneController.text,
           ),
@@ -96,9 +97,8 @@ class _LogInPageState extends State<LogInPage> {
             keyboardType: TextInputType.emailAddress,
             svgIconPath: Assets.profileIcon,
             controller: emailController,
-            onValidate: (text) => text.isEmpty
-                ? localization.field_should_not_be_empty
-                : null,
+            onValidate: (text) =>
+                text.isEmpty ? localization.field_should_not_be_empty : null,
             onChanged: (String text) =>
                 provider.userName = emailController.text,
           ),
