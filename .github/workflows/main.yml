@@ -18,7 +18,7 @@ jobs:
       with:
         path: /home/runner/work/flutter-ecommers-sample/flutter-ecommers-sample/ecommers/android/app/google-services.json
         contents:
-          echo ${{secrets.android_google_services}}
+          ${{secrets.android_google_services}}
         write-mode: overwrite
     - uses: actions/setup-java@v1
       with:
