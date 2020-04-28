@@ -1,6 +1,6 @@
+import 'package:ecommers/shared/i18n.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';

@@ -1,8 +1,9 @@
+import 'package:ecommers/core/provider_models/auth/forgot_password_provider_model.dart';
+import 'package:ecommers/core/provider_models/auth/log_in_provider_model.dart';
+import 'package:ecommers/core/provider_models/auth/sign_up_provider_model.dart';
 import 'package:ecommers/core/provider_models/base_provider_model.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/provider_models/log_in_provider_model.dart';
-import 'package:ecommers/core/provider_models/sign_up_provider_model.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/forgot_password_page.dart';
 import 'package:ecommers/ui/pages/authorization/log_in_page.dart';
@@ -32,25 +33,27 @@ class _AuthorizationPageState extends State<AuthorizationPage>
   @override
   Widget build(BuildContext context) {
     final tabStyle = Theme.of(context).textTheme.headline6;
-    final localization = I18n.of(context);
 
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (_) => LogInProviderModel(
             context,
-            bottomTapCallback: _createANewAccountClicked,
+            bottomTapCallback: () => currentTabController.animateTo(0),
           ),
         ),
         ChangeNotifierProvider(create: (_) => SignUpProviderModel(context)),
         ChangeNotifierProvider(
             create: (_) => ForgotPasswordProviderModel(context)),
-        ChangeNotifierProxyProvider2<SignUpProviderModel, LogInProviderModel,
-            BusyProviderModel>(
+        ChangeNotifierProxyProvider3<SignUpProviderModel, LogInProviderModel,
+            ForgotPasswordProviderModel, BusyProviderModel>(
           create: (_) => BusyProviderModel(),
-          update: (_, signUpProvider, loginProvider, busyProvider) =>
+          update: (_, signUpProvider, loginProvider, forgotPasswordProvider,
+                  busyProvider) =>
               busyProvider
-                ..isBusy = signUpProvider.isBusy || loginProvider.isBusy,
+                ..isBusy = forgotPasswordProvider.isBusy ||
+                    signUpProvider.isBusy ||
+                    loginProvider.isBusy,
         ),
       ],
       child: BusyPage<BusyProviderModel>(
@@ -86,14 +89,6 @@ class _AuthorizationPageState extends State<AuthorizationPage>
           ),
         ),
       ),
-    );
-  }
-
-  void _createANewAccountClicked() {
-    setState(
-      () => {
-        currentTabController.animateTo(0),
-      },
     );
   }
 }

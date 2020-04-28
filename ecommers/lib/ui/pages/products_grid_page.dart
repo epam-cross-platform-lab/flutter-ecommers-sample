@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/i18n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide BackButton;
 import 'package:flutter_svg/svg.dart';
@@ -5,7 +6,6 @@ import 'package:provider/provider.dart';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/sort_type.dart';
-import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:ecommers/ui/widgets/products_grid.dart';

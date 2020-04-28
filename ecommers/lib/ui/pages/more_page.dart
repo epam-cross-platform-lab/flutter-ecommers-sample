@@ -1,6 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';

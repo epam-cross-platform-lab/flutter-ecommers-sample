@@ -1,45 +1,51 @@
-import 'package:chopper/chopper.dart';
-import 'package:ecommers/core/app_services/auth_response.dart';
-import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/models/login_model.dart';
-import 'package:ecommers/core/models/user_model.dart';
+import 'dart:async';
+
 import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/data/repository/firebase_repository.dart';
 
 class AuthorizationService {
-  Future<bool> tryLogin(String usernameOrEmail, String password) async {
-    Map<String, dynamic> userJson;
+  Future<AuthStatus> signInWithEmailAndPassword(
+      String email, String password) async {
+    final result =
+        await authRepository.signInWithEmailAndPassword(email, password);
 
-    if (Validator.isEmail(usernameOrEmail)) {
-      userJson = UserModel(null, usernameOrEmail, password).toJson();
-    } else {
-      userJson = UserModel(usernameOrEmail, null, password).toJson();
+    if (result.status == AuthStatus.success) {
+      membershipService.refresh(result.data);
     }
 
-    final Response<LoginModel> response = await apiService.login(userJson);
-
-    if (response.isSuccessful) {
-      membershipService.refresh(response.body);
-    }
-
-    return response.isSuccessful;
+    return result.status;
   }
 
-  Future<AuthResponse> tryAuthorize(
-      String username, String email, String password) async {
-    final userJson = UserModel(username, email, password).toJson();
-    final Response<LoginModel> response = await apiService.auth(userJson);
-
-    if (response.isSuccessful) {
-      membershipService.refresh(response.body);
-
-      return AuthResponse(isSuccessful: response.isSuccessful);
-    }
-
-    return AuthResponse(
-        isSuccessful: response.isSuccessful, error: response.error as String);
+  Future<bool> updateUserName(String username) {
+    return authRepository.updateUsername(username);
   }
 
-  void logOut() {
+  Future<AuthStatus> signInWithPhone(String phone) async {
+    final result = await authRepository.signInWithPhoneNumber(phone);
+    if (result.status == AuthStatus.success) {
+      membershipService.refresh(result.data);
+    }
+
+    return result.status;
+  }
+
+  Future<AuthStatus> createUserWithEmailAndPassword(
+      String email, String password) async {
+    final result =
+        await authRepository.registerWithEmailAndPassword(email, password);
+    if (result.status == AuthStatus.success) {
+      membershipService.refresh(result.data);
+    }
+
+    return result.status;
+  }
+
+  Future<bool> restorePassword(String email) async {
+    return authRepository.restorePassword(email);
+  }
+
+  Future logOut() async {
     membershipService.clear();
+    await authRepository.logout();
   }
 }

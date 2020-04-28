@@ -1,4 +1,3 @@
-import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/payment_method_model.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,7 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/i18n.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart' hide BackButton;
 

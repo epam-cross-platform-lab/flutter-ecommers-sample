@@ -1,4 +1,4 @@
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -76,7 +76,7 @@ class BankCard extends StatelessWidget {
   Widget _buildCircleIcon(bool isSelect) {
     if (!isSelect) return SizedBox(width: CircleIcon.size.width);
 
-    return CircleIcon(
+    return const CircleIcon(
       imagePath: Assets.successIcon,
       backgroundColor: BrandingColors.primary,
       iconColor: BrandingColors.secondaryText,
