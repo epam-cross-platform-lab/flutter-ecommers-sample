@@ -36,8 +36,7 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
         title: Center(
           child: Text(
             localization.paymentMethodTitle,
-            style: Theme.of(context)
-                .textTheme
+            style: textTheme
                 .bodyText1
                 .copyWith(fontWeight: FontWeight.w700),
           ),
@@ -54,18 +53,18 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
           ),
         ],
       ),
-      body: _buildBody(context),
+      body: _buildBody(),
     );
   }
 
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody() {
     if (_provider.paymentMethods.isEmpty) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(localization.notBankCards,
-                style: Theme.of(context).textTheme.bodyText1),
+                style: textTheme.bodyText1),
             const SizedBox(height: Insets.x6_5),
             SizedBox(
               width: 164.0,

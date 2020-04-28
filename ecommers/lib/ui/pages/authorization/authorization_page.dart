@@ -32,7 +32,7 @@ class _AuthorizationPageState extends State<AuthorizationPage>
 
   @override
   Widget build(BuildContext context) {
-    final tabStyle = Theme.of(context).textTheme.headline6;
+    final tabStyle = textTheme.headline6;
 
     return MultiProvider(
       providers: [

@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -46,7 +47,7 @@ class CreditCardTextField extends StatelessWidget {
             counterStyle: const TextStyle(fontSize: 0),
             border: InputBorder.none,
             hintText: hintText,
-            hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+            hintStyle: textTheme.bodyText1.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: FontSizes.small_3x,
                 color: BrandingColors.primaryText.withOpacity(0.5)),

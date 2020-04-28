@@ -13,7 +13,7 @@ class ConfirmPhoneRegistration extends DialogBase<String> {
     return showInternally(AlertDialog(
       title: Text(
         localization.enter_sms_code_dialogTitle,
-        style: Theme.of(context).textTheme.headline5,
+        style: textTheme.headline5,
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,

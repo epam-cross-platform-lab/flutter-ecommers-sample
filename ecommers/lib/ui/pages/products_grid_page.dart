@@ -27,8 +27,7 @@ class ProductsGridPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tabStyle = Theme.of(context)
-        .textTheme
+    final tabStyle = textTheme
         .headline5
         .copyWith(fontWeight: FontWeight.w400);
 

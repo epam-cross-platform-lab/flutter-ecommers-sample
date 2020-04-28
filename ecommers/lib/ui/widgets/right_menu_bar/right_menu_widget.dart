@@ -68,7 +68,7 @@ class RightMenuWidget extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         localization.refineResults,
-                        style: Theme.of(context).textTheme.headline5.copyWith(
+                        style: textTheme.headline5.copyWith(
                               fontSize: FontSizes.small_3x,
                               color: Colors.transparent.withOpacity(0.3),
                             ),
@@ -78,7 +78,7 @@ class RightMenuWidget extends StatelessWidget {
                         onTap: () => {}, //TODO: handle click
                         child: Text(
                           localization.clear,
-                          style: Theme.of(context).textTheme.headline5.copyWith(
+                          style: textTheme.headline5.copyWith(
                               fontSize: FontSizes.small_3x,
                               color: BrandingColors.primary),
                         ),

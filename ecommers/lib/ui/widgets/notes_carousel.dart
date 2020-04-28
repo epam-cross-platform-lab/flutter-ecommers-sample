@@ -23,16 +23,16 @@ class NotesCarousel extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
           child: Text(
             localization.latetstTitle,
-            style: Theme.of(context).textTheme.headline6,
+            style: textTheme.headline6,
           ),
         ),
         const SizedBox(height: Insets.x2_5),
-        _buildCarousel(context),
+        _buildCarousel(),
       ],
     );
   }
 
-  Widget _buildCarousel(BuildContext context) {
+  Widget _buildCarousel() {
     return CarouselSlider(
       viewportFraction: 0.92,
       items: notes

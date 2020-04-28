@@ -63,9 +63,7 @@ class SearchRecommendedWinget extends StatelessWidget {
   }
 
   double _textWidth(BuildContext context, String title) {
-    final itemTextStyle = Theme.of(context)
-        .textTheme
-        .bodyText1
+    final itemTextStyle = textTheme.bodyText1
         .copyWith(fontSize: FontSizes.small_3x, fontWeight: FontWeight.w400);
 
     return title.size(itemTextStyle).width + Insets.x5;
@@ -88,10 +86,10 @@ class SearchRecommendedWinget extends StatelessWidget {
           child: Text(
             product.title,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.bodyText1.copyWith(
-                  fontSize: FontSizes.small_3x,
-                  fontWeight: FontWeight.w400,
-                ),
+            style: textTheme.bodyText1.copyWith(
+              fontSize: FontSizes.small_3x,
+              fontWeight: FontWeight.w400,
+            ),
           ),
         ),
       ),

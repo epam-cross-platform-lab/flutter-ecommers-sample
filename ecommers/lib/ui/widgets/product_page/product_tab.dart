@@ -24,7 +24,7 @@ class ProductTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final noInfoTextStyle = Theme.of(context).textTheme.subtitle1;
+    final noInfoTextStyle = textTheme.subtitle1;
 
     return ChangeNotifierProvider(
       create: (_) => ProductTabProviderModel(colors, sizes),
@@ -34,7 +34,7 @@ class ProductTab extends StatelessWidget {
             children: [
               Text(
                 localization.selectColor,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: textTheme.subtitle2,
               ),
               SizedBox(
                 height: Insets.x25,
@@ -42,7 +42,7 @@ class ProductTab extends StatelessWidget {
               ),
               Text(
                 localization.selectSizeUs,
-                style: Theme.of(context).textTheme.subtitle2,
+                style: textTheme.subtitle2,
               ),
               const SizedBox(height: Insets.x5),
               SizedBox(

@@ -12,7 +12,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      createProvider: (context) => SearchPageProviderModel(),
+      createProvider: () => SearchPageProviderModel(),
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: Insets.x5),
@@ -20,7 +20,7 @@ class SearchPage extends StatelessWidget {
             children: <Widget>[
               Text(
                 localization.searchTitle,
-                style: Theme.of(context).textTheme.headline6,
+                style: textTheme.headline6,
               ),
               const SizedBox(height: Insets.x5),
               SearchButton(

@@ -28,7 +28,7 @@ class CarouselWidget extends StatelessWidget {
     return Center(
       child: Text(
         localization.noAvailableInformation,
-        style: Theme.of(context).textTheme.subtitle1,
+        style: textTheme.subtitle1,
       ),
     );
   }

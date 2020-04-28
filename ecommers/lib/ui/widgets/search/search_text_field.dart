@@ -12,7 +12,7 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inputTextStyle = Theme.of(context).textTheme.subtitle1;
+    final inputTextStyle = textTheme.subtitle1;
 
     final hintStyle = inputTextStyle.copyWith(
         color: BrandingColors.primaryText.withOpacity(0.4));

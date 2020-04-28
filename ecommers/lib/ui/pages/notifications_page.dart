@@ -87,7 +87,7 @@ class NotificationsPage extends StatelessWidget {
             children: <Widget>[
               Text(
                 localization.notificationsTitle,
-                style: Theme.of(context).textTheme.headline6,
+                style: textTheme.headline6,
               ),
               const SizedBox(height: Insets.x5),
               Expanded(

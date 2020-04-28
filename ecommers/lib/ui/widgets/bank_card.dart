@@ -41,8 +41,7 @@ class BankCard extends StatelessWidget {
                         const SizedBox(width: Insets.x6_5),
                         Text(
                           Formatter.getTextWithNumberCard(lastFourNumber),
-                          style: Theme.of(context)
-                              .textTheme
+                          style: textTheme
                               .bodyText1
                               .copyWith(fontWeight: FontWeight.w400),
                         ),
@@ -55,8 +54,7 @@ class BankCard extends StatelessWidget {
                       onTap: deleteFunction,
                       child: Text(
                         localization.delete,
-                        style: Theme.of(context)
-                            .textTheme
+                        style: textTheme
                             .headline4
                             .copyWith(color: BrandingColors.primary),
                       ),

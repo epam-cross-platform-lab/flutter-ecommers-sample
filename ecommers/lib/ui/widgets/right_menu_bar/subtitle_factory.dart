@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommers/extensions/string_extension.dart';
@@ -14,42 +15,42 @@ class RightMenuSubTitle extends StatelessWidget {
     final modelItem = model.runtimeType;
     switch (modelItem) {
       case RightMenuSubTitleModel:
-        return createSubTitle(context);
+        return buildSubTitle();
         break;
       case RigthMenuPriceModel:
-        return createPrice(context);
+        return buildPrice();
         break;
       case RightMenuColorsModel:
-        return createCircles();
+        return buildCircles();
         break;
       default:
         return const Text('');
     }
   }
 
-  Widget createSubTitle(BuildContext context) {
+  Widget buildSubTitle() {
     final subTitleModel = model as RightMenuSubTitleModel;
 
     return Text(
       subTitleModel.subTitle,
-      style: Theme.of(context).textTheme.subtitle1.copyWith(
+      style: textTheme.subtitle1.copyWith(
             color: Colors.transparent.withOpacity(0.3),
           ),
     );
   }
 
-  Widget createPrice(BuildContext context) {
+  Widget buildPrice() {
     final priceModel = model as RigthMenuPriceModel;
 
     return Text(
       '\$${priceModel.minPrice} - \$${priceModel.maxPrice}',
-      style: Theme.of(context).textTheme.subtitle1.copyWith(
+      style: textTheme.subtitle1.copyWith(
             color: Colors.transparent.withOpacity(0.3),
           ),
     );
   }
 
-  Widget createCircles() {
+  Widget buildCircles() {
     final colorsModel = model as RightMenuColorsModel;
     final colors = colorsModel.colors;
 

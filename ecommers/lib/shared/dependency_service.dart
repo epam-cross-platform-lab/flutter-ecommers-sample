@@ -12,6 +12,7 @@ import 'package:ecommers/core/repositories/index.dart';
 import 'package:ecommers/data/repository/firebase_repository.dart';
 import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/shared/logger.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -44,6 +45,7 @@ DialogService get dialogService => _ioc.get<DialogService>();
 FirebaseAuthRepository get authRepository => _ioc.get<FirebaseAuthRepository>();
 Logger get logger => _ioc.get<Logger>();
 I18n get localization => I18n.of(Get.context);
+TextTheme get textTheme => Theme.of(Get.context).textTheme;
 
 class DependencyService {
   static void registerDependencies() {

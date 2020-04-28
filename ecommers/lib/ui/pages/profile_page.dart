@@ -61,7 +61,7 @@ class ProfilePage extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: Column(
         children: <Widget>[
-          _buildProfileCard(context),
+          _buildProfileCard(),
           MenuList(
             margin: _listContainerMargin,
             itemList: _topMenuList,
@@ -77,7 +77,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileCard(BuildContext context) {
+  Widget _buildProfileCard() {
     return Container(
       height: _profileCardHeight,
       margin: const EdgeInsets.all(Insets.x6),
@@ -104,17 +104,17 @@ class ProfilePage extends StatelessWidget {
                   'Jane Doe', //TODO: get from the provider
                   maxLines: Dimens.defaultTextMaxLines,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: textTheme.headline6,
                 ),
                 Expanded(
                   child: Text(
                     'janedoe123@email.com', //TODO: get from the provider
                     maxLines: Dimens.defaultTextMaxLines,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: textTheme.bodyText1,
                   ),
                 ),
-                _buildEditProfileButton(context),
+                _buildEditProfileButton(),
               ],
             ),
           ),
@@ -123,7 +123,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildEditProfileButton(BuildContext context) {
+  Widget _buildEditProfileButton() {
     return SizedBox(
       height: _profileCardEditButtonHeight,
       child: OutlineButton(
@@ -138,7 +138,7 @@ class ProfilePage extends StatelessWidget {
         onPressed: () {},
         child: Text(
           localization.editProfile,
-          style: Theme.of(context).textTheme.button,
+          style: textTheme.button,
         ),
       ),
     );

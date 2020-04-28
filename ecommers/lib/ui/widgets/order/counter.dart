@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/widgets/circle_icon.dart';
@@ -35,8 +36,7 @@ class _CounterState extends State<Counter> {
               alignment: Alignment.center,
               child: Text(
                 widget.count.toString(),
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .caption
                     .copyWith(fontSize: FontSizes.normal),
               ),

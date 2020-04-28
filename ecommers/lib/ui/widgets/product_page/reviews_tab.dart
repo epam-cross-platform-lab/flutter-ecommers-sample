@@ -19,15 +19,15 @@ class ReviewsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildBody(context);
+    return _buildBody();
   }
 
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody() {
     if (productReviewsModel?.isNotEmpty == false) {
       return Center(
         child: Text(
           localization.noAvailableInformation,
-          style: Theme.of(context).textTheme.subtitle1,
+          style: textTheme.subtitle1,
         ),
       );
     }
@@ -65,7 +65,7 @@ class ReviewsTab extends StatelessWidget {
                             itemCount: ratesCount,
                             itemSize: Insets.x5,
                             ignoreGestures: true,
-                            itemBuilder: (context, _) => const Icon(
+                            itemBuilder: (_, __) => const Icon(
                               Icons.star,
                               color: BrandingColors.primary,
                             ),
@@ -77,7 +77,7 @@ class ReviewsTab extends StatelessWidget {
                               'dd MMM, yyyy',
                             ),
                             textAlign: TextAlign.end,
-                            style: Theme.of(context).textTheme.bodyText2,
+                            style: textTheme.bodyText2,
                           ),
                         ],
                       ),
@@ -85,14 +85,14 @@ class ReviewsTab extends StatelessWidget {
                       Text(
                         Formatter.getUserName(
                             review.user?.firstName, review.user?.lastName),
-                        style: Theme.of(context).textTheme.subtitle1,
+                        style: textTheme.subtitle1,
                       ),
                       const SizedBox(height: Insets.x1_5),
                       Text(
                         review.comment ?? '',
                         overflow: TextOverflow.ellipsis,
                         maxLines: 5,
-                        style: Theme.of(context).textTheme.subtitle2,
+                        style: textTheme.subtitle2,
                       ),
                       const SizedBox(height: Insets.x1_5),
                       SizedBox(

@@ -68,7 +68,7 @@ class ShellPage extends StatelessWidget {
     return IconButton(
       icon: IconWithBadge(
         badgeValue: badgeValue,
-        badgeTextStyle: Theme.of(context).textTheme.overline,
+        badgeTextStyle: textTheme.overline,
         icon: SvgPicture.asset(imageAssetPath),
       ),
       onPressed: onIconPressedFuction,

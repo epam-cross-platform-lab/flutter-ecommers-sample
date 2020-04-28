@@ -73,19 +73,19 @@ class _CheckoutPageState extends State<CheckoutPage> {
       children: <Widget>[
         Text(
           localization.checkoutTitle,
-          style: Theme.of(context).textTheme.headline6,
+          style: textTheme.headline6,
         ),
         const SizedBox(height: 20),
         Text(
           localization.shippingAddress,
-          style: Theme.of(context).textTheme.headline5,
+          style: textTheme.headline5,
         ),
         const SizedBox(height: Insets.x2),
         _buildShippingAddress(),
         _buildDevider(),
         Text(
           localization.paymentMethod,
-          style: Theme.of(context).textTheme.headline5,
+          style: textTheme.headline5,
         ),
         const SizedBox(height: Insets.x2),
         Consumer<PaymentMethodProviderModel>(
@@ -96,10 +96,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
                   Formatter.getTextWithNumberCard(
                           provider?.selectedPaymentMethod?.cardNumberLast4) ??
                       localization.selectCreditCard,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1
-                      .copyWith(fontWeight: FontWeight.w700),
+                  style:
+                      textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
                 ),
                 action: () =>
                     navigationService.navigateTo(Pages.paymentMethod));
@@ -108,7 +106,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         _buildDevider(),
         Text(
           localization.items,
-          style: Theme.of(context).textTheme.headline5,
+          style: textTheme.headline5,
         ),
         const SizedBox(height: 14.0),
       ],
@@ -126,7 +124,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Message to seller (optional)',
-              hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+              hintStyle: textTheme.bodyText1.copyWith(
                     fontWeight: FontWeight.w300,
                     fontStyle: FontStyle.italic,
                   ),
@@ -138,8 +136,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           imagePath: Assets.sale,
           text: Text(
             localization.addPromoCode,
-            style: Theme.of(context)
-                .textTheme
+            style: textTheme
                 .bodyText1
                 .copyWith(color: BrandingColors.primary),
           ),
@@ -202,15 +199,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
             children: <Widget>[
               Text(
                 'John Doe', //TODO from provider
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .bodyText1
                     .copyWith(fontWeight: FontWeight.w700),
               ),
               Text(
                 'No 123, Sub Street, Main Street,City Name, Province, Country',
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .bodyText1
                     .copyWith(fontWeight: FontWeight.w400),
               ),

@@ -47,7 +47,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Text(
           localization.forgotPasswordHelpText,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyText2,
+          style: textTheme.bodyText2,
         ),
         const SizedBox(height: Insets.x8_5),
         forgotPasswordForm,

@@ -60,8 +60,7 @@ class _SignUpPageState extends State<SignUpPage> {
             _isPhoneSelected
                 ? localization.or_use_email
                 : localization.or_use_phone,
-            style: Theme.of(context)
-                .textTheme
+            style: textTheme
                 .bodyText1
                 .copyWith(color: BrandingColors.primary),
           ),

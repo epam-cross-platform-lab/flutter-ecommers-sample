@@ -29,7 +29,7 @@ class SearchButton extends StatelessWidget {
             const SizedBox(width: Insets.x2),
             Text(
               localization.searchHintText,
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
+              style: textTheme.bodyText1.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
             )

@@ -29,13 +29,13 @@ class SuccessPage extends StatelessWidget {
               ),
               const SizedBox(height: 28.0),
               Text('John Doe', //TODO from provider
-                  style: Theme.of(context).textTheme.headline6),
+                  style: textTheme.headline6),
               const SizedBox(height: 14.0),
               SizedBox(
                 width: 252.0,
                 child: Text(
                   localization.successMessage,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: textTheme.subtitle1,
                   textAlign: TextAlign.center,
                 ),
               ),

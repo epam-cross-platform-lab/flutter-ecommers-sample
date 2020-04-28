@@ -57,10 +57,7 @@ class _LogInPageState extends State<LogInPage> {
             _isPhoneSelected
                 ? localization.or_use_email
                 : localization.or_use_phone,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                .copyWith(color: BrandingColors.primary),
+            style: textTheme.bodyText1.copyWith(color: BrandingColors.primary),
           ),
         ),
         const SizedBox(height: Insets.x8_5),

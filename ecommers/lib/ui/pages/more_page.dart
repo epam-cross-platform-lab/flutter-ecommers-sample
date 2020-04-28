@@ -61,7 +61,7 @@ class MorePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
             child: Text(
               localization.morePage,
-              style: Theme.of(context).textTheme.headline6,
+              style: textTheme.headline6,
             ),
           ),
           const SizedBox(height: 35.0),
@@ -75,21 +75,20 @@ class MorePage extends StatelessWidget {
             itemList: bottomMenuList,
           ),
           const SizedBox(height: 40.0),
-          _buildLogOutButton(context),
+          _buildLogOutButton(),
           const SizedBox(height: 30.0),
         ],
       ),
     );
   }
 
-  Widget _buildLogOutButton(BuildContext context) {
+  Widget _buildLogOutButton() {
     return Center(
       child: CupertinoButton(
         onPressed: logOutPressHandler,
         child: Text(
           localization.logOut,
-          style: Theme.of(context)
-              .textTheme
+          style: textTheme
               .headline5
               .apply(color: BrandingColors.primary),
         ), //TODO use proovider

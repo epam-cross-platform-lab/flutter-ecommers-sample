@@ -36,7 +36,7 @@ class _CartPageState extends State<CartPage> {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: Insets.x4),
               child: Text(localization.cartTitle,
-                  style: Theme.of(context).textTheme.headline6)),
+                  style: textTheme.headline6)),
           const SizedBox(height: 16),
           Expanded(child: _buildOrderListView()),
           const Padding(

@@ -20,7 +20,7 @@ class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      createProvider: (_) => CategoriesProviderModel(categories),
+      createProvider: () => CategoriesProviderModel(categories),
       child: CloseablePage(
         child: BackgroundedSafeArea(
           child: SingleChildScrollView(
@@ -36,7 +36,7 @@ class CategoriesPage extends StatelessWidget {
               children: <Widget>[
                 Text(
                   localization.allCategories,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: textTheme.headline6,
                 ),
                 const SizedBox(height: Insets.x6),
                 Row(

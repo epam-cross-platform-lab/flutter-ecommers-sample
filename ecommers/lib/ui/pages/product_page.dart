@@ -19,7 +19,7 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tabBarStyle = Theme.of(context).textTheme.subtitle1;
+    final tabBarStyle = textTheme.subtitle1;
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
 
     final valueNotifier = ValueNotifier<int>(0);
@@ -44,7 +44,7 @@ class ProductPage extends StatelessWidget {
                     return IconButton(
                         icon: IconWithBadge(
                           badgeValue: cartProvider.orderCount,
-                          badgeTextStyle: Theme.of(context).textTheme.overline,
+                          badgeTextStyle: textTheme.overline,
                           icon: const Icon(
                             Icons.shopping_cart,
                             color: BrandingColors.primaryText,

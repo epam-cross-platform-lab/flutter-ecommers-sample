@@ -37,24 +37,21 @@ class TotalOrderWidget extends StatelessWidget {
             children: <Widget>[
               Text(
                 localization.totalOrder,
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .headline5
                     .copyWith(fontSize: FontSizes.small_1x),
               ),
               const SizedBox(height: 7.0),
               Text(
                 Formatter.getCost(cost),
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .headline6
                     .copyWith(fontSize: FontSizes.big_2x),
               ),
               const SizedBox(height: 4.0),
               Text(
                 localization.freeDomesticShipping,
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .headline5
                     .copyWith(fontWeight: FontWeight.w400),
               ),
