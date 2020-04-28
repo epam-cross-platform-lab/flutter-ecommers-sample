@@ -1,5 +1,5 @@
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 class DetailsTab extends StatelessWidget {
@@ -35,7 +35,6 @@ class DetailsTab extends StatelessWidget {
 
   Map<String, String> _generateDetailsValues(
       BuildContext context, ProductDetails productDetailModel, String skuId) {
-    final localization = I18n.of(context);
     final values = <String, String>{};
 
     if (productDetailModel?.brand?.isNotEmpty == true) {

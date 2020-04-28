@@ -1,4 +1,4 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +17,6 @@ class SearchTextField extends StatelessWidget {
     final hintStyle = inputTextStyle.copyWith(
         color: BrandingColors.primaryText.withOpacity(0.4));
 
-    final localization = I18n.of(context);
     return Container(
       height: 35.0,
       padding: const EdgeInsets.symmetric(horizontal: Insets.x4),

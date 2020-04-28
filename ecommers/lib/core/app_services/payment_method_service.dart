@@ -1,6 +1,6 @@
 import 'package:ecommers/core/models/payment_method_model.dart';
 import 'package:ecommers/core/models/payment_method_wrapper.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 
 class PaymentMethodService {

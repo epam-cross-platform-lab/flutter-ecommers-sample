@@ -1,5 +1,5 @@
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
@@ -24,7 +24,6 @@ class ProductTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localization = I18n.of(context);
     final noInfoTextStyle = Theme.of(context).textTheme.subtitle1;
 
     return ChangeNotifierProvider(
@@ -39,7 +38,7 @@ class ProductTab extends StatelessWidget {
               ),
               SizedBox(
                 height: Insets.x25,
-                child: _createColorsList(noInfoTextStyle, model, localization),
+                child: _createColorsList(noInfoTextStyle, model),
               ),
               Text(
                 localization.selectSizeUs,
@@ -48,7 +47,7 @@ class ProductTab extends StatelessWidget {
               const SizedBox(height: Insets.x5),
               SizedBox(
                 height: Insets.x12_5,
-                child: _createSizesList(noInfoTextStyle, model, localization),
+                child: _createSizesList(noInfoTextStyle, model),
               ),
             ],
           );
@@ -57,8 +56,8 @@ class ProductTab extends StatelessWidget {
     );
   }
 
-  Widget _createSizesList(TextStyle noInfoTextStyle,
-      ProductTabProviderModel model, I18n localization) {
+  Widget _createSizesList(
+      TextStyle noInfoTextStyle, ProductTabProviderModel model) {
     if (model.sizes?.isNotEmpty == true) {
       return ListView.separated(
         scrollDirection: Axis.horizontal,
@@ -102,8 +101,8 @@ class ProductTab extends StatelessWidget {
     );
   }
 
-  Widget _createColorsList(TextStyle noInfoTextStyle,
-      ProductTabProviderModel model, I18n localization) {
+  Widget _createColorsList(
+      TextStyle noInfoTextStyle, ProductTabProviderModel model) {
     if (model.colors?.isNotEmpty == true) {
       return ListView.separated(
         scrollDirection: Axis.horizontal,

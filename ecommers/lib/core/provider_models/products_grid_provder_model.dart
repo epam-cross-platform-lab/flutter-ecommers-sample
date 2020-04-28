@@ -1,11 +1,11 @@
 import 'package:async/async.dart';
 import 'package:ecommers/core/mixins/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/sort_type.dart';
-import 'package:ecommers/core/services/index.dart' as services;
 
 class ProductsGridProviderModel extends ChangeNotifier
     with BusyNotifier, ItemsLoadingNotifier {
@@ -68,7 +68,7 @@ class ProductsGridProviderModel extends ChangeNotifier
   }
 
   Future<List<Product>> _fetchMoreProducts(int from, int to) {
-    return services.productService.fetchProducts(
+    return productService.fetchProducts(
       category: _categoryType,
       subCategory: _subCategory,
       searchQuery: _searchQuery,

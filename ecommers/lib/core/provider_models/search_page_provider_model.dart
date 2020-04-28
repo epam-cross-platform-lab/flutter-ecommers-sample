@@ -1,6 +1,6 @@
 import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 class SearchPageProviderModel extends ChangeNotifier with BusyNotifier {

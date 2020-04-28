@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/data/repository/firebase_repository.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 
 class AuthorizationService {
   Future<AuthStatus> signInWithEmailAndPassword(

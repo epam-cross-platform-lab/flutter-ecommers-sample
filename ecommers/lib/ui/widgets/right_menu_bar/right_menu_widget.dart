@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +67,7 @@ class RightMenuWidget extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(
-                        I18n.of(context).refineResults,
+                        localization.refineResults,
                         style: Theme.of(context).textTheme.headline5.copyWith(
                               fontSize: FontSizes.small_3x,
                               color: Colors.transparent.withOpacity(0.3),
@@ -77,7 +77,7 @@ class RightMenuWidget extends StatelessWidget {
                       InkWell(
                         onTap: () => {}, //TODO: handle click
                         child: Text(
-                          I18n.of(context).clear,
+                          localization.clear,
                           style: Theme.of(context).textTheme.headline5.copyWith(
                               fontSize: FontSizes.small_3x,
                               color: BrandingColors.primary),
@@ -97,7 +97,7 @@ class RightMenuWidget extends StatelessWidget {
                         height: 47.0,
                         width: 230.0,
                         child: PrimaryButtonWidget(
-                          text: I18n.of(context).applyFilters,
+                          text: localization.applyFilters,
                           onPressedFunction: () => {}, //TODO:  handle click
                         ),
                       ),

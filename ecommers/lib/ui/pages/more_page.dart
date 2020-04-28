@@ -1,6 +1,5 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';
@@ -61,7 +60,7 @@ class MorePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
             child: Text(
-              I18n.of(context).morePage,
+              localization.morePage,
               style: Theme.of(context).textTheme.headline6,
             ),
           ),
@@ -88,7 +87,7 @@ class MorePage extends StatelessWidget {
       child: CupertinoButton(
         onPressed: logOutPressHandler,
         child: Text(
-          I18n.of(context).logOut,
+          localization.logOut,
           style: Theme.of(context)
               .textTheme
               .headline5
@@ -99,7 +98,7 @@ class MorePage extends StatelessWidget {
   }
 
   Future logOutPressHandler() async {
-    authorizationService.logOut(); 
+    authorizationService.logOut();
     await navigationService.navigateWithReplacementTo(Pages.authorization);
   }
 }

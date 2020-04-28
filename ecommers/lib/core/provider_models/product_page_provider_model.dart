@@ -1,7 +1,7 @@
 import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/widgets.dart';
 

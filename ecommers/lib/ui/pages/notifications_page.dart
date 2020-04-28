@@ -1,5 +1,5 @@
 import 'package:ecommers/core/models/notification_model.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/backgrounds_for_notifications.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -15,13 +15,13 @@ class NotificationsPage extends StatelessWidget {
 
   static final DateFormat formatter = DateFormat('d MMM');
 
-  String _formatDate(DateTime date, I18n localizationObject) {
+  String _formatDate(DateTime date) {
     if (date.day == DateTime.now().day) {
       return DateFormat.jm().format(date).toString();
     }
     if (DateTime.now().month == date.month &&
         (DateTime.now().day - date.day) >= 1) {
-      return localizationObject.yesterday;
+      return localization.yesterday;
     } else {
       return formatter.format(date);
     }
@@ -86,7 +86,7 @@ class NotificationsPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                I18n.of(context).notificationsTitle,
+                localization.notificationsTitle,
                 style: Theme.of(context).textTheme.headline6,
               ),
               const SizedBox(height: Insets.x5),
@@ -113,7 +113,7 @@ class NotificationsPage extends StatelessWidget {
           backgroundColor: currentNotification.backgroundColor,
           shadowColor: currentNotification.shadowColor,
           imagePath: currentNotification.imgPath,
-          day: _formatDate(currentNotification.day,I18n.of(context)),
+          day: _formatDate(currentNotification.day),
         );
       },
       separatorBuilder: (BuildContext context, int index) {

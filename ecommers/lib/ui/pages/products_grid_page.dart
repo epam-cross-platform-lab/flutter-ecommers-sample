@@ -1,4 +1,4 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide BackButton;
 import 'package:flutter_svg/svg.dart';
@@ -27,7 +27,6 @@ class ProductsGridPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localization = I18n.of(context);
     final tabStyle = Theme.of(context)
         .textTheme
         .headline5

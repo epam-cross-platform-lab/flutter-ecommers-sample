@@ -1,4 +1,4 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +35,7 @@ class CategoriesPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  I18n.of(context).allCategories,
+                  localization.allCategories,
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 const SizedBox(height: Insets.x6),

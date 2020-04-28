@@ -1,6 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/auth/sign_up_provider_model.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';

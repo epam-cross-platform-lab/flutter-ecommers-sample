@@ -1,4 +1,4 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -36,7 +36,7 @@ class TotalOrderWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                I18n.of(context).totalOrder,
+                localization.totalOrder,
                 style: Theme.of(context)
                     .textTheme
                     .headline5
@@ -52,7 +52,7 @@ class TotalOrderWidget extends StatelessWidget {
               ),
               const SizedBox(height: 4.0),
               Text(
-                I18n.of(context).freeDomesticShipping,
+                localization.freeDomesticShipping,
                 style: Theme.of(context)
                     .textTheme
                     .headline5

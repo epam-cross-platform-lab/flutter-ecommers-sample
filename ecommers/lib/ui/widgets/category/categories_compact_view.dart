@@ -1,8 +1,7 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/page_arguments.dart';
-import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/category/category_item.dart';
@@ -28,7 +27,7 @@ class CategoriesCompactView extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Text(
-              I18n.of(context).categoriesTitle,
+              localization.categoriesTitle,
               style: Theme.of(context).textTheme.headline6,
             ),
           ),
@@ -78,7 +77,7 @@ class CategoriesCompactView extends StatelessWidget {
     const whiteColorHex = '#ffffff';
 
     final seeAllCategoryModel = Category(
-      title: I18n.of(context).seeAllCategoryTitle,
+      title: localization.seeAllCategoryTitle,
       shadowColor: '#${BrandingColors.blur.value.toRadixString(16)}',
       type: Categories.seeAll,
       gradientColor1: whiteColorHex,

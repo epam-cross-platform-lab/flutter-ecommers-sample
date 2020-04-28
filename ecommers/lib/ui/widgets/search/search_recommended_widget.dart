@@ -1,9 +1,9 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/extensions/index.dart';

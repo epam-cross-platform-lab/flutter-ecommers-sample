@@ -1,8 +1,7 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
-import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -51,7 +50,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 //todo request for place order
                 cartProvider.resetCart();
               },
-              buttonText: I18n.of(context).placeOrderButton,
+              buttonText: localization.placeOrderButton,
               padding: const EdgeInsets.fromLTRB(
                   Insets.x6, Insets.x2, Insets.x5, Insets.x3_5),
             ),
@@ -66,19 +65,19 @@ class _CheckoutPageState extends State<CheckoutPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          I18n.of(context).checkoutTitle,
+          localization.checkoutTitle,
           style: Theme.of(context).textTheme.headline6,
         ),
         const SizedBox(height: 20),
         Text(
-          I18n.of(context).shippingAddress,
+          localization.shippingAddress,
           style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(height: Insets.x2),
         _buildShippingAddress(),
         _buildDevider(),
         Text(
-          I18n.of(context).paymentMethod,
+          localization.paymentMethod,
           style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(height: Insets.x2),
@@ -89,7 +88,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 text: Text(
                   Formatter.getTextWithNumberCard(
                           provider?.selectedPaymentMethod?.cardNumberLast4) ??
-                      I18n.of(context).selectCreditCard,
+                      localization.selectCreditCard,
                   style: Theme.of(context)
                       .textTheme
                       .bodyText1
@@ -101,7 +100,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         _buildDevider(),
         Text(
-          I18n.of(context).items,
+          localization.items,
           style: Theme.of(context).textTheme.headline5,
         ),
         const SizedBox(height: 14.0),
@@ -131,7 +130,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         _buildRowAction(
           imagePath: Assets.sale,
           text: Text(
-            I18n.of(context).addPromoCode,
+            localization.addPromoCode,
             style: Theme.of(context)
                 .textTheme
                 .bodyText1

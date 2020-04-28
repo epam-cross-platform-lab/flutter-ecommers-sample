@@ -1,10 +1,9 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/search/index.dart';
@@ -12,7 +11,6 @@ import 'package:ecommers/ui/widgets/search/index.dart';
 class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final localization = I18n.of(context);
     return BasePage(
       createProvider: (context) => SearchPageProviderModel(),
       child: SingleChildScrollView(

@@ -1,4 +1,4 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -54,7 +54,7 @@ class BankCard extends StatelessWidget {
                     child: InkWell(
                       onTap: deleteFunction,
                       child: Text(
-                        I18n.of(context).delete,
+                        localization.delete,
                         style: Theme.of(context)
                             .textTheme
                             .headline4

@@ -1,5 +1,5 @@
 import 'package:ecommers/core/app_services/dialog/dialog_base.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 

@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:ecommers/core/app_services/index.dart';
-import 'package:ecommers/core/services/dependency_service.dart' as services;
+import 'package:ecommers/shared/dependency_service.dart' as services;
 
 mixin ItemsLoadingNotifier on ChangeNotifier {
   @protected

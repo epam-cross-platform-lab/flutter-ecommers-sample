@@ -1,11 +1,11 @@
 import 'dart:async';
 
 import 'package:ecommers/core/mixins/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommers/core/mixins/items_loading_notifier.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/core/services/index.dart' as services;
 
 class HomeProviderModel extends ChangeNotifier
     with ItemsLoadingNotifier, BusyNotifier {
@@ -34,16 +34,16 @@ class HomeProviderModel extends ChangeNotifier
   }
 
   Future _fetchCategories() async {
-    _categoryList = await services.categoryService.fetchCategoryList();
+    _categoryList = await categoryService.fetchCategoryList();
   }
 
   Future _fetchLatestProducts() async {
     _productsLatest = await paginator
-        .loadNextPage(services.productService.fetchLatestProducts);
+        .loadNextPage(productService.fetchLatestProducts);
   }
 
   Future _fetchLatestNotes() async {
-    _notesLatest = await services.noteService.fetchLatestNotes();
+    _notesLatest = await noteService.fetchLatestNotes();
   }
 
   @override
@@ -51,7 +51,7 @@ class HomeProviderModel extends ChangeNotifier
     isItemsLoading = true;
 
     final products = await paginator
-        .loadNextPage(services.productService.fetchLatestProducts);
+        .loadNextPage(productService.fetchLatestProducts);
 
     _productsLatest.addAll(products);
 

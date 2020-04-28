@@ -1,8 +1,7 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -33,7 +32,7 @@ class _CartPageState extends State<CartPage> {
         children: <Widget>[
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: Insets.x4),
-              child: Text(I18n.of(context).cartTitle,
+              child: Text(localization.cartTitle,
                   style: Theme.of(context).textTheme.headline6)),
           const SizedBox(height: 16),
           Expanded(child: _buildOrderListView()),
@@ -48,7 +47,7 @@ class _CartPageState extends State<CartPage> {
                 backgroundColor: BrandingColors.pageBackground,
                 onButtonPressedFunction: () =>
                     navigationService.navigateTo(Pages.checkout),
-                buttonText: I18n.of(context).checkoutButton,
+                buttonText: localization.checkoutButton,
                 isButtonDisabled: _cartProvider.orderCount == 0,
               ))
         ],

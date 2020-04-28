@@ -1,8 +1,10 @@
+
 import 'package:ecommers/core/app_services/category_service.dart';
 import 'package:ecommers/core/app_services/dialog/dialog_service.dart';
 import 'package:ecommers/core/app_services/index.dart';
 import 'package:ecommers/core/cache/index.dart';
 import 'package:ecommers/core/common/file_manager.dart';
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/services/api_service.dart';
 import 'package:ecommers/core/services/membership_service.dart';
 import 'package:ecommers/core/services/navigation/navigation_service.dart';
@@ -14,12 +16,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 
-import '../app_services/index.dart';
-import '../cache/index.dart';
-import '../common/index.dart';
-import '../services/extensions/get_it_extension.dart';
-import '../services/index.dart';
-import '../services/navigation/navigation_service.dart';
+import 'get_it_extension.dart';
 
 final GlobalKey mainGlobalKey = GlobalKey();
 final _ioc = GetIt.I;

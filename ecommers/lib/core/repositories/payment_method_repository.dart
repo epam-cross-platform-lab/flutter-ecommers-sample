@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/payment_method_wrapper.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 
 class PaymentMethodRepository {
   static const filterFieldForUser = 'userId';

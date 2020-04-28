@@ -3,7 +3,7 @@ import 'package:ecommers/core/provider_models/auth/log_in_provider_model.dart';
 import 'package:ecommers/core/provider_models/auth/sign_up_provider_model.dart';
 import 'package:ecommers/core/provider_models/base_provider_model.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/forgot_password_page.dart';
 import 'package:ecommers/ui/pages/authorization/log_in_page.dart';
