@@ -38,7 +38,7 @@ PaymentMethodRepository get paymentMethodRepository =>
     _ioc.get<PaymentMethodRepository>();
 CacheDatabase get cacheDatabase => _ioc.get<CacheDatabase>();
 CartRepository get cartRepository => _ioc.get<CartRepository>();
-Paginator get paginator => _ioc.get<Paginator>();
+Paginator createPaginator() => _ioc.get<Paginator>();
 DialogService get dialogService => _ioc.get<DialogService>();
 FirebaseAuthRepository get authRepository => _ioc.get<FirebaseAuthRepository>();
 Logger get logger => _ioc.get<Logger>();

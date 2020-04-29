@@ -38,8 +38,8 @@ class HomeProviderModel extends ChangeNotifier
   }
 
   Future _fetchLatestProducts() async {
-    _productsLatest = await paginator
-        .loadNextPage(productService.fetchLatestProducts);
+    _productsLatest =
+        await paginator.loadNextPage(productService.fetchLatestProducts);
   }
 
   Future _fetchLatestNotes() async {
@@ -50,8 +50,8 @@ class HomeProviderModel extends ChangeNotifier
   FutureOr<void> loadMoreProducts() async {
     isItemsLoading = true;
 
-    final products = await paginator
-        .loadNextPage(productService.fetchLatestProducts);
+    final products =
+        await paginator.loadNextPage(productService.fetchLatestProducts);
 
     _productsLatest.addAll(products);
 
