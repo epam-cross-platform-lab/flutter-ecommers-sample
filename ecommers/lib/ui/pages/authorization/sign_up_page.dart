@@ -85,7 +85,7 @@ class _SignUpPageState extends State<SignUpPage> {
             onValidate: (text) => UserValidator.isPhoneNumber(text)
                 ? null
                 : localization.incorrect_phone_number,
-            onChanged: (text) => provider.phoneNumber = phoneController.text,
+            onChanged: (text) => _provider.phoneNumber = phoneController.text,
           ),
           AuthTextField(
             labelText: localization.username,
