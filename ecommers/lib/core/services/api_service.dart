@@ -11,9 +11,6 @@ part 'api_service.chopper.dart';
 abstract class ApiService extends ChopperService {
   static ApiService create([ChopperClient client]) => _$ApiService(client);
 
-  @Post(path: ApiDefines.login)
-  Future<Response<LoginModel>> login(@Body() Map<String, dynamic> user);
-
   @Post(path: ApiDefines.auth)
   Future<Response<LoginModel>> auth(@Body() Map<String, dynamic> user);
 

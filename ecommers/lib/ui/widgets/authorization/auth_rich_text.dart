@@ -64,7 +64,7 @@ class _AuthRichTextState extends State<AuthRichText> {
     return TextSpan(
       text: textModel.text,
       style: baseTextStyle,
-      children: <InlineSpan>[..._buildChildTextSpanList(childens)],
+      children: [..._buildChildTextSpanList(childens)],
     );
   }
 
@@ -74,7 +74,7 @@ class _AuthRichTextState extends State<AuthRichText> {
       text: textModel.text,
       style: baseTextStyle.copyWith(color: BrandingColors.primary),
       recognizer: _textTapRecognizerList[textModel.id],
-      children: <InlineSpan>[..._buildChildTextSpanList(childens)],
+      children: [..._buildChildTextSpanList(childens)],
     );
   }
 

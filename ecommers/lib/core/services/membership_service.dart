@@ -18,8 +18,6 @@ class MembershipService {
   bool get isNotExpired =>
       _expirationDate != null && DateTime.now().isBefore(_expirationDate);
 
-  MembershipService();
-
   Future initialize() async {
     _storage = await SharedPreferences.getInstance();
     _loadData();

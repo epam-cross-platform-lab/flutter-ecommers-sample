@@ -19,6 +19,8 @@ class DataProvider {
       Completer<List<Product>>();
 
   static Future fetchProducts() async {
+    if (_resultProducts.isCompleted) return;
+
     final ReceivePort mainPort = ReceivePort();
     final Completer<SendPort> isolatedPort = Completer<SendPort>();
 

@@ -1,13 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import '../../core/common/index.dart';
-import '../../core/models/data_models/index.dart';
-import '../../core/services/index.dart';
-import '../../generated/i18n.dart';
-import '../../ui/decorations/dimens/index.dart';
-import '../../ui/widgets/index.dart';
 
 class NotesCarousel extends StatelessWidget {
   final List<Note> notes;

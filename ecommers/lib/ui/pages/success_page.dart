@@ -1,4 +1,4 @@
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/pages/closeable_page.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';

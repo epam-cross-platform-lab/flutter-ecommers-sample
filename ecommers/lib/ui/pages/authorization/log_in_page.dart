@@ -1,6 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/provider_models/log_in_provider_model.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/core/provider_models/auth/log_in_provider_model.dart';
+import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
@@ -10,13 +10,32 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LogInPage extends StatelessWidget {
+class LogInPage extends StatefulWidget {
+  @override
+  _LogInPageState createState() => _LogInPageState();
+}
+
+class _LogInPageState extends State<LogInPage> {
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool _isPhoneSelected = false;
+
+  @override
+  void dispose() {
+    phoneController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final localization = I18n.of(context);
     final provider = Provider.of<LogInProviderModel>(context, listen: false);
 
-    final loginForm = _buildLoginForm(localization, provider);
+    final loginForm = _isPhoneSelected
+        ? _buildPhoneForm(provider)
+        : _buildEmailForm(provider);
 
     return AuthorizationTabBase(
       children: <Widget>[
@@ -26,21 +45,49 @@ class LogInPage extends StatelessWidget {
         PrimaryButtonWidget(
           text: localization.logIn,
           assetIconPath: Assets.arrowRightIcon,
-          onPressedFunction: () {
-            if (loginForm.formKey.currentState.validate()) {
-              provider.tryLogin();
-            }
-          },
+          onPressedFunction: () => _onLoginPressed(loginForm, provider),
+        ),
+        FlatButton(
+          onPressed: () => setState(() => _isPhoneSelected = !_isPhoneSelected),
+          child: Text(
+            _isPhoneSelected
+                ? localization.or_use_email
+                : localization.or_use_phone,
+            style: Theme.of(context)
+                .textTheme
+                .bodyText1
+                .copyWith(color: BrandingColors.primary),
+          ),
         ),
         const SizedBox(height: Insets.x8_5),
-        AuthRichText(
-          textSpanModelList: provider.bottomText,
-        ),
+        AuthRichText(textSpanModelList: provider.bottomText),
       ],
     );
   }
 
-  AuthForm _buildLoginForm(I18n localization, LogInProviderModel provider) {
+  AuthForm _buildPhoneForm(LogInProviderModel provider) {
+    return AuthForm(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          AuthTextField(
+            prefixText: '+',
+            labelText: localization.your_phone_number,
+            keyboardType: TextInputType.phone,
+            icon: Icons.phone,
+            controller: phoneController,
+            onValidate: (text) => UserValidator.isPhoneNumber(text)
+                ? null
+                : localization.incorrect_phone_number,
+            onChanged: (String text) =>
+                provider.phoneNumber = phoneController.text,
+          ),
+        ],
+      ),
+    );
+  }
+
+  AuthForm _buildEmailForm(LogInProviderModel provider) {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -48,22 +95,37 @@ class LogInPage extends StatelessWidget {
           AuthTextField(
             labelText: localization.usernameOrEmail,
             keyboardType: TextInputType.emailAddress,
-            assetIconPath: Assets.profileIcon,
-            onValidate: (text) => text.isEmpty ? localization.fieldError : null,
-            onChanged: (String text) => provider.usernameOrEmail = text,
+            svgIconPath: Assets.profileIcon,
+            controller: emailController,
+            onValidate: (text) =>
+                text.isEmpty ? localization.field_should_not_be_empty : null,
+            onChanged: (String text) =>
+                provider.userName = emailController.text,
           ),
           AuthTextField(
             labelText: localization.password,
             obscureText: true,
+            controller: passwordController,
             keyboardType: TextInputType.visiblePassword,
-            assetIconPath: Assets.passwordIcon,
-            onValidate: (text) => Validator.isPasswordValid(text)
+            svgIconPath: Assets.passwordIcon,
+            onValidate: (text) => UserValidator.isPasswordValid(text)
                 ? null
                 : localization.passwordError,
-            onChanged: (String text) => provider.password = text,
+            onChanged: (String text) =>
+                provider.password = passwordController.text,
           ),
         ],
       ),
     );
+  }
+
+  void _onLoginPressed(AuthForm form, LogInProviderModel provider) {
+    if (!form.formKey.currentState.validate()) return;
+
+    if (_isPhoneSelected) {
+      provider.phoneLogin();
+    } else {
+      provider.login();
+    }
   }
 }

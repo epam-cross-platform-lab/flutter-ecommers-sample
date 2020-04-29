@@ -1,13 +1,12 @@
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/page_arguments.dart';
+import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
+import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/widgets/category/category_item.dart';
 import 'package:flutter/material.dart';
-
-import '../../../core/common/index.dart';
-import '../../../core/models/data_models/index.dart';
-import '../../../core/services/index.dart';
-import '../../../generated/i18n.dart';
-import '../../../ui/decorations/dimens/index.dart';
-import '../../../ui/decorations/index.dart';
-import '../../../ui/widgets/category/category_item.dart';
 
 class CategoriesCompactView extends StatelessWidget {
   static const _containerHeight = 134.0;
