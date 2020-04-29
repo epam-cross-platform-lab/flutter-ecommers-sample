@@ -9,10 +9,6 @@ class PaymentMethodProviderModel extends ChangeNotifier {
   CreditCard creditCard = CreditCard();
   String expDate = '';
 
-  PaymentMethodProviderModel() {
-    _initialize();
-  }
-
   List<PaymentMethodModel> get paymentMethods => _paymentMethods;
   PaymentMethodModel get selectedPaymentMethod => _selectedPaymentMethod;
 
@@ -85,7 +81,7 @@ class PaymentMethodProviderModel extends ChangeNotifier {
     return true;
   }
 
-  Future _initialize() async {
+  Future initialize() async {
     _paymentMethods = await paymentMethodService.getPaymentMethods() ??
         <PaymentMethodModel>[];
     _selectedPaymentMethod =
