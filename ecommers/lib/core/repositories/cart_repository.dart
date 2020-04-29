@@ -2,7 +2,6 @@ import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/repositories/index.dart';
 import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/core/models/index.dart';
 
 class CartRepository extends RepositoryBase<OrderModel> {
   static const filterFieldOrderId = 'id';

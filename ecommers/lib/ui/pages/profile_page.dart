@@ -12,11 +12,11 @@ import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
   static final List<MenuItemModel> _topMenuList = [
-    MenuItemModel(
+   const MenuItemModel(
       svgAssetIconPath: Assets.allOrderIcon,
       title: 'All My Orders',
     ),
-    MenuItemModel(
+   const MenuItemModel(
       svgAssetIconPath: Assets.pendingShipmentIcon,
       title: 'Pending Shipments',
     ),
@@ -25,7 +25,7 @@ class ProfilePage extends StatelessWidget {
       title: 'Pending Payments',
       onTappedFunction: () => navigationService.navigateTo(Pages.paymentMethod),
     ),
-    MenuItemModel(
+   const MenuItemModel(
       svgAssetIconPath: Assets.finishedOrdersIcon,
       title: 'Finished Orders',
     ),
