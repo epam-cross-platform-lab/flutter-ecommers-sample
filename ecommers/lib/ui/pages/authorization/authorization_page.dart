@@ -3,7 +3,7 @@ import 'package:ecommers/core/provider_models/auth/log_in_provider_model.dart';
 import 'package:ecommers/core/provider_models/auth/sign_up_provider_model.dart';
 import 'package:ecommers/core/provider_models/base_provider_model.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/forgot_password_page.dart';
 import 'package:ecommers/ui/pages/authorization/log_in_page.dart';
@@ -32,19 +32,17 @@ class _AuthorizationPageState extends State<AuthorizationPage>
 
   @override
   Widget build(BuildContext context) {
-    final tabStyle = Theme.of(context).textTheme.headline6;
+    final tabStyle = textTheme.headline6;
 
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
           create: (_) => LogInProviderModel(
-            context,
             bottomTapCallback: () => currentTabController.animateTo(0),
           ),
         ),
-        ChangeNotifierProvider(create: (_) => SignUpProviderModel(context)),
-        ChangeNotifierProvider(
-            create: (_) => ForgotPasswordProviderModel(context)),
+        ChangeNotifierProvider(create: (_) => SignUpProviderModel()),
+        ChangeNotifierProvider(create: (_) => ForgotPasswordProviderModel()),
         ChangeNotifierProxyProvider3<SignUpProviderModel, LogInProviderModel,
             ForgotPasswordProviderModel, BusyProviderModel>(
           create: (_) => BusyProviderModel(),

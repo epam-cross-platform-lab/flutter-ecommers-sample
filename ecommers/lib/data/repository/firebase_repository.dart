@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/data/result.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 

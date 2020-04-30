@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
@@ -51,14 +52,13 @@ class _SmallOrderWidgetState extends State<SmallOrderWidget> {
               children: <Widget>[
                 Text(
                   widget.primaryText,
-                  style: Theme.of(context)
-                      .textTheme
+                  style: textTheme
                       .bodyText1
                       .copyWith(fontWeight: FontWeight.w700),
                 ),
                 Text(
                   widget.secondaryText,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  style: textTheme.subtitle1,
                 ),
                 const SizedBox(height: Insets.x1),
                 Row(
@@ -66,8 +66,7 @@ class _SmallOrderWidgetState extends State<SmallOrderWidget> {
                     Expanded(
                         child: Text(
                       Formatter.getCost(widget.count * widget.cost),
-                      style: Theme.of(context)
-                          .textTheme
+                      style: textTheme
                           .bodyText1
                           .copyWith(color: BrandingColors.primary),
                     )),

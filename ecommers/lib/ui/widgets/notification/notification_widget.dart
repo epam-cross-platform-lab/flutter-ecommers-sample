@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/dimens.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -60,20 +61,19 @@ class NotificationWidget extends StatelessWidget {
           child: RichText(
             text: TextSpan(
                 text: 'Package from your order ',
-                style: Theme.of(context).textTheme.bodyText2,
+                style: textTheme.bodyText2,
                 children: <TextSpan>[
                   TextSpan(
                       text: orderNumberText,
-                      style: Theme.of(context)
-                          .textTheme
+                      style: textTheme
                           .bodyText1
                           .copyWith(color: BrandingColors.primary)),
                   TextSpan(
                       text: ' has ',
-                      style: Theme.of(context).textTheme.bodyText2),
+                      style: textTheme.bodyText2),
                   TextSpan(
                       text: richText,
-                      style: Theme.of(context).textTheme.bodyText1)
+                      style: textTheme.bodyText1)
                 ]),
           ),
         ),
@@ -81,7 +81,7 @@ class NotificationWidget extends StatelessWidget {
           alignment: Alignment.topRight,
           child: Text(
             day,
-            style: Theme.of(context).textTheme.bodyText2,
+            style: textTheme.bodyText2,
             textAlign: TextAlign.right,
           ),
         ),

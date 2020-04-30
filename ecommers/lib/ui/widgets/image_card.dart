@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
@@ -48,7 +49,7 @@ class ImageCard extends StatelessWidget {
                         child: Text(
                           description,
                           overflow: TextOverflow.ellipsis,
-                          style: Theme.of(context).textTheme.headline3,
+                          style: textTheme.headline3,
                         ),
                       ),
                     ),

@@ -1,6 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/auth/log_in_provider_model.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
@@ -21,6 +21,8 @@ class _LogInPageState extends State<LogInPage> {
   TextEditingController passwordController = TextEditingController();
   bool _isPhoneSelected = false;
 
+  LogInProviderModel _provider;
+
   @override
   void dispose() {
     phoneController.dispose();
@@ -30,12 +32,14 @@ class _LogInPageState extends State<LogInPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final provider = Provider.of<LogInProviderModel>(context, listen: false);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _provider = Provider.of<LogInProviderModel>(context, listen: false);
+  }
 
-    final loginForm = _isPhoneSelected
-        ? _buildPhoneForm(provider)
-        : _buildEmailForm(provider);
+  @override
+  Widget build(BuildContext context) {
+    final loginForm = _isPhoneSelected ? _buildPhoneForm() : _buildEmailForm();
 
     return AuthorizationTabBase(
       children: <Widget>[
@@ -45,7 +49,7 @@ class _LogInPageState extends State<LogInPage> {
         PrimaryButtonWidget(
           text: localization.logIn,
           assetIconPath: Assets.arrowRightIcon,
-          onPressedFunction: () => _onLoginPressed(loginForm, provider),
+          onPressedFunction: () => _onLoginPressed(loginForm),
         ),
         FlatButton(
           onPressed: () => setState(() => _isPhoneSelected = !_isPhoneSelected),
@@ -53,19 +57,16 @@ class _LogInPageState extends State<LogInPage> {
             _isPhoneSelected
                 ? localization.or_use_email
                 : localization.or_use_phone,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                .copyWith(color: BrandingColors.primary),
+            style: textTheme.bodyText1.copyWith(color: BrandingColors.primary),
           ),
         ),
         const SizedBox(height: Insets.x8_5),
-        AuthRichText(textSpanModelList: provider.bottomText),
+        AuthRichText(textSpanModelList: _provider.bottomText),
       ],
     );
   }
 
-  AuthForm _buildPhoneForm(LogInProviderModel provider) {
+  AuthForm _buildPhoneForm() {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -80,14 +81,14 @@ class _LogInPageState extends State<LogInPage> {
                 ? null
                 : localization.incorrect_phone_number,
             onChanged: (String text) =>
-                provider.phoneNumber = phoneController.text,
+                _provider.phoneNumber = phoneController.text,
           ),
         ],
       ),
     );
   }
 
-  AuthForm _buildEmailForm(LogInProviderModel provider) {
+  AuthForm _buildEmailForm() {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -100,7 +101,7 @@ class _LogInPageState extends State<LogInPage> {
             onValidate: (text) =>
                 text.isEmpty ? localization.field_should_not_be_empty : null,
             onChanged: (String text) =>
-                provider.userName = emailController.text,
+                _provider.userName = emailController.text,
           ),
           AuthTextField(
             labelText: localization.password,
@@ -112,20 +113,20 @@ class _LogInPageState extends State<LogInPage> {
                 ? null
                 : localization.passwordError,
             onChanged: (String text) =>
-                provider.password = passwordController.text,
+                _provider.password = passwordController.text,
           ),
         ],
       ),
     );
   }
 
-  void _onLoginPressed(AuthForm form, LogInProviderModel provider) {
+  void _onLoginPressed(AuthForm form) {
     if (!form.formKey.currentState.validate()) return;
 
     if (_isPhoneSelected) {
-      provider.phoneLogin();
+      _provider.phoneLogin();
     } else {
-      provider.login();
+      _provider.login();
     }
   }
 }

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 
 class RepositoryBase<T extends ItemBase> {
   final String filterFieldForItem;

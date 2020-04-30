@@ -1,12 +1,8 @@
-import 'package:ecommers/core/provider_models/provider_model_base.dart';
-import 'package:ecommers/core/mixins/success_notifier.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/core/mixins/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
-class ForgotPasswordProviderModel extends ProviderModelBase
-    with SuccessNotifierMixin {
-  ForgotPasswordProviderModel(BuildContext context) : super(context);
-
+class ForgotPasswordProviderModel extends ChangeNotifier with BusyNotifier {
   Future resetPassword(String email) async {
     isBusy = true;
     final result = await authorizationService.restorePassword(email);

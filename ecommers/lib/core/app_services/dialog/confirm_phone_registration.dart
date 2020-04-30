@@ -1,5 +1,5 @@
 import 'package:ecommers/core/app_services/dialog/dialog_base.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class ConfirmPhoneRegistration extends DialogBase<String> {
     return showInternally(AlertDialog(
       title: Text(
         localization.enter_sms_code_dialogTitle,
-        style: Theme.of(context).textTheme.headline5,
+        style: textTheme.headline5,
       ),
       content: Column(
         mainAxisSize: MainAxisSize.min,

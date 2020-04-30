@@ -1,5 +1,7 @@
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
@@ -54,7 +56,7 @@ class MorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      createProvider: (_) => MoreProviderModel(context),
+      createProvider: () => MoreProviderModel(),
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Column(
@@ -83,6 +85,7 @@ class MorePage extends StatelessWidget {
             const SizedBox(height: 30.0),
           ],
         ),
+
       ),
     );
   }
@@ -105,4 +108,5 @@ class MorePage extends StatelessWidget {
       },
     );
   }
+
 }
