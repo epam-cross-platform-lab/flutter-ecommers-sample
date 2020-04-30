@@ -1,6 +1,5 @@
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/shared/i18n.dart';
-import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -81,32 +80,28 @@ class MorePage extends StatelessWidget {
               itemList: bottomMenuList,
             ),
             const SizedBox(height: 40.0),
-            _buildLogOutButton(context),
+            _buildLogOutButton(),
             const SizedBox(height: 30.0),
           ],
         ),
-
       ),
     );
   }
 
-  Widget _buildLogOutButton(BuildContext context) {
+  Widget _buildLogOutButton() {
     return Consumer<MoreProviderModel>(
       builder: (_, provider, __) {
         return Center(
           child: CupertinoButton(
             onPressed: provider.logOutPressHandler,
             child: Text(
-              I18n.of(context).logOut,
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5
-                  .apply(color: BrandingColors.primary),
-            ), 
+              localization.logOut,
+              style:
+                  textTheme.headline5.copyWith(color: BrandingColors.primary),
+            ),
           ),
         );
       },
     );
   }
-
 }
