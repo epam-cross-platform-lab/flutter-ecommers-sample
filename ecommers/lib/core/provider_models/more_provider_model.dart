@@ -6,15 +6,8 @@ import 'package:flutter/material.dart';
 class MoreProviderModel extends ProviderModelBase {
   MoreProviderModel(BuildContext context) : super(context) ;
 
-  
-
    Future logOutPressHandler() async {
-    await cacheDatabase.dropDataBase([
-      CacheDefines.latestProducts,
-      CacheDefines.orders,
-      CacheDefines.paymentMethods,
-      CacheDefines.categories,
-    ]);
+    await cacheDatabase.dropDataBase();
     authorizationService.logOut();
     await navigationService.navigateWithReplacementTo(Pages.authorization);
   }
