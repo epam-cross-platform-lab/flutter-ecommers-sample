@@ -113,7 +113,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildListFooter(BuildContext context) {
+  Widget _buildListFooter() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -155,7 +155,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
         }
 
         if (index == newItemCount - 1) {
-          return _buildListFooter(context);
+          return _buildListFooter();
         }
 
         final currentOrder = _cartProvider.orders[index - 1];

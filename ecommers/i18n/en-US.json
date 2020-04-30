@@ -81,7 +81,6 @@
     "addCardDetails": "ADD CARD DETAILS",
     "selectCreditCard": "Select credit card",
     "messageToSeller" : "Message to seller (optional)",
-
     "enter_sms_code_dialog": {
         "title": "Enter SMS Code",
         "primary_button": "Done"
