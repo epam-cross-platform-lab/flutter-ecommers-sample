@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/auth/forgot_password_provider_model.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/authorization/authentication_tab_base.dart';
@@ -47,7 +47,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         Text(
           localization.forgotPasswordHelpText,
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyText2,
+          style: textTheme.bodyText2,
         ),
         const SizedBox(height: Insets.x8_5),
         forgotPasswordForm,

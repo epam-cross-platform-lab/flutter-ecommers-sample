@@ -1,4 +1,4 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,8 +28,8 @@ class SearchButton extends StatelessWidget {
             ),
             const SizedBox(width: Insets.x2),
             Text(
-              I18n.of(context).searchHintText,
-              style: Theme.of(context).textTheme.bodyText1.copyWith(
+              localization.searchHintText,
+              style: textTheme.bodyText1.copyWith(
                     fontWeight: FontWeight.w400,
                   ),
             )

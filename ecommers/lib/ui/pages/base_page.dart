@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 class BasePage<T extends BusyNotifier> extends StatelessWidget {
   final Widget child;
 
-  final T Function(BuildContext) createProvider;
+  final T Function() createProvider;
 
   const BasePage({
     @required this.createProvider,
@@ -17,7 +17,7 @@ class BasePage<T extends BusyNotifier> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (_) => createProvider(context),
+      create: (_) => createProvider(),
       child: BusyPage<T>(
         child: child,
       ),

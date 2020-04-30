@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommers/core/models/data_models/index.dart';
@@ -38,14 +39,13 @@ class ProductItemSmall extends ProductItemBase {
                 product.title,
                 overflow: TextOverflow.ellipsis,
                 maxLines: Dimens.defaultTextMaxLines,
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .bodyText1
                     .copyWith(fontWeight: FontWeight.w400),
               ),
               Text(
                 Formatter.getCost(product.price),
-                style: Theme.of(context).textTheme.bodyText1,
+                style: textTheme.bodyText1,
               ),
             ],
           ),

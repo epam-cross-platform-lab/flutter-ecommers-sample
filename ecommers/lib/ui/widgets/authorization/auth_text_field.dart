@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,16 +15,17 @@ class AuthTextField extends StatelessWidget {
   final String Function(String) onValidate;
   final Function(String) onChanged;
 
-  const AuthTextField(
-      {this.labelText = '',
-      this.svgIconPath = '',
-      this.keyboardType = TextInputType.text,
-      this.obscureText = false,
-      this.controller,
-      this.onValidate,
-      this.prefixText,
-      this.onChanged,
-      this.icon});
+  const AuthTextField({
+    this.labelText = '',
+    this.svgIconPath = '',
+    this.keyboardType = TextInputType.text,
+    this.obscureText = false,
+    this.controller,
+    this.onValidate,
+    this.prefixText,
+    this.onChanged,
+    this.icon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class AuthTextField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: labelText,
         prefixText: prefixText,
-        labelStyle: Theme.of(context).textTheme.headline5,
+        labelStyle: textTheme.headline5,
         prefixIcon: _buildIcon(),
         focusedBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.transparent),

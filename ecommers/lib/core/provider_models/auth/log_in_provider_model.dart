@@ -1,11 +1,11 @@
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/provider_models/provider_model_base.dart';
-import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/data/repository/firebase_repository.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
-class LogInProviderModel extends ProviderModelBase {
+class LogInProviderModel extends ChangeNotifier with BusyNotifier {
   String userName;
   String phoneNumber;
   String password;
@@ -13,8 +13,7 @@ class LogInProviderModel extends ProviderModelBase {
   List<AuthRichTextSpanModel> _bottomText;
   List<AuthRichTextSpanModel> get bottomText => _getBottomText();
 
-  LogInProviderModel(BuildContext context, {this.bottomTapCallback})
-      : super(context);
+  LogInProviderModel({this.bottomTapCallback});
 
   Future login() async {
     if (!UserValidator.isPasswordValid(userName)) return;

@@ -1,14 +1,11 @@
 import 'dart:async';
 
-import 'package:ecommers/core/services/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 abstract class DialogBase<T> {
   Completer<T> _completer;
-
-  BuildContext get context => mainGlobalKey.currentContext;
 
   T get defaultValue;
 

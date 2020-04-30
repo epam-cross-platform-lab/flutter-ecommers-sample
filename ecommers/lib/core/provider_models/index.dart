@@ -5,7 +5,6 @@ export 'home_provider_model.dart';
 export 'product_page_provider_model.dart';
 export 'product_tab_provider_model.dart';
 export 'products_grid_provder_model.dart';
-export 'provider_model_base.dart';
 export 'search_page_provider_model.dart';
 export 'search_query_provider_model.dart';
 export 'shell_provider_model.dart';

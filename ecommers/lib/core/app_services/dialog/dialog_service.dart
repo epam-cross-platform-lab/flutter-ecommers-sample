@@ -1,5 +1,5 @@
 import 'package:ecommers/core/app_services/dialog/confirmation_dialog.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/widgets.dart';
 
 import 'confirm_phone_registration.dart';

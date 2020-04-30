@@ -1,6 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/auth/sign_up_provider_model.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -21,6 +21,7 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
   bool _isPhoneSelected = false;
+  SignUpProviderModel _provider;
 
   @override
   void dispose() {
@@ -32,12 +33,16 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final provider = Provider.of<SignUpProviderModel>(context, listen: false);
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _provider = Provider.of<SignUpProviderModel>(context, listen: false);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     final authForm = _isPhoneSelected
-        ? _buildPhoneSignUp(provider)
-        : _buildSignUpForm(provider);
+        ? _buildPhoneSignUp()
+        : _buildSignUpForm();
 
     return AuthorizationTabBase(
       children: <Widget>[
@@ -47,7 +52,7 @@ class _SignUpPageState extends State<SignUpPage> {
         PrimaryButtonWidget(
           text: localization.signUp,
           assetIconPath: Assets.arrowRightIcon,
-          onPressedFunction: () => _onSignUpTapped(authForm, provider),
+          onPressedFunction: () => _onSignUpTapped(authForm),
         ),
         FlatButton(
           onPressed: () => setState(() => _isPhoneSelected = !_isPhoneSelected),
@@ -55,19 +60,18 @@ class _SignUpPageState extends State<SignUpPage> {
             _isPhoneSelected
                 ? localization.or_use_email
                 : localization.or_use_phone,
-            style: Theme.of(context)
-                .textTheme
+            style: textTheme
                 .bodyText1
                 .copyWith(color: BrandingColors.primary),
           ),
         ),
         const SizedBox(height: Insets.x8_5),
-        AuthRichText(textSpanModelList: provider.bottomText),
+        AuthRichText(textSpanModelList: _provider.bottomText),
       ],
     );
   }
 
-  AuthForm _buildPhoneSignUp(SignUpProviderModel provider) {
+  AuthForm _buildPhoneSignUp() {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -81,20 +85,21 @@ class _SignUpPageState extends State<SignUpPage> {
             onValidate: (text) => UserValidator.isPhoneNumber(text)
                 ? null
                 : localization.incorrect_phone_number,
-            onChanged: (text) => provider.phoneNumber = phoneController.text,
+            onChanged: (text) => _provider.phoneNumber = phoneController.text,
           ),
           AuthTextField(
             labelText: localization.username,
             svgIconPath: Assets.profileIcon,
-            onValidate: (text) => text.isEmpty ? localization.field_should_not_be_empty : null,
-            onChanged: (text) => provider.username = phoneController.text,
+            onValidate: (text) =>
+                text.isEmpty ? localization.field_should_not_be_empty : null,
+            onChanged: (text) => _provider.username = phoneController.text,
           ),
         ],
       ),
     );
   }
 
-  AuthForm _buildSignUpForm(SignUpProviderModel provider) {
+  AuthForm _buildSignUpForm() {
     return AuthForm(
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -106,14 +111,15 @@ class _SignUpPageState extends State<SignUpPage> {
             svgIconPath: Assets.mailIcon,
             onValidate: (text) =>
                 UserValidator.isEmail(text) ? null : localization.emailError,
-            onChanged: (text) => provider.email = emailController.text,
+            onChanged: (text) => _provider.email = emailController.text,
           ),
           AuthTextField(
             labelText: localization.username,
             controller: userNameController,
             svgIconPath: Assets.profileIcon,
-            onValidate: (text) => text.isEmpty ? localization.field_should_not_be_empty : null,
-            onChanged: (text) => provider.username = userNameController.text,
+            onValidate: (text) =>
+                text.isEmpty ? localization.field_should_not_be_empty : null,
+            onChanged: (text) => _provider.username = userNameController.text,
           ),
           AuthTextField(
             labelText: localization.password,
@@ -124,20 +130,20 @@ class _SignUpPageState extends State<SignUpPage> {
             onValidate: (text) => UserValidator.isPasswordValid(text)
                 ? null
                 : localization.passwordError,
-            onChanged: (text) => provider.password = passwordController.text,
+            onChanged: (text) => _provider.password = passwordController.text,
           ),
         ],
       ),
     );
   }
 
-  void _onSignUpTapped(AuthForm authForm, SignUpProviderModel provider) {
+  void _onSignUpTapped(AuthForm authForm) {
     if (!authForm.formKey.currentState.validate()) return;
 
     if (_isPhoneSelected) {
-      provider.autorizeWithPhoneNumber();
+      _provider.autorizeWithPhoneNumber();
     } else {
-      provider.tryAuthorize();
+      _provider.tryAuthorize();
     }
   }
 }

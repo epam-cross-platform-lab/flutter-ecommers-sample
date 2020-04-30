@@ -1,4 +1,4 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class ProductPageBottomView extends StatelessWidget {
               height: buttonSize.height,
               width: buttonSize.width,
               child: SecondaryButtonWidget(
-                text: I18n.of(context).shareThis,
+                text: localization.shareThis,
                 onPressedFunction: () => {},
                 assetIcon: Assets.shareArrowIcon,
               ),
@@ -29,7 +29,7 @@ class ProductPageBottomView extends StatelessWidget {
               height: buttonSize.height,
               width: buttonSize.width,
               child: PrimaryButtonWidget(
-                text: I18n.of(context).addToCart,
+                text: localization.addToCart,
                 onPressedFunction: addToCartFunction,
               ),
             ),

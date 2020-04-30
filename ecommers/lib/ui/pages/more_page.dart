@@ -1,6 +1,5 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';
@@ -61,8 +60,8 @@ class MorePage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
             child: Text(
-              I18n.of(context).morePage,
-              style: Theme.of(context).textTheme.headline6,
+              localization.morePage,
+              style: textTheme.headline6,
             ),
           ),
           const SizedBox(height: 35.0),
@@ -76,21 +75,20 @@ class MorePage extends StatelessWidget {
             itemList: bottomMenuList,
           ),
           const SizedBox(height: 40.0),
-          _buildLogOutButton(context),
+          _buildLogOutButton(),
           const SizedBox(height: 30.0),
         ],
       ),
     );
   }
 
-  Widget _buildLogOutButton(BuildContext context) {
+  Widget _buildLogOutButton() {
     return Center(
       child: CupertinoButton(
         onPressed: logOutPressHandler,
         child: Text(
-          I18n.of(context).logOut,
-          style: Theme.of(context)
-              .textTheme
+          localization.logOut,
+          style: textTheme
               .headline5
               .apply(color: BrandingColors.primary),
         ), //TODO use proovider
@@ -99,7 +97,7 @@ class MorePage extends StatelessWidget {
   }
 
   Future logOutPressHandler() async {
-    authorizationService.logOut(); 
+    authorizationService.logOut();
     await navigationService.navigateWithReplacementTo(Pages.authorization);
   }
 }

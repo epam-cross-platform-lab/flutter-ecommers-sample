@@ -1,4 +1,4 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/pages/closeable_page.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
@@ -29,13 +29,13 @@ class SuccessPage extends StatelessWidget {
               ),
               const SizedBox(height: 28.0),
               Text('John Doe', //TODO from provider
-                  style: Theme.of(context).textTheme.headline6),
+                  style: textTheme.headline6),
               const SizedBox(height: 14.0),
               SizedBox(
                 width: 252.0,
                 child: Text(
-                  I18n.of(context).successMessage,
-                  style: Theme.of(context).textTheme.subtitle1,
+                  localization.successMessage,
+                  style: textTheme.subtitle1,
                   textAlign: TextAlign.center,
                 ),
               ),

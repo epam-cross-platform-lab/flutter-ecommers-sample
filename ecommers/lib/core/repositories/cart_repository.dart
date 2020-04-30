@@ -1,5 +1,5 @@
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 
 class CartRepository {
   static const filterField = 'id';
