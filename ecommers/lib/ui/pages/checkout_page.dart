@@ -119,7 +119,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
-              hintText:  I18n.of(context).messageToSeller,
+              hintText: I18n.of(context).messageToSeller,
               hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
                     fontWeight: FontWeight.w300,
                     fontStyle: FontStyle.italic,
@@ -164,7 +164,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
           count: currentOrder.count,
           countIncrementFunction: () => cartProvider.add(currentOrder),
           countDecrementFunction: () => cartProvider.remove(currentOrder),
-          tapOrderFunction: () => navigationService.navigateTo(Pages.product, arguments: currentOrder.product),
+          tapOrderFunction: () => navigationService.navigateTo(Pages.product,
+              arguments: currentOrder.product),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -191,32 +192,47 @@ class _CheckoutPageState extends State<CheckoutPage> {
       onTap: () => navigationService.navigateTo(Pages.shippingAddress),
       child: Row(
         children: <Widget>[
-          Container(
-            width: 136,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'John Doe', //TODO from provider
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1
-                      .copyWith(fontWeight: FontWeight.w700),
-                ),
-                Text(
-                  'No 123, Sub Street, Main Street,City Name, Province, Country',
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1
-                      .copyWith(fontWeight: FontWeight.w400),
-                ),
-              ],
-            ),
+          Expanded(
+            child: Consumer<ShippingAddressProviderModel>(
+                builder: (_, provider, __) {
+              return _textBlockShippingAddress(provider, context);
+            }),
           ),
-          const Spacer(),
           const CircleIcon(),
         ],
       ),
+    );
+  }
+
+  Widget _textBlockShippingAddress(
+      ShippingAddressProviderModel provider, BuildContext context) {
+    if (provider?.selectedShippingAddress?.id == null) {
+      return Text(
+        'Select address',
+        style: Theme.of(context)
+            .textTheme
+            .bodyText1
+            .copyWith(fontWeight: FontWeight.w700),
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          provider?.selectedShippingAddress?.fullName,
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              .copyWith(fontWeight: FontWeight.w600),
+        ),
+        Text(
+          '${provider?.selectedShippingAddress?.country}, ${provider?.selectedShippingAddress?.city}, ${provider?.selectedShippingAddress?.state}',
+          style: Theme.of(context)
+              .textTheme
+              .bodyText1
+              .copyWith(fontWeight: FontWeight.w500),
+        ),
+      ],
     );
   }
 

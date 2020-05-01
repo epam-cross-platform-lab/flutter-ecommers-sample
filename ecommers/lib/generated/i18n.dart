@@ -174,6 +174,8 @@ class I18n implements WidgetsLocalizations {
   String get yesterday => "Yesterday";
   /// "Delete"
   String get delete => "Delete";
+  /// "Edit"
+  String get edit => "Edit";
   /// "You have no credit cards added"
   String get notBankCards => "You have no credit cards added";
   /// "Payment Method"
@@ -194,14 +196,14 @@ class I18n implements WidgetsLocalizations {
   String get addCardDetails => "ADD CARD DETAILS";
   /// "Select credit card"
   String get selectCreditCard => "Select credit card";
-  /// "Message to seller (optional)"
-  String get messageToSeller => "Message to seller (optional)";
-  /// ""
-  String get empty => "";
   /// "Adding Shipping Address"
   String get addingShippingAddress => "Adding Shipping Address";
   /// "Full Name"
   String get fullName => "Full Name";
+  /// "Message to seller (optional)"
+  String get messageToSeller => "Message to seller (optional)";
+  /// ""
+  String get empty => "";
   /// "Address"
   String get address => "Address";
   /// "City"
@@ -212,6 +214,12 @@ class I18n implements WidgetsLocalizations {
   String get zipCode => "Zip Code (Postal Code)";
   /// "Country"
   String get country => "Country";
+  /// "Shipping Address"
+  String get smallShippingAddress => "Shipping Address";
+  /// "ADD SHIPPING ADDRESS"
+  String get addShippingAddress => "ADD SHIPPING ADDRESS";
+  /// "You don't have any shipping addresses"
+  String get notShippingAddress => "You don't have any shipping addresses";
 }
 
 class _I18n_en_US extends I18n {

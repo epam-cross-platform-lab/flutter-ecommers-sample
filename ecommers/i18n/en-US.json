@@ -70,6 +70,7 @@
     "notificationsTitle": "Notifications",
     "yesterday": "Yesterday",
     "delete": "Delete",
+    "edit": "Edit",
     "notBankCards": "You have no credit cards added",
     "paymentMethodTitle":"Payment Method",
     "addCard": "ADD CARD",
@@ -88,5 +89,8 @@
     "city": "City",
     "stateProvinceRegion": "State/Province/Region",
     "zipCode": "Zip Code (Postal Code)",
-    "country": "Country"
+    "country": "Country",
+    "smallShippingAddress": "Shipping Address",
+    "addShippingAddress": "ADD SHIPPING ADDRESS",
+    "notShippingAddress": "You don't have any shipping addresses"
 }

@@ -1,21 +1,25 @@
+import 'package:ecommers/core/models/index.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'shipping_address_model.g.dart';
 
 @JsonSerializable()
-class ShippingAddressModel  {
-  final String id;
-  final String fullName;
-  final String address;
-  final String state;
-  final int zipCode;
-  final String country;
+class ShippingAddressModel implements ItemBase {
+  @override
+  String id;
+  String fullName;
+  String address;
+  String city;
+  String state;
+  String zipCode;
+  String country;
   bool isSelected;
 
   ShippingAddressModel({
     this.id,
     this.fullName,
     this.address,
+    this.city,
     this.state,
     this.zipCode,
     this.country,

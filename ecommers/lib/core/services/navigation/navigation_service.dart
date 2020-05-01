@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -80,10 +81,10 @@ class NavigationService {
         resultPage = AddPaymentMethodPage();
         break;
       case Pages.shippingAddress:
-        resultPage = ShippingAddress();
+        resultPage = ShippingAddressPage();
         break;
       case Pages.addShippingAddress:
-        resultPage = AddShippingAddress();
+        resultPage = AddShippingAddress(shippingAddres: arguments as ShippingAddressModel,);
         break;
       default:
         resultPage = ShellPage();

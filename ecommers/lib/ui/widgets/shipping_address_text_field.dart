@@ -13,7 +13,8 @@ class ShippingAddressTextField extends StatelessWidget {
   final Function(String) onChanged;
   final double width;
   final int maxLength;
-
+  final bool isError;
+ 
   const ShippingAddressTextField({
     this.labelText = '',
     this.keyboardType = TextInputType.text,
@@ -22,6 +23,7 @@ class ShippingAddressTextField extends StatelessWidget {
     this.onChanged,
     this.width,
     this.maxLength = 26, 
+    this.isError = false,
   });
 
   @override
@@ -31,7 +33,7 @@ class ShippingAddressTextField extends StatelessWidget {
       width: width,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-        child: TextFormField(
+        child: TextFormField(         
           textAlign: TextAlign.left,
           controller: controller,
           keyboardType: keyboardType,
@@ -48,6 +50,14 @@ class ShippingAddressTextField extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 fontSize: FontSizes.small_3x,
                 color: BrandingColors.primaryText.withOpacity(0.5)),
+                errorText: isError ? 'Please enter this field' : null,
+                    errorStyle: TextStyle(color: Colors.red[300]),
+                    errorBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.red[300],
+                        style: BorderStyle.solid,
+                      ),
+                    ),
           ),
         ),
       ),

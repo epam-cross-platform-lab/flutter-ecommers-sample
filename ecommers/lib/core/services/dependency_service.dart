@@ -62,6 +62,7 @@ class DependencyService {
       ..registerHttpClient()
       ..registerLazySingleton<CartRepository>(() => CartRepository())
       ..registerLazySingleton<PaymentMethodRepository>(() => PaymentMethodRepository()) 
+      ..registerLazySingleton<ShippingAddressRepository>(() => ShippingAddressRepository())
       ..registerLazySingleton<CategoryDataRepository>(() => CategoryDataRepository())
       ..registerSingletonAsync<CacheDatabase>(
         () async {
