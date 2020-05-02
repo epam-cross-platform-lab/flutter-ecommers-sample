@@ -13,7 +13,7 @@ class ShippingAddressTextField extends StatelessWidget {
   final Function(String) onChanged;
   final double width;
   final int maxLength;
-  final bool isError;
+  final bool isValid;
  
   const ShippingAddressTextField({
     this.labelText = '',
@@ -23,7 +23,7 @@ class ShippingAddressTextField extends StatelessWidget {
     this.onChanged,
     this.width,
     this.maxLength = 26, 
-    this.isError = false,
+    this.isValid = true,
   });
 
   @override
@@ -50,7 +50,7 @@ class ShippingAddressTextField extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 fontSize: FontSizes.small_3x,
                 color: BrandingColors.primaryText.withOpacity(0.5)),
-                errorText: isError ? 'Please enter this field' : null,
+                errorText: isValid ? null : 'Please enter this field',
                     errorStyle: TextStyle(color: Colors.red[300]),
                     errorBorder: UnderlineInputBorder(
                       borderSide: BorderSide(

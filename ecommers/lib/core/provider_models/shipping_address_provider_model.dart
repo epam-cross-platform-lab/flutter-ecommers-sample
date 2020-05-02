@@ -3,19 +3,20 @@ import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 class ShippingAddressProviderModel extends ChangeNotifier {
-  
+  bool isValidFullName = true,
+      isValidAddress = true,
+      isValidCity = true,
+      isValidStateProvinceRegion = true,
+      isValidZipCode = true,
+      isValidCountry = true;
   List<ShippingAddressModel> _shipingAddresses = <ShippingAddressModel>[];
-  ShippingAddressModel _selectedShippingAddress; 
+  ShippingAddressModel _selectedShippingAddress;
   ShippingAddressModel shippingAddress = ShippingAddressModel();
-
-  ShippingAddressProviderModel() {
-    _initialize();
-  }
 
   List<ShippingAddressModel> get shippingAddresses => _shipingAddresses;
   ShippingAddressModel get selectedShippingAddress => _selectedShippingAddress;
 
-  Future _initialize() async {
+  Future initialize() async {
     _shipingAddresses = await shippingAddressService.getShippingAddresses() ??
         <ShippingAddressModel>[];
     _selectedShippingAddress =
@@ -24,9 +25,14 @@ class ShippingAddressProviderModel extends ChangeNotifier {
   }
 
   Future addOrEditShippingAddress() async {
-    final bool checkEdit = _shipingAddresses.any((e) => shippingAddress.id != null && e.id.contains(shippingAddress?.id));
-    if(checkEdit){
-      shippingAddress = ShippingAddressModel();
+    if (!_isValidShippingAddress()) {
+      notifyListeners();
+      return;
+    }
+
+    final bool checkEdit = _shipingAddresses.any((e) =>
+        shippingAddress.id != null && e.id.contains(shippingAddress?.id));
+    if (checkEdit) {
       navigationService.goBack();
       return;
     }
@@ -38,11 +44,9 @@ class ShippingAddressProviderModel extends ChangeNotifier {
       _shipingAddresses.add(itemShippingAddress);
       notifyListeners();
     }
-    shippingAddress = ShippingAddressModel();
     navigationService.goBack();
   }
 
-  
   Future<ShippingAddressModel> removeShippingAddress(int index) async {
     final removedItem = _shipingAddresses.removeAt(index);
     if (removedItem.id == selectedShippingAddress.id) {
@@ -72,4 +76,42 @@ class ShippingAddressProviderModel extends ChangeNotifier {
     _selectedShippingAddress = shippingAddressModel;
   }
 
+  bool _isValidShippingAddress() {
+    isValidFullName = _isValidFullName();
+    isValidAddress = _isValidAddress();
+    isValidCity = _isValidCity();
+    isValidZipCode = _isValidZipCode();
+    isValidStateProvinceRegion = _isValidState();
+    isValidCountry = _isValidCountry();
+
+    return isValidFullName && isValidAddress && isValidCity  && isValidZipCode && isValidStateProvinceRegion && isValidCountry;
+  }
+
+  bool _isValidFullName() =>
+      shippingAddress.fullName != null && shippingAddress.fullName.length > 3;
+
+  bool _isValidAddress() =>
+      shippingAddress.address != null && shippingAddress.address.length > 2;
+
+  bool _isValidCity() =>
+      shippingAddress.city != null && shippingAddress.city.length > 2;
+
+  bool _isValidState() =>
+      shippingAddress.state != null && shippingAddress.state.length > 3;
+
+  bool _isValidZipCode() =>
+      shippingAddress.zipCode != null && shippingAddress.zipCode.length > 2;
+  
+  bool _isValidCountry() => 
+      shippingAddress.country != null && shippingAddress.country.length > 3;
+
+  void clean() {
+    shippingAddress = ShippingAddressModel();
+    isValidCountry = true;
+    isValidAddress = true;
+    isValidCity = true;
+    isValidFullName = true;
+    isValidStateProvinceRegion = true;
+    isValidZipCode = true;
+  }
 }

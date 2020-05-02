@@ -16,6 +16,7 @@ class ShellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).initializeOrderProducts();
+    Provider.of<ShippingAddressProviderModel>(context, listen: false).initialize();
     
     return Consumer<ShellProviderModel>(
       builder: (context, ShellProviderModel model, child) {

@@ -18,6 +18,7 @@ class AddShippingAddress extends StatefulWidget {
   @override
   _AddShippingAddressState createState() => _AddShippingAddressState();
 }
+
 class _AddShippingAddressState extends State<AddShippingAddress> {
   TextEditingController _fullNameController,
       _addressController,
@@ -25,23 +26,46 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
       _stateController,
       _zipCodeController,
       _countryController;
-  
+  ShippingAddressProviderModel provider;
+
   @override
   void initState() {
-    _fullNameController = TextEditingController(text: widget.shippingAddres?.fullName);
-    _addressController = TextEditingController(text: widget.shippingAddres?.address);
+    _fullNameController =
+        TextEditingController(text: widget.shippingAddres?.fullName);
+    _addressController =
+        TextEditingController(text: widget.shippingAddres?.address);
     _cityController = TextEditingController(text: widget.shippingAddres?.city);
-    _stateController = TextEditingController(text: widget.shippingAddres?.state);
-    _zipCodeController = TextEditingController(text: widget.shippingAddres?.zipCode);
-    _countryController = TextEditingController(text: widget.shippingAddres?.country);
+    _stateController =
+        TextEditingController(text: widget.shippingAddres?.state);
+    _zipCodeController =
+        TextEditingController(text: widget.shippingAddres?.zipCode);
+    _countryController =
+        TextEditingController(text: widget.shippingAddres?.country);
+
+    provider =
+        Provider.of<ShippingAddressProviderModel>(context, listen: false);
     super.initState();
   }
 
   @override
+  void dispose() {
+    disposeControllers();
+    provider.clean();
+    super.dispose();
+  }
+
+  void disposeControllers() {
+    _fullNameController.dispose();
+    _addressController.dispose();
+    _cityController.dispose();
+    _stateController.dispose();
+    _zipCodeController.dispose();
+    _countryController.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final provider =
-        Provider.of<ShippingAddressProviderModel>(context, listen: false);
-    if(widget.shippingAddres != null) {
+    if (widget.shippingAddres != null) {
       provider?.shippingAddress = widget.shippingAddres;
     }
     final localization = I18n.of(context);
@@ -61,70 +85,84 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:
-             const EdgeInsets.symmetric(vertical: Insets.x4, horizontal: Insets.x6),
-          child: Column(
-            children: <Widget>[
-              const SizedBox(height: Insets.x4),
-              ShippingAddressTextField(
-                labelText: localization.fullName,
-                maxLength: 25,
-                onValidate: (text) =>
-                    Validator.isEmail(text) ? null : localization.emailError,
-                controller: _fullNameController,               
-                onChanged: (text) => provider.shippingAddress.fullName = text,
-                keyboardType: TextInputType.text,
-                //isError: isError,
-              ),
-              const SizedBox(height: Insets.x4),
-              ShippingAddressTextField(
-                labelText: localization.address,
-                controller: _addressController,
-                onChanged: (text) => provider?.shippingAddress?.address = text,
-                keyboardType: TextInputType.text,
-               // isError: true,
-              ),
-              const SizedBox(height: Insets.x4),
-              ShippingAddressTextField(
-                labelText: localization.city,
-                controller: _cityController,
-                maxLength: 20,
-                onChanged: (text) => provider.shippingAddress.city = text,
-                keyboardType: TextInputType.text,
-              ),
-              const SizedBox(height: Insets.x4),
-              ShippingAddressTextField(
-                labelText: localization.stateProvinceRegion,
-                controller: _stateController,
-                maxLength: 20,
-                onChanged: (text) => provider.shippingAddress.state = text,
-                keyboardType: TextInputType.text,
-              ),
-              const SizedBox(height: Insets.x4),
-              ShippingAddressTextField(
-                labelText: localization.zipCode,
-                controller: _zipCodeController,
-                maxLength: 20,
-                onChanged: (text) => provider.shippingAddress.zipCode = text,
-                keyboardType: TextInputType.number,
-              ),
-              const SizedBox(height: Insets.x4),
-              ShippingAddressTextField(
-                labelText: localization.country,
-                controller: _countryController,
-                maxLength: 20,
-                onChanged: (text) => provider.shippingAddress.country = text,
-                keyboardType: TextInputType.text,
-              ),
-              const SizedBox(height: Insets.x8),
-              SizedBox(
-                height: 46.0,
-                child: PrimaryButtonWidget(
-                  onPressedFunction: () async => provider.addOrEditShippingAddress(),
-                  text: localization.addShippingAddress,
-                ),
-              )
-            ],
+          padding: const EdgeInsets.symmetric(
+              vertical: Insets.x4, horizontal: Insets.x6),
+          child: Consumer<ShippingAddressProviderModel>(
+            builder: (_, provider, __) {
+              return Column(
+                children: <Widget>[
+                  const SizedBox(height: Insets.x4),
+                  ShippingAddressTextField(
+                    labelText: localization.fullName,
+                    maxLength: 25,
+                    onValidate: (text) => Validator.isEmail(text)
+                        ? null
+                        : localization.emailError,
+                    controller: _fullNameController,
+                    onChanged: (text) =>
+                        provider.shippingAddress.fullName = text,
+                    keyboardType: TextInputType.text,
+                    isValid: provider.isValidFullName,
+                  ),
+                  const SizedBox(height: Insets.x4),
+                  ShippingAddressTextField(
+                    labelText: localization.address,
+                    controller: _addressController,
+                    onChanged: (text) =>
+                        provider?.shippingAddress?.address = text,
+                    keyboardType: TextInputType.text,
+                    isValid: provider.isValidAddress,
+                  ),
+                  const SizedBox(height: Insets.x4),
+                  ShippingAddressTextField(
+                    labelText: localization.city,
+                    controller: _cityController,
+                    maxLength: 20,
+                    onChanged: (text) => provider.shippingAddress.city = text,
+                    keyboardType: TextInputType.text,
+                    isValid: provider.isValidCity,
+                  ),
+                  const SizedBox(height: Insets.x4),
+                  ShippingAddressTextField(
+                    labelText: localization.stateProvinceRegion,
+                    controller: _stateController,
+                    maxLength: 20,
+                    onChanged: (text) => provider.shippingAddress.state = text,
+                    keyboardType: TextInputType.text,
+                    isValid: provider.isValidStateProvinceRegion,
+                  ),
+                  const SizedBox(height: Insets.x4),
+                  ShippingAddressTextField(
+                    labelText: localization.zipCode,
+                    controller: _zipCodeController,
+                    maxLength: 20,
+                    onChanged: (text) =>
+                        provider.shippingAddress.zipCode = text,
+                    keyboardType: TextInputType.number,
+                    isValid: provider.isValidZipCode,
+                  ),
+                  const SizedBox(height: Insets.x4),
+                  ShippingAddressTextField(
+                    labelText: localization.country,
+                    controller: _countryController,
+                    maxLength: 20,
+                    onChanged: (text) =>
+                        provider.shippingAddress.country = text,
+                    keyboardType: TextInputType.text,
+                    isValid: provider.isValidCountry,
+                  ),
+                  const SizedBox(height: Insets.x8),
+                  SizedBox(
+                    height: 46.0,
+                    child: PrimaryButtonWidget(
+                      onPressedFunction: () async =>
+                          provider.addOrEditShippingAddress(),
+                      text: localization.addShippingAddress,
+                    ),
+                  )
+                ],
+              );
+            },
           ),
         ),
       ),
