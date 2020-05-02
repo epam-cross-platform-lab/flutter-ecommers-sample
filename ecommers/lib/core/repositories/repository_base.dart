@@ -12,19 +12,19 @@ class RepositoryBase<T extends ItemBase> {
   });
 
   Future edit(T item) async {
-    await cacheDatabase.updateByEqualsFilter(
+    return cacheDatabase.updateByEqualsFilter(
         repositoryKey, json.decode(json.encode(item)) as Map<String, dynamic>, {
       filterFieldForItem: item.id,
     });
   }
 
   Future add(T item) async {
-    await cacheDatabase.saveMap(repositoryKey,
-        json.decode(json.encode(item)) as Map<String, dynamic>);
+    return cacheDatabase.saveMap(
+        repositoryKey, json.decode(json.encode(item)) as Map<String, dynamic>);
   }
 
   Future remove(T item) async {
-    await cacheDatabase.deleteDataByFilter(repositoryKey, {
+    return cacheDatabase.deleteDataByFilter(repositoryKey, {
       filterFieldForItem: item.id,
     });
   }

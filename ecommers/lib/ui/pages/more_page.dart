@@ -1,5 +1,4 @@
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -65,8 +64,8 @@ class MorePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
               child: Text(
-                I18n.of(context).morePage,
-                style: Theme.of(context).textTheme.headline6,
+                localization.morePage,
+                style: textTheme.headline6,
               ),
             ),
             const SizedBox(height: 35.0),
