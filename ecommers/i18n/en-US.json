@@ -92,5 +92,6 @@
     "country": "Country",
     "smallShippingAddress": "Shipping Address",
     "addShippingAddress": "ADD SHIPPING ADDRESS",
-    "notShippingAddress": "You don't have any shipping addresses"
+    "notShippingAddress": "You don't have any shipping addresses",
+    "errorMessageShippingAddress" : "Please enter this field"
 }

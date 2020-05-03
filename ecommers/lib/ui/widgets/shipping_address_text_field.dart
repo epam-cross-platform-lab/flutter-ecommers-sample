@@ -4,6 +4,7 @@ import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ecommers/generated/i18n.dart';
 
 class ShippingAddressTextField extends StatelessWidget {
   final TextEditingController controller;
@@ -28,6 +29,7 @@ class ShippingAddressTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localization = I18n.of(context);
     return SurfaceContainer(
       height: 65.0,
       width: width,
@@ -50,7 +52,7 @@ class ShippingAddressTextField extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 fontSize: FontSizes.small_3x,
                 color: BrandingColors.primaryText.withOpacity(0.5)),
-                errorText: isValid ? null : 'Please enter this field',
+                errorText: isValid ? null : localization.errorMessageShippingAddress,
                     errorStyle: TextStyle(color: Colors.red[300]),
                     errorBorder: UnderlineInputBorder(
                       borderSide: BorderSide(

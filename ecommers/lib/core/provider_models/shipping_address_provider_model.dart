@@ -1,3 +1,4 @@
+import 'package:ecommers/core/common/validator/index.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/services/dependency_service.dart';
 import 'package:flutter/material.dart';
@@ -77,33 +78,15 @@ class ShippingAddressProviderModel extends ChangeNotifier {
   }
 
   bool _isValidShippingAddress() {
-    isValidFullName = _isValidFullName();
-    isValidAddress = _isValidAddress();
-    isValidCity = _isValidCity();
-    isValidZipCode = _isValidZipCode();
-    isValidStateProvinceRegion = _isValidState();
-    isValidCountry = _isValidCountry();
+    isValidFullName = ShippingValidator.isValidFullName(shippingAddress.fullName);
+    isValidAddress = ShippingValidator.isValidAddress(shippingAddress.address);
+    isValidCity = ShippingValidator.isValidCity(shippingAddress.city);
+    isValidZipCode = ShippingValidator.isValidZipCode(shippingAddress.zipCode);
+    isValidStateProvinceRegion = ShippingValidator.isValidState(shippingAddress.state);
+    isValidCountry = ShippingValidator.isValidCountry(shippingAddress.country);
 
     return isValidFullName && isValidAddress && isValidCity  && isValidZipCode && isValidStateProvinceRegion && isValidCountry;
   }
-
-  bool _isValidFullName() =>
-      shippingAddress.fullName != null && shippingAddress.fullName.length > 3;
-
-  bool _isValidAddress() =>
-      shippingAddress.address != null && shippingAddress.address.length > 2;
-
-  bool _isValidCity() =>
-      shippingAddress.city != null && shippingAddress.city.length > 2;
-
-  bool _isValidState() =>
-      shippingAddress.state != null && shippingAddress.state.length > 3;
-
-  bool _isValidZipCode() =>
-      shippingAddress.zipCode != null && shippingAddress.zipCode.length > 2;
-  
-  bool _isValidCountry() => 
-      shippingAddress.country != null && shippingAddress.country.length > 3;
 
   void clean() {
     shippingAddress = ShippingAddressModel();
