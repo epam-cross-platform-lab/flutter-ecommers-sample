@@ -1,7 +1,7 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/data/repository/firebase_repository.dart';
+import 'package:ecommers/data/repository/firebase_auth_repository.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 

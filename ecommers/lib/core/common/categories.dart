@@ -4,7 +4,7 @@ enum Categories {
   electronics,
   furniture,
   home,
-  shoes,
-  stationary,
+  footwear,
+  accessories,
   seeAll
 }

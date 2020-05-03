@@ -13,31 +13,18 @@ class ProductService {
     int to,
     String searchQuery,
     SortType sortType,
-  }) async {
-    final response = await apiService.products(
-      category: EnumToString.parse(category),
-      subCategory: subCategory,
-      from: from,
-      to: to,
-      searchQuery: searchQuery,
-      sortType: EnumToString.parse(sortType),
-    );
-
-    if (response.isSuccessful) {
-      return response.body;
-    }
-
-    return null;
+  }) {
+    return latestProductsRepository.fetchProducts(
+        fromId: from,
+        count: to,
+        subCategory: subCategory,
+        category: EnumToString.parse(category),
+        searchQuery: searchQuery,
+        sortType: sortType);
   }
 
-  Future<List<Product>> fetchLatestProducts(int from, int to) async {
-    final response = await apiService.productsLatest(from, to);
-
-    if (response.isSuccessful) {
-      return response.body;
-    }
-
-    return null;
+  Future<List<Product>> fetchLatestProducts(int fromId, int count) async {
+    return latestProductsRepository.loadLatestProducts(fromId, count);
   }
 
   Future<List<Product>> fetchRecentProducts() async =>

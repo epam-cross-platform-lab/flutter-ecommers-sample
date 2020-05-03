@@ -97,9 +97,9 @@ class CategoryItem extends StatelessWidget {
         return Assets.furnitureIcon;
       case Categories.home:
         return Assets.homeIcon;
-      case Categories.shoes:
+      case Categories.footwear:
         return Assets.shoesIcon;
-      case Categories.stationary:
+      case Categories.accessories:
         return Assets.stationaryIcon;
       case Categories.seeAll:
       default:

@@ -1,5 +1,4 @@
 import 'package:chopper/chopper.dart';
-import 'package:ecommers/core/common/api_query_params.dart';
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/index.dart';
@@ -10,25 +9,6 @@ part 'api_service.chopper.dart';
 @ChopperApi(baseUrl: '')
 abstract class ApiService extends ChopperService {
   static ApiService create([ChopperClient client]) => _$ApiService(client);
-
-  @Post(path: ApiDefines.auth)
-  Future<Response<LoginModel>> auth(@Body() Map<String, dynamic> user);
-
-  @Get(path: ApiDefines.products)
-  Future<Response<List<Product>>> products({
-    @Query(ApiQueryParams.category) String category,
-    @Query(ApiQueryParams.subCategory) String subCategory,
-    @Query(ApiQueryParams.rangeFrom) int from,
-    @Query(ApiQueryParams.rangeTo) int to,
-    @Query(ApiQueryParams.searchQuery) String searchQuery,
-    @Query(ApiQueryParams.sortType) String sortType,
-  });
-
-  @Get(path: ApiDefines.productsLatest)
-  Future<Response<List<Product>>> productsLatest(
-    @Query(ApiQueryParams.rangeFrom) int from,
-    @Query(ApiQueryParams.rangeTo) int to,
-  );
 
   @Get(path: ApiDefines.productsRecommended)
   Future<Response<List<Product>>> productRecommended();

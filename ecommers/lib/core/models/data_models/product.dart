@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'product_color.dart';
@@ -16,7 +17,7 @@ class Product {
   final String title;
   final double price;
   final ProductColor baseColor;
-  final int catalogAddDate;
+  final num catalogAddDate;
   final String previewImage;
 
   @JsonKey(name: 'styleImages')

@@ -20,7 +20,7 @@
     {
         "id": 2,
         "title": "Accessories",
-        "type": "stationary",
+        "type": "accessories",
         "color1": "#FF9D9E9F",
         "color2": "#FF505862",
         "shadowColor": "#57646464",
@@ -46,7 +46,7 @@
     {
         "id": 3,
         "title": "Footwear",
-        "type": "shoes",
+        "type": "footwear",
         "color1": "#FFB4FF4E",
         "color2": "#FF2FC145",
         "shadowColor": "#5726D555",

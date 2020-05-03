@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:ecommers/data/repository/firebase_repository.dart';
+import 'package:ecommers/data/repository/firebase_auth_repository.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 
 class AuthorizationService {

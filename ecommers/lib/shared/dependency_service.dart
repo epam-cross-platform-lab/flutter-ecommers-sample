@@ -1,4 +1,3 @@
-
 import 'package:ecommers/core/app_services/category_service.dart';
 import 'package:ecommers/core/app_services/dialog/dialog_service.dart';
 import 'package:ecommers/core/app_services/index.dart';
@@ -9,7 +8,8 @@ import 'package:ecommers/core/services/api_service.dart';
 import 'package:ecommers/core/services/membership_service.dart';
 import 'package:ecommers/core/services/navigation/navigation_service.dart';
 import 'package:ecommers/core/repositories/index.dart';
-import 'package:ecommers/data/repository/firebase_repository.dart';
+import 'package:ecommers/data/repository/firebase_auth_repository.dart';
+import 'package:ecommers/data/repository/firebase_latest_products_repository.dart';
 import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/shared/logger.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +38,7 @@ PaymentMethodRepository get paymentMethodRepository =>
     _ioc.get<PaymentMethodRepository>();
 CacheDatabase get cacheDatabase => _ioc.get<CacheDatabase>();
 CartRepository get cartRepository => _ioc.get<CartRepository>();
+FirebaseLattestProductsRepository get latestProductsRepository => _ioc.get<FirebaseLattestProductsRepository>();
 Paginator createPaginator() => _ioc.get<Paginator>();
 DialogService get dialogService => _ioc.get<DialogService>();
 FirebaseAuthRepository get authRepository => _ioc.get<FirebaseAuthRepository>();
@@ -71,6 +72,7 @@ class DependencyService {
       ..registerLazySingleton(() => CartRepository())
       ..registerLazySingleton(() => FirebaseAuthRepository())
       ..registerLazySingleton(() => CategoryDataRepository())
+      ..registerLazySingleton(() => FirebaseLattestProductsRepository())
       ..registerLazySingleton<PaymentMethodRepository>(
           () => PaymentMethodRepository())
       ..registerSingletonAsync<CacheDatabase>(
