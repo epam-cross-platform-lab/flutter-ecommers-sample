@@ -38,6 +38,8 @@
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+**/google-services.json
+**/GoogleService-Info.plist
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
@@ -77,5 +79,10 @@
 *.g.dart
 *.chopper.dart
 *.lock
+
 /ecommers/android/app/google-services.json
 /ecommers/ios/Runner/GoogleService-Info.plist
+ecommers/ios/build/XCBuildData/
+
+ecommers/ios/Flutter/.last_build_id
+

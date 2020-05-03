@@ -1,8 +1,8 @@
 import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/services/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 
 abstract class ProductItemBase extends StatelessWidget {

@@ -62,17 +62,17 @@
     "category": "CATEGORY",
     "fitting": "FITTING",
     "ok": "ok",
-    "recommended":"RECOMMENDED",
-    "refresh":"REFRESH",
+    "recommended": "RECOMMENDED",
+    "refresh": "REFRESH",
     "emailError": "email is not valid.",
     "passwordError": "password should have at least 4 characters.",
-    "fieldError": "field should not be empty.",
+    "field_should_not_be_empty": "field should not be empty.",
     "notificationsTitle": "Notifications",
     "yesterday": "Yesterday",
     "delete": "Delete",
     "edit": "Edit",
     "notBankCards": "You have no credit cards added",
-    "paymentMethodTitle":"Payment Method",
+    "paymentMethodTitle": "Payment Method",
     "addCard": "ADD CARD",
     "noAvailableInformation": "No Available Information",
     "creditCardNumberPlaceHolder": "1234-4321-4321-1234",
@@ -84,7 +84,6 @@
     "addingShippingAddress": "Adding Shipping Address",
     "fullName": "Full Name",
     "messageToSeller" : "Message to seller (optional)",
-    "empty": "",
     "address": "Address",
     "city": "City",
     "stateProvinceRegion": "State/Province/Region",
@@ -93,5 +92,34 @@
     "smallShippingAddress": "Shipping Address",
     "addShippingAddress": "ADD SHIPPING ADDRESS",
     "notShippingAddress": "You don't have any shipping addresses",
-    "errorMessageShippingAddress" : "Please enter this field"
+    "errorMessageShippingAddress" : "Please enter this field",
+    "enter_sms_code_dialog": {
+        "title": "Enter SMS Code",
+        "primary_button": "Done"
+    },
+    "sms_code_timeout_dialog": {
+        "title": "Timeout exceeded",
+        "description": "Timeout exceeded",
+        "primary_button": "OK"
+    },
+    "verification_dialog": {
+        "title": "Verification failed",
+        "description": "Check your login or password and try again",
+        "primary_button": "OK"
+    },
+    "something_went_wrong": {
+        "title": "SOmething went wrong",
+        "description": "Please try again later",
+        "primary_button": "OK"
+    },
+    "your_phone_number": "YOUR PHONE NUMBER",
+    "or_use_email": "or use email",
+    "or_use_phone": "or use phone number",
+    "incorrect_phone_number": "incorrect phone number",
+    "password_restoration_dialog": {
+        "title": "Password restoration",
+        "description": "Password restore link sent",
+        "primary_button": "OK"
+    },
+    "empty": ""
 }

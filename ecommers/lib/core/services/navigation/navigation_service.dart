@@ -9,9 +9,10 @@ import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/core/models/page_arguments.dart';
+import 'package:get/get.dart';
 
 class NavigationService {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> navigatorKey = Get.key;
 
   Future<dynamic> navigateTo(Pages page, {Object arguments}) {
     final route = _generateRoute(page, arguments);

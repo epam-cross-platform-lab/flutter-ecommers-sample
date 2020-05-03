@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -56,8 +57,7 @@ class ButtonBaseWidget extends StatelessWidget {
                 alignment: Alignment.center,
                 child: Text(
                   text.toUpperCase(),
-                  style: Theme.of(context)
-                      .textTheme
+                  style: textTheme
                       .button
                       .copyWith(color: textColor),
                 ),

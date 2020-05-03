@@ -1,6 +1,5 @@
-import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/payment_method_model.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 
@@ -9,10 +8,6 @@ class PaymentMethodProviderModel extends ChangeNotifier {
   PaymentMethodModel _selectedPaymentMethod;
   CreditCard creditCard = CreditCard();
   String expDate = '';
-
-  PaymentMethodProviderModel() {
-    _initialize();
-  }
 
   List<PaymentMethodModel> get paymentMethods => _paymentMethods;
   PaymentMethodModel get selectedPaymentMethod => _selectedPaymentMethod;
@@ -86,7 +81,7 @@ class PaymentMethodProviderModel extends ChangeNotifier {
     return true;
   }
 
-  Future _initialize() async {
+  Future initialize() async {
     _paymentMethods = await paymentMethodService.getPaymentMethods() ??
         <PaymentMethodModel>[];
     _selectedPaymentMethod =

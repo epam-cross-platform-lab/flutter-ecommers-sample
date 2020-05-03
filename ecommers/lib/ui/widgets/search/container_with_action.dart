@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -27,7 +28,7 @@ class ContainerWithAction extends StatelessWidget {
           children: <Widget>[
             Text(
               title,
-              style: Theme.of(context).textTheme.headline5.copyWith(
+              style: textTheme.headline5.copyWith(
                     fontSize: FontSizes.small_3x,
                     color: Colors.transparent.withOpacity(0.3),
                   ),
@@ -37,7 +38,7 @@ class ContainerWithAction extends StatelessWidget {
               onTap: () => action(),
               child: Text(
                 actionText,
-                style: Theme.of(context).textTheme.headline5.copyWith(
+                style: textTheme.headline5.copyWith(
                     fontSize: FontSizes.small_3x,
                     color: BrandingColors.primary),
               ),

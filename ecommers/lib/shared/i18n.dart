@@ -167,7 +167,7 @@ class I18n implements WidgetsLocalizations {
   /// "password should have at least 4 characters."
   String get passwordError => "password should have at least 4 characters.";
   /// "field should not be empty."
-  String get fieldError => "field should not be empty.";
+  String get field_should_not_be_empty => "field should not be empty.";
   /// "Notifications"
   String get notificationsTitle => "Notifications";
   /// "Yesterday"
@@ -202,8 +202,6 @@ class I18n implements WidgetsLocalizations {
   String get fullName => "Full Name";
   /// "Message to seller (optional)"
   String get messageToSeller => "Message to seller (optional)";
-  /// ""
-  String get empty => "";
   /// "Address"
   String get address => "Address";
   /// "City"
@@ -222,6 +220,44 @@ class I18n implements WidgetsLocalizations {
   String get notShippingAddress => "You don't have any shipping addresses";
   /// "Please enter this field"
   String get errorMessageShippingAddress => "Please enter this field";
+  /// "Enter SMS Code"
+  String get enter_sms_code_dialogTitle => "Enter SMS Code";
+  /// "Done"
+  String get enter_sms_code_dialogPrimary_button => "Done";
+  /// "Timeout exceeded"
+  String get sms_code_timeout_dialogTitle => "Timeout exceeded";
+  /// "Timeout exceeded"
+  String get sms_code_timeout_dialogDescription => "Timeout exceeded";
+  /// "OK"
+  String get sms_code_timeout_dialogPrimary_button => "OK";
+  /// "Verification failed"
+  String get verification_dialogTitle => "Verification failed";
+  /// "Check your login or password and try again"
+  String get verification_dialogDescription => "Check your login or password and try again";
+  /// "OK"
+  String get verification_dialogPrimary_button => "OK";
+  /// "SOmething went wrong"
+  String get something_went_wrongTitle => "SOmething went wrong";
+  /// "Please try again later"
+  String get something_went_wrongDescription => "Please try again later";
+  /// "OK"
+  String get something_went_wrongPrimary_button => "OK";
+  /// "YOUR PHONE NUMBER"
+  String get your_phone_number => "YOUR PHONE NUMBER";
+  /// "or use email"
+  String get or_use_email => "or use email";
+  /// "or use phone number"
+  String get or_use_phone => "or use phone number";
+  /// "incorrect phone number"
+  String get incorrect_phone_number => "incorrect phone number";
+  /// "Password restoration"
+  String get password_restoration_dialogTitle => "Password restoration";
+  /// "Password restore link sent"
+  String get password_restoration_dialogDescription => "Password restore link sent";
+  /// "OK"
+  String get password_restoration_dialogPrimary_button => "OK";
+  /// ""
+  String get empty => "";
 }
 
 class _I18n_en_US extends I18n {

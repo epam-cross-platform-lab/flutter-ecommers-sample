@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/subtitle_factory.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -23,7 +24,7 @@ class RightMenuItem extends StatelessWidget {
           Expanded(
             child: Text(
               itemModel.title,
-              style: Theme.of(context).textTheme.subtitle1,
+              style: textTheme.subtitle1,
             ),
           ),
           RightMenuSubTitle(model: itemModel),

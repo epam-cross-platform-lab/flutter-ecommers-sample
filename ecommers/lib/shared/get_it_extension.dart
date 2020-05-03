@@ -1,13 +1,13 @@
 import 'dart:io';
 
 import 'package:chopper/chopper.dart';
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
+import 'package:ecommers/web_server/local_server.dart';
 import 'package:get_it/get_it.dart';
-
-import '../../../web_server/local_server.dart';
-import '../../common/index.dart';
-import '../../models/data_models/index.dart';
-import '../../models/index.dart';
-import '../../services/index.dart';
 
 extension GetItExtension on GetIt {
   void registerHttpClient() {

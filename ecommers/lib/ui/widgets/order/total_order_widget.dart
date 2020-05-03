@@ -1,6 +1,6 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
@@ -36,25 +36,22 @@ class TotalOrderWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                I18n.of(context).totalOrder,
-                style: Theme.of(context)
-                    .textTheme
+                localization.totalOrder,
+                style: textTheme
                     .headline5
                     .copyWith(fontSize: FontSizes.small_1x),
               ),
               const SizedBox(height: 7.0),
               Text(
                 Formatter.getCost(cost),
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .headline6
                     .copyWith(fontSize: FontSizes.big_2x),
               ),
               const SizedBox(height: 4.0),
               Text(
-                I18n.of(context).freeDomesticShipping,
-                style: Theme.of(context)
-                    .textTheme
+                localization.freeDomesticShipping,
+                style: textTheme
                     .headline5
                     .copyWith(fontWeight: FontWeight.w400),
               ),

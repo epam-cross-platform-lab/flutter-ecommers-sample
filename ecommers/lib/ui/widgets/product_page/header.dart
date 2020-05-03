@@ -1,4 +1,5 @@
 import 'package:badges/badges.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/branding_colors.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -25,7 +26,7 @@ class Header extends StatelessWidget {
       children: <Widget>[
         Text(
           title,
-          style: Theme.of(context).textTheme.bodyText2,
+          style: textTheme.bodyText2,
         ),
         const SizedBox(height: Insets.x0_5),
         Row(
@@ -33,8 +34,7 @@ class Header extends StatelessWidget {
           children: <Widget>[
             Text(
               Formatter.getCost(cost),
-              style: Theme.of(context)
-                  .textTheme
+              style: textTheme
                   .bodyText1
                   .copyWith(fontWeight: FontWeight.w700),
             ),
@@ -49,8 +49,7 @@ class Header extends StatelessWidget {
                   const SizedBox(width: Insets.x0_5),
                   Text(
                     rate.toString(),
-                    style: Theme.of(context)
-                        .textTheme
+                    style: textTheme
                         .button
                         .copyWith(color: BrandingColors.secondaryText),
                   ),

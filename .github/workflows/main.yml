@@ -12,7 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2.1.0
+    - name: setup google services json
+      uses: DamianReeves/write-file-action@v1.0
+      with:
+        path: /home/runner/work/flutter-ecommers-sample/flutter-ecommers-sample/ecommers/android/app/google-services.json
+        contents:
+          ${{secrets.android_google_services}}
+        write-mode: overwrite
     - uses: actions/setup-java@v1
       with:
         java-version: '12.x'
