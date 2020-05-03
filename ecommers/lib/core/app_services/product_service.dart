@@ -14,7 +14,7 @@ class ProductService {
     String searchQuery,
     SortType sortType,
   }) {
-    return latestProductsRepository.fetchProducts(
+    return productsRepository.fetchProducts(
         fromId: from,
         count: to,
         subCategory: subCategory,
@@ -24,7 +24,7 @@ class ProductService {
   }
 
   Future<List<Product>> fetchLatestProducts(int fromId, int count) async {
-    return latestProductsRepository.loadLatestProducts(fromId, count);
+    return productsRepository.loadLatestProducts(fromId, count);
   }
 
   Future<List<Product>> fetchRecentProducts() async =>

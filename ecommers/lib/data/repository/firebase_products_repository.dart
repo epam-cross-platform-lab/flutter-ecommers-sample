@@ -3,7 +3,7 @@ import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/sort_type.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 
-class FirebaseLattestProductsRepository {
+class FirebaseProductsRepository {
   final _databaseReference = Firestore.instance;
   CollectionReference _getProductsCollection() =>
       _databaseReference.collection('products');

@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:isolate';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/web_server/query_params/index.dart';
@@ -62,10 +63,65 @@ class DataProvider {
     sendPort.send(products);
   }
 
+  static Future _createRecord(Product product) async {
+    final databaseReference = Firestore.instance;
+    final collectionRef = databaseReference.collection("products");
+
+    final json = product.toJson();
+    try {
+      await databaseReference
+          .collection("products")
+          .document(product.id.toString())
+          .setData(json, merge: true);
+    } catch (ex) {
+      print(ex.toString());
+    }
+  }
+
+  static Future _createRecordsBatch(List<Product> products) async {
+    final db = Firestore.instance;
+    try {
+      final batch = db.batch();
+
+      for (final product in products) {
+        final json = product.toJson();
+        final document =
+            db.collection("products").document(product.id.toString());
+
+        batch.setData(document, json);
+      }
+
+      await batch.commit();
+    } catch (ex) {
+      print(ex.toString());
+    }
+  }
+
   static Future<List<Product>> getFilteredProducts(
       ProductQueryParams params) async {
     const int defaultItemsPortion = 20;
+
     List<Product> resultProducts = [...await products].toList();
+
+    print(resultProducts.length);
+
+    // for (int i = 0; i < resultProducts.length; i++) {
+    //   print(i);
+    //   await _createRecord(resultProducts[i]);
+    // }
+
+    final count = 400;
+
+    // for (int i = 0; i < resultProducts.length - 600; i += count) {
+    //   print(i);
+    //   await _createRecordsBatch(resultProducts.skip(i).take(count).toList());
+    // }
+
+    // await _createRecordsBatch(resultProducts.skip(4400).take(400).toList());
+    // await _createRecordsBatch(resultProducts.skip(4800).take(200).toList());
+
+    // await _createRecord(resultProducts[0]);
+    // await _createRecordsBatch(resultProducts.take(400).toList());
 
     final categories = json.decodeList<Category>(
       await fetchCategoriesJson(),
