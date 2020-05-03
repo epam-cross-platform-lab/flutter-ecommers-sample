@@ -1,7 +1,7 @@
 import 'package:ecommers/core/models/data_models/index.dart';
 
 class Paginator {
-  static const int _pageSize = 20;
+  static const int _pageSize = 10;
 
   int _lastId;
   bool _hasMore = true;
