@@ -88,19 +88,19 @@ class MorePage extends StatelessWidget {
   }
 
   Widget _buildLogOutButton() {
-    return Consumer<MoreProviderModel>(
-      builder: (_, provider, __) {
-        return Center(
-          child: CupertinoButton(
-            onPressed: provider.logOutPressHandler,
+    return Center(
+      child: Builder(
+        builder: (context) {
+          return CupertinoButton(
+            onPressed: Provider.of<MoreProviderModel>(context, listen: false).logOutPressHandler,
             child: Text(
               localization.logOut,
               style:
                   textTheme.headline5.copyWith(color: BrandingColors.primary),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
