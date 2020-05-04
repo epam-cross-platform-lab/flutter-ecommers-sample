@@ -1,6 +1,5 @@
-import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/payment_method_model.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 

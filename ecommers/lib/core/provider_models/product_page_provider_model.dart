@@ -1,11 +1,11 @@
+import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/widgets.dart';
 
-class ProductPageProviderModel extends ProviderModelBase {
+class ProductPageProviderModel extends ChangeNotifier with BusyNotifier  {
   final Product _productModel;
 
   List<CarouselImage> _images;
@@ -24,8 +24,7 @@ class ProductPageProviderModel extends ProviderModelBase {
   String get skuId => _skuId;
   set skuId(String skuId) => _skuId = skuId ?? '';
 
-  ProductPageProviderModel(this._productModel, {@required BuildContext context})
-      : super(context) {
+  ProductPageProviderModel(this._productModel) {
     _initProductImages();
     _initProductTab();
     _saveRecentProduct();

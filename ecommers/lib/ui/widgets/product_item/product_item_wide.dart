@@ -1,4 +1,5 @@
 import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -31,14 +32,14 @@ class ProductItemWide extends ProductItemBase {
           product.title,
           maxLines: Dimens.defaultTextMaxLines,
           overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.bodyText2,
+          style: textTheme.bodyText2,
         ),
         Row(
           children: <Widget>[
             Expanded(
               child: Text(
                 Formatter.getCost(product.price),
-                style: Theme.of(context).textTheme.bodyText2.copyWith(
+                style: textTheme.bodyText2.copyWith(
                       fontSize: FontSizes.small_3x,
                       fontWeight: FontWeight.w700,
                     ),

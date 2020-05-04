@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -24,10 +25,8 @@ class CategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextStyle unselectedTextStyle = Theme.of(context)
-        .textTheme
-        .caption
-        .copyWith(fontSize: FontSizes.normal);
+    final TextStyle unselectedTextStyle =
+        textTheme.caption.copyWith(fontSize: FontSizes.normal);
 
     final TextStyle selectedTextStyle =
         unselectedTextStyle.copyWith(color: BrandingColors.primary);

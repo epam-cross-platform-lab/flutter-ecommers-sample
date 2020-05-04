@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      createProvider: (context) => HomeProviderModel(context),
+      createProvider: () => HomeProviderModel(),
       child: Consumer<HomeProviderModel>(
         builder: (context, provider, child) {
           return CustomScrollView(

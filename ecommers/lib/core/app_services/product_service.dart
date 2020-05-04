@@ -1,9 +1,9 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/sort_type.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
 
 class ProductService {
   Future<List<Product>> fetchProducts({

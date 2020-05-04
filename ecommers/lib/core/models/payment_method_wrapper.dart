@@ -1,5 +1,5 @@
 import 'package:ecommers/core/models/payment_method_model.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'payment_method_wrapper.g.dart';

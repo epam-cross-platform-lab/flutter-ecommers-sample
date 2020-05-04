@@ -1,8 +1,7 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
-import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -23,10 +22,17 @@ class CheckoutPage extends StatefulWidget {
 
 class _CheckoutPageState extends State<CheckoutPage> {
   bool isTotalOrderVisible = true;
+
+  CartProvider _cartProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _cartProvider = Provider.of<CartProvider>(context);
+  }
+
   @override
   Widget build(BuildContext context) {
-    final cartProvider = Provider.of<CartProvider>(context);
-
     isTotalOrderVisible = MediaQuery.of(context).viewInsets.bottom == 0.0;
 
     return CloseablePage(
@@ -37,21 +43,21 @@ class _CheckoutPageState extends State<CheckoutPage> {
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
                     Insets.x6, Insets.x0, Insets.x5, Insets.x4),
-                child: _buildOrderListView(cartProvider),
+                child: _buildOrderListView(),
               ),
             ),
           ),
           Visibility(
             visible: isTotalOrderVisible,
             child: TotalOrderWidget(
-              cost: cartProvider.calculateTotalCost(),
+              cost: _cartProvider.calculateTotalCost(),
               backgroundColor: BrandingColors.background,
               onButtonPressedFunction: () {
                 navigationService.navigateTo(Pages.success);
                 //todo request for place order
-                cartProvider.resetCart();
+                _cartProvider.resetCart();
               },
-              buttonText: I18n.of(context).placeOrderButton,
+              buttonText: localization.placeOrderButton,
               padding: const EdgeInsets.fromLTRB(
                   Insets.x6, Insets.x2, Insets.x5, Insets.x3_5),
             ),
@@ -66,20 +72,20 @@ class _CheckoutPageState extends State<CheckoutPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          I18n.of(context).checkoutTitle,
-          style: Theme.of(context).textTheme.headline6,
+          localization.checkoutTitle,
+          style: textTheme.headline6,
         ),
         const SizedBox(height: 20),
         Text(
-          I18n.of(context).shippingAddress,
-          style: Theme.of(context).textTheme.headline5,
+          localization.shippingAddress,
+          style: textTheme.headline5,
         ),
         const SizedBox(height: Insets.x2),
         _buildShippingAddress(),
         _buildDevider(),
         Text(
-          I18n.of(context).paymentMethod,
-          style: Theme.of(context).textTheme.headline5,
+          localization.paymentMethod,
+          style: textTheme.headline5,
         ),
         const SizedBox(height: Insets.x2),
         Consumer<PaymentMethodProviderModel>(
@@ -89,11 +95,9 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 text: Text(
                   Formatter.getTextWithNumberCard(
                           provider?.selectedPaymentMethod?.cardNumberLast4) ??
-                      I18n.of(context).selectCreditCard,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1
-                      .copyWith(fontWeight: FontWeight.w700),
+                      localization.selectCreditCard,
+                  style:
+                      textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
                 ),
                 action: () =>
                     navigationService.navigateTo(Pages.paymentMethod));
@@ -101,8 +105,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
         ),
         _buildDevider(),
         Text(
-          I18n.of(context).items,
-          style: Theme.of(context).textTheme.headline5,
+          localization.items,
+          style: textTheme.headline5,
         ),
         const SizedBox(height: 14.0),
       ],
@@ -120,7 +124,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: 'Message to seller (optional)',
-              hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+              hintStyle: textTheme.bodyText1.copyWith(
                     fontWeight: FontWeight.w300,
                     fontStyle: FontStyle.italic,
                   ),
@@ -131,9 +135,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
         _buildRowAction(
           imagePath: Assets.sale,
           text: Text(
-            I18n.of(context).addPromoCode,
-            style: Theme.of(context)
-                .textTheme
+            localization.addPromoCode,
+            style: textTheme
                 .bodyText1
                 .copyWith(color: BrandingColors.primary),
           ),
@@ -142,8 +145,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
     );
   }
 
-  Widget _buildOrderListView(CartProvider cartProvider) {
-    final int newItemCount = cartProvider.orders.length + 2;
+  Widget _buildOrderListView() {
+    final int newItemCount = _cartProvider.orders.length + 2;
     return ListView.separated(
       itemCount: newItemCount,
       itemBuilder: (BuildContext context, int index) {
@@ -155,15 +158,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
           return _buildListFooter();
         }
 
-        final currentOrder = cartProvider.orders[index - 1];
+        final currentOrder = _cartProvider.orders[index - 1];
         return SmallOrderWidget(
           primaryText: currentOrder.title,
           secondaryText: currentOrder.description,
           assetImagePath: currentOrder.imagePath,
           cost: currentOrder.cost,
           count: currentOrder.count,
-          countIncrementFunction: () => cartProvider.add(currentOrder),
-          countDecrementFunction: () => cartProvider.remove(currentOrder),
+          countIncrementFunction: () => _cartProvider.add(currentOrder),
+          countDecrementFunction: () => _cartProvider.remove(currentOrder),
           tapOrderFunction: () => navigationService.navigateTo(Pages.product),
         );
       },
@@ -196,15 +199,13 @@ class _CheckoutPageState extends State<CheckoutPage> {
             children: <Widget>[
               Text(
                 'John Doe', //TODO from provider
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .bodyText1
                     .copyWith(fontWeight: FontWeight.w700),
               ),
               Text(
                 'No 123, Sub Street, Main Street,City Name, Province, Country',
-                style: Theme.of(context)
-                    .textTheme
+                style: textTheme
                     .bodyText1
                     .copyWith(fontWeight: FontWeight.w400),
               ),

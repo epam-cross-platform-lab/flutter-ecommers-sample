@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
@@ -52,16 +53,14 @@ class _OrderWidgetState extends State<OrderWidget> {
               children: <Widget>[
                 Text(widget.primaryText,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodyText1),
+                    style: textTheme.bodyText1),
                 Text(widget.secondaryText,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodyText2),
+                    style: textTheme.bodyText2),
                 const SizedBox(height: 8.0),
                 Text(
                   Formatter.getCost(widget.count * widget.cost),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText1
+                  style: textTheme.bodyText1
                       .copyWith(color: BrandingColors.primary),
                 ),
                 const SizedBox(height: 8.0),

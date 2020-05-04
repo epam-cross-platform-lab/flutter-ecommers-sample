@@ -61,7 +61,6 @@ class _ProductsGridState extends State<ProductsGrid> {
     return ChangeNotifierProxyProvider<SearchQueryProviderModel,
         ProductsGridProviderModel>(
       create: (_) => ProductsGridProviderModel(
-        context: context,
         categoryType: widget.categoryType,
         sortType: widget.sortType,
         subCategory: widget.subCategory,

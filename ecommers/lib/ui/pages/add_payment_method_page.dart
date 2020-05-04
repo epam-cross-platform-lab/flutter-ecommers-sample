@@ -1,5 +1,5 @@
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/index.dart';
@@ -14,7 +14,6 @@ class AddPaymentMethodPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider =
         Provider.of<PaymentMethodProviderModel>(context, listen: false);
-    final localization = I18n.of(context);
     return Scaffold(
       backgroundColor: BrandingColors.pageBackground,
       appBar: AppBar(
@@ -23,7 +22,7 @@ class AddPaymentMethodPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding:
-              EdgeInsets.symmetric(vertical: Insets.x4, horizontal: Insets.x6),
+              const EdgeInsets.symmetric(vertical: Insets.x4, horizontal: Insets.x6),
           child: Column(
             children: <Widget>[
               Center(
@@ -86,7 +85,7 @@ class AddPaymentMethodPage extends StatelessWidget {
                 height: 46.0,
                 child: PrimaryButtonWidget(
                   onPressedFunction: () async => provider.addPaymentMethod(),
-                  text: I18n.of(context).addCardDetails,
+                  text: localization.addCardDetails,
                 ),
               )
             ],

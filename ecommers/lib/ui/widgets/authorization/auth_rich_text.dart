@@ -1,4 +1,5 @@
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:flutter/gestures.dart';
@@ -19,11 +20,14 @@ class _AuthRichTextState extends State<AuthRichText> {
 
   @override
   void initState() {
+    super.initState();
+
     _textTapRecognizerList = {
       for (var e in widget.textSpanModelList.where((e) => e.isTappable))
         e.id: TapGestureRecognizer()..onTap = e.onTap ?? () {}
     };
-    super.initState();
+
+    baseTextStyle = textTheme.bodyText2.copyWith(fontSize: FontSizes.small_3x);
   }
 
   @override
@@ -38,11 +42,6 @@ class _AuthRichTextState extends State<AuthRichText> {
 
   @override
   Widget build(BuildContext context) {
-    baseTextStyle = Theme.of(context)
-        .textTheme
-        .bodyText2
-        .copyWith(fontSize: FontSizes.small_3x);
-
     final firstTextSpanModel = widget.textSpanModelList[0];
     final childTextSpanModelList = widget.textSpanModelList.skip(1).toList();
 
@@ -64,7 +63,7 @@ class _AuthRichTextState extends State<AuthRichText> {
     return TextSpan(
       text: textModel.text,
       style: baseTextStyle,
-      children: <InlineSpan>[..._buildChildTextSpanList(childens)],
+      children: [..._buildChildTextSpanList(childens)],
     );
   }
 
@@ -74,7 +73,7 @@ class _AuthRichTextState extends State<AuthRichText> {
       text: textModel.text,
       style: baseTextStyle.copyWith(color: BrandingColors.primary),
       recognizer: _textTapRecognizerList[textModel.id],
-      children: <InlineSpan>[..._buildChildTextSpanList(childens)],
+      children: [..._buildChildTextSpanList(childens)],
     );
   }
 

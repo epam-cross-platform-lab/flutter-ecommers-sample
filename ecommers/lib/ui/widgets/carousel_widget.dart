@@ -1,4 +1,4 @@
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -21,16 +21,14 @@ class CarouselWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _localization = I18n.of(context);
-
     if (images?.isNotEmpty == true) {
       return _buildBody();
     }
 
     return Center(
       child: Text(
-        _localization.noAvailableInformation,
-        style: Theme.of(context).textTheme.subtitle1,
+        localization.noAvailableInformation,
+        style: textTheme.subtitle1,
       ),
     );
   }
