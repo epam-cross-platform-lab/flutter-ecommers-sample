@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
                     CategoriesCompactView(provider.categoryList),
-                    const SizedBox(height: Dimens.pagePadding),
+                    const SizedBox(height: Insets.x2),
                     NotesCarousel(notes: provider.notesLatest),
                   ],
                 ),

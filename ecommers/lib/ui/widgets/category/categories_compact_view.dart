@@ -8,7 +8,6 @@ import 'package:ecommers/ui/widgets/category/category_item.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesCompactView extends StatelessWidget {
-  static const _containerHeight = 134.0;
   static const categoryItemSize = CategoryItem.size;
 
   final List<Category> categories;
@@ -20,18 +19,17 @@ class CategoriesCompactView extends StatelessWidget {
     if (categories == null || categories.isEmpty) return const SizedBox();
 
     return Container(
-      height: _containerHeight,
+      height: categoryItemSize.height,
       padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Expanded(
-            child: Text(
-              localization.categoriesTitle,
-              style: textTheme.headline6,
-            ),
+          Text(
+            localization.categoriesTitle,
+            style: textTheme.headline6,
           ),
-          _createCategoriesListWidget(context),
+          const SizedBox(height: Insets.x2),
+          Expanded(child: _createCategoriesListWidget(context)),
         ],
       ),
     );
@@ -41,28 +39,25 @@ class CategoriesCompactView extends StatelessWidget {
     final itemCount = _calculateItemCount(context);
     final spacing = _calculateItemSpacing(context, itemCount);
 
-    return SizedBox(
-      height: categoryItemSize.height,
-      child: ListView.separated(
-        itemCount: itemCount,
-        separatorBuilder: (BuildContext context, int index) => SizedBox(
-          width: spacing,
-          height: spacing,
-        ),
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) {
-          if (index == itemCount - 1 && index != categories.length - 1) {
-            return _buildSeeAllCategory();
-          }
-
-          final categoryModel = categories[index];
-
-          return CategoryItem(
-            model: categoryModel,
-            onTapFunction: () => onCategoryTap(categoryModel.type),
-          );
-        },
+    return ListView.separated(
+      itemCount: itemCount,
+      separatorBuilder: (BuildContext context, int index) => SizedBox(
+        width: spacing,
+        height: spacing,
       ),
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (BuildContext context, int index) {
+        if (index == itemCount - 1 && index != categories.length - 1) {
+          return _buildSeeAllCategory();
+        }
+
+        final categoryModel = categories[index];
+
+        return CategoryItem(
+          model: categoryModel,
+          onTapFunction: () => onCategoryTap(categoryModel.type),
+        );
+      },
     );
   }
 

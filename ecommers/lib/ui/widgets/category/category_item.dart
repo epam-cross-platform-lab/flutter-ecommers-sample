@@ -14,7 +14,7 @@ class CategoryItem extends StatelessWidget {
   final bool isSelected;
   final Function() onTapFunction;
 
-  static const size = Size(82.0, 89.0);
+  static const size = Size(82.0, 148.0);
   static const categoryLabelSize = 65.0;
 
   const CategoryItem({
@@ -44,7 +44,8 @@ class CategoryItem extends StatelessWidget {
               child: Text(
                 model.title,
                 textAlign: TextAlign.center,
-                overflow: TextOverflow.visible,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 2,
                 style: isSelected ? selectedTextStyle : unselectedTextStyle,
               ),
             ),
