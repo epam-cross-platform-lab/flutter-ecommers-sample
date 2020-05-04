@@ -1,5 +1,3 @@
-//import 'dart:js';
-
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/index.dart';
 import 'package:ecommers/ui/widgets/right_menu_bar/right_menu_navigation/filter_pages.dart';
