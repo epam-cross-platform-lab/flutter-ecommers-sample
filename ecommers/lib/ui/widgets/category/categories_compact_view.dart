@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 
 class CategoriesCompactView extends StatelessWidget {
   static const _containerHeight = 134.0;
-  static const categoryItemSize = Size(74.0, 89.0);
+  static const categoryItemSize = CategoryItem.size;
 
   final List<Category> categories;
 
