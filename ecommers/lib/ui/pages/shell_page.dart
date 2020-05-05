@@ -19,7 +19,7 @@ class ShellPage extends StatelessWidget {
     Provider.of<CartProvider>(context, listen: false).initializeOrderProducts();
     Provider.of<ShippingAddressProviderModel>(context, listen: false).initialize();
     Provider.of<PaymentMethodProviderModel>(context, listen: false).initialize();
-    
+
     return Consumer<ShellProviderModel>(
       builder: (context, ShellProviderModel model, child) {
         return Scaffold(
@@ -43,14 +43,15 @@ class ShellPage extends StatelessWidget {
           backgroundColor: BrandingColors.pageBackground,
           body: BackgroundedSafeArea(
             child: IndexedStack(
-                index: model.selectedItemIndex,
-                children: <Widget>[
-                  HomePage(),
-                  SearchPage(),
-                  CartPage(),
-                  ProfilePage(),
-                  MorePage()
-                ]),
+              index: model.selectedItemIndex,
+              children: <Widget>[
+                HomePage(),
+                SearchPage(),
+                CartPage(),
+                ProfilePage(),
+                MorePage(tabChanged: model.onTappedItem)
+              ],
+            ),
           ),
           bottomNavigationBar: BottomNavigationWidget(
             selectedIndex: model.selectedItemIndex,
