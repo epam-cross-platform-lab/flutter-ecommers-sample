@@ -123,7 +123,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: 'Message to seller (optional)',
+              hintText:  localization.messageToSeller,
               hintStyle: textTheme.bodyText1.copyWith(
                     fontWeight: FontWeight.w300,
                     fontStyle: FontStyle.italic,
@@ -160,14 +160,14 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
         final currentOrder = _cartProvider.orders[index - 1];
         return SmallOrderWidget(
-          primaryText: currentOrder.title,
-          secondaryText: currentOrder.description,
-          assetImagePath: currentOrder.imagePath,
-          cost: currentOrder.cost,
+          primaryText: currentOrder.product.title,
+          secondaryText: currentOrder.characteristics,
+          assetImagePath: currentOrder.product.previewImage,
+          cost: currentOrder.product.price,
           count: currentOrder.count,
+          tapOrderFunction: () => navigationService.navigateTo(Pages.product, arguments: currentOrder.product),
           countIncrementFunction: () => _cartProvider.add(currentOrder),
           countDecrementFunction: () => _cartProvider.remove(currentOrder),
-          tapOrderFunction: () => navigationService.navigateTo(Pages.product),
         );
       },
       separatorBuilder: (BuildContext context, int index) {

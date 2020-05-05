@@ -194,6 +194,8 @@ class I18n implements WidgetsLocalizations {
   String get addCardDetails => "ADD CARD DETAILS";
   /// "Select credit card"
   String get selectCreditCard => "Select credit card";
+  /// "Message to seller (optional)"
+  String get messageToSeller => "Message to seller (optional)";
   /// "Enter SMS Code"
   String get enter_sms_code_dialogTitle => "Enter SMS Code";
   /// "Done"

@@ -165,8 +165,11 @@ class ProductPage extends StatelessWidget {
                         padding: const EdgeInsets.all(Insets.x5),
                         child: ProductPageBottomView(
                             addToCartFunction: () {
-                              cartProvider
-                                  .add(OrderModel.fromProduct(productModel));
+                              cartProvider.add(OrderModel.fromProduct(
+                                product: productModel,
+                                color: model.selectColor,
+                                size: model.selectSize,
+                              ));
                             }),
                       ),
                     ),

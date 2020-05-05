@@ -1,32 +1,24 @@
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/repositories/index.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 
-class CartRepository {
-  static const filterField = 'id';
+class CartRepository extends RepositoryBase<OrderModel> {
+  static const filterFieldOrderId = 'id';
+  CartRepository()
+      : super(
+          filterFieldForItem: filterFieldOrderId,
+          repositoryKey: CacheDefines.orders,
+        );
 
   Future<List<OrderModel>> getAllOrders() async {
     return cacheDatabase.getAll(
-        membershipService.id.toString(), OrderModel.fromJson);
+        repositoryKey,
+        OrderModel.fromJson);
+
   }
 
   Future dropOrders() async {
-    await cacheDatabase.dropData(membershipService.id.toString());
-  }
-
-  Future editOrder(OrderModel order) async {
-    await cacheDatabase.updateByEqualsFilter(membershipService.id.toString(),
-        order.toJson(), {filterField: order.id});
-  }
-
-  Future addOrder(OrderModel order) async {
-    await cacheDatabase.saveMap(
-      membershipService.id.toString(),
-      order.toJson(),
-    );
-  }
-
-  Future removeOrder(OrderModel order) async {
-    await cacheDatabase.deleteDataByFilter(
-        membershipService.id.toString(), {filterField: order.id});
+    await cacheDatabase.dropData(repositoryKey); 
   }
 }
