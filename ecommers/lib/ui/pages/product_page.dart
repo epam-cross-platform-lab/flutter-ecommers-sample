@@ -15,7 +15,8 @@ import 'package:ecommers/core/provider_models/index.dart';
 
 class ProductPage extends StatelessWidget {
   final Product productModel;
-  const ProductPage({@required this.productModel, Key key}) : super(key: key);
+  final bool withHeroAniamtion;
+  const ProductPage({@required this.productModel, this.withHeroAniamtion = true, Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +51,8 @@ class ProductPage extends StatelessWidget {
                             color: BrandingColors.primaryText,
                           ),
                         ),
-                        onPressed: () {
-                          const int shellCartIndex = 2;
-                          return navigationService.goBackToShell(
-                              index: shellCartIndex);
-                        });
+                      onPressed: model.navigateToCart,
+                    );
                   },
                   selector: (buildContext, cartProvider) =>
                       cartProvider.orderCount,
@@ -74,6 +72,7 @@ class ProductPage extends StatelessWidget {
                           leading: const SizedBox(height: 0),
                           flexibleSpace: FlexibleSpaceBar(
                             background: CarouselWidget(
+                              tag: withHeroAniamtion ? model.heroImageTag : ProductPageProviderModel.undefineTagValue,
                               images: model.images,
                               currentPageNotifier: valueNotifier,
                               currentPageController: pageController,
