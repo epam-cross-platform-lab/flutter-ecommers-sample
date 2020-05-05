@@ -1,7 +1,8 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/cart_provider.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/index.dart';
+import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/bottom_navigation/bottom_navigation_widget.dart';
@@ -16,6 +17,7 @@ class ShellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).initializeOrderProducts();
+    Provider.of<PaymentMethodProviderModel>(context, listen: false).initialize();
     
     return Consumer<ShellProviderModel>(
       builder: (context, ShellProviderModel model, child) {
@@ -68,7 +70,7 @@ class ShellPage extends StatelessWidget {
     return IconButton(
       icon: IconWithBadge(
         badgeValue: badgeValue,
-        badgeTextStyle: Theme.of(context).textTheme.overline,
+        badgeTextStyle: textTheme.overline,
         icon: SvgPicture.asset(imageAssetPath),
       ),
       onPressed: onIconPressedFuction,

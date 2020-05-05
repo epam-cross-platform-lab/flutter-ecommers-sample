@@ -5,4 +5,4 @@ export 'categories.dart';
 export 'file_manager.dart';
 export 'json_serializable_converter.dart';
 export 'pages.dart';
-export 'validator.dart';
+export 'user_validator.dart';

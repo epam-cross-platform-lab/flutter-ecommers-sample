@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart' hide BackButton;
 
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -13,11 +14,10 @@ class NotePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final titleStyle = Theme.of(context)
-        .textTheme
+    final titleStyle = textTheme
         .bodyText1
         .copyWith(fontWeight: FontWeight.w700);
-    final descriptionStyle = Theme.of(context).textTheme.bodyText1;
+    final descriptionStyle = textTheme.bodyText1;
 
     return Container(
       color: BrandingColors.pageBackground,

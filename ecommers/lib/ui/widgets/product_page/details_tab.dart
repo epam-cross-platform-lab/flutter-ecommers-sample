@@ -1,5 +1,5 @@
 import 'package:ecommers/core/models/data_models/index.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 class DetailsTab extends StatelessWidget {
@@ -14,7 +14,7 @@ class DetailsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final detailsValues =
-        _generateDetailsValues(context, productDetailModel, skuId);
+        _generateDetailsValues(productDetailModel, skuId);
 
     return GridView.builder(
       itemCount: detailsValues.length,
@@ -33,9 +33,7 @@ class DetailsTab extends StatelessWidget {
     );
   }
 
-  Map<String, String> _generateDetailsValues(
-      BuildContext context, ProductDetails productDetailModel, String skuId) {
-    final localization = I18n.of(context);
+  Map<String, String> _generateDetailsValues(ProductDetails productDetailModel, String skuId) {
     final values = <String, String>{};
 
     if (productDetailModel?.brand?.isNotEmpty == true) {
@@ -72,7 +70,7 @@ class DetailsTab extends StatelessWidget {
           alignment: alignment,
           child: Text(
             title,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: textTheme.subtitle2,
           ),
         ),
         Flexible(
@@ -80,7 +78,7 @@ class DetailsTab extends StatelessWidget {
             alignment: alignment,
             child: Text(
               value,
-              style: Theme.of(context).textTheme.subtitle2,
+              style: textTheme.subtitle2,
               overflow: TextOverflow.ellipsis,
             ),
           ),

@@ -1,3 +1,4 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/utils/formatter.dart';
@@ -34,7 +35,7 @@ class RateWidget extends StatelessWidget {
             SvgPicture.asset(Assets.starIcon),
             Text(
               Formatter.getRate(rate),
-              style: Theme.of(context).textTheme.overline,
+              style: textTheme.overline,
             )
           ],
         ),

@@ -1,14 +1,15 @@
 import 'dart:async';
 
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
+import 'package:ecommers/shared/dependency_service.dart';
+import 'package:ecommers/shared/i18n.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/web_server/local_server.dart';
+import 'package:get/get.dart';
 
 import 'core/common/index.dart';
 import 'core/models/data_models/index.dart';
@@ -17,8 +18,9 @@ import 'core/provider_models/index.dart';
 List<Product> products;
 
 void main() {
-  runApp(MainApp());
   DependencyService.registerDependencies();
+  runZonedGuarded(() => runApp(MainApp()),
+      (ex, stackTrace) => logger.ex(ex, stackTrace: stackTrace));
 }
 
 class MainApp extends StatefulWidget {
@@ -58,7 +60,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => ShellProviderModel(context)),
+        ChangeNotifierProvider(create: (_) => ShellProviderModel()),
         ChangeNotifierProvider(create: (_) => PaymentMethodProviderModel()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
       ],
@@ -75,7 +77,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
           until: () => Future.delayed(const Duration()),
           startAnimation: '1',
         ),
-        navigatorKey: navigationService.navigatorKey,
+        navigatorKey: Get.key,
         localizationsDelegates: [i18n],
         supportedLocales: i18n.supportedLocales,
         localeResolutionCallback: i18n.resolution(

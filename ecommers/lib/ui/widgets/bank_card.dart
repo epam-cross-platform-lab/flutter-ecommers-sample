@@ -1,4 +1,4 @@
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -41,8 +41,7 @@ class BankCard extends StatelessWidget {
                         const SizedBox(width: Insets.x6_5),
                         Text(
                           Formatter.getTextWithNumberCard(lastFourNumber),
-                          style: Theme.of(context)
-                              .textTheme
+                          style: textTheme
                               .bodyText1
                               .copyWith(fontWeight: FontWeight.w400),
                         ),
@@ -54,9 +53,8 @@ class BankCard extends StatelessWidget {
                     child: InkWell(
                       onTap: deleteFunction,
                       child: Text(
-                        I18n.of(context).delete,
-                        style: Theme.of(context)
-                            .textTheme
+                        localization.delete,
+                        style: textTheme
                             .headline4
                             .copyWith(color: BrandingColors.primary),
                       ),
@@ -76,7 +74,7 @@ class BankCard extends StatelessWidget {
   Widget _buildCircleIcon(bool isSelect) {
     if (!isSelect) return SizedBox(width: CircleIcon.size.width);
 
-    return CircleIcon(
+    return const CircleIcon(
       imagePath: Assets.successIcon,
       backgroundColor: BrandingColors.primary,
       iconColor: BrandingColors.secondaryText,

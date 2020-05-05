@@ -1,11 +1,12 @@
-import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/core/provider_models/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
+import 'package:ecommers/ui/pages/index.dart';
 import 'package:ecommers/ui/widgets/menu/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class MorePage extends StatelessWidget {
   static const List<MenuItemModel> topMenuList = [
@@ -52,54 +53,54 @@ class MorePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
-            child: Text(
-              I18n.of(context).morePage,
-              style: Theme.of(context).textTheme.headline6,
+    return BasePage(
+      createProvider: () => MoreProviderModel(),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
+              child: Text(
+                localization.morePage,
+                style: textTheme.headline6,
+              ),
             ),
-          ),
-          const SizedBox(height: 35.0),
-          const MenuList(
-            margin: menuListMargin,
-            itemList: topMenuList,
-          ),
-          const SizedBox(height: 15.0),
-          const MenuList(
-            margin: menuListMargin,
-            itemList: bottomMenuList,
-          ),
-          const SizedBox(height: 40.0),
-          _buildLogOutButton(context),
-          const SizedBox(height: 30.0),
-        ],
+            const SizedBox(height: 35.0),
+            const MenuList(
+              margin: menuListMargin,
+              itemList: topMenuList,
+            ),
+            const SizedBox(height: 15.0),
+            const MenuList(
+              margin: menuListMargin,
+              itemList: bottomMenuList,
+            ),
+            const SizedBox(height: 40.0),
+            _buildLogOutButton(),
+            const SizedBox(height: 30.0),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildLogOutButton(BuildContext context) {
+  Widget _buildLogOutButton() {
     return Center(
-      child: CupertinoButton(
-        onPressed: logOutPressHandler,
-        child: Text(
-          I18n.of(context).logOut,
-          style: Theme.of(context)
-              .textTheme
-              .headline5
-              .apply(color: BrandingColors.primary),
-        ), //TODO use proovider
+      child: Builder(
+        builder: (context) {
+          return CupertinoButton(
+            onPressed: Provider.of<MoreProviderModel>(context, listen: false).logOutPressHandler,
+            child: Text(
+              localization.logOut,
+              style:
+                  textTheme.headline5.copyWith(color: BrandingColors.primary),
+            ),
+          );
+        },
       ),
     );
-  }
-
-  Future logOutPressHandler() async {
-    authorizationService.logOut(); 
-    await navigationService.navigateWithReplacementTo(Pages.authorization);
   }
 }

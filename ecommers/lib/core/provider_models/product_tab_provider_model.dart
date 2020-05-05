@@ -1,8 +1,8 @@
+import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/core/provider_models/index.dart';
 import 'package:flutter/widgets.dart';
 
-class ProductTabProviderModel extends ProviderModelBase {
+class ProductTabProviderModel extends  ChangeNotifier with BusyNotifier {
   List<ProductColorModel> _colors;
   List<ProductSizeModel> _sizes;
 
@@ -12,9 +12,7 @@ class ProductTabProviderModel extends ProviderModelBase {
   List<ProductColorModel> get colors => _colors;
   set colors(List<ProductColorModel> colors) => _colors = colors ?? [];
 
-  ProductTabProviderModel(this._colors, this._sizes,
-      {@required BuildContext context})
-      : super(context);
+  ProductTabProviderModel(this._colors, this._sizes);
 
   void selectSize(int index) {
     sizes.forEach(_unselectSizes);

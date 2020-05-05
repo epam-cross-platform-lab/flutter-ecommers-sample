@@ -1,7 +1,7 @@
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart' hide BackButton;
 
@@ -20,18 +20,14 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tabBarStyle = Theme.of(context).textTheme.subtitle1;
+    final tabBarStyle = textTheme.subtitle1;
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
-    final localization = I18n.of(context);
 
     final valueNotifier = ValueNotifier<int>(0);
     final pageController = PageController(initialPage: 0, keepPage: false);
 
     return ChangeNotifierProvider(
-      create: (_) => ProductPageProviderModel(
-        productModel,
-        context: context,
-      ),
+      create: (_) => ProductPageProviderModel(productModel),
       child: Consumer<ProductPageProviderModel>(
         builder: (context, ProductPageProviderModel model, child) {
           return Scaffold(
@@ -47,14 +43,14 @@ class ProductPage extends StatelessWidget {
                 Selector<CartProvider, int>(
                   builder: (context, data, child) {
                     return IconButton(
-                      icon: IconWithBadge(
-                        badgeValue: cartProvider.orderCount,
-                        badgeTextStyle: Theme.of(context).textTheme.overline,
-                        icon: const Icon(
-                          Icons.shopping_cart,
-                          color: BrandingColors.primaryText,
+                        icon: IconWithBadge(
+                          badgeValue: cartProvider.orderCount,
+                          badgeTextStyle: textTheme.overline,
+                          icon: const Icon(
+                            Icons.shopping_cart,
+                            color: BrandingColors.primaryText,
+                          ),
                         ),
-                      ),
                       onPressed: model.navigateToCart,
                     );
                   },
@@ -167,7 +163,6 @@ class ProductPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(Insets.x5),
                         child: ProductPageBottomView(
-                            buttonSize: const Size(165.0, 46.0),
                             addToCartFunction: () {
                               cartProvider.add(OrderModel.fromProduct(
                                 product: productModel,

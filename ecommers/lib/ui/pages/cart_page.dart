@@ -2,8 +2,7 @@ import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/models/page_arguments.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/services/index.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -19,13 +18,16 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   static const _orderDeviderIndent = 100.0;
-
   CartProvider _cartProvider;
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     _cartProvider = Provider.of<CartProvider>(context);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding:
           const EdgeInsets.fromLTRB(Insets.x0, Insets.x0, Insets.x0, Insets.x4),
@@ -34,8 +36,8 @@ class _CartPageState extends State<CartPage> {
         children: <Widget>[
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: Insets.x4),
-              child: Text(I18n.of(context).cartTitle,
-                  style: Theme.of(context).textTheme.headline6)),
+              child: Text(localization.cartTitle,
+                  style: textTheme.headline6)),
           const SizedBox(height: 16),
           Expanded(child: _buildOrderListView()),
           const Padding(
@@ -49,7 +51,7 @@ class _CartPageState extends State<CartPage> {
                 backgroundColor: BrandingColors.pageBackground,
                 onButtonPressedFunction: () =>
                     navigationService.navigateTo(Pages.checkout),
-                buttonText: I18n.of(context).checkoutButton,
+                buttonText: localization.checkoutButton,
                 isButtonDisabled: _cartProvider.orderCount == 0,
               ))
         ],

@@ -1,13 +1,13 @@
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:flutter/material.dart';
 
 class ProductPageBottomView extends StatelessWidget {
-  final Size buttonSize;
   final Function() addToCartFunction;
 
-  const ProductPageBottomView({@required this.buttonSize, this.addToCartFunction});
+  const ProductPageBottomView({@required this.addToCartFunction});
 
   @override
   Widget build(BuildContext context) {
@@ -16,20 +16,17 @@ class ProductPageBottomView extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(
-              height: buttonSize.height,
-              width: buttonSize.width,
+            Flexible(
               child: SecondaryButtonWidget(
-                text: I18n.of(context).shareThis,
+                text: localization.shareThis,
                 onPressedFunction: () => {},
                 assetIcon: Assets.shareArrowIcon,
               ),
             ),
-            SizedBox(
-              height: buttonSize.height,
-              width: buttonSize.width,
+            const SizedBox(width: Insets.x7),
+            Flexible(
               child: PrimaryButtonWidget(
-                text: I18n.of(context).addToCart,
+                text: localization.addToCart,
                 onPressedFunction: addToCartFunction,
               ),
             ),

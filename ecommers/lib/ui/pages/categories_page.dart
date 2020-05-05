@@ -1,9 +1,9 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:ecommers/core/models/data_models/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/pages/base_page.dart';
 import 'package:ecommers/ui/pages/closeable_page.dart';
@@ -20,7 +20,7 @@ class CategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-      createProvider: (_) => CategoriesProviderModel(context, categories),
+      createProvider: () => CategoriesProviderModel(categories),
       child: CloseablePage(
         child: BackgroundedSafeArea(
           child: SingleChildScrollView(
@@ -35,8 +35,8 @@ class CategoriesPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  I18n.of(context).allCategories,
-                  style: Theme.of(context).textTheme.headline6,
+                  localization.allCategories,
+                  style: textTheme.headline6,
                 ),
                 const SizedBox(height: Insets.x6),
                 Row(

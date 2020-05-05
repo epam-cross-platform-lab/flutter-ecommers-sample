@@ -1,13 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
+import 'package:ecommers/ui/decorations/dimens/index.dart';
+import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import '../../core/common/index.dart';
-import '../../core/models/data_models/index.dart';
-import '../../core/services/index.dart';
-import '../../generated/i18n.dart';
-import '../../ui/decorations/dimens/index.dart';
-import '../../ui/widgets/index.dart';
 
 class NotesCarousel extends StatelessWidget {
   final List<Note> notes;
@@ -24,17 +22,17 @@ class NotesCarousel extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
           child: Text(
-            I18n.of(context).latetstTitle,
-            style: Theme.of(context).textTheme.headline6,
+            localization.latetstTitle,
+            style: textTheme.headline6,
           ),
         ),
         const SizedBox(height: Insets.x2_5),
-        _buildCarousel(context),
+        _buildCarousel(),
       ],
     );
   }
 
-  Widget _buildCarousel(BuildContext context) {
+  Widget _buildCarousel() {
     return CarouselSlider(
       viewportFraction: 0.92,
       items: notes

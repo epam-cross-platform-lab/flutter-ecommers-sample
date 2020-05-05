@@ -27,7 +27,7 @@ class CircleIcon extends StatelessWidget {
         color: backgroundColor,
       ),
       child: Padding(
-        padding: EdgeInsets.all(Insets.x1),
+        padding: const EdgeInsets.all(Insets.x1),
               child: SvgPicture.asset(
           imagePath,
           fit: BoxFit.scaleDown,

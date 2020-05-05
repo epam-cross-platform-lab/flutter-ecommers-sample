@@ -1,23 +1,18 @@
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/models/cache_wrappers/payment_method_wrapper.dart';
+import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/core/repositories/index.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
 
-class PaymentMethodRepository  extends RepositoryBase<PaymentMethodWrapper>{
-  static const filterFieldUserId = 'userId';
-  static const filterFieldForPaymentMethod = 'id';
+class PaymentMethodRepository extends RepositoryBase<PaymentMethodModel> {
+  static const filterFieldId = 'id';
 
-    PaymentMethodRepository()
+  PaymentMethodRepository()
       : super(
-          filterFieldForItem: filterFieldForPaymentMethod,
-          filterFieldForUser: filterFieldUserId,
+          filterFieldForItem: filterFieldId,
           repositoryKey: CacheDefines.paymentMethods,
         );
 
-  Future<List<PaymentMethodWrapper>> getAllOPaymentMethods() async {
-    return cacheDatabase.getByEqualsFilter(
-        repositoryKey,
-        PaymentMethodWrapper.fromJson,
-        {filterFieldUserId: membershipService.id});
+  Future<List<PaymentMethodModel>> getAllOPaymentMethods() async {
+    return cacheDatabase.getAll(repositoryKey, PaymentMethodModel.fromJson);
   }
 }

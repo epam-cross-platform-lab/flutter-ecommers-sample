@@ -1,9 +1,9 @@
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/generated/i18n.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 
@@ -12,12 +12,11 @@ class SearchTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final inputTextStyle = Theme.of(context).textTheme.subtitle1;
+    final inputTextStyle = textTheme.subtitle1;
 
     final hintStyle = inputTextStyle.copyWith(
         color: BrandingColors.primaryText.withOpacity(0.4));
 
-    final localization = I18n.of(context);
     return Container(
       height: 35.0,
       padding: const EdgeInsets.symmetric(horizontal: Insets.x4),

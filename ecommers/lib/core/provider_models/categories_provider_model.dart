@@ -1,9 +1,8 @@
+import 'package:ecommers/core/mixins/index.dart';
 import 'package:ecommers/core/models/data_models/category.dart';
 import 'package:flutter/material.dart';
 
-import 'index.dart';
-
-class CategoriesProviderModel extends ProviderModelBase {
+class CategoriesProviderModel extends ChangeNotifier with BusyNotifier {
   final List<Category> categoryList;
   int _selectedCategoryIndex = 0;
 
@@ -18,6 +17,5 @@ class CategoriesProviderModel extends ProviderModelBase {
     notifyListeners();
   }
 
-  CategoriesProviderModel(BuildContext context, this.categoryList)
-      : super(context);
+  CategoriesProviderModel(this.categoryList);
 }

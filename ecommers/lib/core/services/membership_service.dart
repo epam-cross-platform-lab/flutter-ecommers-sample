@@ -6,8 +6,6 @@ class MembershipService {
   static const String _accessTokenKey = 'accessTokenKey';
   static const String _refreshTokenKey = 'refreshTokenKey';
   static const String _expirationDateKey = 'expirationDateKey';
-  
-  int get id => 1;//todo replace to profile
 
   SharedPreferences _storage;
 
@@ -19,8 +17,6 @@ class MembershipService {
   String get refreshToken => _refreshToken;
   bool get isNotExpired =>
       _expirationDate != null && DateTime.now().isBefore(_expirationDate);
-
-  MembershipService();
 
   Future initialize() async {
     _storage = await SharedPreferences.getInstance();

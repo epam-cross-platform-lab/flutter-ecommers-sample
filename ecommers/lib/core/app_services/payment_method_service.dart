@@ -1,10 +1,10 @@
-import 'package:ecommers/core/models/cache_wrappers/payment_method_wrapper.dart';
 import 'package:ecommers/core/models/payment_method_model.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 
 class PaymentMethodService {
-  static const String testPublishableKey = 'pk_test_O4MySLvZlQMSIVMEJPCQjbIv00CnR4Bawc';
+  static const String testPublishableKey =
+      'pk_test_O4MySLvZlQMSIVMEJPCQjbIv00CnR4Bawc';
   static const String testMerchantId = 'Test';
   static const String testandroidPayMode = 'test';
 
@@ -19,12 +19,11 @@ class PaymentMethodService {
       androidPayMode: testandroidPayMode,
     ));
   }
-  Future<List<PaymentMethodModel>> getPaymentMethods() async {
-    final paymentMethodWrapper = await paymentMethodRepository.getAllOPaymentMethods();
 
-    return paymentMethodWrapper.map((x) => x.paymentMethodModel).toList();     
+  Future<List<PaymentMethodModel>> getPaymentMethods() async {
+    return paymentMethodRepository.getAllOPaymentMethods();
   }
-  
+
   Future<PaymentMethodModel> createPyamentMethod(CreditCard card) async {
     try {
       final paymentMethod = await StripePayment.createPaymentMethod(
@@ -33,9 +32,7 @@ class PaymentMethodService {
       final paymentMethodModel =
           PaymentMethodModel.fromStripePaymentMethod(paymentMethod);
 
-      await paymentMethodRepository.add(
-        PaymentMethodWrapper.fromPaymentMethod(paymentMethodModel),
-      );
+      await paymentMethodRepository.add(paymentMethodModel);
 
       return paymentMethodModel;
     } catch (ex) {
@@ -44,14 +41,10 @@ class PaymentMethodService {
   }
 
   Future removePaymentMethod(PaymentMethodModel paymentMethodModel) async {
-    await paymentMethodRepository.remove(
-      PaymentMethodWrapper.fromPaymentMethod(paymentMethodModel),
-    );
+    return paymentMethodRepository.remove(paymentMethodModel);
   }
 
   Future editPaymentMethod(PaymentMethodModel paymentMethodModel) async {
-    await paymentMethodRepository.edit(
-      PaymentMethodWrapper.fromPaymentMethod(paymentMethodModel),
-    );
+    return paymentMethodRepository.edit(paymentMethodModel);
   }
 }

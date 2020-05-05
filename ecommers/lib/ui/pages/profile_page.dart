@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/core/common/index.dart';
-import 'package:ecommers/core/services/dependency_service.dart';
-import 'package:ecommers/generated/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
@@ -12,11 +11,11 @@ import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
   static final List<MenuItemModel> _topMenuList = [
-    MenuItemModel(
+    const MenuItemModel(
       svgAssetIconPath: Assets.allOrderIcon,
       title: 'All My Orders',
     ),
-    MenuItemModel(
+    const MenuItemModel(
       svgAssetIconPath: Assets.pendingShipmentIcon,
       title: 'Pending Shipments',
     ),
@@ -25,7 +24,7 @@ class ProfilePage extends StatelessWidget {
       title: 'Pending Payments',
       onTappedFunction: () => navigationService.navigateTo(Pages.paymentMethod),
     ),
-    MenuItemModel(
+    const MenuItemModel(
       svgAssetIconPath: Assets.finishedOrdersIcon,
       title: 'Finished Orders',
     ),
@@ -62,8 +61,8 @@ class ProfilePage extends StatelessWidget {
       scrollDirection: Axis.vertical,
       child: Column(
         children: <Widget>[
-          _buildProfileCard(context),
-           MenuList(
+          _buildProfileCard(),
+          MenuList(
             margin: _listContainerMargin,
             itemList: _topMenuList,
           ),
@@ -78,7 +77,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileCard(BuildContext context) {
+  Widget _buildProfileCard() {
     return Container(
       height: _profileCardHeight,
       margin: const EdgeInsets.all(Insets.x6),
@@ -105,17 +104,17 @@ class ProfilePage extends StatelessWidget {
                   'Jane Doe', //TODO: get from the provider
                   maxLines: Dimens.defaultTextMaxLines,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: textTheme.headline6,
                 ),
                 Expanded(
                   child: Text(
                     'janedoe123@email.com', //TODO: get from the provider
                     maxLines: Dimens.defaultTextMaxLines,
                     overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.bodyText1,
+                    style: textTheme.bodyText1,
                   ),
                 ),
-                _buildEditProfileButton(context),
+                _buildEditProfileButton(),
               ],
             ),
           ),
@@ -124,7 +123,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildEditProfileButton(BuildContext context) {
+  Widget _buildEditProfileButton() {
     return SizedBox(
       height: _profileCardEditButtonHeight,
       child: OutlineButton(
@@ -138,8 +137,8 @@ class ProfilePage extends StatelessWidget {
         ),
         onPressed: () {},
         child: Text(
-          I18n.of(context).editProfile,
-          style: Theme.of(context).textTheme.button,
+          localization.editProfile,
+          style: textTheme.button,
         ),
       ),
     );
