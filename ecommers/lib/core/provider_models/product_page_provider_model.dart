@@ -6,7 +6,8 @@ import 'package:ecommers/ui/widgets/right_menu_bar/models/index.dart';
 import 'package:flutter/widgets.dart';
 
 class ProductPageProviderModel extends ChangeNotifier with BusyNotifier  {
-    static  const String undefineTagValue = 'undef';
+  static  const String undefineTagValue = 'undef';
+  
   final Product _productModel;
   dynamic heroImageTag;
 
