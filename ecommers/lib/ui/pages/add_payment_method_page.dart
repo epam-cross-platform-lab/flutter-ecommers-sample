@@ -1,3 +1,4 @@
+import 'package:ecommers/core/common/payment_method_validator.dart';
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -7,6 +8,7 @@ import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart' hide BackButton;
 import 'package:flutter/services.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:provider/provider.dart';
 
 class AddPaymentMethodPage extends StatelessWidget {
@@ -21,8 +23,8 @@ class AddPaymentMethodPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:
-              const EdgeInsets.symmetric(vertical: Insets.x4, horizontal: Insets.x6),
+          padding: const EdgeInsets.symmetric(
+              vertical: Insets.x4, horizontal: Insets.x6),
           child: Column(
             children: <Widget>[
               Center(
@@ -36,9 +38,9 @@ class AddPaymentMethodPage extends StatelessWidget {
                 hintText: localization.creditCardNumberPlaceHolder,
                 maxLength: 19,
                 inputFormatters: [
-                  MaskedTextInputFormatter(
-                    mask: 'xxxx-xxxx-xxxx-xxxx',
-                    separator: '-',
+                  MaskTextInputFormatter(
+                    mask: '####-####-####-####',
+                    filter: {'#': RegExp(PaymentMethodValidator.digitPattern)},
                   ),
                 ],
                 onChanged: (text) => provider.creditCard.number = text,
@@ -55,12 +57,15 @@ class AddPaymentMethodPage extends StatelessWidget {
               Row(
                 children: <Widget>[
                   CreditCardTextField(
-                    width: 208.0,
+                    width: 158.0,
                     hintText: localization.exprDatePlaceHolder,
                     inputFormatters: [
-                      MaskedTextInputFormatter(
-                        mask: 'xx/xx',
-                        separator: '/',
+                      MaskTextInputFormatter(
+                        mask: 'f#/##',
+                        filter: {
+                          'f': RegExp(PaymentMethodValidator.firstSymbolDatePattern),
+                          '#': RegExp(PaymentMethodValidator.digitPattern)
+                        },
                       ),
                     ],
                     onChanged: (text) => provider.expDate = text,
@@ -72,11 +77,16 @@ class AddPaymentMethodPage extends StatelessWidget {
                     width: 104.0,
                     hintText: localization.cvc,
                     maxLength: 3,
+                    inputFormatters: [
+                      MaskTextInputFormatter(
+                        mask: '###',
+                        filter: {
+                          '#': RegExp(PaymentMethodValidator.digitPattern)
+                        },
+                      ),
+                    ],
                     onChanged: (text) => provider.creditCard.cvc = text,
                     keyboardType: TextInputType.number,
-                    inputFormatters: <TextInputFormatter>[
-                      WhitelistingTextInputFormatter.digitsOnly,
-                    ],
                   ),
                 ],
               ),

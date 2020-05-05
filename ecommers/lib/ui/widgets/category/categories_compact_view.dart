@@ -19,7 +19,7 @@ class CategoriesCompactView extends StatelessWidget {
   Widget build(BuildContext context) {
     if (categories == null || categories.isEmpty) return const SizedBox();
 
-    return Container(
+    return Container(      
       height: _containerHeight,
       padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
       child: Column(
