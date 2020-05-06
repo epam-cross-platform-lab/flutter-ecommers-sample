@@ -12,8 +12,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class ShellPage extends StatelessWidget {
-  static const route = '/shell';
-
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).initializeOrderProducts();
@@ -49,7 +47,7 @@ class ShellPage extends StatelessWidget {
                 SearchPage(),
                 CartPage(),
                 ProfilePage(),
-                MorePage(tabChanged: model.onTappedItem)
+                MorePage()
               ],
             ),
           ),

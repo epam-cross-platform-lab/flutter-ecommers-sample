@@ -30,7 +30,7 @@ class NavigationService {
 
   void goBackToShell({int index = 0}) {
     navigatorKey.currentState.popUntil((Route<dynamic> route) {
-      return route.settings?.name == ShellPage.route;
+      return route.settings?.name == StartPage.route;
     });
 
     Provider.of<ShellProviderModel>(navigatorKey.currentContext, listen: false)
@@ -42,10 +42,6 @@ class NavigationService {
     RouteSettings settings;
 
     switch (page) {
-      case Pages.shell:
-        resultPage = ShellPage();
-        settings = const RouteSettings(name: ShellPage.route);
-        break;
       case Pages.categories:
         resultPage = CategoriesPage(categories: arguments as List<Category>);
         break;
@@ -95,8 +91,12 @@ class NavigationService {
       case Pages.addShippingAddress:
         resultPage = AddShippingAddress(shippingAddres: arguments as ShippingAddressModel,);
         break;
+      case Pages.start:
+        resultPage = StartPage();
+        settings = const RouteSettings(name: StartPage.route);
+        break;
       default:
-        resultPage = ShellPage();
+        resultPage = StartPage();
         break;
     }
 

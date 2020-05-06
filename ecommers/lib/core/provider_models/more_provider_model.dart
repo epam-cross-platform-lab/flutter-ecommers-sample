@@ -4,10 +4,9 @@ import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 class MoreProviderModel extends ChangeNotifier with BusyNotifier {
-
-   Future logOutPressHandler() async {
+  Future logOutPressHandler() async {
     await cacheDatabase.dropDataBase();
     authorizationService.logOut();
-    await navigationService.navigateWithReplacementTo(Pages.authorization);
+    await navigationService.navigateWithReplacementTo(Pages.start);
   }
 }

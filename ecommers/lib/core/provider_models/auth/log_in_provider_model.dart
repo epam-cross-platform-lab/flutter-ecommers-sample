@@ -40,7 +40,7 @@ class LogInProviderModel extends ChangeNotifier with BusyNotifier {
   Future _handleResult(AuthStatus result) async {
     switch (result) {
       case AuthStatus.success:
-        await navigationService.navigateWithReplacementTo(Pages.shell);
+        await navigationService.navigateWithReplacementTo(Pages.start);
         break;
       case AuthStatus.timeout:
         dialogService.showDialog(

@@ -1,5 +1,5 @@
 enum Pages {
-  shell,
+  start,
   home,
   search,
   cart,

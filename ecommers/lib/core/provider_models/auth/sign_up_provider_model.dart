@@ -5,7 +5,7 @@ import 'package:ecommers/data/repository/firebase_repository.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
-class SignUpProviderModel extends ChangeNotifier with BusyNotifier  {
+class SignUpProviderModel extends ChangeNotifier with BusyNotifier {
   String email;
   String phoneNumber;
   String username;
@@ -61,7 +61,7 @@ class SignUpProviderModel extends ChangeNotifier with BusyNotifier  {
     switch (result) {
       case AuthStatus.success:
         await authorizationService.updateUserName(username);
-        await navigationService.navigateWithReplacementTo(Pages.shell);
+        await navigationService.navigateWithReplacementTo(Pages.start);
         break;
       case AuthStatus.timeout:
         dialogService.showDialog(

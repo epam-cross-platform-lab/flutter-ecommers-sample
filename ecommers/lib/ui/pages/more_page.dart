@@ -50,12 +50,9 @@ class MorePage extends StatelessWidget {
       title: 'Legal Information',
     ),
   ];
-  final Function(int) tabChanged;
 
   static const EdgeInsets menuListMargin =
       EdgeInsets.symmetric(horizontal: Insets.x5);
-
-  const MorePage({this.tabChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -109,6 +106,5 @@ class MorePage extends StatelessWidget {
       ),
     );
   }
-    tabChanged(0);
 
 }
