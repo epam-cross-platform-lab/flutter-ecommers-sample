@@ -9,4 +9,5 @@ export 'product_tab_provider_model.dart';
 export 'products_grid_provder_model.dart';
 export 'search_page_provider_model.dart';
 export 'search_query_provider_model.dart';
+export 'share_product_provider.dart';
 export 'shell_provider_model.dart';

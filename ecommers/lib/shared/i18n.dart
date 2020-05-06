@@ -234,6 +234,12 @@ class I18n implements WidgetsLocalizations {
   String get password_restoration_dialogPrimary_button => "OK";
   /// ""
   String get empty => "";
+  /// "Share image"
+  String get share_image => "Share image";
+  /// "Share image with text"
+  String get share_image_with_text => "Share image with text";
+  /// "Share text"
+  String get share_text => "Share text";
 }
 
 class _I18n_en_US extends I18n {

@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 
 class ProductPageBottomView extends StatelessWidget {
   final Function() addToCartFunction;
+  final Function() sharedFunction;
 
-  const ProductPageBottomView({@required this.addToCartFunction});
+  const ProductPageBottomView(
+      {@required this.addToCartFunction, this.sharedFunction});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class ProductPageBottomView extends StatelessWidget {
             Flexible(
               child: SecondaryButtonWidget(
                 text: localization.shareThis,
-                onPressedFunction: () => {},
+                onPressedFunction: sharedFunction,
                 assetIcon: Assets.shareArrowIcon,
               ),
             ),

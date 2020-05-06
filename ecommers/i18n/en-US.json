@@ -109,5 +109,8 @@
         "description": "Password restore link sent",
         "primary_button": "OK"
     },
-    "empty": ""
+    "empty": "",
+    "share_image": "Share image", 
+    "share_image_with_text": "Share image with text",
+    "share_text": "Share text"
 }

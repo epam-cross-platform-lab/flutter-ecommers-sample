@@ -40,6 +40,7 @@ CacheDatabase get cacheDatabase => _ioc.get<CacheDatabase>();
 CartRepository get cartRepository => _ioc.get<CartRepository>();
 Paginator createPaginator() => _ioc.get<Paginator>();
 DialogService get dialogService => _ioc.get<DialogService>();
+ShareProductService get shareProductService => _ioc.get<ShareProductService>();
 FirebaseAuthRepository get authRepository => _ioc.get<FirebaseAuthRepository>();
 Logger get logger => _ioc.get<Logger>();
 I18n get localization => I18n.of(Get.context);
@@ -59,6 +60,7 @@ class DependencyService {
       ..registerLazySingleton(() => Logger())
       ..registerLazySingleton(() => CategoryService())
       ..registerLazySingleton(() => PaymentMethodService())
+      ..registerLazySingleton(() => ShareProductService())
       ..registerLazySingleton(() => NoteService())
       ..registerSingletonAsync(
         () async {

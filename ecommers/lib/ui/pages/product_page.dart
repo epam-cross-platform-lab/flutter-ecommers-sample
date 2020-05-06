@@ -16,7 +16,9 @@ import 'package:ecommers/core/provider_models/index.dart';
 class ProductPage extends StatelessWidget {
   final Product productModel;
   final bool withHeroAniamtion;
-  const ProductPage({@required this.productModel, this.withHeroAniamtion = true, Key key}) : super(key: key);
+  const ProductPage(
+      {@required this.productModel, this.withHeroAniamtion = true, Key key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +45,14 @@ class ProductPage extends StatelessWidget {
                 Selector<CartProvider, int>(
                   builder: (context, data, child) {
                     return IconButton(
-                        icon: IconWithBadge(
-                          badgeValue: cartProvider.orderCount,
-                          badgeTextStyle: textTheme.overline,
-                          icon: const Icon(
-                            Icons.shopping_cart,
-                            color: BrandingColors.primaryText,
-                          ),
+                      icon: IconWithBadge(
+                        badgeValue: cartProvider.orderCount,
+                        badgeTextStyle: textTheme.overline,
+                        icon: const Icon(
+                          Icons.shopping_cart,
+                          color: BrandingColors.primaryText,
                         ),
+                      ),
                       onPressed: model.navigateToCart,
                     );
                   },
@@ -72,7 +74,9 @@ class ProductPage extends StatelessWidget {
                           leading: const SizedBox(height: 0),
                           flexibleSpace: FlexibleSpaceBar(
                             background: CarouselWidget(
-                              tag: withHeroAniamtion ? model.heroImageTag : ProductPageProviderModel.undefineTagValue,
+                              tag: withHeroAniamtion
+                                  ? model.heroImageTag
+                                  : ProductPageProviderModel.undefineTagValue,
                               images: model.images,
                               currentPageNotifier: valueNotifier,
                               currentPageController: pageController,
@@ -163,9 +167,16 @@ class ProductPage extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(Insets.x5),
                         child: ProductPageBottomView(
+                            sharedFunction: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return ShareDialog(productModel);
+                                  });
+                            },
+                            productModel: productModel,
                             addToCartFunction: () {
                               cartProvider.add(OrderModel.fromProduct(
-                                product: productModel,
                                 color: model.selectColor,
                                 size: model.selectSize,
                               ));
