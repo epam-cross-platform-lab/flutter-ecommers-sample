@@ -8,8 +8,6 @@ import 'package:ecommers/ui/widgets/category/category_item.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesCompactView extends StatelessWidget {
-  static const categoryItemSize = CategoryItem.size;
-
   final List<Category> categories;
 
   const CategoriesCompactView(this.categories);
@@ -19,7 +17,7 @@ class CategoriesCompactView extends StatelessWidget {
     if (categories == null || categories.isEmpty) return const SizedBox();
 
     return Container(
-      height: categoryItemSize.height,
+      height: CategoryItem.size.height,
       padding: const EdgeInsets.symmetric(horizontal: Insets.x6),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,7 +90,7 @@ class CategoriesCompactView extends StatelessWidget {
     final categoriesListWidth =
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
-    var itemCount = categoriesListWidth ~/ categoryItemSize.width;
+    var itemCount = categoriesListWidth ~/ CategoryItem.size.width;
 
     if (itemCount > categoriesCount) {
       itemCount = categoriesCount;
@@ -108,7 +106,7 @@ class CategoriesCompactView extends StatelessWidget {
         MediaQuery.of(context).size.width - Dimens.pagePadding * 2;
 
     final calculatedListSpacing =
-        (categoriesListWidth % categoryItemSize.width) / (itemCount - 1);
+        (categoriesListWidth % CategoryItem.size.width) / (itemCount - 1);
 
     return calculatedListSpacing;
   }
