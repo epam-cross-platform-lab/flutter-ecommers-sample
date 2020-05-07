@@ -4,12 +4,12 @@ import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 class ShippingAddressProviderModel extends ChangeNotifier {
-  bool isFullNameValid = true,
-      isAddressValid = true,
-      isCityValid = true,
-      isStateProvinceRegionValid = true,
-      isZipCodeValid = true,
-      isCountryValid = true;
+  bool isFullNameValid,
+      isAddressValid,
+      isCityValid,
+      isStateProvinceRegionValid,
+      isZipCodeValid,
+      isCountryValid;
   List<ShippingAddressModel> _shipingAddresses = <ShippingAddressModel>[];
   ShippingAddressModel _selectedShippingAddress;
   ShippingAddressModel shippingAddress = ShippingAddressModel();
@@ -85,7 +85,12 @@ class ShippingAddressProviderModel extends ChangeNotifier {
     isStateProvinceRegionValid = ShippingValidator.isValidState(shippingAddress.state);
     isCountryValid = ShippingValidator.isValidCountry(shippingAddress.country);
 
-    return isFullNameValid && isAddressValid && isCityValid  && isZipCodeValid && isStateProvinceRegionValid && isCountryValid;
+    return isFullNameValid &&
+        isAddressValid &&
+        isCityValid &&
+        isZipCodeValid &&
+        isStateProvinceRegionValid &&
+        isCountryValid;
   }
 
   void clean() {

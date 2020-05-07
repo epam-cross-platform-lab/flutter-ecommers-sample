@@ -52,7 +52,7 @@ class ShippingAddressTextField extends StatelessWidget {
                 fontSize: FontSizes.small_3x,
                 color: BrandingColors.primaryText.withOpacity(0.5)),
             errorText:
-                isValid ? null : localization.errorMessageShippingAddress,
+                isValid ?? true ? null : localization.errorMessageShippingAddress,
             errorStyle: TextStyle(color: Colors.red[300]),
             errorBorder: UnderlineInputBorder(
               borderSide: BorderSide(
