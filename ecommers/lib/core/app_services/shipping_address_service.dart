@@ -18,7 +18,7 @@ class ShippingAddressService {
 
       return shippingAddressModel;
     } catch (ex) {
-      return null;
+      logger.ex(ex);
     }
   }
 

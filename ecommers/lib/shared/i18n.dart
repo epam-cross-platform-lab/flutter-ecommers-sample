@@ -218,6 +218,8 @@ class I18n implements WidgetsLocalizations {
   String get addShippingAddress => "ADD SHIPPING ADDRESS";
   /// "You don't have any shipping addresses"
   String get notShippingAddress => "You don't have any shipping addresses";
+  /// "Select address"
+  String get selectAddress => "Select address";
   /// "Please enter this field"
   String get errorMessageShippingAddress => "Please enter this field";
   /// "Enter SMS Code"

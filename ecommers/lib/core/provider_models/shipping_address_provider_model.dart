@@ -4,12 +4,12 @@ import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 
 class ShippingAddressProviderModel extends ChangeNotifier {
-  bool isValidFullName = true,
-      isValidAddress = true,
-      isValidCity = true,
-      isValidStateProvinceRegion = true,
-      isValidZipCode = true,
-      isValidCountry = true;
+  bool isFullNameValid = true,
+      isAddressValid = true,
+      isCityValid = true,
+      isStateProvinceRegionValid = true,
+      isZipCodeValid = true,
+      isCountryValid = true;
   List<ShippingAddressModel> _shipingAddresses = <ShippingAddressModel>[];
   ShippingAddressModel _selectedShippingAddress;
   ShippingAddressModel shippingAddress = ShippingAddressModel();
@@ -78,23 +78,23 @@ class ShippingAddressProviderModel extends ChangeNotifier {
   }
 
   bool _isValidShippingAddress() {
-    isValidFullName = ShippingValidator.isValidFullName(shippingAddress.fullName);
-    isValidAddress = ShippingValidator.isValidAddress(shippingAddress.address);
-    isValidCity = ShippingValidator.isValidCity(shippingAddress.city);
-    isValidZipCode = ShippingValidator.isValidZipCode(shippingAddress.zipCode);
-    isValidStateProvinceRegion = ShippingValidator.isValidState(shippingAddress.state);
-    isValidCountry = ShippingValidator.isValidCountry(shippingAddress.country);
+    isFullNameValid = ShippingValidator.isValidFullName(shippingAddress.fullName);
+    isAddressValid = ShippingValidator.isValidAddress(shippingAddress.address);
+    isCityValid = ShippingValidator.isValidCity(shippingAddress.city);
+    isZipCodeValid = ShippingValidator.isValidZipCode(shippingAddress.zipCode);
+    isStateProvinceRegionValid = ShippingValidator.isValidState(shippingAddress.state);
+    isCountryValid = ShippingValidator.isValidCountry(shippingAddress.country);
 
-    return isValidFullName && isValidAddress && isValidCity  && isValidZipCode && isValidStateProvinceRegion && isValidCountry;
+    return isFullNameValid && isAddressValid && isCityValid  && isZipCodeValid && isStateProvinceRegionValid && isCountryValid;
   }
 
   void clean() {
     shippingAddress = ShippingAddressModel();
-    isValidCountry = true;
-    isValidAddress = true;
-    isValidCity = true;
-    isValidFullName = true;
-    isValidStateProvinceRegion = true;
-    isValidZipCode = true;
+    isCountryValid = true;
+    isAddressValid = true;
+    isCityValid = true;
+    isFullNameValid = true;
+    isStateProvinceRegionValid = true;
+    isZipCodeValid = true;
   }
 }

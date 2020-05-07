@@ -92,6 +92,7 @@
     "smallShippingAddress": "Shipping Address",
     "addShippingAddress": "ADD SHIPPING ADDRESS",
     "notShippingAddress": "You don't have any shipping addresses",
+    "selectAddress": "Select address",
     "errorMessageShippingAddress" : "Please enter this field",
     "enter_sms_code_dialog": {
         "title": "Enter SMS Code",

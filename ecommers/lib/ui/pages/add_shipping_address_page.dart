@@ -1,6 +1,6 @@
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
@@ -48,12 +48,12 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
 
   @override
   void dispose() {
-    disposeControllers();
+    _disposeControllers();
     provider.clean();
     super.dispose();
   }
 
-  void disposeControllers() {
+  void _disposeControllers() {
     _fullNameController.dispose();
     _addressController.dispose();
     _cityController.dispose();
@@ -67,7 +67,6 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
     if (widget.shippingAddres != null) {
       provider?.shippingAddress = widget.shippingAddres;
     }
-    final localization = I18n.of(context);
     return Scaffold(
       backgroundColor: BrandingColors.pageBackground,
       appBar: AppBar(
@@ -75,10 +74,7 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
         title: Center(
           child: Text(
             localization.addingShippingAddress,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                .copyWith(fontWeight: FontWeight.w700),
+            style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
           ),
         ),
       ),
@@ -98,7 +94,7 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
                     onChanged: (text) =>
                         provider.shippingAddress.fullName = text,
                     keyboardType: TextInputType.text,
-                    isValid: provider.isValidFullName,
+                    isValid: provider.isFullNameValid,
                   ),
                   const SizedBox(height: Insets.x4),
                   ShippingAddressTextField(
@@ -107,7 +103,7 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
                     onChanged: (text) =>
                         provider?.shippingAddress?.address = text,
                     keyboardType: TextInputType.text,
-                    isValid: provider.isValidAddress,
+                    isValid: provider.isAddressValid,
                   ),
                   const SizedBox(height: Insets.x4),
                   ShippingAddressTextField(
@@ -116,7 +112,7 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
                     maxLength: 20,
                     onChanged: (text) => provider.shippingAddress.city = text,
                     keyboardType: TextInputType.text,
-                    isValid: provider.isValidCity,
+                    isValid: provider.isCityValid,
                   ),
                   const SizedBox(height: Insets.x4),
                   ShippingAddressTextField(
@@ -125,7 +121,7 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
                     maxLength: 20,
                     onChanged: (text) => provider.shippingAddress.state = text,
                     keyboardType: TextInputType.text,
-                    isValid: provider.isValidStateProvinceRegion,
+                    isValid: provider.isStateProvinceRegionValid,
                   ),
                   const SizedBox(height: Insets.x4),
                   ShippingAddressTextField(
@@ -135,7 +131,7 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
                     onChanged: (text) =>
                         provider.shippingAddress.zipCode = text,
                     keyboardType: TextInputType.number,
-                    isValid: provider.isValidZipCode,
+                    isValid: provider.isZipCodeValid,
                   ),
                   const SizedBox(height: Insets.x4),
                   ShippingAddressTextField(
@@ -145,7 +141,7 @@ class _AddShippingAddressState extends State<AddShippingAddress> {
                     onChanged: (text) =>
                         provider.shippingAddress.country = text,
                     keyboardType: TextInputType.text,
-                    isValid: provider.isValidCountry,
+                    isValid: provider.isCountryValid,
                   ),
                   const SizedBox(height: Insets.x8),
                   SizedBox(

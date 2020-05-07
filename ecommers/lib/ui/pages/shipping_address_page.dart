@@ -2,7 +2,6 @@ import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
 import 'package:ecommers/core/provider_models/shipping_address_provider_model.dart';
 import 'package:ecommers/shared/dependency_service.dart';
-import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/button/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -22,7 +21,6 @@ class _ShippingAddressState extends State<ShippingAddressPage> {
   Widget build(BuildContext context) {
     _listKey = GlobalKey();
     _provider = Provider.of<ShippingAddressProviderModel>(context);
-    final localization = I18n.of(context);
     return Scaffold(
       backgroundColor: BrandingColors.pageBackground,
       appBar: AppBar(
@@ -30,10 +28,7 @@ class _ShippingAddressState extends State<ShippingAddressPage> {
         title: Center(
           child: Text(
             localization.smallShippingAddress,
-            style: Theme.of(context)
-                .textTheme
-                .bodyText1
-                .copyWith(fontWeight: FontWeight.w700),
+            style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
           ),
         ),
         actions: <Widget>[
@@ -50,14 +45,12 @@ class _ShippingAddressState extends State<ShippingAddressPage> {
   }
 
   Widget _buildBody(BuildContext context) {
-    final localization = I18n.of(context);
     if (_provider.shippingAddresses.isEmpty) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(localization.notShippingAddress,
-                style: Theme.of(context).textTheme.bodyText1),
+            Text(localization.notShippingAddress, style: textTheme.bodyText1),
             const SizedBox(height: Insets.x6_5),
             SizedBox(
               width: 264.0,

@@ -1,4 +1,4 @@
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/widgets/index.dart';
@@ -15,7 +15,7 @@ class ShippingAddressTextField extends StatelessWidget {
   final double width;
   final int maxLength;
   final bool isValid;
- 
+
   const ShippingAddressTextField({
     this.labelText = '',
     this.keyboardType = TextInputType.text,
@@ -23,19 +23,18 @@ class ShippingAddressTextField extends StatelessWidget {
     this.onValidate,
     this.onChanged,
     this.width,
-    this.maxLength = 26, 
+    this.maxLength = 26,
     this.isValid = true,
   });
 
   @override
   Widget build(BuildContext context) {
-    final localization = I18n.of(context);
     return SurfaceContainer(
       height: 65.0,
       width: width,
       child: Padding(
         padding: const EdgeInsets.fromLTRB(30, 0, 0, 0),
-        child: TextFormField(         
+        child: TextFormField(
           textAlign: TextAlign.left,
           controller: controller,
           keyboardType: keyboardType,
@@ -48,18 +47,19 @@ class ShippingAddressTextField extends StatelessWidget {
             labelText: labelText,
             counterStyle: const TextStyle(fontSize: 0),
             border: InputBorder.none,
-            hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+            hintStyle: textTheme.bodyText1.copyWith(
                 fontWeight: FontWeight.w400,
                 fontSize: FontSizes.small_3x,
                 color: BrandingColors.primaryText.withOpacity(0.5)),
-                errorText: isValid ? null : localization.errorMessageShippingAddress,
-                    errorStyle: TextStyle(color: Colors.red[300]),
-                    errorBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.red[300],
-                        style: BorderStyle.solid,
-                      ),
-                    ),
+            errorText:
+                isValid ? null : localization.errorMessageShippingAddress,
+            errorStyle: TextStyle(color: Colors.red[300]),
+            errorBorder: UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: Colors.red[300],
+                style: BorderStyle.solid,
+              ),
+            ),
           ),
         ),
       ),

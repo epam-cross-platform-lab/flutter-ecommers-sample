@@ -1,5 +1,5 @@
 import 'package:ecommers/core/models/index.dart';
-import 'package:ecommers/shared/i18n.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/widgets/index.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +23,6 @@ class AddressCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localization = I18n.of(context);
     return Row(
       children: <Widget>[
         Expanded(
@@ -42,22 +41,18 @@ class AddressCard extends StatelessWidget {
                       children: [
                         Text(
                           itemShippingAddress.fullName,
-                          style: Theme.of(context).textTheme.bodyText1.copyWith(
+                          style: textTheme.bodyText1.copyWith(
                               fontWeight: FontWeight.w800,
                               fontSize: FontSizes.big_1x),
                         ),
                         Text(
                           '${itemShippingAddress.country}, ${itemShippingAddress.city}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText1
+                          style: textTheme.bodyText1
                               .copyWith(fontWeight: FontWeight.w500),
                         ),
                         Text(
                           '${itemShippingAddress.address}, ${itemShippingAddress.state}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyText2
+                          style: textTheme.bodyText2
                               .copyWith(fontWeight: FontWeight.w500),
                         ),
                       ],
@@ -69,9 +64,7 @@ class AddressCard extends StatelessWidget {
                       onTap: editFunction,
                       child: Text(
                         localization.edit,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline4
+                        style: textTheme.headline4
                             .copyWith(color: BrandingColors.primary),
                       ),
                     ),
@@ -82,9 +75,7 @@ class AddressCard extends StatelessWidget {
                       onTap: deleteFunction,
                       child: Text(
                         localization.delete,
-                        style: Theme.of(context)
-                            .textTheme
-                            .headline4
+                        style: textTheme.headline4
                             .copyWith(color: BrandingColors.primary),
                       ),
                     ),

@@ -209,11 +209,8 @@ class _CheckoutPageState extends State<CheckoutPage> {
       ShippingAddressProviderModel provider, BuildContext context) {
     if (provider?.selectedShippingAddress?.id == null) {
       return Text(
-        'Select address',
-        style: Theme.of(context)
-            .textTheme
-            .bodyText1
-            .copyWith(fontWeight: FontWeight.w700),
+        localization.selectAddress,
+        style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
       );
     }
     return Column(
@@ -221,17 +218,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
       children: [
         Text(
           provider?.selectedShippingAddress?.fullName,
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1
-              .copyWith(fontWeight: FontWeight.w600),
+          style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w600),
         ),
         Text(
-          '${provider?.selectedShippingAddress?.country}, ${provider?.selectedShippingAddress?.city}, ${provider?.selectedShippingAddress?.state}',
-          style: Theme.of(context)
-              .textTheme
-              .bodyText1
-              .copyWith(fontWeight: FontWeight.w500),
+          '${provider.selectedShippingAddress.country}, ${provider.selectedShippingAddress.city}, ${provider.selectedShippingAddress.state}',
+          style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w500),
         ),
       ],
     );
