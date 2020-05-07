@@ -174,7 +174,6 @@ class ProductPage extends StatelessWidget {
                                     return ShareDialog(productModel);
                                   });
                             },
-                            productModel: productModel,
                             addToCartFunction: () {
                               cartProvider.add(OrderModel.fromProduct(
                                 color: model.selectColor,
