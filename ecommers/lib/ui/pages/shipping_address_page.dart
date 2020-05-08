@@ -85,12 +85,16 @@ class _ShippingAddressState extends State<ShippingAddressPage> {
           editFunction: () => navigationService
               .navigateTo(Pages.addShippingAddress, arguments: item),
           deleteFunction: () => _removeItem(index),
-          isSelect: item.isSelected,
+          isSelect: checkIsSelectItem(item),
           onTappedFunction: () => _provider.selectShippingAddress(item),
         ),
       ),
     );
   }
+
+  bool checkIsSelectItem(ShippingAddressModel item) =>
+      _provider.selectedShippingAddress.isNotEmpty &&
+      _provider.selectedShippingAddress[0].id == item.id;
 
   Future _removeItem(int removeIndex) async {
     if (removeIndex >= _provider.shippingAddresses.length) return;

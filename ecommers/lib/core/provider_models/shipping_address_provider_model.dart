@@ -11,17 +11,16 @@ class ShippingAddressProviderModel extends ChangeNotifier {
       isZipCodeValid,
       isCountryValid;
   List<ShippingAddressModel> _shipingAddresses = <ShippingAddressModel>[];
-  ShippingAddressModel _selectedShippingAddress;
+  List<ShippingAddressModel> selectedShippingAddress = <ShippingAddressModel>[];
   ShippingAddressModel shippingAddress = ShippingAddressModel();
 
   List<ShippingAddressModel> get shippingAddresses => _shipingAddresses;
-  ShippingAddressModel get selectedShippingAddress => _selectedShippingAddress;
 
   Future initialize() async {
     _shipingAddresses = await shippingAddressService.getShippingAddresses() ??
         <ShippingAddressModel>[];
-    _selectedShippingAddress =
-        _shipingAddresses.firstWhere((m) => m.isSelected, orElse: () => null);
+    selectedShippingAddress =
+        await shippingAddressService.getSelectedShippingAddress();
     notifyListeners();
   }
 
@@ -50,39 +49,42 @@ class ShippingAddressProviderModel extends ChangeNotifier {
 
   Future<ShippingAddressModel> removeShippingAddress(int index) async {
     final removedItem = _shipingAddresses.removeAt(index);
-    if (removedItem.id == selectedShippingAddress.id) {
-      _selectedShippingAddress = null;
+    if (selectedShippingAddress.isNotEmpty &&
+        removedItem.id == selectedShippingAddress[0]?.id) {
+      selectedShippingAddress.removeAt(0);
+      await shippingAddressService.removeSelectedShippingAddress(removedItem);
     }
 
     await shippingAddressService.removeShippingAddresses(removedItem);
+    notifyListeners();
     return removedItem;
   }
 
-  void selectShippingAddress(ShippingAddressModel shippingAddressModel) {
-    if (_selectedShippingAddress == null) {
-      _selectedShippingAddress = shippingAddressModel..isSelected = true;
-      shippingAddressService.editShippingAddresses(_selectedShippingAddress);
+  Future selectShippingAddress(ShippingAddressModel shippingAddress) async {
+    if (selectedShippingAddress.isEmpty) {
+      await shippingAddressService.addSelectedShippingAddress(shippingAddress);
+      selectedShippingAddress.add(shippingAddress);
       notifyListeners();
     }
 
-    if (shippingAddressModel.id == _selectedShippingAddress.id) return;
+    if (selectedShippingAddress[0].id == shippingAddress.id) return;
 
-    shippingAddressModel.isSelected = true;
-    _selectedShippingAddress.isSelected = false;
-    notifyListeners();
-
-    shippingAddressService.editShippingAddresses(_selectedShippingAddress);
-    shippingAddressService.editShippingAddresses(shippingAddressModel);
-
-    _selectedShippingAddress = shippingAddressModel;
+    if (selectedShippingAddress[0].id != shippingAddress.id) {
+      await shippingAddressService
+          .updateSelectedShippingAddress(shippingAddress);
+      selectedShippingAddress[0] = shippingAddress;
+      notifyListeners();
+    }
   }
 
   bool _isValidShippingAddress() {
-    isFullNameValid = ShippingValidator.isValidFullName(shippingAddress.fullName);
+    isFullNameValid =
+        ShippingValidator.isValidFullName(shippingAddress.fullName);
     isAddressValid = ShippingValidator.isValidAddress(shippingAddress.address);
     isCityValid = ShippingValidator.isValidCity(shippingAddress.city);
     isZipCodeValid = ShippingValidator.isValidZipCode(shippingAddress.zipCode);
-    isStateProvinceRegionValid = ShippingValidator.isValidState(shippingAddress.state);
+    isStateProvinceRegionValid =
+        ShippingValidator.isValidState(shippingAddress.state);
     isCountryValid = ShippingValidator.isValidCountry(shippingAddress.country);
 
     return isFullNameValid &&

@@ -13,7 +13,6 @@ class ShippingAddressModel implements ItemBase {
   String state;
   String zipCode;
   String country;
-  bool isSelected;
 
   ShippingAddressModel({
     this.id,
@@ -23,7 +22,6 @@ class ShippingAddressModel implements ItemBase {
     this.state,
     this.zipCode,
     this.country,
-    this.isSelected = false,
   });
 
   static const fromJson = _$ShippingAddressModelFromJson;

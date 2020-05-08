@@ -207,7 +207,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
   Widget _textBlockShippingAddress(
       ShippingAddressProviderModel provider, BuildContext context) {
-    if (provider?.selectedShippingAddress?.id == null) {
+    if (provider.selectedShippingAddress.isEmpty) {
       return Text(
         localization.selectAddress,
         style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
@@ -217,11 +217,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          provider?.selectedShippingAddress?.fullName,
+          provider.selectedShippingAddress[0].fullName,
           style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w600),
         ),
         Text(
-          '${provider.selectedShippingAddress.country}, ${provider.selectedShippingAddress.city}, ${provider.selectedShippingAddress.state}',
+          '${provider.selectedShippingAddress[0].country}, ${provider.selectedShippingAddress[0].city}, ${provider.selectedShippingAddress[0].state}',
           style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w500),
         ),
       ],

@@ -3,12 +3,28 @@ import 'package:ecommers/shared/dependency_service.dart';
 import 'package:uuid/uuid.dart';
 
 class ShippingAddressService {
-
   Future<List<ShippingAddressModel>> getShippingAddresses() async {
-     return shippingAddressRepository.getAllShippingAdderess();
+    return shippingAddressRepository.getAllShippingAdderess();
   }
-  
-  Future<ShippingAddressModel> createShippingAddress(ShippingAddressModel shippingAddressModel) async {
+
+  Future<List<ShippingAddressModel>> getSelectedShippingAddress() async {
+    return shippingAddressRepository.getSelectedShippingAddress();
+  }
+
+  Future addSelectedShippingAddress(ShippingAddressModel item) async {
+    return shippingAddressRepository.addSelectedShippingAddress(item);
+  }
+
+  Future updateSelectedShippingAddress(ShippingAddressModel item) async {
+    return shippingAddressRepository.updateSelectedShippingAddress(item);
+  }
+
+  Future removeSelectedShippingAddress(ShippingAddressModel item) async {
+    return shippingAddressRepository.removeSelectedShippingAddress(item);
+  }
+
+  Future<ShippingAddressModel> createShippingAddress(
+      ShippingAddressModel shippingAddressModel) async {
     try {
       final uuid = Uuid();
       shippingAddressModel.id = uuid.v1();
@@ -22,12 +38,13 @@ class ShippingAddressService {
     }
   }
 
- Future removeShippingAddresses(ShippingAddressModel shippingAddressModel) async {
+  Future removeShippingAddresses(
+      ShippingAddressModel shippingAddressModel) async {
     return shippingAddressRepository.remove(shippingAddressModel);
   }
 
-  Future editShippingAddresses(ShippingAddressModel shippingAddressModel) async {
+  Future editShippingAddresses(
+      ShippingAddressModel shippingAddressModel) async {
     return shippingAddressRepository.edit(shippingAddressModel);
   }
-
 }
