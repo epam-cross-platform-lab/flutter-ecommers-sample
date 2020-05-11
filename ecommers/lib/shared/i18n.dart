@@ -240,6 +240,8 @@ class I18n implements WidgetsLocalizations {
   String get share_image_with_text => "Share image with text";
   /// "Share text"
   String get share_text => "Share text";
+  /// "Share link"
+  String get share_dynamic_link => "Share link";
 }
 
 class _I18n_en_US extends I18n {

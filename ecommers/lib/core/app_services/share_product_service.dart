@@ -8,6 +8,19 @@ import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/foundation.dart';
 
 class ShareProductService {
+
+  Future shareeDynamicLinkText(Product product) async {
+    try{
+      final String dynamicLink = await dynamicLinkService.createDynamicLink(product);
+       Share.text(
+          '${product.title}',
+          '$dynamicLink',
+          'text/plain');
+    }catch(ex){
+      logger.ex(ex);
+    }
+  }
+
   Future shareImageWithText(Product product) async {
     try {
       final request =

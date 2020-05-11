@@ -30,6 +30,7 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   final GeneratedLocalizationsDelegate i18n = I18n.delegate;
+  Timer _timerForDynamicLink;
 
   @override
   void initState() {
@@ -40,6 +41,9 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
 
   @override
   void dispose() {
+    if (_timerForDynamicLink != null) {
+      _timerForDynamicLink.cancel();
+    }
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
@@ -48,6 +52,10 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
       LocalServer.setup();
+      _timerForDynamicLink = Timer(const Duration(milliseconds: 1000), () {
+        //TODO: need check for ios (AppLifeCycle is resumed before the link is received) better in really devices
+        dynamicLinkService.handleDynamicLinks();
+      });
     } else if (state == AppLifecycleState.detached ||
         state == AppLifecycleState.inactive) {
       LocalServer.closeConnection();

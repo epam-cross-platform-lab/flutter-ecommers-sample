@@ -2,6 +2,7 @@ export 'app_service.dart';
 export 'auth_response.dart';
 export 'authorization_service.dart';
 export 'category_service.dart';
+export 'dynamic_link_service.dart';
 export 'note_service.dart';
 export 'paginator.dart';
 export 'payment_method_service.dart';

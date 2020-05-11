@@ -16,13 +16,20 @@ class ShareDialog extends StatelessWidget {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       child: Container(
-        height: 220,
+        height: 260,
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              ListTile(
+                title:
+                    Text(localization.share_dynamic_link, style: textTheme.bodyText1),
+                onTap: () {
+                  shareProvider.shareDynamicLink(productModel);
+                },
+              ),
               ListTile(
                 title:
                     Text(localization.share_image, style: textTheme.bodyText1),
