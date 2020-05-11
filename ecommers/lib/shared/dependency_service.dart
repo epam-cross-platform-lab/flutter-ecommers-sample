@@ -40,6 +40,7 @@ CacheDatabase get cacheDatabase => _ioc.get<CacheDatabase>();
 CartRepository get cartRepository => _ioc.get<CartRepository>();
 Paginator createPaginator() => _ioc.get<Paginator>();
 DialogService get dialogService => _ioc.get<DialogService>();
+ProfileService get profileService => _ioc.get<ProfileService>();
 FirebaseAuthRepository get authRepository => _ioc.get<FirebaseAuthRepository>();
 Logger get logger => _ioc.get<Logger>();
 ShippingAddressService get shippingAddressService => _ioc.get<ShippingAddressService>();
@@ -83,6 +84,13 @@ class DependencyService {
           final cacheDatabase = CacheDatabase();
           await cacheDatabase.initializeDatabase();
           return cacheDatabase;
+        },
+      )
+      ..registerSingletonAsync(
+        () async {
+          final profileService = ProfileService();
+          await profileService.updateUserInfo();
+          return profileService;
         },
       );
   }

@@ -4,6 +4,7 @@ enum Pages {
   search,
   cart,
   profile,
+  profileEdit,
   more,
   categories,
   productsGrid,
