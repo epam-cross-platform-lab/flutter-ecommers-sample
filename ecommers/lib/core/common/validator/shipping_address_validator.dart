@@ -1,20 +1,20 @@
 class ShippingValidator{
 
-  static bool isValidFullName(String fullName) =>
+  static bool isFullNameValid(String fullName) =>
       fullName != null && fullName.length > 3;
 
-  static bool isValidAddress(String address) =>
+  static bool isAddressValid(String address) =>
       address != null && address.length > 2;
 
-  static bool isValidCity(String city) =>
+  static bool isCityValid(String city) =>
       city != null && city.length > 2;
 
-  static bool isValidState(String state) =>
+  static bool isStateValid(String state) =>
       state != null && state.length > 3;
 
-  static bool isValidZipCode(String zipCode) =>
+  static bool isZipCodeValid(String zipCode) =>
       zipCode != null && zipCode.length > 2;
   
-  static bool  isValidCountry(String country) => 
+  static bool  isCountryValid(String country) => 
       country != null && country.length > 3;
 }

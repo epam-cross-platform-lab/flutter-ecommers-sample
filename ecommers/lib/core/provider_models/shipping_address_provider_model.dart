@@ -25,7 +25,7 @@ class ShippingAddressProviderModel extends ChangeNotifier {
   }
 
   Future addOrEditShippingAddress() async {
-    if (!_isValidShippingAddress()) {
+    if (!_isShippingAddressValid()) {
       notifyListeners();
       return;
     }
@@ -77,15 +77,15 @@ class ShippingAddressProviderModel extends ChangeNotifier {
     }
   }
 
-  bool _isValidShippingAddress() {
+  bool _isShippingAddressValid() {
     isFullNameValid =
-        ShippingValidator.isValidFullName(shippingAddress.fullName);
-    isAddressValid = ShippingValidator.isValidAddress(shippingAddress.address);
-    isCityValid = ShippingValidator.isValidCity(shippingAddress.city);
-    isZipCodeValid = ShippingValidator.isValidZipCode(shippingAddress.zipCode);
+        ShippingValidator.isFullNameValid(shippingAddress.fullName);
+    isAddressValid = ShippingValidator.isAddressValid(shippingAddress.address);
+    isCityValid = ShippingValidator.isCityValid(shippingAddress.city);
+    isZipCodeValid = ShippingValidator.isZipCodeValid(shippingAddress.zipCode);
     isStateProvinceRegionValid =
-        ShippingValidator.isValidState(shippingAddress.state);
-    isCountryValid = ShippingValidator.isValidCountry(shippingAddress.country);
+        ShippingValidator.isStateValid(shippingAddress.state);
+    isCountryValid = ShippingValidator.isCountryValid(shippingAddress.country);
 
     return isFullNameValid &&
         isAddressValid &&
