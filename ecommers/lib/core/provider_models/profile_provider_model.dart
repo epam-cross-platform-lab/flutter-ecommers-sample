@@ -3,6 +3,10 @@ import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProfileProviderModel extends ChangeNotifier {
+  String getEmail() {
+    return profileService.user.email;
+  }
+
   String getEmailOrPhone() {
     return profileService.user.email ?? profileService.user.phoneNumber;
   }

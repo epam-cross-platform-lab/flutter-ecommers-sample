@@ -262,6 +262,14 @@ class I18n implements WidgetsLocalizations {
   String get empty => "";
   /// "Save"
   String get save => "Save";
+  /// "Reset password"
+  String get reset_password => "Reset password";
+  /// "Password reset"
+  String get password_reset_dialogTitle => "Password reset";
+  /// "Password reset link sent"
+  String get password_reset_dialogDescription => "Password reset link sent";
+  /// "Ok"
+  String get password_reset_dialogPrimary_button => "Ok";
 }
 
 class _I18n_en_US extends I18n {

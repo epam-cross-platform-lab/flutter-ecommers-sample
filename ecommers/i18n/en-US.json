@@ -123,5 +123,11 @@
         "primary_button": "OK"
     },
     "empty": "",
-    "save": "Save"
+    "save": "Save",
+    "reset_password": "Reset password",
+    "password_reset_dialog": {
+        "title": "Password reset",
+        "description": "Password reset link sent",
+        "primary_button": "Ok"
+    }
 }
