@@ -42,6 +42,8 @@ Paginator createPaginator() => _ioc.get<Paginator>();
 DialogService get dialogService => _ioc.get<DialogService>();
 FirebaseAuthRepository get authRepository => _ioc.get<FirebaseAuthRepository>();
 Logger get logger => _ioc.get<Logger>();
+ShippingAddressService get shippingAddressService => _ioc.get<ShippingAddressService>();
+ShippingAddressRepository get shippingAddressRepository => _ioc.get<ShippingAddressRepository>();
 I18n get localization => I18n.of(Get.context);
 TextTheme get textTheme => Theme.of(Get.context).textTheme;
 
@@ -59,6 +61,7 @@ class DependencyService {
       ..registerLazySingleton(() => Logger())
       ..registerLazySingleton(() => CategoryService())
       ..registerLazySingleton(() => PaymentMethodService())
+      ..registerLazySingleton(() => ShippingAddressService())
       ..registerLazySingleton(() => NoteService())
       ..registerSingletonAsync(
         () async {
@@ -73,6 +76,8 @@ class DependencyService {
       ..registerLazySingleton(() => CategoryDataRepository())
       ..registerLazySingleton<PaymentMethodRepository>(
           () => PaymentMethodRepository())
+      ..registerLazySingleton<ShippingAddressRepository>(
+          () => ShippingAddressRepository())
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();
