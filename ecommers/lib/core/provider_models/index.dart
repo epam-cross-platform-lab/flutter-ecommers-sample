@@ -11,3 +11,4 @@ export 'search_page_provider_model.dart';
 export 'search_query_provider_model.dart';
 export 'share_product_provider.dart';
 export 'shell_provider_model.dart';
+export 'shipping_address_provider_model.dart';

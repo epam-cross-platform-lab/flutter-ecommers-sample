@@ -1,4 +1,5 @@
 export 'add_payment_method_page.dart';
+export 'add_shipping_address_page.dart';
 export 'base_page.dart';
 export 'busy_page.dart';
 export 'cart_page.dart';
@@ -15,4 +16,5 @@ export 'products_grid_page.dart';
 export 'profile_page.dart';
 export 'search_page.dart';
 export 'shell_page.dart';
+export 'shipping_address_page.dart';
 export 'success_page.dart';

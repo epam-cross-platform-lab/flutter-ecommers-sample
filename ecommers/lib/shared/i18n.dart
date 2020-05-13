@@ -174,6 +174,8 @@ class I18n implements WidgetsLocalizations {
   String get yesterday => "Yesterday";
   /// "Delete"
   String get delete => "Delete";
+  /// "Edit"
+  String get edit => "Edit";
   /// "You have no credit cards added"
   String get notBankCards => "You have no credit cards added";
   /// "Payment Method"
@@ -194,8 +196,32 @@ class I18n implements WidgetsLocalizations {
   String get addCardDetails => "ADD CARD DETAILS";
   /// "Select credit card"
   String get selectCreditCard => "Select credit card";
+  /// "Adding Shipping Address"
+  String get addingShippingAddress => "Adding Shipping Address";
+  /// "Full Name"
+  String get fullName => "Full Name";
   /// "Message to seller (optional)"
   String get messageToSeller => "Message to seller (optional)";
+  /// "Address"
+  String get address => "Address";
+  /// "City"
+  String get city => "City";
+  /// "State/Province/Region"
+  String get stateProvinceRegion => "State/Province/Region";
+  /// "Zip Code (Postal Code)"
+  String get zipCode => "Zip Code (Postal Code)";
+  /// "Country"
+  String get country => "Country";
+  /// "Shipping Address"
+  String get smallShippingAddress => "Shipping Address";
+  /// "ADD SHIPPING ADDRESS"
+  String get addShippingAddress => "ADD SHIPPING ADDRESS";
+  /// "You don't have any shipping addresses"
+  String get notShippingAddress => "You don't have any shipping addresses";
+  /// "Select address"
+  String get selectAddress => "Select address";
+  /// "Please enter this field"
+  String get errorMessageShippingAddress => "Please enter this field";
   /// "Enter SMS Code"
   String get enter_sms_code_dialogTitle => "Enter SMS Code";
   /// "Done"

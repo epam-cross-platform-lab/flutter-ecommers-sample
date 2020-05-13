@@ -63,6 +63,7 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
       providers: [
         ChangeNotifierProvider(create: (_) => ShellProviderModel()),
         ChangeNotifierProvider(create: (_) => PaymentMethodProviderModel()),
+        ChangeNotifierProvider(create: (_) => ShippingAddressProviderModel()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => ShareProductProviderModel()),
       ],

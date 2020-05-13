@@ -44,6 +44,8 @@ ShareProductService get shareProductService => _ioc.get<ShareProductService>();
 DynamicLinkService get dynamicLinkService => _ioc.get<DynamicLinkService>();
 FirebaseAuthRepository get authRepository => _ioc.get<FirebaseAuthRepository>();
 Logger get logger => _ioc.get<Logger>();
+ShippingAddressService get shippingAddressService => _ioc.get<ShippingAddressService>();
+ShippingAddressRepository get shippingAddressRepository => _ioc.get<ShippingAddressRepository>();
 I18n get localization => I18n.of(Get.context);
 TextTheme get textTheme => Theme.of(Get.context).textTheme;
 
@@ -62,6 +64,7 @@ class DependencyService {
       ..registerLazySingleton(() => CategoryService())
       ..registerLazySingleton(() => PaymentMethodService())
       ..registerLazySingleton(() => DynamicLinkService())
+      ..registerLazySingleton(() => ShippingAddressService())
       ..registerLazySingleton(() => ShareProductService())
       ..registerLazySingleton(() => NoteService())
       ..registerSingletonAsync(
@@ -77,6 +80,8 @@ class DependencyService {
       ..registerLazySingleton(() => CategoryDataRepository())
       ..registerLazySingleton<PaymentMethodRepository>(
           () => PaymentMethodRepository())
+      ..registerLazySingleton<ShippingAddressRepository>(
+          () => ShippingAddressRepository())
       ..registerSingletonAsync<CacheDatabase>(
         () async {
           final cacheDatabase = CacheDatabase();
