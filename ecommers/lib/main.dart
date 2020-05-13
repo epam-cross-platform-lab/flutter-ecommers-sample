@@ -56,7 +56,6 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        ChangeNotifierProvider(create: (_) => ShippingAddressProviderModel()),
       title: 'ecommers',
       theme: ThemeProvider.getTheme(),
       home: SplashScreen.callback(

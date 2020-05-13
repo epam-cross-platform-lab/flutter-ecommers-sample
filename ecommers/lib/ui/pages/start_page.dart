@@ -1,5 +1,4 @@
 import 'package:ecommers/core/provider_models/index.dart';
-import 'package:ecommers/core/provider_models/start_page_provider_model.dart';
 import 'package:ecommers/ui/pages/authorization/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
 import 'package:flutter/material.dart' hide BackButton;
@@ -20,6 +19,8 @@ class StartPage extends StatelessWidget {
                     ChangeNotifierProvider(create: (_) => ShellProviderModel()),
                     ChangeNotifierProvider(
                         create: (_) => PaymentMethodProviderModel()),
+                    ChangeNotifierProvider(
+                        create: (_) => ShippingAddressProviderModel()),
                     ChangeNotifierProvider(create: (_) => CartProvider()),
                   ],
                   child: ShellPage(),

@@ -17,4 +17,5 @@ export 'profile_page.dart';
 export 'search_page.dart';
 export 'shell_page.dart';
 export 'shipping_address_page.dart';
+export 'start_page.dart';
 export 'success_page.dart';
