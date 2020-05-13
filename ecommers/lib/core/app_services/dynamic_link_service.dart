@@ -19,18 +19,14 @@ class DynamicLinkService {
     });
   }
 
-  void _handleDeepLink(PendingDynamicLinkData data) {
+  Future _handleDeepLink(PendingDynamicLinkData data) async {
     final Uri deepLink = data?.link;
 
     if (deepLink != null && membershipService.isNotExpired) {
       final productId = int.parse(deepLink.queryParameters['id']);
-      _fetchProductByIdAndNavigation(productId);
+      final Product product = await productService.fetchProductById(productId);
+      navigationService.navigateTo(Pages.product, arguments: product);
     }
-  }
-
-  Future _fetchProductByIdAndNavigation(int id) async {
-    final Product product = await productService.fetchProductById(id);
-    navigationService.navigateTo(Pages.product, arguments: product);
   }
 
   Future<String> createDynamicLink(Product product) async {
@@ -46,7 +42,7 @@ class DynamicLinkService {
       itunesConnectAnalyticsParameters: ItunesConnectAnalyticsParameters(),
       socialMetaTagParameters: SocialMetaTagParameters(
         title: '${product.details.brand} ${Formatter.getCost(product?.price)}',
-        description: 'best store in the world',
+        description: localization.e_commerce
       ),
     );
 

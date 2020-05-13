@@ -1,3 +1,5 @@
+import 'package:ecommers/core/models/data_models/index.dart';
+import 'package:ecommers/shared/dependency_service.dart';
 import 'package:intl/intl.dart';
 
 class Formatter {
@@ -31,5 +33,9 @@ class Formatter {
     return firstName?.isNotEmpty == true && lastName?.isNotEmpty == true
         ? '$firstName $lastName'
         : 'No Name';
+  }
+
+  static String getShareText(Product product) {
+    return '${localization.title}: ${product?.title}\n${localization.price}: ${Formatter.getCost(product?.price)}\n${localization.rate}: ${product?.rate}\n${product?.details?.brand}, ${product?.details?.category}';
   }
 }

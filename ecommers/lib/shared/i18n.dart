@@ -266,6 +266,14 @@ class I18n implements WidgetsLocalizations {
   String get share_text => "Share text";
   /// "Share link"
   String get share_dynamic_link => "Share link";
+  /// "Title"
+  String get title => "Title";
+  /// "Price"
+  String get price => "Price";
+  /// "Rate"
+  String get rate => "Rate";
+  /// "E-commerce"
+  String get e_commerce => "E-commerce";
   /// ""
   String get empty => "";
 }

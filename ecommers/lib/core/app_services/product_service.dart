@@ -31,17 +31,15 @@ class ProductService {
     return null;
   }
 
-  Future<Product> fetchProductById(int productId) async{
-     final Response<Product> response = await apiService.productId(
-      id: productId
-    );
+  Future<Product> fetchProductById(int productId) async {
+    final Response<Product> response =
+        await apiService.productId(id: productId);
 
     if (response.isSuccessful) {
       return response.body;
     }
 
     return null;
-
   }
 
   Future<List<Product>> fetchLatestProducts(int from, int to) async {

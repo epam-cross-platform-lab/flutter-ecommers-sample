@@ -8,15 +8,12 @@ import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/foundation.dart';
 
 class ShareProductService {
-
-  Future shareeDynamicLinkText(Product product) async {
-    try{
-      final String dynamicLink = await dynamicLinkService.createDynamicLink(product);
-       Share.text(
-          '${product.title}',
-          '$dynamicLink',
-          'text/plain');
-    }catch(ex){
+  Future shareDynamicLinkText(Product product) async {
+    try {
+      final String dynamicLink =
+          await dynamicLinkService.createDynamicLink(product);
+      Share.text('${product.title}', '$dynamicLink', 'text/plain');
+    } catch (ex) {
       logger.ex(ex);
     }
   }
@@ -29,8 +26,7 @@ class ShareProductService {
       final Uint8List bytes =
           await consolidateHttpClientResponseBytes(response);
       await Share.file('${product.title}', '${product.title}.png', bytes, '*/*',
-          text:
-              'Title: ${product?.title}\nPrice: ${Formatter.getCost(product?.price)}\nRate: ${product?.rate}\n${product?.details.brand}, ${product?.details.category}');
+          text: Formatter.getShareText(product));
     } catch (ex) {
       logger.ex(ex);
     }
@@ -53,9 +49,7 @@ class ShareProductService {
   Future shareText(Product product) async {
     try {
       Share.text(
-          '${product.title}',
-          'Title: ${product?.title}\nPrice: ${Formatter.getCost(product.price)}\nRate: ${product?.rate}',
-          'text/plain');
+          '${product.title}', Formatter.getShareText(product), 'text/plain');
     } catch (ex) {
       logger.ex(ex);
     }
