@@ -135,7 +135,7 @@ class ProfilePage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Radiuses.big_2x),
         ),
-        onPressed: () {},
+        onPressed: () =>navigationService.navigateWithReplacementTo(Pages.graphQl),
         child: Text(
           localization.editProfile,
           style: textTheme.button,
