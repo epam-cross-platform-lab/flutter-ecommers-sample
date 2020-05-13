@@ -1,3 +1,4 @@
+export 'address_card.dart';
 export 'back_button.dart';
 export 'backgrounded_safe_area.dart';
 export 'bank_card.dart';

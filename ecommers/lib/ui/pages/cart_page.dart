@@ -1,5 +1,6 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/models/index.dart';
+import 'package:ecommers/core/models/page_arguments.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -72,11 +73,18 @@ class _CartPageState extends State<CartPage> {
                 alignment: Alignment.centerLeft),
             menuItems: [_createRemoveWidget(currentOrder)],
             child: OrderWidget(
-              primaryText: currentOrder.title,
-              secondaryText: currentOrder.description,
-              assetImagePath: currentOrder.imagePath,
-              cost: currentOrder.cost,
+              primaryText: currentOrder.product.title,
+              secondaryText: currentOrder.characteristics,
+              assetImagePath: currentOrder.product.previewImage,
+              cost: currentOrder.product.price,
               count: currentOrder.count,
+              tapOrderFunction: () => navigationService.navigateTo(
+                Pages.product,
+                arguments: PageArguments(
+                  arg1: currentOrder.product,
+                  arg2: false,
+                ),
+              ),
               countIncrementFunction: () => _cartProvider.add(currentOrder),
               countDecrementFunction: () => _handleRemove(key, currentOrder),
             ));

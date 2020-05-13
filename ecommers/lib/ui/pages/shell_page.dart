@@ -1,6 +1,7 @@
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/cart_provider.dart';
 import 'package:ecommers/core/provider_models/index.dart';
+import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/index.dart';
 import 'package:ecommers/ui/pages/index.dart';
@@ -16,6 +17,8 @@ class ShellPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Provider.of<CartProvider>(context, listen: false).initializeOrderProducts();
+    Provider.of<ShippingAddressProviderModel>(context, listen: false).initialize();
+    Provider.of<PaymentMethodProviderModel>(context, listen: false).initialize();
     
     return Consumer<ShellProviderModel>(
       builder: (context, ShellProviderModel model, child) {

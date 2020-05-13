@@ -123,11 +123,11 @@ class _CheckoutPageState extends State<CheckoutPage> {
           child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
-              hintText: 'Message to seller (optional)',
+              hintText: localization.messageToSeller,
               hintStyle: textTheme.bodyText1.copyWith(
-                    fontWeight: FontWeight.w300,
-                    fontStyle: FontStyle.italic,
-                  ),
+                fontWeight: FontWeight.w300,
+                fontStyle: FontStyle.italic,
+              ),
             ),
           ),
         ),
@@ -136,9 +136,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           imagePath: Assets.sale,
           text: Text(
             localization.addPromoCode,
-            style: textTheme
-                .bodyText1
-                .copyWith(color: BrandingColors.primary),
+            style: textTheme.bodyText1.copyWith(color: BrandingColors.primary),
           ),
         ),
       ],
@@ -160,14 +158,15 @@ class _CheckoutPageState extends State<CheckoutPage> {
 
         final currentOrder = _cartProvider.orders[index - 1];
         return SmallOrderWidget(
-          primaryText: currentOrder.title,
-          secondaryText: currentOrder.description,
-          assetImagePath: currentOrder.imagePath,
-          cost: currentOrder.cost,
+          primaryText: currentOrder.product.title,
+          secondaryText: currentOrder.characteristics,
+          assetImagePath: currentOrder.product.previewImage,
+          cost: currentOrder.product.price,
           count: currentOrder.count,
+          tapOrderFunction: () => navigationService.navigateTo(Pages.product,
+              arguments: currentOrder.product),
           countIncrementFunction: () => _cartProvider.add(currentOrder),
           countDecrementFunction: () => _cartProvider.remove(currentOrder),
-          tapOrderFunction: () => navigationService.navigateTo(Pages.product),
         );
       },
       separatorBuilder: (BuildContext context, int index) {
@@ -190,30 +189,41 @@ class _CheckoutPageState extends State<CheckoutPage> {
   }
 
   Widget _buildShippingAddress() {
-    return Row(
-      children: <Widget>[
-        Container(
-          width: 136,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                'John Doe', //TODO from provider
-                style: textTheme
-                    .bodyText1
-                    .copyWith(fontWeight: FontWeight.w700),
-              ),
-              Text(
-                'No 123, Sub Street, Main Street,City Name, Province, Country',
-                style: textTheme
-                    .bodyText1
-                    .copyWith(fontWeight: FontWeight.w400),
-              ),
-            ],
+    return InkWell(
+      onTap: () => navigationService.navigateTo(Pages.shippingAddress),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Consumer<ShippingAddressProviderModel>(
+                builder: (_, provider, __) {
+              return _textBlockShippingAddress(provider, context);
+            }),
           ),
+          const CircleIcon(),
+        ],
+      ),
+    );
+  }
+
+  Widget _textBlockShippingAddress(
+      ShippingAddressProviderModel provider, BuildContext context) {
+    if (provider.selectedShippingAddress.isEmpty) {
+      return Text(
+        localization.selectAddress,
+        style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          provider.selectedShippingAddress[0].fullName,
+          style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w600),
         ),
-        const Spacer(),
-        const CircleIcon(),
+        Text(
+          '${provider.selectedShippingAddress[0].country}, ${provider.selectedShippingAddress[0].city}, ${provider.selectedShippingAddress[0].state}',
+          style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w500),
+        ),
       ],
     );
   }

@@ -80,6 +80,9 @@
 *.chopper.dart
 *.lock
 
+/ecommers/android/app/google-services.json
+/ecommers/ios/Runner/GoogleService-Info.plist
 ecommers/ios/build/XCBuildData/
 
 ecommers/ios/Flutter/.last_build_id
+
