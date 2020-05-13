@@ -15,21 +15,22 @@ class DynamicLinkService {
         onSuccess: (PendingDynamicLinkData dynamicLink) async {
       _handleDeepLink(dynamicLink);
     }, onError: (OnLinkErrorException e) async {
-      print('Link Failed: ${e.message}');
+      logger.ex(e);
     });
   }
 
   void _handleDeepLink(PendingDynamicLinkData data) {
     final Uri deepLink = data?.link;
-    //int productId= deepLink?.
 
-    if (deepLink != null) {
-      print('_handleDeepLink | deeplink: $deepLink');
-      var params = deepLink.queryParameters['params'];
-      if (params != null) {
-        navigationService.navigateTo(Pages.paymentMethod);
-      }
+    if (deepLink != null && membershipService.isNotExpired) {
+      final productId = int.parse(deepLink.queryParameters['id']);
+      _fetchProductByIdAndNavigation(productId);
     }
+  }
+
+  Future _fetchProductByIdAndNavigation(int id) async {
+    final Product product = await productService.fetchProductById(id);
+    navigationService.navigateTo(Pages.product, arguments: product);
   }
 
   Future<String> createDynamicLink(Product product) async {
@@ -42,8 +43,7 @@ class DynamicLinkService {
       iosParameters: IosParameters(
         bundleId: 'com.ecommers.sample',
       ),
-      itunesConnectAnalyticsParameters: ItunesConnectAnalyticsParameters(
-      ),
+      itunesConnectAnalyticsParameters: ItunesConnectAnalyticsParameters(),
       socialMetaTagParameters: SocialMetaTagParameters(
         title: '${product.details.brand} ${Formatter.getCost(product?.price)}',
         description: 'best store in the world',
@@ -51,8 +51,6 @@ class DynamicLinkService {
     );
 
     final Uri dynamicUrl = await parameters.buildUrl();
-    //final Uri dynamicUrl1 = parameters.link;
-
     return dynamicUrl.toString();
   }
 }

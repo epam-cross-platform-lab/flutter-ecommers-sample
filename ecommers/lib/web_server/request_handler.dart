@@ -27,7 +27,13 @@ class RequestHandler {
 
   static void process(HttpRequestBody body) {
     final path = body.request.uri.path.toString();
+    final pathSegments1 = body.request.uri.pathSegments[0];
 
+    if(pathSegments1 == ApiDefines.productIdPathSegment)
+    {
+      _handleProductById(body);
+      return;
+    }
     switch (path) {
       case ApiDefines.login:
         _handleLoginRequest(body);
@@ -130,6 +136,19 @@ class RequestHandler {
     body.request.response
       ..headers.contentType = ContentType.json
       ..write(json.encode(filteredProducts))
+      ..close();
+  }
+
+  static Future _handleProductById(HttpRequestBody body) async {
+    if (isNotAuthorized(body.request)) return;
+
+    final allProducts = [...await DataProvider.products];
+    final productId = int.parse(body.request.uri.pathSegments[1]);
+    final product = allProducts.firstWhere((p) => p.id == productId);
+
+    body.request.response
+      ..headers.contentType = ContentType.json
+      ..write(json.encode(product))
       ..close();
   }
 

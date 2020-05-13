@@ -47,4 +47,9 @@ abstract class ApiService extends ChopperService {
 
   @Get(path: ApiDefines.notes)
   Future<Response<List<Note>>> notes();
+
+  @Get(path: ApiDefines.productId)
+  Future<Response<Product>> productId({
+    @Path('id') int id,
+  });
 }

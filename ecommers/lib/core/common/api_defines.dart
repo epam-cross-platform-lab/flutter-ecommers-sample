@@ -2,6 +2,8 @@ class ApiDefines {
   static const String login = '/login';
   static const String auth = '/auth';
   
+  static const String productIdPathSegment = 'productId';
+  static const String productId = '/productId/{id}';
   static const String products = '/products';
   static const String productsLatest = '/products/latest';
   static const String productsRecent = '/products/recent';
