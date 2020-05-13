@@ -1,4 +1,3 @@
-import 'package:ecommers/core/models/edit_profile_model.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/insets.dart';
@@ -12,9 +11,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 class ProfileEditPage extends StatelessWidget {
-  static const EdgeInsets _listContainerMargin =
-      EdgeInsets.symmetric(horizontal: Insets.x5);
-
   final TextEditingController nameTextController = TextEditingController();
 
   @override
@@ -24,7 +20,7 @@ class ProfileEditPage extends StatelessWidget {
     final passwordProvider =
         Provider.of<ResetPasswordProviderModel>(context, listen: false);
 
-    nameTextController.text = profileProvider.getName();
+    nameTextController.text = profileProvider.name;
 
     return BusyPage<ResetPasswordProviderModel>(
       child: Scaffold(
@@ -38,10 +34,10 @@ class ProfileEditPage extends StatelessWidget {
           ),
           actions: [
             FlatButton(
-              onPressed: () => _saveChanges(profileProvider),
+              onPressed: () => profileProvider.saveChanges(nameTextController.text),
               child: Baseline(
                 baselineType: TextBaseline.alphabetic,
-                baseline: Insets.x2_5,
+                baseline: 10,
                 child: Text(
                   localization.save,
                   style: textTheme.bodyText1
@@ -54,13 +50,13 @@ class ProfileEditPage extends StatelessWidget {
         body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Container(
-            margin: _listContainerMargin,
+            margin: const EdgeInsets.symmetric(horizontal: Insets.x5),
             child: Column(
               children: <Widget>[
                 _buildProfileImage(),
                 const SizedBox(height: Insets.x2),
                 Text(
-                  profileProvider.getEmailOrPhone(),
+                  profileProvider.emailOrPhone,
                   style: textTheme.bodyText2,
                 ),
                 const SizedBox(height: Insets.x3),
@@ -69,8 +65,7 @@ class ProfileEditPage extends StatelessWidget {
                 PrimaryButtonWidget(
                   text: localization.reset_password,
                   assetIconPath: Assets.arrowRightIcon,
-                  onPressedFunction: () => _resetPassword(
-                      passwordProvider, profileProvider.getEmail()),
+                  onPressedFunction: () => passwordProvider.resetPassword(profileProvider.email),
                 ),
               ],
             ),
@@ -83,14 +78,14 @@ class ProfileEditPage extends StatelessWidget {
   Widget _buildProfileImage() {
     return Stack(
       children: [
-        const ProfileImage(Insets.x25),
+        const ProfileImage(100),
         Positioned(
           right: 0,
           top: 0,
           child: Container(
             alignment: Alignment.center,
-            height: Insets.x8,
-            width: Insets.x8,
+            height: 32,
+            width: 32,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: BrandingColors.backgroundIcon,
@@ -101,7 +96,7 @@ class ProfileEditPage extends StatelessWidget {
             ),
             child: SvgPicture.asset(
               Assets.suggestIcon,
-              height: Insets.x3_5,
+              height: 14,
               color: BrandingColors.primary,
             ),
           ),
@@ -125,15 +120,5 @@ class ProfileEditPage extends StatelessWidget {
         filled: true,
       ),
     );
-  }
-
-  void _saveChanges(ProfileProviderModel profileProvider) {
-    final model = EditProfileModel(nameTextController.text);
-    profileProvider.updateProfileInfo(model);
-    navigationService.goBack();
-  }
-
-  void _resetPassword(ResetPasswordProviderModel provider, String email) {
-    provider.resetPassword(email);
   }
 }

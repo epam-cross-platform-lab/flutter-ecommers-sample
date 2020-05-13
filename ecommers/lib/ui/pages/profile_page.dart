@@ -97,14 +97,14 @@ class ProfilePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  model.getName(),
+                  model.name,
                   maxLines: Dimens.defaultTextMaxLines,
                   overflow: TextOverflow.ellipsis,
                   style: textTheme.headline6,
                 ),
                 Expanded(
                   child: Text(
-                    model.getEmailOrPhone(),
+                    model.emailOrPhone,
                     maxLines: Dimens.defaultTextMaxLines,
                     overflow: TextOverflow.ellipsis,
                     style: textTheme.bodyText1,

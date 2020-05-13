@@ -1,31 +1,24 @@
-import 'package:ecommers/core/models/edit_profile_model.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProfileProviderModel extends ChangeNotifier {
-  String getEmail() {
-    return profileService.user.email;
-  }
+  String get email => profileService.user.email;
 
-  String getEmailOrPhone() {
-    return profileService.user.email ?? profileService.user.phoneNumber;
-  }
+  String get emailOrPhone =>
+      profileService.user.email ?? profileService.user.phoneNumber;
 
-  String getName() {
-    return profileService.user.displayName ?? getEmailOrPhone();
-  }
+  String get name => profileService.user.displayName ?? emailOrPhone;
 
-  String getPhone() {
-    return profileService.user.phoneNumber;
-  }
+  String get phone => profileService.user.phoneNumber;
 
-  Future updateProfileInfo(EditProfileModel model) async {
-    if (profileService.user.displayName == model.name) {
-      return;
+  Future saveChanges(String name) async {
+    if (profileService.user.displayName != name) {
+      await authorizationService.updateUserName(name);
+      await profileService.updateUserInfo();
+
+      notifyListeners();
     }
 
-    authorizationService.updateUserName(model.name);
-    await profileService.updateUserInfo();
-    notifyListeners();
+    navigationService.goBack();
   }
 }
