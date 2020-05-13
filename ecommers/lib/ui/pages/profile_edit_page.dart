@@ -17,12 +17,10 @@ class ProfileEditPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final profileProvider =
         Provider.of<ProfileProviderModel>(context, listen: false);
-    final passwordProvider =
-        Provider.of<ResetPasswordProviderModel>(context, listen: false);
 
     nameTextController.text = profileProvider.name;
 
-    return BusyPage<ResetPasswordProviderModel>(
+    return BusyPage<ProfileProviderModel>(
       child: Scaffold(
         backgroundColor: BrandingColors.pageBackground,
         appBar: AppBar(
@@ -34,7 +32,8 @@ class ProfileEditPage extends StatelessWidget {
           ),
           actions: [
             FlatButton(
-              onPressed: () => profileProvider.saveChanges(nameTextController.text),
+              onPressed: () =>
+                  profileProvider.saveChanges(nameTextController.text),
               child: Baseline(
                 baselineType: TextBaseline.alphabetic,
                 baseline: 10,
@@ -65,7 +64,8 @@ class ProfileEditPage extends StatelessWidget {
                 PrimaryButtonWidget(
                   text: localization.reset_password,
                   assetIconPath: Assets.arrowRightIcon,
-                  onPressedFunction: () => passwordProvider.resetPassword(profileProvider.email),
+                  onPressedFunction: () =>
+                      profileProvider.resetPassword(profileProvider.email),
                 ),
               ],
             ),

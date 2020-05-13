@@ -84,7 +84,10 @@ class FirebaseAuthRepository {
   Future<bool> updateUsername(String username) async {
     try {
       final profileInfo = UserUpdateInfo()..displayName = username;
-      (await FirebaseAuth.instance.currentUser())?.updateProfile(profileInfo);
+      final user = await FirebaseAuth.instance.currentUser();
+      if (user != null) {
+        await user.updateProfile(profileInfo);
+      }
       return true;
     } on PlatformException catch (ex) {
       logger.ex(ex);

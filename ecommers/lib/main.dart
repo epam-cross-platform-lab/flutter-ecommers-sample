@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:ecommers/core/provider_models/payment_method_provider_model.dart';
 import 'package:ecommers/core/provider_models/profile_provider_model.dart';
-import 'package:ecommers/core/provider_models/reset_password_provider_model.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/shared/i18n.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
@@ -67,7 +66,6 @@ class _MainAppState extends State<MainApp> with WidgetsBindingObserver {
         ChangeNotifierProvider(create: (_) => ShippingAddressProviderModel()),
         ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => ProfileProviderModel()),
-        ChangeNotifierProvider(create: (_) => ResetPasswordProviderModel(),)
       ],
       child: MaterialApp(
         title: 'ecommers',
