@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/profile_provider_model.dart';
 import 'package:ecommers/shared/dependency_service.dart';
@@ -55,7 +54,7 @@ class ProfilePage extends StatelessWidget {
   static const EdgeInsets _listContainerMargin =
       EdgeInsets.symmetric(horizontal: Insets.x5);
 
-  static const double _profileCardHeight = Insets.x25;
+  static const double _profileCardHeight = 100;
   static const double _profileCardEditButtonHeight = 30.0;
 
   @override
@@ -71,12 +70,11 @@ class ProfilePage extends StatelessWidget {
                 margin: _listContainerMargin,
                 itemList: _topMenuList,
               ),
-              const SizedBox(height: 15.0),
+              const SizedBox(height: Insets.x4),
               const MenuList(
                 margin: _listContainerMargin,
                 itemList: _bottomMenuList,
               ),
-              const SizedBox(height: 20.0),
             ],
           ),
         );
@@ -91,7 +89,7 @@ class ProfilePage extends StatelessWidget {
       child: Row(
         children: <Widget>[
           const ProfileImage(_profileCardHeight),
-          const SizedBox(width: 20.0),
+          const SizedBox(width: Insets.x5),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
