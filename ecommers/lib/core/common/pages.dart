@@ -16,4 +16,6 @@ enum Pages {
   paymentMethod,
   addPaymentMethod,
   graphQl
+  shippingAddress,
+  addShippingAddress,
 }

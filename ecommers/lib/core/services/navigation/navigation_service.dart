@@ -1,4 +1,5 @@
 import 'package:ecommers/ui/pages/graph_ql_page.dart';
+import 'package:ecommers/core/models/index.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -66,7 +67,15 @@ class NavigationService {
         );
         break;
       case Pages.product:
-        resultPage = ProductPage(productModel: arguments as Product);
+        if (arguments is Product) {
+          resultPage = ProductPage(productModel: arguments);
+          break;
+        }
+        final productPageArguments = arguments as PageArguments;
+        resultPage = ProductPage(
+          productModel: productPageArguments?.arg1 as Product,
+          withHeroAniamtion: productPageArguments?.arg2 as bool,
+        );
         break;
       case Pages.notifications:
         resultPage = NotificationsPage();
@@ -83,6 +92,12 @@ class NavigationService {
         break;
     case Pages.graphQl:
         resultPage = GrapgQLPage();
+        break;
+      case Pages.shippingAddress:
+        resultPage = ShippingAddressPage();
+        break;
+      case Pages.addShippingAddress:
+        resultPage = AddShippingAddress(shippingAddres: arguments as ShippingAddressModel,);
         break;
       default:
         resultPage = ShellPage();

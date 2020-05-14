@@ -1,3 +1,4 @@
+import 'package:ecommers/core/common/index.dart';
 import 'package:ecommers/core/provider_models/index.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -9,21 +10,23 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class MorePage extends StatelessWidget {
-  static const List<MenuItemModel> topMenuList = [
+  static final List<MenuItemModel> topMenuList = [
     MenuItemModel(
       svgAssetIconPath: Assets.shippingIcon,
       title: 'Shipping Adress',
+      onTappedFunction: () =>
+          navigationService.navigateTo(Pages.shippingAddress),
     ),
-    MenuItemModel(
+    const MenuItemModel(
       svgAssetIconPath: Assets.paymentIcon,
       title: 'Payment Method',
     ),
-    MenuItemModel(
+    const MenuItemModel(
       svgAssetIconPath: Assets.currencyIcon,
       title: 'Currency',
       subTitle: 'USD',
     ),
-    MenuItemModel(
+    const MenuItemModel(
       svgAssetIconPath: Assets.languageIcon,
       title: 'Language',
       subTitle: 'ENGLISH',
@@ -69,7 +72,7 @@ class MorePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 35.0),
-            const MenuList(
+            MenuList(
               margin: menuListMargin,
               itemList: topMenuList,
             ),
