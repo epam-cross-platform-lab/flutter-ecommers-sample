@@ -1,3 +1,4 @@
+import 'package:ecommers/ui/pages/graph_ql_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -79,6 +80,9 @@ class NavigationService {
         break;
       case Pages.addPaymentMethod:
         resultPage = AddPaymentMethodPage();
+        break;
+    case Pages.graphQl:
+        resultPage = GrapgQLPage();
         break;
       default:
         resultPage = ShellPage();

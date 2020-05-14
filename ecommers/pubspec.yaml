@@ -49,6 +49,7 @@ dependencies:
   stripe_payment: ^1.0.7
   logger: ^0.9.1
   cloud_firestore: ^0.13.5
+  graphql_flutter: ^3.0.1
 
 flutter_icons:
   image_path_android: "assets/launch_icon_android.png" #http://www.softicons.com/web-icons/services-flat-icons-by-jozef-krajcovic/e-commerce-icon

@@ -14,5 +14,6 @@ enum Pages {
   notifications,
   note,
   paymentMethod,
-  addPaymentMethod
+  addPaymentMethod,
+  graphQl
 }

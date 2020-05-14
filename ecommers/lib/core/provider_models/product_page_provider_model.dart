@@ -24,6 +24,9 @@ class ProductPageProviderModel extends ChangeNotifier with BusyNotifier  {
   String get skuId => _skuId;
   set skuId(String skuId) => _skuId = skuId ?? '';
 
+  String get selectSize => _sizes.firstWhere((element) => element.isSelected,  orElse: () => sizes[0]).size;
+  String get selectColor => _colors.firstWhere((element) => element.isSelected,  orElse: () => _colors[0]).title;
+
   ProductPageProviderModel(this._productModel) {
     _initProductImages();
     _initProductTab();
@@ -104,6 +107,7 @@ class ProductPageProviderModel extends ChangeNotifier with BusyNotifier  {
   ProductColorModel _covertToProductColorModel(ProductModel product) {
     return ProductColorModel(
         color: product?.color?.argb ?? 0,
+        title: product?.color?.title,
         images: product.imageUrls
             ?.map((url) => CarouselImage(tag: _productModel?.id, path: url))
             ?.toList());
