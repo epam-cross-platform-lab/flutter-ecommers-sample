@@ -5,4 +5,5 @@ class CacheDefines {
   static const String shippingAddress = 'shippingAddress';
   static const String orders = 'orders';
   static const String selectedShippingAddressId = 'selectedShippingAddressId';
+  static const String selectedPaymentMethodId = 'selectedPaymentMethodId';
 }

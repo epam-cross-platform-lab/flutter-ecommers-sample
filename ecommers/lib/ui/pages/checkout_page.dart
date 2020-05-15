@@ -88,21 +88,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
           style: textTheme.headline5,
         ),
         const SizedBox(height: Insets.x2),
-        Consumer<PaymentMethodProviderModel>(
-          builder: (_, provider, __) {
-            return _buildRowAction(
-                imagePath: Assets.creditCard,
-                text: Text(
-                  Formatter.getTextWithNumberCard(
-                          provider?.selectedPaymentMethod?.cardNumberLast4) ??
-                      localization.selectCreditCard,
-                  style:
-                      textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
-                ),
-                action: () =>
-                    navigationService.navigateTo(Pages.paymentMethod));
-          },
-        ),
+        _buildPaymentMethod(),
         _buildDevider(),
         Text(
           localization.items,
@@ -185,6 +171,49 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
         );
       },
+    );
+  }
+
+  Widget _buildPaymentMethod() {
+    return InkWell(
+      onTap: () => navigationService.navigateTo(Pages.paymentMethod),
+      child: Row(
+        children: <Widget>[
+          SvgPicture.asset(
+            Assets.creditCard,
+          ),
+          const SizedBox(width: Insets.x3_5),
+          Expanded(
+            child: Consumer<PaymentMethodProviderModel>(
+                builder: (_, provider, __) {
+              return _textBlockPaymentMethod(provider, context);
+            }),
+          ),
+          const CircleIcon(),
+        ],
+      ),
+    );
+  }
+
+  Widget _textBlockPaymentMethod(
+      PaymentMethodProviderModel provider, BuildContext context) {
+    if (provider.selectedPaymentMethod.isEmpty) {
+      return Text(
+        localization.selectAddress,
+        style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          Formatter.getTextWithNumberCard(
+                  provider?.selectedPaymentMethod[0]?.cardNumberLast4) ??
+              localization.selectCreditCard,
+          style: textTheme.bodyText1.copyWith(fontWeight: FontWeight.w700),
+        ),
+      ],
     );
   }
 

@@ -97,12 +97,16 @@ class _PaymentMethodPageState extends State<PaymentMethodPage> {
         child: BankCard(
           lastFourNumber: item.cardNumberLast4,
           deleteFunction: () => _removeItem(index),
-          isSelect: item.isSelected,
+          isSelect: checkIsSelectItem(item),
           onTappedFunction: () => _provider.selectPaymentMethod(item),
         ),
       ),
     );
   }
+
+   bool checkIsSelectItem(PaymentMethodModel item) =>
+      _provider.selectedPaymentMethod.isNotEmpty &&
+      _provider.selectedPaymentMethod[0].id == item.id;
 
   Future _removeItem(int removeIndex) async {
     if (removeIndex >= _provider.paymentMethods.length) return;

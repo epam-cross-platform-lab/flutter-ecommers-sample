@@ -15,6 +15,7 @@ class CreditCardTextField extends StatelessWidget {
   final double width;
   final int maxLength;
   final List<TextInputFormatter> inputFormatters;
+  final bool isValid;
 
   const CreditCardTextField({
     this.hintText = '',
@@ -23,8 +24,9 @@ class CreditCardTextField extends StatelessWidget {
     this.onValidate,
     this.onChanged,
     this.width,
-    this.maxLength = 26, 
+    this.maxLength = 26,
     this.inputFormatters,
+    this.isValid = true,
   });
 
   @override
@@ -43,9 +45,19 @@ class CreditCardTextField extends StatelessWidget {
           maxLength: maxLength,
           maxLengthEnforced: true,
           decoration: InputDecoration(
+            hoverColor: Colors.red,
             counterText: '',
             counterStyle: const TextStyle(fontSize: 0),
-            border: InputBorder.none,
+            focusedBorder: isValid ?? true
+                ? InputBorder.none
+                : const OutlineInputBorder(
+                    borderSide:
+                        BorderSide(color: Colors.black38),
+                  ),
+            enabledBorder: isValid ?? true
+                ? InputBorder.none : const OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.red),
+            ),
             hintText: hintText,
             hintStyle: textTheme.bodyText1.copyWith(
                 fontWeight: FontWeight.w400,

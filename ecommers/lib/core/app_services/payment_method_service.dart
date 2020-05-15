@@ -47,4 +47,19 @@ class PaymentMethodService {
   Future editPaymentMethod(PaymentMethodModel paymentMethodModel) async {
     return paymentMethodRepository.edit(paymentMethodModel);
   }
+  Future<List<PaymentMethodModel>> getSelectedPaymentMethod() async {
+    return paymentMethodRepository.getSelectedPaymentMethod();
+  }
+
+  Future addSelectedPaymentMethod(PaymentMethodModel item) async {
+    return paymentMethodRepository.addSelectedPaymentMethod(item);
+  }
+
+  Future updateSelectedPaymentMethod(PaymentMethodModel item) async {
+    return paymentMethodRepository.updateSelectedPaymentMethod(item);
+  }
+
+  Future removeSelectedPaymentMethod(PaymentMethodModel item) async {
+    return paymentMethodRepository.removeSelectedPaymentMethod(item);
+  }
 }

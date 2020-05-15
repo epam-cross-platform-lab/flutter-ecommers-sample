@@ -26,7 +26,7 @@ class ShippingAddressRepository extends RepositoryBase<ShippingAddressModel> {
 
   Future updateSelectedShippingAddress(ShippingAddressModel item) async {
     return cacheDatabase.updateByEqualsFilter(
-        repositoryKey, json.decode(json.encode(item)) as Map<String, dynamic>, {
+         CacheDefines.shippingAddress, json.decode(json.encode(item)) as Map<String, dynamic>, {
       filterFieldForItem: item.id,
     });
   }
@@ -39,6 +39,6 @@ class ShippingAddressRepository extends RepositoryBase<ShippingAddressModel> {
   }
 
   Future<List<ShippingAddressModel>> getAllShippingAdderess() async {
-    return cacheDatabase.getAll(repositoryKey, ShippingAddressModel.fromJson);
+    return cacheDatabase.getAll( CacheDefines.shippingAddress, ShippingAddressModel.fromJson);
   }
 }

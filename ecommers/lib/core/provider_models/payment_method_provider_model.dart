@@ -1,40 +1,50 @@
+import 'package:ecommers/core/common/validator/index.dart';
 import 'package:ecommers/core/models/payment_method_model.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:flutter/material.dart';
 import 'package:stripe_payment/stripe_payment.dart';
 
 class PaymentMethodProviderModel extends ChangeNotifier {
+  bool isNumberValid, isNameValid, isDateValid, isCvcValid;
   List<PaymentMethodModel> _paymentMethods = <PaymentMethodModel>[];
-  PaymentMethodModel _selectedPaymentMethod;
+  List<PaymentMethodModel> selectedPaymentMethod = <PaymentMethodModel>[];
+  PaymentMethodModel paymentMethod = PaymentMethodModel();
   CreditCard creditCard = CreditCard();
   String expDate = '';
 
   List<PaymentMethodModel> get paymentMethods => _paymentMethods;
-  PaymentMethodModel get selectedPaymentMethod => _selectedPaymentMethod;
 
-  void selectPaymentMethod(PaymentMethodModel paymentMethod) {
-    if (_selectedPaymentMethod == null) {
-      _selectedPaymentMethod = paymentMethod..isSelected = true;
-      paymentMethodService.editPaymentMethod(_selectedPaymentMethod);
+  Future initialize() async {
+    _paymentMethods = await paymentMethodService.getPaymentMethods() ??
+        <PaymentMethodModel>[];
+    selectedPaymentMethod =
+        await paymentMethodService.getSelectedPaymentMethod();
+    notifyListeners();
+  }
+
+  Future selectPaymentMethod(PaymentMethodModel paymentMethod) async {
+    if (selectedPaymentMethod.isEmpty) {
+      await paymentMethodService.addSelectedPaymentMethod(paymentMethod);
+      selectedPaymentMethod.add(paymentMethod);
       notifyListeners();
     }
 
-    if (paymentMethod.id == _selectedPaymentMethod.id) return;
+    if (selectedPaymentMethod[0].id == paymentMethod.id) return;
 
-    paymentMethod.isSelected = true;
-    _selectedPaymentMethod.isSelected = false;
-    notifyListeners();
-
-    paymentMethodService.editPaymentMethod(_selectedPaymentMethod);
-    paymentMethodService.editPaymentMethod(paymentMethod);
-
-    _selectedPaymentMethod = paymentMethod;
+    if (selectedPaymentMethod[0].id != paymentMethod.id) {
+      await paymentMethodService.updateSelectedPaymentMethod(paymentMethod);
+      selectedPaymentMethod[0] = paymentMethod;
+      notifyListeners();
+    }
   }
 
   Future addPaymentMethod() async {
-    if (!_trySetExpDate()) return;
-    if (!_isValidCard()) return;
+    if (!_isPaymentMethodValid()) {
+      notifyListeners();
+      return;
+    }
 
+    creditCard.number = creditCard.number.replaceAll('-', '');
     final paymentMethod =
         await paymentMethodService.createPyamentMethod(creditCard);
 
@@ -42,22 +52,24 @@ class PaymentMethodProviderModel extends ChangeNotifier {
       _paymentMethods.add(paymentMethod);
       notifyListeners();
     }
-
     navigationService.goBack();
   }
 
   Future<PaymentMethodModel> removePaymentMethod(int index) async {
     final removedItem = _paymentMethods.removeAt(index);
-    if (removedItem.id == selectedPaymentMethod.id) {
-      _selectedPaymentMethod = null;
+    if (selectedPaymentMethod.isNotEmpty &&
+        removedItem.id == selectedPaymentMethod[0]?.id) {
+      selectedPaymentMethod.removeAt(0);
+      await paymentMethodService.removeSelectedPaymentMethod(removedItem);
     }
 
     await paymentMethodService.removePaymentMethod(removedItem);
+    notifyListeners();
     return removedItem;
   }
 
   bool _trySetExpDate() {
-    if (expDate[0] == '0') expDate = expDate.substring(1);
+    if (expDate.isNotEmpty && expDate[0] == '0') expDate = expDate.substring(1);
     final monthAndYear = expDate.split('/');
 
     if (monthAndYear.length != 2) return false;
@@ -68,24 +80,28 @@ class PaymentMethodProviderModel extends ChangeNotifier {
     if (expMonth > 12 || expMonth < 1 || expYear < 20 || expYear > 99) {
       return false;
     }
-    
+
     creditCard.expMonth = expMonth;
     creditCard.expYear = expYear;
     return true;
   }
 
-  bool _isValidCard() {
-    if (creditCard.number?.length != 16) return false;
-    if (creditCard.cvc?.length != 3) return false;
+  bool _isPaymentMethodValid() {
+    isNumberValid = PaymentValidator.isNumberValid(creditCard.number);
+    isNameValid = PaymentValidator.iNameValid(creditCard.name);
+    isDateValid = _trySetExpDate();
+    isCvcValid = PaymentValidator.isCvcValid(creditCard.cvc);
 
-    return true;
+    return isNumberValid && isNameValid && isDateValid && isCvcValid;
   }
 
-  Future initialize() async {
-    _paymentMethods = await paymentMethodService.getPaymentMethods() ??
-        <PaymentMethodModel>[];
-    _selectedPaymentMethod =
-        _paymentMethods.firstWhere((m) => m.isSelected, orElse: () => null);
-    notifyListeners();
+  void clean() {
+    creditCard = CreditCard();
+    paymentMethod = PaymentMethodModel();
+    expDate = '';
+    isNumberValid = true;
+    isNameValid = true;
+    isDateValid = true;
+    isCvcValid = true;
   }
 }
