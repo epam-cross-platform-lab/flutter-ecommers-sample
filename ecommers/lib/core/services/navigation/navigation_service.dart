@@ -93,7 +93,12 @@ class NavigationService {
         resultPage = ShippingAddressPage();
         break;
       case Pages.addShippingAddress:
-        resultPage = AddShippingAddress(shippingAddres: arguments as ShippingAddressModel,);
+        resultPage = AddShippingAddress(
+          shippingAddres: arguments as ShippingAddressModel,
+        );
+        break;
+      case Pages.profileEdit:
+        resultPage = ProfileEditPage();
         break;
       default:
         resultPage = ShellPage();

@@ -6,4 +6,5 @@ export 'note_service.dart';
 export 'paginator.dart';
 export 'payment_method_service.dart';
 export 'product_service.dart';
+export 'profile_service.dart';
 export 'shipping_address_service.dart';

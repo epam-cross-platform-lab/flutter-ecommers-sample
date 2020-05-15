@@ -9,7 +9,7 @@
     "totalOrder": "TOTAL",
     "freeDomesticShipping": "Free Domestic Shipping",
     "checkoutButton": "CHECKOUT",
-    "editProfile": "EDIT PROFILE",
+    "editProfile": "Edit profile",
     "logOut": "LOG OUT",
     "morePage": "More",
     "checkoutTitle": "Checkout",
@@ -121,6 +121,13 @@
         "title": "Password restoration",
         "description": "Password restore link sent",
         "primary_button": "OK"
+    },
+    "save": "Save",
+    "reset_password": "Reset password",
+    "password_reset_dialog": {
+        "title": "Password reset",
+        "description": "Password reset link sent",
+        "primary_button": "Ok"
     },
     "empty": ""
 }
