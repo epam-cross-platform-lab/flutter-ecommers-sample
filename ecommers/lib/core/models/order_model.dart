@@ -7,7 +7,7 @@ part 'order_model.g.dart';
 @JsonSerializable()
 class OrderModel implements ItemBase{
   @override
-  final int id;
+  final String id;
   final Product product;
   final String characteristics;
   int count;

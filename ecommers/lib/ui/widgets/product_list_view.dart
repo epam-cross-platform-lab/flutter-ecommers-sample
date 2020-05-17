@@ -31,7 +31,6 @@ query ReadRepositories(\$search: String!){
     }
   }
 }
-
                       ''';
   final String searchWord = 'pro*';
 

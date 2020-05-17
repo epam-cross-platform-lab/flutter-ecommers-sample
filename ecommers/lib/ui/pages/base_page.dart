@@ -16,11 +16,11 @@ class BasePage<T extends BusyNotifier> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => createProvider(),
-      child: BusyPage<T>(
-        child: child,
-      ),
-    );
+    return  ChangeNotifierProvider(
+        create: (_) => createProvider(),
+        child: BusyPage<T>(
+    child: child,
+        ),
+      );
   }
 }

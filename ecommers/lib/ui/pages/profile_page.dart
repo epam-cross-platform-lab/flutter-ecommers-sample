@@ -135,7 +135,7 @@ class ProfilePage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Radiuses.big_2x),
         ),
-        onPressed: () =>navigationService.navigateWithReplacementTo(Pages.graphQl),
+        onPressed: () async => shopifyProductsRepository.fetchProducts(),
         child: Text(
           localization.editProfile,
           style: textTheme.button,

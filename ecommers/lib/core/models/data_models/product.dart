@@ -1,3 +1,4 @@
+import 'package:ecommers/core/models/data_models/shopify/shopify_model.dart';
 import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -10,7 +11,7 @@ part 'product.g.dart';
 
 @JsonSerializable()
 class Product {
-  final int id;
+  final String id;
   final String gender;
   final String category;
   final String subCategory;
@@ -19,6 +20,7 @@ class Product {
   final ProductColor baseColor;
   final num catalogAddDate;
   final String previewImage;
+  final String cursor;
 
   @JsonKey(name: 'styleImages')
   final List<String> images;
@@ -28,7 +30,7 @@ class Product {
   final ProductDetails details;
   final List<ProductReview> reviews;
 
-  Product(
+  Product({
     this.id,
     this.gender,
     this.category,
@@ -43,7 +45,12 @@ class Product {
     this.subCategory,
     this.catalogAddDate,
     this.previewImage,
-  );
+    this.cursor,
+  });
+
+  // factory Product.fromShopifyModel({ShopifyModel shopifyModel}) {
+  //   return Product();
+  // }
 
   static const fromJsonFactory = _$ProductFromJson;
 

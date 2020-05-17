@@ -10,6 +10,8 @@ import 'package:ecommers/core/services/navigation/navigation_service.dart';
 import 'package:ecommers/core/repositories/index.dart';
 import 'package:ecommers/data/repository/firebase_auth_repository.dart';
 import 'package:ecommers/data/repository/firebase_products_repository.dart';
+import 'package:ecommers/data/repository/shopify_products_repository.dart';
+import 'package:ecommers/setup/shopify_graph_ql_client.dart';
 import 'package:ecommers/shared/i18n.dart';
 import 'package:ecommers/shared/logger.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +47,9 @@ FirebaseAuthRepository get authRepository => _ioc.get<FirebaseAuthRepository>();
 Logger get logger => _ioc.get<Logger>();
 ShippingAddressService get shippingAddressService => _ioc.get<ShippingAddressService>();
 ShippingAddressRepository get shippingAddressRepository => _ioc.get<ShippingAddressRepository>();
+ShopifyProductsRepository get shopifyProductsRepository => _ioc.get<ShopifyProductsRepository>();
+ShopifyGrapgQLClient get shopifyGrapgQLClient => _ioc.get<ShopifyGrapgQLClient>();
+
 I18n get localization => I18n.of(Get.context);
 TextTheme get textTheme => Theme.of(Get.context).textTheme;
 
@@ -76,6 +81,8 @@ class DependencyService {
       ..registerLazySingleton(() => FirebaseAuthRepository())
       ..registerLazySingleton(() => CategoryDataRepository())
       ..registerLazySingleton(() => FirebaseProductsRepository())
+      ..registerLazySingleton(() => ShopifyProductsRepository())
+      ..registerLazySingleton(() => ShopifyGrapgQLClient())
       ..registerLazySingleton<PaymentMethodRepository>(
           () => PaymentMethodRepository())
       ..registerLazySingleton<ShippingAddressRepository>(
