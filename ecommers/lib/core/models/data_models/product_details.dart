@@ -10,13 +10,13 @@ class ProductDetails {
   final String material;
   final String fitting;
 
-  ProductDetails(
+  ProductDetails({
     this.brand,
     this.condition,
     this.category,
     this.material,
     this.fitting,
-  );
+  });
 
   static const fromJsonFactory = _$ProductDetailsFromJson;
 

@@ -6,9 +6,9 @@ part 'shopify_image.g.dart';
 
 @JsonSerializable()
 class ShopifyImage {
-  final ShopifyImageInfo nodde;
+  final ShopifyImageInfo node;
 
-  ShopifyImage({this.nodde});
+  ShopifyImage({this.node});
 
   static const fromJsonFactory = _$ShopifyImageFromJson;
 

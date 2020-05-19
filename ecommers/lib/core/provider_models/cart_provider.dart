@@ -62,6 +62,6 @@ class CartProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  OrderModel _getOrder(String id) =>
+  OrderModel _getOrder(int id) =>
       _orders.firstWhere((o) => o.product.id == id, orElse: () => null);
 }

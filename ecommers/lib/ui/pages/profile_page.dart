@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommers/core/common/index.dart';
+import 'package:ecommers/core/models/product_sort_keys.dart';
 import 'package:ecommers/shared/dependency_service.dart';
 import 'package:ecommers/ui/decorations/assets.dart';
 import 'package:ecommers/ui/decorations/dimens/index.dart';
@@ -135,7 +136,7 @@ class ProfilePage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Radiuses.big_2x),
         ),
-        onPressed: () async => shopifyProductsRepository.fetchProducts(),
+        onPressed: () async => shopifyProductsRepository.fetchProducts(count: 20, productSortKey: ProductSortKeys.title, descending: true),
         child: Text(
           localization.editProfile,
           style: textTheme.button,

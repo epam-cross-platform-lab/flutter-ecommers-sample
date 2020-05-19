@@ -1,7 +1,7 @@
-class ShopifyQueries{
- static const String fetchFirstProducts = '''
-{
-  products(first: 10) {
+class ShopifyQueries {
+  static const String fetchProducts = '''
+query fetchProducts(\$count: Int!, \$fromId: String, \$searchQuery: String, \$sortType: ProductSortKeys, \$descending: Boolean){
+  products(first:\$count, after:\$fromId, query:\$searchQuery, sortKey:\$sortType, reverse:\$descending ) {
     edges {
       cursor
       node {
@@ -40,60 +40,4 @@ class ShopifyQueries{
   }
 }
 ''';
- static const String fetchProductsFrom = '''
-{
-  products(first: 50, after: "eyJsYXN0X2lkIjo0NjEyMDQyMzU4ODY0LCJsYXN0X3ZhbHVlIjoiNDYxMjA0MjM1ODg2NCJ9") {
-    edges {
-      cursor
-      node {
-        id
-        title 
-        description
-        vendor
-        tags
-        options {
-          id
-          values
-        }
-      }
-    }
-  }
-}
-''';
- static const String sortProductsFrom = '''
-{
-  products(first: 50, after: "eyJsYXN0X2lkIjo0NjEyMDQyMzU4ODY0LCJsYXN0X3ZhbHVlIjoiNDYxMjA0MjM1ODg2NCJ9", sortKey:PRODUCT_TYPE) {
-    edges {
-      cursor
-      node {
-        id
-        title 
-        description
-        vendor
-        tags
-        productType
-        totalVariants
-        options {
-          id
-          name
-        }
-      }
-    }
-  }
-}
-''';
-  static const String search = '''
-query SearchProducts(\$search: String!){
-  products(first: 20, query: \$search) {
-    edges {
-      node {
-        id
-        title
-        description
-        tags
-      }
-    }
-  }
-}
-                      ''';
 }
